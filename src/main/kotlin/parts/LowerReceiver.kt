@@ -1,7 +1,4 @@
-package io.rsmc.RSMC.parts
-
-import parts.Joint
-import parts.Part
+package parts
 
 /**
  * Created by Andy on 6/5/2016.
