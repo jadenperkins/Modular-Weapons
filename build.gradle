@@ -5,13 +5,11 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.6.3'
     }
 }
 
 apply plugin: 'kotlin'
 apply plugin: 'jacoco'
-apply plugin: 'com.github.kt3k.coveralls'
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -30,15 +28,9 @@ sourceSets {
 
 jacocoTestReport {
     reports {
-        xml.enabled = true // coveralls plugin depends on xml format report
+        xml.enabled = true
         html.enabled = true
     }
 }
 
-//tasks.coveralls {
-//    dependsOn 'check'
-//}
-
-coveralls {
-    jacocoReportPath = "${buildDir}/reports/jacoco/jacocoTestReport/jacocoTestReport.xml"
-}
+check.dependsOn jacocoTestReport
