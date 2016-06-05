@@ -1,5 +1,6 @@
 package parts
 
+import stat.StatSet
 import java.util.*
 
 /**
@@ -9,6 +10,15 @@ open class Part(val name: String, var parentPart: Part? = null) {
 
     val joints: MutableList<Joint> = ArrayList()
     var attachments: MutableMap<Joint, Part> = HashMap()
+    var stats: StatSet = StatSet()
+
+    fun getCombinedStats(): StatSet {
+        var latestStats = stats;
+        for ((joint, part) in attachments) {
+            latestStats = latestStats.combine(part.getCombinedStats())
+        }
+        return latestStats
+    }
 
     fun isBase(): Boolean = parentPart == null
 
@@ -24,23 +34,30 @@ open class Part(val name: String, var parentPart: Part? = null) {
     }
 
     override fun toString(): String {
-        var str = "Part: $name, Parent: ${parentPart?.name}"
+        var strings: List<String> = ArrayList()
+
+        strings += "Part: $name, Parent: ${parentPart?.name}"
         if (joints.isNotEmpty()) {
-            str += "\n${joints.size} joints:"
+            strings += "${joints.size} joints:"
         }
         for (joint in joints) {
-            str += "\n\tJoint: $joint"
+            strings += "\tJoint: $joint"
         }
         if (attachments.isNotEmpty()) {
-            str += "\n${attachments.size} attachments:\n"
+            strings += "${attachments.size} attachments:"
         }
         for ((joint, attachment) in attachments) {
             val attachSplit = attachment.toString().split("\n");
             for (attachLine in attachSplit) {
-                str += "\t$attachLine\n"
+                strings += "\t$attachLine"
             }
         }
-        return str
+        val combinedStats = getCombinedStats()
+        for ((statType, stat) in combinedStats) {
+            strings += "\tCombined stats: [$statType] $stat"
+        }
+
+        return strings.joinToString("\n")
     }
 
 }
