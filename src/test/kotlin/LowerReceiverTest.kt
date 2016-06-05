@@ -1,5 +1,6 @@
+
+import example.LowerReceiver
 import org.jetbrains.spek.api.Spek
-import parts.LowerReceiver
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 

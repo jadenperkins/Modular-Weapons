@@ -1,4 +1,4 @@
-import parts.LowerReceiver
+package example
 
 /**
  * Created by Andy on 6/5/2016.

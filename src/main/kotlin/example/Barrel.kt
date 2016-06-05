@@ -1,4 +1,7 @@
-package parts
+package example
+
+import parts.Joint
+import parts.Part
 
 /**
  * Created by Andy on 6/5/2016.
