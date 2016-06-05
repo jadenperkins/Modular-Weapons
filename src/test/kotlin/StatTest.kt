@@ -34,6 +34,12 @@ class StatTest : Spek({
             })
         }
 
+        it("should only be able to be combined with the same stat type") {
+            assertFailsWith(IllegalArgumentException::class, {
+                DoubleStat().combine(IntStat())
+            })
+        }
+
         it ("should be able to combine stats effectively, in a non-mutative way") {
             val stat1 = IntStat(2)
             val stat2 = IntStat(3)

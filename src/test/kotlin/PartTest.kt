@@ -7,6 +7,7 @@ import stat.IntStat
 import stat.StatType
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 /**
  * Created by Andy on 6/5/2016.
@@ -67,6 +68,10 @@ class PartTest : Spek({
             assertEquals(combinedStats[StatType.ACCURACY]?.rawValue, 2.0)
             assertEquals(combinedStats[StatType.SPEED]?.rawValue, 3.0)
             assertEquals(combinedStats[StatType.SILENCE]?.rawValue, 4)
+        }
+
+        it ("should not error when calling .toString()") {
+            assertTrue(testPart.toString().length > 0)
         }
     }
 })
