@@ -1,4 +1,7 @@
-package parts
+package example
+
+import parts.Joint
+import parts.Part
 
 /**
  * Created by Andy on 6/5/2016.
@@ -12,7 +15,7 @@ class LowerReceiver : Part("Lower Receiver") {
         val jointMagazine = Joint("Magazine", 0.0, 0.0, -1.0)
     }
 
-    private val attachmentBarrel = Part("Long Barrel", this)
+    private val attachmentBarrel = Barrel()
     private val attachmentStock = Part("Collapsible Stock", this)
     private val attachmentSight = Part("Red Dot Sight", this)
     private val attachmentMagazine = Part("Extended Magazine", this)

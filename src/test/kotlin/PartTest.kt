@@ -1,13 +1,14 @@
+
+import org.jetbrains.spek.api.Spek
 import parts.Joint
 import parts.Part
-import org.jetbrains.spek.api.Spek
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 
 /**
  * Created by Andy on 6/5/2016.
  */
-class FirstTest : Spek({
+class PartTest : Spek({
     describe("a part") {
 
         val testPart = Part("TestPart")

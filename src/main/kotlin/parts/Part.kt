@@ -22,4 +22,25 @@ open class Part(val name: String, var parentPart: Part? = null) {
         attachments.put(joint, part)
         return true;
     }
+
+    override fun toString(): String {
+        var str = "Part: $name, Parent: ${parentPart?.name}"
+        if (joints.isNotEmpty()) {
+            str += "\n${joints.size} joints:"
+        }
+        for (joint in joints) {
+            str += "\n\tJoint: $joint"
+        }
+        if (attachments.isNotEmpty()) {
+            str += "\n${attachments.size} attachments:\n"
+        }
+        for ((joint, attachment) in attachments) {
+            val attachSplit = attachment.toString().split("\n");
+            for (attachLine in attachSplit) {
+                str += "\t$attachLine\n"
+            }
+        }
+        return str
+    }
+
 }
