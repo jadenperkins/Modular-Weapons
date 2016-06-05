@@ -11,8 +11,8 @@ class LowerReceiver : Part("Lower Receiver") {
     companion object {
         val jointBarrel = Joint("Barrel", 1.0, 0.0, 0.0)
         val jointStock = Joint("Stock", -1.0, 0.0, 0.0)
-        val jointSight = Joint("Sight", 0.0, 0.0, 1.0)
-        val jointMagazine = Joint("Magazine", 0.0, 0.0, -1.0)
+        val jointSight = Joint("Sight", 0.0, 1.0, 0.0)
+        val jointMagazine = Joint("Magazine", 0.0, -1.0, 0.0)
     }
 
     private val attachmentBarrel = Barrel()
