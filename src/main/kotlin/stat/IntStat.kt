@@ -7,14 +7,11 @@ class IntStat(val value: Int = 0) : Stat {
 
     override val rawValue: Any = value
 
-    override fun combine(stat: Stat): IntStat {
-        if (stat !is IntStat) {
-            throw IllegalArgumentException()
-        }
-        return IntStat(stat.value + this.value)
+    override fun nativeCombine(stat: Stat): IntStat {
+        return IntStat((stat as IntStat).value + this.value)
     }
 
-    override fun toString(): String{
+    override fun toString(): String {
         return "IntStat(value=$value)"
     }
 

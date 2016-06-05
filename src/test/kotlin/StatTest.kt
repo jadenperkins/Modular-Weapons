@@ -43,7 +43,7 @@ class StatTest : Spek({
             assertTrue(stat2 != out)
             assertEquals(stat1.value, 2)
             assertEquals(stat2.value, 3)
-            assertEquals(out.value, 5)
+            assertEquals(out.rawValue, 5)
         }
 
         it ("should be able to combine stat sets, in a non-mutative way") {

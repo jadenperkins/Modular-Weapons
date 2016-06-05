@@ -7,11 +7,8 @@ class DoubleStat(var value: Double = 0.0) : Stat {
 
     override val rawValue: Any = value
 
-    override fun combine(stat: Stat): Stat {
-        if (stat !is DoubleStat) {
-            throw IllegalArgumentException()
-        }
-        return DoubleStat(stat.value + this.value)
+    override fun nativeCombine(stat: Stat): DoubleStat {
+        return DoubleStat((stat as DoubleStat).value + this.value)
     }
 
     override fun toString(): String {

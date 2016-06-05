@@ -5,7 +5,14 @@ package stat
  */
 interface Stat {
 
-    fun combine(stat: Stat): Stat;
+    fun combine(stat: Stat): Stat {
+        if (this.javaClass.kotlin != stat.javaClass.kotlin) {
+            throw IllegalArgumentException("Wrong stat type. Got: ${stat.javaClass.simpleName} expected: ${this.javaClass.simpleName}")
+        }
+        return nativeCombine(stat)
+    }
+
+    fun nativeCombine(stat: Stat): Stat;
 
     val rawValue: Any
 
