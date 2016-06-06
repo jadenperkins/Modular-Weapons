@@ -1,6 +1,6 @@
 package com.jadencode.main.generate.weapon;
 
-import com.jadencode.main.item.StatSet;
+import com.jadencode.main.stat.StatSet;
 
 import java.util.ArrayList;
 import java.util.HashMap;

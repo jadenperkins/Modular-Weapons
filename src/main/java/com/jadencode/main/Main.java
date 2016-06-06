@@ -11,7 +11,7 @@ import com.jadencode.main.generate.weapon.WeaponGenerator;
 import com.jadencode.main.generate.weapon.WeaponInstance;
 import com.jadencode.main.generate.weapon.WeaponPart;
 import com.jadencode.main.item.ItemPart;
-import com.jadencode.main.item.StatSet;
+import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.magic.SpellBase;
 import com.jadencode.main.magic.SpellObject;
 import com.jadencode.main.material.MaterialLibrary;
