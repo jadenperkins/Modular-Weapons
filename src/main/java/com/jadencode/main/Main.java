@@ -11,6 +11,7 @@ import com.jadencode.main.generate.weapon.WeaponGenerator;
 import com.jadencode.main.generate.weapon.WeaponInstance;
 import com.jadencode.main.generate.weapon.WeaponPart;
 import com.jadencode.main.item.ItemPart;
+import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.magic.SpellBase;
 import com.jadencode.main.magic.SpellObject;
@@ -142,13 +143,8 @@ public class Main {
 
         WeaponInstance weap = new WeaponGenerator().generate(theWorld.getRNG(), 1);
         StatSet s = weap.getStatSet();
-        System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f, Prep: %f, Down: %f", weap.getDisplayName(), s.getFloat("slashDamage"), s.getFloat("pierceDamage"), s.getFloat("bluntDamage"), s.getFloat("prepTime"), s.getFloat("downTime")));
+        System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f", weap.getDisplayName(), s.getFloat(StatBase.DAMAGE_SLASH), s.getFloat(StatBase.DAMAGE_PIERCE), s.getFloat(StatBase.DAMAGE_BLUNT)));
 
-        float slash = s.getFloat("slashDamage");
-        float pierce = s.getFloat("pierceDamage");
-        float blunt = s.getFloat("bluntDamage");
-        float time = s.getFloat("prepTime") + s.getFloat("downTime");
-        System.out.println(String.format("Slash DPS: %f, Pierce DPS: %f, Blunt DPS: %f", slash / time, pierce / time, blunt / time));
         System.out.println("\t" + weap.getDisplayInfo());
 
 
@@ -156,13 +152,7 @@ public class Main {
 
         WeaponInstance scaled = weap.scaledInstance(20);
         StatSet s1 = scaled.getStatSet();
-        System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f, Prep: %f, Down: %f", scaled.getDisplayName(), s1.getFloat("slashDamage"), s1.getFloat("pierceDamage"), s1.getFloat("bluntDamage"), s1.getFloat("prepTime"), s1.getFloat("downTime")));
-
-        float slash1 = s1.getFloat("slashDamage");
-        float pierce1 = s1.getFloat("pierceDamage");
-        float blunt1 = s1.getFloat("bluntDamage");
-        float time1 = s1.getFloat("prepTime") + s1.getFloat("downTime");
-        System.out.println(String.format("Slash DPS: %f, Pierce DPS: %f, Blunt DPS: %f", slash1 / time1, pierce1 / time1, blunt1 / time1));
+        System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f", scaled.getDisplayName(), s1.getFloat(StatBase.DAMAGE_SLASH), s1.getFloat(StatBase.DAMAGE_PIERCE), s1.getFloat(StatBase.DAMAGE_BLUNT)));
 
 //        for(WeaponPartInstance part : weap.getWeaponParts().values()) {
 //            for(String key : part.getStatSet().getFloatKeys()) {

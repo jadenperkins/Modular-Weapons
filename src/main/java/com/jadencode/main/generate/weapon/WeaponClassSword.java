@@ -11,7 +11,7 @@ public class WeaponClassSword extends WeaponClass {
 
 
     private static final StatSet STAT_SET = new StatSet()
-            .add(StatBase.DAMAGE_BLUNT, new StatFloat(50F))
+            .add(StatBase.DAMAGE_SLASH, new StatFloat(50F))
             .add(StatBase.DAMAGE_PIERCE, new StatFloat(10F))
             .add(StatBase.DAMAGE_BLUNT, new StatFloat(0F));
 
@@ -27,13 +27,13 @@ public class WeaponClassSword extends WeaponClass {
         for (WeaponPartInstance part : instance.getWeaponParts().values()) {
             StatSet set = part.getStatSet();
             for(StatBase stat : stats.getStatsRaw().keySet()) {
+                if(stat.getDefaultValue().isFloat()) {
+                    stats.add(stat, stats.getFloat(stat) + set.getFloat(stat));
+                }
+                if(stat.getDefaultValue().isInteger()) {
+                    stats.add(stat, stats.getInt(stat) + set.getInt(stat));
+                }
             }
-//            for(String key : stats.getFloatKeys()) {
-//                stats.setFloat(key, stats.getFloat(key) + set.getFloat(key));
-//            }
-//            for(String key : stats.getIntegerKeys()) {
-//                stats.setInteger(key, stats.getInteger(key) + set.getInteger(key));
-//            }
         }
         return stats;
     }

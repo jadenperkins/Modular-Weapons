@@ -1,6 +1,8 @@
 package com.jadencode.main.generate.weapon;
 
 import com.jadencode.main.TimeKeeper;
+import com.jadencode.main.stat.StatBase;
+import com.jadencode.main.stat.StatFloat;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.material.MaterialLibrary;
 import com.jadencode.main.material.MaterialResource;
@@ -83,62 +85,54 @@ public class WeaponPartBase {
 //    public static final WeaponPartBase wringerBlade  = new WeaponPartBase("Wringer Blade", "Wringer", WeaponGenerator.SWORD_BLADES);
 
     //Common Grips
-    private static final StatSet        heavyGripStats = new StatSet(
-            new String[]{"slashDamage", "pierceDamage", "bluntDamage", "prepTime", "downTime"},
-            new Float[]{10F, 4F, 1F, 0.5F, 0.5F},
-            new String[]{}, new Integer[]{}, new String[]{}, new String[]{}
-    );
-    private static final StatSet        basicGripStats = new StatSet(
-            new String[]{"slashDamage", "pierceDamage", "bluntDamage", "prepTime", "downTime"},
-            new Float[]{5F, 2F, 0F, 0F, 0F},
-            new String[]{}, new Integer[]{}, new String[]{}, new String[]{}
-    );
-    private static final StatSet        lightGripStats = new StatSet(
-            new String[]{"slashDamage", "pierceDamage", "bluntDamage", "prepTime", "downTime"},
-            new Float[]{0F, 0F, 0F, 0F, 0F},
-            new String[]{}, new Integer[]{}, new String[]{}, new String[]{}
-    );
+    private static final StatSet        heavyGripStats = new StatSet()
+            .add(StatBase.DAMAGE_SLASH, 10F)
+            .add(StatBase.DAMAGE_PIERCE, 4F)
+            .add(StatBase.DAMAGE_BLUNT, 1F);
+    private static final StatSet        basicGripStats = new StatSet()
+            .add(StatBase.DAMAGE_SLASH, 5F)
+            .add(StatBase.DAMAGE_PIERCE, 2F)
+            .add(StatBase.DAMAGE_BLUNT, 0F);
+    private static final StatSet        lightGripStats = new StatSet()
+            .add(StatBase.DAMAGE_SLASH, 0F)
+            .add(StatBase.DAMAGE_PIERCE, 0F)
+            .add(StatBase.DAMAGE_BLUNT, 0F);
+
     public static final  WeaponPartBase heavyGrip      = new WeaponPartSword("Heavy Grip", "Double", heavyGripStats, WeaponGenerator.SWORD_GRIPS, MaterialLibrary.getMetalLibrary());
     public static final  WeaponPartBase basicGrip      = new WeaponPartSword("Basic Grip", "Single", basicGripStats, WeaponGenerator.SWORD_GRIPS, MaterialLibrary.getMetalLibrary());
     public static final  WeaponPartBase lightGrip      = new WeaponPartSword("Light Grip", "Half", lightGripStats, WeaponGenerator.SWORD_GRIPS, MaterialLibrary.getMetalLibrary());
 
     //Common Hilts
-    private static final StatSet heavyHiltStats = new StatSet(
-            new String[]{"slashDamage", "pierceDamage", "bluntDamage", "prepTime", "downTime"},
-            new Float[]{16F, 6F, 2F, 1F, 1F},
-            new String[]{}, new Integer[]{}, new String[]{}, new String[]{}
-    );
-    private static final StatSet basicHiltStats = new StatSet(
-            new String[]{"slashDamage", "pierceDamage", "bluntDamage", "prepTime", "downTime"},
-            new Float[]{8F, 3F, 1F, 0.5F, 0.5F},
-            new String[]{}, new Integer[]{}, new String[]{}, new String[]{}
-    );
-    private static final StatSet lightHiltStats = new StatSet(
-            new String[]{"slashDamage", "pierceDamage", "bluntDamage", "prepTime", "downTime"},
-            new Float[]{0F, 0F, 0F, 0F, 0F},
-            new String[]{}, new Integer[]{}, new String[]{}, new String[]{}
-    );
+    private static final StatSet heavyHiltStats = new StatSet()
+            .add(StatBase.DAMAGE_SLASH, 16F)
+            .add(StatBase.DAMAGE_PIERCE, 6F)
+            .add(StatBase.DAMAGE_BLUNT, 2F);
+    private static final StatSet basicHiltStats = new StatSet()
+            .add(StatBase.DAMAGE_SLASH, 8F)
+            .add(StatBase.DAMAGE_PIERCE, 3F)
+            .add(StatBase.DAMAGE_BLUNT, 1F);
+    private static final StatSet lightHiltStats = new StatSet()
+            .add(StatBase.DAMAGE_SLASH, 0F)
+            .add(StatBase.DAMAGE_PIERCE, 0F)
+            .add(StatBase.DAMAGE_BLUNT, 0F);
 
     public static final WeaponPartBase heavyHilt  = new WeaponPartSword("Heavy Hilt", "Heavy", heavyHiltStats, WeaponGenerator.SWORD_HILTS, MaterialLibrary.getMetalLibrary());
     public static final WeaponPartBase mediumHilt = new WeaponPartSword("Balanced Hilt", "Balanced", basicHiltStats, WeaponGenerator.SWORD_HILTS, MaterialLibrary.getMetalLibrary());
     public static final WeaponPartBase lightHilt  = new WeaponPartSword("Light Hilt", "Agile", lightHiltStats, WeaponGenerator.SWORD_HILTS, MaterialLibrary.getMetalLibrary());
 
     //Common Blades
-    private static final StatSet broadBladeStats = new StatSet(
-            new String[]{"slashDamage", "pierceDamage", "bluntDamage", "prepTime", "downTime"},
-            new Float[]{15F, 15F, 0F, 1F, 1F},
-            new String[]{}, new Integer[]{}, new String[]{}, new String[]{}
-    );
-    private static final StatSet longBladeStats  = new StatSet(
-            new String[]{"slashDamage", "pierceDamage", "bluntDamage", "prepTime", "downTime"},
-            new Float[]{20F, 10F, 0F, 1F, 1F},
-            new String[]{}, new Integer[]{}, new String[]{}, new String[]{}
-    );
-    private static final StatSet shortBladeStats = new StatSet(
-            new String[]{"slashDamage", "pierceDamage", "bluntDamage", "prepTime", "downTime"},
-            new Float[]{10F, 5F, 0F, 0F, 0F},
-            new String[]{}, new Integer[]{}, new String[]{}, new String[]{}
-    );
+    private static final StatSet broadBladeStats = new StatSet()
+            .add(StatBase.DAMAGE_SLASH, 15F)
+            .add(StatBase.DAMAGE_PIERCE, 15F)
+            .add(StatBase.DAMAGE_BLUNT, 0F);
+    private static final StatSet longBladeStats  = new StatSet()
+            .add(StatBase.DAMAGE_SLASH, 20F)
+            .add(StatBase.DAMAGE_PIERCE, 10F)
+            .add(StatBase.DAMAGE_BLUNT, 0F);
+    private static final StatSet shortBladeStats = new StatSet()
+            .add(StatBase.DAMAGE_SLASH, 10F)
+            .add(StatBase.DAMAGE_PIERCE, 5F)
+            .add(StatBase.DAMAGE_BLUNT, 0F);
 
     public static final WeaponPartBase broadBlade = new WeaponPartSword("Broad Blade", "Broadsword", broadBladeStats, WeaponGenerator.SWORD_BLADES, MaterialLibrary.getMetalLibrary());
     public static final WeaponPartBase longBlade  = new WeaponPartSword("Long Blade", "Longsword", longBladeStats, WeaponGenerator.SWORD_BLADES, MaterialLibrary.getMetalLibrary());
@@ -237,9 +231,9 @@ public class WeaponPartBase {
     private final float   weight;
     private final StatSet statSet;
 
-    public WeaponPartBase(String name, String mod, List<WeaponPart> list, MaterialLibrary... mats) {
-        this(name, mod, StatSet.DEFAULT, list, mats);
-    }
+//    public WeaponPartBase(String name, String mod, List<WeaponPart> list, MaterialLibrary... mats) {
+//        this(name, mod, StatSet.DEFAULT, list, mats);
+//    }
 
     public WeaponPartBase(String name, String mod, StatSet stats, List<WeaponPart> list, MaterialLibrary... mats) {
         this(name, mod, 1F, stats, list, mats);

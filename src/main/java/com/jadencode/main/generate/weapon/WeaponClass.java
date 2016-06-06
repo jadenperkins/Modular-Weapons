@@ -76,9 +76,9 @@ public abstract class WeaponClass implements Weightable {
     private final float                             enchantmentChance;
     private final StatSet                           statSet;
 
-    public WeaponClass(String name, HashMap<String, List<WeaponPart>> map) {
-        this(name, 0, 2, 0.15F, StatSet.DEFAULT, map);
-    }
+//    public WeaponClass(String name, HashMap<String, List<WeaponPart>> map) {
+//        this(name, 0, 2, 0.15F, StatSet.DEFAULT, map);
+//    }
 
     public WeaponClass(String name, int min, int max, float chance, StatSet stats, HashMap<String, List<WeaponPart>> map) {
         this.weaponClassName = name;

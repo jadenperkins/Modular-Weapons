@@ -2,6 +2,7 @@ package com.jadencode.main.generate.weapon;
 
 import com.jadencode.main.generate.Generator;
 import com.jadencode.main.nbt.NBTTagCompound;
+import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.util.WeightedRandomFloat;
 
 import java.text.DecimalFormat;
@@ -91,7 +92,7 @@ public class WeaponGenerator implements Generator<WeaponInstance> { //Generator<
             WeaponPart part = WeightedRandomFloat.getRandomWeightable(r, parts);
             WeaponPartInstance instance = new WeaponPartInstance(part, level);
             partInstances.put(key, instance);
-            System.out.println(String.format("Weapon part %s created, slash damage is %f", instance.getWeaponPart().getPartName(), instance.getStatSet().getFloat("slashDamage")));
+            System.out.println(String.format("Weapon part %s created, slash damage is %f", instance.getWeaponPart().getPartName(), instance.getStatSet().get(StatBase.DAMAGE_SLASH).getAsFloat().getValue()));
         }
         WeaponInstance weapon = new WeaponInstance(weaponClass, level, partInstances);
 

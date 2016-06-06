@@ -1,5 +1,6 @@
 package com.jadencode.main.generate.weapon;
 
+import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.material.MaterialLibrary;
 import com.jadencode.main.material.MaterialResource;
@@ -21,17 +22,13 @@ public class WeaponPartSword extends WeaponPartBase {
 
         StatSet set = this.getStatSet().copy();
 
-        float slash = scaleFloat(this.getStatSet().getFloat("slashDamage"), resource);
-        float pierce = scaleFloat(this.getStatSet().getFloat("pierceDamage"), resource);
-        float blunt = scaleFloat(this.getStatSet().getFloat("bluntDamage"), resource);
-        float prepTime = scaleFloat(this.getStatSet().getFloat("prepTime"), resource);
-        float downTime = scaleFloat(this.getStatSet().getFloat("downTime"), resource);
+        float slash = scaleFloat(this.getStatSet().getFloat(StatBase.DAMAGE_SLASH), resource);
+        float pierce = scaleFloat(this.getStatSet().getFloat(StatBase.DAMAGE_PIERCE), resource);
+        float blunt = scaleFloat(this.getStatSet().getFloat(StatBase.DAMAGE_BLUNT), resource);
 
-        set.setFloat("slashDamage", slash);
-        set.setFloat("pierceDamage", pierce);
-        set.setFloat("bluntDamage", blunt);
-        set.setFloat("prepTime", prepTime);
-        set.setFloat("downTime", downTime);
+        set.add(StatBase.DAMAGE_SLASH, slash);
+        set.add(StatBase.DAMAGE_PIERCE, pierce);
+        set.add(StatBase.DAMAGE_BLUNT, blunt);
 
         return set;
     }
@@ -43,9 +40,10 @@ public class WeaponPartSword extends WeaponPartBase {
 //        set.setFloat("slashDamage", (float) Math.floor(set.getFloat("slashDamage") * (float) Math.pow(1.1F, partInstance.getLevel())));
 //        set.setFloat("pierceDamage", (float) Math.floor(set.getFloat("pierceDamage") * (float) Math.pow(1.1F, partInstance.getLevel())));
 //        set.setFloat("bluntDamage", (float) Math.floor(set.getFloat("bluntDamage") * (float) Math.pow(1.1F, partInstance.getLevel())));
-        set.setFloat("slashDamage", set.getFloat("slashDamage") * (float) Math.pow(1.1F, partInstance.getLevel() - 1));
-        set.setFloat("pierceDamage", set.getFloat("pierceDamage") * (float) Math.pow(1.1F, partInstance.getLevel() - 1));
-        set.setFloat("bluntDamage", set.getFloat("bluntDamage") * (float) Math.pow(1.1F, partInstance.getLevel() - 1));
+        float f = (float) Math.pow(1.1F, partInstance.getLevel() - 1);
+        set.add(StatBase.DAMAGE_SLASH, set.getFloat(StatBase.DAMAGE_SLASH) * f);
+        set.add(StatBase.DAMAGE_PIERCE, set.getFloat(StatBase.DAMAGE_SLASH) * f);
+        set.add(StatBase.DAMAGE_BLUNT, set.getFloat(StatBase.DAMAGE_SLASH) * f);
 
         return set;
     }
