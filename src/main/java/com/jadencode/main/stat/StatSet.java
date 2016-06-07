@@ -9,45 +9,36 @@ import java.util.Set;
  * Created by Jaden on 9/17/2015.
  */
 public class StatSet {
-    private final HashMap<StatBase, Stat> stats = new HashMap<>();
+    private final HashMap<StatBase<?>, Stat<?>> stats = new HashMap<>();
 
-    public StatSet add(StatBase stat, Stat s) {
+    public StatSet add(StatBase<?> stat, Stat<?> s) {
         this.stats.put(stat, s);
         return this;
     }
-    public StatSet add(StatBase stat, float f) {
-        return this.add(stat, new StatFloat(f));
+    public <T> StatSet add(StatBase<T> stat, T val) {
+        return this.add(stat, stat.from(val));
     }
-    public StatSet add(StatBase stat, double d) {
-        return this.add(stat, new StatDouble(d));
+    public <A> Stat<A> get(StatBase<A> key) {
+        return key.getDefaultValue().getClass().cast(this.stats.getOrDefault(key, key.getDefaultValue()));
     }
-    public StatSet add(StatBase stat, int i) {
-        return this.add(stat, new StatInt(i));
+    public <A> A value(StatBase<A> key) {
+        return this.get(key).get();
     }
-    public StatSet add(StatBase stat, String s) {
-        return this.add(stat, new StatString(s));
+    public float getFloat(StatBase<Stat<Float>> key) {
+        return this.get(key).as(StatFloat.class).get();
     }
-    public Stat get(StatBase key) {
-        return this.stats.getOrDefault(key, key.getDefaultValue());
+    public int getInt(StatBase<Stat<Integer>> key) {
+        return this.get(key).as(StatInt.class).get();
     }
-    public float getFloat(StatBase<StatFloat> key) {
-        return this.get(key).getAsFloat().getValue();
-    }
-    public int getInt(StatBase<StatInt> key) {
-        return this.get(key).getAsInteger().getValue();
-    }
-    public double getDouble(StatBase<StatDouble> key) {
-        return this.get(key).getAsDouble().getValue();
-    }
-    public String getString(StatBase<StatString> key) {
-        return this.get(key).getAsString().getValue();
+    public double getDouble(StatBase<Stat<Double>> key) {
+        return this.get(key).as(StatDouble.class).get();
     }
     public StatSet copy() {
         StatSet set = new StatSet();
         set.stats.putAll(this.stats);
         return set;
     }
-    public HashMap<StatBase, Stat> getStatsRaw() {
+    public HashMap<StatBase<?>, Stat<?>> getStatsRaw() {
         return this.stats;
     }
 }

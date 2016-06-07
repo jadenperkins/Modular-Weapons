@@ -22,27 +22,25 @@ public class WeaponClassSword extends WeaponClass {
     @Override
     public StatSet determineStats(WeaponInstance instance) {
 
-        StatSet stats = this.scaledStats(instance.getLevel());
+        StatSet baseStats = this.scaledStats(instance.getLevel());
 
         for (WeaponPartInstance part : instance.getWeaponParts().values()) {
-            StatSet set = part.getStatSet();
-            for(StatBase stat : stats.getStatsRaw().keySet()) {
-                if(stat.getDefaultValue().isFloat()) {
-                    stats.add(stat, stats.getFloat(stat) + set.getFloat(stat));
-                }
-                if(stat.getDefaultValue().isInteger()) {
-                    stats.add(stat, stats.getInt(stat) + set.getInt(stat));
-                }
+            StatSet partStats = part.getStatSet();
+            for(StatBase<?> stat : baseStats.getStatsRaw().keySet()) {
+                Stat baseStat = baseStats.get(stat);
+                Stat partStat = partStats.get(stat);
+                Stat newStat = baseStat.add(partStat);
+                baseStats.add(stat, newStat);
             }
         }
-        return stats;
+        return baseStats;
     }
     private StatSet scaledStats(int i) {
         StatSet set = new StatSet();
         float scale = (float) Math.pow(1.1F, i - 1);
-        set.add(StatBase.DAMAGE_SLASH, new StatFloat(this.getStatSet().get(StatBase.DAMAGE_SLASH).getAsFloat().getValue() * scale));
-        set.add(StatBase.DAMAGE_PIERCE, new StatFloat(this.getStatSet().get(StatBase.DAMAGE_PIERCE).getAsFloat().getValue() * scale));
-        set.add(StatBase.DAMAGE_BLUNT, new StatFloat(this.getStatSet().get(StatBase.DAMAGE_BLUNT).getAsFloat().getValue() * scale));
+        set.add(StatBase.DAMAGE_SLASH, this.getStatSet().get(StatBase.DAMAGE_SLASH).as(StatFloat.class).get() * scale);
+        set.add(StatBase.DAMAGE_PIERCE, this.getStatSet().get(StatBase.DAMAGE_PIERCE).as(StatFloat.class).get() * scale);
+        set.add(StatBase.DAMAGE_BLUNT, this.getStatSet().get(StatBase.DAMAGE_BLUNT).as(StatFloat.class).get() * scale);
         return set;
     }
 }

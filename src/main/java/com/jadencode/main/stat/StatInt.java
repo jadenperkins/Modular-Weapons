@@ -3,21 +3,12 @@ package com.jadencode.main.stat;
 /**
  * Created by gtrpl on 6/5/2016.
  */
-public class StatInt extends Stat {
-    private final int value;
-
-    public StatInt(int i) {
-        this.value = i;
-    }
-    public int getValue() {
-        return this.value;
+public class StatInt extends Stat<Integer> {
+    public StatInt(int val) {
+        super(val);
     }
     @Override
-    public boolean isInteger() {
-        return true;
-    }
-    @Override
-    public StatInt getAsInteger() {
-        return this;
+    public Stat<Integer> add(Stat<Integer> other) {
+        return new StatInt(this.get() + other.get());
     }
 }

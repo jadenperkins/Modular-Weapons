@@ -3,23 +3,20 @@ package com.jadencode.main.stat;
 /**
  * Created by gtrpl on 6/5/2016.
  */
-public class Stat {
-    public boolean isInteger() {
-        return false;
+public abstract class Stat<T> {
+    private final T value;
+
+    public Stat(T val) {
+        this.value = val;
     }
-    public boolean isFloat() {
-        return false;
+    public T get() {
+        return this.value;
     }
-    public boolean isDouble() {
-        return false;
+    public <A extends Stat<?>> boolean is(Class<A> c) {
+        return c.isAssignableFrom(this.getClass());
     }
-    public StatInt getAsInteger() {
-        throw new IllegalArgumentException();
+    public <A extends Stat<?>> A as(Class<A> c) {
+        return c.cast(this);
     }
-    public StatDouble getAsDouble() {
-        throw new IllegalArgumentException();
-    }
-    public StatFloat getAsFloat() {
-        throw new IllegalArgumentException();
-    }
+    public abstract Stat<T> add(Stat<T> other);
 }

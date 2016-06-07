@@ -143,7 +143,7 @@ public class Main {
 
         WeaponInstance weap = new WeaponGenerator().generate(theWorld.getRNG(), 1);
         StatSet s = weap.getStatSet();
-        System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f", weap.getDisplayName(), s.getFloat(StatBase.DAMAGE_SLASH), s.getFloat(StatBase.DAMAGE_PIERCE), s.getFloat(StatBase.DAMAGE_BLUNT)));
+        System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f", weap.getDisplayName(), s.value(StatBase.DAMAGE_SLASH), s.value(StatBase.DAMAGE_PIERCE), s.value(StatBase.DAMAGE_BLUNT)));
 
         System.out.println("\t" + weap.getDisplayInfo());
 
@@ -152,7 +152,7 @@ public class Main {
 
         WeaponInstance scaled = weap.scaledInstance(20);
         StatSet s1 = scaled.getStatSet();
-        System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f", scaled.getDisplayName(), s1.getFloat(StatBase.DAMAGE_SLASH), s1.getFloat(StatBase.DAMAGE_PIERCE), s1.getFloat(StatBase.DAMAGE_BLUNT)));
+        System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f", scaled.getDisplayName(), s1.value(StatBase.DAMAGE_SLASH), s1.value(StatBase.DAMAGE_PIERCE), s1.value(StatBase.DAMAGE_BLUNT)));
 
 //        for(WeaponPartInstance part : weap.getWeaponParts().values()) {
 //            for(String key : part.getStatSet().getFloatKeys()) {
