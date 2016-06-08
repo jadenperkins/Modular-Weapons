@@ -21,26 +21,18 @@ public class WeaponClassSword extends WeaponClass {
 
     @Override
     public StatSet determineStats(WeaponInstance instance) {
-
         StatSet baseStats = this.scaledStats(instance.getLevel());
-
-        for (WeaponPartInstance part : instance.getWeaponParts().values()) {
-            StatSet partStats = part.getStatSet();
-            for(StatBase<?> stat : baseStats.getStatsRaw().keySet()) {
-                Stat baseStat = baseStats.get(stat);
-                Stat partStat = partStats.get(stat);
-                Stat newStat = baseStat.add(partStat);
-                baseStats.add(stat, newStat);
-            }
-        }
+        instance.getWeaponParts().values()
+                .forEach(part -> baseStats.getStatsRaw().keySet()
+                        .forEach(stat -> baseStats.add(stat, baseStats.get(stat).add(part.getStatSet().get(stat)))));
         return baseStats;
     }
     private StatSet scaledStats(int i) {
         StatSet set = new StatSet();
         float scale = (float) Math.pow(1.1F, i - 1);
-        set.add(StatBase.DAMAGE_SLASH, this.getStatSet().get(StatBase.DAMAGE_SLASH).as(StatFloat.class).get() * scale);
-        set.add(StatBase.DAMAGE_PIERCE, this.getStatSet().get(StatBase.DAMAGE_PIERCE).as(StatFloat.class).get() * scale);
-        set.add(StatBase.DAMAGE_BLUNT, this.getStatSet().get(StatBase.DAMAGE_BLUNT).as(StatFloat.class).get() * scale);
+        set.addVal(StatBase.DAMAGE_SLASH, this.getStatSet().get(StatBase.DAMAGE_SLASH).as(StatFloat.class).get() * scale);
+        set.addVal(StatBase.DAMAGE_PIERCE, this.getStatSet().get(StatBase.DAMAGE_PIERCE).as(StatFloat.class).get() * scale);
+        set.addVal(StatBase.DAMAGE_BLUNT, this.getStatSet().get(StatBase.DAMAGE_BLUNT).as(StatFloat.class).get() * scale);
         return set;
     }
 }

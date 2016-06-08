@@ -18,7 +18,7 @@ public class TimeKeeper {
         this.endTime = System.nanoTime();
     }
     public void display() {
-        System.out.println("Operation finished in " + ((endTime - startTime) / 1000000L) + " ms");
+        System.out.println("Operation finished in " + ((double)(endTime - startTime) / 1000000000D) + " s");
     }
     public void stopAndDisplay() {
         this.stop();
