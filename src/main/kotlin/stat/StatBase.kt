@@ -10,8 +10,8 @@ class StatBase<T>(val statName: String, val defaultValue: Stat<T>, private val g
 
     companion object {
 
-        val DAMAGE_SLASH = StatBase("damageSlash", StatFloat(0f), { a -> StatFloat(a!!) })
-        val DAMAGE_PIERCE = StatBase("damagePierce", StatFloat(0f), { a -> StatFloat(a!!) })
-        val DAMAGE_BLUNT = StatBase("damageBlunt", StatFloat(0f), { a -> StatFloat(a!!) })
+        val ACCURACY = StatBase("accuracy", StatDouble(0.0), { a -> StatDouble(a!!) })
+        val SPEED = StatBase("speed", StatDouble(0.0), { a -> StatDouble(a!!) })
+        val SILENCE = StatBase("silence", StatInt(0), { a -> StatInt(a!!) })
     }
 }

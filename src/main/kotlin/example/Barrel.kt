@@ -2,9 +2,9 @@ package example
 
 import parts.Joint
 import parts.Part
-import stat.DoubleStat
-import stat.IntStat
-import stat.StatType
+import stat.StatDouble
+import stat.StatInt
+import stat.StatBase
 
 /**
  * Created by Andy on 6/5/2016.
@@ -20,11 +20,11 @@ class Barrel : Part("Barrel") {
     init {
         joints.addAll(arrayOf(jointSilencer))
 
-        attachmentSilencer.stats.put(StatType.SILENCE, IntStat(2))
+        attachmentSilencer.stats.addVal(StatBase.SILENCE, 2)
 
-        this.stats.put(StatType.ACCURACY, DoubleStat(3.5))
-        this.stats.put(StatType.SPEED, DoubleStat(-1.5))
-        this.stats.put(StatType.SILENCE, IntStat(1))
+        this.stats.addVal(StatBase.ACCURACY, 3.5)
+        this.stats.addVal(StatBase.SPEED, -1.5)
+        this.stats.addVal(StatBase.SILENCE, 1)
 
         addAttachment(jointSilencer, attachmentSilencer)
     }

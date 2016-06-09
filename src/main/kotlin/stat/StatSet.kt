@@ -5,7 +5,7 @@ import java.util.*
 /**
  * Created by Jaden on 9/17/2015.
  */
-class StatSet {
+class StatSet : Iterable<Map.Entry<StatBase<*>, Stat<*>>> {
     val statsRaw: HashMap<StatBase<*>, Stat<*>> = HashMap()
 
     fun <T> add(stat: StatBase<T>, s: Stat<T>): StatSet {
@@ -24,4 +24,11 @@ class StatSet {
         set.statsRaw.putAll(this.statsRaw)
         return set
     }
+
+    fun combine(other: StatSet): StatSet {
+        var ret = StatSet()
+
+        return ret
+    }
+    override fun iterator(): Iterator<Map.Entry<StatBase<*>, Stat<*>>> = statsRaw.iterator()
 }
