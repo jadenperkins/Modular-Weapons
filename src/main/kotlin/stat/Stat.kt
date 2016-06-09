@@ -1,19 +1,14 @@
 package stat
 
 /**
- * Created by Andy on 6/5/2016.
+ * Created by gtrpl on 6/5/2016.
  */
-interface Stat {
+abstract class Stat<T>(private val value: T) {
+    fun get(): T = this.value
 
-    fun combine(stat: Stat): Stat {
-        if (this.javaClass.kotlin != stat.javaClass.kotlin) {
-            throw IllegalArgumentException("Wrong stat type. Got: ${stat.javaClass.simpleName} expected: ${this.javaClass.simpleName}")
-        }
-        return nativeCombine(stat)
-    }
+    fun <A : Stat<*>> `is`(c: Class<A>): Boolean = c.isAssignableFrom(this.javaClass)
 
-    fun nativeCombine(stat: Stat): Stat;
+    fun <A : Stat<*>> `as`(c: Class<A>): A = c.cast(this)
 
-    val rawValue: Any
-
+    abstract fun add(other: Stat<T>): Stat<T>
 }

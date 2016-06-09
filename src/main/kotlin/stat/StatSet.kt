@@ -3,31 +3,25 @@ package stat
 import java.util.*
 
 /**
- * Created by Andy on 6/5/2016.
+ * Created by Jaden on 9/17/2015.
  */
-class StatSet : HashMap<StatType, Stat>() {
+class StatSet {
+    val statsRaw: HashMap<StatBase<*>, Stat<*>> = HashMap()
 
-    override fun put(key: StatType, value: Stat): Stat? {
-        if (value.javaClass.kotlin != key.representativeStatClass) {
-            throw IllegalArgumentException("Tried to set an invalid stat for this stat type")
-        }
-        return super.put(key, value)
+    fun <T> add(stat: StatBase<T>, s: Stat<T>): StatSet {
+        this.statsRaw[stat] = s
+        return this
     }
 
-    /**
-     * Creates a new StatSet from this and the supplied set. Stats that exist in both are combined
-     */
-    fun combine(other: StatSet): StatSet {
-        val newSet = StatSet()
-        newSet.putAll(this)
-        for ((type, stat) in other) {
-            val existingStat = newSet[type]
-            if (existingStat != null) {
-                newSet[type] = existingStat.combine(stat)
-            } else {
-                newSet.put(type, stat)
-            }
-        }
-        return newSet
+    fun <T> addVal(stat: StatBase<T>, `val`: T): StatSet = this.add(stat, stat.from(`val`))
+
+    operator fun <A> get(key: StatBase<A>): Stat<A> = key.defaultValue.javaClass.cast(this.statsRaw.getOrDefault(key, key.defaultValue))
+
+    fun <A> value(key: StatBase<A>): A = this[key].get()
+
+    fun copy(): StatSet {
+        val set = StatSet()
+        set.statsRaw.putAll(this.statsRaw)
+        return set
     }
 }
