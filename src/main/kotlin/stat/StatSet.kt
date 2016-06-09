@@ -26,18 +26,11 @@ class StatSet : Iterable<Map.Entry<StatBase<*>, Stat<*>>> {
     }
 
     fun combine(other: StatSet): StatSet {
-        val newSet = StatSet()
-        newSet.statsRaw.putAll(this.statsRaw)
-        for ((type, stat) in other) {
-            val existingStat: Stat<*> = newSet.get(type)
-            if (existingStat != null) {
-                newSet.add(type, existingStat.add(stat))
-                newSet[type] = existingStat.combine(stat)
-            } else {
-                newSet.put(type, stat)
-            }
+        val ret = StatSet()
+        for (stat in this.statsRaw.keys) {
+            ret.add(stat, this.get(stat).add(other.get(stat)))
         }
-        return newSet
+        return ret
     }
 
     override fun iterator(): Iterator<Map.Entry<StatBase<*>, Stat<*>>> = statsRaw.iterator()

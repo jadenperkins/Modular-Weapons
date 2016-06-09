@@ -1,5 +1,8 @@
 package com.jadencode.main.stat;
 
+import com.jadencode.main.generate.weapon.WeaponInstance;
+import com.jadencode.main.generate.weapon.WeaponPartInstance;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -31,5 +34,12 @@ public class StatSet {
     }
     public HashMap<StatBase, Stat> getStatsRaw() {
         return this.stats;
+    }
+    public StatSet combine(StatSet other) {
+        StatSet ret = new StatSet();
+        for(StatBase stat : this.getStatsRaw().keySet()) {
+            ret.add(stat, this.get(stat).add(other.get(stat)));
+        }
+        return ret;
     }
 }
