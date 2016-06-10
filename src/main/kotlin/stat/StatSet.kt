@@ -27,9 +27,9 @@ class StatSet : Iterable<Map.Entry<StatBase<*>, Stat<*>>> {
 
     fun combine(other: StatSet): StatSet {
         val ret = StatSet()
-        for (stat in this.statsRaw.keys) {
-            ret.add(stat, this.get(stat).add(other.get(stat)))
-        }
+//        for (stat in this.statsRaw.keys) {
+//            ret.add(stat, this.get(stat).add(other.get(stat)))
+//        }
         return ret
     }
 

@@ -11,9 +11,9 @@ public class WeaponClassSword extends WeaponClass {
 
 
     private static final StatSet STAT_SET = new StatSet()
-            .add(StatBase.DAMAGE_SLASH, new StatFloat(50F))
-            .add(StatBase.DAMAGE_PIERCE, new StatFloat(10F))
-            .add(StatBase.DAMAGE_BLUNT, new StatFloat(0F));
+            .addVal(StatBase.DAMAGE_SLASH, 50F)
+            .addVal(StatBase.DAMAGE_PIERCE, 10F)
+            .addVal(StatBase.DAMAGE_BLUNT, 0F);
 
     public WeaponClassSword() {
         super("Sword", 1, 1, 0.05F, STAT_SET, WeaponClass.mapParts(partKeys));
@@ -22,17 +22,16 @@ public class WeaponClassSword extends WeaponClass {
     @Override
     public StatSet determineStats(WeaponInstance instance) {
         StatSet baseStats = this.scaledStats(instance.getLevel());
-        instance.getWeaponParts().values()
-                .forEach(part -> baseStats.getStatsRaw().keySet()
-                        .forEach(stat -> baseStats.add(stat, baseStats.get(stat).add(part.getStatSet().get(stat)))));
+        instance.getWeaponParts().values().forEach(part -> baseStats.combine(part.getStatSet()));
         return baseStats;
     }
     private StatSet scaledStats(int i) {
         StatSet set = new StatSet();
         float scale = (float) Math.pow(1.1F, i - 1);
-        set.addVal(StatBase.DAMAGE_SLASH, this.getStatSet().get(StatBase.DAMAGE_SLASH).as(StatFloat.class).get() * scale);
-        set.addVal(StatBase.DAMAGE_PIERCE, this.getStatSet().get(StatBase.DAMAGE_PIERCE).as(StatFloat.class).get() * scale);
-        set.addVal(StatBase.DAMAGE_BLUNT, this.getStatSet().get(StatBase.DAMAGE_BLUNT).as(StatFloat.class).get() * scale);
+
+        set.copyVal(StatBase.DAMAGE_SLASH, this.getStatSet(), a -> a * scale);
+        set.copyVal(StatBase.DAMAGE_PIERCE, this.getStatSet(), a -> a * scale);
+        set.copyVal(StatBase.DAMAGE_BLUNT, this.getStatSet(), a -> a * scale);
         return set;
     }
 }
