@@ -36,13 +36,22 @@ public class StatSet {
         set.stats.putAll(this.stats);
         return set;
     }
+    public StatSet scaled(int i) {
+        StatSet ret = new StatSet();
+        System.out.println("Scaling by " + i);
+        for(StatBase stat : this.getStatsRaw().keySet()) {
+            Stat s = stat.scale(i, this.get(stat));
+            System.out.println(s.get());
+            ret.add(stat, s);
+        }
+        return ret;
+    }
     public HashMap<StatBase, Stat> getStatsRaw() {
         return this.stats;
     }
     public StatSet combine(StatSet other) {
         StatSet ret = new StatSet();
         for(StatBase stat : this.getStatsRaw().keySet()) {
-            ret.add(stat, this.get(stat).add(other.get(stat)));
             ret.add(stat, this.get(stat).add(other.get(stat)));
         }
         return ret;

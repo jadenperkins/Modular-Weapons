@@ -21,8 +21,11 @@ public class WeaponClassSword extends WeaponClass {
 
     @Override
     public StatSet determineStats(WeaponInstance instance) {
-        StatSet baseStats = this.scaledStats(instance.getLevel());
-        instance.getWeaponParts().values().forEach(part -> baseStats.combine(part.getStatSet()));
+        // TODO: 6/10/2016 Going to be getting an overhaul, something isn't calculating correctly
+        StatSet baseStats = this.getStatSet();//.scaled(instance.getLevel());
+        for(WeaponPartInstance part : instance.getWeaponParts().values()) {
+            baseStats = baseStats.combine(part.getStatSet());
+        }
         return baseStats;
     }
     private StatSet scaledStats(int i) {
