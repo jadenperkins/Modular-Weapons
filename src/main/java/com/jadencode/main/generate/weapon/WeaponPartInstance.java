@@ -5,7 +5,7 @@ import com.jadencode.main.stat.StatSet;
 /**
  * Created by Jaden on 6/15/2015.
  */
-public class WeaponPartInstance {
+public class WeaponPartInstance implements Comparable<WeaponPartInstance> {
     private final WeaponPart weaponPart;
     private final int        level;
     private final StatSet    statSet;
@@ -14,7 +14,7 @@ public class WeaponPartInstance {
         this.weaponPart = part;
         this.level = l;
 
-        this.statSet = this.getWeaponPart().getBaseWeaponPart().getStatSet().scaled(this.level);
+        this.statSet = this.getWeaponPart().getStats().scaled(this.level);
     }
     public WeaponPartInstance scaledInstance(int i) {
         WeaponPartInstance scaled = new WeaponPartInstance(this.weaponPart, i);
@@ -33,5 +33,9 @@ public class WeaponPartInstance {
     }
     public String getPartInfo() {
         return String.format("%s (Level %d)", this.getWeaponPart().getPartInfo(), this.getLevel());
+    }
+    @Override
+    public int compareTo(WeaponPartInstance o) {
+        return Integer.compare(this.level, o.level);
     }
 }

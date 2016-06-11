@@ -1,23 +1,19 @@
 package com.jadencode.main.generate.weapon;
 
-import com.jadencode.main.TimeKeeper;
+import com.jadencode.main.constants.WeaponPartType;
 import com.jadencode.main.stat.StatBase;
-import com.jadencode.main.stat.StatFloat;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.material.MaterialLibrary;
 import com.jadencode.main.material.MaterialResource;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by Jaden on 5/28/2015.
  */
-public class WeaponPartBase {
+public abstract class WeaponPartBase {
 
     private static final List<WeaponPartBase> WEAPON_PARTS = new ArrayList<>();
 
@@ -98,9 +94,9 @@ public class WeaponPartBase {
             .addVal(StatBase.DAMAGE_PIERCE, 0F)
             .addVal(StatBase.DAMAGE_BLUNT, 0F);
 
-    public static final  WeaponPartBase heavyGrip      = new WeaponPartSword("Heavy Grip", "Double", heavyGripStats, WeaponGenerator.SWORD_GRIPS, MaterialLibrary.getMetalLibrary());
-    public static final  WeaponPartBase basicGrip      = new WeaponPartSword("Basic Grip", "Single", basicGripStats, WeaponGenerator.SWORD_GRIPS, MaterialLibrary.getMetalLibrary());
-    public static final  WeaponPartBase lightGrip      = new WeaponPartSword("Light Grip", "Half", lightGripStats, WeaponGenerator.SWORD_GRIPS, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase heavyGrip      = new WeaponPartSword("Heavy Grip", "Double", heavyGripStats, WeaponPartType.PART_SWORD_GRIP, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase basicGrip      = new WeaponPartSword("Basic Grip", "Single", basicGripStats, WeaponPartType.PART_SWORD_GRIP, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase lightGrip      = new WeaponPartSword("Light Grip", "Half", lightGripStats, WeaponPartType.PART_SWORD_GRIP, MaterialLibrary.getMetalLibrary());
 
     //Common Hilts
     private static final StatSet heavyHiltStats = new StatSet()
@@ -116,9 +112,9 @@ public class WeaponPartBase {
             .addVal(StatBase.DAMAGE_PIERCE, 0F)
             .addVal(StatBase.DAMAGE_BLUNT, 0F);
 
-    public static final WeaponPartBase heavyHilt  = new WeaponPartSword("Heavy Hilt", "Heavy", heavyHiltStats, WeaponGenerator.SWORD_HILTS, MaterialLibrary.getMetalLibrary());
-    public static final WeaponPartBase mediumHilt = new WeaponPartSword("Balanced Hilt", "Balanced", basicHiltStats, WeaponGenerator.SWORD_HILTS, MaterialLibrary.getMetalLibrary());
-    public static final WeaponPartBase lightHilt  = new WeaponPartSword("Light Hilt", "Agile", lightHiltStats, WeaponGenerator.SWORD_HILTS, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase heavyHilt  = new WeaponPartSword("Heavy Hilt", "Heavy", heavyHiltStats, WeaponPartType.PART_SWORD_HILT, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase mediumHilt = new WeaponPartSword("Balanced Hilt", "Balanced", basicHiltStats, WeaponPartType.PART_SWORD_HILT, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase lightHilt  = new WeaponPartSword("Light Hilt", "Agile", lightHiltStats, WeaponPartType.PART_SWORD_HILT, MaterialLibrary.getMetalLibrary());
 
     //Common Blades
     private static final StatSet broadBladeStats = new StatSet()
@@ -134,9 +130,9 @@ public class WeaponPartBase {
             .addVal(StatBase.DAMAGE_PIERCE, 5F)
             .addVal(StatBase.DAMAGE_BLUNT, 0F);
 
-    public static final WeaponPartBase broadBlade = new WeaponPartSword("Broad Blade", "Broadsword", broadBladeStats, WeaponGenerator.SWORD_BLADES, MaterialLibrary.getMetalLibrary());
-    public static final WeaponPartBase longBlade  = new WeaponPartSword("Long Blade", "Longsword", longBladeStats, WeaponGenerator.SWORD_BLADES, MaterialLibrary.getMetalLibrary());
-    public static final WeaponPartBase shortBlade = new WeaponPartSword("Short Blade", "Shortsword", shortBladeStats, WeaponGenerator.SWORD_BLADES, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase broadBlade = new WeaponPartSword("Broad Blade", "Broadsword", broadBladeStats, WeaponPartType.PART_SWORD_BLADE, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase longBlade  = new WeaponPartSword("Long Blade", "Longsword", longBladeStats, WeaponPartType.PART_SWORD_BLADE, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase shortBlade = new WeaponPartSword("Short Blade", "Shortsword", shortBladeStats, WeaponPartType.PART_SWORD_BLADE, MaterialLibrary.getMetalLibrary());
 
 //    //Common Axe Handles
 //    public static final WeaponPartBase warHandleAxe     = new WeaponPartBase("War Handle", "Waraxe", WeaponGenerator.AXE_HANDLES, MaterialLibrary.getWoodLibrary());
@@ -222,43 +218,24 @@ public class WeaponPartBase {
 //    public static final WeaponPartBase fastBoltFlight  = new WeaponPartBase("Rapid Bolt Flight", "Rapid", WeaponGenerator.BOLT_FLETCHINGS, MaterialLibrary.getPlantLibrary());
 //    public static final WeaponPartBase sharpBoltFlight = new WeaponPartBase("Accurate Bolt Flight", "Accurate", WeaponGenerator.BOLT_FLETCHINGS, MaterialLibrary.getPlantLibrary());
 
-
+    private final WeaponPartType   partType;
     private final String           partName;
-    private final List<WeaponPart> partList;
     private final String           nameMod;
     private final List<MaterialResource> materials = new ArrayList<>();
-    private final boolean usesMaterials;
     private final float   weight;
     private final StatSet statSet;
 
-//    public WeaponPartBase(String name, String mod, List<WeaponPart> list, MaterialLibrary... mats) {
-//        this(name, mod, StatSet.DEFAULT, list, mats);
-//    }
-
-    public WeaponPartBase(String name, String mod, StatSet stats, List<WeaponPart> list, MaterialLibrary... mats) {
-        this(name, mod, 1F, stats, list, mats);
-    }
-
-    public WeaponPartBase(String name, String mod, float weight, StatSet stats, List<WeaponPart> list, MaterialLibrary... mats) {
+    public WeaponPartBase(String name, String mod, float weight, StatSet stats, WeaponPartType type, MaterialLibrary... mats) {
         this.partName = name;
         this.nameMod = mod;
         this.weight = weight;
-        this.partList = list;
+        this.partType = type;
 
         this.statSet = stats;
-
-        for (MaterialLibrary lib : mats) {
-            this.materials.addAll(lib.getMaterialResources().values());
-        }
-        this.usesMaterials = !this.materials.isEmpty();
+        Arrays.stream(mats).forEach(lib -> this.materials.addAll(lib.getMaterialResources().values()));
 
         WEAPON_PARTS.add(this);
     }
-
-    public boolean usesMaterials() {
-        return usesMaterials;
-    }
-
     public float getWeight() {
         return weight;
     }
@@ -267,8 +244,8 @@ public class WeaponPartBase {
         return partName;
     }
 
-    public List<WeaponPart> getPartList() {
-        return partList;
+    public WeaponPartType getPartType() {
+        return partType;
     }
 
     public String getNameMod() {
@@ -284,48 +261,12 @@ public class WeaponPartBase {
     }
 
     //Returns a StatSet for this part modified using the provided resource.
-    public StatSet modifyStats(MaterialResource resource) {
-        return this.statSet;
-    }
+    public abstract StatSet modifyStats(MaterialResource resource);
     public StatSet scaleStats(WeaponPartInstance partInstance) {
-        return this.statSet;
+        return this.statSet.scaled(partInstance.getLevel());
     }
 
     public static List<WeaponPartBase> getBaseParts() {
         return WEAPON_PARTS;
-    }
-
-    public static void enumerateParts(boolean storeFile) {
-        TimeKeeper timer = new TimeKeeper();
-        timer.start("Enumeration all weapon parts. . .");
-
-        Comparator<WeaponPart> comparator = (WeaponPart a, WeaponPart b) -> a.getPartName().compareTo(b.getPartName());
-        List<WeaponPart> parts = WeaponGenerator.getAll();
-        parts.sort(comparator);
-
-        PrintStream writer = System.out;
-
-        if(storeFile) {
-            File out = new File("./enum.txt");
-
-            try {
-                out.createNewFile();
-                writer = new PrintStream(new FileOutputStream(out));
-
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
-        }
-        for(WeaponPart part : parts) {
-            String msg = String.format("%s, %s\n\t", part.getPartName(), part.getPartInfo());
-            if(part.hasBaseResource()) {
-                msg += part.getBaseResource().getName();
-            } else {
-                msg += "No Resource";
-            }
-            writer.println(msg);
-        }
-        writer.close();
-        timer.stopAndDisplay();
     }
 }

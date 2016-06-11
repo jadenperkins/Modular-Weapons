@@ -3,9 +3,8 @@ package com.jadencode.main.generate.weapon;
 
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.material.MaterialResource;
+import com.jadencode.main.util.WeaponParts;
 import com.jadencode.main.util.Weightable;
-
-import java.util.List;
 
 /**
  * Created by Jaden on 5/28/2015.
@@ -27,19 +26,7 @@ public class WeaponPart implements Weightable {
         this.weight = part.getWeight() * resource.getWeight();
 
         this.stats = part.modifyStats(resource);
-
-        part.getPartList().add(this);
-    }
-    public WeaponPart(WeaponPartBase part) {//}, StatSet stats) {
-        this.baseWeaponPart = part;
-        this.baseResource = null;
-        this.partName = part.getPartName();
-        this.partDescription = String.format("A %s", part.getPartName());
-        this.weight = part.getWeight() * 1F;
-
-        this.stats = part.getStatSet();
-
-        part.getPartList().add(this);
+        WeaponParts.getPartsList(part.getPartType()).add(this);
     }
     public WeaponPartBase getBaseWeaponPart() {
         return this.baseWeaponPart;
@@ -68,16 +55,8 @@ public class WeaponPart implements Weightable {
     }
 
     public static void generateWeaponParts() {
-        for(WeaponPartBase partBase : WeaponPartBase.getBaseParts()) {
-
-            if(partBase.usesMaterials()) {
-                List<MaterialResource> resourceList = partBase.getMaterials();
-                for(MaterialResource resource : resourceList) {
-                    WeaponPart part = new WeaponPart(partBase, resource);
-                }
-            } else {
-                WeaponPart part = new WeaponPart(partBase);
-            }
-        }
+        WeaponPartBase.getBaseParts()
+                .forEach(partBase -> partBase.getMaterials()
+                        .forEach(res -> new WeaponPart(partBase, res)));
     }
 }

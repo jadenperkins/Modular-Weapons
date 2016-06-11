@@ -7,12 +7,22 @@ import java.util.function.BiFunction;
  */
 public interface StatBase<T> {
 
-    StatBase<Float> DAMAGE_SLASH = new StatDef<>("damageSlash", new StatFloat(0F), a -> new StatFloat(a), (i, s) -> new StatFloat(s.get() * (float) Math.pow(1.1F, i - 1)));
-    StatBase<Float> DAMAGE_PIERCE = new StatDef<>("damagePierce", new StatFloat(0F), a -> new StatFloat(a), (i, s) -> new StatFloat(s.get() * (float) Math.pow(1.1F, i - 1)));
-    StatBase<Float> DAMAGE_BLUNT = new StatDef<>("damageBlunt", new StatFloat(0F), a -> new StatFloat(a), (i, s) -> new StatFloat(s.get() * (float) Math.pow(1.1F, i - 1)));
+    StatBase<Float> DAMAGE_SLASH = new StatDef<>("damageSlash", new StatFloat(0F),
+            a -> new StatFloat(a),
+            (i, s) -> new StatFloat(s.get() * (float) Math.pow(1.1F, i - 1)),
+            (i, s) -> new StatFloat(s.get() * i));
+    StatBase<Float> DAMAGE_PIERCE = new StatDef<>("damagePierce", new StatFloat(0F),
+            a -> new StatFloat(a),
+            (i, s) -> new StatFloat(s.get() * (float) Math.pow(1.1F, i - 1)),
+            (i, s) -> new StatFloat(s.get() * i));
+    StatBase<Float> DAMAGE_BLUNT = new StatDef<>("damageBlunt", new StatFloat(0F),
+            a -> new StatFloat(a),
+            (i, s) -> new StatFloat(s.get() * (float) Math.pow(1.1F, i - 1)),
+            (i, s) -> new StatFloat(s.get() * i));
 
     Stat<T> from(T val);
     Stat<T> getDefaultValue();
     Stat<T> scale(int i, Stat<T> original);
+    Stat<T> modify(T val, Stat<T> original);
     String getStatName();
 }

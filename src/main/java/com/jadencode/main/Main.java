@@ -10,6 +10,7 @@ import com.jadencode.main.generate.character.viking.VikingSettlementGenerator;
 import com.jadencode.main.generate.weapon.WeaponGenerator;
 import com.jadencode.main.generate.weapon.WeaponInstance;
 import com.jadencode.main.generate.weapon.WeaponPart;
+import com.jadencode.main.generate.weapon.WeaponPartInstance;
 import com.jadencode.main.item.ItemPart;
 import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatSet;
@@ -22,8 +23,8 @@ import com.jadencode.main.nbt.NBTTagCompound;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by Jaden on 1/19/2015.
@@ -148,8 +149,7 @@ public class Main {
 
 
         //291 / 89
-
-        WeaponInstance scaled = weap.scaledInstance(20);
+        WeaponInstance scaled = weap.scaled(20);
         StatSet s1 = scaled.getStatSet();
         System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f", scaled.getDisplayName(), s1.value(StatBase.DAMAGE_SLASH), s1.value(StatBase.DAMAGE_PIERCE), s1.value(StatBase.DAMAGE_BLUNT)));
 

@@ -1,19 +1,24 @@
 package com.jadencode.main.generate.weapon;
 
+import com.jadencode.main.constants.WeaponPartType;
 import com.jadencode.main.stat.StatSet;
+import com.jadencode.main.constants.StatSets;
 import com.jadencode.main.util.Weightable;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Jaden on 5/28/2015.
  */
-public abstract class WeaponClass implements Weightable {
+public class WeaponClass implements Weightable {
 
     private static final List<WeaponClass> WEAPON_CLASSES     = new ArrayList<>();
-    public static final  WeaponClass       WEAPON_CLASS_SWORD = new WeaponClassSword();
+    public static final  WeaponClass       WEAPON_CLASS_SWORD = new WeaponClass("Sword", StatSets.SWORD_BASE_STATS,
+            Arrays.asList(WeaponPartType.PART_SWORD_HILT, WeaponPartType.PART_SWORD_GRIP, WeaponPartType.PART_SWORD_BLADE));
+
 
 //    public static final  WeaponClass       WEAPON_CLASS_HAMMER   = new WeaponClass("Hammer", WeaponClass.mapParts(
 //            WeaponGenerator.HAMMER_HANDLES_KEY, WeaponGenerator.HAMMER_HEADS_KEY),
@@ -69,44 +74,16 @@ public abstract class WeaponClass implements Weightable {
 //                return String.format("%s %s %s", flight.getNameMod(), head.getNameMod(), shaft.getNameMod());
 //            });
 
-    private final HashMap<String, List<WeaponPart>> weaponParts;
     private final String                            weaponClassName;
-    private final int                               enchantmentMin;
-    private final int                               enchantmentMax;
-    private final float                             enchantmentChance;
     private final StatSet                           statSet;
+    private final List<WeaponPartType>              weaponPartTypes;
 
-//    public WeaponClass(String name, HashMap<String, List<WeaponPart>> map) {
-//        this(name, 0, 2, 0.15F, StatSet.DEFAULT, map);
-//    }
-
-    public WeaponClass(String name, int min, int max, float chance, StatSet stats, HashMap<String, List<WeaponPart>> map) {
+    public WeaponClass(String name, StatSet stats, List<WeaponPartType> types) {
         this.weaponClassName = name;
-        this.weaponParts = map;
-        this.enchantmentMin = min;
-        this.enchantmentMax = max;
-        this.enchantmentChance = chance;
+        this.weaponPartTypes = types;
         this.statSet = stats;
+
         WEAPON_CLASSES.add(this);
-    }
-    public static HashMap<String, List<WeaponPart>> mapParts(String... keys) {
-        HashMap<String, List<WeaponPart>> map = new HashMap<>();
-        for (String key : keys) {
-            map.put(key, WeaponGenerator.getWeaponParts(key));
-        }
-        return map;
-    }
-
-    public float getEnchantmentChance() {
-        return enchantmentChance;
-    }
-
-    public int getEnchantmentMax() {
-        return enchantmentMax;
-    }
-
-    public int getEnchantmentMin() {
-        return enchantmentMin;
     }
 
     public String getWeaponClassName() {
@@ -116,20 +93,21 @@ public abstract class WeaponClass implements Weightable {
     public StatSet getStatSet() {
         return statSet;
     }
-    public StatSet determineStats(WeaponInstance weaponInstance) {
-        return this.statSet;
+    public StatSet determineStats(WeaponInstance instance) {
+        List<StatSet> others = instance.getWeaponParts().values().stream().map(WeaponPartInstance::getStatSet).collect(Collectors.toList());
+        StatSet baseStats = this.getStatSet().scaled(instance.getLevel()).combine(others);
+        return baseStats;
+    }
+    public List<WeaponPartType> getWeaponPartTypes() {
+        return this.weaponPartTypes;
     }
 
     @Override
     public float getWeight() {
         return 1F;
     }
-
-    public HashMap<String, List<WeaponPart>> getWeaponPartLists() {
-        return this.weaponParts;
-    }
-
     //    public abstract Generator<? extends WeaponInstance> getGenerator();
+
     public static List<WeaponClass> getWeaponClasses() {
         return WEAPON_CLASSES;
     }

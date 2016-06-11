@@ -26,6 +26,12 @@ public class StatSet {
     public <T> StatSet copyVal(StatBase<T> stat, StatSet other, Function<T, T> fun) {
         return this.addVal(stat, fun.apply(other.value(stat)));
     }
+    public <T> StatSet mod(StatBase<T> stat) {
+        return this.modVal(stat, stat.getDefaultValue().get());
+    }
+    public <T> StatSet modVal(StatBase<T> stat, T mod) {
+        return this.add(stat, stat.modify(mod, this.get(stat)));
+    }
     public <A> Stat<A> get(StatBase<A> key) {
         return key.getDefaultValue().getClass().cast(this.stats.getOrDefault(key, key.getDefaultValue()));
     }
