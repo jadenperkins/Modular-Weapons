@@ -1,7 +1,5 @@
 import org.jetbrains.spek.api.Spek
 import stat.StatBase
-import stat.StatDouble
-import stat.StatInt
 import stat.StatSet
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
