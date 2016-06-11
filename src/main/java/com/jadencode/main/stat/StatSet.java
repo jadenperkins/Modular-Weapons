@@ -1,5 +1,6 @@
 package com.jadencode.main.stat;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.function.Function;
 
@@ -38,10 +39,8 @@ public class StatSet {
     }
     public StatSet scaled(int i) {
         StatSet ret = new StatSet();
-        System.out.println("Scaling by " + i);
         for(StatBase stat : this.getStatsRaw().keySet()) {
             Stat s = stat.scale(i, this.get(stat));
-            System.out.println(s.get());
             ret.add(stat, s);
         }
         return ret;
@@ -49,10 +48,12 @@ public class StatSet {
     public HashMap<StatBase, Stat> getStatsRaw() {
         return this.stats;
     }
-    public StatSet combine(StatSet other) {
-        StatSet ret = new StatSet();
+    public StatSet combine(Collection<StatSet> others) {
+        StatSet ret = this.copy();
         for(StatBase stat : this.getStatsRaw().keySet()) {
-            ret.add(stat, this.get(stat).add(other.get(stat)));
+            for(StatSet other : others) {
+                ret.add(stat, ret.get(stat).add(other.get(stat)));
+            }
         }
         return ret;
     }

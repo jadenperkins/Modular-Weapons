@@ -14,7 +14,7 @@ public class WeaponPartInstance {
         this.weaponPart = part;
         this.level = l;
 
-        this.statSet = this.getWeaponPart().getBaseWeaponPart().scaleStats(this);
+        this.statSet = this.getWeaponPart().getBaseWeaponPart().getStatSet().scaled(this.level);
     }
     public WeaponPartInstance scaledInstance(int i) {
         WeaponPartInstance scaled = new WeaponPartInstance(this.weaponPart, i);

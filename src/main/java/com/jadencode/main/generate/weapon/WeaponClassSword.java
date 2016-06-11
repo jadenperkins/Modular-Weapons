@@ -2,6 +2,9 @@ package com.jadencode.main.generate.weapon;
 
 import com.jadencode.main.stat.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * Created by Jaden on 9/11/2015.
  */
@@ -22,10 +25,8 @@ public class WeaponClassSword extends WeaponClass {
     @Override
     public StatSet determineStats(WeaponInstance instance) {
         // TODO: 6/10/2016 Going to be getting an overhaul, something isn't calculating correctly
-        StatSet baseStats = this.getStatSet();//.scaled(instance.getLevel());
-        for(WeaponPartInstance part : instance.getWeaponParts().values()) {
-            baseStats = baseStats.combine(part.getStatSet());
-        }
+        List<StatSet> others = instance.getWeaponParts().values().stream().map(WeaponPartInstance::getStatSet).collect(Collectors.toList());
+        StatSet baseStats = this.getStatSet().scaled(instance.getLevel()).combine(others);
         return baseStats;
     }
     private StatSet scaledStats(int i) {
