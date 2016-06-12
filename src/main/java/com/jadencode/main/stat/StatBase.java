@@ -14,9 +14,8 @@ public interface StatBase<T> {
     StatBase<Float> DAMAGE_PIERCE = new StatDef<>("damagePierce", 0F, SCALE_LEVEL, COMBINE_FLOAT);
     StatBase<Float> DAMAGE_BLUNT = new StatDef<>("damageBlunt", 0F, SCALE_LEVEL, COMBINE_FLOAT);
 
-    Stat<T> from(T val);
-    Stat<T> getDefaultValue();
-    Stat<T> scale(int i, Stat<T> original);
-    Stat<T> combine(Stat<T> first, Stat<T> second);
+    T getDefaultValue();
+    T scale(int i, T original);
+    T combine(T first, T second);
     String getStatName();
 }
