@@ -16,7 +16,7 @@ public class StatSet {
     }
 
     public <T> StatSet addVal(StatBase<T> stat, T value) {
-        return this.add(stat, stat.makeStatInstance(value));
+        return this.add(stat, stat.from(value));
     }
 
     public <T> Stat<T> get(StatBase<T> statBase) {

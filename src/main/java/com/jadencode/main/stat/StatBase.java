@@ -9,17 +9,17 @@ import java.util.function.Function;
 public class StatBase<T> {
     private final String name;
     private final Stat<T> defaultValue;
-    private final Function<T, T> cloner;
+    private final Function<T, Stat<T>> generator;
     private final BiFunction<T, T, T> combine;
 
-    public StatBase(String s, T val, Function<T, T> cl, BiFunction<T, T, T> co) {
+    public StatBase(String s, T val, Function<T, Stat<T>> cl, BiFunction<T, T, T> co) {
         this.name = s;
-        this.cloner = cl;
+        this.generator = cl;
         this.combine = co;
-        this.defaultValue = this.makeStatInstance(val);
+        this.defaultValue = this.from(val);
     }
-    public <T> Stat<T> makeStatInstance(T val) {
-        return null;
+    public Stat<T> from(T val) {
+        return this.generator.apply(val);
     }
     public String getName() {
         return name;
@@ -27,10 +27,7 @@ public class StatBase<T> {
     public Stat<T> getDefaultValue() {
         return defaultValue;
     }
-    public T copy() {
-        return this.cloner.apply(this.getDefaultValue().get());
-    }
     public Stat<T> combine(Stat<T> first, Stat<T> second) {
-        return makeStatInstance(this.combine.apply(first.get(), second.get()));
+        return from(this.combine.apply(first.get(), second.get()));
     }
 }
