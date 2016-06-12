@@ -44,7 +44,15 @@ class StatTest : Spek({
             statSet.add(StatBase.POWER, 1.0)
             statSet.add(StatBase.SPELL_POWER, 3.0)
 
-            assertEquals(statSet.getModifiedValue(StatBase.POWER), 4.0)
+            assertEquals(statSet.getModifiedValue(StatBase.POWER), 3.0)
+        }
+
+        it ("should be able to follow modifier priority") {
+            statSet.add(StatBase.POWER, 2.0)
+            statSet.add(StatBase.ACCURACY, 2.0)
+            statSet.add(StatBase.SPELL_POWER, 3.0)
+
+            assertEquals(statSet.getModifiedValue(StatBase.POWER), 7.0)
         }
     }
 })

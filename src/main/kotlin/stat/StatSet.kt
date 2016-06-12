@@ -44,4 +44,8 @@ class StatSet : Iterable<Map.Entry<StatBase<*>, Any>> {
     }
 
     override fun iterator(): Iterator<Map.Entry<StatBase<*>, Any>> = statsRaw.iterator()
+
+    fun <T> has(statBase: StatBase<T>): Boolean {
+        return statsRaw.containsKey(statBase)
+    }
 }
