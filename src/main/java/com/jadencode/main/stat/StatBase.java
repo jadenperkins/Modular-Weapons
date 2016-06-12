@@ -1,18 +1,36 @@
 package com.jadencode.main.stat;
 
 import java.util.function.BiFunction;
+import java.util.function.Function;
 
 /**
  * Created by gtrpl on 6/9/2016.
  */
-public interface StatBase<T> {
+public class StatBase<T> {
+    private final String name;
+    private final Stat<T> defaultValue;
+    private final Function<T, T> cloner;
+    private final BiFunction<T, T, T> combine;
 
-    StatBase<Float> DAMAGE_SLASH = new StatDef<>("damageSlash", new StatFloat(0F), a -> new StatFloat(a), (i, s) -> new StatFloat(s.get() * (float) Math.pow(1.1F, i - 1)));
-    StatBase<Float> DAMAGE_PIERCE = new StatDef<>("damagePierce", new StatFloat(0F), a -> new StatFloat(a), (i, s) -> new StatFloat(s.get() * (float) Math.pow(1.1F, i - 1)));
-    StatBase<Float> DAMAGE_BLUNT = new StatDef<>("damageBlunt", new StatFloat(0F), a -> new StatFloat(a), (i, s) -> new StatFloat(s.get() * (float) Math.pow(1.1F, i - 1)));
-
-    Stat<T> from(T val);
-    Stat<T> getDefaultValue();
-    Stat<T> scale(int i, Stat<T> original);
-    String getStatName();
+    public StatBase(String s, T val, Function<T, T> cl, BiFunction<T, T, T> co) {
+        this.name = s;
+        this.cloner = cl;
+        this.combine = co;
+        this.defaultValue = this.makeStatInstance(val);
+    }
+    public <T> Stat<T> makeStatInstance(T val) {
+        return null;
+    }
+    public String getName() {
+        return name;
+    }
+    public Stat<T> getDefaultValue() {
+        return defaultValue;
+    }
+    public T copy() {
+        return this.cloner.apply(this.getDefaultValue().get());
+    }
+    public Stat<T> combine(Stat<T> first, Stat<T> second) {
+        return makeStatInstance(this.combine.apply(first.get(), second.get()));
+    }
 }

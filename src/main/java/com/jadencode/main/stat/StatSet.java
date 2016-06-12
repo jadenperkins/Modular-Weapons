@@ -8,53 +8,38 @@ import java.util.function.Function;
  * Created by Jaden on 9/17/2015.
  */
 public class StatSet {
-    private final HashMap<StatBase, Stat> stats = new HashMap<>();
+    private final HashMap<StatBase<?>, Stat<?>> statsRaw = new HashMap();
 
-    public <T> StatSet add(StatBase<T> stat, Stat<T> s) {
-        this.stats.put(stat, s);
+    public <T> StatSet add(StatBase<T> statBase, Stat<T> stat) {
+        this.statsRaw.put(statBase, stat);
         return this;
     }
-    public <T> StatSet add(StatBase<T> stat) {
-        return this.add(stat, stat.getDefaultValue());
+
+    public <T> StatSet addVal(StatBase<T> stat, T value) {
+        return this.add(stat, stat.makeStatInstance(value));
     }
-    public <T> StatSet addVal(StatBase<T> stat, T val) {
-        return this.add(stat, stat.from(val));
+
+    public <T> Stat<T> get(StatBase<T> statBase) {
+        return statBase.getDefaultValue().getClass().cast(this.statsRaw.getOrDefault(statBase, statBase.getDefaultValue()));
     }
-    public <T> StatSet copy(StatBase<T> stat, StatSet other, Function<Stat<T>, Stat<T>> fun) {
-        return this.add(stat, fun.apply(other.get(stat)));
-    }
-    public <T> StatSet copyVal(StatBase<T> stat, StatSet other, Function<T, T> fun) {
-        return this.addVal(stat, fun.apply(other.value(stat)));
-    }
-    public <A> Stat<A> get(StatBase<A> key) {
-        return key.getDefaultValue().getClass().cast(this.stats.getOrDefault(key, key.getDefaultValue()));
-    }
+
     public <A> A value(StatBase<A> key) {
         return this.get(key).get();
     }
+
     public StatSet copy() {
         StatSet set = new StatSet();
-        set.stats.putAll(this.stats);
+        set.statsRaw.putAll(this.statsRaw);
         return set;
     }
-    public StatSet scaled(int i) {
-        StatSet ret = new StatSet();
-        for(StatBase stat : this.getStatsRaw().keySet()) {
-            Stat s = stat.scale(i, this.get(stat));
-            ret.add(stat, s);
-        }
-        return ret;
+
+    public StatSet combine(StatSet other) {
+        StatSet retSet = new StatSet();
+        this.statsRaw.forEach((k, v) -> retSet.add(k, combine(k, v, other.get(k))));
+        return retSet;
     }
-    public HashMap<StatBase, Stat> getStatsRaw() {
-        return this.stats;
-    }
-    public StatSet combine(Collection<StatSet> others) {
-        StatSet ret = this.copy();
-        for(StatBase stat : this.getStatsRaw().keySet()) {
-            for(StatSet other : others) {
-                ret.add(stat, ret.get(stat).add(other.get(stat)));
-            }
-        }
-        return ret;
+
+    public Stat combine(StatBase statBase, Stat first, Stat second) {
+        return statBase.combine(first, second);
     }
 }

@@ -1,13 +1,20 @@
 package com.jadencode.main.stat;
 
+import java.util.function.BiFunction;
+import java.util.function.Function;
+
 /**
  * Created by gtrpl on 6/5/2016.
  */
-public abstract class Stat<T> {
+public class Stat<T> {
     private final T value;
+    private final Function<T, T> cloner;
+    private final BiFunction<T, T, T> combiner;
 
-    public Stat(T val) {
+    public Stat(T val, Function<T, T> cl, BiFunction<T, T, T> co) {
         this.value = val;
+        this.cloner = cl;
+        this.combiner = co;
     }
     public T get() {
         return this.value;
@@ -18,5 +25,4 @@ public abstract class Stat<T> {
     public <A extends Stat<?>> A as(Class<A> c) {
         return c.cast(this);
     }
-    public abstract Stat<T> add(Stat<T> other);
 }

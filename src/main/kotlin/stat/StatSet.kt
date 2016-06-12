@@ -42,7 +42,7 @@ class StatSet : Iterable<Map.Entry<StatBase<*>, Stat<*>>> {
         return retSet
     }
 
-    fun <T> combine(statBase: StatBase<T>, first: Stat<T>, second: Stat<T>): Stat<T> {
+    fun combine(statBase: StatBase<*>, first: Stat<*>, second: Stat<*>): Stat<*> {
         return statBase.makeStatInstance(statBase.combine(first.get(), second.get()))
     }
 
