@@ -8,7 +8,7 @@ import java.util.*
 class StatBase<T>(val name: String,
                   val defaultValue: T,
                   private val clone: (T) -> T,
-                  private val nativeCombine: (T, T) -> T) {
+                  val combine: (T, T) -> T) {
 
     init {
         ALL_STATS.add(this)
@@ -16,10 +16,6 @@ class StatBase<T>(val name: String,
 
     fun makeStat(value: T = defaultValue): T {
         return clone(value)
-    }
-
-    fun combine(a: T, b: T): T {
-        return nativeCombine(a, b)
     }
 
     companion object {
