@@ -1,33 +1,21 @@
 package com.jadencode.main.stat;
 
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 /**
- * Created by gtrpl on 6/5/2016.
+ * Created by gtrpl on 6/9/2016.
  */
-public class StatBase<T> {
+public interface StatBase<T> {
 
-    public static final StatBase<Float> DAMAGE_SLASH = new StatBase<>("damageSlash", new StatFloat(0F), a -> new StatFloat(a));
-    public static final StatBase<Float> DAMAGE_PIERCE = new StatBase<>("damagePierce", new StatFloat(0F), a -> new StatFloat(a));
-    public static final StatBase<Float> DAMAGE_BLUNT = new StatBase<>("damageBlunt", new StatFloat(0F), a -> new StatFloat(a));
+    BiFunction<Integer, Float, Float> SCALE_LEVEL = (i, t) -> t * (float) Math.pow(1.1F, i - 1);
+    BiFunction<Float, Float, Float> COMBINE_FLOAT = (a, b) -> a + b;
 
-    private final Stat<T> defaultValue;
-    private final String statName;
-    private final Function<T, Stat<T>> generator;
+    StatBase<Float> DAMAGE_SLASH = new StatDef<>("damageSlash", 0F, SCALE_LEVEL, COMBINE_FLOAT);
+    StatBase<Float> DAMAGE_PIERCE = new StatDef<>("damagePierce", 0F, SCALE_LEVEL, COMBINE_FLOAT);
+    StatBase<Float> DAMAGE_BLUNT = new StatDef<>("damageBlunt", 0F, SCALE_LEVEL, COMBINE_FLOAT);
 
-    public StatBase(String s, Stat<T> val, Function<T, Stat<T>> g) {
-        this.defaultValue = val;
-        this.statName = s;
-        this.generator = g;
-    }
-    public Stat<T> from(T val) {
-        return this.generator.apply(val);
-    }
-    public Stat<T> getDefaultValue() {
-        return this.defaultValue;
-    }
-    public String getStatName() {
-        return this.statName;
-    }
+    T getDefaultValue();
+    T scale(int i, T original);
+    T combine(T first, T second);
+    String getStatName();
 }

@@ -1,35 +1,52 @@
 package com.jadencode.main.stat;
 
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.Objects;
+import java.util.function.Function;
 
 /**
  * Created by Jaden on 9/17/2015.
  */
 public class StatSet {
-    private final HashMap<StatBase, Stat> stats = new HashMap<>();
+    private final HashMap<StatBase, Object> stats = new HashMap<>();
 
-    public <T> StatSet add(StatBase<T> stat, Stat<T> s) {
+    public <T> StatSet add(StatBase<T> stat, T s) {
         this.stats.put(stat, s);
         return this;
     }
-    public <T> StatSet addVal(StatBase<T> stat, T val) {
-        return this.add(stat, stat.from(val));
+    public <T> StatSet add(StatBase<T> stat) {
+        return this.add(stat, stat.getDefaultValue());
     }
-    public <A> Stat<A> get(StatBase<A> key) {
-        return key.getDefaultValue().getClass().cast(this.stats.getOrDefault(key, key.getDefaultValue()));
+    public <T> StatSet copy(StatBase<T> stat, StatSet other) {
+        return this.add(stat, other.get(stat));
     }
-    public <A> A value(StatBase<A> key) {
-        return this.get(key).get();
+    public <A> A get(StatBase<A> key) {
+        return (A)this.stats.getOrDefault(key, key.getDefaultValue());
     }
     public StatSet copy() {
         StatSet set = new StatSet();
         set.stats.putAll(this.stats);
         return set;
     }
-    public HashMap<StatBase, Stat> getStatsRaw() {
+    public StatSet scaled(int i) {
+        StatSet ret = new StatSet();
+        for(StatBase stat : this.getStatsRaw().keySet()) {
+            Object s = stat.scale(i, this.get(stat));
+            ret.add(stat, s);
+        }
+        return ret;
+    }
+    public HashMap<StatBase, Object> getStatsRaw() {
         return this.stats;
+    }
+    public StatSet combine(Collection<StatSet> others) {
+        StatSet ret = this.copy();
+        for(StatBase stat : this.getStatsRaw().keySet()) {
+            for(StatSet other : others) {
+                ret.add(stat, stat.combine(ret.get(stat), other.get(stat)));
+            }
+        }
+        return ret;
     }
 }

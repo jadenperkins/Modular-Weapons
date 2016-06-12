@@ -2,6 +2,9 @@ package com.jadencode.main.generate.weapon;
 
 import com.jadencode.main.stat.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * Created by Jaden on 9/11/2015.
  */
@@ -11,9 +14,9 @@ public class WeaponClassSword extends WeaponClass {
 
 
     private static final StatSet STAT_SET = new StatSet()
-            .add(StatBase.DAMAGE_SLASH, new StatFloat(50F))
-            .add(StatBase.DAMAGE_PIERCE, new StatFloat(10F))
-            .add(StatBase.DAMAGE_BLUNT, new StatFloat(0F));
+            .add(StatBase.DAMAGE_SLASH, 50F)
+            .add(StatBase.DAMAGE_PIERCE, 10F)
+            .add(StatBase.DAMAGE_BLUNT, 0F);
 
     public WeaponClassSword() {
         super("Sword", 1, 1, 0.05F, STAT_SET, WeaponClass.mapParts(partKeys));
@@ -21,18 +24,12 @@ public class WeaponClassSword extends WeaponClass {
 
     @Override
     public StatSet determineStats(WeaponInstance instance) {
-        StatSet baseStats = this.scaledStats(instance.getLevel());
-        instance.getWeaponParts().values()
-                .forEach(part -> baseStats.getStatsRaw().keySet()
-                        .forEach(stat -> baseStats.add(stat, baseStats.get(stat).add(part.getStatSet().get(stat)))));
+        // TODO: 6/10/2016 Going to be getting an overhaul, something isn't calculating correctly
+        List<StatSet> others = instance.getWeaponParts().values().stream().map(WeaponPartInstance::getStatSet).collect(Collectors.toList());
+        StatSet baseStats = this.getStatSet().scaled(instance.getLevel()).combine(others);
         return baseStats;
     }
     private StatSet scaledStats(int i) {
-        StatSet set = new StatSet();
-        float scale = (float) Math.pow(1.1F, i - 1);
-        set.addVal(StatBase.DAMAGE_SLASH, this.getStatSet().get(StatBase.DAMAGE_SLASH).as(StatFloat.class).get() * scale);
-        set.addVal(StatBase.DAMAGE_PIERCE, this.getStatSet().get(StatBase.DAMAGE_PIERCE).as(StatFloat.class).get() * scale);
-        set.addVal(StatBase.DAMAGE_BLUNT, this.getStatSet().get(StatBase.DAMAGE_BLUNT).as(StatFloat.class).get() * scale);
-        return set;
+        return this.getStatSet().scaled(i);
     }
 }

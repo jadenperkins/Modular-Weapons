@@ -2,7 +2,6 @@ package com.jadencode.main.generate.weapon;
 
 import com.jadencode.main.TimeKeeper;
 import com.jadencode.main.stat.StatBase;
-import com.jadencode.main.stat.StatFloat;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.material.MaterialLibrary;
 import com.jadencode.main.material.MaterialResource;
@@ -86,17 +85,17 @@ public class WeaponPartBase {
 
     //Common Grips
     private static final StatSet        heavyGripStats = new StatSet()
-            .addVal(StatBase.DAMAGE_SLASH, 10F)
-            .addVal(StatBase.DAMAGE_PIERCE, 4F)
-            .addVal(StatBase.DAMAGE_BLUNT, 1F);
+            .add(StatBase.DAMAGE_SLASH, 10F)
+            .add(StatBase.DAMAGE_PIERCE, 4F)
+            .add(StatBase.DAMAGE_BLUNT, 1F);
     private static final StatSet        basicGripStats = new StatSet()
-            .addVal(StatBase.DAMAGE_SLASH, 5F)
-            .addVal(StatBase.DAMAGE_PIERCE, 2F)
-            .addVal(StatBase.DAMAGE_BLUNT, 0F);
+            .add(StatBase.DAMAGE_SLASH, 5F)
+            .add(StatBase.DAMAGE_PIERCE, 2F)
+            .add(StatBase.DAMAGE_BLUNT, 0F);
     private static final StatSet        lightGripStats = new StatSet()
-            .addVal(StatBase.DAMAGE_SLASH, 0F)
-            .addVal(StatBase.DAMAGE_PIERCE, 0F)
-            .addVal(StatBase.DAMAGE_BLUNT, 0F);
+            .add(StatBase.DAMAGE_SLASH, 0F)
+            .add(StatBase.DAMAGE_PIERCE, 0F)
+            .add(StatBase.DAMAGE_BLUNT, 0F);
 
     public static final  WeaponPartBase heavyGrip      = new WeaponPartSword("Heavy Grip", "Double", heavyGripStats, WeaponGenerator.SWORD_GRIPS, MaterialLibrary.getMetalLibrary());
     public static final  WeaponPartBase basicGrip      = new WeaponPartSword("Basic Grip", "Single", basicGripStats, WeaponGenerator.SWORD_GRIPS, MaterialLibrary.getMetalLibrary());
@@ -104,17 +103,17 @@ public class WeaponPartBase {
 
     //Common Hilts
     private static final StatSet heavyHiltStats = new StatSet()
-            .addVal(StatBase.DAMAGE_SLASH, 16F)
-            .addVal(StatBase.DAMAGE_PIERCE, 6F)
-            .addVal(StatBase.DAMAGE_BLUNT, 2F);
+            .add(StatBase.DAMAGE_SLASH, 16F)
+            .add(StatBase.DAMAGE_PIERCE, 6F)
+            .add(StatBase.DAMAGE_BLUNT, 2F);
     private static final StatSet basicHiltStats = new StatSet()
-            .addVal(StatBase.DAMAGE_SLASH, 8F)
-            .addVal(StatBase.DAMAGE_PIERCE, 3F)
-            .addVal(StatBase.DAMAGE_BLUNT, 1F);
+            .add(StatBase.DAMAGE_SLASH, 8F)
+            .add(StatBase.DAMAGE_PIERCE, 3F)
+            .add(StatBase.DAMAGE_BLUNT, 1F);
     private static final StatSet lightHiltStats = new StatSet()
-            .addVal(StatBase.DAMAGE_SLASH, 0F)
-            .addVal(StatBase.DAMAGE_PIERCE, 0F)
-            .addVal(StatBase.DAMAGE_BLUNT, 0F);
+            .add(StatBase.DAMAGE_SLASH, 0F)
+            .add(StatBase.DAMAGE_PIERCE, 0F)
+            .add(StatBase.DAMAGE_BLUNT, 0F);
 
     public static final WeaponPartBase heavyHilt  = new WeaponPartSword("Heavy Hilt", "Heavy", heavyHiltStats, WeaponGenerator.SWORD_HILTS, MaterialLibrary.getMetalLibrary());
     public static final WeaponPartBase mediumHilt = new WeaponPartSword("Balanced Hilt", "Balanced", basicHiltStats, WeaponGenerator.SWORD_HILTS, MaterialLibrary.getMetalLibrary());
@@ -122,17 +121,17 @@ public class WeaponPartBase {
 
     //Common Blades
     private static final StatSet broadBladeStats = new StatSet()
-            .addVal(StatBase.DAMAGE_SLASH, 15F)
-            .addVal(StatBase.DAMAGE_PIERCE, 15F)
-            .addVal(StatBase.DAMAGE_BLUNT, 0F);
+            .add(StatBase.DAMAGE_SLASH, 15F)
+            .add(StatBase.DAMAGE_PIERCE, 15F)
+            .add(StatBase.DAMAGE_BLUNT, 0F);
     private static final StatSet longBladeStats  = new StatSet()
-            .addVal(StatBase.DAMAGE_SLASH, 20F)
-            .addVal(StatBase.DAMAGE_PIERCE, 10F)
-            .addVal(StatBase.DAMAGE_BLUNT, 0F);
+            .add(StatBase.DAMAGE_SLASH, 20F)
+            .add(StatBase.DAMAGE_PIERCE, 10F)
+            .add(StatBase.DAMAGE_BLUNT, 0F);
     private static final StatSet shortBladeStats = new StatSet()
-            .addVal(StatBase.DAMAGE_SLASH, 10F)
-            .addVal(StatBase.DAMAGE_PIERCE, 5F)
-            .addVal(StatBase.DAMAGE_BLUNT, 0F);
+            .add(StatBase.DAMAGE_SLASH, 10F)
+            .add(StatBase.DAMAGE_PIERCE, 5F)
+            .add(StatBase.DAMAGE_BLUNT, 0F);
 
     public static final WeaponPartBase broadBlade = new WeaponPartSword("Broad Blade", "Broadsword", broadBladeStats, WeaponGenerator.SWORD_BLADES, MaterialLibrary.getMetalLibrary());
     public static final WeaponPartBase longBlade  = new WeaponPartSword("Long Blade", "Longsword", longBladeStats, WeaponGenerator.SWORD_BLADES, MaterialLibrary.getMetalLibrary());
