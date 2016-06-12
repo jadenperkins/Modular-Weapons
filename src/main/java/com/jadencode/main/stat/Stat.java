@@ -3,7 +3,7 @@ package com.jadencode.main.stat;
 /**
  * Created by gtrpl on 6/5/2016.
  */
-public abstract class Stat<T> {
+public class Stat<T> {
     private final T value;
 
     public Stat(T val) {
@@ -18,5 +18,4 @@ public abstract class Stat<T> {
     public <A extends Stat<?>> A as(Class<A> c) {
         return c.cast(this);
     }
-    public abstract Stat<T> add(Stat<T> other);
 }

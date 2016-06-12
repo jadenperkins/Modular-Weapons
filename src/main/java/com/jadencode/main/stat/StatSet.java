@@ -52,7 +52,7 @@ public class StatSet {
         StatSet ret = this.copy();
         for(StatBase stat : this.getStatsRaw().keySet()) {
             for(StatSet other : others) {
-                ret.add(stat, ret.get(stat).add(other.get(stat)));
+                ret.add(stat, stat.combine(ret.get(stat), other.get(stat)));
             }
         }
         return ret;
