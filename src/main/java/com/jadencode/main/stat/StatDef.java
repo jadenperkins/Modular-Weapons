@@ -14,7 +14,7 @@ public class StatDef<T> implements StatBase<T> {
     private final BiFunction<Integer, T, T> scaler;
 
     public StatDef(String s, T val, BiFunction<Integer, T, T> sc, BiFunction<T, T, T> co) {
-        this.defaultValue = val
+        this.defaultValue = val;
         this.statName = s;
         this.scaler = sc;
         this.combiner = co;
@@ -33,6 +33,6 @@ public class StatDef<T> implements StatBase<T> {
     }
     @Override
     public T combine(T first, T second) {
-        return this.from(this.combiner.apply(first.get(), second.get()));
+        return this.combiner.apply(first, second);
     }
 }
