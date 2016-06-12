@@ -5,28 +5,28 @@ import java.util.*
 /**
  * Created by Jaden on 9/17/2015.
  */
-class StatSet : Iterable<Map.Entry<StatBase<*>, Stat<*>>> {
+class StatSet : Iterable<Map.Entry<StatBase<*>, Any>> {
 
-    val statsRaw: HashMap<StatBase<*>, Stat<*>> = HashMap()
+    val statsRaw: MutableMap<StatBase<*>, Any> = HashMap()
 
-    fun <T> add(statBase: StatBase<T>, stat: Stat<T>): StatSet {
+    fun <T> add(statBase: StatBase<T>, stat: T): StatSet {
         //TODO: Possibly check to see if that StatBase already exists in the map
-        statsRaw[statBase] = stat
+        statsRaw.put(statBase, stat as Any)
         return this
     }
 
-    fun <T> addVal(stat: StatBase<T>, value: T): StatSet = add(stat, stat.makeStatInstance(value))
+    fun <T> addVal(stat: StatBase<T>, value: T): StatSet = add(stat, stat.makeStat(value))
 
-    operator fun <T> get(statBase: StatBase<T>): Stat<T> {
+    operator fun <T> get(statBase: StatBase<T>): T {
         @Suppress("UNCHECKED_CAST") //https://kotlinlang.org/docs/reference/inline-functions.html#reified-type-parameters
-        return statsRaw.getOrDefault(statBase, statBase.makeStatInstance()) as Stat<T>
+        return statsRaw[statBase] as T
     }
 
-    operator fun <T> set(statBase: StatBase<T>, value: Stat<T>): StatSet {
+    operator fun <T> set(statBase: StatBase<T>, value: T): StatSet {
         return add(statBase, value)
     }
 
-    fun <A> value(key: StatBase<A>): A = this[key].get()
+    fun <A> value(key: StatBase<A>): A = this[key]
 
     fun copy(): StatSet {
         val set = StatSet()
@@ -36,15 +36,12 @@ class StatSet : Iterable<Map.Entry<StatBase<*>, Stat<*>>> {
 
     fun combine(otherSet: StatSet): StatSet {
         val retSet = StatSet()
-//        statsRaw.forEach { statBase, stat ->
-//            retSet[statBase] = combine(statBase!!, stat!!, otherSet[statBase])
-//        }
+        for ((statBase, value) in statsRaw) {
+            @Suppress("UNCHECKED_CAST")
+            retSet[statBase as StatBase<Any>] = statBase.combine(value, otherSet[statBase])
+        }
         return retSet
     }
 
-    fun <T> combine(statBase: StatBase<T>, first: Stat<T>, second: Stat<T>): Stat<T> {
-        return statBase.makeStatInstance(statBase.combine(first.get(), second.get()))
-    }
-
-    override fun iterator(): Iterator<Map.Entry<StatBase<*>, Stat<*>>> = statsRaw.iterator()
+    override fun iterator(): Iterator<Map.Entry<StatBase<*>, Any>> = statsRaw.iterator()
 }
