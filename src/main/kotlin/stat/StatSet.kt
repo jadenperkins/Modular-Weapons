@@ -37,14 +37,14 @@ class StatSet : Iterable<Map.Entry<StatBase<*>, Stat<*>>> {
     fun combine(otherSet: StatSet): StatSet {
         val retSet = StatSet()
         statsRaw.forEach { statBase, stat ->
-            retSet[statBase] = combine(statBase!!, stat!!, otherSet[statBase])
+//            retSet[statBase] = combine(statBase!!, stat!!, otherSet[statBase])
         }
         return retSet
     }
 
-    fun combine(statBase: StatBase<*>, first: Stat<*>, second: Stat<*>): Stat<*> {
-        return statBase.makeStatInstance(statBase.combine(first.get(), second.get()))
-    }
+//    fun combine(statBase: StatBase<*>, first: Stat<*>, second: Stat<*>): Stat<*> {
+//        return statBase.makeStatInstance(statBase.combine(first.get(), second.get()))
+//    }
 
     override fun iterator(): Iterator<Map.Entry<StatBase<*>, Stat<*>>> = statsRaw.iterator()
 }

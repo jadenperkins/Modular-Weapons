@@ -1,8 +1,6 @@
 package com.jadencode.main.stat;
 
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.function.Function;
 
 /**
  * Created by Jaden on 9/17/2015.

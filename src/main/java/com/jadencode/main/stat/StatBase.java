@@ -7,6 +7,11 @@ import java.util.function.Function;
  * Created by gtrpl on 6/9/2016.
  */
 public class StatBase<T> {
+
+    public static final StatBase<Float> DAMAGE_SLASH = new StatBase<>("damageSlash", 0F, a -> new Stat<>(a), (a, b) -> a + b);
+    public static final StatBase<Float> DAMAGE_PIERCE = new StatBase<>("damagePierce", 0F, a -> new Stat<>(a), (a, b) -> a + b);
+    public static final StatBase<Float> DAMAGE_BLUNT = new StatBase<>("damageBlunt", 0F, a -> new Stat<>(a), (a, b) -> a + b);
+
     private final String name;
     private final Stat<T> defaultValue;
     private final Function<T, Stat<T>> generator;
