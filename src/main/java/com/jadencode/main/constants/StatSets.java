@@ -10,7 +10,7 @@ public class StatSets {
     public static final StatSet EMPTY = new StatSet();
 
     public static final StatSet SWORD_BASE_STATS = new StatSet()
-            .addVal(StatBase.DAMAGE_SLASH, 50F)
-            .addVal(StatBase.DAMAGE_PIERCE, 10F)
-            .addVal(StatBase.DAMAGE_BLUNT, 0F);
+            .add(StatBase.DAMAGE_SLASH, 50F)
+            .add(StatBase.DAMAGE_PIERCE, 10F)
+            .add(StatBase.DAMAGE_BLUNT, 0F);
 }

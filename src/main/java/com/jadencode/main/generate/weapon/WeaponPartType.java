@@ -1,4 +1,4 @@
-package com.jadencode.main.constants;
+package com.jadencode.main.generate.weapon;
 
 /**
  * Created by gtrpl on 6/11/2016.

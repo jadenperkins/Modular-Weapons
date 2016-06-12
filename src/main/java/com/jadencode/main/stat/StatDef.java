@@ -8,32 +8,31 @@ import java.util.function.Function;
  */
 public class StatDef<T> implements StatBase<T> {
     
-    private final Stat<T> defaultValue;
+    private final T defaultValue;
     private final String statName;
-    private final Function<T, Stat<T>> generator;
-    private final BiFunction<Integer, Stat<T>, Stat<T>> scaler;
-    private final BiFunction<T, Stat<T>, Stat<T>> modifier;
+    private final BiFunction<T, T, T> combiner;
+    private final BiFunction<Integer, T, T> scaler;
 
-    public StatDef(String s, Stat<T> val, Function<T, Stat<T>> g, BiFunction<Integer, Stat<T>, Stat<T>> sc, BiFunction<T, Stat<T>, Stat<T>> m) {
+    public StatDef(String s, T val, BiFunction<Integer, T, T> sc, BiFunction<T, T, T> co) {
         this.defaultValue = val;
         this.statName = s;
-        this.generator = g;
         this.scaler = sc;
-        this.modifier = m;
+        this.combiner = co;
     }
-    public Stat<T> from(T val) {
-        return this.generator.apply(val);
-    }
-    public Stat<T> getDefaultValue() {
+    @Override
+    public T getDefaultValue() {
         return this.defaultValue;
     }
-    public Stat<T> scale(int i, Stat<T> original) {
+    @Override
+    public T scale(int i, T original) {
         return this.scaler.apply(i, original);
     }
-    public Stat<T> modify(T val, Stat<T> original) {
-        return this.modifier.apply(val, original);
-    }
+    @Override
     public String getStatName() {
         return this.statName;
+    }
+    @Override
+    public T combine(T first, T second) {
+        return this.combiner.apply(first, second);
     }
 }

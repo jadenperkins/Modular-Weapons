@@ -2,8 +2,6 @@ package example
 
 import parts.Joint
 import parts.Part
-import stat.StatDouble
-import stat.StatInt
 import stat.StatBase
 
 /**
