@@ -1,9 +1,9 @@
 package com.jadencode.main.generate.weapon;
 
 
+import com.jadencode.main.constants.WeaponParts;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.material.MaterialResource;
-import com.jadencode.main.util.WeaponParts;
 import com.jadencode.main.util.Weightable;
 
 /**
@@ -18,7 +18,7 @@ public class WeaponPart implements Weightable {
     private final float            weight;
     private final StatSet          stats;
 
-    public WeaponPart(WeaponPartBase part, MaterialResource resource) {//}, StatSet stats) {
+    public WeaponPart(WeaponPartBase part, MaterialResource resource) {
         this.baseWeaponPart = part;
         this.baseResource = resource;
         this.partName = resource.getName() + " " + part.getPartName();
@@ -52,11 +52,5 @@ public class WeaponPart implements Weightable {
     @Override
     public float getWeight() {
         return this.weight;
-    }
-
-    public static void generateWeaponParts() {
-        WeaponPartBase.getBaseParts()
-                .forEach(partBase -> partBase.getMaterials()
-                        .forEach(res -> new WeaponPart(partBase, res)));
     }
 }

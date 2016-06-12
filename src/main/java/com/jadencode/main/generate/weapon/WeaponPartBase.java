@@ -1,7 +1,7 @@
 package com.jadencode.main.generate.weapon;
 
-import com.jadencode.main.constants.WeaponPartType;
-import com.jadencode.main.stat.StatBase;
+import com.jadencode.main.constants.WeaponParts;
+import com.jadencode.main.constants.StatSets;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.material.MaterialLibrary;
 import com.jadencode.main.material.MaterialResource;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Jaden on 5/28/2015.
  */
-public abstract class WeaponPartBase {
+public class WeaponPartBase {
 
     private static final List<WeaponPartBase> WEAPON_PARTS = new ArrayList<>();
 
@@ -81,58 +81,19 @@ public abstract class WeaponPartBase {
 //    public static final WeaponPartBase wringerBlade  = new WeaponPartBase("Wringer Blade", "Wringer", WeaponGenerator.SWORD_BLADES);
 
     //Common Grips
-    private static final StatSet        heavyGripStats = new StatSet()
-            .add(StatBase.DAMAGE_SLASH, 10F)
-            .add(StatBase.DAMAGE_PIERCE, 4F)
-            .add(StatBase.DAMAGE_BLUNT, 1F);
-    private static final StatSet        basicGripStats = new StatSet()
-            .add(StatBase.DAMAGE_SLASH, 5F)
-            .add(StatBase.DAMAGE_PIERCE, 2F)
-            .add(StatBase.DAMAGE_BLUNT, 0F);
-    private static final StatSet        lightGripStats = new StatSet()
-            .add(StatBase.DAMAGE_SLASH, 0F)
-            .add(StatBase.DAMAGE_PIERCE, 0F)
-            .add(StatBase.DAMAGE_BLUNT, 0F);
-
-    public static final WeaponPartBase heavyGrip      = new WeaponPartSword("Heavy Grip", "Double", heavyGripStats, WeaponPartType.PART_SWORD_GRIP, MaterialLibrary.getMetalLibrary());
-    public static final WeaponPartBase basicGrip      = new WeaponPartSword("Basic Grip", "Single", basicGripStats, WeaponPartType.PART_SWORD_GRIP, MaterialLibrary.getMetalLibrary());
-    public static final WeaponPartBase lightGrip      = new WeaponPartSword("Light Grip", "Half", lightGripStats, WeaponPartType.PART_SWORD_GRIP, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase heavyGrip = new WeaponPartBase("Heavy Grip", "Double", StatSets.GRIP_HEAVY, WeaponParts.PART_SWORD_GRIP, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase basicGrip = new WeaponPartBase("Basic Grip", "Single", StatSets.GRIP_BASIC, WeaponParts.PART_SWORD_GRIP, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase lightGrip = new WeaponPartBase("Light Grip", "Half", StatSets.GRIP_LIGHT, WeaponParts.PART_SWORD_GRIP, MaterialLibrary.getMetalLibrary());
 
     //Common Hilts
-    private static final StatSet heavyHiltStats = new StatSet()
-            .add(StatBase.DAMAGE_SLASH, 16F)
-            .add(StatBase.DAMAGE_PIERCE, 6F)
-            .add(StatBase.DAMAGE_BLUNT, 2F);
-    private static final StatSet basicHiltStats = new StatSet()
-            .add(StatBase.DAMAGE_SLASH, 8F)
-            .add(StatBase.DAMAGE_PIERCE, 3F)
-            .add(StatBase.DAMAGE_BLUNT, 1F);
-    private static final StatSet lightHiltStats = new StatSet()
-            .add(StatBase.DAMAGE_SLASH, 0F)
-            .add(StatBase.DAMAGE_PIERCE, 0F)
-            .add(StatBase.DAMAGE_BLUNT, 0F);
-
-    public static final WeaponPartBase heavyHilt  = new WeaponPartSword("Heavy Hilt", "Heavy", heavyHiltStats, WeaponPartType.PART_SWORD_HILT, MaterialLibrary.getMetalLibrary());
-    public static final WeaponPartBase mediumHilt = new WeaponPartSword("Balanced Hilt", "Balanced", basicHiltStats, WeaponPartType.PART_SWORD_HILT, MaterialLibrary.getMetalLibrary());
-    public static final WeaponPartBase lightHilt  = new WeaponPartSword("Light Hilt", "Agile", lightHiltStats, WeaponPartType.PART_SWORD_HILT, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase heavyHilt  = new WeaponPartBase("Heavy Hilt", "Heavy", StatSets.HILT_HEAVY, WeaponParts.PART_SWORD_HILT, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase mediumHilt = new WeaponPartBase("Balanced Hilt", "Balanced", StatSets.HILT_MEDIUM, WeaponParts.PART_SWORD_HILT, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase lightHilt  = new WeaponPartBase("Light Hilt", "Agile", StatSets.HILT_LIGHT, WeaponParts.PART_SWORD_HILT, MaterialLibrary.getMetalLibrary());
 
     //Common Blades
-    private static final StatSet broadBladeStats = new StatSet()
-            .add(StatBase.DAMAGE_SLASH, 15F)
-            .add(StatBase.DAMAGE_PIERCE, 15F)
-            .add(StatBase.DAMAGE_BLUNT, 0F);
-    private static final StatSet longBladeStats  = new StatSet()
-            .add(StatBase.DAMAGE_SLASH, 20F)
-            .add(StatBase.DAMAGE_PIERCE, 10F)
-            .add(StatBase.DAMAGE_BLUNT, 0F);
-    private static final StatSet shortBladeStats = new StatSet()
-            .add(StatBase.DAMAGE_SLASH, 10F)
-            .add(StatBase.DAMAGE_PIERCE, 5F)
-            .add(StatBase.DAMAGE_BLUNT, 0F);
-
-    public static final WeaponPartBase broadBlade = new WeaponPartSword("Broad Blade", "Broadsword", broadBladeStats, WeaponPartType.PART_SWORD_BLADE, MaterialLibrary.getMetalLibrary());
-    public static final WeaponPartBase longBlade  = new WeaponPartSword("Long Blade", "Longsword", longBladeStats, WeaponPartType.PART_SWORD_BLADE, MaterialLibrary.getMetalLibrary());
-    public static final WeaponPartBase shortBlade = new WeaponPartSword("Short Blade", "Shortsword", shortBladeStats, WeaponPartType.PART_SWORD_BLADE, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase broadBlade = new WeaponPartBase("Broad Blade", "Broadsword", StatSets.BLADE_BROAD, WeaponParts.PART_SWORD_BLADE, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase longBlade  = new WeaponPartBase("Long Blade", "Longsword", StatSets.BLADE_LONG, WeaponParts.PART_SWORD_BLADE, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase shortBlade = new WeaponPartBase("Short Blade", "Shortsword", StatSets.BLADE_SHORT, WeaponParts.PART_SWORD_BLADE, MaterialLibrary.getMetalLibrary());
 
 //    //Common Axe Handles
 //    public static final WeaponPartBase warHandleAxe     = new WeaponPartBase("War Handle", "Waraxe", WeaponGenerator.AXE_HANDLES, MaterialLibrary.getWoodLibrary());
@@ -236,6 +197,9 @@ public abstract class WeaponPartBase {
 
         WEAPON_PARTS.add(this);
     }
+    public WeaponPartBase(String name, String mod, StatSet stats, WeaponPartType type, MaterialLibrary... mats) {
+        this(name, mod, 1F, stats, type, mats);
+    }
     public float getWeight() {
         return weight;
     }
@@ -259,9 +223,9 @@ public abstract class WeaponPartBase {
     public StatSet getStatSet() {
         return statSet;
     }
-
-    //Returns a StatSet for this part modified using the provided resource.
-    public abstract StatSet modifyStats(MaterialResource resource);
+    public StatSet modifyStats(MaterialResource resource) {
+        return this.getStatSet().modified(resource);
+    }
     public StatSet scaleStats(WeaponPartInstance partInstance) {
         return this.statSet.scaled(partInstance.getLevel());
     }

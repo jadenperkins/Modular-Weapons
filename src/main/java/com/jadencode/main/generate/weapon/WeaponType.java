@@ -1,6 +1,7 @@
 package com.jadencode.main.generate.weapon;
 
 import com.jadencode.main.constants.WeaponParts;
+import com.jadencode.main.constants.WeaponTypes;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.util.Weightable;
 
@@ -73,7 +74,7 @@ public class WeaponType implements Weightable {
         this.weaponClassName = name;
         this.weaponPartTypes = types;
         this.statSet = stats;
-        WeaponParts.addWeaponType(this);
+        WeaponTypes.addWeaponType(this);
     }
 
     public String getWeaponClassName() {

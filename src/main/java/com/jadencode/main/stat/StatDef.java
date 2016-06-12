@@ -1,5 +1,7 @@
 package com.jadencode.main.stat;
 
+import com.jadencode.main.material.MaterialResource;
+
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -12,12 +14,14 @@ public class StatDef<T> implements StatBase<T> {
     private final String statName;
     private final BiFunction<T, T, T> combiner;
     private final BiFunction<Integer, T, T> scaler;
+    private final BiFunction<Float, T, T> modifier;
 
-    public StatDef(String s, T val, BiFunction<Integer, T, T> sc, BiFunction<T, T, T> co) {
+    public StatDef(String s, T val, BiFunction<Integer, T, T> sc, BiFunction<T, T, T> co, BiFunction<Float, T, T> mo) {
         this.defaultValue = val;
         this.statName = s;
         this.scaler = sc;
         this.combiner = co;
+        this.modifier = mo;
     }
     @Override
     public T getDefaultValue() {
@@ -34,5 +38,9 @@ public class StatDef<T> implements StatBase<T> {
     @Override
     public T combine(T first, T second) {
         return this.combiner.apply(first, second);
+    }
+    @Override
+    public T modify(MaterialResource resource, T original) {
+        return this.modifier.apply(resource.getMultiplier(), original);
     }
 }

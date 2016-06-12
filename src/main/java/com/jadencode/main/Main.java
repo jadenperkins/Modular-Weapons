@@ -1,5 +1,7 @@
 package com.jadencode.main;
 
+import com.jadencode.main.constants.Stats;
+import com.jadencode.main.constants.WeaponParts;
 import com.jadencode.main.generate.Generator;
 import com.jadencode.main.generate.character.Actor;
 import com.jadencode.main.generate.character.Settlement;
@@ -10,9 +12,7 @@ import com.jadencode.main.generate.character.viking.VikingSettlementGenerator;
 import com.jadencode.main.generate.weapon.WeaponGenerator;
 import com.jadencode.main.generate.weapon.WeaponInstance;
 import com.jadencode.main.generate.weapon.WeaponPart;
-import com.jadencode.main.generate.weapon.WeaponPartInstance;
 import com.jadencode.main.item.ItemPart;
-import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.magic.SpellBase;
 import com.jadencode.main.magic.SpellObject;
@@ -24,7 +24,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Created by Jaden on 1/19/2015.
@@ -138,12 +137,13 @@ public class Main {
 //        System.out.println(parts.size() + " parts");
 
         //Create all weapon parts
-        WeaponPart.generateWeaponParts();
+        WeaponParts.generateWeaponParts();
+
 //        ArmorPart.generateArmorParts();
 
         WeaponInstance weap = new WeaponGenerator().generate(theWorld.getRNG(), 1);
         StatSet s = weap.getStatSet();
-        System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f", weap.getDisplayName(), s.get(StatBase.DAMAGE_SLASH), s.get(StatBase.DAMAGE_PIERCE), s.get(StatBase.DAMAGE_BLUNT)));
+        System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f", weap.getDisplayName(), s.get(Stats.DAMAGE_SLASH), s.get(Stats.DAMAGE_PIERCE), s.get(Stats.DAMAGE_BLUNT)));
 
         System.out.println("\t" + weap.getDisplayInfo());
 
@@ -151,7 +151,7 @@ public class Main {
         //291 / 89
         WeaponInstance scaled = weap.scaled(20);
         StatSet s1 = scaled.getStatSet();
-        System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f", scaled.getDisplayName(), s1.get(StatBase.DAMAGE_SLASH), s1.get(StatBase.DAMAGE_PIERCE), s1.get(StatBase.DAMAGE_BLUNT)));
+        System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f", scaled.getDisplayName(), s1.get(Stats.DAMAGE_SLASH), s1.get(Stats.DAMAGE_PIERCE), s1.get(Stats.DAMAGE_BLUNT)));
 
 //        for(WeaponPartInstance part : weap.getWeaponParts().values()) {
 //            for(String key : part.getStatSet().getFloatKeys()) {
