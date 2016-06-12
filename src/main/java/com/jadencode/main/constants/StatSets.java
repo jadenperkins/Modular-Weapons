@@ -28,6 +28,12 @@ public class StatSets {
             .add(Stats.DAMAGE_PIERCE, 0F)
             .add(Stats.ATTACK_TIME, 0F);
 
+    public static final StatSet BASE_BOW = new StatSet()
+            .add(Stats.DAMAGE_BLUNT, 10F)
+            .add(Stats.ATTACK_TIME, 0F)
+            .add(Stats.RANGE, 50F)
+            .add(Stats.DRAW_TIME, 0F);
+
     //Sword grips
     public static final StatSet GRIP_HEAVY = new StatSet()
             .add(Stats.DAMAGE_SLASH, 10F)
@@ -131,4 +137,46 @@ public class StatSets {
     public static final StatSet HEAD_ROUND_AXE  = new StatSet()
             .add(Stats.DAMAGE_BLUNT, 20F)
             .add(Stats.ATTACK_TIME, 1F);
+
+    //Bow Strings
+    public static final StatSet STRING_HEAVY_BOW = new StatSet()
+            .add(Stats.RANGE, 50F)
+            .add(Stats.DRAW_TIME, 2F);
+    public static final StatSet STRING_LIGHT_BOW = new StatSet()
+            .add(Stats.RANGE, 25F)
+            .add(Stats.DRAW_TIME, 1F);
+
+    //Bow Limbs
+    public static final StatSet LIMBS_SHORT_BOW = new StatSet()
+            .add(Stats.RANGE, 10F)
+            .add(Stats.DRAW_TIME, 0.5F)
+            .add(Stats.DAMAGE_BLUNT, 10F)
+            .add(Stats.ATTACK_TIME, 1F);
+    public static final StatSet LIMBS_LONG_BOW = new StatSet()
+            .add(Stats.RANGE, 30F)
+            .add(Stats.DRAW_TIME, 1.5F)
+            .add(Stats.DAMAGE_BLUNT, 20F)
+            .add(Stats.ATTACK_TIME, 2F);
+    public static final StatSet LIMBS_MEDIUM_BOW = new StatSet()
+            .add(Stats.RANGE, 20F)
+            .add(Stats.DRAW_TIME, 1F)
+            .add(Stats.DAMAGE_BLUNT, 15F)
+            .add(Stats.ATTACK_TIME, 1.5F);
+
+    //Bow Grips
+    public static final StatSet GRIP_QUICK_BOW = new StatSet()
+            .add(Stats.RANGE, 20F)
+            .add(Stats.DRAW_TIME, 0.5F)
+            .add(Stats.DAMAGE_BLUNT, 5F)
+            .add(Stats.ATTACK_TIME, 0.5F);
+    public static final StatSet GRIP_STEADY_BOW = new StatSet()
+            .add(Stats.RANGE, 50F)
+            .add(Stats.DRAW_TIME, 2F)
+            .add(Stats.DAMAGE_BLUNT, 5F)
+            .add(Stats.ATTACK_TIME, 1F);
+    public static final StatSet GRIP_BALANCED_BOW = new StatSet()
+            .add(Stats.RANGE, 30F)
+            .add(Stats.DRAW_TIME, 1F)
+            .add(Stats.DAMAGE_BLUNT, 5F)
+            .add(Stats.ATTACK_TIME, 0.5F);
 }

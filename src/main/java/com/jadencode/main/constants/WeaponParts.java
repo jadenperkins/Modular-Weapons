@@ -32,6 +32,10 @@ public class WeaponParts {
     public static final WeaponPartType PART_AXE_HANDLE = new WeaponPartType("axe_handle");
     public static final WeaponPartType PART_AXE_HEAD = new WeaponPartType("axe_head");
 
+    public static final WeaponPartType PART_BOW_STRING = new WeaponPartType("bow_string");
+    public static final WeaponPartType PART_BOW_LIMBS = new WeaponPartType("bow_limbs");
+    public static final WeaponPartType PART_BOW_GRIP = new WeaponPartType("bow_grip");
+
     //Common Grips
     public static final WeaponPartBase heavyGrip = new WeaponPartBase("Heavy Grip", "Double", StatSets.GRIP_HEAVY, WeaponParts.PART_SWORD_GRIP, MaterialLibrary.getMetalLibrary());
     public static final WeaponPartBase basicGrip = new WeaponPartBase("Basic Grip", "Single", StatSets.GRIP_BASIC, WeaponParts.PART_SWORD_GRIP, MaterialLibrary.getMetalLibrary());
@@ -74,6 +78,27 @@ public class WeaponParts {
     public static final WeaponPartBase spikeHead  = new WeaponPartBase("Spiked Axehead", "Spike-Headed", StatSets.HEAD_SPIKED_AXE, WeaponParts.PART_AXE_HEAD, MaterialLibrary.getMetalLibrary());
     public static final WeaponPartBase scytheHead = new WeaponPartBase("Scythe Axehead", "Scythe-Headed", StatSets.HEAD_SCYTHE_AXE, WeaponParts.PART_AXE_HEAD, MaterialLibrary.getMetalLibrary());
     public static final WeaponPartBase roundHead  = new WeaponPartBase("Round Axehead", "Round-Headed", StatSets.HEAD_ROUND_AXE, WeaponParts.PART_AXE_HEAD, MaterialLibrary.getMetalLibrary());
+
+
+        //Common Bow Strings
+    public static final WeaponPartBase lightString = new WeaponPartBase("Light Bowstring", "Light", StatSets.STRING_LIGHT_BOW, WeaponParts.PART_BOW_STRING, MaterialLibrary.getPlantLibrary());
+    public static final WeaponPartBase heavyString = new WeaponPartBase("Heavy Bowstring", "Heavy", StatSets.STRING_HEAVY_BOW, WeaponParts.PART_BOW_STRING, MaterialLibrary.getPlantLibrary());
+
+    //Common Bow Limbs
+    public static final WeaponPartBase shortLimbs  = new WeaponPartBase("Shortbow Limbs", "Short Bow", StatSets.LIMBS_SHORT_BOW, WeaponParts.PART_BOW_LIMBS, MaterialLibrary.getWoodLibrary());
+    public static final WeaponPartBase longLimbs   = new WeaponPartBase("Longbow Limbs", "Long Bow", StatSets.LIMBS_LONG_BOW, WeaponParts.PART_BOW_LIMBS, MaterialLibrary.getWoodLibrary());
+    public static final WeaponPartBase mediumLimbs = new WeaponPartBase("Recurve Limbs", "Recurve Bow", StatSets.LIMBS_MEDIUM_BOW, WeaponParts.PART_BOW_LIMBS, MaterialLibrary.getWoodLibrary());
+
+    //Common Bow Grips
+    public static final WeaponPartBase quickGrip    = new WeaponPartBase("Slick Bow Grip", "Rapid", StatSets.GRIP_QUICK_BOW, WeaponParts.PART_BOW_GRIP, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase steadyGrip   = new WeaponPartBase("Steady Bow Grip", "Accurate", StatSets.GRIP_STEADY_BOW, WeaponParts.PART_BOW_GRIP, MaterialLibrary.getMetalLibrary());
+    public static final WeaponPartBase balancedGrip = new WeaponPartBase("Balanced Bow Grip", "Balanced", StatSets.GRIP_BALANCED_BOW, WeaponParts.PART_BOW_GRIP, MaterialLibrary.getMetalLibrary());
+
+
+
+
+
+
 
 
     public static List<WeaponPartBase> getBaseParts() {

@@ -24,6 +24,10 @@ public class WeaponTypes {
             Arrays.asList(WeaponParts.PART_AXE_HANDLE, WeaponParts.PART_AXE_HEAD),
             w -> w.getPart(WeaponParts.PART_AXE_HEAD).getNameMod() + " " + w.getPart(WeaponParts.PART_AXE_HANDLE).getNameMod());
 
+    public static final WeaponType WEAPON_TYPE_BOW = new WeaponType("Bow", 25F, StatSets.BASE_BOW,
+            Arrays.asList(WeaponParts.PART_BOW_GRIP, WeaponParts.PART_BOW_LIMBS, WeaponParts.PART_BOW_STRING),
+            w -> w.getPart(WeaponParts.PART_BOW_GRIP).getNameMod() + " " + w.getPart(WeaponParts.PART_BOW_STRING).getNameMod() + " " + w.getPart(WeaponParts.PART_BOW_LIMBS).getNameMod());
+
     public static List<WeaponType> getWeaponTypes() {
         return WEAPON_TYPES;
     }

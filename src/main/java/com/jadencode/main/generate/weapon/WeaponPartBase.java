@@ -77,20 +77,6 @@ public class WeaponPartBase {
 //    public static final WeaponPartBase watcherBlade  = new WeaponPartBase("Watcher Blade", "Watcher", WeaponGenerator.SWORD_BLADES);
 //    public static final WeaponPartBase wringerBlade  = new WeaponPartBase("Wringer Blade", "Wringer", WeaponGenerator.SWORD_BLADES);
 
-//    //Common Bow Strings
-//    public static final WeaponPartBase lightString = new WeaponPartBase("Light Bowstring", "Light", WeaponGenerator.BOW_STRINGS, MaterialLibrary.getPlantLibrary());
-//    public static final WeaponPartBase heavyString = new WeaponPartBase("Heavy Bowstring", "Heavy", WeaponGenerator.BOW_STRINGS, MaterialLibrary.getPlantLibrary());
-//
-//    //Common Bow Limbs
-//    public static final WeaponPartBase shortLimbs  = new WeaponPartBase("Shortbow Limbs", "Shortbow", WeaponGenerator.BOW_LIMBS, MaterialLibrary.getWoodLibrary());
-//    public static final WeaponPartBase longLimbs   = new WeaponPartBase("Longbow Limbs", "Longbow", WeaponGenerator.BOW_LIMBS, MaterialLibrary.getWoodLibrary());
-//    public static final WeaponPartBase mediumLimbs = new WeaponPartBase("Recurve Limbs", "Recurve Bow", WeaponGenerator.BOW_LIMBS, MaterialLibrary.getWoodLibrary());
-//
-//    //Common Bow Grips
-//    public static final WeaponPartBase quickGrip    = new WeaponPartBase("Slick Bow Grip", "Rapid", WeaponGenerator.BOW_GRIPS, MaterialLibrary.getMetalLibrary());
-//    public static final WeaponPartBase steadyGrip   = new WeaponPartBase("Steady Bow Grip", "Accurate", WeaponGenerator.BOW_GRIPS, MaterialLibrary.getMetalLibrary());
-//    public static final WeaponPartBase balancedGrip = new WeaponPartBase("Balanced Bow Grip", "Balanced", WeaponGenerator.BOW_GRIPS, MaterialLibrary.getMetalLibrary());
-//
 //    //Common Arrow Heads
 //    public static final WeaponPartBase basicTips = new WeaponPartBase("Basic Arrowheads", "Simple", WeaponGenerator.ARROW_HEADS, MaterialLibrary.getMetalLibrary());
 //    public static final WeaponPartBase heavyTips = new WeaponPartBase("Heavy Arrowheads", "Heavy", WeaponGenerator.ARROW_HEADS, MaterialLibrary.getMetalLibrary());
