@@ -9,13 +9,11 @@ class StatSet : Iterable<Map.Entry<StatBase<*>, Any>> {
 
     val statsRaw: MutableMap<StatBase<*>, Any> = HashMap()
 
-    fun <T> add(statBase: StatBase<T>, stat: T): StatSet {
+    fun <T> add(statBase: StatBase<T>, value: T): StatSet {
         //TODO: Possibly check to see if that StatBase already exists in the map
-        statsRaw.put(statBase, stat as Any)
+        statsRaw.put(statBase, statBase.makeStat(value) as Any)
         return this
     }
-
-    fun <T> addVal(stat: StatBase<T>, value: T): StatSet = add(stat, stat.makeStat(value))
 
     operator fun <T> get(statBase: StatBase<T>): T {
         @Suppress("UNCHECKED_CAST") //https://kotlinlang.org/docs/reference/inline-functions.html#reified-type-parameters
@@ -24,6 +22,10 @@ class StatSet : Iterable<Map.Entry<StatBase<*>, Any>> {
 
     operator fun <T> set(statBase: StatBase<T>, value: T): StatSet {
         return add(statBase, value)
+    }
+
+    fun <T> getModifiedValue(statBase: StatBase<T>): T {
+        return statBase.getModifiedValue(this)
     }
 
     fun copy(): StatSet {
