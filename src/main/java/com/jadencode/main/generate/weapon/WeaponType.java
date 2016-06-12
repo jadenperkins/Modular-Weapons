@@ -1,11 +1,11 @@
 package com.jadencode.main.generate.weapon;
 
-import com.jadencode.main.constants.WeaponParts;
 import com.jadencode.main.constants.WeaponTypes;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.util.Weightable;
 
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -66,19 +66,28 @@ public class WeaponType implements Weightable {
 //                return String.format("%s %s %s", flight.getNameMod(), head.getNameMod(), shaft.getNameMod());
 //            });
 
-    private final String                            weaponClassName;
+    private final String weaponTypeName;
     private final StatSet                           statSet;
     private final List<WeaponPartType>              weaponPartTypes;
+    private final Function<WeaponInstance, String>  nameGenerator;
+    private final float                             weight;
 
-    public WeaponType(String name, StatSet stats, List<WeaponPartType> types) {
-        this.weaponClassName = name;
+    public WeaponType(String name, StatSet stats, List<WeaponPartType> types, Function<WeaponInstance, String> g) {
+        this(name, 1F, stats, types, g);
+    }
+    public WeaponType(String name, float w, StatSet stats, List<WeaponPartType> types, Function<WeaponInstance, String> g) {
+        this.weaponTypeName = name;
+        this.weight = w;
         this.weaponPartTypes = types;
         this.statSet = stats;
+        this.nameGenerator = g;
         WeaponTypes.addWeaponType(this);
     }
-
-    public String getWeaponClassName() {
-        return weaponClassName;
+    public String getDisplayName(WeaponInstance weapon) {
+        return this.nameGenerator.apply(weapon);
+    }
+    public String getWeaponTypeName() {
+        return weaponTypeName;
     }
 
     public StatSet getStatSet() {
@@ -95,6 +104,6 @@ public class WeaponType implements Weightable {
 
     @Override
     public float getWeight() {
-        return 1F;
+        return this.weight;
     }
 }

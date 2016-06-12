@@ -20,6 +20,9 @@ public class WeaponPartInstance implements Comparable<WeaponPartInstance> {
         WeaponPartInstance scaled = new WeaponPartInstance(this.weaponPart, i);
         return scaled;
     }
+    public String getNameMod() {
+        return this.getWeaponPart().getBaseWeaponPart().getNameMod();
+    }
 
     public int getLevel() {
         return level;

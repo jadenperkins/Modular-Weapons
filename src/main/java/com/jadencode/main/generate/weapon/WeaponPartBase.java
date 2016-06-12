@@ -77,31 +77,6 @@ public class WeaponPartBase {
 //    public static final WeaponPartBase watcherBlade  = new WeaponPartBase("Watcher Blade", "Watcher", WeaponGenerator.SWORD_BLADES);
 //    public static final WeaponPartBase wringerBlade  = new WeaponPartBase("Wringer Blade", "Wringer", WeaponGenerator.SWORD_BLADES);
 
-//    //Common Axe Handles
-//    public static final WeaponPartBase warHandleAxe     = new WeaponPartBase("War Handle", "Waraxe", WeaponGenerator.AXE_HANDLES, MaterialLibrary.getWoodLibrary());
-//    public static final WeaponPartBase longHandleAxe    = new WeaponPartBase("Long Handle", "Longaxe", WeaponGenerator.AXE_HANDLES, MaterialLibrary.getWoodLibrary());
-//    public static final WeaponPartBase battleHandleAxe  = new WeaponPartBase("Battle Handle", "Battleaxe", WeaponGenerator.AXE_HANDLES, MaterialLibrary.getWoodLibrary());
-//    public static final WeaponPartBase halberdHandleAxe = new WeaponPartBase("Halberd Handle", "Halberd", WeaponGenerator.AXE_HANDLES, MaterialLibrary.getWoodLibrary());
-//
-//    //Common Axe Heads
-//    public static final WeaponPartBase doubleHead = new WeaponPartBase("Double Axehead", "Double-Headed", WeaponGenerator.AXE_HEADS, MaterialLibrary.getMetalLibrary());
-//    public static final WeaponPartBase singleHead = new WeaponPartBase("Single Axehead", "Single-Headed", WeaponGenerator.AXE_HEADS, MaterialLibrary.getMetalLibrary());
-//    public static final WeaponPartBase broadHead  = new WeaponPartBase("Broad Axehead", "Broad-Headed", WeaponGenerator.AXE_HEADS, MaterialLibrary.getMetalLibrary());
-//    public static final WeaponPartBase spikeHead  = new WeaponPartBase("Spiked Axehead", "Spike-Headed", WeaponGenerator.AXE_HEADS, MaterialLibrary.getMetalLibrary());
-//    public static final WeaponPartBase scytheHead = new WeaponPartBase("Scythe Axehead", "Scythe-Headed", WeaponGenerator.AXE_HEADS, MaterialLibrary.getMetalLibrary());
-//    public static final WeaponPartBase roundHead  = new WeaponPartBase("Round Axehead", "Round-Headed", WeaponGenerator.AXE_HEADS, MaterialLibrary.getMetalLibrary());
-//
-//    //Common Hammer Handles
-//    public static final WeaponPartBase warHandleHammer    = new WeaponPartBase("War Handle", "Warhammer", WeaponGenerator.HAMMER_HANDLES, MaterialLibrary.getWoodLibrary());
-//    public static final WeaponPartBase battleHandleHammer = new WeaponPartBase("Battle Handle", "Battlehammer", WeaponGenerator.HAMMER_HANDLES, MaterialLibrary.getWoodLibrary());
-//    public static final WeaponPartBase maulHandleHammer   = new WeaponPartBase("Maul Handle", "Maul", WeaponGenerator.HAMMER_HANDLES, MaterialLibrary.getWoodLibrary());
-//
-//    //Common Hammer Heads
-//    public static final WeaponPartBase doubleHeadHammer = new WeaponPartBase("Double Hammerhead", "Double-Headed", WeaponGenerator.HAMMER_HEADS, MaterialLibrary.getMetalLibrary());
-//    public static final WeaponPartBase singleHeadHammer = new WeaponPartBase("Single Hammerhead", "Single-Headed", WeaponGenerator.HAMMER_HEADS, MaterialLibrary.getMetalLibrary());
-//    public static final WeaponPartBase heavyHeadHammer  = new WeaponPartBase("Heavy Hammerhead", "Heavy", WeaponGenerator.HAMMER_HEADS, MaterialLibrary.getMetalLibrary());
-//    public static final WeaponPartBase spikedHeadHammer = new WeaponPartBase("Spiked Hammerhead", "Spike-Headed", WeaponGenerator.HAMMER_HEADS, MaterialLibrary.getMetalLibrary());
-//
 //    //Common Bow Strings
 //    public static final WeaponPartBase lightString = new WeaponPartBase("Light Bowstring", "Light", WeaponGenerator.BOW_STRINGS, MaterialLibrary.getPlantLibrary());
 //    public static final WeaponPartBase heavyString = new WeaponPartBase("Heavy Bowstring", "Heavy", WeaponGenerator.BOW_STRINGS, MaterialLibrary.getPlantLibrary());

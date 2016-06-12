@@ -26,10 +26,7 @@ public class WeaponInstance {
         this.weaponType = base;
         this.level = Collections.max(parts.values().stream().map(WeaponPartInstance::getLevel).collect(Collectors.toList()));
         this.weaponParts = parts;
-//        this.displayName = base.getWeaponClassName();
-        this.displayName = parts.get(WeaponParts.PART_SWORD_HILT).getWeaponPart().getBaseWeaponPart().getNameMod() + " " +
-                parts.get(WeaponParts.PART_SWORD_GRIP).getWeaponPart().getBaseWeaponPart().getNameMod() + " " +
-                parts.get(WeaponParts.PART_SWORD_BLADE).getWeaponPart().getBaseWeaponPart().getNameMod();
+        this.displayName = base.getDisplayName(this);
         this.weaponParts.values().forEach(s -> this.weaponInfo.add(s.getPartInfo()));
         this.displayInfo.addAll(this.getWeaponInfo());
 

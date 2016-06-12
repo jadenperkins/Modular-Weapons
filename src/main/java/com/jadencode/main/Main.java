@@ -13,6 +13,7 @@ import com.jadencode.main.generate.weapon.WeaponGenerator;
 import com.jadencode.main.generate.weapon.WeaponInstance;
 import com.jadencode.main.generate.weapon.WeaponPart;
 import com.jadencode.main.item.ItemPart;
+import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.magic.SpellBase;
 import com.jadencode.main.magic.SpellObject;
@@ -143,9 +144,12 @@ public class Main {
 
         WeaponInstance weap = new WeaponGenerator().generate(theWorld.getRNG(), 1);
         StatSet s = weap.getStatSet();
-        System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f", weap.getDisplayName(), s.get(Stats.DAMAGE_SLASH), s.get(Stats.DAMAGE_PIERCE), s.get(Stats.DAMAGE_BLUNT)));
+        Set<StatBase> base = weap.getWeaponType().getStatSet().getStatsRaw().keySet();
 
-        System.out.println("\t" + weap.getDisplayInfo());
+        System.out.println(weap.getDisplayName());
+        base.forEach(stat -> System.out.println(String.format("\t%s: %s", stat.getStatName(), s.get(stat).toString())));
+
+        System.out.println("\t\t" + weap.getDisplayInfo());
 
 
         //291 / 89
