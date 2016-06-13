@@ -1,56 +1,25 @@
 package com.jadencode.main.generate.weapon;
 
-
 import com.jadencode.main.constants.WeaponParts;
 import com.jadencode.main.stat.StatSet;
-import com.jadencode.main.material.MaterialResource;
 import com.jadencode.main.util.Weightable;
 
 /**
- * Created by Jaden on 5/28/2015.
+ * Created by JPERKI8 on 6/13/2016.
  */
-public class WeaponPart implements Weightable {
+public abstract class WeaponPart implements Weightable {
+    private final float  weight;
 
-    private final WeaponPartBase   baseWeaponPart;
-    private final MaterialResource baseResource;
-    private final String           partName;
-    private final String           partDescription;
-    private final float            weight;
-    private final StatSet          stats;
-
-    public WeaponPart(WeaponPartBase part, MaterialResource resource) {
-        this.baseWeaponPart = part;
-        this.baseResource = resource;
-        this.partName = resource.getName() + " " + part.getPartName();
-        this.partDescription = String.format("A %s crafted from %s", part.getPartName(), resource.getName());
-        this.weight = part.getWeight() * resource.getWeight();
-
-        this.stats = part.modifyStats(resource);
-        WeaponParts.getPartsList(part.getPartType()).add(this);
+    public WeaponPart(float w, WeaponPartType type) {
+        this.weight = w;
+        WeaponParts.getPartsList(type).add(this);
     }
-    public WeaponPartBase getBaseWeaponPart() {
-        return this.baseWeaponPart;
-    }
-    public StatSet getStats() {
-        return stats;
-    }
-
-    public boolean hasBaseResource() {
-        return this.getBaseResource() != null;
-    }
-    public MaterialResource getBaseResource() {
-        return this.baseResource;
-    }
-
-    public String getPartName() {
-        return this.partName;
-    }
-    public String getPartInfo() {
-        return this.partDescription;
-    }
-
     @Override
     public float getWeight() {
         return this.weight;
     }
+    public abstract String getPartName();
+    public abstract String getNameMod();
+    public abstract String getPartInfo();
+    public abstract StatSet getStats();
 }

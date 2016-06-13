@@ -11,7 +11,6 @@ import com.jadencode.main.generate.character.viking.VikingCharacterGenerator;
 import com.jadencode.main.generate.character.viking.VikingSettlementGenerator;
 import com.jadencode.main.generate.weapon.WeaponGenerator;
 import com.jadencode.main.generate.weapon.WeaponInstance;
-import com.jadencode.main.generate.weapon.WeaponPart;
 import com.jadencode.main.item.ItemPart;
 import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatSet;
@@ -158,8 +157,8 @@ public class Main {
         System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f", scaled.getDisplayName(), s1.get(Stats.DAMAGE_SLASH), s1.get(Stats.DAMAGE_PIERCE), s1.get(Stats.DAMAGE_BLUNT)));
 
 //        for(WeaponPartInstance part : weap.getWeaponParts().values()) {
-//            for(String key : part.getStatSet().getFloatKeys()) {
-//                System.out.println(String.format("%s = %f", key, part.getStatSet().getFloat(key)));
+//            for(String key : part.getStats().getFloatKeys()) {
+//                System.out.println(String.format("%s = %f", key, part.getStats().getFloat(key)));
 //            }
 //        }
 

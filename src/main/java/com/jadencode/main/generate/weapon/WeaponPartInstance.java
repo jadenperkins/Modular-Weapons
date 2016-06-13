@@ -20,10 +20,6 @@ public class WeaponPartInstance implements Comparable<WeaponPartInstance> {
         WeaponPartInstance scaled = new WeaponPartInstance(this.weaponPart, i);
         return scaled;
     }
-    public String getNameMod() {
-        return this.getWeaponPart().getBaseWeaponPart().getNameMod();
-    }
-
     public int getLevel() {
         return level;
     }
@@ -31,11 +27,14 @@ public class WeaponPartInstance implements Comparable<WeaponPartInstance> {
     public WeaponPart getWeaponPart() {
         return weaponPart;
     }
-    public StatSet getStatSet() {
+    public StatSet getStats() {
         return this.statSet;
     }
     public String getPartInfo() {
         return String.format("%s (Level %d)", this.getWeaponPart().getPartInfo(), this.getLevel());
+    }
+    public String getNameMod() {
+        return this.weaponPart.getNameMod();
     }
     @Override
     public int compareTo(WeaponPartInstance o) {

@@ -94,7 +94,7 @@ public class WeaponType implements Weightable {
         return statSet;
     }
     public StatSet determineStats(WeaponInstance instance) {
-        List<StatSet> others = instance.getWeaponParts().values().stream().map(WeaponPartInstance::getStatSet).collect(Collectors.toList());
+        List<StatSet> others = instance.getWeaponParts().values().stream().map(WeaponPartInstance::getStats).collect(Collectors.toList());
         StatSet baseStats = this.getStatSet().scaled(instance.getLevel()).combine(others);
         return baseStats;
     }

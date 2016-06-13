@@ -15,7 +15,6 @@ import java.util.List;
  */
 public class WeaponPartBase {
     //Legendary Hilts
-//    public static final WeaponPartBase ascendentHilt    = new WeaponPartBase("Hilt of Ascension", "Ascendent", WeaponGenerator.SWORD_HILTS);
 //    public static final WeaponPartBase chosenHilt       = new WeaponPartBase("Hilt of the Chosen", "Chosen", WeaponGenerator.SWORD_HILTS);
 //    public static final WeaponPartBase cynicalHilt      = new WeaponPartBase("Hilt of the Cynics", "Cynical", WeaponGenerator.SWORD_HILTS);
 //    public static final WeaponPartBase defiantHilt      = new WeaponPartBase("Hilt of Defiance", "Defiant", WeaponGenerator.SWORD_HILTS);
@@ -36,7 +35,6 @@ public class WeaponPartBase {
 //    public static final WeaponPartBase zealousHilt      = new WeaponPartBase("Hilt of the Zealot", "Zealous", WeaponGenerator.SWORD_HILTS);
 
     //Legendary Grips
-//    public static final WeaponPartBase darkGrip   = new WeaponPartBase("Grip of Darkness", "Dark", WeaponGenerator.MELEE_HELMET_BASES);
 //    public static final WeaponPartBase dayGrip    = new WeaponPartBase("Grip of Daylight", "Day", WeaponGenerator.MELEE_HELMET_BASES);
 //    public static final WeaponPartBase deathGrip  = new WeaponPartBase("Grip of Death", "Death", WeaponGenerator.MELEE_HELMET_BASES);
 //    public static final WeaponPartBase dreamGrip  = new WeaponPartBase("Grip of Dreams", "Dream", WeaponGenerator.MELEE_HELMET_BASES);
@@ -66,7 +64,6 @@ public class WeaponPartBase {
 //    public static final WeaponPartBase ripperBlade   = new WeaponPartBase("Ripper Blade", "Ripper", WeaponGenerator.SWORD_BLADES);
 //    public static final WeaponPartBase runnerBlade   = new WeaponPartBase("Runner Blade", "Runner", WeaponGenerator.SWORD_BLADES);
 //    public static final WeaponPartBase screamerBlade = new WeaponPartBase("Screamer Blade", "Screamer", WeaponGenerator.SWORD_BLADES);
-//    public static final WeaponPartBase seekerBlade   = new WeaponPartBase("Seeker Blade", "Seeker", WeaponGenerator.SWORD_BLADES);
 //    public static final WeaponPartBase shockerBlade  = new WeaponPartBase("Shocker Blade", "Shocker", WeaponGenerator.SWORD_BLADES);
 //    public static final WeaponPartBase shredderBlade = new WeaponPartBase("Shredder Blade", "Shredder", WeaponGenerator.SWORD_BLADES);
 //    public static final WeaponPartBase singerBlade   = new WeaponPartBase("Singer Blade", "Singer", WeaponGenerator.SWORD_BLADES);

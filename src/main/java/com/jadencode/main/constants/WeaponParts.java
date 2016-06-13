@@ -1,10 +1,7 @@
 package com.jadencode.main.constants;
 
 import com.jadencode.main.TimeKeeper;
-import com.jadencode.main.generate.weapon.WeaponType;
-import com.jadencode.main.generate.weapon.WeaponPart;
-import com.jadencode.main.generate.weapon.WeaponPartBase;
-import com.jadencode.main.generate.weapon.WeaponPartType;
+import com.jadencode.main.generate.weapon.*;
 import com.jadencode.main.material.MaterialLibrary;
 
 import java.io.File;
@@ -21,6 +18,11 @@ import java.util.List;
 public class WeaponParts {
     private static final List<WeaponPartBase> WEAPON_PARTS = new ArrayList<>();
     private static final HashMap<WeaponPartType, List<WeaponPart>> PARTS_LISTS = new HashMap<>();
+
+    //Some legendary parts
+    public static final WeaponPart ascendentHilt = new WeaponPartLegendary("Hilt of Ascension", "Ascendent", 100F, PartTypes.PART_SWORD_HILT);
+    public static final WeaponPart darkGrip      = new WeaponPartLegendary("Grip of Darkness", "Dark", 100F, PartTypes.PART_SWORD_GRIP);
+    public static final WeaponPart seekerBlade   = new WeaponPartLegendary("Seeker Blade", "Seeker", 100F, PartTypes.PART_SWORD_BLADE);
 
     //Common Grips
     public static final WeaponPartBase heavyGrip = new WeaponPartBase("Heavy Grip", "Double", StatSets.GRIP_HEAVY, PartTypes.PART_SWORD_GRIP, MaterialLibrary.getMetalLibrary());
@@ -108,7 +110,7 @@ public class WeaponParts {
     public static void generateWeaponParts() {
         WeaponParts.getBaseParts()
                 .forEach(partBase -> partBase.getMaterials()
-                        .forEach(res -> new WeaponPart(partBase, res)));
+                        .forEach(res -> new WeaponPartBasic(partBase, res)));
     }
 
     public static List<WeaponPart> getPartsList(WeaponPartType type) {
@@ -160,11 +162,6 @@ public class WeaponParts {
         }
         for(WeaponPart part : parts) {
             String msg = String.format("%s, %s\n\t", part.getPartName(), part.getPartInfo());
-            if(part.hasBaseResource()) {
-                msg += part.getBaseResource().getName();
-            } else {
-                msg += "No Resource";
-            }
             writer.println(msg);
         }
         writer.close();

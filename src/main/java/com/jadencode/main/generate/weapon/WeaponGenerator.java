@@ -16,7 +16,7 @@ import java.util.Random;
 public class WeaponGenerator implements Generator<WeaponInstance> { //Generator<Sword> {
     @Override
     public WeaponInstance generate(Random r, int level) {
-        WeaponType weaponType = WeightedRandomFloat.getRandomWeightable(r, WeaponTypes.getWeaponTypes());
+        WeaponType weaponType = WeightedRandomFloat.getRandomItem(r, WeaponTypes.getWeaponTypes());
         return this.generate(r, level, weaponType);
     }
     public WeaponInstance generate(Random r, int level, WeaponType weaponType) {
@@ -24,7 +24,7 @@ public class WeaponGenerator implements Generator<WeaponInstance> { //Generator<
 
         for(WeaponPartType type : weaponType.getWeaponPartTypes()) {
             List<WeaponPart> parts = WeaponParts.getPartsList(type);
-            WeaponPart part = WeightedRandomFloat.getRandomWeightable(r, parts);
+            WeaponPart part = WeightedRandomFloat.getRandomItem(r, parts);
             WeaponPartInstance instance = new WeaponPartInstance(part, level);
             partInstances.put(type, instance);
         }

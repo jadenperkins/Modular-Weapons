@@ -1,0 +1,41 @@
+package com.jadencode.main.generate.weapon;
+
+
+import com.jadencode.main.constants.WeaponParts;
+import com.jadencode.main.stat.StatSet;
+import com.jadencode.main.material.MaterialResource;
+
+/**
+ * Created by Jaden on 5/28/2015.
+ */
+public class WeaponPartBasic extends WeaponPart {
+
+    private final String           partName;
+    private final String           nameMod;
+    private final String           partDescription;
+    private final StatSet          stats;
+
+    public WeaponPartBasic(WeaponPartBase part, MaterialResource resource) {
+        super(part.getWeight() * resource.getWeight(), part.getPartType());
+        this.partName = resource.getName() + " " + part.getPartName();
+        this.nameMod = part.getNameMod();
+        this.partDescription = String.format("A %s crafted from %s", part.getPartName(), resource.getName());
+        this.stats = part.modifyStats(resource);
+    }
+    @Override
+    public String getPartName() {
+        return this.partName;
+    }
+    @Override
+    public String getNameMod() {
+        return this.nameMod;
+    }
+    @Override
+    public String getPartInfo() {
+        return this.partDescription;
+    }
+    @Override
+    public StatSet getStats() {
+        return this.stats;
+    }
+}
