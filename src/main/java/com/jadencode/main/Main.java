@@ -1,5 +1,6 @@
 package com.jadencode.main;
 
+import com.jadencode.main.constants.MaterialTypes;
 import com.jadencode.main.constants.Materials;
 import com.jadencode.main.constants.Stats;
 import com.jadencode.main.constants.WeaponParts;

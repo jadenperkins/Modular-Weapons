@@ -54,12 +54,8 @@ public class Materials {
 
 
     public static void register(MaterialType type, Material material) {
-        if(MATERIALS.containsKey(type)) {
-            MATERIALS.get(type).add(material);
-        } else {
-            MATERIALS.put(type, new ArrayList<>());
-            MATERIALS.get(type).add(material);
-        }
+        if(!MATERIALS.containsKey(type)) MATERIALS.put(type, new ArrayList<>());
+        MATERIALS.get(type).add(material);
     }
     public static List<Material> getMaterials(MaterialType type) {
         return MATERIALS.getOrDefault(type, new ArrayList<>());
@@ -70,7 +66,7 @@ public class Materials {
             List<Material> baseMaterials = new ArrayList<>(getMaterials(type));
             for (Material material : baseMaterials) {
                 for (MaterialModifier modifier : MaterialModifiers.getModifiers(type)) {
-                    register(type, new MaterialResource(material, modifier));
+                    new MaterialResource(material, modifier);
                 }
             }
             System.out.println(String.format("Registered %d %s materials!", getMaterials(type).size(), type.getName()));
