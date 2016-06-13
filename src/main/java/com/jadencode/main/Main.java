@@ -95,18 +95,18 @@ public class Main {
         //Initialize all materials
         Materials.load();
 
-//        for(MaterialResource resource : MaterialLibrary.getMetalLibrary().getMaterialResources().values()) {
+//        for(MaterialModified resource : MaterialLibrary.getMetalLibrary().getMaterialResources().values()) {
 //            System.out.println(String.format("%s: %f, %f, %f", resource.getName(), resource.getStrengthMultiplier(), resource.getRangeMultiplier(), resource.getWeaknessMultiplier()));
 //        }
 
-//        List<MaterialResource> resources = new ArrayList<>();
+//        List<MaterialModified> resources = new ArrayList<>();
 //        resources.addAll(MaterialLibrary.getGemLibrary().getMaterialResources().values());
 //        resources.sort((a, b) -> {
 //            int c = Integer.compare(a.getMaterialLevel(), b.getMaterialLevel());
 //            return c == 0 ? a.getName().compareTo(b.getName()) : c;
 //        });
 //
-//        for(MaterialResource resource : resources) {
+//        for(MaterialModified resource : resources) {
 //            MaterialBase b = resource.getParent();
 //            System.out.println(resource.getName() + ": Level " + resource.getMaterialLevel());
 //        }
@@ -352,14 +352,14 @@ public class Main {
 //        }
 
 //        MaterialBase.initExotics();
-//        MaterialResource.init();
+//        MaterialModified.init();
 
 //        for(MaterialLibrary lib : MaterialLibrary.getLibraries()) {
-//            HashMap<String, MaterialResource> resources = lib.getMaterialResources();
+//            HashMap<String, MaterialModified> resources = lib.getMaterialResources();
 //            File main = new File("./colors/" + lib.getName());
 //            main.mkdir();
 //            for(String key : resources.keySet()) {
-//                MaterialResource res = resources.get(key);
+//                MaterialModified res = resources.get(key);
 //                String path;
 //
 //                if(res.getModifier().isNone())

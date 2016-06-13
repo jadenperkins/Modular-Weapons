@@ -2,8 +2,8 @@ package com.jadencode.main.item;
 
 
 import com.jadencode.main.TimeKeeper;
+import com.jadencode.main.material.MaterialModified;
 import com.jadencode.main.material.MaterialType;
-import com.jadencode.main.material.MaterialResource;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -29,7 +29,7 @@ public class ItemPartBase {
     private final String         partName;
     private final List<ItemPart> partList;
     private final String         nameMod;
-    private final List<MaterialResource> materials = new ArrayList<>();
+    private final List<MaterialModified> materials = new ArrayList<>();
     private final boolean usesMaterials;
     private final float   weight;
 
@@ -68,7 +68,7 @@ public class ItemPartBase {
         return nameMod;
     }
 
-    public List<MaterialResource> getMaterials() {
+    public List<MaterialModified> getMaterials() {
         return materials;
     }
 

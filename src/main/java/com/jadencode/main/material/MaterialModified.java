@@ -5,12 +5,12 @@ import java.awt.*;
 /**
  * Created by Jaden on 2/4/2015.
  */
-public class MaterialResource extends Material {
+public class MaterialModified extends Material {
 
-    public MaterialResource(String name, Color color, float weight, float multiplier, int level, MaterialType type) {
+    public MaterialModified(String name, Color color, float weight, float multiplier, int level, MaterialType type) {
         super(name, color, weight, multiplier, level, type);
     }
-    public MaterialResource(Material parent, MaterialModifier mod) {
+    public MaterialModified(Material parent, MaterialModifier mod) {
         this((mod.getName() + " " + parent.getName()).trim(), combineColors(parent.getColor(), mod.getColor()), parent.getWeight() * mod.getWeight(), parent.getMultiplier() * mod.getMod(), (int)(parent.getLevel() * mod.getLevel()), parent.getMaterialType());
     }
     private static Color combineColors(Color c1, Color c2) {

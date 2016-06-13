@@ -6,7 +6,7 @@ package com.jadencode.main.generate.armor;
 public class ArmorPart {/*implements Weightable {
 
     private final ArmorPartBase    baseArmorPart;
-    private final MaterialResource baseResource;
+    private final MaterialModified baseResource;
     private final String           partName;
     private final String           partDescription;
     private final float            weight;
@@ -15,7 +15,7 @@ public class ArmorPart {/*implements Weightable {
     private final float            blunt;
     private final float            mobility;
 
-    public ArmorPart(ArmorPartBase part, MaterialResource resource) {//}, StatSet stats) {
+    public ArmorPart(ArmorPartBase part, MaterialModified resource) {//}, StatSet stats) {
         this.baseArmorPart = part;
         this.baseResource = resource;
         this.partName = resource.getName() + " " + part.getPartName();
@@ -51,7 +51,7 @@ public class ArmorPart {/*implements Weightable {
     public boolean hasBaseResource() {
         return this.getBaseResource() != null;
     }
-    public MaterialResource getBaseResource() {
+    public MaterialModified getBaseResource() {
         return this.baseResource;
     }
 
@@ -87,8 +87,8 @@ public class ArmorPart {/*implements Weightable {
         for(ArmorPartBase partBase : ArmorPartBase.getBaseParts()) {
 
             if(partBase.usesMaterials()) {
-                List<MaterialResource> resourceList = partBase.getMaterials();
-                for(MaterialResource resource : resourceList) {
+                List<MaterialModified> resourceList = partBase.getMaterials();
+                for(MaterialModified resource : resourceList) {
                     ArmorPart part = new ArmorPart(partBase, resource);
                 }
             } else {

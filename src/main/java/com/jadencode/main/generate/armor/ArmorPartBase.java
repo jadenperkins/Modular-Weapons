@@ -1,7 +1,7 @@
 package com.jadencode.main.generate.armor;
 
+import com.jadencode.main.material.MaterialModified;
 import com.jadencode.main.material.MaterialType;
-import com.jadencode.main.material.MaterialResource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class ArmorPartBase {
     private final String          partName;
     private final List<ArmorPart> partList;
     private final String          nameMod;
-    private final List<MaterialResource> materials = new ArrayList<>();
+    private final List<MaterialModified> materials = new ArrayList<>();
     private final boolean usesMaterials;
     private final float   weight;
     private final float   slash;
@@ -79,7 +79,7 @@ public class ArmorPartBase {
         return nameMod;
     }
 
-    public List<MaterialResource> getMaterials() {
+    public List<MaterialModified> getMaterials() {
         return materials;
     }
 

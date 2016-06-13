@@ -5,7 +5,6 @@ import com.jadencode.main.constants.WeaponParts;
 import com.jadencode.main.material.Material;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.material.MaterialType;
-import com.jadencode.main.material.MaterialResource;
 
 import java.util.ArrayList;
 import java.util.Arrays;

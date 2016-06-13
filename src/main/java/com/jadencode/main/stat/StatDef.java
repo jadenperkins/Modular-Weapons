@@ -1,10 +1,8 @@
 package com.jadencode.main.stat;
 
 import com.jadencode.main.material.Material;
-import com.jadencode.main.material.MaterialResource;
 
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 /**
  * Created by gtrpl on 6/5/2016.

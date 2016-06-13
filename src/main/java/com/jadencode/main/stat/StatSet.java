@@ -1,13 +1,10 @@
 package com.jadencode.main.stat;
 
 import com.jadencode.main.material.Material;
-import com.jadencode.main.material.MaterialResource;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 /**
  * Created by Jaden on 9/17/2015.

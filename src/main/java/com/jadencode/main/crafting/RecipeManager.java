@@ -18,8 +18,8 @@ public class RecipeManager {
     public RecipeManager() {
 //        newRecipe(ItemPartBase.ore, 1, ItemPartBase.ingot, 1);
 //        GemLibrary lib = MaterialLibrary.getGemLibrary();
-//        MaterialResource rough = lib.getResource(GemLibrary.diamond, GemLibrary.rough);
-//        MaterialResource none = lib.getResource(GemLibrary.diamond, GemLibrary.none);
+//        MaterialModified rough = lib.getResource(GemLibrary.diamond, GemLibrary.rough);
+//        MaterialModified none = lib.getResource(GemLibrary.diamond, GemLibrary.none);
 //        ItemPart partRough = ItemPart.getItemPart(ItemPartBase.jewel, rough);
 //        ItemPart partNone = ItemPart.getItemPart(ItemPartBase.jewel, none);
 //        newRecipe(new ItemPartInstance(partNone, 1, 1), new ItemPartInstance(partRough, 1, 1));

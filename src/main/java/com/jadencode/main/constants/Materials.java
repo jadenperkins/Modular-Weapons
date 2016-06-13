@@ -1,8 +1,8 @@
 package com.jadencode.main.constants;
 
 import com.jadencode.main.material.Material;
+import com.jadencode.main.material.MaterialModified;
 import com.jadencode.main.material.MaterialModifier;
-import com.jadencode.main.material.MaterialResource;
 import com.jadencode.main.material.MaterialType;
 
 import java.util.ArrayList;
@@ -50,6 +50,17 @@ public class Materials {
 
 
 
+    public static final Material jade     = new Material("Jade", Colors.GEM_JADE, 128F, 1F, 1, MaterialTypes.MATERIAL_GEM);
+    public static final Material topaz    = new Material("Topaz", Colors.GEM_TOPAZ, 64F, 1F, 8, MaterialTypes.MATERIAL_GEM);
+    public static final Material garnet   = new Material("Garnet", Colors.GEM_GARNET, 32F, 1F, 15, MaterialTypes.MATERIAL_GEM);
+    public static final Material amethyst = new Material("Amethyst", Colors.GEM_AMETHYST, 16F, 1F, 22, MaterialTypes.MATERIAL_GEM);
+    public static final Material sapphire = new Material("Sapphire", Colors.GEM_SAPPHIRE, 8F, 1F, 29, MaterialTypes.MATERIAL_GEM);
+    public static final Material emerald  = new Material("Emerald", Colors.GEM_EMERALD, 4F, 1F, 36, MaterialTypes.MATERIAL_GEM);
+    public static final Material ruby     = new Material("Ruby", Colors.GEM_RUBY, 2F, 1F, 43, MaterialTypes.MATERIAL_GEM);
+    public static final Material diamond  = new Material("Diamond", Colors.GEM_DIAMOND, 1F, 1F, 50, MaterialTypes.MATERIAL_GEM);
+
+
+
 
 
 
@@ -66,7 +77,7 @@ public class Materials {
             List<Material> baseMaterials = new ArrayList<>(getMaterials(type));
             for (Material material : baseMaterials) {
                 for (MaterialModifier modifier : MaterialModifiers.getModifiers(type)) {
-                    new MaterialResource(material, modifier);
+                    new MaterialModified(material, modifier);
                 }
             }
             System.out.println(String.format("Registered %d %s materials!", getMaterials(type).size(), type.getName()));

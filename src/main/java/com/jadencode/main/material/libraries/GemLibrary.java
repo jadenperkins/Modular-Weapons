@@ -44,23 +44,6 @@ public class GemLibrary extends MaterialType {
 //    @Override
     public void loadMaterials() {
 
-//        this.jade = new MaterialBase(MaterialLibrary.getGemLibrary(), "Jade", Colors.GEM_JADE, 128F, 1);
-//        this.topaz    = new MaterialBase(MaterialLibrary.getGemLibrary(), "Topaz", Colors.GEM_TOPAZ, 64F, 8);
-//        this.garnet   = new MaterialBase(MaterialLibrary.getGemLibrary(), "Garnet", Colors.GEM_GARNET, 32F, 15);
-//        this.amethyst = new MaterialBase(MaterialLibrary.getGemLibrary(), "Amethyst", Colors.GEM_AMETHYST, 16F, 22);
-//        this.sapphire = new MaterialBase(MaterialLibrary.getGemLibrary(), "Sapphire", Colors.GEM_SAPPHIRE, 8F, 29);
-//        this.emerald  = new MaterialBase(MaterialLibrary.getGemLibrary(), "Emerald", Colors.GEM_EMERALD, 4F, 36);
-//        this.ruby     = new MaterialBase(MaterialLibrary.getGemLibrary(), "Ruby", Colors.GEM_RUBY, 2F, 43);
-//        this.diamond  = new MaterialBase(MaterialLibrary.getGemLibrary(), "Diamond", Colors.GEM_DIAMOND, 1F, 50);
-//
-//        this.none    = new MaterialModifier(MaterialLibrary.getGemLibrary(), "", null, 10F).setLevelMod(1F);
-//        this.dark    = new MaterialModifier(MaterialLibrary.getGemLibrary(), "Dark", Colors.GEM_MOD_DARK, 1F).setLevelMod(3F);
-//        this.rough   = new MaterialModifier(MaterialLibrary.getGemLibrary(), "Rough", Colors.GEM_MOD_ROUGH, 1F).setLevelMod(2F);
-//        this.vibrant = new MaterialModifier(MaterialLibrary.getGemLibrary(), "Vibrant", Colors.GEM_MOD_VIBRANT, 1F).setLevelMod(4F);
-//        this.faded   = new MaterialModifier(MaterialLibrary.getGemLibrary(), "Faded", Colors.GEM_MOD_FADED, 1F).setLevelMod(1.5F);
-//        this.dull    = new MaterialModifier(MaterialLibrary.getGemLibrary(), "Dull", Colors.GEM_MOD_DULL, 1F).setLevelMod(0.8F);
-
-
 //        for (String s1 : syllablesFirst) {
 //            for (String s2 : syllablesSecond) {
 //                String name = s1 + s2;

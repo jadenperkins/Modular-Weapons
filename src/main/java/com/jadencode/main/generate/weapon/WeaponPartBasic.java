@@ -1,10 +1,8 @@
 package com.jadencode.main.generate.weapon;
 
 
-import com.jadencode.main.constants.WeaponParts;
 import com.jadencode.main.material.Material;
 import com.jadencode.main.stat.StatSet;
-import com.jadencode.main.material.MaterialResource;
 
 /**
  * Created by Jaden on 5/28/2015.
