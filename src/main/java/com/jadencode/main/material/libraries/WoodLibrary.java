@@ -54,7 +54,7 @@ public class WoodLibrary extends MaterialType {
     private static final List<String> syllablesThird  = Arrays.asList("ta", "in", "or", "za");
 
     private WoodLibrary() {
-        super("Wood");
+        super("Wood", null);
     }
 
 //    @Override

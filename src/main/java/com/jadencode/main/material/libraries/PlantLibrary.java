@@ -38,7 +38,7 @@ public class PlantLibrary extends MaterialType {
     }
 
     public PlantLibrary() {
-        super("Fabric");
+        super("Fabric", null);
     }
 
 //    @Override

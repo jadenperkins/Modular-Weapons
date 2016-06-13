@@ -74,6 +74,7 @@ public class Materials {
 
     public static void load() {
         for (MaterialType type : MaterialTypes.getMaterialTypes()) {
+            type.generateExotics();
             List<Material> baseMaterials = new ArrayList<>(getMaterials(type));
             for (Material material : baseMaterials) {
                 for (MaterialModifier modifier : MaterialModifiers.getModifiers(type)) {
