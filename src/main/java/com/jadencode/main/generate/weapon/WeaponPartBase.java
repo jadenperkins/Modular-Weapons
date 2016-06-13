@@ -1,9 +1,10 @@
 package com.jadencode.main.generate.weapon;
 
+import com.jadencode.main.constants.Materials;
 import com.jadencode.main.constants.WeaponParts;
-import com.jadencode.main.constants.StatSets;
+import com.jadencode.main.material.Material;
 import com.jadencode.main.stat.StatSet;
-import com.jadencode.main.material.MaterialLibrary;
+import com.jadencode.main.material.MaterialType;
 import com.jadencode.main.material.MaterialResource;
 
 import java.util.ArrayList;
@@ -109,21 +110,21 @@ public class WeaponPartBase {
     private final WeaponPartType   partType;
     private final String           partName;
     private final String           nameMod;
-    private final List<MaterialResource> materials = new ArrayList<>();
+    private final List<Material> materials = new ArrayList<>();
     private final float   weight;
     private final StatSet statSet;
 
-    public WeaponPartBase(String name, String mod, float weight, StatSet stats, WeaponPartType type, MaterialLibrary... mats) {
+    public WeaponPartBase(String name, String mod, float weight, StatSet stats, WeaponPartType type, MaterialType... mats) {
         this.partName = name;
         this.nameMod = mod;
         this.weight = weight;
         this.partType = type;
 
         this.statSet = stats;
-        Arrays.stream(mats).forEach(lib -> this.materials.addAll(lib.getMaterialResources().values()));
+        Arrays.stream(mats).forEach(lib -> this.materials.addAll(Materials.getMaterials(lib)));
         WeaponParts.addBasePart(this);
     }
-    public WeaponPartBase(String name, String mod, StatSet stats, WeaponPartType type, MaterialLibrary... mats) {
+    public WeaponPartBase(String name, String mod, StatSet stats, WeaponPartType type, MaterialType... mats) {
         this(name, mod, 1F, stats, type, mats);
     }
     public float getWeight() {
@@ -142,14 +143,14 @@ public class WeaponPartBase {
         return nameMod;
     }
 
-    public List<MaterialResource> getMaterials() {
+    public List<Material> getMaterials() {
         return materials;
     }
 
     public StatSet getStatSet() {
         return statSet;
     }
-    public StatSet modifyStats(MaterialResource resource) {
+    public StatSet modifyStats(Material resource) {
         return this.getStatSet().modified(resource);
     }
     public StatSet scaleStats(WeaponPartInstance partInstance) {

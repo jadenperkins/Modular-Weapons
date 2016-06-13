@@ -1,7 +1,7 @@
 package com.jadencode.main.material.libraries;
 
-import com.jadencode.main.material.MaterialBase;
-import com.jadencode.main.material.MaterialLibrary;
+import com.jadencode.main.material.Material;
+import com.jadencode.main.material.MaterialType;
 import com.jadencode.main.material.MaterialModifier;
 
 import java.util.Arrays;
@@ -10,18 +10,18 @@ import java.util.List;
 /**
  * Created by Jaden on 6/8/2015.
  */
-public class GemLibrary extends MaterialLibrary {
+public class GemLibrary extends MaterialType {
 
     private static final GemLibrary instance = new GemLibrary();
 
-    public MaterialBase jade;
-    public MaterialBase topaz;
-    public MaterialBase garnet;
-    public MaterialBase amethyst;
-    public MaterialBase sapphire;
-    public MaterialBase emerald;
-    public MaterialBase ruby;
-    public MaterialBase diamond;
+    public Material jade;
+    public Material topaz;
+    public Material garnet;
+    public Material amethyst;
+    public Material sapphire;
+    public Material emerald;
+    public Material ruby;
+    public Material diamond;
 
     public MaterialModifier none;
     public MaterialModifier dark;
@@ -41,7 +41,7 @@ public class GemLibrary extends MaterialLibrary {
         return instance;
     }
 
-    @Override
+//    @Override
     public void loadMaterials() {
 
 //        this.jade = new MaterialBase(MaterialLibrary.getGemLibrary(), "Jade", Colors.GEM_JADE, 128F, 1);

@@ -16,7 +16,7 @@ public class RecipeManager {
     public static final RecipeManager instance = new RecipeManager();
 
     public RecipeManager() {
-        newRecipe(ItemPartBase.ore, 1, ItemPartBase.ingot, 1);
+//        newRecipe(ItemPartBase.ore, 1, ItemPartBase.ingot, 1);
 //        GemLibrary lib = MaterialLibrary.getGemLibrary();
 //        MaterialResource rough = lib.getResource(GemLibrary.diamond, GemLibrary.rough);
 //        MaterialResource none = lib.getResource(GemLibrary.diamond, GemLibrary.none);

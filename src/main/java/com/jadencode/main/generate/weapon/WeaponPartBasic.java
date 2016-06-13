@@ -2,6 +2,7 @@ package com.jadencode.main.generate.weapon;
 
 
 import com.jadencode.main.constants.WeaponParts;
+import com.jadencode.main.material.Material;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.material.MaterialResource;
 
@@ -15,7 +16,7 @@ public class WeaponPartBasic extends WeaponPart {
     private final String           partDescription;
     private final StatSet          stats;
 
-    public WeaponPartBasic(WeaponPartBase part, MaterialResource resource) {
+    public WeaponPartBasic(WeaponPartBase part, Material resource) {
         super(part.getWeight() * resource.getWeight(), part.getPartType());
         this.partName = resource.getName() + " " + part.getPartName();
         this.nameMod = part.getNameMod();

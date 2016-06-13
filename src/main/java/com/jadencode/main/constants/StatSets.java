@@ -1,8 +1,5 @@
 package com.jadencode.main.constants;
 
-import com.jadencode.main.generate.weapon.WeaponPartBase;
-import com.jadencode.main.material.MaterialLibrary;
-import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatSet;
 
 /**

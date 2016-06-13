@@ -1,5 +1,6 @@
 package com.jadencode.main.stat;
 
+import com.jadencode.main.material.Material;
 import com.jadencode.main.material.MaterialResource;
 
 import java.util.function.BiFunction;
@@ -40,7 +41,7 @@ public class StatDef<T> implements StatBase<T> {
         return this.combiner.apply(first, second);
     }
     @Override
-    public T modify(MaterialResource resource, T original) {
+    public T modify(Material resource, T original) {
         return this.modifier.apply(resource.getMultiplier(), original);
     }
 }

@@ -1,5 +1,6 @@
 package com.jadencode.main;
 
+import com.jadencode.main.constants.Materials;
 import com.jadencode.main.constants.Stats;
 import com.jadencode.main.constants.WeaponParts;
 import com.jadencode.main.generate.Generator;
@@ -16,7 +17,7 @@ import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.magic.SpellBase;
 import com.jadencode.main.magic.SpellObject;
-import com.jadencode.main.material.MaterialLibrary;
+import com.jadencode.main.material.MaterialType;
 import com.jadencode.main.nbt.CompressedStreamTools;
 import com.jadencode.main.nbt.NBTTagCompound;
 
@@ -91,7 +92,7 @@ public class Main {
 
     public static void main(String[] args) {
         //Initialize all materials
-        MaterialLibrary.init();
+        Materials.load();
 
 //        for(MaterialResource resource : MaterialLibrary.getMetalLibrary().getMaterialResources().values()) {
 //            System.out.println(String.format("%s: %f, %f, %f", resource.getName(), resource.getStrengthMultiplier(), resource.getRangeMultiplier(), resource.getWeaknessMultiplier()));
@@ -105,14 +106,14 @@ public class Main {
 //        });
 //
 //        for(MaterialResource resource : resources) {
-//            MaterialBase b = resource.getMaterialBase();
+//            MaterialBase b = resource.getParent();
 //            System.out.println(resource.getName() + ": Level " + resource.getMaterialLevel());
 //        }
 //        System.exit(0);
 
 
         //Create all item parts - work on this
-        ItemPart.generateItemParts();
+//        ItemPart.generateItemParts();
 
 //        TimeKeeper timer = new TimeKeeper();
 //        timer.start("Making recipes");
@@ -360,10 +361,10 @@ public class Main {
 //                MaterialResource res = resources.get(key);
 //                String path;
 //
-//                if(res.getMaterialModifier().isNone())
+//                if(res.getModifier().isNone())
 //                    path = main + "/Base";
 //                else
-//                    path = main + "/" + res.getMaterialModifier().getName();
+//                    path = main + "/" + res.getModifier().getName();
 //
 //                File dir = new File(path);
 //                if(!dir.exists())
@@ -371,7 +372,7 @@ public class Main {
 //
 //                BufferedImage img = new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR);
 //                img.setRGB(0, 0, res.getColor().getRGB());
-//                File out = new File(dir + "/" + res.getMaterialBase().getName() + ".png");
+//                File out = new File(dir + "/" + res.getParent().getName() + ".png");
 //                try {
 //                    out.createNewFile();
 //                    ImageIO.write(img, "PNG", out);

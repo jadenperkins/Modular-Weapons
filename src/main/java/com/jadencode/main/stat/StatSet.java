@@ -1,5 +1,6 @@
 package com.jadencode.main.stat;
 
+import com.jadencode.main.material.Material;
 import com.jadencode.main.material.MaterialResource;
 
 import java.util.Collection;
@@ -51,7 +52,7 @@ public class StatSet {
     public <T> StatSet mod(StatBase<T> stat, T v, BiFunction<T, T, T> modifier) {
         return this.add(stat, modifier.apply(this.get(stat), v));
     }
-    public StatSet modified(MaterialResource resource) {
+    public StatSet modified(Material resource) {
         StatSet ret = this.copy();
         this.getStatsRaw().keySet().forEach(stat -> ret.add(stat, stat.modify(resource, ret.get(stat))));
         return ret;
