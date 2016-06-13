@@ -20,7 +20,7 @@ public class WeaponParts {
     private static final HashMap<WeaponPartType, List<WeaponPart>> PARTS_LISTS = new HashMap<>();
 
     //Some legendary parts
-    public static final WeaponPart ascendentHilt = new WeaponPartLegendary("Hilt of Ascension", "Ascendent", 100F, PartTypes.PART_SWORD_HILT);
+    public static final WeaponPart ascendantHilt = new WeaponPartLegendary("Hilt of Ascension", "Ascendant", 100F, PartTypes.PART_SWORD_HILT);
     public static final WeaponPart darkGrip      = new WeaponPartLegendary("Grip of Darkness", "Dark", 100F, PartTypes.PART_SWORD_GRIP);
     public static final WeaponPart seekerBlade   = new WeaponPartLegendary("Seeker Blade", "Seeker", 100F, PartTypes.PART_SWORD_BLADE);
 
