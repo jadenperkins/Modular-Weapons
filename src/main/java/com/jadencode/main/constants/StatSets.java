@@ -34,6 +34,12 @@ public class StatSets {
             .add(Stats.RANGE, 50F)
             .add(Stats.DRAW_TIME, 0F);
 
+    public static final StatSet BASE_CROSSBOW = new StatSet()
+            .add(Stats.DAMAGE_BLUNT, 10F)
+            .add(Stats.ATTACK_TIME, 0F)
+            .add(Stats.RANGE, 50F)
+            .add(Stats.DRAW_TIME, 0F);
+
     //Sword grips
     public static final StatSet GRIP_HEAVY = new StatSet()
             .add(Stats.DAMAGE_SLASH, 10F)
@@ -178,5 +184,42 @@ public class StatSets {
             .add(Stats.RANGE, 30F)
             .add(Stats.DRAW_TIME, 1F)
             .add(Stats.DAMAGE_BLUNT, 5F)
+            .add(Stats.ATTACK_TIME, 0.5F);
+
+    //Crossbow Strings
+    public static final StatSet STRING_HEAVY_CBOW = new StatSet()
+            .add(Stats.RANGE, 70F)
+            .add(Stats.DRAW_TIME, 2.5F);
+    public static final StatSet STRING_LIGHT_CBOW = new StatSet()
+            .add(Stats.RANGE, 35F)
+            .add(Stats.DRAW_TIME, 1.5F);
+
+    //Crossbow Limbs
+    public static final StatSet LIMBS_LIGHT_CBOW = new StatSet()
+            .add(Stats.RANGE, 20F)
+            .add(Stats.DRAW_TIME, 1F)
+            .add(Stats.DAMAGE_BLUNT, 10F)
+            .add(Stats.ATTACK_TIME, 0.5F);
+    public static final StatSet LIMBS_HEAVY_CBOW = new StatSet()
+            .add(Stats.RANGE, 40F)
+            .add(Stats.DRAW_TIME, 2F)
+            .add(Stats.DAMAGE_BLUNT, 20F)
+            .add(Stats.ATTACK_TIME, 1F);
+
+    //Crossbow Stocks
+    public static final StatSet STOCK_RAPID_CBOW = new StatSet()
+            .add(Stats.RANGE, 20F)
+            .add(Stats.DRAW_TIME, 1F)
+            .add(Stats.DAMAGE_BLUNT, 10F)
+            .add(Stats.ATTACK_TIME, 0.5F);
+    public static final StatSet STOCK_ACCURATE_CBOW = new StatSet()
+            .add(Stats.RANGE, 50F)
+            .add(Stats.DRAW_TIME, 2F)
+            .add(Stats.DAMAGE_BLUNT, 10F)
+            .add(Stats.ATTACK_TIME, 1F);
+    public static final StatSet STOCK_BALANCED_CBOW = new StatSet()
+            .add(Stats.RANGE, 35F)
+            .add(Stats.DRAW_TIME, 1.5F)
+            .add(Stats.DAMAGE_BLUNT, 10F)
             .add(Stats.ATTACK_TIME, 0.5F);
 }

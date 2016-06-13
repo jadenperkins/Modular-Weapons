@@ -97,19 +97,6 @@ public class WeaponPartBase {
 //    //Common Staff Heads
 //    public static final WeaponPartBase focusingCrystal = new WeaponPartBase("Focusing Crystal", "Magic", WeaponGenerator.STAFF_HEADS, MaterialLibrary.getGemLibrary());
 //
-//    //Common Crossbow Stocks
-//    public static final WeaponPartBase accurateStock = new WeaponPartBase("Accurate Stock", "Accurate", WeaponGenerator.CROSSBOW_STOCKS, MaterialLibrary.getWoodLibrary());
-//    public static final WeaponPartBase balancedStock = new WeaponPartBase("Balanced Stock", "Balanced", WeaponGenerator.CROSSBOW_STOCKS, MaterialLibrary.getWoodLibrary());
-//    public static final WeaponPartBase rapidStock    = new WeaponPartBase("Rapid Stock", "Rapid", WeaponGenerator.CROSSBOW_STOCKS, MaterialLibrary.getWoodLibrary());
-//
-//    //Common Crossbow Limbs
-//    public static final WeaponPartBase shortCrossbowLimbs = new WeaponPartBase("Short Limbs", "Short Crossbow", WeaponGenerator.CROSSBOW_LIMBS, MaterialLibrary.getWoodLibrary(), MaterialLibrary.getMetalLibrary());
-//    public static final WeaponPartBase longCrossbowLimbs  = new WeaponPartBase("Long Limbs", "Long Crossbow", WeaponGenerator.CROSSBOW_LIMBS, MaterialLibrary.getWoodLibrary(), MaterialLibrary.getMetalLibrary());
-//
-//    //Common Crossbow Strings
-//    public static final WeaponPartBase heavyCrossbowString = new WeaponPartBase("Heavy Crossbow String", "Heavy", WeaponGenerator.CROSSBOW_STRINGS, MaterialLibrary.getPlantLibrary());
-//    public static final WeaponPartBase lightCrossbowString = new WeaponPartBase("Light Crossbow String", "Light", WeaponGenerator.CROSSBOW_STRINGS, MaterialLibrary.getPlantLibrary());
-//
 //    //Common Bolt Heads
 //    public static final WeaponPartBase heavyBoltTips = new WeaponPartBase("Heavy Bolt Tips", "Heavy", WeaponGenerator.BOLT_HEADS, MaterialLibrary.getMetalLibrary());
 //    public static final WeaponPartBase lightBoltTips = new WeaponPartBase("Light Bolt Tips", "Light", WeaponGenerator.BOLT_HEADS, MaterialLibrary.getMetalLibrary());
