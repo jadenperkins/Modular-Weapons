@@ -2,14 +2,14 @@ package com.jadencode.main.magic;
 
 import com.jadencode.main.util.RandomUtil;
 import com.jadencode.main.util.RangeObject;
-import com.jadencode.main.util.Weightable;
+import com.jadencode.main.util.WeightedItem;
 
 import java.util.*;
 
 /**
  * Created by Jaden on 2/9/2015.
  */
-public class Element implements Weightable {
+public class Element implements WeightedItem {
 
     private static final HashMap<String, Element> elements = new HashMap<>();
 

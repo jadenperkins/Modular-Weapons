@@ -3,7 +3,7 @@ package com.jadencode.main.util;
 /**
  * Created by Jaden on 7/3/2014.
  */
-public class WeightedRandomObject<T> implements Weightable {
+public class WeightedRandomObject<T> implements WeightedItem {
     public float itemWeight;
     public T theObject;
 

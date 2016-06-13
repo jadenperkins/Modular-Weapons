@@ -2,7 +2,7 @@ package com.jadencode.main.item;
 
 import com.jadencode.main.StackMap;
 import com.jadencode.main.material.MaterialResource;
-import com.jadencode.main.util.Weightable;
+import com.jadencode.main.util.WeightedItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Jaden on 6/16/2015.
  */
-public class ItemPart implements Weightable {
+public class ItemPart implements WeightedItem {
 
     public static final String KEY_INGOTS = "ingots";
     public static final String KEY_JEWELS = "jewels";

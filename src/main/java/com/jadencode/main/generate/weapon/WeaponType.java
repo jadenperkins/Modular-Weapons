@@ -2,7 +2,7 @@ package com.jadencode.main.generate.weapon;
 
 import com.jadencode.main.constants.WeaponTypes;
 import com.jadencode.main.stat.StatSet;
-import com.jadencode.main.util.Weightable;
+import com.jadencode.main.util.WeightedItem;
 
 import java.util.List;
 import java.util.function.Function;
@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Jaden on 5/28/2015.
  */
-public class WeaponType implements Weightable {
+public class WeaponType implements WeightedItem {
 //    public static final  WeaponType       WEAPON_CLASS_HAMMER   = new WeaponType("Hammer", WeaponType.mapParts(
 //            WeaponGenerator.HAMMER_HANDLES_KEY, WeaponGenerator.HAMMER_HEADS_KEY),
 //            w -> {

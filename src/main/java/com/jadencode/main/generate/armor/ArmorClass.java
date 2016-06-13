@@ -1,6 +1,6 @@
 package com.jadencode.main.generate.armor;
 
-import com.jadencode.main.util.Weightable;
+import com.jadencode.main.util.WeightedItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Jaden on 5/28/2015.
  */
-public class ArmorClass implements Weightable {
+public class ArmorClass implements WeightedItem {
 
     private static final List<ArmorClass> ARMOR_CLASSES = new ArrayList<>();
 
