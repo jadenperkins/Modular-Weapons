@@ -93,6 +93,7 @@ public class Main {
         //Initialize all materials
         MaterialLibrary.init();
 
+
 //        for(MaterialResource resource : MaterialLibrary.getMetalLibrary().getMaterialResources().values()) {
 //            System.out.println(String.format("%s: %f, %f, %f", resource.getName(), resource.getStrengthMultiplier(), resource.getRangeMultiplier(), resource.getWeaknessMultiplier()));
 //        }
