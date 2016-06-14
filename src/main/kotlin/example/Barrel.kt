@@ -18,11 +18,11 @@ class Barrel : Part("Barrel") {
     init {
         joints.addAll(arrayOf(jointSilencer))
 
-        attachmentSilencer.stats.addVal(StatBase.SILENCE, 2)
+        attachmentSilencer.stats.add(StatBase.SILENCE, 2)
 
-        this.stats.addVal(StatBase.ACCURACY, 3.5)
-        this.stats.addVal(StatBase.SPEED, -1.5)
-        this.stats.addVal(StatBase.SILENCE, 1)
+        this.stats.add(StatBase.ACCURACY, 3.5)
+        this.stats.add(StatBase.SPEED, -1.5)
+        this.stats.add(StatBase.SILENCE, 1)
 
         addAttachment(jointSilencer, attachmentSilencer)
     }

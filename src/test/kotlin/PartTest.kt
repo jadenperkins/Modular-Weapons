@@ -24,10 +24,10 @@ class PartTest : Spek({
         val attachmentRight = Part("Right")
         val attachmentBottom = Part("Bottom")
 
-        attachmentTop.stats.addVal(StatBase.ACCURACY, 1.0)
-        attachmentLeft.stats.addVal(StatBase.ACCURACY, 1.0)
-        attachmentRight.stats.addVal(StatBase.SPEED, 3.0)
-        attachmentBottom.stats.addVal(StatBase.SILENCE, 4)
+        attachmentTop.stats.add(StatBase.ACCURACY, 1.0)
+        attachmentLeft.stats.add(StatBase.ACCURACY, 1.0)
+        attachmentRight.stats.add(StatBase.SPEED, 3.0)
+        attachmentBottom.stats.add(StatBase.SILENCE, 4)
 
         testPart.joints.addAll(arrayOf(jointTop, jointLeft, jointRight, jointBottom))
         testPart.addAttachment(jointTop, attachmentTop)
