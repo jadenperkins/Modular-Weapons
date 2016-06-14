@@ -49,7 +49,6 @@ public class MaterialTypes {
             return ret;
         };
     }
-
     public static void register(MaterialType type) {
         MATERIAL_TYPES.add(type);
     }
