@@ -13,8 +13,8 @@ class StatTest : Spek({
 
         val statSet = StatSet()
 
-        statSet.addVal(StatBase.SPEED, 2.0)
-        statSet.addVal(StatBase.SILENCE, 4)
+        statSet.add(StatBase.SPEED, 2.0)
+        statSet.add(StatBase.SILENCE, 4)
 
         it("should be able to contain a map of stat types and the stat values") {
             assertTrue(statSet[StatBase.SPEED] is Double)
@@ -25,8 +25,8 @@ class StatTest : Spek({
 
         it ("should be able to combine stat sets, in a non-mutative way") {
             val statSet2 = StatSet()
-            statSet2.addVal(StatBase.SPEED, 3.0)
-            statSet2.addVal(StatBase.SILENCE, 5)
+            statSet2.add(StatBase.SPEED, 3.0)
+            statSet2.add(StatBase.SILENCE, 5)
 
             val out = statSet.combine(statSet2)
 
@@ -38,6 +38,21 @@ class StatTest : Spek({
             assertEquals(statSet2[StatBase.SILENCE], 5)
             assertEquals(out[StatBase.SPEED], 5.0)
             assertEquals(out[StatBase.SILENCE], 9)
+        }
+
+        it ("should be able to modify other stats of the same type") {
+            statSet.add(StatBase.POWER, 1.0)
+            statSet.add(StatBase.SPELL_POWER, 3.0)
+
+            assertEquals(statSet.getModifiedValue(StatBase.POWER), 3.0)
+        }
+
+        it ("should be able to follow modifier priority") {
+            statSet.add(StatBase.POWER, 2.0)
+            statSet.add(StatBase.ACCURACY, 2.0)
+            statSet.add(StatBase.SPELL_POWER, 3.0)
+
+            assertEquals(statSet.getModifiedValue(StatBase.POWER), 7.0)
         }
     }
 })
