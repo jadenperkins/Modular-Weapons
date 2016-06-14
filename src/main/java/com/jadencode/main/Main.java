@@ -94,7 +94,6 @@ public class Main {
     public static void main(String[] args) {
         //Initialize all materials
         Materials.load();
-
 //        for(MaterialModified resource : MaterialLibrary.getMetalLibrary().getMaterialResources().values()) {
 //            System.out.println(String.format("%s: %f, %f, %f", resource.getName(), resource.getStrengthMultiplier(), resource.getRangeMultiplier(), resource.getWeaknessMultiplier()));
 //        }
