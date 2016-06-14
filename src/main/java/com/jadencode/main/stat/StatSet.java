@@ -1,9 +1,10 @@
 package com.jadencode.main.stat;
 
+import com.jadencode.main.material.Material;
+
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Objects;
-import java.util.function.Function;
+import java.util.function.BiFunction;
 
 /**
  * Created by Jaden on 9/17/2015.
@@ -42,11 +43,15 @@ public class StatSet {
     }
     public StatSet combine(Collection<StatSet> others) {
         StatSet ret = this.copy();
-        for(StatBase stat : this.getStatsRaw().keySet()) {
-            for(StatSet other : others) {
-                ret.add(stat, stat.combine(ret.get(stat), other.get(stat)));
-            }
-        }
+        this.getStatsRaw().keySet().forEach(stat -> others.forEach(other -> ret.add(stat, stat.combine(ret.get(stat), other.get(stat)))));
+        return ret;
+    }
+    public <T> StatSet mod(StatBase<T> stat, T v, BiFunction<T, T, T> modifier) {
+        return this.add(stat, modifier.apply(this.get(stat), v));
+    }
+    public StatSet modified(Material resource) {
+        StatSet ret = this.copy();
+        this.getStatsRaw().keySet().forEach(stat -> ret.add(stat, stat.modify(resource, ret.get(stat))));
         return ret;
     }
 }

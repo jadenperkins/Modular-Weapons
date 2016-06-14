@@ -34,7 +34,7 @@ public class ArmorGenerator implements Generator<ArmorInstance> { //Generator<Sw
 
     @Override
     public ArmorInstance generate(Random r, int level) {
-        ArmorClass armorClass = WeightedRandomFloat.getRandomWeightable(r, ArmorClass.getArmorClasses());
+        ArmorClass armorClass = WeightedRandomFloat.getRandomItem(r, ArmorClass.getArmorClasses());
         return this.generate(r, level, armorClass);
     }
     public ArmorInstance generate(Random r, int level, ArmorClass armorClass) {
@@ -43,7 +43,7 @@ public class ArmorGenerator implements Generator<ArmorInstance> { //Generator<Sw
 
         for (String key : partMap.keySet()) {
             List<ArmorPart> parts = partMap.get(key);
-            ArmorPart part = null;//WeightedRandomFloat.getRandomWeightable(r, parts);
+            ArmorPart part = null;//WeightedRandomFloat.getRandomItem(r, parts);
             ArmorPartInstance instance = new ArmorPartInstance(part, level);
             partInstances.put(key, instance);
         }
