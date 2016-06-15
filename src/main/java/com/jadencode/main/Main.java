@@ -1,5 +1,9 @@
 package com.jadencode.main;
 
+import com.jadencode.main.constants.MaterialTypes;
+import com.jadencode.main.constants.Materials;
+import com.jadencode.main.constants.Stats;
+import com.jadencode.main.constants.WeaponParts;
 import com.jadencode.main.generate.Generator;
 import com.jadencode.main.generate.character.Actor;
 import com.jadencode.main.generate.character.Settlement;
@@ -9,21 +13,19 @@ import com.jadencode.main.generate.character.viking.VikingCharacterGenerator;
 import com.jadencode.main.generate.character.viking.VikingSettlementGenerator;
 import com.jadencode.main.generate.weapon.WeaponGenerator;
 import com.jadencode.main.generate.weapon.WeaponInstance;
-import com.jadencode.main.generate.weapon.WeaponPart;
 import com.jadencode.main.item.ItemPart;
 import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.magic.SpellBase;
 import com.jadencode.main.magic.SpellObject;
-import com.jadencode.main.material.MaterialLibrary;
+import com.jadencode.main.material.MaterialType;
 import com.jadencode.main.nbt.CompressedStreamTools;
 import com.jadencode.main.nbt.NBTTagCompound;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Jaden on 1/19/2015.
@@ -91,29 +93,28 @@ public class Main {
 
     public static void main(String[] args) {
         //Initialize all materials
-        MaterialLibrary.init();
+        Materials.load();
 
-
-//        for(MaterialResource resource : MaterialLibrary.getMetalLibrary().getMaterialResources().values()) {
+//        for(MaterialModified resource : MaterialLibrary.getMetalLibrary().getMaterialResources().values()) {
 //            System.out.println(String.format("%s: %f, %f, %f", resource.getName(), resource.getStrengthMultiplier(), resource.getRangeMultiplier(), resource.getWeaknessMultiplier()));
 //        }
 
-//        List<MaterialResource> resources = new ArrayList<>();
+//        List<MaterialModified> resources = new ArrayList<>();
 //        resources.addAll(MaterialLibrary.getGemLibrary().getMaterialResources().values());
 //        resources.sort((a, b) -> {
 //            int c = Integer.compare(a.getMaterialLevel(), b.getMaterialLevel());
 //            return c == 0 ? a.getName().compareTo(b.getName()) : c;
 //        });
 //
-//        for(MaterialResource resource : resources) {
-//            MaterialBase b = resource.getMaterialBase();
+//        for(MaterialModified resource : resources) {
+//            MaterialBase b = resource.getParent();
 //            System.out.println(resource.getName() + ": Level " + resource.getMaterialLevel());
 //        }
 //        System.exit(0);
 
 
         //Create all item parts - work on this
-        ItemPart.generateItemParts();
+//        ItemPart.generateItemParts();
 
 //        TimeKeeper timer = new TimeKeeper();
 //        timer.start("Making recipes");
@@ -138,25 +139,28 @@ public class Main {
 //        System.out.println(parts.size() + " parts");
 
         //Create all weapon parts
-        WeaponPart.generateWeaponParts();
+        WeaponParts.generateWeaponParts();
+
 //        ArmorPart.generateArmorParts();
 
         WeaponInstance weap = new WeaponGenerator().generate(theWorld.getRNG(), 1);
         StatSet s = weap.getStatSet();
-        System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f", weap.getDisplayName(), s.get(StatBase.DAMAGE_SLASH), s.get(StatBase.DAMAGE_PIERCE), s.get(StatBase.DAMAGE_BLUNT)));
+        Set<StatBase> base = weap.getWeaponType().getStatSet().getStatsRaw().keySet();
 
-        System.out.println("\t" + weap.getDisplayInfo());
+        System.out.println(weap.getDisplayName());
+        base.forEach(stat -> System.out.println(String.format("\t%s: %s", stat.getStatName(), s.get(stat).toString())));
+
+        System.out.println("\t\t" + weap.getDisplayInfo());
 
 
         //291 / 89
-
-        WeaponInstance scaled = weap.scaledInstance(20);
+        WeaponInstance scaled = weap.scaled(20);
         StatSet s1 = scaled.getStatSet();
-        System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f", scaled.getDisplayName(), s1.get(StatBase.DAMAGE_SLASH), s1.get(StatBase.DAMAGE_PIERCE), s1.get(StatBase.DAMAGE_BLUNT)));
+        System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f", scaled.getDisplayName(), s1.get(Stats.DAMAGE_SLASH), s1.get(Stats.DAMAGE_PIERCE), s1.get(Stats.DAMAGE_BLUNT)));
 
 //        for(WeaponPartInstance part : weap.getWeaponParts().values()) {
-//            for(String key : part.getStatSet().getFloatKeys()) {
-//                System.out.println(String.format("%s = %f", key, part.getStatSet().getFloat(key)));
+//            for(String key : part.getStats().getFloatKeys()) {
+//                System.out.println(String.format("%s = %f", key, part.getStats().getFloat(key)));
 //            }
 //        }
 
@@ -348,20 +352,20 @@ public class Main {
 //        }
 
 //        MaterialBase.initExotics();
-//        MaterialResource.init();
+//        MaterialModified.init();
 
 //        for(MaterialLibrary lib : MaterialLibrary.getLibraries()) {
-//            HashMap<String, MaterialResource> resources = lib.getMaterialResources();
+//            HashMap<String, MaterialModified> resources = lib.getMaterialResources();
 //            File main = new File("./colors/" + lib.getName());
 //            main.mkdir();
 //            for(String key : resources.keySet()) {
-//                MaterialResource res = resources.get(key);
+//                MaterialModified res = resources.get(key);
 //                String path;
 //
-//                if(res.getMaterialModifier().isNone())
+//                if(res.getModifier().isNone())
 //                    path = main + "/Base";
 //                else
-//                    path = main + "/" + res.getMaterialModifier().getName();
+//                    path = main + "/" + res.getModifier().getName();
 //
 //                File dir = new File(path);
 //                if(!dir.exists())
@@ -369,7 +373,7 @@ public class Main {
 //
 //                BufferedImage img = new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR);
 //                img.setRGB(0, 0, res.getColor().getRGB());
-//                File out = new File(dir + "/" + res.getMaterialBase().getName() + ".png");
+//                File out = new File(dir + "/" + res.getParent().getName() + ".png");
 //                try {
 //                    out.createNewFile();
 //                    ImageIO.write(img, "PNG", out);

@@ -2,8 +2,8 @@ package com.jadencode.main.item;
 
 
 import com.jadencode.main.TimeKeeper;
-import com.jadencode.main.material.MaterialLibrary;
-import com.jadencode.main.material.MaterialResource;
+import com.jadencode.main.material.MaterialModified;
+import com.jadencode.main.material.MaterialType;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -19,31 +19,31 @@ public class ItemPartBase {
 
     private static final List<ItemPartBase> ITEM_PARTS = new ArrayList<>();
 
-    public static final ItemPartBase ingot = new ItemPartBase("Ingot", "Ingot", ItemPart.INGOTS, MaterialLibrary.getMetalLibrary());
-    public static final ItemPartBase jewel = new ItemPartBase("Jewel", "Jewel", ItemPart.JEWELS, MaterialLibrary.getGemLibrary());
-    public static final ItemPartBase ore   = new ItemPartBase("Ore", "Ore", ItemPart.ORES, MaterialLibrary.getMetalLibrary());
-    public static final ItemPartBase log   = new ItemPartBase("Log", "Log", ItemPart.LOGS, MaterialLibrary.getWoodLibrary());
-    public static final ItemPartBase fiber = new ItemPartBase("Plant Fiber", "Plant Fiber", ItemPart.FIBERS, MaterialLibrary.getPlantLibrary());
-    public static final ItemPartBase coin  = new ItemPartBase("Coin", "Coin", ItemPart.MISC);
+//    public static final ItemPartBase ingot = new ItemPartBase("Ingot", "Ingot", ItemPart.INGOTS, MaterialType.getMetalLibrary());
+//    public static final ItemPartBase jewel = new ItemPartBase("Jewel", "Jewel", ItemPart.JEWELS, MaterialType.getGemLibrary());
+//    public static final ItemPartBase ore   = new ItemPartBase("Ore", "Ore", ItemPart.ORES, MaterialType.getMetalLibrary());
+//    public static final ItemPartBase log   = new ItemPartBase("Log", "Log", ItemPart.LOGS, MaterialType.getWoodLibrary());
+//    public static final ItemPartBase fiber = new ItemPartBase("Plant Fiber", "Plant Fiber", ItemPart.FIBERS, MaterialType.getPlantLibrary());
+//    public static final ItemPartBase coin  = new ItemPartBase("Coin", "Coin", ItemPart.MISC);
 
     private final String         partName;
     private final List<ItemPart> partList;
     private final String         nameMod;
-    private final List<MaterialResource> materials = new ArrayList<>();
+    private final List<MaterialModified> materials = new ArrayList<>();
     private final boolean usesMaterials;
     private final float   weight;
 
-    public ItemPartBase(String name, String mod, List<ItemPart> list, MaterialLibrary... mats) {
+    public ItemPartBase(String name, String mod, List<ItemPart> list, MaterialType... mats) {
         this(name, mod, 1F, list, mats);
     }
 
-    public ItemPartBase(String name, String mod, float weight, List<ItemPart> list, MaterialLibrary... mats) {
+    public ItemPartBase(String name, String mod, float weight, List<ItemPart> list, MaterialType... mats) {
         this.partName = name;
         this.nameMod = mod;
         this.weight = weight;
         this.partList = list;
-        for (MaterialLibrary lib : mats) {
-            this.materials.addAll(lib.getMaterialResources().values());
+        for (MaterialType lib : mats) {
+//            this.materials.addAll(lib.getMaterialResources().values());
         }
         this.usesMaterials = !this.materials.isEmpty();
         ITEM_PARTS.add(this);
@@ -68,7 +68,7 @@ public class ItemPartBase {
         return nameMod;
     }
 
-    public List<MaterialResource> getMaterials() {
+    public List<MaterialModified> getMaterials() {
         return materials;
     }
 

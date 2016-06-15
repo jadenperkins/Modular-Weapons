@@ -1,8 +1,8 @@
 package com.jadencode.main.item;
 
 import com.jadencode.main.StackMap;
-import com.jadencode.main.material.MaterialResource;
-import com.jadencode.main.util.Weightable;
+import com.jadencode.main.material.MaterialModified;
+import com.jadencode.main.util.WeightedItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Jaden on 6/16/2015.
  */
-public class ItemPart implements Weightable {
+public class ItemPart implements WeightedItem {
 
     public static final String KEY_INGOTS = "ingots";
     public static final String KEY_JEWELS = "jewels";
@@ -22,8 +22,8 @@ public class ItemPart implements Weightable {
 
     private static final HashMap<String, List<ItemPart>>                    itemPartsLists = new HashMap<>();
     private static final HashMap<ItemPartBase, List<ItemPart>>              mappedParts    = new HashMap<>();
-    private static final HashMap<MaterialResource, List<ItemPart>>          resourcedParts = new HashMap<>();
-    private static final StackMap<ItemPartBase, MaterialResource, ItemPart> stackedParts   = new StackMap<>();
+    private static final HashMap<MaterialModified, List<ItemPart>>          resourcedParts = new HashMap<>();
+    private static final StackMap<ItemPartBase, MaterialModified, ItemPart> stackedParts   = new StackMap<>();
 
     public static final List<ItemPart> MISC   = getItemParts(KEY_MISC);
     public static final List<ItemPart> INGOTS = getItemParts(KEY_INGOTS);
@@ -33,12 +33,12 @@ public class ItemPart implements Weightable {
     public static final List<ItemPart> FIBERS = getItemParts(KEY_FIBERS);
 
     private final ItemPartBase     baseItemPart;
-    private final MaterialResource baseResource;
+    private final MaterialModified baseResource;
     private final String           partName;
     private final String           partDescription;
     private final float            weight;
 
-    public ItemPart(ItemPartBase part, MaterialResource resource) {
+    public ItemPart(ItemPartBase part, MaterialModified resource) {
         this.baseItemPart = part;
         this.baseResource = resource;
         this.partName = resource.getName() + " " + part.getPartName();
@@ -77,14 +77,14 @@ public class ItemPart implements Weightable {
         List<ItemPart> parts = mappedParts.get(base);
         return parts;
     }
-    /**Get all ItemPart instances that use res as the MaterialResource*/
-    public static List<ItemPart> getItemParts(MaterialResource res) {
+    /**Get all ItemPart instances that use res as the MaterialModified*/
+    public static List<ItemPart> getItemParts(MaterialModified res) {
         List<ItemPart> parts = resourcedParts.get(res);
         return parts;
     }
-    /**Get an ItemPart instance that uses base as the ItemPartBase and res as the MaterialResource. If res is null,
+    /**Get an ItemPart instance that uses base as the ItemPartBase and res as the MaterialModified. If res is null,
      * it returns the only ItemPart instance that uses ItemPartBase as the base*/
-    public static ItemPart getItemPart(ItemPartBase base, MaterialResource res) {
+    public static ItemPart getItemPart(ItemPartBase base, MaterialModified res) {
         if(res == null) {
             System.out.println(String.format("Base item is %s, resource is %s", base.getPartName(), res.getName()));
             return getItemParts(base).get(0);
@@ -113,7 +113,7 @@ public class ItemPart implements Weightable {
     public boolean hasBaseResource() {
         return this.getBaseResource() != null;
     }
-    public MaterialResource getBaseResource() {
+    public MaterialModified getBaseResource() {
         return this.baseResource;
     }
 
@@ -127,8 +127,8 @@ public class ItemPart implements Weightable {
     public static void generateItemParts() {
         for(ItemPartBase partBase : ItemPartBase.getBaseParts()) {
             if(partBase.usesMaterials()) {
-                List<MaterialResource> resourceList = partBase.getMaterials();
-                for(MaterialResource resource : resourceList) {
+                List<MaterialModified> resourceList = partBase.getMaterials();
+                for(MaterialModified resource : resourceList) {
 //                    StatSet stats = baseStats.copyOf(resource.getStatModifier(), resource.getStatShift());
                     ItemPart part = new ItemPart(partBase, resource);//, stats);
                 }

@@ -1,9 +1,6 @@
 package com.jadencode.main.material.libraries;
 
-import com.jadencode.main.constants.Colors;
-import com.jadencode.main.material.MaterialBase;
-import com.jadencode.main.material.MaterialLibrary;
-import com.jadencode.main.material.MaterialModifier;
+import com.jadencode.main.material.MaterialType;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,30 +8,12 @@ import java.util.List;
 /**
  * Created by Jaden on 2/10/2015.
  */
-public class MetalLibrary extends MaterialLibrary {
+public class MetalLibrary extends MaterialType {
 
     private static final MetalLibrary instance = new MetalLibrary();
 
     //    public static final MaterialBase bronze = new MaterialBase("Bronze", Colors.METAL_BRONZE, 50F).setBaseLevel(1);
     //    public static final MaterialBase steel  = new MaterialBase("Steel", Colors.METAL_STEEL, 30F).setBaseLevel(20);
-
-    public MaterialBase iron;
-    public MaterialBase silver;
-    public MaterialBase gold;
-    public MaterialBase cobalt;
-    public MaterialBase tungsten;
-    public MaterialBase titanium;
-
-    public MaterialModifier none;
-    public MaterialModifier lunar;
-    public MaterialModifier solar;
-    public MaterialModifier white;
-    public MaterialModifier black;
-    public MaterialModifier ancient;
-    public MaterialModifier shadow;
-    public MaterialModifier dark;
-    public MaterialModifier twilight;
-    public MaterialModifier ghost;
 
     //w = p(t)/(1-p)
     //w = 27
@@ -43,10 +22,9 @@ public class MetalLibrary extends MaterialLibrary {
     private static final List<String> syllablesThird  = Arrays.asList("ite", "ium");
 
     private MetalLibrary() {
-        super("Metal");
+        super("Metal", null);
     }
 
-    @Override
     public void loadMaterials() {
 
 //        this.iron = new MaterialBase(MaterialLibrary.getMetalLibrary(), "Iron", Colors.METAL_IRON, 40F, 1F, 1F, 1F, 1);
@@ -66,24 +44,6 @@ public class MetalLibrary extends MaterialLibrary {
 //        this.dark     = new MaterialModifier(MaterialLibrary.getMetalLibrary(), "Dark", Colors.METAL_MOD_DARK, 1F, 1.25F, 0.8F, 1.0F).setLevelMod(1.2F);
 //        this.twilight = new MaterialModifier(MaterialLibrary.getMetalLibrary(), "Twilight", Colors.METAL_MOD_TWILIGHT, 1F, 1.25F, 1.0F, 1.25F).setLevelMod(3.2F);
 //        this.ghost    = new MaterialModifier(MaterialLibrary.getMetalLibrary(), "Ghost", Colors.METAL_MOD_GHOST, 1F, 1.5F, 2.0F, 3.0F).setLevelMod(3.8F);
-
-        this.iron     = new MaterialBase(MaterialLibrary.getMetalLibrary(), "Iron", Colors.METAL_IRON, 32F, 1F, 1);
-        this.silver   = new MaterialBase(MaterialLibrary.getMetalLibrary(), "Silver", Colors.METAL_SILVER, 16F, 0.6F, 10);
-        this.gold     = new MaterialBase(MaterialLibrary.getMetalLibrary(), "Gold", Colors.METAL_GOLD, 8F, 0.8F, 20);
-        this.cobalt   = new MaterialBase(MaterialLibrary.getMetalLibrary(), "Cobalt", Colors.METAL_COBALT, 4F, 1.2F, 30);
-        this.tungsten = new MaterialBase(MaterialLibrary.getMetalLibrary(), "Tungsten", Colors.METAL_TUNGSTEN, 2F, 1.4F, 40);
-        this.titanium = new MaterialBase(MaterialLibrary.getMetalLibrary(), "Titanium", Colors.METAL_TITANIUM, 1F, 1.8F, 50);
-
-        this.none     = new MaterialModifier(MaterialLibrary.getMetalLibrary(), "", null, 27F, 1F, 1);
-        this.lunar    = new MaterialModifier(MaterialLibrary.getMetalLibrary(), "Lunar", Colors.METAL_MOD_LUNAR, 1F, 0.5F, 1.2F);
-        this.solar    = new MaterialModifier(MaterialLibrary.getMetalLibrary(), "Solar", Colors.METAL_MOD_SOLAR, 1F, 0.5F, 0.8F);
-        this.white    = new MaterialModifier(MaterialLibrary.getMetalLibrary(), "White", Colors.METAL_MOD_WHITE, 1F, 0.8F, 1.2F);
-        this.black    = new MaterialModifier(MaterialLibrary.getMetalLibrary(), "Black", Colors.METAL_MOD_BLACK, 1F, 0.8F, 0.8F);
-        this.ancient  = new MaterialModifier(MaterialLibrary.getMetalLibrary(), "Ancient", Colors.METAL_MOD_ANCIENT, 1F, 1F, 1.2F);
-        this.shadow   = new MaterialModifier(MaterialLibrary.getMetalLibrary(), "Shadow", Colors.METAL_MOD_SHADOW, 1F, 1F, 0.8F);
-        this.dark     = new MaterialModifier(MaterialLibrary.getMetalLibrary(), "Dark", Colors.METAL_MOD_DARK, 1F, 1.25F, 1.2F);
-        this.twilight = new MaterialModifier(MaterialLibrary.getMetalLibrary(), "Twilight", Colors.METAL_MOD_TWILIGHT, 1F, 1.25F, 0.8F);
-        this.ghost    = new MaterialModifier(MaterialLibrary.getMetalLibrary(), "Ghost", Colors.METAL_MOD_GHOST, 1F, 1.5F, 2F);
 
 //        for (String s1 : syllablesFirst) {
 //            for (String s2 : syllablesSecond) {
@@ -110,9 +70,5 @@ public class MetalLibrary extends MaterialLibrary {
 //                }
 //            }
 //        }
-    }
-
-    public static MetalLibrary getInstance() {
-        return instance;
     }
 }

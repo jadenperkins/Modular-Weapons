@@ -1,32 +1,43 @@
 package com.jadencode.main.material;
 
+import com.jadencode.main.constants.MaterialModifiers;
+import com.jadencode.main.util.WeightedItem;
+
 import java.awt.*;
+import java.util.Arrays;
 
 /**
  * Created by Jaden on 2/4/2015.
  */
-public class MaterialModifier extends MaterialAttribute {
+public class MaterialModifier implements WeightedItem {
+    private final String name;
+    private final Color color;
+    private final float mod;
+    private final float level;
+    private final float weight;
 
-    private final boolean isNone;
-
-    public MaterialModifier(MaterialLibrary lib, String name, Color color, float weight, float mod, float level) {
-        super(name, color, weight, mod, level);
-        if(lib.getMaterialModifier(name) != null) {
-            throw new IllegalArgumentException(name + " is already in use!");
-        }
-        this.isNone = name.isEmpty();
-        lib.registerMaterialModifier(this);
+    public MaterialModifier(String name, Color color, float mod, float level, float weight, MaterialType... types) {
+        this.name = name;
+        this.color = color;
+        this.mod = mod;
+        this.level = level;
+        this.weight = weight;
+        Arrays.stream(types).forEach(t -> MaterialModifiers.register(t, this));
     }
-    public MaterialModifier(MaterialLibrary lib, String name, int color, float weight, float mod, float level) {
-        this(lib, name, new Color(color), weight, mod, level);
+    public String getName() {
+        return name;
     }
-    public MaterialModifier(MaterialLibrary lib, String name, Color color, float weight, float mod) {
-        this(lib, name, color, weight, mod, 1F);
+    public Color getColor() {
+        return color;
     }
-    public MaterialModifier(MaterialLibrary lib, String name, int color, float weight, float mod) {
-        this(lib, name, new Color(color), weight, mod, 1F);
+    public float getMod() {
+        return mod;
     }
-    public boolean isNone() {
-        return this.isNone;
+    public float getLevel() {
+        return level;
+    }
+    @Override
+    public float getWeight() {
+        return weight;
     }
 }

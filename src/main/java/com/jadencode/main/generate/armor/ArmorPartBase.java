@@ -1,7 +1,7 @@
 package com.jadencode.main.generate.armor;
 
-import com.jadencode.main.material.MaterialLibrary;
-import com.jadencode.main.material.MaterialResource;
+import com.jadencode.main.material.MaterialModified;
+import com.jadencode.main.material.MaterialType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,18 +13,18 @@ public class ArmorPartBase {
 
     private static final List<ArmorPartBase> ARMOR_PARTS = new ArrayList<>();
 
-    public static final ArmorPartBase plateHelmetBase = new ArmorPartBase("Plate Sallet", "Plate Helmet", 90F, 80F, 30F, 30F, ArmorGenerator.MELEE_HELMET_BASES, MaterialLibrary.getMetalLibrary());
-    public static final ArmorPartBase fluteHelmetBase = new ArmorPartBase("Fluted Sallet", "Fluted Helmet", 45F, 70F, 80F, 25F, ArmorGenerator.MELEE_HELMET_BASES, MaterialLibrary.getMetalLibrary());
-    public static final ArmorPartBase chainHelmetBase = new ArmorPartBase("Chainmail Coif", "Chain Coif", 70F, 90F, 30F, 20F, ArmorGenerator.MELEE_HELMET_BASES, MaterialLibrary.getMetalLibrary());
-
-    public static final ArmorPartBase plateHelmetAddon = new ArmorPartBase("Plate Visor", "Plated", 10F, 6F, -2F, 3F, ArmorGenerator.MELEE_HELMET_ADDS, MaterialLibrary.getMetalLibrary());
-    public static final ArmorPartBase fluteHelmetAddon = new ArmorPartBase("Fluted Mask", "Fluted", -3F, 5F, 9F, 2F, ArmorGenerator.MELEE_HELMET_ADDS, MaterialLibrary.getMetalLibrary());
-    public static final ArmorPartBase chainHelmetAddon = new ArmorPartBase("Chainmail Necking", "Chain-necked", 5F, 10F, -2F, 1F, ArmorGenerator.MELEE_HELMET_ADDS, MaterialLibrary.getMetalLibrary());
+//    public static final ArmorPartBase plateHelmetBase = new ArmorPartBase("Plate Sallet", "Plate Helmet", 90F, 80F, 30F, 30F, ArmorGenerator.MELEE_HELMET_BASES, MaterialType.getMetalLibrary());
+//    public static final ArmorPartBase fluteHelmetBase = new ArmorPartBase("Fluted Sallet", "Fluted Helmet", 45F, 70F, 80F, 25F, ArmorGenerator.MELEE_HELMET_BASES, MaterialType.getMetalLibrary());
+//    public static final ArmorPartBase chainHelmetBase = new ArmorPartBase("Chainmail Coif", "Chain Coif", 70F, 90F, 30F, 20F, ArmorGenerator.MELEE_HELMET_BASES, MaterialType.getMetalLibrary());
+//
+//    public static final ArmorPartBase plateHelmetAddon = new ArmorPartBase("Plate Visor", "Plated", 10F, 6F, -2F, 3F, ArmorGenerator.MELEE_HELMET_ADDS, MaterialType.getMetalLibrary());
+//    public static final ArmorPartBase fluteHelmetAddon = new ArmorPartBase("Fluted Mask", "Fluted", -3F, 5F, 9F, 2F, ArmorGenerator.MELEE_HELMET_ADDS, MaterialType.getMetalLibrary());
+//    public static final ArmorPartBase chainHelmetAddon = new ArmorPartBase("Chainmail Necking", "Chain-necked", 5F, 10F, -2F, 1F, ArmorGenerator.MELEE_HELMET_ADDS, MaterialType.getMetalLibrary());
 
     private final String          partName;
     private final List<ArmorPart> partList;
     private final String          nameMod;
-    private final List<MaterialResource> materials = new ArrayList<>();
+    private final List<MaterialModified> materials = new ArrayList<>();
     private final boolean usesMaterials;
     private final float   weight;
     private final float   slash;
@@ -32,15 +32,15 @@ public class ArmorPartBase {
     private final float   blunt;
     private final float   mobility;
 
-    public ArmorPartBase(String name, String mod, List<ArmorPart> list, MaterialLibrary... mats) {
+    public ArmorPartBase(String name, String mod, List<ArmorPart> list, MaterialType... mats) {
         this(name, mod, 1F, 1F, 1F, 1F, list, mats);
     }
 
-    public ArmorPartBase(String name, String mod, float sls, float prc, float bnt, float mob, List<ArmorPart> list, MaterialLibrary... mats) {
+    public ArmorPartBase(String name, String mod, float sls, float prc, float bnt, float mob, List<ArmorPart> list, MaterialType... mats) {
         this(name, mod, 1F, sls, prc, bnt, mob, list, mats);
     }
 
-    public ArmorPartBase(String name, String mod, float weight, float sls, float prc, float bnt, float mob, List<ArmorPart> list, MaterialLibrary... mats) {
+    public ArmorPartBase(String name, String mod, float weight, float sls, float prc, float bnt, float mob, List<ArmorPart> list, MaterialType... mats) {
         this.partName = name;
         this.nameMod = mod;
         this.weight = weight;
@@ -51,8 +51,8 @@ public class ArmorPartBase {
         this.blunt = bnt;
         this.mobility = mob;
 
-        for (MaterialLibrary lib : mats) {
-            this.materials.addAll(lib.getMaterialResources().values());
+        for (MaterialType lib : mats) {
+//            this.materials.addAll(lib.getMaterialResources().values());
         }
         this.usesMaterials = !this.materials.isEmpty();
 
@@ -79,7 +79,7 @@ public class ArmorPartBase {
         return nameMod;
     }
 
-    public List<MaterialResource> getMaterials() {
+    public List<MaterialModified> getMaterials() {
         return materials;
     }
 

@@ -1,7 +1,8 @@
 package com.jadencode.main.material.libraries;
 
-import com.jadencode.main.material.MaterialBase;
-import com.jadencode.main.material.MaterialLibrary;
+import com.jadencode.main.constants.Colors;
+import com.jadencode.main.material.Material;
+import com.jadencode.main.material.MaterialType;
 import com.jadencode.main.material.MaterialModifier;
 
 import java.util.Arrays;
@@ -10,12 +11,12 @@ import java.util.List;
 /**
  * Created by Jaden on 2/11/2015.
  */
-public class PlantLibrary extends MaterialLibrary {
+public class PlantLibrary extends MaterialType {
 
     private static final PlantLibrary instance = new PlantLibrary();
 
-    public MaterialBase cotton;
-    public MaterialBase jute;
+    public Material cotton;
+    public Material jute;
 
     public MaterialModifier none;
     public MaterialModifier hardy;
@@ -37,26 +38,11 @@ public class PlantLibrary extends MaterialLibrary {
     }
 
     public PlantLibrary() {
-        super("Fabric");
+        super("Fabric", null);
     }
 
-    @Override
+//    @Override
     public void loadMaterials() {
-
-//        this.cotton = new MaterialBase(MaterialLibrary.getPlantLibrary(), "Cotton", Colors.PLANT_COTTON, 1F, 1);
-//        this.jute   = new MaterialBase(MaterialLibrary.getPlantLibrary(), "Jute", Colors.PLANT_JUTE, 1F, 25);
-//
-//        this.none     = new MaterialModifier(MaterialLibrary.getPlantLibrary(), "", null, 27F).setLevelMod(1F);
-//        this.hardy    = new MaterialModifier(MaterialLibrary.getPlantLibrary(), "Hardy", Colors.PLANT_MOD_HARDY, 1F).setLevelMod(4F);
-//        this.young    = new MaterialModifier(MaterialLibrary.getPlantLibrary(), "Young", Colors.PLANT_MOD_YOUNG, 1F).setLevelMod(0.5F);
-//        this.withered = new MaterialModifier(MaterialLibrary.getPlantLibrary(), "Withered", Colors.PLANT_MOD_WITHERED, 1F).setLevelMod(0.3F);
-//        this.creeping = new MaterialModifier(MaterialLibrary.getPlantLibrary(), "Creeping", Colors.PLANT_MOD_CREEPING, 1F).setLevelMod(2.5F);
-//        this.wild     = new MaterialModifier(MaterialLibrary.getPlantLibrary(), "Wild", Colors.PLANT_MOD_WILD, 1F).setLevelMod(3F);
-//        this.mature   = new MaterialModifier(MaterialLibrary.getPlantLibrary(), "Mature", Colors.PLANT_MOD_MATURE, 1F).setLevelMod(3.5F);
-//        this.extinct  = new MaterialModifier(MaterialLibrary.getPlantLibrary(), "Extinct", Colors.PLANT_MOD_EXTINCT, 1F).setLevelMod(2F);
-//        this.juvenile = new MaterialModifier(MaterialLibrary.getPlantLibrary(), "Juvenile", Colors.PLANT_MOD_JUVENILE, 1F).setLevelMod(0.8F);
-//        this.leafy    = new MaterialModifier(MaterialLibrary.getPlantLibrary(), "Leafy", Colors.PLANT_MOD_LEAFY, 1F).setLevelMod(3.8F);
-
 
 //        for (String s1 : syllablesFirst) {
 //            for (String s2 : syllablesSecond) {
