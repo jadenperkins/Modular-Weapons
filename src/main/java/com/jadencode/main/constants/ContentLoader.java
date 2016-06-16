@@ -34,18 +34,18 @@ public final class ContentLoader {
         }
     }
     public static final void load() {
-        File dir = new File("./plugins");
-        dir.mkdirs();
-        File[] files = dir.listFiles(f -> f.getName().endsWith(".jar"));
-        for(File pluginFile : files) {
-            try {
-                loadPlugin(pluginFile);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        Set<Class<?>> plugins = new Reflections().getTypesAnnotatedWith(Plugin.class);
-        System.out.println(plugins);
+//        File dir = new File("./plugins");
+//        dir.mkdirs();
+//        File[] files = dir.listFiles(f -> f.getName().endsWith(".jar"));
+//        for(File pluginFile : files) {
+//            try {
+//                loadPlugin(pluginFile);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        Set<Class<?>> plugins = new Reflections().getTypesAnnotatedWith(Plugin.class);
+//        System.out.println(plugins);
 
 //        Set<Class<? extends ContentManager>> managerClasses = new Reflections("com.jadencode.main.constants").getSubTypesOf(ContentManager.class);
 //

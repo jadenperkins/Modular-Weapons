@@ -7,39 +7,36 @@ import java.util.function.BiFunction;
 /**
  * Created by gtrpl on 6/5/2016.
  */
-public class StatDef<T> implements StatBase<T> {
+public class StatDef implements StatBase {
     
-    private final T defaultValue;
+    private final double defaultValue;
     private final String statName;
-    private final BiFunction<T, T, T> combiner;
-    private final BiFunction<Integer, T, T> scaler;
-    private final BiFunction<Float, T, T> modifier;
+    private final boolean levelDependent;
 
-    public StatDef(String s, T val, BiFunction<Integer, T, T> sc, BiFunction<T, T, T> co, BiFunction<Float, T, T> mo) {
+    public StatDef(String s, double val, boolean scale) {
         this.defaultValue = val;
         this.statName = s;
-        this.scaler = sc;
-        this.combiner = co;
-        this.modifier = mo;
+        this.levelDependent = scale;
     }
     @Override
-    public T getDefaultValue() {
+    public double getDefaultValue() {
         return this.defaultValue;
     }
     @Override
-    public T scale(int i, T original) {
-        return this.scaler.apply(i, original);
+    public double scale(int i, double original) {
+        if(!this.levelDependent) return original;
+        return original * Math.pow(1.1D, i - 1);
     }
     @Override
     public String getStatName() {
         return this.statName;
     }
     @Override
-    public T combine(T first, T second) {
-        return this.combiner.apply(first, second);
+    public double combine(double first, double second) {
+        return first + second;
     }
     @Override
-    public T modify(Material resource, T original) {
-        return this.modifier.apply(resource.getMultiplier(), original);
+    public double modify(Material resource, double original) {
+        return original * resource.getMultiplier();
     }
 }

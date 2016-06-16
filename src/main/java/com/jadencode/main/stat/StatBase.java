@@ -5,10 +5,10 @@ import com.jadencode.main.material.Material;
 /**
  * Created by gtrpl on 6/9/2016.
  */
-public interface StatBase<T> {
-    T getDefaultValue();
-    T scale(int i, T original);
-    T combine(T first, T second);
-    T modify(Material resource, T original);
+public interface StatBase {
+    double getDefaultValue();
+    double scale(int i, double original);
+    double combine(double first, double second);
+    double modify(Material resource, double original);
     String getStatName();
 }

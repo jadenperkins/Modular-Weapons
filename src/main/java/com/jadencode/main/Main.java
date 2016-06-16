@@ -144,7 +144,7 @@ public class Main {
         Set<StatBase> base = weap.getWeaponType().getStatSet().getStatsRaw().keySet();
 
         System.out.println(weap.getDisplayName());
-        base.forEach(stat -> System.out.println(String.format("\t%s: %s", stat.getStatName(), s.get(stat).toString())));
+        base.forEach(stat -> System.out.println(String.format("\t%s: %f", stat.getStatName(), s.get(stat))));
 
         System.out.println("\t\t" + weap.getDisplayInfo());
 
