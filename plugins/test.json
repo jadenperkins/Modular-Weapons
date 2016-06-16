@@ -1,0 +1,141 @@
+{
+  "Colors": [
+    {"name": "METAL_IRON", "rgb": [100, 100, 100]},
+    {"name": "METAL_GOLD", "rgb": [223, 223, 0]},
+    {"name": "METAL_SILVER", "rgb": [200, 200, 200]},
+    {"name": "METAL_COBALT", "rgb": [165, 175, 198]},
+    {"name": "METAL_TUNGSTEN", "rgb": [182, 129, 101]},
+    {"name": "METAL_TITANIUM", "rgb": [200, 235, 235]},
+
+    {"name": "MOD_DARK", "rgb": [105, 105, 105]},
+    {"name": "MOD_BLACK", "rgb": [55, 55, 55]},
+    {"name": "MOD_ANCIENT", "rgb": [127, 138, 0]},
+    {"name": "MOD_SHADOW", "rgb": [126, 126, 126]},
+    {"name": "MOD_TWILIGHT", "rgb": [106, 211, 87]},
+    {"name": "MOD_LUNAR", "rgb": [92, 144, 195]},
+    {"name": "MOD_SOLAR", "rgb": [210, 178, 0]},
+    {"name": "MOD_WHITE", "rgb": [255, 255, 255]},
+    {"name": "MOD_GHOST", "rgb": [179, 255, 220]}
+  ],
+  "Material Types": [
+    {"name": "MATERIAL_METAL"}
+//    {"name": "MATERIAL_WOOD"},
+//    {"name": "MATERIAL_PLANT"},
+//    {"name": "MATERIAL_GEM"}
+  ],
+  "Stats": [
+    {"name": "DAMAGE_SLASH", "display": "Slash Damage", "default": 0, "scale": true},
+    {"name": "DAMAGE_PIERCE", "display": "Pierce Damage", "default": 0, "scale": true},
+    {"name": "DAMAGE_BLUNT", "display": "Blunt Damage", "default": 0, "scale": true},
+    {"name": "ATTACK_TIME", "display": "Attack Time", "default": 0, "scale": false},
+    {"name": "RANGE", "display": "Range", "default": 0, "scale": false},
+    {"name": "DRAW_TIME", "display": "Draw Time", "default": 0, "scale": false}
+  ],
+  "Part Types": [
+    {"name": "PART_SWORD_HILT"},
+    {"name": "PART_SWORD_GRIP"},
+    {"name": "PART_SWORD_BLADE"}
+
+//    {"name": "PART_HAMMER_HANDLE"},
+//    {"name": "PART_HAMMER_HEAD"},
+//
+//    {"name": "PART_AXE_HANDLE"},
+//    {"name": "PART_AXE_HEAD"},
+//
+//    {"name": "PART_BOW_STRING"},
+//    {"name": "PART_BOW_LIMBS"},
+//    {"name": "PART_BOW_GRIP"},
+//
+//    {"name": "PART_CROSSBOW_STOCK"},
+//    {"name": "PART_CROSSBOW_LIMBS"},
+//    {"name": "PART_CROSSBOW_STRING"}
+  ],
+  "Stat Sets": [
+    {"name": "BASE_SWORD", "stats": [
+      {"stat": "DAMAGE_SLASH", "value": 50.0},
+      {"stat": "DAMAGE_PIERCE", "value": 10.0},
+      {"stat": "DAMAGE_BLUNT", "value": 0.0}
+    ]}
+  ],
+  "Weapon Types": [
+    {"name": "WEAPON_SWORD", "parts": [
+      "PART_SWORD_HILT",
+      "PART_SWORD_GRIP",
+      "PART_SWORD_BLADE"
+    ]}
+//    {"name": "WEAPON_HAMMER", "parts": [
+//      "PART_HAMMER_HEAD",
+//      "PART_HAMMER_HANDLE"
+//    ]},
+//    {"name": "WEAPON_AXE", "parts": [
+//      "PART_AXE_HEAD",
+//      "PART_AXE_HANDLE"
+//    ]},
+//    {"name": "WEAPON_BOW", "parts": [
+//      "PART_BOW_GRIP",
+//      "PART_BOW_STRING",
+//      "PART_BOW_LIMBS"
+//    ]},
+//    {"name": "WEAPON_CROSSBOW", "parts": [
+//      "PART_CROSSBOW_STOCK",
+//      "PART_CROSSBOW_STRING",
+//      "PART_CROSSBOW_LIMBS"
+//    ]}
+  ],
+  "Material Modifiers": [
+    {"name": "Lunar", "color": "MOD_LUNAR", "weight": 1.0, "level": 0.5, "mod": 1.2, "materials": ["MATERIAL_METAL"]},
+    {"name": "Solar", "color": "MOD_SOLAR", "weight": 1.0, "level": 0.5, "mod": 0.8, "materials": ["MATERIAL_METAL"]},
+    {"name": "White", "color": "MOD_WHITE", "weight": 1.0, "level": 0.8, "mod": 1.2, "materials": ["MATERIAL_METAL", "MATERIAL_WOOD"]},
+    {"name": "Black", "color": "MOD_BLACK", "weight": 1.0, "level": 0.8, "mod": 0.8, "materials": ["MATERIAL_METAL", "MATERIAL_WOOD"]},
+    {"name": "Ancient", "color": "MOD_ANCIENT", "weight": 1.0, "level": 1, "mod": 1.2, "materials": ["MATERIAL_METAL", "MATERIAL_WOOD"]},
+    {"name": "Shadow", "color": "MOD_SHADOW", "weight": 1.0, "level": 1, "mod": 0.8, "materials": ["MATERIAL_METAL"]},
+    {"name": "Dark", "color": "MOD_DARK", "weight": 1.0, "level": 1.25, "mod": 1.2, "materials": ["MATERIAL_METAL", "MATERIAL_WOOD", "MATERIAL_GEM"]},
+    {"name": "Twilight", "color": "MOD_TWILIGHT", "weight": 1.0, "level": 1.25, "mod": 0.8, "materials": ["MATERIAL_METAL"]},
+    {"name": "Ghost", "color": "MOD_GHOST", "weight": 1.0, "level": 1.5, "mod": 2.0, "materials": ["MATERIAL_METAL"]}
+  ],
+  "Materials": [
+    {"name": "Iron", "color": "METAL_IRON", "weight": 32.0, "mod": 1.0, "level": 1, "material": "MATERIAL_METAL"},
+    {"name": "Silver", "color": "METAL_SILVER", "weight": 16.0, "mod": 0.6, "level": 1, "material": "MATERIAL_METAL"},
+    {"name": "Gold", "color": "METAL_GOLD", "weight": 8.0, "mod": 0.8, "level": 1, "material": "MATERIAL_METAL"},
+    {"name": "Cobalt", "color": "METAL_COBALT", "weight": 4.0, "mod": 1.2, "level": 1, "material": "MATERIAL_METAL"},
+    {"name": "Tungsten", "color": "METAL_TUNGSTEN", "weight": 2.0, "mod": 1.4, "level": 1, "material": "MATERIAL_METAL"},
+    {"name": "Titanium", "color": "METAL_TITANIUM", "weight": 1.0, "mod": 1.8, "level": 1, "material": "MATERIAL_METAL"},
+  ],
+  "Weapon Parts": [
+    {"name": "Hilt of Ascension", "nameMod": "Ascendant", "weight": 100.0, "partType": "PART_SWORD_HILT"},
+    {"name": "Grip of Darkness", "nameMod": "Dark", "weight": 100.0, "partType": "PART_SWORD_GRIP"},
+    {"name": "Seeker Blade", "nameMod": "Seeker", "weight": 100.0, "partType": "PART_SWORD_BLADE"},
+
+    {"name": "Heavy Grip", "nameMod": "Double", "partType": "PART_SWORD_GRIP", "materials": ["MATERIAL_METAL"]},
+    {"name": "Basic Grip", "nameMod": "Single", "weight": 100.0, "partType": "PART_SWORD_GRIP", "materials": ["MATERIAL_METAL"]},
+    {"name": "Light Grip", "nameMod": "Half", "weight": 100.0, "partType": "PART_SWORD_GRIP", "materials": ["MATERIAL_METAL"]},
+
+    {"name": "Heavy Hilt", "nameMod": "Heavy", "weight": 100.0, "partType": "PART_SWORD_HILT", "materials": ["MATERIAL_METAL"]},
+    {"name": "Medium Hilt", "nameMod": "Balanced", "weight": 100.0, "partType": "PART_SWORD_HILT", "materials": ["MATERIAL_METAL"]},
+    {"name": "Light Hilt", "nameMod": "Agile", "weight": 100.0, "partType": "PART_SWORD_HILT", "materials": ["MATERIAL_METAL"]},
+
+    {"name": "Broad Blade", "nameMod": "Broadsword", "weight": 100.0, "partType": "PART_SWORD_BLADE", "materials": ["MATERIAL_METAL"]},
+    {"name": "Long Blade", "nameMod": "Longsword", "weight": 100.0, "partType": "PART_SWORD_BLADE", "materials": ["MATERIAL_METAL"]},
+    {"name": "Short Blade", "nameMod": "Shortsword", "weight": 100.0, "partType": "PART_SWORD_BLADE", "materials": ["MATERIAL_METAL"]}
+
+
+//    public static final WeaponPart ascendantHilt = new WeaponPartLegendary("Hilt of Ascension", "Ascendant", 100F, PartTypes.PART_SWORD_HILT);
+//    public static final WeaponPart darkGrip      = new WeaponPartLegendary("Grip of Darkness", "Dark", 100F, PartTypes.PART_SWORD_GRIP);
+//    public static final WeaponPart seekerBlade   = new WeaponPartLegendary("Seeker Blade", "Seeker", 100F, PartTypes.PART_SWORD_BLADE);
+//
+//    //Common Grips
+//    public static final WeaponPartBase heavyGrip = new WeaponPartBase("Heavy Grip", "Double", StatSets.GRIP_HEAVY, PartTypes.PART_SWORD_GRIP, MaterialTypes.MATERIAL_METAL);
+//    public static final WeaponPartBase basicGrip = new WeaponPartBase("Basic Grip", "Single", StatSets.GRIP_BASIC, PartTypes.PART_SWORD_GRIP, MaterialTypes.MATERIAL_METAL);
+//    public static final WeaponPartBase lightGrip = new WeaponPartBase("Light Grip", "Half", StatSets.GRIP_LIGHT, PartTypes.PART_SWORD_GRIP, MaterialTypes.MATERIAL_METAL);
+//
+//    //Common Hilts
+//    public static final WeaponPartBase heavyHilt  = new WeaponPartBase("Heavy Hilt", "Heavy", StatSets.HILT_HEAVY, PartTypes.PART_SWORD_HILT, MaterialTypes.MATERIAL_METAL);
+//    public static final WeaponPartBase mediumHilt = new WeaponPartBase("Balanced Hilt", "Balanced", StatSets.HILT_MEDIUM, PartTypes.PART_SWORD_HILT, MaterialTypes.MATERIAL_METAL);
+//    public static final WeaponPartBase lightHilt  = new WeaponPartBase("Light Hilt", "Agile", StatSets.HILT_LIGHT, PartTypes.PART_SWORD_HILT, MaterialTypes.MATERIAL_METAL);
+//
+//    //Common Blades
+//    public static final WeaponPartBase broadBlade = new WeaponPartBase("Broad Blade", "Broadsword", StatSets.BLADE_BROAD, PartTypes.PART_SWORD_BLADE, MaterialTypes.MATERIAL_METAL);
+//    public static final WeaponPartBase longBlade  = new WeaponPartBase("Long Blade", "Longsword", StatSets.BLADE_LONG, PartTypes.PART_SWORD_BLADE, MaterialTypes.MATERIAL_METAL);
+//    public static final WeaponPartBase shortBlade = new WeaponPartBase("Short Blade", "Shortsword", StatSets.BLADE_SHORT, PartTypes.PART_SWORD_BLADE, MaterialTypes.MATERIAL_METAL);
+  ]
+}
