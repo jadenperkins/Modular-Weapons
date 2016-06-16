@@ -1,5 +1,6 @@
 package com.jadencode.main.constants;
 
+import com.google.gson.JsonObject;
 import com.jadencode.main.material.MaterialType;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.stream.Collectors;
 /**
  * Created by JPERKI8 on 6/13/2016.
  */
-public class MaterialTypes {
+public final class MaterialTypes {//} extends ContentManager {
 
     private static final List<String> M1 = Arrays.asList("Meg", "Ex", "Ant", "Mas", "Ox", "Ax", "Bis");
     private static final List<String> M2 = Arrays.asList("or", "an", "net", "et", "en");
@@ -56,4 +57,12 @@ public class MaterialTypes {
     public static List<MaterialType> getMaterialTypes() {
         return MATERIAL_TYPES;
     }
+
+//    public MaterialTypes() {
+//        super("Material Types", 2);
+//    }
+//    @Override
+//    public void consume(String name, JsonObject obj) {
+//
+//    }
 }

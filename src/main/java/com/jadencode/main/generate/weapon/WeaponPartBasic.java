@@ -18,7 +18,7 @@ public class WeaponPartBasic extends WeaponPart {
         super(part.getWeight() * resource.getWeight(), part.getPartType());
         this.partName = resource.getName() + " " + part.getPartName();
         this.nameMod = part.getNameMod();
-        this.partDescription = String.format("A %s crafted from %s", part.getPartName(), resource.getName());
+        this.partDescription = String.format("A %s crafted consume %s", part.getPartName(), resource.getName());
         this.stats = part.modifyStats(resource);
     }
     @Override

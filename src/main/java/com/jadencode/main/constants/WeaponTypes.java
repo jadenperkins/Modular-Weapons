@@ -1,5 +1,6 @@
 package com.jadencode.main.constants;
 
+import com.google.gson.JsonObject;
 import com.jadencode.main.generate.weapon.WeaponType;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.List;
 /**
  * Created by gtrpl on 6/11/2016.
  */
-public class WeaponTypes {
+public final class WeaponTypes extends ContentManager {
     private static final List<WeaponType> WEAPON_TYPES = new ArrayList<>();
 
     public static final WeaponType WEAPON_CLASS_SWORD = new WeaponType("Sword", StatSets.BASE_SWORD,
@@ -37,5 +38,13 @@ public class WeaponTypes {
     }
     public static void addWeaponType(WeaponType type) {
         WEAPON_TYPES.add(type);
+    }
+
+    public WeaponTypes() {
+        super("Weapon Types", 7);
+    }
+    @Override
+    public void consume(String name, JsonObject obj) {
+
     }
 }
