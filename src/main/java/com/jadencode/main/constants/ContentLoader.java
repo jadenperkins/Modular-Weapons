@@ -1,29 +1,45 @@
 package com.jadencode.main.constants;
 
-import javassist.bytecode.ClassFile;
 import org.reflections.Reflections;
 
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.net.MalformedURLException;
+import java.lang.annotation.Annotation;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.*;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 /**
  * Created by gtrpl on 6/15/2016.
  */
 public final class ContentLoader {
+    private static void loadPlugin(File file) {
+        try {
+            JarFile jar = new JarFile(file);
+            URL[] urls = {new URL("jar:" + file.toURI().toURL() + "!/")};
+
+            URLClassLoader cl = new URLClassLoader(urls, Thread.currentThread().getContextClassLoader());
+            Enumeration<JarEntry> e = jar.entries();
+            while (e.hasMoreElements()) {
+                JarEntry entry = e.nextElement();
+
+                if (entry.getName().endsWith(".class")) {
+                    Class<?> clazz = cl.loadClass(entry.getName().replace("/", ".").replace(".class", ""));
+                    clazz.newInstance();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public static final void load() {
         File dir = new File("./plugins");
         dir.mkdirs();
-        File[] files = dir.listFiles(f -> f.getName().endsWith(".class"));
+        File[] files = dir.listFiles(f -> f.getName().endsWith(".jar"));
         for(File pluginFile : files) {
             try {
-                addPlugin(pluginFile);
+                loadPlugin(pluginFile);
             } catch (Exception e) {
                 e.printStackTrace();
             }
