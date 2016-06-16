@@ -1,4 +1,29 @@
 {
+  "Material Types": [
+    {"name": "MATERIAL_METAL"}
+    //    {"name": "MATERIAL_WOOD"},
+    //    {"name": "MATERIAL_PLANT"},
+    //    {"name": "MATERIAL_GEM"}
+  ],
+  "Part Types": [
+    {"name": "PART_SWORD_HILT"},
+    {"name": "PART_SWORD_GRIP"},
+    {"name": "PART_SWORD_BLADE"}
+
+    //    {"name": "PART_HAMMER_HANDLE"},
+    //    {"name": "PART_HAMMER_HEAD"},
+    //
+    //    {"name": "PART_AXE_HANDLE"},
+    //    {"name": "PART_AXE_HEAD"},
+    //
+    //    {"name": "PART_BOW_STRING"},
+    //    {"name": "PART_BOW_LIMBS"},
+    //    {"name": "PART_BOW_GRIP"},
+    //
+    //    {"name": "PART_CROSSBOW_STOCK"},
+    //    {"name": "PART_CROSSBOW_LIMBS"},
+    //    {"name": "PART_CROSSBOW_STRING"}
+  ],
   "Colors": [
     {"name": "METAL_IRON", "rgb": [100, 100, 100]},
     {"name": "METAL_GOLD", "rgb": [223, 223, 0]},
@@ -17,12 +42,6 @@
     {"name": "MOD_WHITE", "rgb": [255, 255, 255]},
     {"name": "MOD_GHOST", "rgb": [179, 255, 220]}
   ],
-  "Material Types": [
-    {"name": "MATERIAL_METAL"}
-//    {"name": "MATERIAL_WOOD"},
-//    {"name": "MATERIAL_PLANT"},
-//    {"name": "MATERIAL_GEM"}
-  ],
   "Stats": [
     {"name": "DAMAGE_SLASH", "display": "Slash Damage", "default": 0, "scale": true},
     {"name": "DAMAGE_PIERCE", "display": "Pierce Damage", "default": 0, "scale": true},
@@ -30,25 +49,6 @@
     {"name": "ATTACK_TIME", "display": "Attack Time", "default": 0, "scale": false},
     {"name": "RANGE", "display": "Range", "default": 0, "scale": false},
     {"name": "DRAW_TIME", "display": "Draw Time", "default": 0, "scale": false}
-  ],
-  "Part Types": [
-    {"name": "PART_SWORD_HILT"},
-    {"name": "PART_SWORD_GRIP"},
-    {"name": "PART_SWORD_BLADE"}
-
-//    {"name": "PART_HAMMER_HANDLE"},
-//    {"name": "PART_HAMMER_HEAD"},
-//
-//    {"name": "PART_AXE_HANDLE"},
-//    {"name": "PART_AXE_HEAD"},
-//
-//    {"name": "PART_BOW_STRING"},
-//    {"name": "PART_BOW_LIMBS"},
-//    {"name": "PART_BOW_GRIP"},
-//
-//    {"name": "PART_CROSSBOW_STOCK"},
-//    {"name": "PART_CROSSBOW_LIMBS"},
-//    {"name": "PART_CROSSBOW_STRING"}
   ],
   "Stat Sets": [
     {"name": "BASE_SWORD", "stats": [
@@ -58,7 +58,7 @@
     ]}
   ],
   "Weapon Types": [
-    {"name": "WEAPON_SWORD", "parts": [
+    {"name": "Sword", "stats": "BASE_SWORD", "parts": [
       "PART_SWORD_HILT",
       "PART_SWORD_GRIP",
       "PART_SWORD_BLADE"

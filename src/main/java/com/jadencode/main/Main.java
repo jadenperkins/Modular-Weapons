@@ -1,6 +1,7 @@
 package com.jadencode.main;
 
 import com.jadencode.main.constants.*;
+import com.jadencode.main.content.ContentLoader;
 import com.jadencode.main.generate.Generator;
 import com.jadencode.main.generate.character.Actor;
 import com.jadencode.main.generate.character.Settlement;

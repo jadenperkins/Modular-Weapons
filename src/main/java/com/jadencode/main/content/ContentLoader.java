@@ -1,15 +1,12 @@
-package com.jadencode.main.constants;
+package com.jadencode.main.content;
 
 import com.google.gson.*;
+import com.jadencode.main.content.loaders.ContentManager;
 import org.reflections.Reflections;
 
 import java.io.File;
 import java.io.FileReader;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.*;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 
 /**
  * Created by gtrpl on 6/15/2016.

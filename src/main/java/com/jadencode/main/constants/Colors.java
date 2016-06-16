@@ -1,13 +1,11 @@
 package com.jadencode.main.constants;
 
-import com.google.gson.JsonObject;
-
 import java.awt.*;
 
 /**
  * Created by Jaden on 1/22/2015.
  */
-public final class Colors extends ContentManager {
+public final class Colors {
     public static final Color METAL_MOD_DARK     = new Color(105, 105, 105);
     public static final Color METAL_MOD_BLACK    = new Color(55, 55, 55);
     public static final Color METAL_MOD_ANCIENT  = new Color(127, 138, 0);
@@ -85,12 +83,4 @@ public final class Colors extends ContentManager {
     public static final Color GEM_AMETHYST = new Color(193, 27, 207);
     public static final Color GEM_GARNET   = new Color(221, 134, 59);
     public static final Color GEM_TOPAZ    = new Color(230, 230, 0);
-
-    public Colors() {
-        super("Colors", 0);
-    }
-    @Override
-    public void consume(String name, JsonObject obj) {
-
-    }
 }

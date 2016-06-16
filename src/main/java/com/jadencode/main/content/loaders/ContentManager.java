@@ -1,4 +1,4 @@
-package com.jadencode.main.constants;
+package com.jadencode.main.content.loaders;
 
 import com.google.gson.JsonObject;
 
