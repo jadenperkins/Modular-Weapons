@@ -1,9 +1,7 @@
 package com.jadencode.main.constants;
 
-import com.google.gson.JsonObject;
 import com.jadencode.main.TimeKeeper;
 import com.jadencode.main.generate.weapon.*;
-import com.jadencode.main.material.MaterialType;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -16,7 +14,7 @@ import java.util.List;
 /**
  * Created by gtrpl on 6/11/2016.
  */
-public final class WeaponParts extends ContentManager {
+public final class WeaponParts {
     private static final List<WeaponPartBase> WEAPON_PARTS = new ArrayList<>();
     private static final HashMap<WeaponPartType, List<WeaponPart>> PARTS_LISTS = new HashMap<>();
 
@@ -172,12 +170,5 @@ public final class WeaponParts extends ContentManager {
         List<WeaponPart> ret = new ArrayList<>();
         PARTS_LISTS.values().forEach(ret::addAll);
         return ret;
-    }
-    public WeaponParts() {
-        super("Weapon Parts", 8);
-    }
-    @Override
-    public void consume(String name, JsonObject obj) {
-
     }
 }

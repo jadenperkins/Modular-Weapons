@@ -1,18 +1,16 @@
 package com.jadencode.main.constants;
 
-import com.google.gson.JsonObject;
 import com.jadencode.main.material.MaterialType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 /**
  * Created by JPERKI8 on 6/13/2016.
  */
-public final class MaterialTypes {//} extends ContentManager {
+public final class MaterialTypes {
 
     private static final List<String> M1 = Arrays.asList("Meg", "Ex", "Ant", "Mas", "Ox", "Ax", "Bis");
     private static final List<String> M2 = Arrays.asList("or", "an", "net", "et", "en");

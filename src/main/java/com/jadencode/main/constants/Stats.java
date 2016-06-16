@@ -1,11 +1,8 @@
 package com.jadencode.main.constants;
 
-import com.google.gson.*;
 import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatDef;
 
-import java.lang.reflect.Type;
-import java.util.HashMap;
 import java.util.function.BiFunction;
 
 /**
@@ -23,13 +20,4 @@ public final class Stats {
     public static final StatBase<Float> ATTACK_TIME = new StatDef<>("Attack Time", 0F, SCALE_NONE, COMBINE_FLOAT, MODIFY_FLOAT);
     public static final StatBase<Float> RANGE = new StatDef<>("Range", 0F, SCALE_NONE, COMBINE_FLOAT, MODIFY_FLOAT);
     public static final StatBase<Float> DRAW_TIME = new StatDef<>("Draw Time", 0F, SCALE_NONE, COMBINE_FLOAT, MODIFY_FLOAT);
-
-
-
-//    public Stats() {
-//        super("Stats", 1);
-//    }
-//    @Override
-//    public void consume(String name, JsonObject obj) {
-//    }
 }

@@ -1,12 +1,11 @@
 package com.jadencode.main.constants;
 
-import com.google.gson.JsonObject;
 import com.jadencode.main.stat.StatSet;
 
 /**
  * Created by gtrpl on 6/11/2016.
  */
-public final class StatSets extends ContentManager {
+public final class StatSets {
     public static final StatSet EMPTY = new StatSet();
 
     //Base weapon stats
@@ -220,13 +219,4 @@ public final class StatSets extends ContentManager {
             .add(Stats.DRAW_TIME, 1.5F)
             .add(Stats.DAMAGE_BLUNT, 10F)
             .add(Stats.ATTACK_TIME, 0.5F);
-
-
-    public StatSets() {
-        super("Stat Sets", 4);
-    }
-    @Override
-    public void consume(String name, JsonObject obj) {
-
-    }
 }
