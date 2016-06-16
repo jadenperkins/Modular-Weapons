@@ -1,10 +1,36 @@
 package com.jadencode.main.constants;
 
+import javassist.bytecode.ClassFile;
+import org.reflections.Reflections;
+
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.*;
+
 /**
  * Created by gtrpl on 6/15/2016.
  */
 public final class ContentLoader {
     public static final void load() {
+        File dir = new File("./plugins");
+        dir.mkdirs();
+        File[] files = dir.listFiles(f -> f.getName().endsWith(".class"));
+        for(File pluginFile : files) {
+            try {
+                addPlugin(pluginFile);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        Set<Class<?>> plugins = new Reflections().getTypesAnnotatedWith(Plugin.class);
+        System.out.println(plugins);
+
 //        Set<Class<? extends ContentManager>> managerClasses = new Reflections("com.jadencode.main.constants").getSubTypesOf(ContentManager.class);
 //
 //        List<ContentManager> managers = new ArrayList<>();
@@ -51,14 +77,5 @@ public final class ContentLoader {
 //                e.printStackTrace();
 //            }
 //        }
-        //Colors
-        //Stats
-        //MaterialTypes
-        //PartTypes
-        //StatSets
-        //MaterialModifiers
-        //Materials
-        //WeaponTypes
-        //WeaponParts
     }
 }
