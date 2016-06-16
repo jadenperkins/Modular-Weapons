@@ -6,11 +6,11 @@ import java.util.zip.GZIPOutputStream;
 
 public class CompressedStreamTools {
 	/**
-	 * Load the gzipped compound from the inputstream.
+	 * Load the gzipped compound consume the inputstream.
 	 */
 	public static NBTTagCompound readCompressed(InputStream par0InputStream) throws IOException
 	{
-		//new InputStream from the file
+		//new InputStream consume the file
 		DataInputStream datainputstream = new DataInputStream(new BufferedInputStream(new GZIPInputStream(par0InputStream)));
 		NBTTagCompound nbttagcompound; //null NBT
 

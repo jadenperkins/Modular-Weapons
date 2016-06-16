@@ -1,0 +1,639 @@
+{
+  "Colors": [
+    {
+      "name": "METAL_MOD_DARK",
+      "rgb": [
+        105,
+        105,
+        105
+      ]
+    },
+    {
+      "name": "METAL_MOD_BLACK",
+      "rgb": [
+        55,
+        55,
+        55
+      ]
+    },
+    {
+      "name": "METAL_MOD_ANCIENT",
+      "rgb": [
+        127,
+        138,
+        0
+      ]
+    },
+    {
+      "name": "METAL_MOD_SHADOW",
+      "rgb": [
+        126,
+        126,
+        126
+      ]
+    },
+    {
+      "name": "METAL_MOD_TWILIGHT",
+      "rgb": [
+        106,
+        211,
+        87
+      ]
+    },
+    {
+      "name": "METAL_MOD_LUNAR",
+      "rgb": [
+        92,
+        144,
+        195
+      ]
+    },
+    {
+      "name": "METAL_MOD_SOLAR",
+      "rgb": [
+        210,
+        178,
+        0
+      ]
+    },
+    {
+      "name": "METAL_MOD_WHITE",
+      "rgb": [
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "name": "METAL_MOD_GHOST",
+      "rgb": [
+        179,
+        255,
+        220
+      ]
+    },
+    {
+      "name": "METAL_IRON",
+      "rgb": [
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "name": "METAL_GOLD",
+      "rgb": [
+        223,
+        223,
+        0
+      ]
+    },
+    {
+      "name": "METAL_SILVER",
+      "rgb": [
+        200,
+        200,
+        200
+      ]
+    },
+    {
+      "name": "METAL_COBALT",
+      "rgb": [
+        165,
+        175,
+        198
+      ]
+    },
+    {
+      "name": "METAL_TUNGSTEN",
+      "rgb": [
+        182,
+        129,
+        101
+      ]
+    },
+    {
+      "name": "METAL_TITANIUM",
+      "rgb": [
+        200,
+        235,
+        235
+      ]
+    },
+    {
+      "name": "WOOD_MOD_DARK",
+      "rgb": [
+        105,
+        105,
+        105
+      ]
+    },
+    {
+      "name": "WOOD_MOD_BLACK",
+      "rgb": [
+        55,
+        55,
+        55
+      ]
+    },
+    {
+      "name": "WOOD_MOD_RED",
+      "rgb": [
+        175,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "WOOD_MOD_ANCIENT",
+      "rgb": [
+        127,
+        138,
+        0
+      ]
+    },
+    {
+      "name": "WOOD_MOD_LIGHT",
+      "rgb": [
+        190,
+        190,
+        190
+      ]
+    },
+    {
+      "name": "WOOD_MOD_WHITE",
+      "rgb": [
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "name": "WOOD_MOD_HARDY",
+      "rgb": [
+        80,
+        150,
+        59
+      ]
+    },
+    {
+      "name": "WOOD_MOD_POLAR",
+      "rgb": [
+        140,
+        194,
+        216
+      ]
+    },
+    {
+      "name": "WOOD_ASH",
+      "rgb": [
+        215,
+        205,
+        141
+      ]
+    },
+    {
+      "name": "WOOD_BEECH",
+      "rgb": [
+        208,
+        193,
+        123
+      ]
+    },
+    {
+      "name": "WOOD_BIRCH",
+      "rgb": [
+        228,
+        183,
+        152
+      ]
+    },
+    {
+      "name": "WOOD_ELM",
+      "rgb": [
+        194,
+        168,
+        141
+      ]
+    },
+    {
+      "name": "WOOD_EBONY",
+      "rgb": [
+        77,
+        77,
+        77
+      ]
+    },
+    {
+      "name": "WOOD_HOLLY",
+      "rgb": [
+        235,
+        233,
+        200
+      ]
+    },
+    {
+      "name": "WOOD_HORNBEAM",
+      "rgb": [
+        228,
+        206,
+        162
+      ]
+    },
+    {
+      "name": "WOOD_JUNIPER",
+      "rgb": [
+        186,
+        173,
+        98
+      ]
+    },
+    {
+      "name": "WOOD_KOA",
+      "rgb": [
+        163,
+        118,
+        25
+      ]
+    },
+    {
+      "name": "WOOD_LOCUST",
+      "rgb": [
+        207,
+        198,
+        43
+      ]
+    },
+    {
+      "name": "WOOD_MAPLE",
+      "rgb": [
+        205,
+        187,
+        119
+      ]
+    },
+    {
+      "name": "WOOD_MESQUITE",
+      "rgb": [
+        177,
+        109,
+        27
+      ]
+    },
+    {
+      "name": "WOOD_MAHOGANY",
+      "rgb": [
+        207,
+        142,
+        73
+      ]
+    },
+    {
+      "name": "WOOD_LAUREL",
+      "rgb": [
+        226,
+        218,
+        140
+      ]
+    },
+    {
+      "name": "WOOD_OAK",
+      "rgb": [
+        188,
+        142,
+        42
+      ]
+    },
+    {
+      "name": "WOOD_PALM",
+      "rgb": [
+        224,
+        191,
+        145
+      ]
+    },
+    {
+      "name": "WOOD_SNAKEWOOD",
+      "rgb": [
+        168,
+        102,
+        29
+      ]
+    },
+    {
+      "name": "WOOD_TEAK",
+      "rgb": [
+        196,
+        178,
+        121
+      ]
+    },
+    {
+      "name": "WOOD_WALNUT",
+      "rgb": [
+        74,
+        62,
+        36
+      ]
+    },
+    {
+      "name": "WOOD_YEW",
+      "rgb": [
+        196,
+        153,
+        44
+      ]
+    },
+    {
+      "name": "WOOD_ZEBRAWOOD",
+      "rgb": [
+        232,
+        186,
+        114
+      ]
+    },
+    {
+      "name": "PLANT_MOD_HARDY",
+      "rgb": [
+        157,
+        220,
+        157
+      ]
+    },
+    {
+      "name": "PLANT_MOD_MATURE",
+      "rgb": [
+        0,
+        150,
+        0
+      ]
+    },
+    {
+      "name": "PLANT_MOD_YOUNG",
+      "rgb": [
+        0,
+        220,
+        0
+      ]
+    },
+    {
+      "name": "PLANT_MOD_WITHERED",
+      "rgb": [
+        150,
+        170,
+        80
+      ]
+    },
+    {
+      "name": "PLANT_MOD_CREEPING",
+      "rgb": [
+        220,
+        0,
+        50
+      ]
+    },
+    {
+      "name": "PLANT_MOD_WILD",
+      "rgb": [
+        220,
+        240,
+        120
+      ]
+    },
+    {
+      "name": "PLANT_MOD_EXTINCT",
+      "rgb": [
+        110,
+        180,
+        200
+      ]
+    },
+    {
+      "name": "PLANT_MOD_JUVENILE",
+      "rgb": [
+        200,
+        210,
+        0
+      ]
+    },
+    {
+      "name": "PLANT_MOD_LEAFY",
+      "rgb": [
+        64,
+        230,
+        50
+      ]
+    },
+    {
+      "name": "PLANT_COTTON",
+      "rgb": [
+        240,
+        240,
+        240
+      ]
+    },
+    {
+      "name": "PLANT_JUTE",
+      "rgb": [
+        180,
+        150,
+        100
+      ]
+    },
+    {
+      "name": "GEM_MOD_DARK",
+      "rgb": [
+        105,
+        105,
+        105
+      ]
+    },
+    {
+      "name": "GEM_MOD_ROUGH",
+      "rgb": [
+        116,
+        82,
+        140
+      ]
+    },
+    {
+      "name": "GEM_MOD_VIBRANT",
+      "rgb": [
+        177,
+        250,
+        200
+      ]
+    },
+    {
+      "name": "GEM_MOD_FADED",
+      "rgb": [
+        180,
+        153,
+        147
+      ]
+    },
+    {
+      "name": "GEM_MOD_DULL",
+      "rgb": [
+        123,
+        150,
+        126
+      ]
+    },
+    {
+      "name": "GEM_JADE",
+      "rgb": [
+        0,
+        157,
+        0
+      ]
+    },
+    {
+      "name": "GEM_SAPPHIRE",
+      "rgb": [
+        65,
+        154,
+        255
+      ]
+    },
+    {
+      "name": "GEM_EMERALD",
+      "rgb": [
+        30,
+        222,
+        94
+      ]
+    },
+    {
+      "name": "GEM_RUBY",
+      "rgb": [
+        211,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "GEM_DIAMOND",
+      "rgb": [
+        205,
+        255,
+        224
+      ]
+    },
+    {
+      "name": "GEM_AMETHYST",
+      "rgb": [
+        193,
+        27,
+        207
+      ]
+    },
+    {
+      "name": "GEM_GARNET",
+      "rgb": [
+        221,
+        134,
+        59
+      ]
+    },
+    {
+      "name": "GEM_TOPAZ",
+      "rgb": [
+        230,
+        230,
+        0
+      ]
+    }
+  ],
+  "Stats": [
+    {
+      "defaultValue": 0.0,
+      "statName": "Slash Damage",
+      "combiner": {},
+      "scaler": "SCALE_LEVEL",
+      "modifier": {}
+    },
+    {
+      "defaultValue": 0.0,
+      "statName": "Pierce Damage",
+      "combiner": "COMBINE_FLOAT",
+      "scaler": "SCALE_LEVEL",
+      "modifier": "MODIFY_FLOAT"
+    },
+    {
+      "defaultValue": 0.0,
+      "statName": "Blunt Damage",
+      "combiner": "COMBINE_FLOAT",
+      "scaler": "SCALE_LEVEL",
+      "modifier": "MODIFY_FLOAT"
+    },
+    {
+      "defaultValue": 0.0,
+      "statName": "Attack Time",
+      "combiner": "COMBINE_FLOAT",
+      "scaler": "SCALE_NONE",
+      "modifier": "MODIFY_FLOAT"
+    },
+    {
+      "defaultValue": 0.0,
+      "statName": "Range",
+      "combiner": "COMBINE_FLOAT",
+      "scaler": "SCALE_NONE",
+      "modifier": "MODIFY_FLOAT"
+    },
+    {
+      "defaultValue": 0.0,
+      "statName": "Draw Time",
+      "combiner": "COMBINE_FLOAT",
+      "scaler": "SCALE_NONE",
+      "modifier": "MODIFY_FLOAT"
+    }
+  ],
+  "Material Types": [],
+  "Part Types": [
+    {
+      "name": "PART_TYPE_HILT"
+    },
+    {
+      "name": "PART_TYPE_GRIP"
+    },
+    {
+      "name": "PART_TYPE_BLADE"
+    },
+    {
+      "name": "PART_HAMMER_HANDLE"
+    },
+    {
+      "name": "PART_HAMMER_HEAD"
+    },
+    {
+      "name": "PART_AXE_HANDLE"
+    },
+    {
+      "name": "PART_AXE_HEAD"
+    },
+    {
+      "name": "PART_BOW_STRING"
+    },
+    {
+      "name": "PART_BOW_LIMBS"
+    },
+    {
+      "name": "PART_BOW_GRIP"
+    },
+    {
+      "name": "PART_CBOW_STOCK"
+    },
+    {
+      "name": "PART_CBOW_STRING"
+    },
+    {
+      "name": "PART_CBOW_LIMBS"
+    }
+  ],
+  "Stat Sets": [],
+  "Material Modifiers": [],
+  "Materials": [],
+  "Weapon Types": [],
+  "Weapon Parts": []
+}

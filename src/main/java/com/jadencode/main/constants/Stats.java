@@ -1,14 +1,17 @@
 package com.jadencode.main.constants;
 
+import com.google.gson.*;
 import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatDef;
 
+import java.lang.reflect.Type;
+import java.util.HashMap;
 import java.util.function.BiFunction;
 
 /**
  * Created by gtrpl on 6/11/2016.
  */
-public class Stats {
+public final class Stats {
     public static final BiFunction<Integer, Float, Float> SCALE_LEVEL = (i, t) -> t * (float) Math.pow(1.1F, i - 1);
     public static final BiFunction<Integer, Float, Float> SCALE_NONE = (i, t) -> t;
     public static final BiFunction<Float, Float, Float> COMBINE_FLOAT = (a, b) -> a + b;
@@ -21,4 +24,12 @@ public class Stats {
     public static final StatBase<Float> RANGE = new StatDef<>("Range", 0F, SCALE_NONE, COMBINE_FLOAT, MODIFY_FLOAT);
     public static final StatBase<Float> DRAW_TIME = new StatDef<>("Draw Time", 0F, SCALE_NONE, COMBINE_FLOAT, MODIFY_FLOAT);
 
+
+
+//    public Stats() {
+//        super("Stats", 1);
+//    }
+//    @Override
+//    public void consume(String name, JsonObject obj) {
+//    }
 }

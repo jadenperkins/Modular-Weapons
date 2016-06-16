@@ -1,9 +1,6 @@
 package com.jadencode.main;
 
-import com.jadencode.main.constants.MaterialTypes;
-import com.jadencode.main.constants.Materials;
-import com.jadencode.main.constants.Stats;
-import com.jadencode.main.constants.WeaponParts;
+import com.jadencode.main.constants.*;
 import com.jadencode.main.generate.Generator;
 import com.jadencode.main.generate.character.Actor;
 import com.jadencode.main.generate.character.Settlement;
@@ -13,12 +10,10 @@ import com.jadencode.main.generate.character.viking.VikingCharacterGenerator;
 import com.jadencode.main.generate.character.viking.VikingSettlementGenerator;
 import com.jadencode.main.generate.weapon.WeaponGenerator;
 import com.jadencode.main.generate.weapon.WeaponInstance;
-import com.jadencode.main.item.ItemPart;
 import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.magic.SpellBase;
 import com.jadencode.main.magic.SpellObject;
-import com.jadencode.main.material.MaterialType;
 import com.jadencode.main.nbt.CompressedStreamTools;
 import com.jadencode.main.nbt.NBTTagCompound;
 
@@ -92,6 +87,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        ContentLoader.load();
         //Initialize all materials
         Materials.load();
 

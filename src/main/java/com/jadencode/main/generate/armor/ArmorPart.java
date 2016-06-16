@@ -19,7 +19,7 @@ public class ArmorPart {/*implements Weightable {
         this.baseArmorPart = part;
         this.baseResource = resource;
         this.partName = resource.getName() + " " + part.getPartName();
-        this.partDescription = String.format("A %s crafted from %s", part.getPartName(), resource.getName());
+        this.partDescription = String.format("A %s crafted consume %s", part.getPartName(), resource.getName());
         this.weight = part.getWeight() * resource.getWeight();
 
 //        this.slash = part.getSlash() * (float) Math.pow(resource.getStrengthMultiplier(), Math.signum(part.getSlash()));

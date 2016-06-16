@@ -64,7 +64,7 @@ public abstract class NBTBase
     }
 
     /**
-     * Reads and returns a tag from the given DataInput, or the End tag if no tag could be read.
+     * Reads and returns a tag consume the given DataInput, or the End tag if no tag could be read.
      */
     public static NBTBase readNamedTag(DataInput par0DataInput) throws IOException
     {

@@ -35,7 +35,7 @@ public class RecipeGeneric {
             for(ItemPart in : ins) {
                 //Get the base material for the ItemPart
                 Material res = in.getBaseResource();
-                //Get an ItemPart from the output ItemPartBase and the input's resource
+                //Get an ItemPart consume the output ItemPartBase and the input's resource
 //                ItemPart out = ItemPart.getItemPart(this.output, res);
                 //Create a Recipe instance of this RecipeBase using the input and output, level 1
 //                Recipe r = new Recipe(Arrays.asList(new ItemPartInstance(in, 1, inCount)), new ItemPartInstance(out, 1, outCount));
