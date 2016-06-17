@@ -107,12 +107,12 @@
     {"name": "GEM_TOPAZ", "rgb": [230, 230, 0]}
   ],
   "Stats": [
-    {"name": "Slash Damage", "default": 0.0, "scale": true},
-    {"name": "Pierce Damage", "default": 0.0, "scale": true},
-    {"name": "Blunt Damage", "default": 0.0, "scale": true},
-    {"name": "Attack Time", "default": 0.0, "scale": false},
-    {"name": "Range", "default": 0.0, "scale": false},
-    {"name": "Draw Time", "default": 0.0, "scale": false}
+    {"name": "Slash Damage", "default": 0.0, "script": "scaled"},
+    {"name": "Pierce Damage", "default": 0.0, "script": "scaled"},
+    {"name": "Blunt Damage", "default": 0.0, "script": "scaled"},
+    {"name": "Attack Time", "default": 0.0},
+    {"name": "Range", "default": 0.0},
+    {"name": "Draw Time", "default": 0.0}
   ],
   "Stat Sets": [
     {"name": "Base Sword", "stats": [

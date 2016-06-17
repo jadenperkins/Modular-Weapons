@@ -7,6 +7,8 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.reflections:reflections:0.9.10"
         classpath "com.google.code.gson:gson:2.6.2"
+        classpath "org.mozilla:rhino:1.7R4"
+        classpath "commons-io:commons-io:2.5"
     }
 }
 
@@ -16,6 +18,8 @@ apply plugin: 'jacoco'
 dependencies {
     compile "org.reflections:reflections:0.9.10"
     compile "com.google.code.gson:gson:2.6.2"
+    compile "org.mozilla:rhino:1.7R4"
+    compile "commons-io:commons-io:2.5"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     testCompile "org.jetbrains.spek:spek:1.0.25"
@@ -32,6 +36,12 @@ repositories {
     }
     maven {
         url = "http://mvnrepository.com/artifact/com.google.code.gson/gson"
+    }
+    maven {
+        url = "http://mvnrepository.com/artifact/org.mozilla/rhino"
+    }
+    maven {
+        url = "http://mvnrepository.com/artifact/commons-io/commons-io"
     }
 }
 sourceSets {
