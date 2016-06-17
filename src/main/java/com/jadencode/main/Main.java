@@ -1,6 +1,5 @@
 package com.jadencode.main;
 
-import com.jadencode.main.constants.*;
 import com.jadencode.main.content.ContentLoader;
 import com.jadencode.main.generate.Generator;
 import com.jadencode.main.generate.character.Actor;
@@ -11,13 +10,12 @@ import com.jadencode.main.generate.character.viking.VikingCharacterGenerator;
 import com.jadencode.main.generate.character.viking.VikingSettlementGenerator;
 import com.jadencode.main.generate.weapon.WeaponGenerator;
 import com.jadencode.main.generate.weapon.WeaponInstance;
-import com.jadencode.main.generate.weapon.WeaponPartInstance;
-import com.jadencode.main.stat.StatBase;
-import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.magic.SpellBase;
 import com.jadencode.main.magic.SpellObject;
 import com.jadencode.main.nbt.CompressedStreamTools;
 import com.jadencode.main.nbt.NBTTagCompound;
+import com.jadencode.main.stat.StatBase;
+import com.jadencode.main.stat.StatSet;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -26,8 +24,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Jaden on 1/19/2015.
@@ -93,9 +92,10 @@ public class Main {
         return false;
     }
     private static void printWeapon(WeaponInstance weap) {
-        File dir = new File("./pictures");
+        File dir = new File("pictures");
         File out = new File(dir, weap.getDisplayName().replace(" ", "_") + ".png");
         try {
+            out.mkdirs();
             out.createNewFile();
             BufferedImage image = new BufferedImage(16, weap.getPartsList().size() * 16, BufferedImage.TYPE_INT_RGB);
 
@@ -108,7 +108,7 @@ public class Main {
                 }
             }
             ImageIO.write(image, "PNG", out);
-
+            System.out.println("Images stored in " + dir.getAbsolutePath());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -174,6 +174,8 @@ public class Main {
 
         System.out.println("\t\t" + weap.getDisplayInfo());
 
+        printWeapon(weap);
+
 
         //291 / 89
         WeaponInstance scaled = weap.scaled(20);
@@ -235,8 +237,10 @@ public class Main {
             for(int j = 0; j < itr; j++) {
                 level = theWorld.getRNG().nextInt(level + 1) + 1;
             }
-            weapons.add(generator.generate(theWorld.getRNG(), level));
+            WeaponInstance weapon = generator.generate(theWorld.getRNG(), level);
+            weapons.add(weapon);
 //            System.out.println("\t" + weapon.getDisplayInfo());
+            printWeapon(weapon);
         }
 //        weapons.sort((weapon1, weapon2) -> Integer.compare(weapon1.getLevel(), weapon2.getLevel()));
 //        weapons.forEach(weapon -> System.out.println(String.format("%s (Level %d)", weapon.getDisplayName(), weapon.getLevel())));
