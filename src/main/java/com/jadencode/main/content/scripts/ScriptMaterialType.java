@@ -1,6 +1,4 @@
-package com.jadencode.main.scripts;
-
-import com.jadencode.main.content.scripts.ScriptBase;
+package com.jadencode.main.content.scripts;
 
 import java.util.ArrayList;
 import java.util.List;

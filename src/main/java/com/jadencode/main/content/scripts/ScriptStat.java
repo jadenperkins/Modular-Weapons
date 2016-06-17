@@ -1,6 +1,4 @@
-package com.jadencode.main.scripts;
-
-import com.jadencode.main.content.scripts.ScriptBase;
+package com.jadencode.main.content.scripts;
 
 /**
  * Created by JPERKI8 on 6/17/2016.

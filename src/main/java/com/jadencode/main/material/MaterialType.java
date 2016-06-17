@@ -27,7 +27,6 @@ public class MaterialType {
     public void generateExotics() {
         if(MaterialTypes.script(this.scriptName) != null) {
             List<String> exoticNames = MaterialTypes.script(this.scriptName).getExoticNames();
-            System.out.println(exoticNames.size());
             for (String name : exoticNames) {
                 long hash = name.hashCode();
                 long seed = Main.theWorld.getSeed();

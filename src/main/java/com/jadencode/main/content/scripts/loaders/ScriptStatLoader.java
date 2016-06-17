@@ -1,9 +1,7 @@
-package com.jadencode.main.content.scripts;
+package com.jadencode.main.content.scripts.loaders;
 
-import com.jadencode.main.scripts.ScriptStat;
+import com.jadencode.main.content.scripts.ScriptStat;
 import com.jadencode.main.constants.Stats;
-
-import java.util.Arrays;
 
 /**
  * Created by JPERKI8 on 6/17/2016.

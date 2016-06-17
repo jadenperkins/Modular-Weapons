@@ -4,7 +4,7 @@ import com.google.gson.*;
 import com.jadencode.main.constants.Materials;
 import com.jadencode.main.constants.WeaponParts;
 import com.jadencode.main.content.loaders.ContentManager;
-import com.jadencode.main.content.scripts.ScriptLoader;
+import com.jadencode.main.content.scripts.loaders.ScriptLoader;
 import org.apache.commons.io.FileUtils;
 import org.reflections.Reflections;
 

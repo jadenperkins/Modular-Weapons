@@ -1,4 +1,6 @@
-package com.jadencode.main.content.scripts;
+package com.jadencode.main.content.scripts.loaders;
+
+import com.jadencode.main.content.scripts.ScriptBase;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -17,16 +19,25 @@ public abstract class ScriptLoader<S extends ScriptBase> {
         this.directory.mkdirs();
         this.scriptClass = c;
         this.scriptMap = map;
+
+        this.load(null, "");
     }
     public File getDirectory() {
         return this.directory;
     }
     public void load(String scriptName, String string) {
         try {
-            S script = this.scriptClass.getConstructor(String.class, String.class).newInstance(scriptName, string);
+            S script = this.newScript(scriptName, string);
             this.scriptMap.putIfAbsent(scriptName, script);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public S newScript(String name, String contents) throws
+            NoSuchMethodException,
+            IllegalAccessException,
+            InvocationTargetException,
+            InstantiationException {
+        return this.scriptClass.getConstructor(String.class, String.class).newInstance(name, contents);
     }
 }

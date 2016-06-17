@@ -1,13 +1,11 @@
 package com.jadencode.main.constants;
 
 import com.jadencode.main.material.MaterialType;
-import com.jadencode.main.scripts.ScriptMaterialType;
+import com.jadencode.main.content.scripts.ScriptMaterialType;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.function.Supplier;
 
 /**
  * Created by JPERKI8 on 6/13/2016.

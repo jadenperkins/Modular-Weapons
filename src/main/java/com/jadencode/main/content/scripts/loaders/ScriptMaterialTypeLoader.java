@@ -1,7 +1,7 @@
-package com.jadencode.main.content.scripts;
+package com.jadencode.main.content.scripts.loaders;
 
 import com.jadencode.main.constants.MaterialTypes;
-import com.jadencode.main.scripts.ScriptMaterialType;
+import com.jadencode.main.content.scripts.ScriptMaterialType;
 
 /**
  * Created by gtrpl on 6/17/2016.

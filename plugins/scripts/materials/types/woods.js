@@ -1,8 +1,8 @@
 importPackage(java.util);
 
-var first  = ["Meg", "Ex", "Ant", "Mas", "Ox", "Ax", "Bis"];
-var second = ["or", "an", "net", "et", "en"];
-var third  = ["ite", "ium"];
+var first  = ["Ac", "Za", "Mat", "Ni"];
+var second = ["tan", "rop", "cat", "mat"];
+var third  = ["ta", "in", "or", "za"];
 
 var exoticNames = getNames();
 

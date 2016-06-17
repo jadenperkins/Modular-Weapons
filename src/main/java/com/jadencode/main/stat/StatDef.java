@@ -31,12 +31,10 @@ public class StatDef implements StatBase {
     }
     @Override
     public double combine(double first, double second) {
-        if(this.scriptName == null || Stats.script(this.scriptName) == null) return first + second;
         return Stats.script(this.scriptName).combine(first, second);
     }
     @Override
     public double scale(int i, double original) {
-        if(this.scriptName == null || Stats.script(this.scriptName) == null) return original;
         return Stats.script(this.scriptName).scale(i, original);
     }
 }

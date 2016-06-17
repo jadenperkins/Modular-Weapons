@@ -1,6 +1,6 @@
 package com.jadencode.main.constants;
 
-import com.jadencode.main.scripts.ScriptStat;
+import com.jadencode.main.content.scripts.ScriptStat;
 import com.jadencode.main.stat.StatBase;
 
 import java.util.HashMap;
@@ -17,7 +17,7 @@ public final class Stats {
         return SCRIPTS;
     }
     public static ScriptStat script(String name) {
-        return SCRIPTS.get(name);
+        return SCRIPTS.getOrDefault(name, SCRIPTS.get(null));
     }
     public static void register(StatBase stat) {
         STATS.put(stat.getStatName(), stat);

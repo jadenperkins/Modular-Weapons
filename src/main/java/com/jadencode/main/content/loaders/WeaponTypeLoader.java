@@ -24,19 +24,13 @@ public class WeaponTypeLoader extends ContentManager {
     @Override
     public void consume(String name, JsonObject obj) {
         String statSetName = obj.get("stats").getAsString();
+        String scriptName = obj.has("script") ? obj.get("script").getAsString() : null;
         float weight = obj.has("weight") ? obj.get("weight").getAsFloat() : 1F;
         JsonArray partsArray = obj.get("parts").getAsJsonArray();
         List<String> parts = new ArrayList<>();
         partsArray.forEach(element -> parts.add(element.getAsString()));
         List<WeaponPartType> partTypes = parts.stream().map(PartTypes::get).collect(Collectors.toList());
-        Function<WeaponInstance, String> namingFunction = w -> {
-            String s = "";
-            for(WeaponPartType type : partTypes) {
-                s += w.getPart(type).getNameMod() + " ";
-            }
-            return s.trim();
-        };
-        WeaponType weapon = new WeaponType(name, weight, StatSets.get(statSetName), partTypes, namingFunction);
+        WeaponType weapon = new WeaponType(name, weight, StatSets.get(statSetName), partTypes, scriptName);
         WeaponTypes.register(weapon);
     }
 }
