@@ -13,6 +13,7 @@ public class MaterialTypeLoader extends ContentManager {
     }
     @Override
     public void consume(String name, JsonObject obj) {
-        MaterialTypes.register(new MaterialType(name));
+        String script = obj.has("script") ? obj.get("script").getAsString() : null;
+        MaterialTypes.register(new MaterialType(name, script));
     }
 }

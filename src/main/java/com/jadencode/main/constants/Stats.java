@@ -1,6 +1,6 @@
 package com.jadencode.main.constants;
 
-import com.jadencode.main.ScriptStat;
+import com.jadencode.main.scripts.ScriptStat;
 import com.jadencode.main.stat.StatBase;
 
 import java.util.HashMap;
@@ -11,13 +11,13 @@ import java.util.HashMap;
  */
 public final class Stats {
     private static final HashMap<String, StatBase> STATS = new HashMap<>();
-    private static final HashMap<String, ScriptStat> STAT_SCRIPTS = new HashMap<>();
+    private static final HashMap<String, ScriptStat> SCRIPTS = new HashMap<>();
 
-    public static void addScript(ScriptStat scriptStat) {
-        if(!STAT_SCRIPTS.containsKey(scriptStat.getScriptName())) STAT_SCRIPTS.put(scriptStat.getScriptName(), scriptStat);
+    public static HashMap<String, ScriptStat> getScripts() {
+        return SCRIPTS;
     }
     public static ScriptStat script(String name) {
-        return STAT_SCRIPTS.get(name);
+        return SCRIPTS.get(name);
     }
     public static void register(StatBase stat) {
         STATS.put(stat.getStatName(), stat);

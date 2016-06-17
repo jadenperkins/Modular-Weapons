@@ -1,6 +1,7 @@
 package com.jadencode.main.constants;
 
 import com.jadencode.main.material.MaterialType;
+import com.jadencode.main.scripts.ScriptMaterialType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,21 +15,13 @@ import java.util.function.Supplier;
 public final class MaterialTypes {
 
     private static final HashMap<String, MaterialType> MATERIAL_TYPES = new HashMap<>();
+    private static final HashMap<String, ScriptMaterialType> SCRIPTS = new HashMap<>();
 
-    private static Supplier<List<String>> supplier(List<String> f, List<String> m, List<String> l) {
-        return () -> {
-            List<String> ret = new ArrayList<>();
-            f.forEach(fs -> m.forEach(ms -> l.forEach(ls -> ret.add(fs + ms + ls))));
-            return ret;
-        };
+    public static ScriptMaterialType script(String name) {
+        return name == null ? null : SCRIPTS.get(name);
     }
-
-    private static Supplier<List<String>> supplier(List<String> f, List<String> l) {
-        return () -> {
-            List<String> ret = new ArrayList<>();
-            f.forEach(fs -> l.forEach(ls -> ret.add(fs + ls)));
-            return ret;
-        };
+    public static HashMap<String, ScriptMaterialType> getScripts() {
+        return SCRIPTS;
     }
     public static void register(MaterialType type) {
         MATERIAL_TYPES.put(type.getName(), type);
@@ -39,12 +32,4 @@ public final class MaterialTypes {
     public static List<MaterialType> getMaterialTypes() {
         return new ArrayList<>(MATERIAL_TYPES.values());
     }
-
-//    public MaterialTypes() {
-//        super("Material Types", 2);
-//    }
-//    @Override
-//    public void consume(String name, JsonObject obj) {
-//
-//    }
 }

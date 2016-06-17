@@ -16,7 +16,7 @@ public class StatLoader extends ContentManager {
     public void consume(String name, JsonObject obj) {
         double defaultValue = obj.get("default").getAsDouble();
         String script = obj.has("script") ? obj.get("script").getAsString() : null;
-        StatBase stat = new StatDef(name, script, defaultValue);
+        StatBase stat = new StatDef(name, defaultValue, script);
         Stats.register(stat);
     }
 }

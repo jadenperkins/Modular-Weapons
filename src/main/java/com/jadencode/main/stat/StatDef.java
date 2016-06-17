@@ -1,10 +1,7 @@
 package com.jadencode.main.stat;
 
-import com.jadencode.main.ScriptStat;
 import com.jadencode.main.constants.Stats;
 import com.jadencode.main.material.Material;
-
-import java.util.function.BiFunction;
 
 /**
  * Created by gtrpl on 6/5/2016.
@@ -15,7 +12,7 @@ public class StatDef implements StatBase {
     private final String statName;
     private final String scriptName;
 
-    public StatDef(String s, String script, double val) {
+    public StatDef(String s, double val, String script) {
         this.defaultValue = val;
         this.statName = s;
         this.scriptName = script;
@@ -29,13 +26,13 @@ public class StatDef implements StatBase {
         return this.statName;
     }
     @Override
+    public double modify(Material resource, double original) {
+        return original * resource.getMultiplier();
+    }
+    @Override
     public double combine(double first, double second) {
         if(this.scriptName == null || Stats.script(this.scriptName) == null) return first + second;
         return Stats.script(this.scriptName).combine(first, second);
-    }
-    @Override
-    public double modify(Material resource, double original) {
-        return original * resource.getMultiplier();
     }
     @Override
     public double scale(int i, double original) {

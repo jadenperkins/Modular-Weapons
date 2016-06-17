@@ -1,6 +1,6 @@
 {
   "Material Types": [
-    {"name": "Metal"},
+    {"name": "Metal", "script": "metals"},
     {"name": "Wood"},
     {"name": "Plant"},
     {"name": "Gem"}

@@ -1,4 +1,4 @@
-package com.jadencode.main;
+package com.jadencode.main.scripts;
 
 import com.jadencode.main.content.scripts.ScriptBase;
 
@@ -6,8 +6,8 @@ import com.jadencode.main.content.scripts.ScriptBase;
  * Created by JPERKI8 on 6/17/2016.
  */
 public class ScriptStat extends ScriptBase {
-    public ScriptStat(String fileName, String _spellString) {
-        super(fileName, _spellString);
+    public ScriptStat(String scriptName, String scriptContents) {
+        super(scriptName, scriptContents);
     }
     public double combine(double first, double second) {
         return this.invokeWithDefault("combine", first + second, first, second);

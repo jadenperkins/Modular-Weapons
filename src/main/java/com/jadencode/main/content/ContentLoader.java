@@ -23,6 +23,10 @@ public final class ContentLoader {
     public static final void load() {
         loadStaticContent();
         loadScripts();
+
+        Materials.load();
+        WeaponParts.generateWeaponParts();
+        WeaponParts.countParts();
     }
     private static final void loadStaticContent() {
         Set<Class<? extends ContentManager>> managerClasses = new Reflections("com.jadencode.main.content.loaders").getSubTypesOf(ContentManager.class);
@@ -39,7 +43,6 @@ public final class ContentLoader {
         }
         managers.sort((a, b) -> Integer.compare(a.getLoadOrder(), b.getLoadOrder()));
 
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         File dir = new File("./plugins");
         if(!dir.exists()) {
             dir.mkdirs();
@@ -63,9 +66,6 @@ public final class ContentLoader {
                 e.printStackTrace();
             }
         }
-        Materials.load();
-        WeaponParts.generateWeaponParts();
-        WeaponParts.countParts();
     }
     private static final void loadScripts() {
         Set<Class<? extends ScriptLoader>> managerClasses = new Reflections("com.jadencode.main.content.scripts").getSubTypesOf(ScriptLoader.class);
@@ -86,7 +86,7 @@ public final class ContentLoader {
             for (File script : scriptFiles) {
                 try {
                     String scriptContents = FileUtils.readFileToString(script, Charset.defaultCharset());
-                    manager.load(script.getName(), scriptContents);
+                    manager.load(script.getName().replace(".js", ""), scriptContents);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

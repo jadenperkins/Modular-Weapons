@@ -13,21 +13,20 @@ public class ScriptBase {
     private final Script compiledScript;
 
     private final String scriptName;
-    private final String scriptString;
+    private final String scriptContents;
 
-    public ScriptBase(String fileName, String _spellString) {
-        this.scriptString = _spellString;
+    public ScriptBase(String scriptName, String scriptContents) {
+        this.scriptName = scriptName;
+        this.scriptContents = scriptContents;
 
         Context ctx = Context.enter();
         ctx.setLanguageVersion(Context.VERSION_1_2);
-        this.compiledScript = ctx.compileString(this.scriptString, fileName, 1, null);
+        this.compiledScript = ctx.compileString(this.scriptContents, scriptName, 1, null);
         this.sharedScope = new ImporterTopLevel(ctx);
         this.compiledScript.exec(ctx, sharedScope);
-
-        this.scriptName = this.getFieldDefault("name", "Unknown Script" + System.currentTimeMillis());
     }
-    public String getScriptString() {
-        return this.scriptString;
+    public String getScriptContents() {
+        return this.scriptContents;
     }
 
     public String getScriptName() {
