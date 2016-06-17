@@ -1,7 +1,13 @@
 package com.jadencode.main.content;
 
 import com.google.gson.*;
+import com.jadencode.main.constants.MaterialModifiers;
+import com.jadencode.main.constants.MaterialTypes;
+import com.jadencode.main.constants.Materials;
+import com.jadencode.main.constants.WeaponParts;
 import com.jadencode.main.content.loaders.ContentManager;
+import com.jadencode.main.material.MaterialModifier;
+import com.jadencode.main.material.MaterialType;
 import org.reflections.Reflections;
 
 import java.io.File;
@@ -13,7 +19,7 @@ import java.util.*;
  */
 public final class ContentLoader {
     public static final void load() {
-        Set<Class<? extends ContentManager>> managerClasses = new Reflections("com.jadencode.main.constants").getSubTypesOf(ContentManager.class);
+        Set<Class<? extends ContentManager>> managerClasses = new Reflections("com.jadencode.main.content.loaders").getSubTypesOf(ContentManager.class);
         List<ContentManager> managers = new ArrayList<>();
 
         for (Class<? extends ContentManager> managerClass : managerClasses) {
@@ -38,6 +44,7 @@ public final class ContentLoader {
 //                JsonObject out = new JsonObject();
                 JsonObject pluginObject = gson.fromJson(new FileReader(plugin), JsonObject.class);
                 for (ContentManager manager : managers) {
+                    System.out.println("Loading " + manager.getName() + " content from " + plugin.getName());
                     String name = manager.getName();
                     if(pluginObject.has(name)) {
                         JsonArray contentObjects = pluginObject.getAsJsonArray(name);
@@ -58,5 +65,8 @@ public final class ContentLoader {
                 e.printStackTrace();
             }
         }
+        Materials.load();
+        WeaponParts.generateWeaponParts();
+        WeaponParts.countParts();
     }
 }

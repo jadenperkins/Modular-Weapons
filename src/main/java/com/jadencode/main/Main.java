@@ -90,7 +90,6 @@ public class Main {
     public static void main(String[] args) {
         ContentLoader.load();
         //Initialize all materials
-        Materials.load();
 
 //        for(MaterialModified resource : MaterialLibrary.getMetalLibrary().getMaterialResources().values()) {
 //            System.out.println(String.format("%s: %f, %f, %f", resource.getName(), resource.getStrengthMultiplier(), resource.getRangeMultiplier(), resource.getWeaknessMultiplier()));
@@ -136,8 +135,6 @@ public class Main {
 //        System.out.println(parts.size() + " parts");
 
         //Create all weapon parts
-        WeaponParts.generateWeaponParts();
-
 //        ArmorPart.generateArmorParts();
 
         WeaponInstance weap = new WeaponGenerator().generate(theWorld.getRNG(), 1);
@@ -153,7 +150,7 @@ public class Main {
         //291 / 89
         WeaponInstance scaled = weap.scaled(20);
         StatSet s1 = scaled.getStatSet();
-        System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f", scaled.getDisplayName(), s1.get(Stats.DAMAGE_SLASH), s1.get(Stats.DAMAGE_PIERCE), s1.get(Stats.DAMAGE_BLUNT)));
+        s1.getStatsRaw().keySet().forEach(stat -> System.out.println(String.format("\t%s: %f", stat.getStatName(), s1.get(stat))));
 
 //        for(WeaponPartInstance part : weap.getWeaponParts().values()) {
 //            for(String key : part.getStats().getFloatKeys()) {

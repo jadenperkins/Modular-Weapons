@@ -8,11 +8,15 @@ import com.jadencode.main.util.WeightedItem;
  * Created by JPERKI8 on 6/13/2016.
  */
 public abstract class WeaponPart implements WeightedItem {
-    private final float  weight;
+    private final float weight;
+    private final WeaponPartType type;
 
     public WeaponPart(float w, WeaponPartType type) {
         this.weight = w;
-        WeaponParts.getPartsList(type).add(this);
+        this.type = type;
+    }
+    public WeaponPartType getType() {
+        return type;
     }
     @Override
     public float getWeight() {

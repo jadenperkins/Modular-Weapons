@@ -106,24 +106,24 @@ public class WeaponPartBase {
 //    public static final WeaponPartBase fastBoltFlight  = new WeaponPartBase("Rapid Bolt Flight", "Rapid", WeaponGenerator.BOLT_FLETCHINGS, MaterialLibrary.getPlantLibrary());
 //    public static final WeaponPartBase sharpBoltFlight = new WeaponPartBase("Accurate Bolt Flight", "Accurate", WeaponGenerator.BOLT_FLETCHINGS, MaterialLibrary.getPlantLibrary());
 
-    private final WeaponPartType   partType;
-    private final String           partName;
-    private final String           nameMod;
-    private final List<Material> materials = new ArrayList<>();
+    private final WeaponPartType     partType;
+    private final String             partName;
+    private final String             nameMod;
+    private final List<MaterialType> materials;
     private final float   weight;
     private final StatSet statSet;
 
-    public WeaponPartBase(String name, String mod, float weight, StatSet stats, WeaponPartType type, MaterialType... mats) {
+    public WeaponPartBase(String name, String mod, float weight, StatSet stats, WeaponPartType type, List<MaterialType> mats) {
         this.partName = name;
         this.nameMod = mod;
         this.weight = weight;
         this.partType = type;
 
         this.statSet = stats;
-        Arrays.stream(mats).forEach(lib -> this.materials.addAll(Materials.getMaterials(lib)));
-        WeaponParts.addBasePart(this);
+        this.materials = mats;
+//        mats.forEach(lib -> this.materials.addAll(Materials.getMaterials(lib)));
     }
-    public WeaponPartBase(String name, String mod, StatSet stats, WeaponPartType type, MaterialType... mats) {
+    public WeaponPartBase(String name, String mod, StatSet stats, WeaponPartType type, List<MaterialType> mats) {
         this(name, mod, 1F, stats, type, mats);
     }
     public float getWeight() {
@@ -142,7 +142,7 @@ public class WeaponPartBase {
         return nameMod;
     }
 
-    public List<Material> getMaterials() {
+    public List<MaterialType> getMaterials() {
         return materials;
     }
 

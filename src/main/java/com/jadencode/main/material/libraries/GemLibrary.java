@@ -34,7 +34,7 @@ public class GemLibrary extends MaterialType {
     private static final List<String> syllablesSecond = Arrays.asList("stone", "rock", "gem", "spar", "quartz", "glass", "jewel");
 
     private GemLibrary() {
-        super("Gem", null);
+        super("Gem");//, null);
     }
 
     public static GemLibrary getInstance() {

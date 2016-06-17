@@ -1,14 +1,14 @@
 {
   "Material Types": [
-    {"name": "MATERIAL_METAL"}
-    //    {"name": "MATERIAL_WOOD"},
-    //    {"name": "MATERIAL_PLANT"},
-    //    {"name": "MATERIAL_GEM"}
+    {"name": "Metal"},
+    {"name": "Wood"},
+    {"name": "Plant"},
+    {"name": "Gem"}
   ],
   "Part Types": [
-    {"name": "PART_SWORD_HILT"},
-    {"name": "PART_SWORD_GRIP"},
-    {"name": "PART_SWORD_BLADE"}
+    {"name": "Sword Hilt"},
+    {"name": "Sword Grip"},
+    {"name": "Sword Blade"}
 
     //    {"name": "PART_HAMMER_HANDLE"},
     //    {"name": "PART_HAMMER_HEAD"},
@@ -43,25 +43,25 @@
     {"name": "MOD_GHOST", "rgb": [179, 255, 220]}
   ],
   "Stats": [
-    {"name": "DAMAGE_SLASH", "display": "Slash Damage", "default": 0, "scale": true},
-    {"name": "DAMAGE_PIERCE", "display": "Pierce Damage", "default": 0, "scale": true},
-    {"name": "DAMAGE_BLUNT", "display": "Blunt Damage", "default": 0, "scale": true},
-    {"name": "ATTACK_TIME", "display": "Attack Time", "default": 0, "scale": false},
-    {"name": "RANGE", "display": "Range", "default": 0, "scale": false},
-    {"name": "DRAW_TIME", "display": "Draw Time", "default": 0, "scale": false}
+    {"name": "Slash Damage", "default": 0.0, "scale": true},
+    {"name": "Pierce Damage", "default": 0.0, "scale": true},
+    {"name": "Blunt Damage", "default": 0.0, "scale": true},
+    {"name": "Attack Time", "default": 0.0, "scale": false},
+    {"name": "Range", "default": 0.0, "scale": false},
+    {"name": "Draw Time", "default": 0.0, "scale": false}
   ],
   "Stat Sets": [
-    {"name": "BASE_SWORD", "stats": [
-      {"stat": "DAMAGE_SLASH", "value": 50.0},
-      {"stat": "DAMAGE_PIERCE", "value": 10.0},
-      {"stat": "DAMAGE_BLUNT", "value": 0.0}
+    {"name": "Base Sword", "stats": [
+      {"stat": "Slash Damage", "value": 50.0},
+      {"stat": "Pierce Damage", "value": 10.0},
+      {"stat": "Blunt Damage", "value": 0.0}
     ]}
   ],
   "Weapon Types": [
-    {"name": "Sword", "stats": "BASE_SWORD", "parts": [
-      "PART_SWORD_HILT",
-      "PART_SWORD_GRIP",
-      "PART_SWORD_BLADE"
+    {"name": "Sword", "stats": "Base Sword", "parts": [
+      "Sword Hilt",
+      "Sword Grip",
+      "Sword Blade"
     ]}
 //    {"name": "WEAPON_HAMMER", "parts": [
 //      "PART_HAMMER_HEAD",
@@ -83,40 +83,40 @@
 //    ]}
   ],
   "Material Modifiers": [
-    {"name": "Lunar", "color": "MOD_LUNAR", "weight": 1.0, "level": 0.5, "mod": 1.2, "materials": ["MATERIAL_METAL"]},
-    {"name": "Solar", "color": "MOD_SOLAR", "weight": 1.0, "level": 0.5, "mod": 0.8, "materials": ["MATERIAL_METAL"]},
-    {"name": "White", "color": "MOD_WHITE", "weight": 1.0, "level": 0.8, "mod": 1.2, "materials": ["MATERIAL_METAL", "MATERIAL_WOOD"]},
-    {"name": "Black", "color": "MOD_BLACK", "weight": 1.0, "level": 0.8, "mod": 0.8, "materials": ["MATERIAL_METAL", "MATERIAL_WOOD"]},
-    {"name": "Ancient", "color": "MOD_ANCIENT", "weight": 1.0, "level": 1, "mod": 1.2, "materials": ["MATERIAL_METAL", "MATERIAL_WOOD"]},
-    {"name": "Shadow", "color": "MOD_SHADOW", "weight": 1.0, "level": 1, "mod": 0.8, "materials": ["MATERIAL_METAL"]},
-    {"name": "Dark", "color": "MOD_DARK", "weight": 1.0, "level": 1.25, "mod": 1.2, "materials": ["MATERIAL_METAL", "MATERIAL_WOOD", "MATERIAL_GEM"]},
-    {"name": "Twilight", "color": "MOD_TWILIGHT", "weight": 1.0, "level": 1.25, "mod": 0.8, "materials": ["MATERIAL_METAL"]},
-    {"name": "Ghost", "color": "MOD_GHOST", "weight": 1.0, "level": 1.5, "mod": 2.0, "materials": ["MATERIAL_METAL"]}
+    {"name": "Lunar", "color": "MOD_LUNAR", "weight": 1.0, "level": 0.5, "mod": 1.2, "materials": ["Metal"]},
+    {"name": "Solar", "color": "MOD_SOLAR", "weight": 1.0, "level": 0.5, "mod": 0.8, "materials": ["Metal"]},
+    {"name": "White", "color": "MOD_WHITE", "weight": 1.0, "level": 0.8, "mod": 1.2, "materials": ["Metal"]},//, "MATERIAL_WOOD"]},
+    {"name": "Black", "color": "MOD_BLACK", "weight": 1.0, "level": 0.8, "mod": 0.8, "materials": ["Metal"]},//, "MATERIAL_WOOD"]},
+    {"name": "Ancient", "color": "MOD_ANCIENT", "weight": 1.0, "level": 1, "mod": 1.2, "materials": ["Metal"]},//, "MATERIAL_WOOD"]},
+    {"name": "Shadow", "color": "MOD_SHADOW", "weight": 1.0, "level": 1, "mod": 0.8, "materials": ["Metal"]},
+    {"name": "Dark", "color": "MOD_DARK", "weight": 1.0, "level": 1.25, "mod": 1.2, "materials": ["Metal"]},//, "MATERIAL_WOOD", "MATERIAL_GEM"]},
+    {"name": "Twilight", "color": "MOD_TWILIGHT", "weight": 1.0, "level": 1.25, "mod": 0.8, "materials": ["Metal"]},
+    {"name": "Ghost", "color": "MOD_GHOST", "weight": 1.0, "level": 1.5, "mod": 2.0, "materials": ["Metal"]}
   ],
   "Materials": [
-    {"name": "Iron", "color": "METAL_IRON", "weight": 32.0, "mod": 1.0, "level": 1, "material": "MATERIAL_METAL"},
-    {"name": "Silver", "color": "METAL_SILVER", "weight": 16.0, "mod": 0.6, "level": 1, "material": "MATERIAL_METAL"},
-    {"name": "Gold", "color": "METAL_GOLD", "weight": 8.0, "mod": 0.8, "level": 1, "material": "MATERIAL_METAL"},
-    {"name": "Cobalt", "color": "METAL_COBALT", "weight": 4.0, "mod": 1.2, "level": 1, "material": "MATERIAL_METAL"},
-    {"name": "Tungsten", "color": "METAL_TUNGSTEN", "weight": 2.0, "mod": 1.4, "level": 1, "material": "MATERIAL_METAL"},
-    {"name": "Titanium", "color": "METAL_TITANIUM", "weight": 1.0, "mod": 1.8, "level": 1, "material": "MATERIAL_METAL"},
+    {"name": "Iron", "color": "METAL_IRON", "weight": 32.0, "mod": 1.0, "level": 1, "material": "Metal"},
+    {"name": "Silver", "color": "METAL_SILVER", "weight": 16.0, "mod": 0.6, "level": 1, "material": "Metal"},
+    {"name": "Gold", "color": "METAL_GOLD", "weight": 8.0, "mod": 0.8, "level": 1, "material": "Metal"},
+    {"name": "Cobalt", "color": "METAL_COBALT", "weight": 4.0, "mod": 1.2, "level": 1, "material": "Metal"},
+    {"name": "Tungsten", "color": "METAL_TUNGSTEN", "weight": 2.0, "mod": 1.4, "level": 1, "material": "Metal"},
+    {"name": "Titanium", "color": "METAL_TITANIUM", "weight": 1.0, "mod": 1.8, "level": 1, "material": "Metal"}
   ],
   "Weapon Parts": [
-    {"name": "Hilt of Ascension", "nameMod": "Ascendant", "weight": 100.0, "partType": "PART_SWORD_HILT"},
-    {"name": "Grip of Darkness", "nameMod": "Dark", "weight": 100.0, "partType": "PART_SWORD_GRIP"},
-    {"name": "Seeker Blade", "nameMod": "Seeker", "weight": 100.0, "partType": "PART_SWORD_BLADE"},
+    {"name": "Hilt of Ascension", "nameMod": "Ascendant", "partInfo": "A legendary weapon part", "weight": 100.0, "partType": "Sword Hilt"},
+    {"name": "Grip of Darkness", "nameMod": "Dark", "partInfo": "A legendary weapon part", "weight": 100.0, "partType": "Sword Grip"},
+    {"name": "Seeker Blade", "nameMod": "Seeker", "partInfo": "A legendary weapon part", "weight": 100.0, "partType": "Sword Blade"},
 
-    {"name": "Heavy Grip", "nameMod": "Double", "partType": "PART_SWORD_GRIP", "materials": ["MATERIAL_METAL"]},
-    {"name": "Basic Grip", "nameMod": "Single", "weight": 100.0, "partType": "PART_SWORD_GRIP", "materials": ["MATERIAL_METAL"]},
-    {"name": "Light Grip", "nameMod": "Half", "weight": 100.0, "partType": "PART_SWORD_GRIP", "materials": ["MATERIAL_METAL"]},
+    {"name": "Heavy Grip", "nameMod": "Double", "partType": "Sword Grip", "materials": ["Metal"]},
+    {"name": "Basic Grip", "nameMod": "Single", "partType": "Sword Grip", "materials": ["Metal"]},
+    {"name": "Light Grip", "nameMod": "Half", "partType": "Sword Grip", "materials": ["Metal"]},
 
-    {"name": "Heavy Hilt", "nameMod": "Heavy", "weight": 100.0, "partType": "PART_SWORD_HILT", "materials": ["MATERIAL_METAL"]},
-    {"name": "Medium Hilt", "nameMod": "Balanced", "weight": 100.0, "partType": "PART_SWORD_HILT", "materials": ["MATERIAL_METAL"]},
-    {"name": "Light Hilt", "nameMod": "Agile", "weight": 100.0, "partType": "PART_SWORD_HILT", "materials": ["MATERIAL_METAL"]},
+    {"name": "Heavy Hilt", "nameMod": "Heavy", "partType": "Sword Hilt", "materials": ["Metal"]},
+    {"name": "Medium Hilt", "nameMod": "Balanced", "partType": "Sword Hilt", "materials": ["Metal"]},
+    {"name": "Light Hilt", "nameMod": "Agile", "partType": "Sword Hilt", "materials": ["Metal"]},
 
-    {"name": "Broad Blade", "nameMod": "Broadsword", "weight": 100.0, "partType": "PART_SWORD_BLADE", "materials": ["MATERIAL_METAL"]},
-    {"name": "Long Blade", "nameMod": "Longsword", "weight": 100.0, "partType": "PART_SWORD_BLADE", "materials": ["MATERIAL_METAL"]},
-    {"name": "Short Blade", "nameMod": "Shortsword", "weight": 100.0, "partType": "PART_SWORD_BLADE", "materials": ["MATERIAL_METAL"]}
+    {"name": "Broad Blade", "nameMod": "Broadsword", "partType": "Sword Blade", "materials": ["Metal"]},
+    {"name": "Long Blade", "nameMod": "Longsword", "partType": "Sword Blade", "materials": ["Metal"]},
+    {"name": "Short Blade", "nameMod": "Shortsword", "partType": "Sword Blade", "materials": ["Metal"]}
 
 
 //    public static final WeaponPart ascendantHilt = new WeaponPartLegendary("Hilt of Ascension", "Ascendant", 100F, PartTypes.PART_SWORD_HILT);

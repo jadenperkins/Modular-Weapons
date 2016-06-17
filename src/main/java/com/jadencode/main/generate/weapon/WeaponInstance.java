@@ -1,6 +1,6 @@
 package com.jadencode.main.generate.weapon;
 
-import com.jadencode.main.constants.WeaponParts;
+import com.jadencode.main.constants.Stats;
 import com.jadencode.main.stat.StatSet;
 
 import java.util.ArrayList;
@@ -14,28 +14,33 @@ import java.util.stream.Collectors;
  */
 public class WeaponInstance {
 
-    private WeaponType weaponType;
-    private final HashMap<WeaponPartType, WeaponPartInstance> weaponParts;
+    private final WeaponType weaponType;
+    private final List<WeaponPartInstance> weaponParts;
+    private final HashMap<WeaponPartType, WeaponPartInstance> mappedParts;
     private final int level;
     private final String          displayName;
-    private final List<String> displayInfo = new ArrayList<>();
-    private final List<String> weaponInfo  = new ArrayList<>();
+    private final List<String> displayInfo;
     private final StatSet statSet;
 
-    public WeaponInstance(WeaponType base, HashMap<WeaponPartType, WeaponPartInstance> parts) {
+    public WeaponInstance(WeaponType base, List<WeaponPartInstance> parts) {
         this.weaponType = base;
-        this.level = Collections.max(parts.values().stream().map(WeaponPartInstance::getLevel).collect(Collectors.toList()));
         this.weaponParts = parts;
+        this.level = Collections.max(parts.stream().map(WeaponPartInstance::getLevel).collect(Collectors.toList()));
+        this.mappedParts = new HashMap<>();
+        parts.forEach(part -> this.mappedParts.put(part.getWeaponPart().getType(), part));
         this.displayName = base.getDisplayName(this);
-        this.weaponParts.values().forEach(s -> this.weaponInfo.add(s.getPartInfo()));
-        this.displayInfo.addAll(this.getWeaponInfo());
+
+        this.displayInfo = parts.stream().map(WeaponPartInstance::getPartInfo).collect(Collectors.toList());
 
         this.statSet = this.weaponType.determineStats(this);
     }
     public WeaponInstance scaled(int i) {
-        HashMap<WeaponPartType, WeaponPartInstance> parts = new HashMap<>();
-        this.getWeaponParts().forEach((k, v) -> parts.put(k, v.scaledInstance(i)));
+        List<WeaponPartInstance> parts = new ArrayList<>();
+        this.getPartsList().forEach(p -> parts.add(p.scaledInstance(i)));
         return new WeaponInstance(this.getWeaponType(), parts);
+    }
+    public List<WeaponPartInstance> getPartsList() {
+        return this.weaponParts;
     }
     public int getLevel() {
         return this.level;
@@ -49,15 +54,7 @@ public class WeaponInstance {
         return this.displayInfo;
     }
     public WeaponPartInstance getPart(WeaponPartType type) {
-        return this.weaponParts.get(type);
-    }
-
-    public List<String> getWeaponInfo() {
-        return this.weaponInfo;
-    }
-
-    public HashMap<WeaponPartType, WeaponPartInstance> getWeaponParts() {
-        return this.weaponParts;
+        return this.mappedParts.get(type);
     }
     public StatSet getStatSet() {
         return this.statSet;

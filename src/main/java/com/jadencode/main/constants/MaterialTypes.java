@@ -4,6 +4,7 @@ import com.jadencode.main.material.MaterialType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -27,12 +28,12 @@ public final class MaterialTypes {
     private static final List<String> G1 = Arrays.asList("Blood", "Dragon", "Shadow", "Sky", "Thunder");
     private static final List<String> G2 = Arrays.asList("stone", "rock", "gem", "spar", "quartz", "glass", "jewel");
 
-    private static final List<MaterialType> MATERIAL_TYPES = new ArrayList<>();
+    private static final HashMap<String, MaterialType> MATERIAL_TYPES = new HashMap<>();
 
-    public static final MaterialType MATERIAL_METAL = new MaterialType("Metal", supplier(M1, M2, M3));
-    public static final MaterialType MATERIAL_WOOD = new MaterialType("Wood", supplier(W1, W2, W3));
-    public static final MaterialType MATERIAL_PLANT = new MaterialType("Plant", supplier(P1, P2));
-    public static final MaterialType MATERIAL_GEM = new MaterialType("Gem", supplier(G1, G2));
+//    public static final MaterialType MATERIAL_METAL = new MaterialType("Metal", supplier(M1, M2, M3));
+//    public static final MaterialType MATERIAL_WOOD = new MaterialType("Wood", supplier(W1, W2, W3));
+//    public static final MaterialType MATERIAL_PLANT = new MaterialType("Plant", supplier(P1, P2));
+//    public static final MaterialType MATERIAL_GEM = new MaterialType("Gem", supplier(G1, G2));
 
     private static Supplier<List<String>> supplier(List<String> f, List<String> m, List<String> l) {
         return () -> {
@@ -50,10 +51,13 @@ public final class MaterialTypes {
         };
     }
     public static void register(MaterialType type) {
-        MATERIAL_TYPES.add(type);
+        MATERIAL_TYPES.put(type.getName(), type);
+    }
+    public static MaterialType get(String name) {
+        return MATERIAL_TYPES.get(name);
     }
     public static List<MaterialType> getMaterialTypes() {
-        return MATERIAL_TYPES;
+        return new ArrayList<>(MATERIAL_TYPES.values());
     }
 
 //    public MaterialTypes() {

@@ -23,7 +23,6 @@ public class Material implements WeightedItem {
         this.multiplier = multiplier;
         this.level = level;
         this.materialType = type;
-        Materials.register(type, this);
     }
 
     public Color getColor() {

@@ -22,7 +22,7 @@ public class MetalLibrary extends MaterialType {
     private static final List<String> syllablesThird  = Arrays.asList("ite", "ium");
 
     private MetalLibrary() {
-        super("Metal", null);
+        super("Metal");//, null);
     }
 
     public void loadMaterials() {

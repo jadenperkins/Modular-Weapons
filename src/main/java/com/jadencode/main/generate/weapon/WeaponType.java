@@ -1,5 +1,6 @@
 package com.jadencode.main.generate.weapon;
 
+import com.jadencode.main.constants.Stats;
 import com.jadencode.main.constants.WeaponTypes;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.util.WeightedItem;
@@ -81,7 +82,6 @@ public class WeaponType implements WeightedItem {
         this.weaponPartTypes = types;
         this.statSet = stats;
         this.nameGenerator = g;
-        WeaponTypes.addWeaponType(this);
     }
     public String getDisplayName(WeaponInstance weapon) {
         return this.nameGenerator.apply(weapon);
@@ -94,7 +94,7 @@ public class WeaponType implements WeightedItem {
         return statSet;
     }
     public StatSet determineStats(WeaponInstance instance) {
-        List<StatSet> others = instance.getWeaponParts().values().stream().map(WeaponPartInstance::getStats).collect(Collectors.toList());
+        List<StatSet> others = instance.getPartsList().stream().map(WeaponPartInstance::getStats).collect(Collectors.toList());
         StatSet baseStats = this.getStatSet().scaled(instance.getLevel()).combine(others);
         return baseStats;
     }

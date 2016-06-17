@@ -1,5 +1,6 @@
 package com.jadencode.main.stat;
 
+import com.jadencode.main.constants.Stats;
 import com.jadencode.main.material.Material;
 
 import java.util.Collection;
@@ -43,7 +44,12 @@ public class StatSet {
     }
     public StatSet combine(Collection<StatSet> others) {
         StatSet ret = this.copy();
-        this.getStatsRaw().keySet().forEach(stat -> others.forEach(other -> ret.add(stat, stat.combine(ret.get(stat), other.get(stat)))));
+        for (StatBase stat : this.getStatsRaw().keySet()) {
+            for (StatSet other : others) {
+                ret.add(stat, stat.combine(ret.get(stat), other.get(stat)));
+            }
+        }
+//        this.getStatsRaw().keySet().forEach(stat -> others.forEach(other -> ret.add(stat, stat.combine(ret.get(stat), other.get(stat)))));
         return ret;
     }
     public StatSet modified(Material resource) {
