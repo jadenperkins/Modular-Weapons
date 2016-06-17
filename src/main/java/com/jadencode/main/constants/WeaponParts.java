@@ -2,8 +2,6 @@ package com.jadencode.main.constants;
 
 import com.jadencode.main.TimeKeeper;
 import com.jadencode.main.generate.weapon.*;
-import com.jadencode.main.material.Material;
-import com.jadencode.main.material.MaterialType;
 
 import java.io.File;
 import java.io.FileOutputStream;

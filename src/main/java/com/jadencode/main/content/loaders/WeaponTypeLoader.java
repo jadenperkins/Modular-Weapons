@@ -6,7 +6,6 @@ import com.jadencode.main.constants.PartTypes;
 import com.jadencode.main.constants.StatSets;
 import com.jadencode.main.constants.WeaponTypes;
 import com.jadencode.main.generate.weapon.WeaponInstance;
-import com.jadencode.main.generate.weapon.WeaponPartInstance;
 import com.jadencode.main.generate.weapon.WeaponPartType;
 import com.jadencode.main.generate.weapon.WeaponType;
 

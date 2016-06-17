@@ -1,8 +1,6 @@
 package com.jadencode.main.constants;
 
 import com.jadencode.main.stat.StatBase;
-import com.jadencode.main.stat.StatNonScaled;
-import com.jadencode.main.stat.StatScaled;
 
 import java.util.HashMap;
 

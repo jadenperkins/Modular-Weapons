@@ -1,6 +1,5 @@
 package com.jadencode.main.generate.weapon;
 
-import com.jadencode.main.constants.Stats;
 import com.jadencode.main.stat.StatSet;
 
 import java.util.ArrayList;

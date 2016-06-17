@@ -3,7 +3,6 @@ package com.jadencode.main.constants;
 import com.jadencode.main.generate.weapon.WeaponType;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 

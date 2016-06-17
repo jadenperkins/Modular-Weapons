@@ -1,13 +1,9 @@
 package com.jadencode.main.generate.weapon;
 
-import com.jadencode.main.constants.Materials;
-import com.jadencode.main.constants.WeaponParts;
 import com.jadencode.main.material.Material;
-import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.material.MaterialType;
+import com.jadencode.main.stat.StatSet;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**

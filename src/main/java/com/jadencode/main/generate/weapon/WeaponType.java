@@ -1,7 +1,5 @@
 package com.jadencode.main.generate.weapon;
 
-import com.jadencode.main.constants.Stats;
-import com.jadencode.main.constants.WeaponTypes;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.util.WeightedItem;
 

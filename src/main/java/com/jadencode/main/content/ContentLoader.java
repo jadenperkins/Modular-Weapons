@@ -1,18 +1,16 @@
 package com.jadencode.main.content;
 
 import com.google.gson.*;
-import com.jadencode.main.constants.MaterialModifiers;
-import com.jadencode.main.constants.MaterialTypes;
 import com.jadencode.main.constants.Materials;
 import com.jadencode.main.constants.WeaponParts;
 import com.jadencode.main.content.loaders.ContentManager;
-import com.jadencode.main.material.MaterialModifier;
-import com.jadencode.main.material.MaterialType;
 import org.reflections.Reflections;
 
 import java.io.File;
 import java.io.FileReader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by gtrpl on 6/15/2016.
@@ -41,8 +39,7 @@ public final class ContentLoader {
         File[] plugins = dir.listFiles(a -> a.getName().endsWith(".json"));
         for (File plugin : plugins) {
             try {
-//                JsonObject out = new JsonObject();
-                JsonObject pluginObject = gson.fromJson(new FileReader(plugin), JsonObject.class);
+                JsonObject pluginObject = new JsonParser().parse(new FileReader(plugin)).getAsJsonObject();
                 for (ContentManager manager : managers) {
                     System.out.println("Loading " + manager.getName() + " content from " + plugin.getName());
                     String name = manager.getName();
@@ -53,14 +50,7 @@ public final class ContentLoader {
                             manager.consume(pieceOfContent.get("name").getAsString(), pieceOfContent);
                         }
                     }
-//                    JsonArray array = manager.supply();
-//                    out.add(name, array);
                 }
-//                File f = new File(dir, "Output.json");
-//                f.createNewFile();
-//                FileWriter writer = new FileWriter(f);
-//                gson.toJson(out, writer);
-//                writer.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }

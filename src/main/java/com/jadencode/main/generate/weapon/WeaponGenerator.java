@@ -7,7 +7,6 @@ import com.jadencode.main.nbt.NBTTagCompound;
 import com.jadencode.main.util.WeightedRandomFloat;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
