@@ -3,11 +3,12 @@ package com.jadencode.main.generate.weapon;
 import com.jadencode.main.constants.StatSets;
 import com.jadencode.main.stat.StatSet;
 
+import java.awt.*;
+
 /**
  * Created by JPERKI8 on 6/13/2016.
  */
 public class WeaponPartLegendary extends WeaponPart {
-
     private final String partName;
     private final String nameMod;
     private final String partInfo;
@@ -38,5 +39,9 @@ public class WeaponPartLegendary extends WeaponPart {
     @Override
     public StatSet getStats() {
         return statSet;
+    }
+    @Override
+    public Color getColor() {
+        return Color.WHITE;
     }
 }

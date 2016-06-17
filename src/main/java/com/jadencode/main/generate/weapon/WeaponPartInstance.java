@@ -2,6 +2,8 @@ package com.jadencode.main.generate.weapon;
 
 import com.jadencode.main.stat.StatSet;
 
+import java.awt.*;
+
 /**
  * Created by Jaden on 6/15/2015.
  */
@@ -23,7 +25,9 @@ public class WeaponPartInstance implements Comparable<WeaponPartInstance> {
     public int getLevel() {
         return level;
     }
-
+    public Color getColor() {
+        return this.getWeaponPart().getColor();
+    }
     public WeaponPart getWeaponPart() {
         return weaponPart;
     }

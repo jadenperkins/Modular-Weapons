@@ -11,6 +11,7 @@ import com.jadencode.main.generate.character.viking.VikingCharacterGenerator;
 import com.jadencode.main.generate.character.viking.VikingSettlementGenerator;
 import com.jadencode.main.generate.weapon.WeaponGenerator;
 import com.jadencode.main.generate.weapon.WeaponInstance;
+import com.jadencode.main.generate.weapon.WeaponPartInstance;
 import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.magic.SpellBase;
@@ -18,10 +19,15 @@ import com.jadencode.main.magic.SpellObject;
 import com.jadencode.main.nbt.CompressedStreamTools;
 import com.jadencode.main.nbt.NBTTagCompound;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.*;
+import java.util.List;
 
 /**
  * Created by Jaden on 1/19/2015.
@@ -86,7 +92,27 @@ public class Main {
         }
         return false;
     }
+    private static void printWeapon(WeaponInstance weap) {
+        File dir = new File("./pictures");
+        File out = new File(dir, weap.getDisplayName().replace(" ", "_") + ".png");
+        try {
+            out.createNewFile();
+            BufferedImage image = new BufferedImage(16, weap.getPartsList().size() * 16, BufferedImage.TYPE_INT_RGB);
 
+            for (int x = 0; x < weap.getPartsList().size(); x++) {
+                Color c = weap.getPartsList().get(x).getColor();
+                for(int i = 0; i < 16; i++) {
+                    for(int j = 0; j < 16; j++) {
+                        image.setRGB(i, j + 16 * x, c.getRGB());
+                    }
+                }
+            }
+            ImageIO.write(image, "PNG", out);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) {
         ContentLoader.load();
         //Initialize all materials
@@ -137,9 +163,11 @@ public class Main {
         //Create all weapon parts
 //        ArmorPart.generateArmorParts();
 
+
         WeaponInstance weap = new WeaponGenerator().generate(theWorld.getRNG(), 1);
         StatSet s = weap.getStatSet();
         Set<StatBase> base = weap.getWeaponType().getStatSet().getStatsRaw().keySet();
+
 
         System.out.println(weap.getDisplayName());
         base.forEach(stat -> System.out.println(String.format("\t%s: %f", stat.getStatName(), s.get(stat))));
