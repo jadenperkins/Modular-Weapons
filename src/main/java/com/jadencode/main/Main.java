@@ -10,6 +10,7 @@ import com.jadencode.main.generate.character.viking.VikingCharacterGenerator;
 import com.jadencode.main.generate.character.viking.VikingSettlementGenerator;
 import com.jadencode.main.generate.weapon.WeaponGenerator;
 import com.jadencode.main.generate.weapon.WeaponInstance;
+import com.jadencode.main.generate.weapon.WeaponPartInstance;
 import com.jadencode.main.magic.SpellBase;
 import com.jadencode.main.magic.SpellObject;
 import com.jadencode.main.nbt.CompressedStreamTools;
@@ -19,6 +20,8 @@ import com.jadencode.main.stat.StatSet;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -92,20 +95,46 @@ public class Main {
         return false;
     }
     private static void printWeapon(WeaponInstance weap) {
+        boolean standard = true;
+        for (WeaponPartInstance part : weap.getPartsList()) {
+            if(part.getWeaponPart().getType().getIcon() == null) {
+                standard = false;
+            }
+        }
         File dir = new File("pictures");
         File out = new File(dir, weap.getDisplayName().replace(" ", "_") + ".png");
+
         try {
             out.mkdirs();
             out.createNewFile();
-            BufferedImage image = new BufferedImage(16, weap.getPartsList().size() * 16, BufferedImage.TYPE_INT_RGB);
-
-            for (int x = 0; x < weap.getPartsList().size(); x++) {
-                Color c = weap.getPartsList().get(x).getColor();
-                for(int i = 0; i < 16; i++) {
-                    for(int j = 0; j < 16; j++) {
-                        image.setRGB(i, j + 16 * x, c.getRGB());
+            BufferedImage image = new BufferedImage(16, weap.getPartsList().size() * 16, BufferedImage.TYPE_INT_ARGB);
+            if(!standard) {
+                for (int x = 0; x < weap.getPartsList().size(); x++) {
+                    Color c = weap.getPartsList().get(x).getColor();
+                    for(int i = 0; i < 16; i++) {
+                        for(int j = 0; j < 16; j++) {
+                            image.setRGB(i, j + 16 * x, c.getRGB());
+                        }
                     }
                 }
+            } else {
+                for(WeaponPartInstance part : weap.getPartsList()) {
+                    BufferedImage icon = part.getWeaponPart().getType().getIcon();
+                    int rgb = part.getColor().getRGB();
+                    for(int x = 0; x < icon.getWidth(); x++) {
+                        for(int y = 0; y < icon.getHeight(); y++) {
+                            if(icon.getRGB(x, y) >> 24 != 0x00) {
+                                image.setRGB(x, y, rgb);
+                            }
+                        }
+                    }
+                }
+                BufferedImage after = new BufferedImage(image.getWidth() * 8, image.getHeight() * 8, BufferedImage.TYPE_INT_ARGB);
+                AffineTransform at = new AffineTransform();
+                at.scale(8, 8);
+                AffineTransformOp scaleOp = new AffineTransformOp(at, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+                after = scaleOp.filter(image, after);
+                image = after;
             }
             ImageIO.write(image, "PNG", out);
             System.out.println("Images stored in " + dir.getAbsolutePath());

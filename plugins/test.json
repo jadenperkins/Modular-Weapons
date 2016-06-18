@@ -1,39 +1,39 @@
 {
   "Material Types": [
-    {"name": "Metal"},
-    {"name": "Wood"},
-    {"name": "Plant"},
-    {"name": "Gem"}
+    {"name": "Metal", "script": "metals"},
+    {"name": "Wood", "script": "woods"},
+    {"name": "Plant", "script": "plants"},
+    {"name": "Gem", "script": "gems"}
   ],
   "Part Types": [
-    {"name": "Sword Hilt"},
-    {"name": "Sword Grip"},
-    {"name": "Sword Blade"},
+    {"name": "Sword Hilt", "icon": "hilt"},
+    {"name": "Sword Grip", "icon": "grip"},
+    {"name": "Sword Blade", "icon": "blade"},
 
-    {"name": "Hammer Handle"},
-    {"name": "Hammer Head"},
+    {"name": "Hammer Handle", "icon": "handle"},
+    {"name": "Hammer Head", "icon": "hammer"},
 
-    {"name": "Axe Handle"},
-    {"name": "Axe Head"},
+    {"name": "Axe Handle", "icon": "handle"},
+    {"name": "Axe Head", "icon": "axe"},
 
-    {"name": "Bow String"},
-    {"name": "Bow Limbs"},
-    {"name": "Bow Grip"},
+    {"name": "Bow String", "icon": "bowstring"},
+    {"name": "Bow Limbs", "icon": "bowlimbs"},
+    {"name": "Bow Grip", "icon": "bowgrip"},
 
-    {"name": "Crossbow Stock"},
-    {"name": "Crossbow Limbs"},
-    {"name": "Crossbow String"},
+    {"name": "Crossbow Stock", "icon": "stock"},
+    {"name": "Crossbow Limbs", "icon": "limbs"},
+    {"name": "Crossbow String", "icon": "string"},
 
-    {"name": "Arrow Tip"},
-    {"name": "Arrow Shaft"},
-    {"name": "Arrow Fletchings"},
+    {"name": "Arrow Tip", "icon": "tip"},
+    {"name": "Arrow Shaft", "icon": "shaft"},
+    {"name": "Arrow Fletchings", "icon": "flights"},
 
-    {"name": "Bolt Tip"},
-    {"name": "Bolt Shaft"},
-    {"name": "Bolt Fletchings"},
+    {"name": "Bolt Tip", "icon": "tip"},
+    {"name": "Bolt Shaft", "icon": "shaft"},
+    {"name": "Bolt Fletchings", "icon": "flights"},
 
-    {"name": "Staff Handle"},
-    {"name": "Staff Head"}
+    {"name": "Staff Handle", "icon": "handle"},
+    {"name": "Staff Head", "icon": "head"}
   ],
   "Colors": [
     {"name": "MOD_DARK", "rgb": [105, 105, 105]},
