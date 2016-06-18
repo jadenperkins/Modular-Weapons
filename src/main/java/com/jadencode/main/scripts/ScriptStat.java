@@ -1,4 +1,4 @@
-package com.jadencode.main.content.scripts;
+package com.jadencode.main.scripts;
 
 /**
  * Created by JPERKI8 on 6/17/2016.

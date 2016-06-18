@@ -1,4 +1,4 @@
-package com.jadencode.main.content.scripts;
+package com.jadencode.main.scripts;
 
 import java.util.ArrayList;
 import java.util.List;

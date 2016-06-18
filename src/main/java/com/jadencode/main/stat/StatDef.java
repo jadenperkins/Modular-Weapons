@@ -1,6 +1,6 @@
 package com.jadencode.main.stat;
 
-import com.jadencode.main.constants.Stats;
+import com.jadencode.main.scripts.ScriptStat;
 import com.jadencode.main.material.Material;
 
 /**
@@ -10,12 +10,12 @@ public class StatDef implements StatBase {
     
     private final double defaultValue;
     private final String statName;
-    private final String scriptName;
+    private final ScriptStat script;
 
-    public StatDef(String s, double val, String script) {
+    public StatDef(String s, double val, ScriptStat script) {
         this.defaultValue = val;
         this.statName = s;
-        this.scriptName = script;
+        this.script = script;
     }
     @Override
     public double getDefaultValue() {
@@ -31,10 +31,10 @@ public class StatDef implements StatBase {
     }
     @Override
     public double combine(double first, double second) {
-        return Stats.script(this.scriptName).combine(first, second);
+        return this.script.combine(first, second);
     }
     @Override
     public double scale(int i, double original) {
-        return Stats.script(this.scriptName).scale(i, original);
+        return this.script.scale(i, original);
     }
 }

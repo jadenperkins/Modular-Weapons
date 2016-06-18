@@ -1,6 +1,7 @@
 package com.jadencode.main.content.loaders;
 
 import com.google.gson.JsonObject;
+import com.jadencode.main.constants.Icons;
 import com.jadencode.main.constants.PartTypes;
 import com.jadencode.main.generate.weapon.WeaponPartType;
 
@@ -18,15 +19,8 @@ public class PartTypeLoader extends ContentManager {
     }
     @Override
     public void consume(String name, JsonObject obj) {
-        BufferedImage image = null;
-        if(obj.has("icon")) {
-            File f = new File("plugins/icons/" + obj.get("icon").getAsString() + ".png");
-            try {
-                image = ImageIO.read(f);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        PartTypes.register(new WeaponPartType(name, image));
+        String iconName = obj.has("icon") ? obj.get("icon").getAsString() : null;
+        BufferedImage icon = Icons.get(iconName);
+        PartTypes.register(new WeaponPartType(name, icon));
     }
 }

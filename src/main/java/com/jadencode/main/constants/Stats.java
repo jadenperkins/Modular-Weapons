@@ -1,6 +1,6 @@
 package com.jadencode.main.constants;
 
-import com.jadencode.main.content.scripts.ScriptStat;
+import com.jadencode.main.scripts.ScriptStat;
 import com.jadencode.main.stat.StatBase;
 
 import java.util.HashMap;

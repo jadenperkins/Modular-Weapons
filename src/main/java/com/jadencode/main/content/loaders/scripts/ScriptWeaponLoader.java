@@ -1,7 +1,7 @@
-package com.jadencode.main.content.scripts.loaders;
+package com.jadencode.main.content.loaders.scripts;
 
 import com.jadencode.main.constants.WeaponTypes;
-import com.jadencode.main.content.scripts.ScriptWeapon;
+import com.jadencode.main.scripts.ScriptWeapon;
 
 /**
  * Created by JPERKI8 on 6/17/2016.

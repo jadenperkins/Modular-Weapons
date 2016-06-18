@@ -1,7 +1,7 @@
 package com.jadencode.main.constants;
 
 import com.jadencode.main.material.MaterialType;
-import com.jadencode.main.content.scripts.ScriptMaterialType;
+import com.jadencode.main.scripts.ScriptMaterialType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ public final class MaterialTypes {
     private static final HashMap<String, ScriptMaterialType> SCRIPTS = new HashMap<>();
 
     public static ScriptMaterialType script(String name) {
-        return name == null ? null : SCRIPTS.get(name);
+        return SCRIPTS.getOrDefault(name, SCRIPTS.get(null));
     }
     public static HashMap<String, ScriptMaterialType> getScripts() {
         return SCRIPTS;

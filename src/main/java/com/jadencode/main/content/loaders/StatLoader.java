@@ -2,6 +2,7 @@ package com.jadencode.main.content.loaders;
 
 import com.google.gson.JsonObject;
 import com.jadencode.main.constants.Stats;
+import com.jadencode.main.scripts.ScriptStat;
 import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatDef;
 
@@ -15,7 +16,8 @@ public class StatLoader extends ContentManager {
     @Override
     public void consume(String name, JsonObject obj) {
         double defaultValue = obj.get("default").getAsDouble();
-        String script = obj.has("script") ? obj.get("script").getAsString() : null;
+        String scriptName = obj.has("script") ? obj.get("script").getAsString() : null;
+        ScriptStat script = Stats.script(scriptName);
         StatBase stat = new StatDef(name, defaultValue, script);
         Stats.register(stat);
     }

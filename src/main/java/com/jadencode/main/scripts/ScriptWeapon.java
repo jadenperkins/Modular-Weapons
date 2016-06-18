@@ -1,4 +1,4 @@
-package com.jadencode.main.content.scripts;
+package com.jadencode.main.scripts;
 
 import com.jadencode.main.generate.weapon.WeaponInstance;
 import com.jadencode.main.generate.weapon.WeaponPartType;

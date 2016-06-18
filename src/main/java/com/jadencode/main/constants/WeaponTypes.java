@@ -1,6 +1,6 @@
 package com.jadencode.main.constants;
 
-import com.jadencode.main.content.scripts.ScriptWeapon;
+import com.jadencode.main.scripts.ScriptWeapon;
 import com.jadencode.main.generate.weapon.WeaponType;
 
 import java.util.ArrayList;
