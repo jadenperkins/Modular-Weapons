@@ -26,9 +26,9 @@ public abstract class Module<T extends Item> {
         return this.items.get(name);
     }
     public void addItem(String name) {
+        T item = this.createItem(name);
+        this.items.put(name, item);
         if(!this.itemKeys.contains(name)) {
-            T item = this.createItem(name);
-            this.items.put(name, item);
             this.itemKeys.add(name);
             this.itemKeys.sort(null);
         }

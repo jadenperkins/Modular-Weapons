@@ -8,21 +8,13 @@ import com.google.gson.JsonPrimitive;
  * Created by gtrpl on 6/18/2016.
  */
 public class ItemIcon extends Item {
-    public int red;
-    public int green;
-    public int blue;
-    public ItemIcon(String name, int r, int g, int b) {
+    public final String base64;
+    public ItemIcon(String name, String base64) {
         super(name);
-        this.red = r;
-        this.green = g;
-        this.blue = b;
+        this.base64 = base64;
     }
     @Override
     public void toJson(JsonObject json) {
-        JsonArray rgb = new JsonArray();
-        rgb.add(new JsonPrimitive(this.red));
-        rgb.add(new JsonPrimitive(this.green));
-        rgb.add(new JsonPrimitive(this.blue));
-        json.add("rgb", rgb);
+        json.add("base64", new JsonPrimitive(this.base64));
     }
 }

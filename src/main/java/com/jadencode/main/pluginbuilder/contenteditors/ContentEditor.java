@@ -30,7 +30,11 @@ public abstract class ContentEditor<T extends Item> extends JPanel {
             parent.addItem(itemName);
             panel.updateCurrentObjects(itemName);
         });
-        this.deleteItem.addActionListener(e -> {});
+        this.deleteItem.addActionListener(e -> {
+            String itemName = this.nameField.getText();
+            parent.remove(itemName);
+            panel.updateCurrentObjects(null);
+        });
     }
     public void setName(String name) {
         this.nameField.setText(name);
@@ -43,4 +47,5 @@ public abstract class ContentEditor<T extends Item> extends JPanel {
     }
     public abstract T createItem(String name);
     public abstract void populate(T item);
+    public abstract T getDefault();
 }

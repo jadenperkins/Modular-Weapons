@@ -20,9 +20,4 @@ public class ModuleIconCreator extends Module<ItemIcon> {
     public ContentEditor<ItemIcon> getContentEditor() {
         return this.contentEditor;
     }
-    @Override
-    public ItemIcon createItem(String name) {
-        ItemIcon item = new ItemIcon(name, 255, 255, 255);
-        return item;
-    }
 }

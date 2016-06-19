@@ -58,11 +58,13 @@ public class PluginBuilderPanel extends JPanel {
             Item item = this.getSelectedModule().getItems().get(selected);
             this.editor.setName(item.getName());
             this.editor.populate(item);
-            this.repaint();
+        } else {
+            this.editor.setName("");
+            this.editor.populate(this.editor.getDefault());
         }
+        this.repaint();
     }
     public void updateCurrentObjects(String name) {
-
         for (Component component : this.getComponents()) {
             if(component == this.editor) {
                 this.remove(this.editor);
