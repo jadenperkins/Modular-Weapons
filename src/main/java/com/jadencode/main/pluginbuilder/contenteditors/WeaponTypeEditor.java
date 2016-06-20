@@ -3,6 +3,7 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemWeaponType;
 import com.jadencode.main.pluginbuilder.modules.Module;
@@ -19,19 +20,22 @@ public class WeaponTypeEditor extends ContentEditor<ItemWeaponType> {
 
     private final JTextField statSet;
     private final JTextField scriptName;
+    private final JTextField weightField;
     private final JTable partsTable;
 
     public WeaponTypeEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
         this.statSet = this.create(new JTextField(), 10, 140, 200, 18);
         this.scriptName = this.create(new JTextField(), 10, 160, 200, 18);
-        this.partsTable = this.create(new JTable(new DefaultTableModel(10, 1)), 10, 180, 200, 160);
+        this.weightField = this.create(new JTextField(), 10, 180, 200, 18);
+        this.partsTable = this.create(new JTable(new DefaultTableModel(10, 1)), 10, 200, 200, 160);
     }
     @Override
     public void populate(ItemWeaponType item) {
 
         this.statSet.setText(item.getStatSetName());
         this.scriptName.setText(item.getScriptName());
+        this.weightField.setText(item.getWeight() + "");
 
         this.partsTable.setModel(new DefaultTableModel(10, 1));
         List<String> partTypes = item.getPartTypes();
@@ -44,6 +48,7 @@ public class WeaponTypeEditor extends ContentEditor<ItemWeaponType> {
     public ItemWeaponType createItem(String name) {
         String stat = this.statSet.getText();
         String script = this.scriptName.getText();
+        float weight = this.getFloat(this.weightField);
 
         int rows = this.partsTable.getModel().getRowCount();
         List<String> partNames = new ArrayList<>();
@@ -53,22 +58,33 @@ public class WeaponTypeEditor extends ContentEditor<ItemWeaponType> {
                 partNames.add(part);
             }
         }
-        return new ItemWeaponType(name, stat, script, partNames);
+        return new ItemWeaponType(name, stat, script, weight, partNames);
+    }
+    public float getFloat(JTextField field) {
+        float value;
+        try {
+            value = Float.parseFloat(field.getText());
+        } catch (Exception e) {
+            value = 0;
+        }
+        return value;
     }
     @Override
     public ItemWeaponType getDefault() {
-        return new ItemWeaponType("", "", "", new ArrayList<>());
+        return new ItemWeaponType("", "", "", 1F, new ArrayList<>());
     }
 
     @Override
     public ItemWeaponType consume(String name, JsonObject json) {
-        String statSet = json.get("stats").getAsString();
-        String script = json.has("script") ? json.get("script").getAsString() : "";
+        JsonHelper helper = new JsonHelper(json);
+        String statSet = helper.getString("stats");
+        String script = helper.getString("script");
+        float weight = helper.getFloat("weight");
         List<String> parts = new ArrayList<>();
-        JsonArray array = json.get("parts").getAsJsonArray();
-        for (JsonElement jsonElement : array) {
+        JsonArray array = helper.getArray("parts");
+        for (JsonElement jsonElement : array)
             parts.add(jsonElement.getAsString());
-        }
-        return new ItemWeaponType(name, statSet, script, parts);
+
+        return new ItemWeaponType(name, statSet, script, weight, parts);
     }
 }

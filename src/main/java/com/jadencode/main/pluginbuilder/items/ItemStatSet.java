@@ -1,8 +1,7 @@
 package com.jadencode.main.pluginbuilder.items;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
+import com.jadencode.main.pluginbuilder.JsonHelper;
 
 import java.util.HashMap;
 
@@ -22,14 +21,6 @@ public class ItemStatSet extends Item {
     }
     @Override
     public void toJson(JsonObject json) {
-        JsonArray array = new JsonArray();
-        for (String statName : this.stats.keySet()) {
-            double value = this.stats.get(statName);
-            JsonObject obj = new JsonObject();
-            obj.add("stat", new JsonPrimitive(statName));
-            obj.add("value", new JsonPrimitive(value));
-            array.add(obj);
-        }
-        json.add("stats", array);
+        new JsonHelper(json).add("stats", JsonHelper.toArray(this.stats, "stat", "value"));
     }
 }

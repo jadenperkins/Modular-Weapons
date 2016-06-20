@@ -2,6 +2,7 @@ package com.jadencode.main.pluginbuilder.items;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
+import com.jadencode.main.pluginbuilder.JsonHelper;
 
 /**
  * Created by gtrpl on 6/19/2016.
@@ -24,8 +25,6 @@ public class ItemStat extends Item {
     }
     @Override
     public void toJson(JsonObject json) {
-        json.add("default", new JsonPrimitive(this.defaultValue));
-        if(this.scriptName != null && !this.scriptName.isEmpty())
-            json.add("script", new JsonPrimitive(this.scriptName));
+        new JsonHelper(json).add("default", this.defaultValue).add("script", this.scriptName);
     }
 }

@@ -3,6 +3,7 @@ package com.jadencode.main.pluginbuilder.items;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
+import com.jadencode.main.pluginbuilder.JsonHelper;
 
 import java.util.List;
 
@@ -43,17 +44,11 @@ public class ItemMaterialModifier extends Item {
     }
     @Override
     public void toJson(JsonObject json) {
-        json.add("color", new JsonPrimitive(this.colorName));
-        json.add("weight", new JsonPrimitive(this.weight));
-        json.add("level", new JsonPrimitive(this.level));
-        json.add("mod", new JsonPrimitive(this.mod));
-
-        if(!this.materialTypes.isEmpty()) {
-            JsonArray array = new JsonArray();
-            for (String partType : this.materialTypes)
-                array.add(new JsonPrimitive(partType));
-
-            json.add("materials", array);
-        }
+        new JsonHelper(json)
+                .add("color", this.colorName)
+                .add("weight", this.weight)
+                .add("level", this.level)
+                .add("mod", this.mod)
+                .add("materials", JsonHelper.toArray(this.materialTypes));
     }
 }

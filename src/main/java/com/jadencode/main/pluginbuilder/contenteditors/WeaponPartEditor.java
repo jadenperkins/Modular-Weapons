@@ -3,6 +3,7 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemMaterialModifier;
 import com.jadencode.main.pluginbuilder.items.ItemWeaponPart;
@@ -82,16 +83,16 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
 
     @Override
     public ItemWeaponPart consume(String name, JsonObject json) {
-        String nameMod = json.get("nameMod").getAsString();
-        String partInfo = json.has("partInfo") ? json.get("partInfo").getAsString() : "";
-        float weight = json.has("weight") ? json.get("weight").getAsFloat() : 1F;
-        String partType = json.get("partType").getAsString();
+        JsonHelper helper = new JsonHelper(json);
+        String nameMod = helper.getString("nameMod");
+        String partInfo = helper.getString("partInfo");
+        float weight = helper.getFloat("weight", 1F);
+        String partType = helper.getString("partType");
         List<String> materials = new ArrayList<>();
-        if(json.has("materials")) {
-            JsonArray array = json.get("materials").getAsJsonArray();
-            for (JsonElement jsonElement : array)
-                materials.add(jsonElement.getAsString());
-        }
+        JsonArray array = helper.getArray("materials");
+
+        for (JsonElement jsonElement : array)
+            materials.add(jsonElement.getAsString());
 
         return new ItemWeaponPart(name, nameMod, partInfo, weight, partType, materials);
     }

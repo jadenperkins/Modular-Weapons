@@ -2,6 +2,7 @@ package com.jadencode.main.pluginbuilder.items;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
+import com.jadencode.main.pluginbuilder.JsonHelper;
 
 /**
  * Created by gtrpl on 6/19/2016.
@@ -19,6 +20,6 @@ public class ItemPartType extends Item {
     }
     @Override
     public void toJson(JsonObject json) {
-        json.add("icon", new JsonPrimitive(this.iconName));
+        new JsonHelper(json).add("icon", this.iconName);
     }
 }

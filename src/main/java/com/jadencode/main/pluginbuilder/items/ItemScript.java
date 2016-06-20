@@ -2,6 +2,7 @@ package com.jadencode.main.pluginbuilder.items;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
+import com.jadencode.main.pluginbuilder.JsonHelper;
 import org.apache.commons.io.FileUtils;
 
 import java.io.IOException;
@@ -31,7 +32,6 @@ public class ItemScript extends Item {
 
     @Override
     public void toJson(JsonObject json) {
-        json.add("type", new JsonPrimitive(this.scriptType));
-        json.add("script", new JsonPrimitive(this.scriptContents));
+        new JsonHelper(json).add("type", this.scriptType).add("script", this.scriptContents);
     }
 }

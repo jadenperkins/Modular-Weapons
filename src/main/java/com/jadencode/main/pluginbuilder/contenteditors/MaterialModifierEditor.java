@@ -3,10 +3,12 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemMaterialModifier;
 import com.jadencode.main.pluginbuilder.items.ItemWeaponType;
 import com.jadencode.main.pluginbuilder.modules.Module;
+import com.sun.xml.internal.ws.util.StreamUtils;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -80,15 +82,16 @@ public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> 
 
     @Override
     public ItemMaterialModifier consume(String name, JsonObject json) {
-        String color = json.get("color").getAsString();
-        float weight = json.has("weight") ? json.get("weight").getAsFloat() : 1F;
-        float level = json.get("level").getAsFloat();
-        float mod = json.get("mod").getAsFloat();
+        JsonHelper helper = new JsonHelper(json);
+        String color = helper.getString("color");
+        float weight = helper.getFloat("weight", 1F);
+        float level = helper.getFloat("level", 1F);
+        float mod = helper.getFloat("mod", 1F);
         List<String> types = new ArrayList<>();
-        JsonArray array = json.get("materials").getAsJsonArray();
-        for (JsonElement jsonElement : array) {
+        JsonArray array = helper.getArray("materials");
+        for (JsonElement jsonElement : array)
             types.add(jsonElement.getAsString());
-        }
+
         return new ItemMaterialModifier(name, color, weight, level, mod, types);
     }
 }

@@ -3,6 +3,7 @@ package com.jadencode.main.pluginbuilder.items;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
+import com.jadencode.main.pluginbuilder.JsonHelper;
 
 import java.util.List;
 
@@ -42,22 +43,11 @@ public class ItemWeaponPart extends Item {
     }
     @Override
     public void toJson(JsonObject json) {
-        json.add("nameMod", new JsonPrimitive(this.nameMod));
-
-        if(this.partInfo != null && !this.partInfo.isEmpty())
-            json.add("partInfo", new JsonPrimitive(this.partInfo));
-
-        if(this.weight > 0F)
-            json.add("weight", new JsonPrimitive(this.weight));
-
-        json.add("partType", new JsonPrimitive(this.partType));
-
-
-        if(!this.materialTypes.isEmpty()) {
-            JsonArray array = new JsonArray();
-            for (String partType : this.materialTypes)
-                array.add(new JsonPrimitive(partType));
-            json.add("materials", array);
-        }
+        JsonHelper helper = new JsonHelper(json)
+                .add("nameMod", this.nameMod)
+                .add("partInfo", this.partInfo)
+                .add("weight", this.weight)
+                .add("partType", this.partType)
+                .addNotEmpty("materials", JsonHelper.toArray(this.materialTypes));
     }
 }

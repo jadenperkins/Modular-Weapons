@@ -6,6 +6,7 @@ import com.jadencode.main.content.loaders.ContentManager;
 import com.jadencode.main.pluginbuilder.contenteditors.ContentEditor;
 import com.jadencode.main.pluginbuilder.items.Item;
 import com.jadencode.main.pluginbuilder.modules.Module;
+import com.jadencode.main.pluginbuilder.modules.ModuleColorCreator;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.reflections.Reflections;
 
@@ -15,6 +16,7 @@ import javax.swing.filechooser.FileFilter;
 import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.zip.GZIPInputStream;
@@ -30,6 +32,9 @@ public class PluginBuilderPanel extends JPanel {
     private final JTextField pluginName;
     private final JButton importPlugin;
     private final JScrollPane scrollingContentPane;
+
+    private final HashMap<String, Module<? extends Item>> moduleMap = new HashMap<>();
+
     private ContentEditor editor;
 
     public PluginBuilderPanel() {
@@ -39,7 +44,9 @@ public class PluginBuilderPanel extends JPanel {
         List<Module<? extends Item>> modules = new ArrayList<>();
         for (Class<? extends Module> moduleClass : moduleClasses) {
             try {
-                modules.add(moduleClass.getConstructor(PluginBuilderPanel.class).newInstance(this));
+                Module<? extends Item> module = moduleClass.getConstructor(PluginBuilderPanel.class).newInstance(this);
+                modules.add(module);
+                this.moduleMap.put(module.getName(), module);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -77,15 +84,8 @@ public class PluginBuilderPanel extends JPanel {
         }
         this.repaint();
     }
-    public <T extends Module<? extends Item>> T getModule(Class<T> c) {
-        ListModel<Module<? extends Item>> model = this.contentModules.getModel();
-        for(int i = 0; i < model.getSize(); i++) {
-            Module<? extends Item> module = model.getElementAt(i);
-            if(module.getClass().equals(c)) {
-                return c.cast(module);
-            }
-        }
-        return null;
+    public Module<? extends Item> getModule(String name) {
+        return this.moduleMap.get(name);
     }
     public void updateCurrentObjects(String name) {
         for (Component component : this.getComponents()) {

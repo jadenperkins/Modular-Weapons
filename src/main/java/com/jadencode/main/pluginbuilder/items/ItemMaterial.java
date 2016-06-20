@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
+import com.jadencode.main.pluginbuilder.JsonHelper;
 
 import java.util.List;
 
@@ -45,10 +46,11 @@ public class ItemMaterial extends Item {
     }
     @Override
     public void toJson(JsonObject json) {
-        json.add("color", new JsonPrimitive(this.colorName));
-        json.add("weight", new JsonPrimitive(this.weight));
-        json.add("mod", new JsonPrimitive(this.mod));
-        json.add("level", new JsonPrimitive(this.level));
-        json.add("material", new JsonPrimitive(this.materialType));
+        new JsonHelper(json)
+                .add("color", this.colorName)
+                .add("weight", this.weight)
+                .add("mod", this.mod)
+                .add("level", this.level)
+                .add("material", this.materialType);
     }
 }

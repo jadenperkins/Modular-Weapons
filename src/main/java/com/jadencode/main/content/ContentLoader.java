@@ -26,7 +26,7 @@ public final class ContentLoader {
         WeaponParts.countParts();
     }
     private static final void compressSourcePlugins() {
-        File dir = new File("plugins");
+        File dir = new File("plugins/source");
         File[] pluginFiles = dir.listFiles(a -> a.getName().endsWith(".json"));
         for(File plugin : pluginFiles) {
             try {

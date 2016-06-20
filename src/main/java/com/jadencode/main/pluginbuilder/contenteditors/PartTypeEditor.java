@@ -2,6 +2,7 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
 import com.jadencode.main.item.ItemPart;
+import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemMaterialType;
 import com.jadencode.main.pluginbuilder.items.ItemPartType;
@@ -35,6 +36,6 @@ public class PartTypeEditor extends ContentEditor<ItemPartType> {
 
     @Override
     public ItemPartType consume(String name, JsonObject json) {
-        return new ItemPartType(name, json.has("icon") ? json.get("icon").getAsString() : "");
+        return new ItemPartType(name, new JsonHelper(json).getString("icon"));
     }
 }
