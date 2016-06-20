@@ -19,7 +19,7 @@ public abstract class ContentEditor<T extends Item> extends JPanel {
         this.setLayout(null);
         this.setBackground(Color.LIGHT_GRAY);
         this.setLocation(430, 10);
-        this.setSize(500, 500);
+        this.setSize(1000, 700);
 
         this.nameField = this.create(new JTextField(), 10, 10, 200, 18);
         this.updateItem = this.create(new JButton("Update Item"), 10, 30, 200, 40);
