@@ -2,17 +2,22 @@ package com.jadencode.main.pluginbuilder;
 
 import com.google.gson.*;
 import com.google.gson.stream.JsonWriter;
+import com.jadencode.main.content.loaders.ContentManager;
 import com.jadencode.main.pluginbuilder.contenteditors.ContentEditor;
 import com.jadencode.main.pluginbuilder.items.Item;
 import com.jadencode.main.pluginbuilder.modules.Module;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.reflections.Reflections;
 
 import javax.swing.*;
+import javax.swing.filechooser.*;
+import javax.swing.filechooser.FileFilter;
 import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
 /**
@@ -23,6 +28,8 @@ public class PluginBuilderPanel extends JPanel {
     private final JList<String> currentContentObjects;
     private final JButton exportPlugin;
     private final JTextField pluginName;
+    private final JButton importPlugin;
+    private final JScrollPane scrollingContentPane;
     private ContentEditor editor;
 
     public PluginBuilderPanel() {
@@ -40,9 +47,14 @@ public class PluginBuilderPanel extends JPanel {
         modules.sort((a, b) -> a.getName().compareTo(b.getName()));
 
         this.contentModules = this.create(new JList<>(modules.toArray(new Module[0])), 10, 60, 200, modules.size() * 18);
-        this.currentContentObjects = this.create(new JList<>(), 220, 60, 200, 18);
+        this.currentContentObjects = new JList<>();
+        this.scrollingContentPane = this.create(new JScrollPane(this.currentContentObjects), 220, 60, 200, 18);
+
         this.exportPlugin = this.create(new JButton("Export Plugin"), 10, modules.size() * 20 + 70, 200, 40);
         this.pluginName = this.create(new JTextField(), 10, 10, 200, 18);
+        this.importPlugin = this.create(new JButton("Import Plugin"), 10, modules.size() * 20 + 120, 200, 40);
+
+
 
         this.contentModules.setSelectedValue(modules.get(0), true);
         this.updateCurrentObjects(null);
@@ -51,6 +63,7 @@ public class PluginBuilderPanel extends JPanel {
         this.currentContentObjects.addListSelectionListener(e -> this.populateSelected());
 
         this.exportPlugin.addActionListener(e -> this.export(modules));
+        this.importPlugin.addActionListener(e -> this.importFile(modules));
     }
     public void populateSelected() {
         String selected = this.getSelectedItem();
@@ -87,7 +100,8 @@ public class PluginBuilderPanel extends JPanel {
         List<String> strings = this.getSelectedModule().getItemKeys();
         String[] objects = strings.toArray(new String[0]);
         this.currentContentObjects.setListData(objects);
-        this.currentContentObjects.setSize(200, 18 * Math.max(1, objects.length));
+        this.scrollingContentPane.setSize(200, Math.min(600, 18 * Math.max(1, objects.length)));
+//        this.currentContentObjects.setSize(200, 18 * Math.max(1, objects.length));
         if(this.getSelectedModule().getItemKeys().contains(name)) {
             this.currentContentObjects.setSelectedValue(name, true);
         } else {
@@ -146,5 +160,54 @@ public class PluginBuilderPanel extends JPanel {
         } catch (Exception e1) {
             e1.printStackTrace();
         }
+    }
+    private void importFile(List<Module<? extends Item>> modules) {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setFileFilter(new FileFilter() {
+            @Override
+            public boolean accept(File f) {
+                return f.isDirectory() || f.getName().endsWith(".json") || f.getName().endsWith(".plugin");
+            }
+            @Override
+            public String getDescription() {
+                return "Plugin Files";
+            }
+        });
+
+        chooser.showDialog(null, "Select a Plugin");
+
+        if(chooser.getSelectedFile() != null) {
+            File pluginFile = chooser.getSelectedFile();
+            this.pluginName.setText(pluginFile.getName().replace(".json", "").replace(".plugin", ""));
+            JsonObject pluginObject = this.load(pluginFile);
+
+            for(Module<? extends Item> module : modules) {
+                String name = module.getName();
+                if(pluginObject.has(name)) {
+                    JsonArray array = pluginObject.get(name).getAsJsonArray();
+                    for (JsonElement jsonElement : array) {
+                        JsonObject content = jsonElement.getAsJsonObject();
+                        module.addItem(content.get("name").getAsString(), content);
+                    }
+                }
+            }
+        }
+        this.updateCurrentObjects(null);
+    }
+    private JsonObject load(File file) {
+        try {
+            if(file.getName().endsWith(".plugin")) {
+                DataInputStream datainputstream = new DataInputStream(new BufferedInputStream(new GZIPInputStream(new FileInputStream(file))));
+                String s = datainputstream.readUTF();
+                datainputstream.close();
+
+                return new JsonParser().parse(s).getAsJsonObject();
+            } else {
+                return new JsonParser().parse(new FileReader(file)).getAsJsonObject();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

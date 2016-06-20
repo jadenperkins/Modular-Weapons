@@ -1,5 +1,8 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemStat;
 import com.jadencode.main.pluginbuilder.items.ItemStatSet;
@@ -57,5 +60,18 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
     @Override
     public ItemStatSet getDefault() {
         return new ItemStatSet("", new HashMap<>());
+    }
+
+    @Override
+    public ItemStatSet consume(String name, JsonObject json) {
+        HashMap<String, Double> stats = new HashMap<>();
+        if(json.has("stats")) {
+            JsonArray array = json.get("stats").getAsJsonArray();
+            for (JsonElement jsonElement : array) {
+                JsonObject obj = jsonElement.getAsJsonObject();
+                stats.put(obj.get("stat").getAsString(), obj.get("value").getAsDouble());
+            }
+        }
+        return new ItemStatSet(name, stats);
     }
 }

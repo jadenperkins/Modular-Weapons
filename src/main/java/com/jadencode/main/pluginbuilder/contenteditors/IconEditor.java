@@ -1,5 +1,6 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
+import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemColor;
 import com.jadencode.main.pluginbuilder.items.ItemIcon;
@@ -72,5 +73,10 @@ public class IconEditor extends ContentEditor<ItemIcon> {
     @Override
     public ItemIcon getDefault() {
         return new ItemIcon("", "");
+    }
+
+    @Override
+    public ItemIcon consume(String name, JsonObject json) {
+        return new ItemIcon(name, json.get("base64").getAsString());
     }
 }

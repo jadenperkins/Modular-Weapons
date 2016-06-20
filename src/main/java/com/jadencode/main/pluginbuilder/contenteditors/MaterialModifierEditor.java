@@ -1,5 +1,8 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemMaterialModifier;
 import com.jadencode.main.pluginbuilder.items.ItemWeaponType;
@@ -73,5 +76,19 @@ public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> 
     @Override
     public ItemMaterialModifier getDefault() {
         return new ItemMaterialModifier("", "", 0F, 0F, 0F, new ArrayList<>());
+    }
+
+    @Override
+    public ItemMaterialModifier consume(String name, JsonObject json) {
+        String color = json.get("color").getAsString();
+        float weight = json.has("weight") ? json.get("weight").getAsFloat() : 1F;
+        float level = json.get("level").getAsFloat();
+        float mod = json.get("mod").getAsFloat();
+        List<String> types = new ArrayList<>();
+        JsonArray array = json.get("materials").getAsJsonArray();
+        for (JsonElement jsonElement : array) {
+            types.add(jsonElement.getAsString());
+        }
+        return new ItemMaterialModifier(name, color, weight, level, mod, types);
     }
 }

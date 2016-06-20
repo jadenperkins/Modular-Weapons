@@ -1,5 +1,6 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
+import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemColor;
 import com.jadencode.main.pluginbuilder.items.ItemScript;
@@ -39,7 +40,6 @@ public class ScriptEditor extends ContentEditor<ItemScript> {
             }
         });
         this.scriptView = new JTextArea();
-        this.scriptView.setEditable(false);
         JScrollPane pane = this.create(new JScrollPane(this.scriptView), 220, 10, 750, 650);
 
         this.add(pane);
@@ -61,6 +61,8 @@ public class ScriptEditor extends ContentEditor<ItemScript> {
     }
     @Override
     public void populate(ItemScript item) {
+        this.scriptType.setText(item.getScriptType());
+        this.scriptView.setText(item.getScriptContents());
     }
     @Override
     public ItemScript createItem(String name) {
@@ -69,5 +71,10 @@ public class ScriptEditor extends ContentEditor<ItemScript> {
     @Override
     public ItemScript getDefault() {
         return new ItemScript("", "", "");
+    }
+
+    @Override
+    public ItemScript consume(String name, JsonObject json) {
+        return new ItemScript(name, json.get("type").getAsString(), json.get("script").getAsString());
     }
 }

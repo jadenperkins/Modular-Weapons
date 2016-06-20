@@ -1,5 +1,8 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemWeaponType;
 import com.jadencode.main.pluginbuilder.modules.Module;
@@ -55,5 +58,17 @@ public class WeaponTypeEditor extends ContentEditor<ItemWeaponType> {
     @Override
     public ItemWeaponType getDefault() {
         return new ItemWeaponType("", "", "", new ArrayList<>());
+    }
+
+    @Override
+    public ItemWeaponType consume(String name, JsonObject json) {
+        String statSet = json.get("stats").getAsString();
+        String script = json.has("script") ? json.get("script").getAsString() : "";
+        List<String> parts = new ArrayList<>();
+        JsonArray array = json.get("parts").getAsJsonArray();
+        for (JsonElement jsonElement : array) {
+            parts.add(jsonElement.getAsString());
+        }
+        return new ItemWeaponType(name, statSet, script, parts);
     }
 }

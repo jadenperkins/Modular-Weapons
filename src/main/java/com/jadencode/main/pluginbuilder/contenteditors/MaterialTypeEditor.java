@@ -1,5 +1,6 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
+import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemMaterialType;
 import com.jadencode.main.pluginbuilder.items.ItemScript;
@@ -34,5 +35,10 @@ public class MaterialTypeEditor extends ContentEditor<ItemMaterialType> {
     @Override
     public ItemMaterialType getDefault() {
         return new ItemMaterialType("", "");
+    }
+
+    @Override
+    public ItemMaterialType consume(String name, JsonObject json) {
+        return new ItemMaterialType(name, json.has("script") ? json.get("script").getAsString() : "");
     }
 }

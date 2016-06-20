@@ -1,5 +1,7 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemColor;
 import com.jadencode.main.pluginbuilder.modules.Module;
@@ -39,5 +41,11 @@ public class ColorEditor extends ContentEditor<ItemColor> {
     @Override
     public ItemColor getDefault() {
         return new ItemColor("", 255, 255, 255);
+    }
+
+    @Override
+    public ItemColor consume(String name, JsonObject json) {
+        JsonArray rgb = json.get("rgb").getAsJsonArray();
+        return new ItemColor(name, rgb.get(0).getAsInt(), rgb.get(1).getAsInt(), rgb.get(2).getAsInt());
     }
 }

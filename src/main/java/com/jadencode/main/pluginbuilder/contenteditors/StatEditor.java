@@ -1,5 +1,6 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
+import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemPartType;
 import com.jadencode.main.pluginbuilder.items.ItemStat;
@@ -39,5 +40,10 @@ public class StatEditor extends ContentEditor<ItemStat> {
     @Override
     public ItemStat getDefault() {
         return new ItemStat("", "", 0.0);
+    }
+
+    @Override
+    public ItemStat consume(String name, JsonObject json) {
+        return new ItemStat(name, json.has("script") ? json.get("script").getAsString() : "", json.get("default").getAsDouble());
     }
 }

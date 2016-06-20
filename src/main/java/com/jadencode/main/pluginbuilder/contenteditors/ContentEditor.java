@@ -1,5 +1,6 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
+import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.Item;
 import com.jadencode.main.pluginbuilder.modules.Module;
@@ -48,4 +49,5 @@ public abstract class ContentEditor<T extends Item> extends JPanel {
     public abstract T createItem(String name);
     public abstract void populate(T item);
     public abstract T getDefault();
+    public abstract T consume(String name, JsonObject json);
 }

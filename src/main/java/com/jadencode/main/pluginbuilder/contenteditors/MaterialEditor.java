@@ -1,5 +1,6 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
+import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemMaterial;
 import com.jadencode.main.pluginbuilder.items.ItemMaterialModifier;
@@ -68,5 +69,16 @@ public class MaterialEditor extends ContentEditor<ItemMaterial> {
     @Override
     public ItemMaterial getDefault() {
         return new ItemMaterial("", "", 0F, 0F, 0, "");
+    }
+
+    @Override
+    public ItemMaterial consume(String name, JsonObject json) {
+        String colorName = json.get("color").getAsString();
+        float w = json.has("weight") ? json.get("weight").getAsFloat() : 1F;
+        float m = json.get("mod").getAsFloat();
+        int l = json.get("level").getAsInt();
+        String material = json.get("material").getAsString();
+
+        return new ItemMaterial(name, colorName, w, m, l, material);
     }
 }

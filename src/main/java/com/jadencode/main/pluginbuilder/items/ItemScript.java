@@ -20,6 +20,15 @@ public class ItemScript extends Item {
         this.scriptType = type;
         this.scriptContents = contents;
     }
+
+    public String getScriptType() {
+        return scriptType;
+    }
+
+    public String getScriptContents() {
+        return scriptContents;
+    }
+
     @Override
     public void toJson(JsonObject json) {
         json.add("type", new JsonPrimitive(this.scriptType));
