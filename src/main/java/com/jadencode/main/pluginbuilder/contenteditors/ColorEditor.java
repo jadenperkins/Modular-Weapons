@@ -12,8 +12,6 @@ import java.awt.*;
  */
 public class ColorEditor extends ContentEditor<ItemColor> {
 
-    private static final ItemColor DEFAULT = new ItemColor("Default", 255, 255, 255);
-
     private final JButton selectColor;
     private Color color = Color.WHITE;
     private final JPanel displayPanel;
@@ -40,6 +38,6 @@ public class ColorEditor extends ContentEditor<ItemColor> {
     }
     @Override
     public ItemColor getDefault() {
-        return DEFAULT;
+        return new ItemColor("", 255, 255, 255);
     }
 }

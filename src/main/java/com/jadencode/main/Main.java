@@ -212,8 +212,8 @@ public class Main {
         s1.getStatsRaw().keySet().forEach(stat -> System.out.println(String.format("\t%s: %f", stat.getStatName(), s1.get(stat))));
 
 //        for(WeaponPartInstance part : weap.getWeaponParts().values()) {
-//            for(String key : part.getStats().getFloatKeys()) {
-//                System.out.println(String.format("%s = %f", key, part.getStats().getFloat(key)));
+//            for(String key : part.getPartTypes().getFloatKeys()) {
+//                System.out.println(String.format("%s = %f", key, part.getPartTypes().getFloat(key)));
 //            }
 //        }
 

@@ -64,6 +64,16 @@ public class PluginBuilderPanel extends JPanel {
         }
         this.repaint();
     }
+    public <T extends Module<? extends Item>> T getModule(Class<T> c) {
+        ListModel<Module<? extends Item>> model = this.contentModules.getModel();
+        for(int i = 0; i < model.getSize(); i++) {
+            Module<? extends Item> module = model.getElementAt(i);
+            if(module.getClass().equals(c)) {
+                return c.cast(module);
+            }
+        }
+        return null;
+    }
     public void updateCurrentObjects(String name) {
         for (Component component : this.getComponents()) {
             if(component == this.editor) {

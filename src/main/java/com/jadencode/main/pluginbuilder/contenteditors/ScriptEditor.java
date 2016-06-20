@@ -19,8 +19,6 @@ import java.util.List;
  */
 public class ScriptEditor extends ContentEditor<ItemScript> {
 
-    private static final ItemScript DEFAULT = new ItemScript("Default", "", "");
-
     private final JButton selectScript;
     private final JTextField scriptType;
     private final JTextArea scriptView;
@@ -70,6 +68,6 @@ public class ScriptEditor extends ContentEditor<ItemScript> {
     }
     @Override
     public ItemScript getDefault() {
-        return DEFAULT;
+        return new ItemScript("", "", "");
     }
 }

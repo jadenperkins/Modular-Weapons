@@ -14,23 +14,22 @@ import javax.swing.filechooser.FileFilter;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.nio.Buffer;
 
 /**
  * Created by gtrpl on 6/18/2016.
  */
 public class IconEditor extends ContentEditor<ItemIcon> {
 
-    public static final ItemIcon DEFAULT = new ItemIcon("Default", "");
-
     private final JButton selectImage;
-    private final JPanel displayPanel;
+    private final JLabel displayLabel;
     private String base64String;
     private final JFileChooser imageChooser = new JFileChooser();
 
     public IconEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
 
-        this.displayPanel = this.create(new JPanel(), 220, 10, 200, 200);
+        this.displayLabel = this.create(new JLabel(), 220, 10, 200, 200);
         this.imageChooser.setFileFilter(new FileFilter() {
             @Override
             public boolean accept(File f) {
@@ -48,6 +47,10 @@ public class IconEditor extends ContentEditor<ItemIcon> {
             if(this.imageChooser.getSelectedFile() != null) {
                 File iconFile = this.imageChooser.getSelectedFile();
                 try {
+                    BufferedImage image = ImageIO.read(iconFile);
+                    Image scaled = image.getScaledInstance(image.getWidth() * 8, image.getHeight() * 8, 0);
+
+                    this.displayLabel.setIcon(new ImageIcon(scaled));
 //                    BufferedImage image = ImageIO.read(iconFile);
 //                    this.displayPanel.getGraphics().drawImage(image.getScaledInstance(image.getWidth() * 4, 4 * image.getHeight(), 0), 0, 0, image.getWidth(), image.getHeight(), null);
                     this.base64String = Base64.encode(FileUtils.readFileToByteArray(iconFile));
@@ -60,6 +63,7 @@ public class IconEditor extends ContentEditor<ItemIcon> {
     }
     @Override
     public void populate(ItemIcon item) {
+        this.base64String = item.getBase64();
     }
     @Override
     public ItemIcon createItem(String name) {
@@ -67,6 +71,6 @@ public class IconEditor extends ContentEditor<ItemIcon> {
     }
     @Override
     public ItemIcon getDefault() {
-        return DEFAULT;
+        return new ItemIcon("", "");
     }
 }

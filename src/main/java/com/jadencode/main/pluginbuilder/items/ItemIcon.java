@@ -13,6 +13,9 @@ public class ItemIcon extends Item {
         super(name);
         this.base64 = base64;
     }
+    public String getBase64() {
+        return base64;
+    }
     @Override
     public void toJson(JsonObject json) {
         json.add("base64", new JsonPrimitive(this.base64));
