@@ -6,9 +6,7 @@ import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemMaterialModifier;
-import com.jadencode.main.pluginbuilder.items.ItemWeaponType;
 import com.jadencode.main.pluginbuilder.modules.Module;
-import com.sun.xml.internal.ws.util.StreamUtils;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -21,50 +19,63 @@ import java.util.List;
 public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> {
 
 //    "color": "MOD_LUNAR", "weight": 1.0, "level": 0.5, "mod": 1.2, "materials": ["Metal"]
-    private final JTextField colorName;
+    private final JComboBox<String> colorSelection;
     private final JTextField weightField;
     private final JTextField levelField;
     private final JTextField modField;
-    private final JTable materialTable;
+    private final JList<String> materialsList;
 
     public MaterialModifierEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        this.colorName = this.create(new JTextField(), 10, 140, 200, 18);
+        this.colorSelection = this.create(new JComboBox<>(), 10, 140, 200, 18);
         this.weightField = this.create(new JTextField(), 10, 160, 200, 18);
         this.levelField = this.create(new JTextField(), 10, 180, 200, 18);
         this.modField = this.create(new JTextField(), 10, 200, 200, 18);
-        this.materialTable = this.create(new JTable(new DefaultTableModel(10, 1)), 10, 220, 200, 160);
+        this.materialsList = this.create(new JList<>(), 10, 220, 200, 18);
+    }
+    @Override
+    public void onOpened(Module<ItemMaterialModifier> parent, PluginBuilderPanel panel) {
+        Module colorModule = panel.getModule("Colors");
+        List<String> colors = colorModule.getItemKeys();
+        this.colorSelection.setModel(new DefaultComboBoxModel<>(colors.toArray(new String[0])));
+
+        Module materialTypesModule = panel.getModule("Material Types");
+        List<String> materialTypes = materialTypesModule.getItemKeys();
+        this.materialsList.setListData(materialTypes.toArray(new String[0]));
+        this.materialsList.setSize(200, 18 * Math.max(1, materialTypes.size()));
     }
     @Override
     public void populate(ItemMaterialModifier item) {
-        this.colorName.setText(item.getColorName());
+        this.colorSelection.setSelectedItem(item.getColorName());
         this.weightField.setText(item.getWeight() + "");
         this.levelField.setText(item.getLevel() + "");
         this.modField.setText(item.getMod() + "");
 
-        this.materialTable.setModel(new DefaultTableModel(10, 1));
         List<String> materialTypes = item.getMaterialTypes();
-        for(int row = 0; row < materialTypes.size(); row++) {
-            String name = materialTypes.get(row);
-            this.materialTable.getModel().setValueAt(name, row, 0);
+        List<Integer> indices = new ArrayList<>();
+
+        for (String materialType : materialTypes)
+            for(int i = 0; i < this.materialsList.getModel().getSize(); i++)
+                if(this.materialsList.getModel().getElementAt(i).equals(materialType))
+                    indices.add(i);
+
+        int[] i = new int[indices.size()];
+        for(int x = 0; x < i.length; x++) {
+            i[x] = indices.get(x);
         }
+
+        this.materialsList.setSelectedIndices(i);
+
     }
     @Override
     public ItemMaterialModifier createItem(String name) {
-        String colorName = this.colorName.getText();
+        String colorName = (String) this.colorSelection.getSelectedItem();
         float weight = this.getValue(this.weightField);
         float level = this.getValue(this.levelField);
         float mod = this.getValue(this.modField);
 
-        int rows = this.materialTable.getModel().getRowCount();
-        List<String> materialTypes = new ArrayList<>();
-        for(int row = 0; row < rows; row++) {
-            String part = (String)this.materialTable.getValueAt(row, 0);
-            if(part != null && !part.isEmpty()) {
-                materialTypes.add(part);
-            }
-        }
-        return new ItemMaterialModifier(name, colorName, weight, level, mod, materialTypes);
+        List<String> values = this.materialsList.getSelectedValuesList();
+        return new ItemMaterialModifier(name, colorName, weight, level, mod, values);
     }
     private float getValue(JTextField field) {
         float value;

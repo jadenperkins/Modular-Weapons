@@ -37,6 +37,9 @@ public abstract class ContentEditor<T extends Item> extends JPanel {
             panel.updateCurrentObjects(null);
         });
     }
+    public void onOpened(Module<T> parent, PluginBuilderPanel panel) {
+
+    }
     public void setName(String name) {
         this.nameField.setText(name);
     }

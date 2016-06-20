@@ -96,6 +96,7 @@ public class PluginBuilderPanel extends JPanel {
         }
         this.editor = this.getSelectedModule().getContentEditor();
         this.add(this.editor);
+        this.editor.onOpened(this.getSelectedModule(), this);
 
         List<String> strings = this.getSelectedModule().getItemKeys();
         String[] objects = strings.toArray(new String[0]);
