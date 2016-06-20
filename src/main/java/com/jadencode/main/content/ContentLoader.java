@@ -8,8 +8,10 @@ import org.reflections.Reflections;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -26,21 +28,28 @@ public final class ContentLoader {
         WeaponParts.countParts();
     }
     private static final void compressSourcePlugins() {
-        File dir = new File("plugins/source");
-        File[] pluginFiles = dir.listFiles(a -> a.getName().endsWith(".json"));
-        for(File plugin : pluginFiles) {
-            try {
-                File out = new File(dir, plugin.getName().replace(".json", ".plugin"));
-                out.createNewFile();
+        File pluginDir = new File("plugins");
+        File[] compressedPlugins = pluginDir.listFiles(a -> a.getName().endsWith(".plugin"));
+        File[] sourcePlugins = new File("plugins/source").listFiles(a -> a.getName().endsWith(".json"));
 
-                JsonObject pluginContents = new JsonParser().parse(new FileReader(plugin)).getAsJsonObject();
+        List<String> compressed = Arrays.asList(compressedPlugins).stream().map(file -> file.getName().replace(".plugin", "")).collect(Collectors.toList());
+        List<File> source = Arrays.asList(sourcePlugins);
 
-                DataOutputStream dataOutputStream = new DataOutputStream(new BufferedOutputStream(new GZIPOutputStream(new FileOutputStream(out))));
-                dataOutputStream.writeUTF(pluginContents.toString());
-                dataOutputStream.close();
+        for (File s : source) {
+            String sourceName = s.getName().replace(".json", "");
+            if(!compressed.contains(sourceName)) {
+                try {
+                    File out = new File(pluginDir, sourceName + ".plugin");
+                    out.createNewFile();
 
-            } catch (Exception e) {
-                e.printStackTrace();
+                    JsonObject pluginContents = new JsonParser().parse(new FileReader(s)).getAsJsonObject();
+
+                    DataOutputStream dataOutputStream = new DataOutputStream(new BufferedOutputStream(new GZIPOutputStream(new FileOutputStream(out))));
+                    dataOutputStream.writeUTF(pluginContents.toString());
+                    dataOutputStream.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

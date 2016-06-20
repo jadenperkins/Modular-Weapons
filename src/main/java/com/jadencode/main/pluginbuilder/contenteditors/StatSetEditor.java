@@ -11,6 +11,7 @@ import com.jadencode.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,13 +25,20 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
 
     public StatSetEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
+        this.statsTable = this.create(new JTable(), 10, 140, 200, 16);
+    }
+    @Override
+    public void onOpened(Module<ItemStatSet> parent, PluginBuilderPanel panel) {
+        Module statsModule = panel.getModule("Stats");
+        List<String> stats = statsModule.getItemKeys();
+        JComboBox<String> box = new JComboBox<>(new DefaultComboBoxModel<>(stats.toArray(new String[0])));
 
-        this.statsTable = this.create(new JTable(new DefaultTableModel(10, 2)), 10, 140, 200, 160);
-
+        this.statsTable.setSize(200, 16 * Math.max(1, stats.size()));
+        this.statsTable.setModel(new DefaultTableModel(stats.size(), 2));
+        this.statsTable.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(box));
     }
     @Override
     public void populate(ItemStatSet item) {
-        this.statsTable.setModel(new DefaultTableModel(10, 2));
         HashMap<String, Double> stats = item.getStats();
         List<String> keys = new ArrayList<>(stats.keySet());
         for(int row = 0; row < keys.size(); row++) {

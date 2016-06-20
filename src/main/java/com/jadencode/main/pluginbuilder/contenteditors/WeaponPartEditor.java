@@ -5,7 +5,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
-import com.jadencode.main.pluginbuilder.items.ItemMaterialModifier;
 import com.jadencode.main.pluginbuilder.items.ItemWeaponPart;
 import com.jadencode.main.pluginbuilder.modules.Module;
 
@@ -19,52 +18,61 @@ import java.util.List;
  */
 public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
 
-//    "nameModField": "Seeker", "partInfo": "A legendary weapon part", "weight": 100.0, "partType": "Sword Blade"},
-//    "nameModField": "Double", "partType": "Sword Grip", "materials": ["Metal"]},
-
     private final JTextField nameModField;
     private final JTextField partInfoField;
     private final JTextField weightField;
-    private final JTextField partTypeField;
-    private final JTable materialTable;
+    private final JComboBox<String> partTypeSelection;
+    private final JList<String> materialsList;
 
     public WeaponPartEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
         this.nameModField = this.create(new JTextField(), 10, 140, 200, 18);
         this.partInfoField = this.create(new JTextField(), 10, 160, 200, 18);
         this.weightField = this.create(new JTextField(), 10, 180, 200, 18);
-        this.partTypeField = this.create(new JTextField(), 10, 200, 200, 18);
-        this.materialTable = this.create(new JTable(new DefaultTableModel(10, 1)), 10, 220, 200, 160);
+        this.partTypeSelection = this.create(new JComboBox<>(), 10, 200, 200, 18);
+        this.materialsList = this.createScrolling(new JList<>(), 10, 220, 200, 160);
+    }
+    @Override
+    public void onOpened(Module<ItemWeaponPart> parent, PluginBuilderPanel panel) {
+        Module partTypesModule = panel.getModule("Part Types");
+        List<String> partTypes = partTypesModule.getItemKeys();
+        this.partTypeSelection.setModel(new DefaultComboBoxModel<>(partTypes.toArray(new String[0])));
+
+        Module materialTypesModule = panel.getModule("Material Types");
+        List<String> materialTypes = materialTypesModule.getItemKeys();
+        this.materialsList.setListData(materialTypes.toArray(new String[0]));
+        this.materialsList.setSize(200, 18 * Math.max(1, materialTypes.size()));
     }
     @Override
     public void populate(ItemWeaponPart item) {
         this.nameModField.setText(item.getNameMod());
         this.partInfoField.setText(item.getPartInfo());
         this.weightField.setText(item.getWeight() + "");
-        this.partTypeField.setText(item.getPartType());
+        this.partTypeSelection.setSelectedItem(item.getPartType());
 
-        this.materialTable.setModel(new DefaultTableModel(10, 1));
         List<String> materialTypes = item.getMaterialTypes();
-        for(int row = 0; row < materialTypes.size(); row++) {
-            String name = materialTypes.get(row);
-            this.materialTable.getModel().setValueAt(name, row, 0);
+        List<Integer> indices = new ArrayList<>();
+
+        for (String materialType : materialTypes)
+            for(int i = 0; i < this.materialsList.getModel().getSize(); i++)
+                if(this.materialsList.getModel().getElementAt(i).equals(materialType))
+                    indices.add(i);
+
+        int[] i = new int[indices.size()];
+        for(int x = 0; x < i.length; x++) {
+            i[x] = indices.get(x);
         }
+
+        this.materialsList.setSelectedIndices(i);
     }
     @Override
     public ItemWeaponPart createItem(String name) {
         String nameMod = this.nameModField.getText();
         String partInfo = this.partInfoField.getText();
         float weight = this.getValue(this.weightField);
-        String partType = this.partTypeField.getText();
+        String partType = (String) this.partTypeSelection.getSelectedItem();
 
-        int rows = this.materialTable.getModel().getRowCount();
-        List<String> materialTypes = new ArrayList<>();
-        for(int row = 0; row < rows; row++) {
-            String part = (String)this.materialTable.getValueAt(row, 0);
-            if(part != null && !part.isEmpty()) {
-                materialTypes.add(part);
-            }
-        }
+        List<String> materialTypes = this.materialsList.getSelectedValuesList();
         return new ItemWeaponPart(name, nameMod, partInfo, weight, partType, materialTypes);
     }
     private float getValue(JTextField field) {

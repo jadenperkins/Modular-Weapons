@@ -164,6 +164,7 @@ public class PluginBuilderPanel extends JPanel {
     }
     private void importFile(List<Module<? extends Item>> modules) {
         JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new File("plugins"));
         chooser.setFileFilter(new FileFilter() {
             @Override
             public boolean accept(File f) {

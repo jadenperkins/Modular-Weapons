@@ -18,7 +18,6 @@ import java.util.List;
  */
 public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> {
 
-//    "color": "MOD_LUNAR", "weight": 1.0, "level": 0.5, "mod": 1.2, "materials": ["Metal"]
     private final JComboBox<String> colorSelection;
     private final JTextField weightField;
     private final JTextField levelField;
@@ -31,7 +30,7 @@ public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> 
         this.weightField = this.create(new JTextField(), 10, 160, 200, 18);
         this.levelField = this.create(new JTextField(), 10, 180, 200, 18);
         this.modField = this.create(new JTextField(), 10, 200, 200, 18);
-        this.materialsList = this.create(new JList<>(), 10, 220, 200, 18);
+        this.materialsList = this.createScrolling(new JList<>(), 10, 220, 200, 180);
     }
     @Override
     public void onOpened(Module<ItemMaterialModifier> parent, PluginBuilderPanel panel) {

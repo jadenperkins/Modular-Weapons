@@ -1,11 +1,8 @@
 package com.jadencode.main.pluginbuilder.items;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -22,7 +19,7 @@ public class ItemWeaponType extends Item {
         super(name);
         this.statSetName = stats;
         this.scriptName = script;
-        this.weight = weight;
+        this.weight = weight > 0 ? weight : 1;
         this.partTypes = parts;
     }
     public String getStatSetName() {
@@ -44,17 +41,5 @@ public class ItemWeaponType extends Item {
                 .add("script", this.scriptName)
                 .add("weight", this.weight)
                 .add("parts", JsonHelper.toArray(this.partTypes));
-//        if(this.statSetName != null && !this.statSetName.isEmpty())
-//            json.add("stats", new JsonPrimitive(this.statSetName));
-//
-//        if(this.scriptName != null && !this.scriptName.isEmpty())
-//            json.add("script", new JsonPrimitive(this.scriptName));
-//
-//        JsonArray array = new JsonArray();
-//
-//        for (String partType : this.partTypes)
-//            array.add(new JsonPrimitive(partType));
-//
-//        json.add("parts", array);
     }
 }

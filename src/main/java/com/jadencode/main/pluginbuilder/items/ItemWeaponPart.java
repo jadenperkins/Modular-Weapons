@@ -22,7 +22,7 @@ public class ItemWeaponPart extends Item {
         super(name);
         this.nameMod = nameMod;
         this.partInfo = partInfo;
-        this.weight = weight;
+        this.weight = weight > 0 ? weight : 1F;
         this.partType = partType;
         this.materialTypes = materialTypes;
     }

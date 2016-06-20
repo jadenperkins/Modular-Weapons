@@ -1163,6 +1163,11 @@
       "name": "metals",
       "type": "material types",
       "script": "importPackage(java.util);\n\nvar first \u003d [\"Test\"];\nvar second \u003d [\"ium\"];\n\nvar exoticNames \u003d getNames();\n\nfunction getNames() {\n\tlist \u003d new ArrayList();\n\tfor(var s1 in first) {\n\t\tfor(var s2 in second) {\n\t\t\tlist.add(first[s1] + second[s2]);\n\t\t}\n\t}\n\treturn list;\n}"
+    },
+    {
+      "name": "scaled",
+      "type": "stats",
+      "script": "function scale(i, original) {\n\treturn original * Math.pow(1.1, i - 1);\n}"
     }
   ],
   "Stat Sets": [
@@ -2325,6 +2330,7 @@
       "name": "Arrow",
       "stats": "Base Arrow",
       "script": "",
+      "weight": 1.0,
       "parts": [
         "Arrow Tip",
         "Arrow Fletchings",
@@ -2335,6 +2341,7 @@
       "name": "Axe",
       "stats": "Base Axe",
       "script": "",
+      "weight": 1.0,
       "parts": [
         "Axe Head",
         "Axe Handle"
@@ -2344,6 +2351,7 @@
       "name": "Bolt",
       "stats": "Base Bolt",
       "script": "",
+      "weight": 1.0,
       "parts": [
         "Bolt Tip",
         "Bolt Fletchings",
@@ -2354,6 +2362,7 @@
       "name": "Bow",
       "stats": "Base Bow",
       "script": "",
+      "weight": 1.0,
       "parts": [
         "Bow Grip",
         "Bow String",
@@ -2364,6 +2373,7 @@
       "name": "Crossbow",
       "stats": "Base Crossbow",
       "script": "",
+      "weight": 1.0,
       "parts": [
         "Crossbow Stock",
         "Crossbow String",
@@ -2374,6 +2384,7 @@
       "name": "Hammer",
       "stats": "Base Hammer",
       "script": "",
+      "weight": 1.0,
       "parts": [
         "Hammer Head",
         "Hammer Handle"
@@ -2383,6 +2394,7 @@
       "name": "Staff",
       "stats": "Base Staff",
       "script": "",
+      "weight": 1.0,
       "parts": [
         "Staff Head",
         "Staff Handle"
@@ -2392,6 +2404,7 @@
       "name": "Sword",
       "stats": "Base Sword",
       "script": "",
+      "weight": 1.0,
       "parts": [
         "Sword Hilt",
         "Sword Grip",

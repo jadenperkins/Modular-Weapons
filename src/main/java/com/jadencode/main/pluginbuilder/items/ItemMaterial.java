@@ -23,7 +23,7 @@ public class ItemMaterial extends Item {
     public ItemMaterial(String name, String color, float w, float m, int l, String type) {
         super(name);
         this.colorName = color;
-        this.weight = w;
+        this.weight = w > 0 ? w : 1;
         this.mod = m;
         this.level = l;
         this.materialType = type;

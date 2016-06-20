@@ -1,33 +1,38 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
-import com.jadencode.main.item.ItemPart;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
-import com.jadencode.main.pluginbuilder.items.ItemMaterialType;
 import com.jadencode.main.pluginbuilder.items.ItemPartType;
 import com.jadencode.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
+import java.util.List;
 
 /**
  * Created by gtrpl on 6/18/2016.
  */
 public class PartTypeEditor extends ContentEditor<ItemPartType> {
 
-    private final JTextField iconName;
+    private final JComboBox<String> iconSelection;
 
     public PartTypeEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        this.iconName = this.create(new JTextField(), 10, 120, 200, 20);
+        this.iconSelection = this.create(new JComboBox<>(), 10, 120, 200, 20);
+    }
+    @Override
+    public void onOpened(Module<ItemPartType> parent, PluginBuilderPanel panel) {
+        Module iconModules = panel.getModule("Icons");
+        List<String> icons = iconModules.getItemKeys();
+        this.iconSelection.setModel(new DefaultComboBoxModel<>(icons.toArray(new String[0])));
     }
     @Override
     public void populate(ItemPartType item) {
-        this.iconName.setText(item.getIconName());
+        this.iconSelection.setSelectedItem(item.getIconName());
     }
     @Override
     public ItemPartType createItem(String name) {
-        return new ItemPartType(name, this.iconName.getText());
+        return new ItemPartType(name, (String)this.iconSelection.getSelectedItem());
     }
     @Override
     public ItemPartType getDefault() {

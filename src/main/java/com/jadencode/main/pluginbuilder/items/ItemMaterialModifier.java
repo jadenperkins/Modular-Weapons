@@ -22,7 +22,7 @@ public class ItemMaterialModifier extends Item {
     public ItemMaterialModifier(String name, String color, float w, float l, float m, List<String> types) {
         super(name);
         this.colorName = color;
-        this.weight = w;
+        this.weight = w > 0 ? w : 1;
         this.level = l;
         this.mod = m;
         this.materialTypes = types;

@@ -4,34 +4,35 @@ import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemMaterialType;
-import com.jadencode.main.pluginbuilder.items.ItemScript;
 import com.jadencode.main.pluginbuilder.modules.Module;
-import com.jadencode.main.pluginbuilder.modules.ModuleScriptCreator;
-import org.apache.commons.io.FileUtils;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileFilter;
-import java.io.File;
-import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by gtrpl on 6/18/2016.
  */
 public class MaterialTypeEditor extends ContentEditor<ItemMaterialType> {
 
-    private final JTextField scriptName;
+    private final JComboBox<String> scriptSelection;
 
     public MaterialTypeEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        this.scriptName = this.create(new JTextField(), 10, 120, 200, 20);
+        this.scriptSelection = this.create(new JComboBox<>(), 10, 120, 200, 20);
+    }
+    @Override
+    public void onOpened(Module<ItemMaterialType> parent, PluginBuilderPanel panel) {
+        List<String> scripts = this.getScripts("material types", panel);
+        this.scriptSelection.setModel(new DefaultComboBoxModel<>(scripts.toArray(new String[0])));
     }
     @Override
     public void populate(ItemMaterialType item) {
-        this.scriptName.setText(item.getScriptName());
+        this.scriptSelection.setSelectedItem(item.getScriptName());
     }
     @Override
     public ItemMaterialType createItem(String name) {
-        return new ItemMaterialType(name, this.scriptName.getText());
+        return new ItemMaterialType(name, (String)this.scriptSelection.getSelectedItem());
     }
     @Override
     public ItemMaterialType getDefault() {

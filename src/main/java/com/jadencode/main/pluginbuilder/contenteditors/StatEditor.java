@@ -3,28 +3,34 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
-import com.jadencode.main.pluginbuilder.items.ItemPartType;
 import com.jadencode.main.pluginbuilder.items.ItemStat;
 import com.jadencode.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by gtrpl on 6/18/2016.
  */
 public class StatEditor extends ContentEditor<ItemStat> {
 
-    private final JTextField scriptName;
+    private final JComboBox<String> scriptSelection;
     private final JTextField defaultValue;
 
     public StatEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        this.scriptName = this.create(new JTextField(), 10, 120, 200, 20);
+        this.scriptSelection = this.create(new JComboBox<>(), 10, 120, 200, 20);
         this.defaultValue = this.create(new JTextField(), 10, 150, 200, 20);
     }
     @Override
+    public void onOpened(Module<ItemStat> parent, PluginBuilderPanel panel) {
+        List<String> scripts = this.getScripts("stats", panel);
+        this.scriptSelection.setModel(new DefaultComboBoxModel<>(scripts.toArray(new String[0])));
+    }
+    @Override
     public void populate(ItemStat item) {
-        this.scriptName.setText(item.getScriptName());
+        this.scriptSelection.setSelectedItem(item.getScriptName());
         this.defaultValue.setText(item.getDefaultValue() + "");
     }
     @Override
@@ -36,7 +42,7 @@ public class StatEditor extends ContentEditor<ItemStat> {
             value = 0;
             this.defaultValue.setText("0.0");
         }
-        return new ItemStat(name, this.scriptName.getText(), value);
+        return new ItemStat(name, (String) this.scriptSelection.getSelectedItem(), value);
     }
     @Override
     public ItemStat getDefault() {
