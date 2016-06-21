@@ -50,10 +50,14 @@ public abstract class ContentEditor<T extends Item> extends JPanel {
         this.deleteItem = helper.add(new JButton("Delete Item"), H_S, V_S + H_FLD + H_BTN + 2 * V_PAD, H_L, H_BTN);
 
         this.updateItem.addActionListener(e -> {
-            String itemName = this.nameField.getText();
-            if(itemName != null && !itemName.isEmpty()) {
-                parent.addItem(itemName, panel.getActivePlugin());
-                panel.updateCurrentObjects(itemName);
+            if(panel.getActivePlugin() == null || panel.getActivePlugin().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "An active plugin must be named before adding content!");
+            } else {
+                String itemName = this.nameField.getText();
+                if(itemName != null && !itemName.isEmpty()) {
+                    parent.addItem(itemName, panel.getActivePlugin());
+                    panel.updateCurrentObjects(itemName);
+                }
             }
         });
         this.deleteItem.addActionListener(e -> {

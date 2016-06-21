@@ -6,12 +6,12 @@ import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemIcon;
 import com.jadencode.main.pluginbuilder.modules.Module;
-import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import org.apache.commons.io.FileUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
+import javax.xml.bind.DatatypeConverter;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -53,7 +53,7 @@ public class IconEditor extends ContentEditor<ItemIcon> {
                     Image scaled = image.getScaledInstance(image.getWidth() * 8, image.getHeight() * 8, 0);
 
                     this.displayLabel.setIcon(new ImageIcon(scaled));
-                    this.base64String = Base64.encode(FileUtils.readFileToByteArray(iconFile));
+                    this.base64String = DatatypeConverter.printBase64Binary(FileUtils.readFileToByteArray(iconFile));
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }

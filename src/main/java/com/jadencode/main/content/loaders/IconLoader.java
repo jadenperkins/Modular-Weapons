@@ -2,8 +2,6 @@ package com.jadencode.main.content.loaders;
 
 import com.google.gson.JsonObject;
 import com.jadencode.main.constants.Icons;
-import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
-import com.sun.org.apache.xml.internal.security.utils.Base64;
 
 import javax.imageio.ImageIO;
 import javax.xml.bind.DatatypeConverter;
@@ -25,7 +23,7 @@ public class IconLoader extends ContentManager {
     }
     private static BufferedImage decodeToImage(String imageString) {
         try {
-            byte[] imageBytes = Base64.decode(imageString);
+            byte[] imageBytes = DatatypeConverter.parseBase64Binary(imageString);
             ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
             BufferedImage image = ImageIO.read(bis);
             bis.close();
