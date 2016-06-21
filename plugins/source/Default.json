@@ -497,7 +497,72 @@
       ]
     }
   ],
-  "Icons": [],
+  "Icons": [
+    {
+      "name": "axe",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAgCAYAAAAbifjMAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAACRSURBVEhLrYxRDoAwCMW8/6WnIw6ZVmOjH12g742ltfaJqwg1uyfmZVt/OWCOHEP5\nTAfIdY6hfB6MrObVhY9nD89kCVxm8ZRCJUvgMsuhlAYjq3l14XPYC7dFcJ15eThwx7zIz52r+HrA\ngtKA0oDSgNKA0oDSgNKA0oDSgNKA0oDSgNKA0oDSgNKA0oDyPW1ZAXVqjrggXQbmAAAAAElFTkSu\nQmCC"
+    },
+    {
+      "name": "blade",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAAB1SURBVEhL7cxBCsRQCETB3P/SfyQYGKQI6b1CbZ7idc5584x2N8Y/z2h3Y2xzdLMP\nCmObo5t9UBjbHN3sg8LY5uhmHxTGNkc3+6Awtjm62QeFsc3RzeuDTxgTjAnGBGOCMcGYYEwwJhgT\njAnGBGOCMcH43bl+cRp3CPOUt9YAAAAASUVORK5CYII\u003d"
+    },
+    {
+      "name": "bowgrip",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAABvSURBVEhL7cwxDoAgAMBA/v9plFXOxIbVocsNHXPOo4glYolYIpaIJWKJWCKWiCVi\niVgiloglYolYIpaIJWJph5tWT39rh3/wDxacDmrEErFELBFLxBKxRCwRS8QSsUQsEUvEErFELBFL\nxBLxe3Nc7wnPoSyMA8sAAAAASUVORK5CYII\u003d"
+    },
+    {
+      "name": "bowlimbs",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAAB5SURBVEhL7dJLCoAwEATR3P/SMa0MBFPKNNn4ifBclEyvLLXWKRgdGHvt0Wt3/iZD\n6N0dBozh5QOZY8Eofx/IHgvHNfCAAQdGB0YHRgdGB0YHRgdGB0YHRgfHlqd+5TXwhAHJjmCUNXDI\njGAMHxiQGLkaGoILY14tG/+XbAV6zeI3AAAAAElFTkSuQmCC"
+    },
+    {
+      "name": "bowstring",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAABASURBVEhL7cxBCgAgDAPB/v/TsblKFMWbbGEo5LAl6Ukcb8Rxpa/ftM3DDgECRoCA\nESBgBAgYAQL2QSCJ4znVAORun9FwuuehAAAAAElFTkSuQmCC"
+    },
+    {
+      "name": "flights",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAACOSURBVEhLvcwBCoMwEABB///p1BYsIZlCF8HAEh3PO8YYtyKWiCViiVgiloglYolY\nIpaIJWKJWCKWiCViiVgiloglYolYIpaIJWKJWCKWiCViiVgiloglYolYIpaIJWKJ+O4857U/rxlP\nXhfM73MbfPDOgmt4/kH2/bbBr8GyYLWrZxbUiCViiVgi/t84Xl9Jx6lg3e4GAAAAAElFTkSuQmCC"
+    },
+    {
+      "name": "grip",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAAB3SURBVEhL7cwxCsAwDARB///TSgpXYQovIV0E0yyH1sy8wlgwFowFY8FYMBaMBWPB\nWDAWjAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgwFowFY8FYMBaMBWPBWDAWjAXj9jxt/gc3xu15\n2nz74AhjwVgwFoznZl3uyBNsuid8wAAAAABJRU5ErkJggg\u003d\u003d"
+    },
+    {
+      "name": "hammer",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAgCAYAAAAbifjMAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAABuSURBVEhLndBRDsAQEABR97/0tiIUmWQ7K3nC4EeLiOUdfUpdb74415nr7nlYgNHA\naGA0xqL8iX0zrZg43uybCowGRgOjgdHAaGA0MBoYDYwGRgOjgdHAaGA0MBoYDYwGRgOjgdHAaGA0\nMP4X7QEeWBssoAhNjgAAAABJRU5ErkJggg\u003d\u003d"
+    },
+    {
+      "name": "handle",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAgCAYAAAAbifjMAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAAA7SURBVEhL7cwxCgAgDEPR3v/SsRm6ZSkd/cITifBL0kkcN+K4EcfRx1c/87/FcRAg\nYAQIGAEC9kVA9QDkT4bA6UYrWAAAAABJRU5ErkJggg\u003d\u003d"
+    },
+    {
+      "name": "head",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAgCAYAAAAbifjMAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAAB3SURBVEhLlcsxDoAwDARB/v9pgyOZ4rxFFmkoNr6nqtD39e+X74NjjEfetRVOjOHI\nu7bCiTEceddWODGGI+/aCuNm3DAaGA2MBkYDo4HRwGhgNDAaGA2MBkYDo4HRwGhgNDAaGA2MBkYD\no4HRwGhgNDAaGO/V8wItqrqMelkMigAAAABJRU5ErkJggg\u003d\u003d"
+    },
+    {
+      "name": "hilt",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAACTSURBVEhLrcwBCoJQFAVR979pSzCo3vnkVBcOyPh02/f9J4wFY8FYMBaMBWPBWDAW\njAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgwFowFY8FYMBaMBWPBWDwejr28uOAYf/BpL99c/Wi1\n//3ga4wFY8FYMBaMBWPBeLfauB3htNq4HeG02rgd4bTauB3hyftws2830R07RFyGC98AAAAASUVO\nRK5CYII\u003d"
+    },
+    {
+      "name": "limbs",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAACJSURBVEhLpcxJCsMwEABB///TinOQ8NIJLnwoRvQM2sYYr2QUGUVGkVFkFBlFRpFR\nZBQZRUaRUWQUGUVGcQ97mv61tVuPw9H0aHc9mItfrrcrfqc4ffBGRpFRZBQZRUaRUWQUGUVGkVFk\nFBlFRpFRZBQZRUaRUWQUGUVGkVFkFBlFRpFRZHxubB9H8MepUg5+9QAAAABJRU5ErkJggg\u003d\u003d"
+    },
+    {
+      "name": "shaft",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAABTSURBVEhL7cwxCgAhFANR73/pv6awm8LBYpsIT2SErJl5gtHAaGA0MBoYDYwGxmOf\nXPvJ/4Hx6EAHogMdiA50IDrQgfh/4AZGA6OB0cBoYLw36wPK5WwFFr0s7gAAAABJRU5ErkJggg\u003d\u003d"
+    },
+    {
+      "name": "stock",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAABmSURBVEhL7c4xCsAgFAXB3P/SJhZ2U7ik/YEJssLDZ631C2PBWDAWjAVjwVgwFowF\nY8FYMBaMBWPBWDAe37d/39H3G+MxA3cYj98vmIEZ2GZgBm4xFowFY8FYMBaMBWPBWDDeW88L0qGf\n0XdqvXoAAAAASUVORK5CYII\u003d"
+    },
+    {
+      "name": "string",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAAB4SURBVEhLpcwxCsAwDARB///TSsCQaoqsXcwJttCamSuMBWPBWDAWjAVjwVgwFowF\nY8FYMBaMBWPBWDAWjAVjwVjsec+J78ENxoKxYCwYC8aCsWAsGAvGgrFgLBgLxoKxYCwYC8aCsWAs\nGAvGgrFgLBgLxoLxv1kP78fblY7lRoYAAAAASUVORK5CYII\u003d"
+    },
+    {
+      "name": "tip",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAACASURBVEhLxcwxCsAgEADB/P/TRgu7gbhYRBg5VrxnjHGFsWDc5lnXHP2+MG5XC/bn\nryWMy/8LTjEWjAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgw\nFowFY8FYMBaMBWPBWDAWjAVjwXhuPC+ZqdeZAe1JHgAAAABJRU5ErkJggg\u003d\u003d"
+    }
+  ],
   "Material Modifiers": [
     {
       "name": "Ancient",
@@ -1160,14 +1225,29 @@
   ],
   "Scripts": [
     {
+      "name": "gems",
+      "type": "material types",
+      "script": "importPackage(java.util);\r\n\r\nvar first  \u003d [\"Blood\", \"Dragon\", \"Shadow\", \"Sky\", \"Thunder\"];\r\nvar second \u003d [\"stone\", \"rock\", \"gem\", \"spar\", \"quartz\", \"glass\", \"jewel\"];\r\n\r\nvar exoticNames \u003d getNames();\r\n\r\nfunction getNames() {\r\n    var list \u003d new ArrayList();\r\n    for(var s1 in first) {\r\n        for(var s2 in second) {\r\n            list.add(first[s1] + second[s2]);\r\n        }\r\n    }\r\n    return list;\r\n}"
+    },
+    {
       "name": "metals",
       "type": "material types",
-      "script": "importPackage(java.util);\n\nvar first \u003d [\"Test\"];\nvar second \u003d [\"ium\"];\n\nvar exoticNames \u003d getNames();\n\nfunction getNames() {\n\tlist \u003d new ArrayList();\n\tfor(var s1 in first) {\n\t\tfor(var s2 in second) {\n\t\t\tlist.add(first[s1] + second[s2]);\n\t\t}\n\t}\n\treturn list;\n}"
+      "script": "importPackage(java.util);\r\n\r\nvar first  \u003d [\"Meg\", \"Ex\", \"Ant\", \"Mas\", \"Ox\", \"Ax\", \"Bis\"];\r\nvar second \u003d [\"or\", \"an\", \"net\", \"et\", \"en\"];\r\nvar third  \u003d [\"ite\", \"ium\"];\r\n\r\nvar exoticNames \u003d getNames();\r\n\r\nfunction getNames() {\r\n    var list \u003d new ArrayList();\r\n    for(var s1 in first) {\r\n        for(var s2 in second) {\r\n            for(var s3 in third) {\r\n                list.add(first[s1] + second[s2] + third[s3]);\r\n            }\r\n        }\r\n    }\r\n    return list;\r\n}"
+    },
+    {
+      "name": "plants",
+      "type": "material types",
+      "script": "importPackage(java.util);\r\n\r\nvar first  \u003d [\"Snake\", \"Blood\", \"Gleam\", \"String\", \"Witch\u0027s \"];\r\nvar second \u003d [\"thorn\", \"root\", \"leaf\", \"stem\", \"blade\", \"grass\", \"bell\", \"flower\", \"bloom\", \"blossom\"];\r\n\r\nvar exoticNames \u003d getNames();\r\n\r\nfunction getNames() {\r\n    var list \u003d new ArrayList();\r\n    for(var s1 in first) {\r\n        for(var s2 in second) {\r\n            list.add(first[s1] + second[s2]);\r\n        }\r\n    }\r\n    return list;\r\n}"
     },
     {
       "name": "scaled",
       "type": "stats",
-      "script": "function scale(i, original) {\n\treturn original * Math.pow(1.1, i - 1);\n}"
+      "script": "function scale(level, value) {\r\n    return value * Math.pow(1.1, level - 1);\r\n}"
+    },
+    {
+      "name": "woods",
+      "type": "material types",
+      "script": "importPackage(java.util);\r\n\r\nvar first  \u003d [\"Ac\", \"Za\", \"Mat\", \"Ni\"];\r\nvar second \u003d [\"tan\", \"rop\", \"cat\", \"mat\"];\r\nvar third  \u003d [\"ta\", \"in\", \"or\", \"za\"];\r\n\r\nvar exoticNames \u003d getNames();\r\n\r\nfunction getNames() {\r\n    var list \u003d new ArrayList();\r\n    for(var s1 in first) {\r\n        for(var s2 in second) {\r\n            for(var s3 in third) {\r\n                list.add(first[s1] + second[s2] + third[s3]);\r\n            }\r\n        }\r\n    }\r\n    return list;\r\n}"
     }
   ],
   "Stat Sets": [
