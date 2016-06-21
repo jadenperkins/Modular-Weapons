@@ -10,7 +10,6 @@ import com.jadencode.main.pluginbuilder.items.ItemWeaponPart;
 import com.jadencode.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,11 +27,11 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
     public WeaponPartEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
         GuiHelper helper = GuiHelper.left(this);
-        this.nameModField = helper.add(new JTextField(), "Name Modifier", 10, 140, 200, 18);
-        this.partInfoField = helper.add(new JTextField(), "Part Info", 10, 180, 200, 18);
-        this.weightField = helper.add(new JTextField(), "Weight", 10, 220, 200, 18);
-        this.partTypeSelection = helper.add(new JComboBox<>(), "Part Type", 10, 260, 200, 18);
-        this.materialsList = helper.add(new JList<>(), "Material Types", 10, 300, 200, 160);
+        this.nameModField = helper.add(new JTextField(), "Name Modifier", H_S, V_E, H_L, H_FLD);
+        this.partInfoField = helper.add(new JTextField(), "Part Info", H_S, V_E + H_FLD + V_PAD, H_L, H_FLD);
+        this.weightField = helper.add(new JTextField(), "Weight", H_S, V_E + 2 * (H_FLD + V_PAD), H_L, H_FLD);
+        this.partTypeSelection = helper.add(new JComboBox<>(), "Part Type", H_S, V_E + 3 * (H_FLD + V_PAD), H_L, H_FLD);
+        this.materialsList = helper.add(new JList<>(), "Material Types", H_E, V_S, H_L, H_FLD * 10, GuiHelper.Align.ABOVE);
     }
     @Override
     public void onOpened(Module<ItemWeaponPart> parent, PluginBuilderPanel panel) {
@@ -43,7 +42,7 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         Module materialTypesModule = panel.getModule("Material Types");
         List<String> materialTypes = materialTypesModule.getItemKeys();
         this.materialsList.setListData(materialTypes.toArray(new String[0]));
-        this.materialsList.setSize(200, 18 * Math.max(1, materialTypes.size()));
+        this.materialsList.setSize(H_L, H_FLD * Math.max(1, materialTypes.size()));
     }
     @Override
     public void populate(ItemWeaponPart item) {

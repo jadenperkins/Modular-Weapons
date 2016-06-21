@@ -8,7 +8,6 @@ import com.jadencode.main.pluginbuilder.items.ItemStat;
 import com.jadencode.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,8 +21,8 @@ public class StatEditor extends ContentEditor<ItemStat> {
     public StatEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
         GuiHelper helper = GuiHelper.left(this);
-        this.scriptSelection = helper.add(new JComboBox<>(), "Script", 10, 140, 200, 20);
-        this.defaultValue = helper.add(new JTextField(), "Default Value", 10, 180, 200, 20);
+        this.scriptSelection = helper.add(new JComboBox<>(), "Script", H_S, V_E, H_L, H_FLD);
+        this.defaultValue = helper.add(new JTextField(), "Default Value", H_S, V_E + H_FLD + V_PAD, H_L, H_FLD);
     }
     @Override
     public void onOpened(Module<ItemStat> parent, PluginBuilderPanel panel) {

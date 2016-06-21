@@ -4,12 +4,10 @@ import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
-import com.jadencode.main.pluginbuilder.items.ItemColor;
 import com.jadencode.main.pluginbuilder.items.ItemIcon;
 import com.jadencode.main.pluginbuilder.modules.Module;
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.output.ByteArrayOutputStream;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -17,7 +15,6 @@ import javax.swing.filechooser.FileFilter;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.nio.Buffer;
 
 /**
  * Created by gtrpl on 6/18/2016.
@@ -34,7 +31,7 @@ public class IconEditor extends ContentEditor<ItemIcon> {
 
         GuiHelper helper = GuiHelper.above(this);
 
-        this.displayLabel = helper.add(new JLabel(), "Display", 220, 10, 200, 200, GuiHelper.Align.ABOVE);
+        this.displayLabel = helper.add(new JLabel(), "Display", H_E, V_S, 500, 500, GuiHelper.Align.ABOVE);
         this.imageChooser.setFileFilter(new FileFilter() {
             @Override
             public boolean accept(File f) {
@@ -46,7 +43,7 @@ public class IconEditor extends ContentEditor<ItemIcon> {
             }
         });
 
-        this.selectImage = helper.add(new JButton("Select Image"), 10, 150, 200, 40);
+        this.selectImage = helper.add(new JButton("Select Image"), H_S, V_E, H_L, H_BTN);
         this.selectImage.addActionListener(e -> {
             this.imageChooser.showOpenDialog(null);
             if(this.imageChooser.getSelectedFile() != null) {

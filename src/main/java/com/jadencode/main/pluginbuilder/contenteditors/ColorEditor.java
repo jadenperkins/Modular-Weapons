@@ -23,10 +23,10 @@ public class ColorEditor extends ContentEditor<ItemColor> {
 
         GuiHelper helper = GuiHelper.above(this);
 
-        this.displayPanel = helper.add(new JPanel(), "Color Display", 220, 10, 200, 200);
+        this.displayPanel = helper.add(new JPanel(), "Color Display", H_E, V_S, 500, 500);
         this.displayPanel.setBackground(this.color);
 
-        this.selectColor = helper.add(new JButton("Select Color"), 10, 150, 200, 40);
+        this.selectColor = helper.add(new JButton("Select Color"), H_S, V_E, H_L, H_BTN);
         this.selectColor.addActionListener(e -> {
             Color c = this.color;
             this.color = JColorChooser.showDialog(null, "Select a Color", this.color);

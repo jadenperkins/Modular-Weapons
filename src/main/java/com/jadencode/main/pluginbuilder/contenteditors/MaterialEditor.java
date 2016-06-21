@@ -24,11 +24,11 @@ public class MaterialEditor extends ContentEditor<ItemMaterial> {
     public MaterialEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
         GuiHelper helper = GuiHelper.left(this);
-        this.colorSelection = helper.add(new JComboBox<>(), "Color", 10, 140, 200, 18);
-        this.weightField = helper.add(new JTextField(), "Weight", 10, 180, 200, 18);
-        this.modField = helper.add(new JTextField(), "Modifier", 10, 220, 200, 18);
-        this.levelField = helper.add(new JTextField(), "Level", 10, 260, 200, 18);
-        this.materialSelection = helper.add(new JComboBox<>(), "Material Type", 10, 300, 200, 18);
+        this.colorSelection = helper.add(new JComboBox<>(), "Color", H_S, V_E, H_L, H_FLD);
+        this.weightField = helper.add(new JTextField(), "Weight", H_S, V_E + H_FLD + V_PAD, H_L, H_FLD);
+        this.modField = helper.add(new JTextField(), "Modifier", H_S, V_E + 2 * H_FLD + 2 * V_PAD, H_L, H_FLD);
+        this.levelField = helper.add(new JTextField(), "Level", H_S, V_E + 3 * H_FLD + 3 * V_PAD, H_L, H_FLD);
+        this.materialSelection = helper.add(new JComboBox<>(), "Material Type", H_S, V_E + 4 * H_FLD + 4 * V_PAD, H_L, H_FLD);
     }
     @Override
     public void onOpened(Module<ItemMaterial> parent, PluginBuilderPanel panel) {

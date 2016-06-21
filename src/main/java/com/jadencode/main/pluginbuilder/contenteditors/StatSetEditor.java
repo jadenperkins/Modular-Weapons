@@ -6,13 +6,11 @@ import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
-import com.jadencode.main.pluginbuilder.items.ItemStat;
 import com.jadencode.main.pluginbuilder.items.ItemStatSet;
 import com.jadencode.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,8 +24,8 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
 
     public StatSetEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        GuiHelper helper = GuiHelper.left(this);
-        this.statsTable = helper.add(new JTable(), "Stats", 10, 140, 200, 16);
+        GuiHelper helper = GuiHelper.above(this);
+        this.statsTable = helper.add(new JTable(), "Stats", H_E, V_S, H_L, H_NTR);
     }
     @Override
     public void onOpened(Module<ItemStatSet> parent, PluginBuilderPanel panel) {
@@ -35,7 +33,7 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
         List<String> stats = statsModule.getItemKeys();
         JComboBox<String> box = new JComboBox<>(new DefaultComboBoxModel<>(stats.toArray(new String[0])));
 
-        this.statsTable.setSize(200, 16 * Math.max(1, stats.size()));
+        this.statsTable.setSize(H_L, H_NTR * Math.max(1, stats.size()));
         this.statsTable.setModel(new DefaultTableModel(stats.size(), 2));
         this.statsTable.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(box));
     }

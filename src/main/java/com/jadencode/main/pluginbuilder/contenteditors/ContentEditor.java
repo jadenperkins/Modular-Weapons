@@ -6,7 +6,6 @@ import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.Item;
 import com.jadencode.main.pluginbuilder.items.ItemScript;
 import com.jadencode.main.pluginbuilder.modules.Module;
-import com.sun.webkit.plugin.Plugin;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,6 +16,21 @@ import java.util.List;
  * Created by gtrpl on 6/18/2016.
  */
 public abstract class ContentEditor<T extends Item> extends JPanel {
+
+    public static final int H_BTN = 40;
+    public static final int H_FLD = 20;
+    public static final int H_NTR = 16;
+    public static final int V_PAD = 10;
+    public static final int H_PAD = 20;
+
+    public static final int H_S = 100;
+    public static final int H_E = H_S + 200 + H_PAD;
+    public static final int V_S = 10;
+    public static final int V_E = V_S + H_FLD + 2 * H_BTN + 3 * V_PAD;
+
+    public static final int H_L = H_E - H_S - H_PAD;
+    public static final int V_L = V_E - V_S;
+
     private final JTextField nameField;
     private final JButton updateItem;
     private final JButton deleteItem;
@@ -29,9 +43,11 @@ public abstract class ContentEditor<T extends Item> extends JPanel {
 
         GuiHelper helper = GuiHelper.left(this);
 
-        this.nameField = helper.add(new JTextField(), "Item Name", 10, 10, 200, 18);
-        this.updateItem = helper.add(new JButton("Update Item"), 10, 50, 200, 40);
-        this.deleteItem = helper.add(new JButton("Delete Item"), 10, 100, 200, 40);
+        //Components take up the area from (0, 0) to (300, 130)
+        //Editors should place components outside of this range
+        this.nameField = helper.add(new JTextField(), "Item Name", H_S, V_S, H_L, H_FLD);
+        this.updateItem = helper.add(new JButton("Update Item"), H_S, V_S + H_FLD + V_PAD, H_L, H_BTN);
+        this.deleteItem = helper.add(new JButton("Delete Item"), H_S, V_S + H_FLD + H_BTN + 2 * V_PAD, H_L, H_BTN);
 
         this.updateItem.addActionListener(e -> {
             String itemName = this.nameField.getText();

@@ -47,13 +47,13 @@ public class PluginBuilderPanel extends JPanel {
         }
         modules.sort((a, b) -> a.getName().compareTo(b.getName()));
 
-        GuiHelper helper = new GuiHelper(this);
+        GuiHelper helper = GuiHelper.above(this);
+        this.activeFile = helper.add(new JTextField(), "Active Plugin", 10, 10, 200, 18);
         this.contentModules = this.create(new JList<>(modules.toArray(new Module[0])), "Content Modules", 10, 60, 200, modules.size() * 18);
         this.currentContentObjects = new JList<>();
         this.scrollingContentPane = this.create(new JScrollPane(this.currentContentObjects), "Module Items", 220, 60, 200, 18);
 
         this.exportPlugin = this.create(new JButton("Export Plugin"), 10, modules.size() * 20 + 70, 200, 40);
-        this.activeFile = helper.add(new JTextField(), "Active Plugin", 10, 10, 200, 18, GuiHelper.Align.LEFT);
 //        this.activeFile = this.create(new JTextField(), "Active Plugin", 10, 10, 200, 18);
         this.importPlugin = this.create(new JButton("Import Plugin"), 10, modules.size() * 20 + 120, 200, 40);
 

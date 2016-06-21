@@ -10,7 +10,6 @@ import com.jadencode.main.pluginbuilder.items.ItemMaterialModifier;
 import com.jadencode.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,11 +27,11 @@ public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> 
     public MaterialModifierEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
         GuiHelper helper = GuiHelper.left(this);
-        this.colorSelection = helper.add(new JComboBox<>(), "Color", 10, 140, 200, 18);
-        this.weightField = helper.add(new JTextField(), "Weight", 10, 180, 200, 18);
-        this.levelField = helper.add(new JTextField(), "Level Modifier", 10, 220, 200, 18);
-        this.modField = helper.add(new JTextField(), "Modifier", 10, 260, 200, 18);
-        this.materialsList = helper.addScrolling(new JList<>(), "Material Types", 10, 300, 200, 180);
+        this.colorSelection = helper.add(new JComboBox<>(), "Color", H_S, V_E, H_L, H_FLD);
+        this.weightField = helper.add(new JTextField(), "Weight", H_S, V_E + H_FLD + V_PAD, H_L, H_FLD);
+        this.levelField = helper.add(new JTextField(), "Level Modifier", H_S, V_E + 2 * (H_FLD + V_PAD), H_L, H_FLD);
+        this.modField = helper.add(new JTextField(), "Modifier", H_S, V_E + 3 * (H_FLD + V_PAD), H_L, H_FLD);
+        this.materialsList = helper.addScrolling(new JList<>(), "Material Types", H_S, V_E + 4 * (H_FLD + V_PAD), H_L, 10 * H_FLD);
     }
     @Override
     public void onOpened(Module<ItemMaterialModifier> parent, PluginBuilderPanel panel) {

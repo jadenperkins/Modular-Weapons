@@ -6,14 +6,12 @@ import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
-import com.jadencode.main.pluginbuilder.items.ItemMaterialModifier;
 import com.jadencode.main.pluginbuilder.items.ItemWeaponType;
 import com.jadencode.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -29,10 +27,10 @@ public class WeaponTypeEditor extends ContentEditor<ItemWeaponType> {
     public WeaponTypeEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
         GuiHelper helper = GuiHelper.left(this);
-        this.statSetSelection = helper.add(new JComboBox<>(), "Stat Set", 10, 140, 200, 18);
-        this.scriptSelection = helper.add(new JComboBox<>(), "Script", 10, 180, 200, 18);
-        this.weightField = helper.add(new JTextField(), "Weight", 10, 220, 200, 18);
-        this.partsList = helper.add(new JTable(), "Part Types", 10, 260, 200, 160);
+        this.statSetSelection = helper.add(new JComboBox<>(), "Stat Set", H_S, V_E, H_L, H_FLD);
+        this.scriptSelection = helper.add(new JComboBox<>(), "Script", H_S, V_E + H_FLD + V_PAD, H_L, H_FLD);
+        this.weightField = helper.add(new JTextField(), "Weight", H_S, V_E + 2 * (H_FLD + V_PAD), H_L, H_FLD);
+        this.partsList = helper.add(new JTable(), "Part Types", H_E, V_S, H_L, 10 * H_NTR, GuiHelper.Align.ABOVE);
     }
     @Override
     public void populate(ItemWeaponType item) {

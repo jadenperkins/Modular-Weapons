@@ -8,7 +8,6 @@ import com.jadencode.main.pluginbuilder.items.ItemMaterialType;
 import com.jadencode.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +20,7 @@ public class MaterialTypeEditor extends ContentEditor<ItemMaterialType> {
     public MaterialTypeEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
         GuiHelper helper = GuiHelper.left(this);
-        this.scriptSelection = helper.add(new JComboBox<>(), "Script", 10, 140, 200, 20);
+        this.scriptSelection = helper.add(new JComboBox<>(), "Script", H_S, V_E, H_L, H_FLD);
     }
     @Override
     public void onOpened(Module<ItemMaterialType> parent, PluginBuilderPanel panel) {

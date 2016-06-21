@@ -20,7 +20,7 @@ public class PartTypeEditor extends ContentEditor<ItemPartType> {
     public PartTypeEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
         GuiHelper helper = GuiHelper.left(this);
-        this.iconSelection = helper.add(new JComboBox<>(), "Icon", 10, 140, 200, 20);
+        this.iconSelection = helper.add(new JComboBox<>(), "Icon", H_S, V_E, H_L, H_FLD);
     }
     @Override
     public void onOpened(Module<ItemPartType> parent, PluginBuilderPanel panel) {

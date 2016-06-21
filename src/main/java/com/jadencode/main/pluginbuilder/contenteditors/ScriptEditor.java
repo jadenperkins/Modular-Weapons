@@ -41,10 +41,9 @@ public class ScriptEditor extends ContentEditor<ItemScript> {
             }
         });
         GuiHelper helper = GuiHelper.left(this);
-        this.scriptView = helper.addScrolling(new JTextArea(), "Script Editor", 220, 10, 750, 650);
-        this.scriptTypeSelection = helper.add(new JComboBox<>(SCRIPT_TYPES), "Script Type", 10, 150, 180, 18);
+        this.scriptView = helper.addScrolling(new JTextArea(), "Script Editor", H_E, V_S, 650, 650, GuiHelper.Align.ABOVE);
 
-        this.selectScript = helper.add(new JButton("Import Script"), 10, 200, 200, 40);
+        this.selectScript = helper.add(new JButton("Import Script"), H_S, V_E, H_L, H_BTN);
         this.selectScript.addActionListener(e -> {
             this.scriptChooser.showOpenDialog(null);
             if(this.scriptChooser.getSelectedFile() != null) {
@@ -56,6 +55,8 @@ public class ScriptEditor extends ContentEditor<ItemScript> {
                 }
             }
         });
+
+        this.scriptTypeSelection = helper.add(new JComboBox<>(SCRIPT_TYPES), "Script Type", H_S, V_E + H_BTN + V_PAD, H_L, H_FLD);
     }
     @Override
     public void populate(ItemScript item) {

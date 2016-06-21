@@ -9,19 +9,19 @@ public class GuiHelper {
     public enum Align {
         ABOVE(0, 0, 0, 1),
         BELOW(0, 1, 0, 0),
-        LEFT(0, 0, 1, 0),
+        LEFT(-1, 0, 0, 0),
         RIGHT(1, 0, 0, 0);
 
-        public final int offX;
-        public final int offY;
-        public final int moveX;
-        public final int moveY;
+        public final int labelX;
+        public final int labelY;
+        public final int compX;
+        public final int compY;
 
-        Align(int offX, int offY, int moveX, int moveY) {
-            this.offX = offX;
-            this.offY = offY;
-            this.moveX = moveX;
-            this.moveY = moveY;
+        Align(int labelX, int labelY, int compX, int compY) {
+            this.labelX = labelX;
+            this.labelY = labelY;
+            this.compX = compX;
+            this.compY = compY;
         }
     }
 
@@ -38,7 +38,6 @@ public class GuiHelper {
         return new GuiHelper(parent, Align.RIGHT);
     }
 
-
     private final JComponent parent;
     private final Align defaultAlign;
 
@@ -50,20 +49,33 @@ public class GuiHelper {
         this.defaultAlign = align;
     }
 
+    //Creates a component and adds it to the parent component
     public <T extends JComponent> T add(T component, int x, int y, int width, int height) {
         component.setLocation(x, y);
         component.setSize(width, height);
         this.parent.add(component);
         return component;
     }
+    //Creates a label with the default alignment and puts it on the parent component, then adds the component
     public <T extends JComponent> T add(T component, String title, int x, int y, int width, int height) {
         return this.add(component, title, x, y, width, height, this.defaultAlign);
     }
+    public <T extends JComponent> T add(T component, String title, int x, int y, int width, int height, int spacing) {
+        return this.add(component, title, x, y, width, height, spacing, this.defaultAlign);
+    }
+    /**Creates a label with the specified alignment and puts it on the parent, then add the component*/
     public <T extends JComponent> T add(T component, String title, int x, int y, int width, int height, Align align) {
-        int stringLength = this.label(title, x, y, width, height, align);
-        return this.add(component, x + stringLength * align.moveX, y + 20 * align.moveY, width, height);
+        return this.add(component, title, x, y, width, height, this.stringWidth(title), align);
+    }
+    /**Creates a label with the specified alignment and spacing, adds it to the parent, then adds the component*/
+    public <T extends JComponent> T add(T component, String title, int x, int y, int width, int height, int spacing, Align align) {
+        this.label(title, x, y, height, spacing + 8, align);
+        return this.add(component, x + spacing * align.compX, y + 20 * align.compY, width, height);
     }
 
+
+
+    /**Creates a scrolling component and adds it to the parent*/
     public <T extends JComponent> T addScrolling(T component, int x, int y, int width, int height) {
         this.add(new JScrollPane(component), x, y, width, height);
         return component;
@@ -71,17 +83,27 @@ public class GuiHelper {
     public <T extends JComponent> T addScrolling(T component, String title, int x, int y, int width, int height) {
         return this.addScrolling(component, title, x, y, width, height, this.defaultAlign);
     }
+    public <T extends JComponent> T addScrolling(T component, String title, int x, int y, int width, int height, int spacing) {
+        return this.addScrolling(component, title, x, y, width, height, spacing, this.defaultAlign);
+    }
     public <T extends JComponent> T addScrolling(T component, String title, int x, int y, int width, int height, Align align) {
-        int stringLength = this.label(title, x, y, width, height, align);
-        return this.addScrolling(component, x + stringLength * align.moveX, y + 20 * align.moveY, width, height);
+        return this.addScrolling(component, title, x, y, width, height, this.stringWidth(title), align);
+    }
+    public <T extends JComponent> T addScrolling(T component, String title, int x, int y, int width, int height, int spacing, Align align) {
+        this.label(title, x, y, height, spacing + 8, align);
+        return this.addScrolling(component, x + spacing * align.compX, y + 20 * align.compY, width, height);
     }
 
-    private int label(String title, int x, int y, int width, int height, Align align) {
+
+
+
+    private int stringWidth(String s) {
+        return this.parent.getFontMetrics(this.parent.getFont()).stringWidth(s);
+    }
+    private void label(String title, int x, int y, int height, int spacing, Align align) {
         JLabel label = new JLabel(title);
-        int stringLength = title.length() * 7;
-        label.setSize(stringLength, 18);
-        label.setLocation(x + (width + 4) * align.offX, y + height * align.offY);
+        label.setSize(spacing, 18);
+        label.setLocation(x + spacing * align.labelX, y + height * align.labelY);
         this.parent.add(label);
-        return stringLength;
     }
 }
