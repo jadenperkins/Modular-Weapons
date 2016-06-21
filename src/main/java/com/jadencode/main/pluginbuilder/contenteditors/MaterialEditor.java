@@ -1,6 +1,7 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
+import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemMaterial;
@@ -22,11 +23,12 @@ public class MaterialEditor extends ContentEditor<ItemMaterial> {
 
     public MaterialEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        this.colorSelection = this.create(new JComboBox<>(), "Color", 10, 140, 200, 18);
-        this.weightField = this.create(new JTextField(), "Weight", 10, 180, 200, 18);
-        this.modField = this.create(new JTextField(), "Modifier", 10, 220, 200, 18);
-        this.levelField = this.create(new JTextField(), "Level", 10, 260, 200, 18);
-        this.materialSelection = this.create(new JComboBox<>(), "Material Type", 10, 300, 200, 18);
+        GuiHelper helper = GuiHelper.left(this);
+        this.colorSelection = helper.add(new JComboBox<>(), "Color", 10, 140, 200, 18);
+        this.weightField = helper.add(new JTextField(), "Weight", 10, 180, 200, 18);
+        this.modField = helper.add(new JTextField(), "Modifier", 10, 220, 200, 18);
+        this.levelField = helper.add(new JTextField(), "Level", 10, 260, 200, 18);
+        this.materialSelection = helper.add(new JComboBox<>(), "Material Type", 10, 300, 200, 18);
     }
     @Override
     public void onOpened(Module<ItemMaterial> parent, PluginBuilderPanel panel) {

@@ -1,6 +1,7 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
+import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemMaterialType;
@@ -19,7 +20,8 @@ public class MaterialTypeEditor extends ContentEditor<ItemMaterialType> {
 
     public MaterialTypeEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        this.scriptSelection = this.create(new JComboBox<>(), "Script", 10, 140, 200, 20);
+        GuiHelper helper = GuiHelper.left(this);
+        this.scriptSelection = helper.add(new JComboBox<>(), "Script", 10, 140, 200, 20);
     }
     @Override
     public void onOpened(Module<ItemMaterialType> parent, PluginBuilderPanel panel) {

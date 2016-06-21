@@ -3,6 +3,7 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemMaterialModifier;
@@ -26,11 +27,12 @@ public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> 
 
     public MaterialModifierEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        this.colorSelection = this.create(new JComboBox<>(), "Color", 10, 140, 200, 18);
-        this.weightField = this.create(new JTextField(), "Weight", 10, 180, 200, 18);
-        this.levelField = this.create(new JTextField(), "Level Modifier", 10, 220, 200, 18);
-        this.modField = this.create(new JTextField(), "Modifier", 10, 260, 200, 18);
-        this.materialsList = this.createScrolling(new JList<>(), "Material Types", 10, 300, 200, 180);
+        GuiHelper helper = GuiHelper.left(this);
+        this.colorSelection = helper.add(new JComboBox<>(), "Color", 10, 140, 200, 18);
+        this.weightField = helper.add(new JTextField(), "Weight", 10, 180, 200, 18);
+        this.levelField = helper.add(new JTextField(), "Level Modifier", 10, 220, 200, 18);
+        this.modField = helper.add(new JTextField(), "Modifier", 10, 260, 200, 18);
+        this.materialsList = helper.addScrolling(new JList<>(), "Material Types", 10, 300, 200, 180);
     }
     @Override
     public void onOpened(Module<ItemMaterialModifier> parent, PluginBuilderPanel panel) {

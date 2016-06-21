@@ -1,6 +1,7 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
+import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemPartType;
@@ -18,7 +19,8 @@ public class PartTypeEditor extends ContentEditor<ItemPartType> {
 
     public PartTypeEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        this.iconSelection = this.create(new JComboBox<>(), "Icon", 10, 140, 200, 20);
+        GuiHelper helper = GuiHelper.left(this);
+        this.iconSelection = helper.add(new JComboBox<>(), "Icon", 10, 140, 200, 20);
     }
     @Override
     public void onOpened(Module<ItemPartType> parent, PluginBuilderPanel panel) {

@@ -2,6 +2,7 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemColor;
 import com.jadencode.main.pluginbuilder.modules.Module;
@@ -20,10 +21,12 @@ public class ColorEditor extends ContentEditor<ItemColor> {
     public ColorEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
 
-        this.displayPanel = this.create(new JPanel(), "Color Display", 220, 10, 200, 200);
+        GuiHelper helper = GuiHelper.above(this);
+
+        this.displayPanel = helper.add(new JPanel(), "Color Display", 220, 10, 200, 200);
         this.displayPanel.setBackground(this.color);
 
-        this.selectColor = this.create(new JButton("Select Color"), 10, 150, 200, 40);
+        this.selectColor = helper.add(new JButton("Select Color"), 10, 150, 200, 40);
         this.selectColor.addActionListener(e -> {
             Color c = this.color;
             this.color = JColorChooser.showDialog(null, "Select a Color", this.color);

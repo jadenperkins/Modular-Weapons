@@ -3,6 +3,7 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemWeaponPart;
@@ -26,11 +27,12 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
 
     public WeaponPartEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        this.nameModField = this.create(new JTextField(), "Name Modifier", 10, 140, 200, 18);
-        this.partInfoField = this.create(new JTextField(), "Part Info", 10, 180, 200, 18);
-        this.weightField = this.create(new JTextField(), "Weight", 10, 220, 200, 18);
-        this.partTypeSelection = this.create(new JComboBox<>(), "Part Type", 10, 260, 200, 18);
-        this.materialsList = this.createScrolling(new JList<>(), "Material Types", 10, 300, 200, 160);
+        GuiHelper helper = GuiHelper.left(this);
+        this.nameModField = helper.add(new JTextField(), "Name Modifier", 10, 140, 200, 18);
+        this.partInfoField = helper.add(new JTextField(), "Part Info", 10, 180, 200, 18);
+        this.weightField = helper.add(new JTextField(), "Weight", 10, 220, 200, 18);
+        this.partTypeSelection = helper.add(new JComboBox<>(), "Part Type", 10, 260, 200, 18);
+        this.materialsList = helper.add(new JList<>(), "Material Types", 10, 300, 200, 160);
     }
     @Override
     public void onOpened(Module<ItemWeaponPart> parent, PluginBuilderPanel panel) {

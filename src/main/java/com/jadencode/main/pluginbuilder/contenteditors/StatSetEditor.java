@@ -3,6 +3,7 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemStat;
@@ -25,7 +26,8 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
 
     public StatSetEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        this.statsTable = this.create(new JTable(), "Stats", 10, 140, 200, 16);
+        GuiHelper helper = GuiHelper.left(this);
+        this.statsTable = helper.add(new JTable(), "Stats", 10, 140, 200, 16);
     }
     @Override
     public void onOpened(Module<ItemStatSet> parent, PluginBuilderPanel panel) {

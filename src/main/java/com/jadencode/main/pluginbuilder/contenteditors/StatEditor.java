@@ -1,6 +1,7 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
+import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemStat;
@@ -20,8 +21,9 @@ public class StatEditor extends ContentEditor<ItemStat> {
 
     public StatEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        this.scriptSelection = this.create(new JComboBox<>(), "Script", 10, 140, 200, 20);
-        this.defaultValue = this.create(new JTextField(), "Default Value", 10, 180, 200, 20);
+        GuiHelper helper = GuiHelper.left(this);
+        this.scriptSelection = helper.add(new JComboBox<>(), "Script", 10, 140, 200, 20);
+        this.defaultValue = helper.add(new JTextField(), "Default Value", 10, 180, 200, 20);
     }
     @Override
     public void onOpened(Module<ItemStat> parent, PluginBuilderPanel panel) {

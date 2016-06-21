@@ -1,6 +1,7 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
+import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemScript;
@@ -39,10 +40,11 @@ public class ScriptEditor extends ContentEditor<ItemScript> {
                 return "JavaScript Files";
             }
         });
-        this.scriptView = this.createScrolling(new JTextArea(), "Script Editor", 220, 10, 750, 650);
-        this.scriptTypeSelection = this.create(new JComboBox<>(SCRIPT_TYPES), "Script Type", 10, 150, 180, 18);
+        GuiHelper helper = GuiHelper.left(this);
+        this.scriptView = helper.addScrolling(new JTextArea(), "Script Editor", 220, 10, 750, 650);
+        this.scriptTypeSelection = helper.add(new JComboBox<>(SCRIPT_TYPES), "Script Type", 10, 150, 180, 18);
 
-        this.selectScript = this.create(new JButton("Import Script"), 10, 200, 200, 40);
+        this.selectScript = helper.add(new JButton("Import Script"), 10, 200, 200, 40);
         this.selectScript.addActionListener(e -> {
             this.scriptChooser.showOpenDialog(null);
             if(this.scriptChooser.getSelectedFile() != null) {

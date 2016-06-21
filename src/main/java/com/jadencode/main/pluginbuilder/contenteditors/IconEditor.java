@@ -1,6 +1,7 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
+import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemColor;
@@ -31,7 +32,9 @@ public class IconEditor extends ContentEditor<ItemIcon> {
     public IconEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
 
-        this.displayLabel = this.create(new JLabel(), 220, 10, 200, 200);
+        GuiHelper helper = GuiHelper.above(this);
+
+        this.displayLabel = helper.add(new JLabel(), "Display", 220, 10, 200, 200, GuiHelper.Align.ABOVE);
         this.imageChooser.setFileFilter(new FileFilter() {
             @Override
             public boolean accept(File f) {
@@ -43,7 +46,7 @@ public class IconEditor extends ContentEditor<ItemIcon> {
             }
         });
 
-        this.selectImage = this.create(new JButton("Select Image"), 10, 150, 200, 40);
+        this.selectImage = helper.add(new JButton("Select Image"), 10, 150, 200, 40);
         this.selectImage.addActionListener(e -> {
             this.imageChooser.showOpenDialog(null);
             if(this.imageChooser.getSelectedFile() != null) {
@@ -53,10 +56,7 @@ public class IconEditor extends ContentEditor<ItemIcon> {
                     Image scaled = image.getScaledInstance(image.getWidth() * 8, image.getHeight() * 8, 0);
 
                     this.displayLabel.setIcon(new ImageIcon(scaled));
-//                    BufferedImage image = ImageIO.read(iconFile);
-//                    this.displayPanel.getGraphics().drawImage(image.getScaledInstance(image.getWidth() * 4, 4 * image.getHeight(), 0), 0, 0, image.getWidth(), image.getHeight(), null);
                     this.base64String = Base64.encode(FileUtils.readFileToByteArray(iconFile));
-//                    System.out.println(this.base64String);
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }

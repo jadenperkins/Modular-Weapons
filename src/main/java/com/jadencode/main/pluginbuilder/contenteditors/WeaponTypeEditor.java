@@ -3,6 +3,7 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.items.ItemMaterialModifier;
@@ -27,10 +28,11 @@ public class WeaponTypeEditor extends ContentEditor<ItemWeaponType> {
 
     public WeaponTypeEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        this.statSetSelection = this.create(new JComboBox<>(), "Stat Set", 10, 140, 200, 18);
-        this.scriptSelection = this.create(new JComboBox<>(), "Script", 10, 180, 200, 18);
-        this.weightField = this.create(new JTextField(), "Weight", 10, 220, 200, 18);
-        this.partsList = this.create(new JTable(), "Part Types", 10, 260, 200, 160);
+        GuiHelper helper = GuiHelper.left(this);
+        this.statSetSelection = helper.add(new JComboBox<>(), "Stat Set", 10, 140, 200, 18);
+        this.scriptSelection = helper.add(new JComboBox<>(), "Script", 10, 180, 200, 18);
+        this.weightField = helper.add(new JTextField(), "Weight", 10, 220, 200, 18);
+        this.partsList = helper.add(new JTable(), "Part Types", 10, 260, 200, 160);
     }
     @Override
     public void populate(ItemWeaponType item) {
