@@ -4,6 +4,9 @@ import com.google.gson.*;
 import com.jadencode.main.constants.Materials;
 import com.jadencode.main.constants.WeaponParts;
 import com.jadencode.main.content.loaders.ContentManager;
+import com.jadencode.main.pluginbuilder.JsonHelper;
+import com.jadencode.main.pluginbuilder.items.Item;
+import com.jadencode.main.pluginbuilder.modules.Module;
 import org.reflections.Reflections;
 
 import java.io.*;
@@ -72,30 +75,46 @@ public final class ContentLoader {
         if(!dir.exists()) {
             dir.mkdirs();
         }
-        File[] plugins = dir.listFiles(a -> a.getName().endsWith(".plugin"));
-        for (File plugin : plugins) {
-            try {
-                DataInputStream datainputstream = new DataInputStream(new BufferedInputStream(new GZIPInputStream(new FileInputStream(plugin))));
-                String s = datainputstream.readUTF();
-                datainputstream.close();
+        File[] pluginFiles = dir.listFiles(a -> a.getName().endsWith(".plugin"));
 
-                JsonObject pluginObject = new JsonParser().parse(s).getAsJsonObject();
+        List<Plugin> plugins = Arrays.asList(pluginFiles).stream().map(Plugin::new).collect(Collectors.toList());
+        plugins.sort(null);
 
-                for (ContentManager manager : managers) {
-                    System.out.println("Loading " + manager.getName() + " content from " + plugin.getName());
-                    String name = manager.getName();
-                    if(pluginObject.has(name)) {
-                        JsonArray contentObjects = pluginObject.getAsJsonArray(name);
-                        for (JsonElement element : contentObjects) {
-                            JsonObject pieceOfContent = element.getAsJsonObject();
-                            manager.consume(pieceOfContent.get("name").getAsString(), pieceOfContent);
-                        }
-                    }
+        for (ContentManager manager : managers) {
+            String managerName = manager.getName();
+            for(Plugin plugin : plugins) {
+                System.out.println("Loading " + managerName + " from " + plugin.getPluginName());
+                JsonArray array = new JsonHelper(plugin.getPluginObject()).getArray(managerName);
+                for (JsonElement jsonElement : array) {
+                    JsonObject content = jsonElement.getAsJsonObject();
+                    manager.consume(content.get("name").getAsString(), content);
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         }
+
+//        for (File plugin : plugins) {
+//            try {
+//                DataInputStream datainputstream = new DataInputStream(new BufferedInputStream(new GZIPInputStream(new FileInputStream(plugin))));
+//                String s = datainputstream.readUTF();
+//                datainputstream.close();
+//
+//                JsonObject pluginObject = new JsonParser().parse(s).getAsJsonObject();
+//
+//                for (ContentManager manager : managers) {
+//                    System.out.println("Loading " + manager.getName() + " content from " + plugin.getName());
+//                    String name = manager.getName();
+//                    if(pluginObject.has(name)) {
+//                        JsonArray contentObjects = pluginObject.getAsJsonArray(name);
+//                        for (JsonElement element : contentObjects) {
+//                            JsonObject pieceOfContent = element.getAsJsonObject();
+//                            manager.consume(pieceOfContent.get("name").getAsString(), pieceOfContent);
+//                        }
+//                    }
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
     private static final void loadScripts() {
 //        Set<Class<? extends ScriptLoader>> managerClasses = new Reflections("com.jadencode.main.content.loaders.scripts").getSubTypesOf(ScriptLoader.class);

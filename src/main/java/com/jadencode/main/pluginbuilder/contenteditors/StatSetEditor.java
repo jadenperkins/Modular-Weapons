@@ -30,7 +30,8 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
     @Override
     public void onOpened(Module<ItemStatSet> parent, PluginBuilderPanel panel) {
         Module statsModule = panel.getModule("Stats");
-        List<String> stats = statsModule.getItemKeys();
+        List<String> stats = new ArrayList<>(statsModule.getItemKeys());
+        stats.add("");
         JComboBox<String> box = new JComboBox<>(new DefaultComboBoxModel<>(stats.toArray(new String[0])));
 
         this.statsTable.setSize(H_L, H_NTR * Math.max(1, stats.size()));

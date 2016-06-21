@@ -824,7 +824,7 @@
   "Material Types": [
     {
       "name": "Gem",
-      "script": ""
+      "script": "gems"
     },
     {
       "name": "Metal",
@@ -832,11 +832,11 @@
     },
     {
       "name": "Plant",
-      "script": ""
+      "script": "plants"
     },
     {
       "name": "Wood",
-      "script": ""
+      "script": "woods"
     }
   ],
   "Materials": [
@@ -1252,6 +1252,69 @@
   ],
   "Stat Sets": [
     {
+      "name": "Accurate Crossbow Stock",
+      "stats": [
+        {
+          "stat": "Draw Time",
+          "value": 2.0
+        },
+        {
+          "stat": "Attack Time",
+          "value": 1.0
+        },
+        {
+          "stat": "Range",
+          "value": 50.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 10.0
+        }
+      ]
+    },
+    {
+      "name": "Balanced Bow Grip",
+      "stats": [
+        {
+          "stat": "Draw Time",
+          "value": 1.0
+        },
+        {
+          "stat": "Attack Time",
+          "value": 0.5
+        },
+        {
+          "stat": "Range",
+          "value": 30.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 5.0
+        }
+      ]
+    },
+    {
+      "name": "Balanced Crossbow Stock",
+      "stats": [
+        {
+          "stat": "Draw Time",
+          "value": 1.5
+        },
+        {
+          "stat": "Attack Time",
+          "value": 0.5
+        },
+        {
+          "stat": "Range",
+          "value": 35.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 10.0
+        }
+      ]
+    },
+    {
       "name": "Base Arrow",
       "stats": [
         {
@@ -1398,6 +1461,611 @@
           "value": 0.0
         }
       ]
+    },
+    {
+      "name": "Battleaxe Handle",
+      "stats": [
+        {
+          "stat": "Attack Time",
+          "value": 2.0
+        },
+        {
+          "stat": "Slash Damage",
+          "value": 20.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 20.0
+        }
+      ]
+    },
+    {
+      "name": "Battlehammer Handle",
+      "stats": [
+        {
+          "stat": "Attack Time",
+          "value": 2.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 20.0
+        }
+      ]
+    },
+    {
+      "name": "Blade Broad",
+      "stats": [
+        {
+          "stat": "Pierce Damage",
+          "value": 15.0
+        },
+        {
+          "stat": "Slash Damage",
+          "value": 15.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "name": "Blade Long",
+      "stats": [
+        {
+          "stat": "Pierce Damage",
+          "value": 10.0
+        },
+        {
+          "stat": "Slash Damage",
+          "value": 20.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "name": "Blade Short",
+      "stats": [
+        {
+          "stat": "Pierce Damage",
+          "value": 5.0
+        },
+        {
+          "stat": "Slash Damage",
+          "value": 10.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "name": "Broad Axehead",
+      "stats": [
+        {
+          "stat": "Attack Time",
+          "value": 1.5
+        },
+        {
+          "stat": "Slash Damage",
+          "value": 10.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 5.0
+        }
+      ]
+    },
+    {
+      "name": "Double Axehead",
+      "stats": [
+        {
+          "stat": "Attack Time",
+          "value": 2.0
+        },
+        {
+          "stat": "Slash Damage",
+          "value": 10.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 10.0
+        }
+      ]
+    },
+    {
+      "name": "Double Hammerhead",
+      "stats": [
+        {
+          "stat": "Attack Time",
+          "value": 2.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 20.0
+        }
+      ]
+    },
+    {
+      "name": "Grip Basic",
+      "stats": [
+        {
+          "stat": "Pierce Damage",
+          "value": 2.0
+        },
+        {
+          "stat": "Slash Damage",
+          "value": 5.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "name": "Grip Heavy",
+      "stats": [
+        {
+          "stat": "Pierce Damage",
+          "value": 4.0
+        },
+        {
+          "stat": "Slash Damage",
+          "value": 10.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "name": "Grip Light",
+      "stats": [
+        {
+          "stat": "Pierce Damage",
+          "value": 0.0
+        },
+        {
+          "stat": "Slash Damage",
+          "value": 0.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "name": "Heavy Bowstring",
+      "stats": [
+        {
+          "stat": "Draw Time",
+          "value": 2.0
+        },
+        {
+          "stat": "Range",
+          "value": 50.0
+        }
+      ]
+    },
+    {
+      "name": "Heavy Crossbow Limbs",
+      "stats": [
+        {
+          "stat": "Draw Time",
+          "value": 2.0
+        },
+        {
+          "stat": "Attack Time",
+          "value": 1.0
+        },
+        {
+          "stat": "Range",
+          "value": 40.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 20.0
+        }
+      ]
+    },
+    {
+      "name": "Heavy Crossbow String",
+      "stats": [
+        {
+          "stat": "Draw Time",
+          "value": 2.5
+        },
+        {
+          "stat": "Range",
+          "value": 70.0
+        }
+      ]
+    },
+    {
+      "name": "Heavy Hammerhead",
+      "stats": [
+        {
+          "stat": "Attack Time",
+          "value": 1.5
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 15.0
+        }
+      ]
+    },
+    {
+      "name": "Hilt Heavy",
+      "stats": [
+        {
+          "stat": "Pierce Damage",
+          "value": 6.0
+        },
+        {
+          "stat": "Slash Damage",
+          "value": 16.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "name": "Hilt Light",
+      "stats": [
+        {
+          "stat": "Pierce Damage",
+          "value": 0.0
+        },
+        {
+          "stat": "Slash Damage",
+          "value": 0.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "name": "Hilt Medium",
+      "stats": [
+        {
+          "stat": "Pierce Damage",
+          "value": 3.0
+        },
+        {
+          "stat": "Slash Damage",
+          "value": 8.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "name": "Light Bowstring",
+      "stats": [
+        {
+          "stat": "Draw Time",
+          "value": 1.0
+        },
+        {
+          "stat": "Range",
+          "value": 25.0
+        }
+      ]
+    },
+    {
+      "name": "Light Crossbow Limbs",
+      "stats": [
+        {
+          "stat": "Draw Time",
+          "value": 1.0
+        },
+        {
+          "stat": "Attack Time",
+          "value": 0.5
+        },
+        {
+          "stat": "Range",
+          "value": 20.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 10.0
+        }
+      ]
+    },
+    {
+      "name": "Light Crossbow String",
+      "stats": [
+        {
+          "stat": "Draw Time",
+          "value": 1.5
+        },
+        {
+          "stat": "Range",
+          "value": 35.0
+        }
+      ]
+    },
+    {
+      "name": "Longaxe Handle",
+      "stats": [
+        {
+          "stat": "Attack Time",
+          "value": 1.5
+        },
+        {
+          "stat": "Slash Damage",
+          "value": 15.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 15.0
+        }
+      ]
+    },
+    {
+      "name": "Longbow Limbs",
+      "stats": [
+        {
+          "stat": "Draw Time",
+          "value": 1.5
+        },
+        {
+          "stat": "Attack Time",
+          "value": 2.0
+        },
+        {
+          "stat": "Range",
+          "value": 30.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 20.0
+        }
+      ]
+    },
+    {
+      "name": "Maul Handle",
+      "stats": [
+        {
+          "stat": "Attack Time",
+          "value": 3.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 30.0
+        }
+      ]
+    },
+    {
+      "name": "Quick Bow Grip",
+      "stats": [
+        {
+          "stat": "Draw Time",
+          "value": 0.5
+        },
+        {
+          "stat": "Attack Time",
+          "value": 0.5
+        },
+        {
+          "stat": "Range",
+          "value": 20.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 5.0
+        }
+      ]
+    },
+    {
+      "name": "Rapid Crossbow Stock",
+      "stats": [
+        {
+          "stat": "Draw Time",
+          "value": 1.0
+        },
+        {
+          "stat": "Attack Time",
+          "value": 0.5
+        },
+        {
+          "stat": "Range",
+          "value": 20.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 10.0
+        }
+      ]
+    },
+    {
+      "name": "Recurve Limbs",
+      "stats": [
+        {
+          "stat": "Draw Time",
+          "value": 1.0
+        },
+        {
+          "stat": "Attack Time",
+          "value": 1.5
+        },
+        {
+          "stat": "Range",
+          "value": 20.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 15.0
+        }
+      ]
+    },
+    {
+      "name": "Round Axehead",
+      "stats": [
+        {
+          "stat": "Attack Time",
+          "value": 1.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 20.0
+        }
+      ]
+    },
+    {
+      "name": "Scythe Axehead",
+      "stats": [
+        {
+          "stat": "Attack Time",
+          "value": 1.0
+        },
+        {
+          "stat": "Slash Damage",
+          "value": 20.0
+        }
+      ]
+    },
+    {
+      "name": "Shortbow Limbs",
+      "stats": [
+        {
+          "stat": "Draw Time",
+          "value": 0.5
+        },
+        {
+          "stat": "Attack Time",
+          "value": 1.0
+        },
+        {
+          "stat": "Range",
+          "value": 10.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 10.0
+        }
+      ]
+    },
+    {
+      "name": "Single Axehead",
+      "stats": [
+        {
+          "stat": "Attack Time",
+          "value": 1.0
+        },
+        {
+          "stat": "Slash Damage",
+          "value": 5.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 5.0
+        }
+      ]
+    },
+    {
+      "name": "Single Hammerhead",
+      "stats": [
+        {
+          "stat": "Attack Time",
+          "value": 1.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 10.0
+        }
+      ]
+    },
+    {
+      "name": "Spiked Axehead",
+      "stats": [
+        {
+          "stat": "Pierce Damage",
+          "value": 20.0
+        },
+        {
+          "stat": "Attack Time",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "name": "Spiked Hammerhead",
+      "stats": [
+        {
+          "stat": "Pierce Damage",
+          "value": 20.0
+        },
+        {
+          "stat": "Attack Time",
+          "value": 0.5
+        }
+      ]
+    },
+    {
+      "name": "Steady Bow Grip",
+      "stats": [
+        {
+          "stat": "Draw Time",
+          "value": 2.0
+        },
+        {
+          "stat": "Attack Time",
+          "value": 1.0
+        },
+        {
+          "stat": "Range",
+          "value": 50.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 5.0
+        }
+      ]
+    },
+    {
+      "name": "Waraxe Handle",
+      "stats": [
+        {
+          "stat": "Attack Time",
+          "value": 1.0
+        },
+        {
+          "stat": "Slash Damage",
+          "value": 10.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 10.0
+        }
+      ]
+    },
+    {
+      "name": "Warhammer Handle",
+      "stats": [
+        {
+          "stat": "Attack Time",
+          "value": 1.0
+        },
+        {
+          "stat": "Blunt Damage",
+          "value": 10.0
+        }
+      ]
     }
   ],
   "Stats": [
@@ -1439,6 +2107,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Crossbow Stock",
+      "stats": "Accurate Crossbow Stock",
       "materials": [
         "Wood"
       ]
@@ -1449,6 +2118,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Bow Grip",
+      "stats": "Balanced Bow Grip",
       "materials": [
         "Metal"
       ]
@@ -1459,6 +2129,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Crossbow Stock",
+      "stats": "Balanced Crossbow Stock",
       "materials": [
         "Wood"
       ]
@@ -1469,6 +2140,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Sword Grip",
+      "stats": "Grip Basic",
       "materials": [
         "Metal"
       ]
@@ -1479,6 +2151,18 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Axe Handle",
+      "stats": "Battleaxe Handle",
+      "materials": [
+        "Wood"
+      ]
+    },
+    {
+      "name": "Battlehammer Handle",
+      "nameMod": "Battlehammer",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Hammer Handle",
+      "stats": "Battlehammer Handle",
       "materials": [
         "Wood"
       ]
@@ -1489,6 +2173,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Staff Head",
+      "stats": "",
       "materials": [
         "Gem"
       ]
@@ -1499,6 +2184,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Arrow Tip",
+      "stats": "",
       "materials": [
         "Metal"
       ]
@@ -1509,6 +2195,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Bolt Tip",
+      "stats": "",
       "materials": [
         "Metal"
       ]
@@ -1518,14 +2205,16 @@
       "nameMod": "Breaker",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Bringer Blade",
       "nameMod": "Bringer",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Broad Axehead",
@@ -1533,6 +2222,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Axe Head",
+      "stats": "Broad Axehead",
       "materials": [
         "Metal"
       ]
@@ -1543,6 +2233,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Sword Blade",
+      "stats": "Blade Broad",
       "materials": [
         "Metal"
       ]
@@ -1553,6 +2244,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Staff Head",
+      "stats": "",
       "materials": [
         "Gem"
       ]
@@ -1562,35 +2254,40 @@
       "nameMod": "Chiller",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Crawler Blade",
       "nameMod": "Crawler",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Dancer Blade",
       "nameMod": "Dancer",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Delver Blade",
       "nameMod": "Delver",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Dire Hilt",
       "nameMod": "Dire",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Double Axehead",
@@ -1598,6 +2295,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Axe Head",
+      "stats": "Double Axehead",
       "materials": [
         "Metal"
       ]
@@ -1608,6 +2306,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Hammer Head",
+      "stats": "Double Hammerhead",
       "materials": [
         "Metal"
       ]
@@ -1617,14 +2316,16 @@
       "nameMod": "Drainer",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Eater Blade",
       "nameMod": "Eater",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Fast Arrow Fletchings",
@@ -1632,6 +2333,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Arrow Fletchings",
+      "stats": "",
       "materials": [
         "Plant"
       ]
@@ -1642,6 +2344,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Bolt Fletchings",
+      "stats": "",
       "materials": [
         "Plant"
       ]
@@ -1652,6 +2355,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Staff Head",
+      "stats": "",
       "materials": [
         "Gem"
       ]
@@ -1661,105 +2365,120 @@
       "nameMod": "Dark",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Grip"
+      "partType": "Sword Grip",
+      "stats": ""
     },
     {
       "name": "Grip of Daylight",
       "nameMod": "Day",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Grip"
+      "partType": "Sword Grip",
+      "stats": ""
     },
     {
       "name": "Grip of Death",
       "nameMod": "Death",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Grip"
+      "partType": "Sword Grip",
+      "stats": ""
     },
     {
       "name": "Grip of Dreams",
       "nameMod": "Dream",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Grip"
+      "partType": "Sword Grip",
+      "stats": ""
     },
     {
       "name": "Grip of Fate",
       "nameMod": "Fate",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Grip"
+      "partType": "Sword Grip",
+      "stats": ""
     },
     {
       "name": "Grip of Ghosts",
       "nameMod": "Ghost",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Grip"
+      "partType": "Sword Grip",
+      "stats": ""
     },
     {
       "name": "Grip of Life",
       "nameMod": "Life",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Grip"
+      "partType": "Sword Grip",
+      "stats": ""
     },
     {
       "name": "Grip of Night",
       "nameMod": "Night",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Grip"
+      "partType": "Sword Grip",
+      "stats": ""
     },
     {
       "name": "Grip of Souls",
       "nameMod": "Soul",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Grip"
+      "partType": "Sword Grip",
+      "stats": ""
     },
     {
       "name": "Grip of Spirits",
       "nameMod": "Spirit",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Grip"
+      "partType": "Sword Grip",
+      "stats": ""
     },
     {
       "name": "Grip of Will",
       "nameMod": "Will",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Grip"
+      "partType": "Sword Grip",
+      "stats": ""
     },
     {
       "name": "Grip of the Grave",
       "nameMod": "Grave",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Grip"
+      "partType": "Sword Grip",
+      "stats": ""
     },
     {
       "name": "Grip of the Moon",
       "nameMod": "Moon",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Grip"
+      "partType": "Sword Grip",
+      "stats": ""
     },
     {
       "name": "Grip of the Sun",
       "nameMod": "Sun",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Grip"
+      "partType": "Sword Grip",
+      "stats": ""
     },
     {
       "name": "Hater Blade",
       "nameMod": "Hater",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Heavy Bowstring",
@@ -1767,6 +2486,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Bow String",
+      "stats": "Heavy Bowstring",
       "materials": [
         "Plant"
       ]
@@ -1777,6 +2497,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Crossbow String",
+      "stats": "Heavy Crossbow String",
       "materials": [
         "Plant"
       ]
@@ -1787,6 +2508,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Sword Grip",
+      "stats": "Grip Heavy",
       "materials": [
         "Metal"
       ]
@@ -1797,6 +2519,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Hammer Head",
+      "stats": "Heavy Hammerhead",
       "materials": [
         "Metal"
       ]
@@ -1807,6 +2530,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Sword Hilt",
+      "stats": "Hilt Heavy",
       "materials": [
         "Metal"
       ]
@@ -1816,126 +2540,144 @@
       "nameMod": "Ascendant",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Hilt of Defiance",
       "nameMod": "Defiant",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Hilt of Dragons",
       "nameMod": "Draconic",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Hilt of Ghosts",
       "nameMod": "Ethereal",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Hilt of Incandescence",
       "nameMod": "Incandescent",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Hilt of Judgement",
       "nameMod": "Judicious",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Hilt of Monsters",
       "nameMod": "Grotesque",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Hilt of Radiance",
       "nameMod": "Radiant",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Hilt of Remorse",
       "nameMod": "Penitent",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Hilt of Strength",
       "nameMod": "Unyielding",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Hilt of Voracity",
       "nameMod": "Voracious",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Hilt of the All-seeing",
       "nameMod": "Omniscient",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Hilt of the Chosen",
       "nameMod": "Chosen",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Hilt of the Cynics",
       "nameMod": "Cynical",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Hilt of the Ever-present",
       "nameMod": "Ubiquitous",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Hilt of the Reverent",
       "nameMod": "Hallowed",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Hilt of the Slaves",
       "nameMod": "Obsequious",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Hilt of the Zealots",
       "nameMod": "Zealous",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Hilt"
+      "partType": "Sword Hilt",
+      "stats": ""
     },
     {
       "name": "Light Bowstring",
@@ -1943,6 +2685,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Bow String",
+      "stats": "Light Bowstring",
       "materials": [
         "Plant"
       ]
@@ -1953,6 +2696,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Crossbow String",
+      "stats": "Light Crossbow String",
       "materials": [
         "Plant"
       ]
@@ -1963,6 +2707,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Sword Grip",
+      "stats": "Grip Light",
       "materials": [
         "Metal"
       ]
@@ -1973,6 +2718,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Sword Hilt",
+      "stats": "Hilt Light",
       "materials": [
         "Metal"
       ]
@@ -1983,6 +2729,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Arrow Shaft",
+      "stats": "",
       "materials": [
         "Wood"
       ]
@@ -1993,6 +2740,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Sword Blade",
+      "stats": "Blade Long",
       "materials": [
         "Metal"
       ]
@@ -2003,6 +2751,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Bolt Shaft",
+      "stats": "",
       "materials": [
         "Wood"
       ]
@@ -2013,6 +2762,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Crossbow Limbs",
+      "stats": "",
       "materials": [
         "Wood",
         "Metal"
@@ -2024,6 +2774,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Staff Handle",
+      "stats": "Longaxe Handle",
       "materials": [
         "Wood"
       ]
@@ -2034,6 +2785,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Bow Limbs",
+      "stats": "Longbow Limbs",
       "materials": [
         "Wood"
       ]
@@ -2043,7 +2795,8 @@
       "nameMod": "Marcher",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Maul Handle",
@@ -2051,6 +2804,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Hammer Handle",
+      "stats": "Maul Handle",
       "materials": [
         "Wood"
       ]
@@ -2061,6 +2815,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Sword Hilt",
+      "stats": "Hilt Medium",
       "materials": [
         "Metal"
       ]
@@ -2071,6 +2826,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Arrow Tip",
+      "stats": "",
       "materials": [
         "Metal"
       ]
@@ -2081,6 +2837,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Bolt Tip",
+      "stats": "",
       "materials": [
         "Metal"
       ]
@@ -2091,6 +2848,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Staff Handle",
+      "stats": "",
       "materials": [
         "Wood"
       ]
@@ -2101,6 +2859,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Bow Grip",
+      "stats": "Quick Bow Grip",
       "materials": [
         "Metal"
       ]
@@ -2111,6 +2870,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Crossbow Stock",
+      "stats": "Rapid Crossbow Stock",
       "materials": [
         "Wood"
       ]
@@ -2121,6 +2881,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Arrow Tip",
+      "stats": "",
       "materials": [
         "Metal"
       ]
@@ -2131,6 +2892,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Bolt Tip",
+      "stats": "",
       "materials": [
         "Metal"
       ]
@@ -2140,7 +2902,8 @@
       "nameMod": "Reaper",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Recurve Limbs",
@@ -2148,6 +2911,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Bow Limbs",
+      "stats": "Recurve Limbs",
       "materials": [
         "Wood"
       ]
@@ -2157,7 +2921,8 @@
       "nameMod": "Ripper",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Round Axehead",
@@ -2165,6 +2930,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Axe Head",
+      "stats": "Round Axehead",
       "materials": [
         "Metal"
       ]
@@ -2174,14 +2940,16 @@
       "nameMod": "Runner",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Screamer Blade",
       "nameMod": "Screamer",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Scythe Axehead",
@@ -2189,6 +2957,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Axe Head",
+      "stats": "Scythe Axehead",
       "materials": [
         "Metal"
       ]
@@ -2198,7 +2967,8 @@
       "nameMod": "Seeker",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Sharp Arrow Fletchings",
@@ -2206,6 +2976,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Arrow Fletchings",
+      "stats": "",
       "materials": [
         "Plant"
       ]
@@ -2216,6 +2987,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Bolt Fletchings",
+      "stats": "",
       "materials": [
         "Plant"
       ]
@@ -2225,7 +2997,8 @@
       "nameMod": "Schocker",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Short Arrow Shaft",
@@ -2233,6 +3006,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Arrow Shaft",
+      "stats": "",
       "materials": [
         "Wood"
       ]
@@ -2243,6 +3017,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Sword Blade",
+      "stats": "Blade Short",
       "materials": [
         "Metal"
       ]
@@ -2253,6 +3028,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Bolt Shaft",
+      "stats": "",
       "materials": [
         "Wood"
       ]
@@ -2263,9 +3039,10 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Crossbow Limbs",
+      "stats": "Light Crossbow Limbs",
       "materials": [
-        "Wood",
-        "Metal"
+        "Metal",
+        "Wood"
       ]
     },
     {
@@ -2274,6 +3051,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Staff Handle",
+      "stats": "",
       "materials": [
         "Wood"
       ]
@@ -2284,6 +3062,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Bow Limbs",
+      "stats": "Shortbow Limbs",
       "materials": [
         "Wood"
       ]
@@ -2293,14 +3072,16 @@
       "nameMod": "Shredder",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Singer Blade",
       "nameMod": "Singer",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Single Axehead",
@@ -2308,6 +3089,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Axe Head",
+      "stats": "Single Axehead",
       "materials": [
         "Metal"
       ]
@@ -2318,6 +3100,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Hammer Head",
+      "stats": "Single Hammerhead",
       "materials": [
         "Metal"
       ]
@@ -2328,6 +3111,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Axe Head",
+      "stats": "Spiked Axehead",
       "materials": [
         "Metal"
       ]
@@ -2338,6 +3122,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Hammer Head",
+      "stats": "Spiked Hammerhead",
       "materials": [
         "Metal"
       ]
@@ -2348,6 +3133,7 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Bow Grip",
+      "stats": "Steady Bow Grip",
       "materials": [
         "Metal"
       ]
@@ -2357,21 +3143,24 @@
       "nameMod": "Strider",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Waker Blade",
       "nameMod": "Waker",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Walker Blade",
       "nameMod": "Walker",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "War Handle",
@@ -2379,6 +3168,18 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Axe Handle",
+      "stats": "Waraxe Handle",
+      "materials": [
+        "Wood"
+      ]
+    },
+    {
+      "name": "Warhammer Handle",
+      "nameMod": "Warhammer",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Hammer Handle",
+      "stats": "Waraxe Handle",
       "materials": [
         "Wood"
       ]
@@ -2388,21 +3189,24 @@
       "nameMod": "Waster",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Watcher Blade",
       "nameMod": "Watcher",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     },
     {
       "name": "Wringer Blade",
       "nameMod": "Wringer",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
-      "partType": "Sword Blade"
+      "partType": "Sword Blade",
+      "stats": ""
     }
   ],
   "Weapon Types": [

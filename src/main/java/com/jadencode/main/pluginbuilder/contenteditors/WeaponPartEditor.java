@@ -22,6 +22,7 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
     private final JTextField partInfoField;
     private final JTextField weightField;
     private final JComboBox<String> partTypeSelection;
+    private final JComboBox<String> statSetSelection;
     private final JList<String> materialsList;
 
     public WeaponPartEditor(Module module, PluginBuilderPanel parent) {
@@ -31,6 +32,7 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         this.partInfoField = helper.add(new JTextField(), "Part Info", H_S, V_E + H_FLD + V_PAD, H_L, H_FLD);
         this.weightField = helper.add(new JTextField(), "Weight", H_S, V_E + 2 * (H_FLD + V_PAD), H_L, H_FLD);
         this.partTypeSelection = helper.add(new JComboBox<>(), "Part Type", H_S, V_E + 3 * (H_FLD + V_PAD), H_L, H_FLD);
+        this.statSetSelection = helper.add(new JComboBox<>(), "Stat Set", H_S, V_E + 4 * (H_FLD + V_PAD), H_L, H_FLD);
         this.materialsList = helper.add(new JList<>(), "Material Types", H_E, V_S, H_L, H_FLD * 10, GuiHelper.Align.ABOVE);
     }
     @Override
@@ -38,6 +40,12 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         Module partTypesModule = panel.getModule("Part Types");
         List<String> partTypes = partTypesModule.getItemKeys();
         this.partTypeSelection.setModel(new DefaultComboBoxModel<>(partTypes.toArray(new String[0])));
+
+        Module statSetsModule = panel.getModule("Stat Sets");
+        List<String> statSets = new ArrayList<>();
+        statSets.add("");
+        statSets.addAll(statSetsModule.getItemKeys());
+        this.statSetSelection.setModel(new DefaultComboBoxModel<>(statSets.toArray(new String[0])));
 
         Module materialTypesModule = panel.getModule("Material Types");
         List<String> materialTypes = materialTypesModule.getItemKeys();
@@ -50,6 +58,7 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         this.partInfoField.setText(item.getPartInfo());
         this.weightField.setText(item.getWeight() + "");
         this.partTypeSelection.setSelectedItem(item.getPartType());
+        this.statSetSelection.setSelectedItem(item.getStatSet());
 
         List<String> materialTypes = item.getMaterialTypes();
         List<Integer> indices = new ArrayList<>();
@@ -72,9 +81,10 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         String partInfo = this.partInfoField.getText();
         float weight = this.getValue(this.weightField);
         String partType = (String) this.partTypeSelection.getSelectedItem();
+        String statSet = (String) this.statSetSelection.getSelectedItem();
 
         List<String> materialTypes = this.materialsList.getSelectedValuesList();
-        return new ItemWeaponPart(name, owner, nameMod, partInfo, weight, partType, materialTypes);
+        return new ItemWeaponPart(name, owner, nameMod, partInfo, weight, partType, statSet, materialTypes);
     }
     private float getValue(JTextField field) {
         float value;
@@ -87,7 +97,7 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
     }
     @Override
     public ItemWeaponPart getDefault() {
-        return new ItemWeaponPart("", "", "", "", 0F, "", new ArrayList<>());
+        return new ItemWeaponPart("", "", "", "", 0F, "", "", new ArrayList<>());
     }
 
     @Override
@@ -97,12 +107,13 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         String partInfo = helper.getString("partInfo");
         float weight = helper.getFloat("weight", 1F);
         String partType = helper.getString("partType");
+        String statSet = helper.getString("stats");
         List<String> materials = new ArrayList<>();
         JsonArray array = helper.getArray("materials");
 
         for (JsonElement jsonElement : array)
             materials.add(jsonElement.getAsString());
 
-        return new ItemWeaponPart(name, owner, nameMod, partInfo, weight, partType, materials);
+        return new ItemWeaponPart(name, owner, nameMod, partInfo, weight, partType, statSet, materials);
     }
 }

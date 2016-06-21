@@ -1,7 +1,6 @@
 package com.jadencode.main.pluginbuilder.modules;
 
 import com.google.gson.JsonObject;
-import com.jadencode.main.pluginbuilder.Plugin;
 import com.jadencode.main.pluginbuilder.contenteditors.ContentEditor;
 import com.jadencode.main.pluginbuilder.items.Item;
 

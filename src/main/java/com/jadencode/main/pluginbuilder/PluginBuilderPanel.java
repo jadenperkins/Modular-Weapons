@@ -1,6 +1,7 @@
 package com.jadencode.main.pluginbuilder;
 
 import com.google.gson.*;
+import com.jadencode.main.content.Plugin;
 import com.jadencode.main.pluginbuilder.contenteditors.ContentEditor;
 import com.jadencode.main.pluginbuilder.items.Item;
 import com.jadencode.main.pluginbuilder.modules.Module;
@@ -8,7 +9,6 @@ import org.reflections.Reflections;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
-import java.awt.*;
 import java.io.*;
 import java.util.*;
 import java.util.List;
@@ -85,15 +85,14 @@ public class PluginBuilderPanel extends JPanel {
         return this.moduleMap.get(name);
     }
     public void updateCurrentObjects(String name) {
-        for (Component component : this.getComponents()) {
-            if(component == this.editor) {
+        if(this.getSelectedModule().getContentEditor() != this.editor) {
+            if(this.editor != null) {
                 this.remove(this.editor);
-                break;
             }
+            this.editor = this.getSelectedModule().getContentEditor();
+            this.add(this.editor);
+            this.editor.onOpened(this.getSelectedModule(), this);
         }
-        this.editor = this.getSelectedModule().getContentEditor();
-        this.add(this.editor);
-        this.editor.onOpened(this.getSelectedModule(), this);
 
         List<String> strings = this.getSelectedModule().getItemKeys();
         String[] objects = strings.toArray(new String[0]);

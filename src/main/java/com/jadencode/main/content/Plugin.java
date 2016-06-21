@@ -1,13 +1,10 @@
-package com.jadencode.main.pluginbuilder;
+package com.jadencode.main.content;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.jadencode.main.pluginbuilder.JsonHelper;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.zip.GZIPInputStream;
 
