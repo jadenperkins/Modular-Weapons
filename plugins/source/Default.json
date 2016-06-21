@@ -1140,87 +1140,87 @@
   "Part Types": [
     {
       "name": "Arrow Fletchings",
-      "icon": ""
+      "icon": "flights"
     },
     {
       "name": "Arrow Shaft",
-      "icon": ""
+      "icon": "shaft"
     },
     {
       "name": "Arrow Tip",
-      "icon": ""
+      "icon": "tip"
     },
     {
       "name": "Axe Handle",
-      "icon": ""
+      "icon": "handle"
     },
     {
       "name": "Axe Head",
-      "icon": ""
+      "icon": "axe"
     },
     {
       "name": "Bolt Fletchings",
-      "icon": ""
+      "icon": "flights"
     },
     {
       "name": "Bolt Shaft",
-      "icon": ""
+      "icon": "shaft"
     },
     {
       "name": "Bolt Tip",
-      "icon": ""
+      "icon": "tip"
     },
     {
       "name": "Bow Grip",
-      "icon": ""
+      "icon": "bowgrip"
     },
     {
       "name": "Bow Limbs",
-      "icon": ""
+      "icon": "bowlimbs"
     },
     {
       "name": "Bow String",
-      "icon": ""
+      "icon": "bowstring"
     },
     {
       "name": "Crossbow Limbs",
-      "icon": ""
+      "icon": "limbs"
     },
     {
       "name": "Crossbow Stock",
-      "icon": ""
+      "icon": "stock"
     },
     {
       "name": "Crossbow String",
-      "icon": ""
+      "icon": "string"
     },
     {
       "name": "Hammer Handle",
-      "icon": ""
+      "icon": "handle"
     },
     {
       "name": "Hammer Head",
-      "icon": ""
+      "icon": "hammer"
     },
     {
       "name": "Staff Handle",
-      "icon": ""
+      "icon": "handle"
     },
     {
       "name": "Staff Head",
-      "icon": ""
+      "icon": "head"
     },
     {
       "name": "Sword Blade",
-      "icon": ""
+      "icon": "blade"
     },
     {
       "name": "Sword Grip",
-      "icon": ""
+      "icon": "grip"
     },
     {
       "name": "Sword Hilt",
-      "icon": ""
+      "icon": "hilt"
     }
   ],
   "Scripts": [
