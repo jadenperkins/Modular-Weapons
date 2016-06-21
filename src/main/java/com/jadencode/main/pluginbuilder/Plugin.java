@@ -34,7 +34,7 @@ public class Plugin implements Comparable<Plugin> {
     }
     @Override
     public int compareTo(Plugin o) {
-        return this.dependencies.contains(o.pluginName) ? 1 : o.dependencies.contains(this.pluginName) ? -1 : 0;
+        return this.dependencies.contains(o.pluginName) ? 1 : -1;
     }
     private static JsonObject load(File file) {
         try {
