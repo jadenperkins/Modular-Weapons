@@ -25,7 +25,7 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
 
     public StatSetEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        this.statsTable = this.create(new JTable(), 10, 140, 200, 16);
+        this.statsTable = this.create(new JTable(), "Stats", 10, 140, 200, 16);
     }
     @Override
     public void onOpened(Module<ItemStatSet> parent, PluginBuilderPanel panel) {

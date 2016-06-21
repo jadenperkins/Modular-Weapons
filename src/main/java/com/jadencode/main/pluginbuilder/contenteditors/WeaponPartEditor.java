@@ -26,11 +26,11 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
 
     public WeaponPartEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        this.nameModField = this.create(new JTextField(), 10, 140, 200, 18);
-        this.partInfoField = this.create(new JTextField(), 10, 160, 200, 18);
-        this.weightField = this.create(new JTextField(), 10, 180, 200, 18);
-        this.partTypeSelection = this.create(new JComboBox<>(), 10, 200, 200, 18);
-        this.materialsList = this.createScrolling(new JList<>(), 10, 220, 200, 160);
+        this.nameModField = this.create(new JTextField(), "Name Modifier", 10, 140, 200, 18);
+        this.partInfoField = this.create(new JTextField(), "Part Info", 10, 180, 200, 18);
+        this.weightField = this.create(new JTextField(), "Weight", 10, 220, 200, 18);
+        this.partTypeSelection = this.create(new JComboBox<>(), "Part Type", 10, 260, 200, 18);
+        this.materialsList = this.createScrolling(new JList<>(), "Material Types", 10, 300, 200, 160);
     }
     @Override
     public void onOpened(Module<ItemWeaponPart> parent, PluginBuilderPanel panel) {

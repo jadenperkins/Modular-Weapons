@@ -47,13 +47,12 @@ public class PluginBuilderPanel extends JPanel {
         }
         modules.sort((a, b) -> a.getName().compareTo(b.getName()));
 
-        this.contentModules = this.create(new JList<>(modules.toArray(new Module[0])), 10, 60, 200, modules.size() * 18);
+        this.contentModules = this.create(new JList<>(modules.toArray(new Module[0])), "Content Modules", 10, 60, 200, modules.size() * 18);
         this.currentContentObjects = new JList<>();
-        this.scrollingContentPane = this.create(new JScrollPane(this.currentContentObjects), 220, 60, 200, 18);
+        this.scrollingContentPane = this.create(new JScrollPane(this.currentContentObjects), "Module Items", 220, 60, 200, 18);
 
         this.exportPlugin = this.create(new JButton("Export Plugin"), 10, modules.size() * 20 + 70, 200, 40);
-        this.activeFile = this.create(new JTextField(), 10, 10, 200, 18);
-//        this.pluginName = this.create(new JTextField(), 10, 10, 200, 18);
+        this.activeFile = this.create(new JTextField(), "Active Plugin", 10, 10, 200, 18);
         this.importPlugin = this.create(new JButton("Import Plugin"), 10, modules.size() * 20 + 120, 200, 40);
 
         this.contentModules.setSelectedValue(modules.get(0), true);
@@ -119,6 +118,13 @@ public class PluginBuilderPanel extends JPanel {
         component.setSize(w, h);
         this.add(component);
         return component;
+    }
+    private <T extends JComponent> T create(T component, String title, int x, int y, int w, int h) {
+        JLabel label = new JLabel(title);
+        label.setLocation(x, y);
+        label.setSize(w, 18);
+        this.add(label);
+        return this.create(component, x, y + 20, w, h);
     }
     private void export(List<Module<? extends Item>> modules) {
         if(this.getActivePlugin() == null || this.getActivePlugin().isEmpty()) {

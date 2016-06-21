@@ -18,7 +18,7 @@ public class PartTypeEditor extends ContentEditor<ItemPartType> {
 
     public PartTypeEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        this.iconSelection = this.create(new JComboBox<>(), 10, 120, 200, 20);
+        this.iconSelection = this.create(new JComboBox<>(), "Icon", 10, 140, 200, 20);
     }
     @Override
     public void onOpened(Module<ItemPartType> parent, PluginBuilderPanel panel) {

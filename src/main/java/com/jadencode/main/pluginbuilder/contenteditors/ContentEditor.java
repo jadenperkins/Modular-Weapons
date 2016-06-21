@@ -26,9 +26,9 @@ public abstract class ContentEditor<T extends Item> extends JPanel {
         this.setLocation(430, 10);
         this.setSize(1000, 700);
 
-        this.nameField = this.create(new JTextField(), 10, 10, 200, 18);
-        this.updateItem = this.create(new JButton("Update Item"), 10, 30, 200, 40);
-        this.deleteItem = this.create(new JButton("Delete Item"), 10, 80, 200, 40);
+        this.nameField = this.create(new JTextField(), "Item Name", 10, 10, 200, 18);
+        this.updateItem = this.create(new JButton("Update Item"), 10, 50, 200, 40);
+        this.deleteItem = this.create(new JButton("Delete Item"), 10, 100, 200, 40);
 
         this.updateItem.addActionListener(e -> {
             String itemName = this.nameField.getText();
@@ -65,12 +65,26 @@ public abstract class ContentEditor<T extends Item> extends JPanel {
         this.add(component);
         return component;
     }
+    public <T extends JComponent> T create(T component, String title, int x, int y, int w, int h) {
+        JLabel label = new JLabel(title);
+        label.setLocation(x, y);
+        label.setSize(w, 18);
+        this.add(label);
+        return this.create(component, x, y + 20, w, h);
+    }
     public <T extends JComponent> T createScrolling(T component, int x, int y, int w, int h) {
         JScrollPane pane = new JScrollPane(component);
         pane.setLocation(x, y);
         pane.setSize(w, h);
         this.add(pane);
         return component;
+    }
+    public <T extends JComponent> T createScrolling(T component, String title, int x, int y, int w, int h) {
+        JLabel label = new JLabel(title);
+        label.setLocation(x, y);
+        label.setSize(w, 18);
+        this.add(label);
+        return this.createScrolling(component, x, y + 20, w, h);
     }
     public abstract T createItem(String name, String owner);
     public abstract void populate(T item);

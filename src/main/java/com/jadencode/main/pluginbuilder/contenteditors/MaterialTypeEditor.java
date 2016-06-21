@@ -19,7 +19,7 @@ public class MaterialTypeEditor extends ContentEditor<ItemMaterialType> {
 
     public MaterialTypeEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        this.scriptSelection = this.create(new JComboBox<>(), 10, 120, 200, 20);
+        this.scriptSelection = this.create(new JComboBox<>(), "Script", 10, 140, 200, 20);
     }
     @Override
     public void onOpened(Module<ItemMaterialType> parent, PluginBuilderPanel panel) {

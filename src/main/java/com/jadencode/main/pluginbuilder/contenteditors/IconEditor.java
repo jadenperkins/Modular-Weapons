@@ -43,7 +43,7 @@ public class IconEditor extends ContentEditor<ItemIcon> {
             }
         });
 
-        this.selectImage = this.create(new JButton("Select Image"), 10, 120, 200, 40);
+        this.selectImage = this.create(new JButton("Select Image"), 10, 150, 200, 40);
         this.selectImage.addActionListener(e -> {
             this.imageChooser.showOpenDialog(null);
             if(this.imageChooser.getSelectedFile() != null) {

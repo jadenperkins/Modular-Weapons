@@ -20,8 +20,8 @@ public class StatEditor extends ContentEditor<ItemStat> {
 
     public StatEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        this.scriptSelection = this.create(new JComboBox<>(), 10, 120, 200, 20);
-        this.defaultValue = this.create(new JTextField(), 10, 150, 200, 20);
+        this.scriptSelection = this.create(new JComboBox<>(), "Script", 10, 140, 200, 20);
+        this.defaultValue = this.create(new JTextField(), "Default Value", 10, 180, 200, 20);
     }
     @Override
     public void onOpened(Module<ItemStat> parent, PluginBuilderPanel panel) {

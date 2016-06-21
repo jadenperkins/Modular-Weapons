@@ -26,11 +26,11 @@ public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> 
 
     public MaterialModifierEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
-        this.colorSelection = this.create(new JComboBox<>(), 10, 140, 200, 18);
-        this.weightField = this.create(new JTextField(), 10, 160, 200, 18);
-        this.levelField = this.create(new JTextField(), 10, 180, 200, 18);
-        this.modField = this.create(new JTextField(), 10, 200, 200, 18);
-        this.materialsList = this.createScrolling(new JList<>(), 10, 220, 200, 180);
+        this.colorSelection = this.create(new JComboBox<>(), "Color", 10, 140, 200, 18);
+        this.weightField = this.create(new JTextField(), "Weight", 10, 180, 200, 18);
+        this.levelField = this.create(new JTextField(), "Level Modifier", 10, 220, 200, 18);
+        this.modField = this.create(new JTextField(), "Modifier", 10, 260, 200, 18);
+        this.materialsList = this.createScrolling(new JList<>(), "Material Types", 10, 300, 200, 180);
     }
     @Override
     public void onOpened(Module<ItemMaterialModifier> parent, PluginBuilderPanel panel) {
