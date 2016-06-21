@@ -26,7 +26,9 @@ public class ColorEditor extends ContentEditor<ItemColor> {
         this.selectColor = this.create(new JButton("Select Color"), 10, 120, 200, 40);
         this.selectColor.addActionListener(e -> {
             this.color = JColorChooser.showDialog(null, "Select a Color", this.color);
-            this.displayPanel.setBackground(this.color);
+            if(this.color != null) {
+                this.displayPanel.setBackground(this.color);
+            }
         });
     }
     @Override
