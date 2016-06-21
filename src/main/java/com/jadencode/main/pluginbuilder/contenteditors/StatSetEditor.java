@@ -49,7 +49,7 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
         }
     }
     @Override
-    public ItemStatSet createItem(String name) {
+    public ItemStatSet createItem(String name, String owner) {
         int rows = this.statsTable.getModel().getRowCount();
         HashMap<String, Double> stats = new HashMap<>();
         for(int row = 0; row < rows; row++) {
@@ -64,15 +64,15 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
                 stats.put(stat, value);
             }
         }
-        return new ItemStatSet(name, stats);
+        return new ItemStatSet(name, owner, stats);
     }
     @Override
     public ItemStatSet getDefault() {
-        return new ItemStatSet("", new HashMap<>());
+        return new ItemStatSet("", "", new HashMap<>());
     }
 
     @Override
-    public ItemStatSet consume(String name, JsonObject json) {
+    public ItemStatSet consume(String name, JsonObject json, String owner) {
         JsonHelper helper = new JsonHelper(json);
 
         HashMap<String, Double> stats = new HashMap<>();
@@ -81,6 +81,6 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
             JsonHelper obj = new JsonHelper(jsonElement.getAsJsonObject());
             stats.put(obj.getString("stat"), obj.getDouble("value"));
         }
-        return new ItemStatSet(name, stats);
+        return new ItemStatSet(name, owner, stats);
     }
 }

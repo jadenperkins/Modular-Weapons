@@ -33,7 +33,7 @@ public abstract class ContentEditor<T extends Item> extends JPanel {
         this.updateItem.addActionListener(e -> {
             String itemName = this.nameField.getText();
             if(itemName != null && !itemName.isEmpty()) {
-                parent.addItem(itemName);
+                parent.addItem(itemName, panel.getActivePlugin());
                 panel.updateCurrentObjects(itemName);
             }
         });
@@ -72,8 +72,8 @@ public abstract class ContentEditor<T extends Item> extends JPanel {
         this.add(pane);
         return component;
     }
-    public abstract T createItem(String name);
+    public abstract T createItem(String name, String owner);
     public abstract void populate(T item);
     public abstract T getDefault();
-    public abstract T consume(String name, JsonObject json);
+    public abstract T consume(String name, JsonObject json, String owner);
 }

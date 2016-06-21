@@ -62,7 +62,7 @@ public class WeaponTypeEditor extends ContentEditor<ItemWeaponType> {
         this.partsList.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(box));
     }
     @Override
-    public ItemWeaponType createItem(String name) {
+    public ItemWeaponType createItem(String name, String owner) {
         String stat = (String)this.statSetSelection.getSelectedItem();
         String script = (String)this.scriptSelection.getSelectedItem();
         float weight = this.getFloat(this.weightField);
@@ -76,7 +76,7 @@ public class WeaponTypeEditor extends ContentEditor<ItemWeaponType> {
             }
         }
 
-        return new ItemWeaponType(name, stat, script, weight, parts);
+        return new ItemWeaponType(name, owner, stat, script, weight, parts);
     }
     public float getFloat(JTextField field) {
         float value;
@@ -89,11 +89,11 @@ public class WeaponTypeEditor extends ContentEditor<ItemWeaponType> {
     }
     @Override
     public ItemWeaponType getDefault() {
-        return new ItemWeaponType("", "", "", 1F, new ArrayList<>());
+        return new ItemWeaponType("", "", "", "", 1F, new ArrayList<>());
     }
 
     @Override
-    public ItemWeaponType consume(String name, JsonObject json) {
+    public ItemWeaponType consume(String name, JsonObject json, String owner) {
         JsonHelper helper = new JsonHelper(json);
         String statSet = helper.getString("stats");
         String script = helper.getString("script");
@@ -103,6 +103,6 @@ public class WeaponTypeEditor extends ContentEditor<ItemWeaponType> {
         for (JsonElement jsonElement : array)
             parts.add(jsonElement.getAsString());
 
-        return new ItemWeaponType(name, statSet, script, weight, parts);
+        return new ItemWeaponType(name, owner, statSet, script, weight, parts);
     }
 }

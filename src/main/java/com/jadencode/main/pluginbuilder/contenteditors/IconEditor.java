@@ -68,16 +68,16 @@ public class IconEditor extends ContentEditor<ItemIcon> {
         this.base64String = item.getBase64();
     }
     @Override
-    public ItemIcon createItem(String name) {
-        return new ItemIcon(name, this.base64String);
+    public ItemIcon createItem(String name, String owner) {
+        return new ItemIcon(name, owner, this.base64String);
     }
     @Override
     public ItemIcon getDefault() {
-        return new ItemIcon("", "");
+        return new ItemIcon("", "", "");
     }
 
     @Override
-    public ItemIcon consume(String name, JsonObject json) {
-        return new ItemIcon(name, new JsonHelper(json).getString("base64"));
+    public ItemIcon consume(String name, JsonObject json, String owner) {
+        return new ItemIcon(name, owner, new JsonHelper(json).getString("base64"));
     }
 }

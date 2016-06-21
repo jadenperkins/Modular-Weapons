@@ -34,7 +34,7 @@ public class StatEditor extends ContentEditor<ItemStat> {
         this.defaultValue.setText(item.getDefaultValue() + "");
     }
     @Override
-    public ItemStat createItem(String name) {
+    public ItemStat createItem(String name, String owner) {
         double value;
         try {
             value = Double.parseDouble(this.defaultValue.getText());
@@ -42,16 +42,16 @@ public class StatEditor extends ContentEditor<ItemStat> {
             value = 0;
             this.defaultValue.setText("0.0");
         }
-        return new ItemStat(name, (String) this.scriptSelection.getSelectedItem(), value);
+        return new ItemStat(name, owner, (String) this.scriptSelection.getSelectedItem(), value);
     }
     @Override
     public ItemStat getDefault() {
-        return new ItemStat("", "", 0.0);
+        return new ItemStat("", "", "", 0.0);
     }
 
     @Override
-    public ItemStat consume(String name, JsonObject json) {
+    public ItemStat consume(String name, JsonObject json, String owner) {
         JsonHelper helper = new JsonHelper(json);
-        return new ItemStat(name, helper.getString("script"), helper.getDouble("default"));
+        return new ItemStat(name, owner, helper.getString("script"), helper.getDouble("default"));
     }
 }

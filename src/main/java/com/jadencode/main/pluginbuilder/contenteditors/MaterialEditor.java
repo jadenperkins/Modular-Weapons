@@ -47,14 +47,14 @@ public class MaterialEditor extends ContentEditor<ItemMaterial> {
         this.materialSelection.setSelectedItem(item.getMaterialType());
     }
     @Override
-    public ItemMaterial createItem(String name) {
+    public ItemMaterial createItem(String name, String owner) {
         String colorName = (String)this.colorSelection.getSelectedItem();
         float weight = this.getValue(this.weightField);
         float mod = this.getValue(this.modField);
         int level = this.getInt(this.levelField);
         String material = (String)this.materialSelection.getSelectedItem();
 
-        return new ItemMaterial(name, colorName, weight, mod, level, material);
+        return new ItemMaterial(name, owner, colorName, weight, mod, level, material);
     }
     private float getValue(JTextField field) {
         float value;
@@ -76,17 +76,17 @@ public class MaterialEditor extends ContentEditor<ItemMaterial> {
     }
     @Override
     public ItemMaterial getDefault() {
-        return new ItemMaterial("", "", 0F, 0F, 0, "");
+        return new ItemMaterial("", "", "", 0F, 0F, 0, "");
     }
 
     @Override
-    public ItemMaterial consume(String name, JsonObject json) {
+    public ItemMaterial consume(String name, JsonObject json, String owner) {
         JsonHelper helper = new JsonHelper(json);
         String colorName = helper.getString("color");
         float w = helper.getFloat("weight", 1F);
         float m = helper.getFloat("mod", 1F);
         int l = helper.getInt("level");
         String material = helper.getString("material");
-        return new ItemMaterial(name, colorName, w, m, l, material);
+        return new ItemMaterial(name, owner, colorName, w, m, l, material);
     }
 }

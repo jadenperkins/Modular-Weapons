@@ -31,16 +31,16 @@ public class PartTypeEditor extends ContentEditor<ItemPartType> {
         this.iconSelection.setSelectedItem(item.getIconName());
     }
     @Override
-    public ItemPartType createItem(String name) {
-        return new ItemPartType(name, (String)this.iconSelection.getSelectedItem());
+    public ItemPartType createItem(String name, String owner) {
+        return new ItemPartType(name, owner, (String)this.iconSelection.getSelectedItem());
     }
     @Override
     public ItemPartType getDefault() {
-        return new ItemPartType("", "");
+        return new ItemPartType("", "", "");
     }
 
     @Override
-    public ItemPartType consume(String name, JsonObject json) {
-        return new ItemPartType(name, new JsonHelper(json).getString("icon"));
+    public ItemPartType consume(String name, JsonObject json, String owner) {
+        return new ItemPartType(name, owner, new JsonHelper(json).getString("icon"));
     }
 }

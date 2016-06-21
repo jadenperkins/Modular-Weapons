@@ -1,6 +1,5 @@
 package com.jadencode.main.pluginbuilder.items;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
@@ -9,8 +8,8 @@ import com.google.gson.JsonPrimitive;
  */
 public class ItemIcon extends Item {
     public final String base64;
-    public ItemIcon(String name, String base64) {
-        super(name);
+    public ItemIcon(String name, String owner, String base64) {
+        super(name, owner);
         this.base64 = base64;
     }
     public String getBase64() {

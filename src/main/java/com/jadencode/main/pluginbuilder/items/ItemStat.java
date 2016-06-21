@@ -1,7 +1,6 @@
 package com.jadencode.main.pluginbuilder.items;
 
 import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 
 /**
@@ -12,9 +11,9 @@ public class ItemStat extends Item {
     private final String scriptName;
     private final double defaultValue;
 
-    public ItemStat(String name, String icon, double value) {
-        super(name);
-        this.scriptName = icon;
+    public ItemStat(String name, String owner, String script, double value) {
+        super(name, owner);
+        this.scriptName = script;
         this.defaultValue = value;
     }
     public String getScriptName() {

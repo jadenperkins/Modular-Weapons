@@ -39,17 +39,17 @@ public class ColorEditor extends ContentEditor<ItemColor> {
         this.displayPanel.setBackground(this.color);
     }
     @Override
-    public ItemColor createItem(String name) {
-        return new ItemColor(name, this.color.getRed(), this.color.getGreen(), this.color.getBlue());
+    public ItemColor createItem(String name, String owner) {
+        return new ItemColor(name, owner, this.color.getRed(), this.color.getGreen(), this.color.getBlue());
     }
     @Override
     public ItemColor getDefault() {
-        return new ItemColor("", 255, 255, 255);
+        return new ItemColor("", "", 255, 255, 255);
     }
 
     @Override
-    public ItemColor consume(String name, JsonObject json) {
+    public ItemColor consume(String name, JsonObject json, String owner) {
         JsonArray rgb = json.get("rgb").getAsJsonArray();
-        return new ItemColor(name, rgb.get(0).getAsInt(), rgb.get(1).getAsInt(), rgb.get(2).getAsInt());
+        return new ItemColor(name, owner, rgb.get(0).getAsInt(), rgb.get(1).getAsInt(), rgb.get(2).getAsInt());
     }
 }

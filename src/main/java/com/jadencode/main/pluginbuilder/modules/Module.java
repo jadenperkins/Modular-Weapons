@@ -1,6 +1,7 @@
 package com.jadencode.main.pluginbuilder.modules;
 
 import com.google.gson.JsonObject;
+import com.jadencode.main.pluginbuilder.Plugin;
 import com.jadencode.main.pluginbuilder.contenteditors.ContentEditor;
 import com.jadencode.main.pluginbuilder.items.Item;
 
@@ -26,16 +27,16 @@ public abstract class Module<T extends Item> {
     public T getItem(String name) {
         return this.items.get(name);
     }
-    public void addItem(String name) {
-        T item = this.createItem(name);
+    public void addItem(String name, String owner) {
+        T item = this.createItem(name, owner);
         this.items.put(name, item);
         if(!this.itemKeys.contains(name)) {
             this.itemKeys.add(name);
             this.itemKeys.sort(null);
         }
     }
-    public void addItem(String name, JsonObject json) {
-        T item = this.getContentEditor().consume(name, json);
+    public void addItem(String name, JsonObject json, String owner) {
+        T item = this.getContentEditor().consume(name, json, owner);
         this.items.put(name, item);
         if(!this.itemKeys.contains(name)) {
             this.itemKeys.add(name);
@@ -57,7 +58,7 @@ public abstract class Module<T extends Item> {
     public String toString() {
         return this.getName();
     }
-    public T createItem(String name) {
-        return this.getContentEditor().createItem(name);
+    public T createItem(String name, String owner) {
+        return this.getContentEditor().createItem(name, owner);
     }
 }

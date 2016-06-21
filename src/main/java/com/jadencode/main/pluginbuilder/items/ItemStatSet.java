@@ -12,8 +12,8 @@ public class ItemStatSet extends Item {
 
     private final HashMap<String, Double> stats;
 
-    public ItemStatSet(String name, HashMap<String, Double> stats) {
-        super(name);
+    public ItemStatSet(String name, String owner, HashMap<String, Double> stats) {
+        super(name, owner);
         this.stats = stats;
     }
     public HashMap<String, Double> getStats() {

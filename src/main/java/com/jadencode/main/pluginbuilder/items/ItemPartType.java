@@ -1,7 +1,6 @@
 package com.jadencode.main.pluginbuilder.items;
 
 import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 
 /**
@@ -11,8 +10,8 @@ public class ItemPartType extends Item {
 
     private final String iconName;
 
-    public ItemPartType(String name, String icon) {
-        super(name);
+    public ItemPartType(String name, String owner, String icon) {
+        super(name, owner);
         this.iconName = icon;
     }
     public String getIconName() {

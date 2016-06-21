@@ -1,8 +1,6 @@
 package com.jadencode.main.pluginbuilder.items;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 
 import java.util.List;
@@ -12,15 +10,14 @@ import java.util.List;
  */
 public class ItemMaterialModifier extends Item {
 
-//    "name": "Lunar", "color": "MOD_LUNAR", "weight": 1.0, "level": 0.5, "mod": 1.2, "materials": ["Metal"]},
     private final String colorName;
     private final float weight;
     private final float level;
     private final float mod;
     private final List<String> materialTypes;
 
-    public ItemMaterialModifier(String name, String color, float w, float l, float m, List<String> types) {
-        super(name);
+    public ItemMaterialModifier(String name, String owner, String color, float w, float l, float m, List<String> types) {
+        super(name, owner);
         this.colorName = color;
         this.weight = w > 0 ? w : 1;
         this.level = l;

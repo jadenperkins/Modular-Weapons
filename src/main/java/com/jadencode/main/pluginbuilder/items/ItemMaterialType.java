@@ -1,7 +1,6 @@
 package com.jadencode.main.pluginbuilder.items;
 
 import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 
 /**
@@ -11,8 +10,8 @@ public class ItemMaterialType extends Item {
 
     private final String scriptName;
 
-    public ItemMaterialType(String name, String script) {
-        super(name);
+    public ItemMaterialType(String name, String owner, String script) {
+        super(name, owner);
         this.scriptName = script;
     }
     public String getScriptName() {

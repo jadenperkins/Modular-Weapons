@@ -15,8 +15,8 @@ public class ItemWeaponType extends Item {
     private final float weight;
     private final List<String> partTypes;
 
-    public ItemWeaponType(String name, String stats, String script, float weight, List<String> parts) {
-        super(name);
+    public ItemWeaponType(String name, String owner, String stats, String script, float weight, List<String> parts) {
+        super(name, owner);
         this.statSetName = stats;
         this.scriptName = script;
         this.weight = weight > 0 ? weight : 1;

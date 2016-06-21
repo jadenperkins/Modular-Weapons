@@ -61,17 +61,17 @@ public class ScriptEditor extends ContentEditor<ItemScript> {
         this.scriptView.setText(item.getScriptContents());
     }
     @Override
-    public ItemScript createItem(String name) {
-        return new ItemScript(name, (String) this.scriptTypeSelection.getSelectedItem(), this.scriptView.getText());
+    public ItemScript createItem(String name, String owner) {
+        return new ItemScript(name, owner, (String) this.scriptTypeSelection.getSelectedItem(), this.scriptView.getText());
     }
     @Override
     public ItemScript getDefault() {
-        return new ItemScript("", "", "");
+        return new ItemScript("", "", "", "");
     }
 
     @Override
-    public ItemScript consume(String name, JsonObject json) {
+    public ItemScript consume(String name, JsonObject json, String owner) {
         JsonHelper helper = new JsonHelper(json);
-        return new ItemScript(name, helper.getString("type"), helper.getString("script"));
+        return new ItemScript(name, owner, helper.getString("type"), helper.getString("script"));
     }
 }

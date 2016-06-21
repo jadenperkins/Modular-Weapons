@@ -31,16 +31,16 @@ public class MaterialTypeEditor extends ContentEditor<ItemMaterialType> {
         this.scriptSelection.setSelectedItem(item.getScriptName());
     }
     @Override
-    public ItemMaterialType createItem(String name) {
-        return new ItemMaterialType(name, (String)this.scriptSelection.getSelectedItem());
+    public ItemMaterialType createItem(String name, String owner) {
+        return new ItemMaterialType(name, owner, (String)this.scriptSelection.getSelectedItem());
     }
     @Override
     public ItemMaterialType getDefault() {
-        return new ItemMaterialType("", "");
+        return new ItemMaterialType("", "", "");
     }
 
     @Override
-    public ItemMaterialType consume(String name, JsonObject json) {
-        return new ItemMaterialType(name, new JsonHelper(json).getString("script"));
+    public ItemMaterialType consume(String name, JsonObject json, String owner) {
+        return new ItemMaterialType(name, owner, new JsonHelper(json).getString("script"));
     }
 }

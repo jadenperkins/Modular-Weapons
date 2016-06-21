@@ -1,8 +1,6 @@
 package com.jadencode.main.pluginbuilder.items;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
 import com.jadencode.main.pluginbuilder.JsonHelper;
 
 import java.util.List;
@@ -18,8 +16,8 @@ public class ItemWeaponPart extends Item {
     private final String partType;
     private final List<String> materialTypes;
 
-    public ItemWeaponPart(String name, String nameMod, String partInfo, float weight, String partType, List<String> materialTypes) {
-        super(name);
+    public ItemWeaponPart(String name, String owner, String nameMod, String partInfo, float weight, String partType, List<String> materialTypes) {
+        super(name, owner);
         this.nameMod = nameMod;
         this.partInfo = partInfo;
         this.weight = weight > 0 ? weight : 1F;

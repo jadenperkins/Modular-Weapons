@@ -66,14 +66,14 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         this.materialsList.setSelectedIndices(i);
     }
     @Override
-    public ItemWeaponPart createItem(String name) {
+    public ItemWeaponPart createItem(String name, String owner) {
         String nameMod = this.nameModField.getText();
         String partInfo = this.partInfoField.getText();
         float weight = this.getValue(this.weightField);
         String partType = (String) this.partTypeSelection.getSelectedItem();
 
         List<String> materialTypes = this.materialsList.getSelectedValuesList();
-        return new ItemWeaponPart(name, nameMod, partInfo, weight, partType, materialTypes);
+        return new ItemWeaponPart(name, owner, nameMod, partInfo, weight, partType, materialTypes);
     }
     private float getValue(JTextField field) {
         float value;
@@ -86,11 +86,11 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
     }
     @Override
     public ItemWeaponPart getDefault() {
-        return new ItemWeaponPart("", "", "", 0F, "", new ArrayList<>());
+        return new ItemWeaponPart("", "", "", "", 0F, "", new ArrayList<>());
     }
 
     @Override
-    public ItemWeaponPart consume(String name, JsonObject json) {
+    public ItemWeaponPart consume(String name, JsonObject json, String owner) {
         JsonHelper helper = new JsonHelper(json);
         String nameMod = helper.getString("nameMod");
         String partInfo = helper.getString("partInfo");
@@ -102,6 +102,6 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         for (JsonElement jsonElement : array)
             materials.add(jsonElement.getAsString());
 
-        return new ItemWeaponPart(name, nameMod, partInfo, weight, partType, materials);
+        return new ItemWeaponPart(name, owner, nameMod, partInfo, weight, partType, materials);
     }
 }

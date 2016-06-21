@@ -11,8 +11,8 @@ public class ItemColor extends Item {
     public int red;
     public int green;
     public int blue;
-    public ItemColor(String name, int r, int g, int b) {
-        super(name);
+    public ItemColor(String name, String owner, int r, int g, int b) {
+        super(name, owner);
         this.red = r;
         this.green = g;
         this.blue = b;
