@@ -23,6 +23,7 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
     private final JTextField weightField;
     private final JComboBox<String> partTypeSelection;
     private final JComboBox<String> statSetSelection;
+    private final JComboBox<String> iconSelection;
     private final JList<String> materialsList;
 
     public WeaponPartEditor(Module module, PluginBuilderPanel parent) {
@@ -33,6 +34,7 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         this.weightField = helper.add(new JTextField(), "Weight", H_S, V_E + 2 * (H_FLD + V_PAD), H_L, H_FLD);
         this.partTypeSelection = helper.add(new JComboBox<>(), "Part Type", H_S, V_E + 3 * (H_FLD + V_PAD), H_L, H_FLD);
         this.statSetSelection = helper.add(new JComboBox<>(), "Stat Set", H_S, V_E + 4 * (H_FLD + V_PAD), H_L, H_FLD);
+        this.iconSelection = helper.add(new JComboBox<>(), "Icon", H_S, V_E + 5 * (H_FLD + V_PAD), H_L, H_FLD);
         this.materialsList = helper.add(new JList<>(), "Material Types", H_E, V_S, H_L, H_FLD * 10, GuiHelper.Align.ABOVE);
     }
     @Override
@@ -47,6 +49,12 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         statSets.addAll(statSetsModule.getItemKeys());
         this.statSetSelection.setModel(new DefaultComboBoxModel<>(statSets.toArray(new String[0])));
 
+        Module iconsModule = panel.getModule("Icons");
+        List<String> icons = new ArrayList<>();
+        icons.add("");
+        icons.addAll(iconsModule.getItemKeys());
+        this.iconSelection.setModel(new DefaultComboBoxModel<>(icons.toArray(new String[0])));
+
         Module materialTypesModule = panel.getModule("Material Types");
         List<String> materialTypes = materialTypesModule.getItemKeys();
         this.materialsList.setListData(materialTypes.toArray(new String[0]));
@@ -59,6 +67,7 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         this.weightField.setText(item.getWeight() + "");
         this.partTypeSelection.setSelectedItem(item.getPartType());
         this.statSetSelection.setSelectedItem(item.getStatSet());
+        this.iconSelection.setSelectedItem(item.getIconName());
 
         List<String> materialTypes = item.getMaterialTypes();
         List<Integer> indices = new ArrayList<>();
@@ -82,9 +91,10 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         float weight = this.getValue(this.weightField);
         String partType = (String) this.partTypeSelection.getSelectedItem();
         String statSet = (String) this.statSetSelection.getSelectedItem();
+        String iconName = (String) this.iconSelection.getSelectedItem();
 
         List<String> materialTypes = this.materialsList.getSelectedValuesList();
-        return new ItemWeaponPart(name, owner, nameMod, partInfo, weight, partType, statSet, materialTypes);
+        return new ItemWeaponPart(name, owner, nameMod, partInfo, weight, partType, statSet, iconName, materialTypes);
     }
     private float getValue(JTextField field) {
         float value;
@@ -97,7 +107,7 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
     }
     @Override
     public ItemWeaponPart getDefault() {
-        return new ItemWeaponPart("", "", "", "", 0F, "", "", new ArrayList<>());
+        return new ItemWeaponPart("", "", "", "", 0F, "", "", "", new ArrayList<>());
     }
 
     @Override
@@ -108,12 +118,13 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         float weight = helper.getFloat("weight", 1F);
         String partType = helper.getString("partType");
         String statSet = helper.getString("stats");
+        String iconName = helper.getString("icon");
         List<String> materials = new ArrayList<>();
         JsonArray array = helper.getArray("materials");
 
         for (JsonElement jsonElement : array)
             materials.add(jsonElement.getAsString());
 
-        return new ItemWeaponPart(name, owner, nameMod, partInfo, weight, partType, statSet, materials);
+        return new ItemWeaponPart(name, owner, nameMod, partInfo, weight, partType, statSet, iconName, materials);
     }
 }

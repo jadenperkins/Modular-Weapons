@@ -4,6 +4,7 @@ import com.jadencode.main.constants.StatSets;
 import com.jadencode.main.stat.StatSet;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by JPERKI8 on 6/13/2016.
@@ -14,11 +15,8 @@ public class WeaponPartLegendary extends WeaponPart {
     private final String partInfo;
     private final StatSet statSet;
 
-    public WeaponPartLegendary(String partName, String nameMod, float weight, WeaponPartType type) {
-        this(partName, nameMod, "A legendary part", StatSets.EMPTY, weight, type);
-    }
-    public WeaponPartLegendary(String partName, String nameMod, String partInfo, StatSet statSet, float weight, WeaponPartType type) {
-        super(weight, type);
+    public WeaponPartLegendary(String partName, String nameMod, String partInfo, StatSet statSet, float weight, BufferedImage icon, WeaponPartType type) {
+        super(weight, icon, type);
         this.partName = partName;
         this.nameMod = nameMod;
         this.partInfo = partInfo;

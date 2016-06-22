@@ -4,6 +4,7 @@ import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.util.WeightedItem;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by JPERKI8 on 6/13/2016.
@@ -11,13 +12,18 @@ import java.awt.*;
 public abstract class WeaponPart implements WeightedItem {
     private final float weight;
     private final WeaponPartType type;
+    private final BufferedImage icon;
 
-    public WeaponPart(float w, WeaponPartType type) {
+    public WeaponPart(float w, BufferedImage icon, WeaponPartType type) {
         this.weight = w;
+        this.icon = icon;
         this.type = type;
     }
     public WeaponPartType getType() {
         return type;
+    }
+    public BufferedImage getIcon() {
+        return this.icon == null ? this.getType().getIcon() : this.icon;
     }
     @Override
     public float getWeight() {

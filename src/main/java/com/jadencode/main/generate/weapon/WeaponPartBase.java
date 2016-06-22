@@ -4,6 +4,7 @@ import com.jadencode.main.material.Material;
 import com.jadencode.main.material.MaterialType;
 import com.jadencode.main.stat.StatSet;
 
+import java.awt.image.BufferedImage;
 import java.util.List;
 
 /**
@@ -106,21 +107,22 @@ public class WeaponPartBase {
     private final String             partName;
     private final String             nameMod;
     private final List<MaterialType> materials;
-    private final float   weight;
-    private final StatSet statSet;
+    private final float              weight;
+    private final StatSet            statSet;
+    private final BufferedImage      icon;
 
-    public WeaponPartBase(String name, String mod, float weight, StatSet stats, WeaponPartType type, List<MaterialType> mats) {
+    public WeaponPartBase(String name, String mod, float weight, StatSet stats, WeaponPartType type, BufferedImage icon, List<MaterialType> mats) {
         this.partName = name;
         this.nameMod = mod;
         this.weight = weight;
         this.partType = type;
 
         this.statSet = stats;
+        this.icon = icon;
         this.materials = mats;
-//        mats.forEach(lib -> this.materials.addAll(Materials.getMaterials(lib)));
     }
-    public WeaponPartBase(String name, String mod, StatSet stats, WeaponPartType type, List<MaterialType> mats) {
-        this(name, mod, 1F, stats, type, mats);
+    public BufferedImage getIcon() {
+        return this.icon;
     }
     public float getWeight() {
         return weight;

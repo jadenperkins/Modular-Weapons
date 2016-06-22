@@ -15,16 +15,21 @@ public class ItemWeaponPart extends Item {
     private final float weight;
     private final String partType;
     private final String statSet;
+    private final String iconName;
     private final List<String> materialTypes;
 
-    public ItemWeaponPart(String name, String owner, String nameMod, String partInfo, float weight, String partType, String statSet, List<String> materialTypes) {
+    public ItemWeaponPart(String name, String owner, String nameMod, String partInfo, float weight, String partType, String statSet, String icon, List<String> materialTypes) {
         super(name, owner);
         this.nameMod = nameMod;
         this.partInfo = partInfo;
         this.weight = weight > 0 ? weight : 1F;
         this.partType = partType;
         this.statSet = statSet;
+        this.iconName = icon;
         this.materialTypes = materialTypes;
+    }
+    public String getIconName() {
+        return iconName;
     }
     public String getNameMod() {
         return nameMod;
@@ -52,6 +57,7 @@ public class ItemWeaponPart extends Item {
                 .add("weight", this.weight)
                 .add("partType", this.partType)
                 .add("stats", this.statSet)
+                .add("icon", this.iconName)
                 .addNotEmpty("materials", JsonHelper.toArray(this.materialTypes));
     }
 }

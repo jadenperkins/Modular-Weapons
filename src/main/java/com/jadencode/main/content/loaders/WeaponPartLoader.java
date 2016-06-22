@@ -2,10 +2,7 @@ package com.jadencode.main.content.loaders;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.jadencode.main.constants.MaterialTypes;
-import com.jadencode.main.constants.PartTypes;
-import com.jadencode.main.constants.StatSets;
-import com.jadencode.main.constants.WeaponParts;
+import com.jadencode.main.constants.*;
 import com.jadencode.main.generate.weapon.WeaponPart;
 import com.jadencode.main.generate.weapon.WeaponPartBase;
 import com.jadencode.main.generate.weapon.WeaponPartLegendary;
@@ -13,6 +10,7 @@ import com.jadencode.main.generate.weapon.WeaponPartType;
 import com.jadencode.main.material.MaterialType;
 import com.jadencode.main.stat.StatSet;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,17 +29,19 @@ public class WeaponPartLoader extends ContentManager {
         String partInfo = obj.has("partInfo") ? obj.get("partInfo").getAsString() : "A weapon part";
         StatSet set = obj.has("stats") ? StatSets.get(obj.get("stats").getAsString()) : StatSets.EMPTY;
         float weight = obj.has("weight") ? obj.get("weight").getAsFloat() : 1F;
+        String iconName = obj.has("icon") ? obj.get("icon").getAsString() : null;
+        BufferedImage icon = Icons.get(iconName);
         WeaponPartType type = PartTypes.get(obj.get("partType").getAsString());
 
         if(isLegendary) {
-            WeaponPart part = new WeaponPartLegendary(name, nameMod, partInfo, set, weight, type);
+            WeaponPart part = new WeaponPartLegendary(name, nameMod, partInfo, set, weight, icon, type);
             WeaponParts.register(part);
         } else {
             JsonArray materials = obj.get("materials").getAsJsonArray();
             List<String> mats = new ArrayList<>();
             materials.forEach(e -> mats.add(e.getAsString()));
             List<MaterialType> types = mats.stream().map(MaterialTypes::get).collect(Collectors.toList());
-            WeaponPartBase part = new WeaponPartBase(name, nameMod, weight, set, type, types);
+            WeaponPartBase part = new WeaponPartBase(name, nameMod, weight, set, type, icon, types);
             WeaponParts.addBasePart(part);
         }
     }

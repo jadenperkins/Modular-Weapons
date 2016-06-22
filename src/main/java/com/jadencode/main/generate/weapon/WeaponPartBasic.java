@@ -5,6 +5,7 @@ import com.jadencode.main.material.Material;
 import com.jadencode.main.stat.StatSet;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by Jaden on 5/28/2015.
@@ -18,7 +19,7 @@ public class WeaponPartBasic extends WeaponPart {
     private final Color            partColor;
 
     public WeaponPartBasic(WeaponPartBase part, Material resource) {
-        super(part.getWeight() * resource.getWeight(), part.getPartType());
+        super(part.getWeight() * resource.getWeight(), part.getIcon(), part.getPartType());
         this.partName = resource.getName() + " " + part.getPartName();
         this.nameMod = part.getNameMod();
         this.partDescription = String.format("A %s crafted from %s", part.getPartName(), resource.getName());

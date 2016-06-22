@@ -119,7 +119,7 @@ public class Main {
                 }
             } else {
                 for(WeaponPartInstance part : weap.getPartsList()) {
-                    BufferedImage icon = part.getWeaponPart().getType().getIcon();
+                    BufferedImage icon = part.getWeaponPart().getIcon();
                     int rgb = part.getColor().getRGB();
                     for(int x = 0; x < icon.getWidth(); x++) {
                         for(int y = 0; y < icon.getHeight(); y++) {
