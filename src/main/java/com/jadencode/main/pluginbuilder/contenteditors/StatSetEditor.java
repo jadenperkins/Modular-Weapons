@@ -34,12 +34,17 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
         stats.add("");
         JComboBox<String> box = new JComboBox<>(new DefaultComboBoxModel<>(stats.toArray(new String[0])));
 
-        this.statsTable.setSize(H_L, H_NTR * Math.max(1, stats.size()));
-        this.statsTable.setModel(new DefaultTableModel(stats.size(), 2));
+        this.statsTable.setSize(H_L, H_NTR * Math.max(1, statsModule.getItemKeys().size()));
+        this.statsTable.setModel(new DefaultTableModel(statsModule.getItemKeys().size(), 2));
         this.statsTable.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(box));
     }
     @Override
     public void populate(ItemStatSet item) {
+        for(int row = 0; row < this.statsTable.getModel().getRowCount(); row++) {
+            this.statsTable.setValueAt("", row, 0);
+            this.statsTable.setValueAt("", row, 1);
+        }
+
         HashMap<String, Double> stats = item.getStats();
         List<String> keys = new ArrayList<>(stats.keySet());
         for(int row = 0; row < keys.size(); row++) {
@@ -56,11 +61,14 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
         for(int row = 0; row < rows; row++) {
             String stat = (String)this.statsTable.getValueAt(row, 0);
             if(stat != null && !stat.isEmpty()) {
-                double value;
+                double value = 0;
                 try {
-                    value = Double.parseDouble((String)this.statsTable.getValueAt(row, 1));
+                    value = (Double) this.statsTable.getValueAt(row, 1);
                 } catch (Exception e) {
-                    value = 0;
+                    try {
+                        value = Double.parseDouble((String)this.statsTable.getValueAt(row,  1));
+                    } catch (Exception e1) {
+                    }
                 }
                 stats.put(stat, value);
             }
