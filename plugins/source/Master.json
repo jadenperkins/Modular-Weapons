@@ -511,6 +511,10 @@
       "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAHJJREFUSEvtzEEKgDAMBdHe/9KxEbpyxAxdSCHCExnJHxHxaj75mp/8P2FctgbW8dcIxnT4QPU4ceyBvQFznJ6hB3ogQw/sD9xRjHA8fyBVRzCm/weqMBoYDYwGRgOjgdHAaGA0MBoYDYwGRgOjgbEuxgUPyvhqfOt2twAAAABJRU5ErkJggg\u003d\u003d"
     },
     {
+      "name": "blade_legendary",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAANNJREFUSEvV0cEKgzAQBmFf21766Clz+CGEadxFofTwgUzYNegxxvjqPF/jffDo59AIBnG1RGPMS9az0Ii8eTcMjVFZohEZxno20xgsyaL1LDQib99dHxqjskQjcv1bN6gs0QiGbn+D2ze4GobGYPiP/0Ku/rsbVIahMSpLNCKDfIv1bKYxHrnBbhgao/IrNeKRG1SWaERlGBojC3a/UiMqw9AYWYL1LDSiMgyNmBfslmjs0NihsUNjh8YOjR0aOzR2aOzQ2KGxQ2OHxg6NHRrrxvEBfOaqE28p9+MAAAAASUVORK5CYII\u003d"
+    },
+    {
       "name": "blade_long",
       "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAF1JREFUSEvtzDEKgDAUBNHc/9LfbGE3YgYbixWehAnZNTOP9pffPvJ9YLx9Grgfv41gjA50IDrQgehAB6IDfxg4hdHAaGA0MBoYDYwGRgOjgdHAaGA0MBoYDYznZl3LRvhqvM9xoQAAAABJRU5ErkJggg\u003d\u003d"
     },
@@ -547,6 +551,10 @@
       "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAJRJREFUSEulzDEOwyAQAMH8/9MkZ4kUeAqvjDQUyx2ftdYrjAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgwFowFY8FYMBaMBWPBWDCO35nr73zfGMerD87l7Zwbt3DFY3E758YtXPFY3M65cQvbk+XBOF5/8BRjwVgwFozPrc8XRiKzvY+i2lIAAAAASUVORK5CYII\u003d"
     },
     {
+      "name": "grip_legendary",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAADrSURBVEhLpdHBSoJBFEBhX8IXEKlFaGm7NAuUSG0X4ca1LyCSC5G0diJuet/bjDAQchYeXHyLe+bCMP9fiYiLYDQwGhgNjAZGA6OB0cBoYDQwGhgNjAZGA6OB0cBoYDQwGhgNjAZGA6OB0cBoYDQwGhgNjAZGA6OB0cBoYDQwGhgNjMXP233MO7X4HrfTyDsYi99pP7aj1tHpWYGx2AzvYvf+EOuXRhp5B2NxmPRi/9GNz6erNPIOxiy/O9/89XqbRt7JMGbL5+vjx1s81tPIOxnGbNasxmpwE/lPnJ79h9HAaGA0MBoYzxeVP8Cd4fgex9cGAAAAAElFTkSuQmCC"
+    },
+    {
       "name": "grip_light",
       "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAHhJREFUSEvtzDEKwCAQAEH//2mjhd0ULmlS5GAOWeHGnPMVxoKxYCwYC8aCsWAsGAvGgrFgLBgLxoKxYCwYC8aCsWAsGAvGgrFgLBgLxoKxYCwYC8aCsWAsGAvGgrFgLBiPNXutp/83xuM/8IUDNxgLxoKxYLw3xwOEnNuVxU1T1QAAAABJRU5ErkJggg\u003d\u003d"
     },
@@ -573,6 +581,10 @@
     {
       "name": "hilt_heavy",
       "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAJ1JREFUSEutzOEOQDAMAGHv/9JllSZ0Rxx+fGaXdktEfILRwGhgNDAaGA2MBkYDo4HRwGhgNDAaGA2MBkYDo4HRwGhgNDAaGA2MBkYDo4HRwGhgNDAaGA2MBkZj/+TBA1dq53Sp/zvHuTzr8sZ/D3yB0cBoYDQwGhgNjAbHLZM+N0whY1ssfW6YQsa2WPrcMIWMbbH0uWEK5clyRCwrcedwASat9FoAAAAASUVORK5CYII\u003d"
+    },
+    {
+      "name": "hilt_legendary",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAGWSURBVEhLpZNXSwNBFIUDCiIqNuy9ISKIT/5tBREVG/ZegmgwRtTYOyKC+HLdM3GHrB5Ijj58e+98u3d2ZvdOzMz+BZUKVCpQqUClApUKVCpQqUClApUKVCpQqUClApUKVCpQqUClApUKVCpQqUClApUKVCpQqUClApUKVCpQqUClgk/uNtuC8PsBxsVyQxAyeUamh7zIl9RsVRC+JzhfrHMDhduN1iBkbeF4ptKJfHjd7w1CJo/InZFCw/6e97oN3+Rsoda2hwvcGEt+3Om0m/UWX4wal7wn+r3ESlB8NFVulyuNdjhRavdb7XYwXmJXq03+uXCiSPHpfI19JAfcm1GEgqfdLnvY7rCXeI99pgZdnpgs8zXuAtJL9V7mYn+sOAiZ3F3+8hfCGjfAshAVsDVEL7K7Kxf0G/wVKhWoVPglwv3FR4tc16FP0ANw7G9FBgDNgk7EVz6Zq3bdiELA/lZkAPBGrAK9D9DKmAynL/schEQG4HqtOQgWw8HBBMnpCn8Gss9CSGTwE7z17aAvSPl9M4t9AR5l5oSwgSzhAAAAAElFTkSuQmCC"
     },
     {
       "name": "hilt_light",
@@ -2252,7 +2264,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Bringer Blade",
@@ -2261,7 +2273,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Broad Axehead",
@@ -2306,7 +2318,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Crawler Blade",
@@ -2315,7 +2327,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Dancer Blade",
@@ -2324,7 +2336,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Delver Blade",
@@ -2333,7 +2345,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Dire Hilt",
@@ -2342,7 +2354,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Double Axehead",
@@ -2375,7 +2387,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Eater Blade",
@@ -2384,7 +2396,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Fast Arrow Fletchings",
@@ -2429,7 +2441,7 @@
       "weight": 100.0,
       "partType": "Sword Grip",
       "stats": "",
-      "icon": ""
+      "icon": "grip_legendary"
     },
     {
       "name": "Grip of Daylight",
@@ -2438,7 +2450,7 @@
       "weight": 100.0,
       "partType": "Sword Grip",
       "stats": "",
-      "icon": ""
+      "icon": "grip_legendary"
     },
     {
       "name": "Grip of Death",
@@ -2447,7 +2459,7 @@
       "weight": 100.0,
       "partType": "Sword Grip",
       "stats": "",
-      "icon": ""
+      "icon": "grip_legendary"
     },
     {
       "name": "Grip of Dreams",
@@ -2456,7 +2468,7 @@
       "weight": 100.0,
       "partType": "Sword Grip",
       "stats": "",
-      "icon": ""
+      "icon": "grip_legendary"
     },
     {
       "name": "Grip of Fate",
@@ -2465,7 +2477,7 @@
       "weight": 100.0,
       "partType": "Sword Grip",
       "stats": "",
-      "icon": ""
+      "icon": "grip_legendary"
     },
     {
       "name": "Grip of Ghosts",
@@ -2474,7 +2486,7 @@
       "weight": 100.0,
       "partType": "Sword Grip",
       "stats": "",
-      "icon": ""
+      "icon": "grip_legendary"
     },
     {
       "name": "Grip of Life",
@@ -2483,7 +2495,7 @@
       "weight": 100.0,
       "partType": "Sword Grip",
       "stats": "",
-      "icon": ""
+      "icon": "grip_legendary"
     },
     {
       "name": "Grip of Night",
@@ -2492,7 +2504,7 @@
       "weight": 100.0,
       "partType": "Sword Grip",
       "stats": "",
-      "icon": ""
+      "icon": "grip_legendary"
     },
     {
       "name": "Grip of Souls",
@@ -2501,7 +2513,7 @@
       "weight": 100.0,
       "partType": "Sword Grip",
       "stats": "",
-      "icon": ""
+      "icon": "grip_legendary"
     },
     {
       "name": "Grip of Spirits",
@@ -2510,7 +2522,7 @@
       "weight": 100.0,
       "partType": "Sword Grip",
       "stats": "",
-      "icon": ""
+      "icon": "grip_legendary"
     },
     {
       "name": "Grip of Will",
@@ -2519,7 +2531,7 @@
       "weight": 100.0,
       "partType": "Sword Grip",
       "stats": "",
-      "icon": ""
+      "icon": "grip_legendary"
     },
     {
       "name": "Grip of the Grave",
@@ -2528,7 +2540,7 @@
       "weight": 100.0,
       "partType": "Sword Grip",
       "stats": "",
-      "icon": ""
+      "icon": "grip_legendary"
     },
     {
       "name": "Grip of the Moon",
@@ -2537,7 +2549,7 @@
       "weight": 100.0,
       "partType": "Sword Grip",
       "stats": "",
-      "icon": ""
+      "icon": "grip_legendary"
     },
     {
       "name": "Grip of the Sun",
@@ -2546,7 +2558,7 @@
       "weight": 100.0,
       "partType": "Sword Grip",
       "stats": "",
-      "icon": ""
+      "icon": "grip_legendary"
     },
     {
       "name": "Hater Blade",
@@ -2555,7 +2567,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Heavy Bowstring",
@@ -2624,7 +2636,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Hilt of Defiance",
@@ -2633,7 +2645,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Hilt of Dragons",
@@ -2642,7 +2654,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Hilt of Ghosts",
@@ -2651,7 +2663,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Hilt of Incandescence",
@@ -2660,7 +2672,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Hilt of Judgement",
@@ -2669,7 +2681,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Hilt of Monsters",
@@ -2678,7 +2690,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Hilt of Radiance",
@@ -2687,7 +2699,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Hilt of Remorse",
@@ -2696,7 +2708,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Hilt of Strength",
@@ -2705,7 +2717,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Hilt of Voracity",
@@ -2714,7 +2726,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Hilt of the All-seeing",
@@ -2723,7 +2735,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Hilt of the Chosen",
@@ -2732,7 +2744,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Hilt of the Cynics",
@@ -2741,7 +2753,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Hilt of the Ever-present",
@@ -2750,7 +2762,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Hilt of the Reverent",
@@ -2759,7 +2771,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Hilt of the Slaves",
@@ -2768,7 +2780,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Hilt of the Zealots",
@@ -2777,7 +2789,7 @@
       "weight": 100.0,
       "partType": "Sword Hilt",
       "stats": "",
-      "icon": ""
+      "icon": "hilt_legendary"
     },
     {
       "name": "Light Bowstring",
@@ -2907,7 +2919,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Maul Handle",
@@ -3024,7 +3036,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Recurve Limbs",
@@ -3045,7 +3057,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Round Axehead",
@@ -3066,7 +3078,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Screamer Blade",
@@ -3075,7 +3087,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Scythe Axehead",
@@ -3096,7 +3108,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Sharp Arrow Fletchings",
@@ -3124,12 +3136,12 @@
     },
     {
       "name": "Shocker Blade",
-      "nameMod": "Schocker",
+      "nameMod": "Shocker",
       "partInfo": "A legendary weapon part",
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Short Arrow Shaft",
@@ -3211,7 +3223,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Singer Blade",
@@ -3220,7 +3232,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Single Axehead",
@@ -3289,7 +3301,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Waker Blade",
@@ -3298,7 +3310,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Walker Blade",
@@ -3307,7 +3319,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "War Handle",
@@ -3340,7 +3352,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Watcher Blade",
@@ -3349,7 +3361,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     },
     {
       "name": "Wringer Blade",
@@ -3358,7 +3370,7 @@
       "weight": 100.0,
       "partType": "Sword Blade",
       "stats": "",
-      "icon": ""
+      "icon": "blade_legendary"
     }
   ],
   "Weapon Types": [

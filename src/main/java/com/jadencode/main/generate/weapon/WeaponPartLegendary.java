@@ -40,6 +40,6 @@ public class WeaponPartLegendary extends WeaponPart {
     }
     @Override
     public Color getColor() {
-        return Color.WHITE;
+        return null;
     }
 }

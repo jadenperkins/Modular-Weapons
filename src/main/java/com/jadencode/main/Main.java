@@ -27,6 +27,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -107,33 +108,65 @@ public class Main {
         try {
             out.mkdirs();
             out.createNewFile();
-            BufferedImage image = new BufferedImage(16, weap.getPartsList().size() * 16, BufferedImage.TYPE_INT_ARGB);
+            BufferedImage image = new BufferedImage(64, weap.getPartsList().size() * 16, BufferedImage.TYPE_INT_ARGB);
+            Graphics2D g2d = image.createGraphics();
             if(!standard) {
                 for (int x = 0; x < weap.getPartsList().size(); x++) {
                     Color c = weap.getPartsList().get(x).getColor();
-                    for(int i = 0; i < 16; i++) {
-                        for(int j = 0; j < 16; j++) {
-                            image.setRGB(i, j + 16 * x, c == null ? Color.WHITE.getRGB() : c.getRGB());
-                        }
-                    }
+                    c = c == null ? Color.WHITE : c;
+                    g2d.setColor(c);
+                    g2d.drawRect(0, x * 16, 16, 16);
                 }
             } else {
                 for(WeaponPartInstance part : weap.getPartsList()) {
                     BufferedImage icon = part.getWeaponPart().getIcon();
-                    for(int x = 0; x < icon.getWidth(); x++) {
-                        for(int y = 0; y < icon.getHeight(); y++) {
-                            if(icon.getRGB(x, y) >> 24 != 0x00) {
-                                image.setRGB(x, y, part.getColor() == null ? icon.getRGB(x, y) : part.getColor().getRGB());
+                    Color c = part.getColor();
+                    if(c == null) {
+                        g2d.drawImage(icon, 0, 0, null);
+                    } else {
+                        for(int x = 0; x < icon.getWidth(); x++) {
+                            for(int y = 0; y < icon.getHeight(); y++) {
+                                if(icon.getRGB(x, y) >> 24 != 0x00) {
+                                    image.setRGB(x, y, part.getColor().getRGB());
+                                }
                             }
                         }
                     }
                 }
+                g2d.setPaint(Color.WHITE);
+                g2d.fillRect(16, 0, 48, image.getHeight());
+
                 BufferedImage after = new BufferedImage(image.getWidth() * 8, image.getHeight() * 8, BufferedImage.TYPE_INT_ARGB);
                 AffineTransform at = new AffineTransform();
                 at.scale(8, 8);
                 AffineTransformOp scaleOp = new AffineTransformOp(at, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
                 after = scaleOp.filter(image, after);
                 image = after;
+
+                g2d = image.createGraphics();
+
+                StatSet stats = weap.getStatSet();
+                g2d.setPaint(Color.BLACK);
+                g2d.setFont(new Font("Helvetica", Font.PLAIN, 12));
+                int i = 4;
+                g2d.drawString(String.format("%s (%d)", weap.getDisplayName(), weap.getLevel()), 16 * 8 + 8, g2d.getFontMetrics().getHeight() * i);
+
+                i += 1;
+                g2d.setPaint(Color.DARK_GRAY);
+                for (WeaponPartInstance weaponPartInstance : weap.getPartsList()) {
+                    g2d.drawString(String.format("        %s", weaponPartInstance.getPartInfo(), weaponPartInstance.getLevel()), 16 * 9, g2d.getFontMetrics().getHeight() * i);
+                    i++;
+                }
+
+                i += 1;
+                g2d.setPaint(Color.BLUE);
+                for (StatBase statBase : stats.getStatsRaw().keySet()) {
+                    g2d.drawString(String.format("%s: %.2f", statBase.getStatName(), stats.get(statBase)), 16 * 9, g2d.getFontMetrics().getHeight() * i);
+                    i++;
+                }
+
+                g2d.dispose();
+
             }
             ImageIO.write(image, "PNG", out);
             System.out.println("Images stored in " + dir.getAbsolutePath());
@@ -192,23 +225,23 @@ public class Main {
 //        ArmorPart.generateArmorParts();
 
 
-        WeaponInstance weap = new WeaponGenerator().generate(theWorld.getRNG(), 1);
-        StatSet s = weap.getStatSet();
-        Set<StatBase> base = weap.getWeaponType().getStatSet().getStatsRaw().keySet();
+        int weaponLevel = 50;
+        WeaponInstance weap = new WeaponGenerator().generate(theWorld.getRNG(), weaponLevel);
+        System.out.println("Created " + weap.getDisplayName());
+//        StatSet s = weap.getStatSet();
+//        Set<StatBase> base = weap.getWeaponType().getStatSet().getStatsRaw().keySet();
+//
+//
+//        System.out.println(weap.getDisplayName());
+//        base.forEach(stat -> System.out.println(String.format("\t%s: %f", stat.getStatName(), s.get(stat))));
+//
+//        System.out.println("\t\t" + weap.getDisplayInfo());
 
-
-        System.out.println(weap.getDisplayName());
-        base.forEach(stat -> System.out.println(String.format("\t%s: %f", stat.getStatName(), s.get(stat))));
-
-        System.out.println("\t\t" + weap.getDisplayInfo());
+//        WeaponInstance scaled = weap.scaled(20);
+//        StatSet s1 = scaled.getStatSet();
+//        s1.getStatsRaw().keySet().forEach(stat -> System.out.println(String.format("\t%s: %f", stat.getStatName(), s1.get(stat))));
 
         printWeapon(weap);
-
-
-        //291 / 89
-        WeaponInstance scaled = weap.scaled(20);
-        StatSet s1 = scaled.getStatSet();
-        s1.getStatsRaw().keySet().forEach(stat -> System.out.println(String.format("\t%s: %f", stat.getStatName(), s1.get(stat))));
 
 //        for(WeaponPartInstance part : weap.getWeaponParts().values()) {
 //            for(String key : part.getPartTypes().getFloatKeys()) {
