@@ -14,31 +14,14 @@ public class MaterialModified extends Material {
         this((mod.getName() + " " + parent.getName()).trim(), combineColors(parent.getColor(), mod.getColor()), parent.getWeight() * mod.getWeight(), parent.getMultiplier() * mod.getMod(), (int)(parent.getLevel() * mod.getLevel()), parent.getMaterialType());
     }
     private static Color combineColors(Color c1, Color c2) {
-        int r1 = c1.getRed();
-        int g1 = c1.getGreen();
-        int b1 = c1.getBlue();
-
-        int r2 = c2.getRed();
-        int g2 = c2.getGreen();
-        int b2 = c2.getBlue();
-
-        int newR = combine(r1, r2);
-        int newG = combine(g1, g2);
-        int newB = combine(b1, b2);
-
+        int newR = combine(c1.getRed(), c2.getRed());
+        int newG = combine(c1.getGreen(), c2.getGreen());
+        int newB = combine(c1.getBlue(), c2.getBlue());
         return new Color(newR, newG, newB);
     }
     private static int combine(int c1, int c2) {
-        int mod = 0;
-
-        for(int i = 0; i < COMPONENT_1_TIMES; i++) {
-            mod += c1;
-        }
-        for(int i = 0; i < COMPONENT_2_TIMES; i++) {
-            mod += c2;
-        }
+        int mod = COMPONENT_1_TIMES * c1 + COMPONENT_2_TIMES * c2;
         int ret = (int)Math.ceil(Math.min(255, (double)mod / (double)(COMPONENT_TOTAL)));
-
         return ret;
     }
     private static final int COMPONENT_1_TIMES = 3;

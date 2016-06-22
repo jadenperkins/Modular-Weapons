@@ -113,18 +113,17 @@ public class Main {
                     Color c = weap.getPartsList().get(x).getColor();
                     for(int i = 0; i < 16; i++) {
                         for(int j = 0; j < 16; j++) {
-                            image.setRGB(i, j + 16 * x, c.getRGB());
+                            image.setRGB(i, j + 16 * x, c == null ? Color.WHITE.getRGB() : c.getRGB());
                         }
                     }
                 }
             } else {
                 for(WeaponPartInstance part : weap.getPartsList()) {
                     BufferedImage icon = part.getWeaponPart().getIcon();
-                    int rgb = part.getColor().getRGB();
                     for(int x = 0; x < icon.getWidth(); x++) {
                         for(int y = 0; y < icon.getHeight(); y++) {
                             if(icon.getRGB(x, y) >> 24 != 0x00) {
-                                image.setRGB(x, y, rgb);
+                                image.setRGB(x, y, part.getColor() == null ? icon.getRGB(x, y) : part.getColor().getRGB());
                             }
                         }
                     }
