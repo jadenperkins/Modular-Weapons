@@ -225,7 +225,7 @@ public class Main {
 //        ArmorPart.generateArmorParts();
 
 
-        int weaponLevel = 50;
+        int weaponLevel = 250;
         WeaponInstance weap = new WeaponGenerator().generate(theWorld.getRNG(), weaponLevel);
         System.out.println("Created " + weap.getDisplayName());
 //        StatSet s = weap.getStatSet();

@@ -1290,7 +1290,7 @@
     {
       "name": "scaled",
       "type": "stats",
-      "script": "function scale(level, value) {\r\n    return value * Math.pow(1.1, level - 1);\r\n}"
+      "script": "var MULT_CAP \u003d 2000;\r\nvar CAP_LEVEL \u003d 100;\r\nvar HALF_LEVEL \u003d CAP_LEVEL / 2;\r\n\r\nvar BASE \u003d Math.pow(MULT_CAP / 2, 1 / (HALF_LEVEL - 1));\r\n\r\nfunction scale(i, original) {\r\n    if(i \u003c\u003d HALF_LEVEL) return original * Math.pow(BASE, i - 1);\r\n    if(i \u003e HALF_LEVEL) return original * (MULT_CAP - Math.pow(BASE, CAP_LEVEL - 1 - i));\r\n}"
     },
     {
       "name": "woods",
