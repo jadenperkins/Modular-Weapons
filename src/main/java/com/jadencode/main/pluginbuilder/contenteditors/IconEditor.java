@@ -63,6 +63,17 @@ public class IconEditor extends ContentEditor<ItemIcon> {
     @Override
     public void populate(ItemIcon item) {
         this.base64String = item.getBase64();
+        try {
+            byte[] imageBytes = DatatypeConverter.parseBase64Binary(this.base64String);
+            ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
+            BufferedImage image = ImageIO.read(bis);
+            bis.close();
+            if(image != null) {
+                this.displayLabel.setIcon(new ImageIcon(image.getScaledInstance(image.getWidth() * 8, image.getHeight() * 8, 0)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     @Override
     public ItemIcon createItem(String name, String owner) {
