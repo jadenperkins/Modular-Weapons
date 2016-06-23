@@ -1,5 +1,7 @@
 package com.jadencode.main.material;
 
+import com.jadencode.main.generate.QualityLevel;
+
 import java.awt.*;
 
 /**
@@ -7,11 +9,11 @@ import java.awt.*;
  */
 public class MaterialModified extends Material {
 
-    public MaterialModified(String name, Color color, float weight, float multiplier, int level, MaterialType type) {
-        super(name, color, weight, multiplier, level, type);
+    public MaterialModified(String name, Color color, float weight, float multiplier, int level, QualityLevel quality, MaterialType type) {
+        super(name, color, weight, multiplier, level, quality, type);
     }
-    public MaterialModified(Material parent, MaterialModifier mod) {
-        this((mod.getName() + " " + parent.getName()).trim(), combineColors(parent.getColor(), mod.getColor()), parent.getWeight() * mod.getWeight(), parent.getMultiplier() * mod.getMod(), (int)(parent.getLevel() * mod.getLevel()), parent.getMaterialType());
+    public MaterialModified(Material parent, QualityLevel quality, MaterialModifier mod) {
+        this((mod.getName() + " " + parent.getName()).trim(), combineColors(parent.getColor(), mod.getColor()), parent.getWeight() * mod.getWeight(), parent.getMultiplier() * mod.getMod(), (int)(parent.getLevel() * mod.getLevel()), quality, parent.getMaterialType());
     }
     private static Color combineColors(Color c1, Color c2) {
         int newR = combine(c1.getRed(), c2.getRed());

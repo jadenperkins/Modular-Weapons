@@ -146,13 +146,14 @@ public class Main {
                 g2d = image.createGraphics();
 
                 StatSet stats = weap.getStatSet();
-                g2d.setPaint(Color.BLACK);
-                g2d.setFont(new Font("Helvetica", Font.PLAIN, 12));
+                g2d.setPaint(weap.getQualityLevel().getColor());
+                g2d.setFont(new Font("Helvetica", Font.BOLD, 14));
                 int i = 4;
                 g2d.drawString(String.format("%s (%d)", weap.getDisplayName(), weap.getLevel()), 16 * 8 + 8, g2d.getFontMetrics().getHeight() * i);
 
-                i += 1;
+                i += 2;
                 g2d.setPaint(Color.DARK_GRAY);
+                g2d.setFont(new Font("Helvetica", Font.PLAIN, 12));
                 for (WeaponPartInstance weaponPartInstance : weap.getPartsList()) {
                     g2d.drawString(String.format("        %s", weaponPartInstance.getPartInfo(), weaponPartInstance.getLevel()), 16 * 9, g2d.getFontMetrics().getHeight() * i);
                     i++;
@@ -225,9 +226,9 @@ public class Main {
 //        ArmorPart.generateArmorParts();
 
 
-        int weaponLevel = 250;
+        int weaponLevel = theWorld.getRNG().nextInt(250) + 1;
         WeaponInstance weap = new WeaponGenerator().generate(theWorld.getRNG(), weaponLevel);
-        System.out.println("Created " + weap.getDisplayName());
+        System.out.println("Created " + weap.getDisplayName() + " with quality " + weap.getQualityLevel().getQualityName());
 //        StatSet s = weap.getStatSet();
 //        Set<StatBase> base = weap.getWeaponType().getStatSet().getStatsRaw().keySet();
 //

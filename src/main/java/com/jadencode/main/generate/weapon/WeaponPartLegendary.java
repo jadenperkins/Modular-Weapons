@@ -1,10 +1,14 @@
 package com.jadencode.main.generate.weapon;
 
 import com.jadencode.main.constants.StatSets;
+import com.jadencode.main.generate.QualityLevel;
+import com.jadencode.main.generate.QualityObject;
 import com.jadencode.main.stat.StatSet;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.*;
+import java.util.List;
 
 /**
  * Created by JPERKI8 on 6/13/2016.
@@ -41,5 +45,13 @@ public class WeaponPartLegendary extends WeaponPart {
     @Override
     public Color getColor() {
         return null;
+    }
+    @Override
+    public QualityLevel getQualityLevel() {
+        return QualityLevel.LEGENDARY;
+    }
+    @Override
+    public List<QualityObject> getQualityObjects() {
+        return Arrays.asList(this);
     }
 }

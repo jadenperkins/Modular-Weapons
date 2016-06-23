@@ -1,13 +1,17 @@
 package com.jadencode.main.generate.weapon;
 
+import com.jadencode.main.generate.QualityLevel;
+import com.jadencode.main.generate.QualityObject;
 import com.jadencode.main.stat.StatSet;
 
 import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 /**
  * Created by Jaden on 6/15/2015.
  */
-public class WeaponPartInstance implements Comparable<WeaponPartInstance> {
+public class WeaponPartInstance implements Comparable<WeaponPartInstance>, QualityObject {
     private final WeaponPart weaponPart;
     private final int        level;
     private final StatSet    statSet;
@@ -43,5 +47,14 @@ public class WeaponPartInstance implements Comparable<WeaponPartInstance> {
     @Override
     public int compareTo(WeaponPartInstance o) {
         return Integer.compare(this.level, o.level);
+    }
+
+    @Override
+    public QualityLevel getQualityLevel() {
+        return this.weaponPart.getQualityLevel();
+    }
+    @Override
+    public List<QualityObject> getQualityObjects() {
+        return this.weaponPart.getQualityObjects();
     }
 }

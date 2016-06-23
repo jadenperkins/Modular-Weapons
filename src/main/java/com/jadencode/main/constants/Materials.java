@@ -1,5 +1,6 @@
 package com.jadencode.main.constants;
 
+import com.jadencode.main.generate.QualityLevel;
 import com.jadencode.main.material.Material;
 import com.jadencode.main.material.MaterialModified;
 import com.jadencode.main.material.MaterialModifier;
@@ -25,14 +26,27 @@ public final class Materials {
 
     public static void load() {
         for (MaterialType type : MaterialTypes.getMaterialTypes()) {
-            type.generateExotics();
-            List<Material> baseMaterials = new ArrayList<>(getMaterials(type));
-            for (Material material : baseMaterials) {
-                for (MaterialModifier modifier : MaterialModifiers.getModifiers(type)) {
-                    Material m = new MaterialModified(material, modifier);
+            List<Material> commonMaterials = new ArrayList<>(getMaterials(type));
+            List<Material> exoticMaterials = type.generateExotics();
+
+            List<MaterialModifier> modifiers = MaterialModifiers.getModifiers(type);
+            for (MaterialModifier modifier : modifiers) {
+                for (Material commonMaterial : commonMaterials) {
+                    Material m = new MaterialModified(commonMaterial, QualityLevel.UNCOMMON, modifier);
+                    Materials.register(type, m);
+                }
+                for (Material exoticMaterial : exoticMaterials) {
+                    Material m = new MaterialModified(exoticMaterial, QualityLevel.EPIC, modifier);
                     Materials.register(type, m);
                 }
             }
+
+//            for (Material material : baseMaterials) {
+//                for (MaterialModifier modifier : MaterialModifiers.getModifiers(type)) {
+//                    Material m = new MaterialModified(material, modifier);
+//                    Materials.register(type, m);
+//                }
+//            }
             System.out.println(String.format("Registered %d %s materials!", getMaterials(type).size(), type.getName()));
         }
     }

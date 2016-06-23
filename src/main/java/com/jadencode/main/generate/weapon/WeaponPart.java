@@ -1,15 +1,19 @@
 package com.jadencode.main.generate.weapon;
 
+import com.jadencode.main.generate.QualityLevel;
+import com.jadencode.main.generate.QualityObject;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.util.WeightedItem;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.*;
+import java.util.List;
 
 /**
  * Created by JPERKI8 on 6/13/2016.
  */
-public abstract class WeaponPart implements WeightedItem {
+public abstract class WeaponPart implements WeightedItem, QualityObject {
     private final float weight;
     private final WeaponPartType type;
     private final BufferedImage icon;

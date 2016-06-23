@@ -1,5 +1,7 @@
 package com.jadencode.main.generate.weapon;
 
+import com.jadencode.main.generate.QualityLevel;
+import com.jadencode.main.generate.QualityObject;
 import com.jadencode.main.stat.StatSet;
 
 import java.util.ArrayList;
@@ -11,7 +13,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Jaden on 6/1/2015.
  */
-public class WeaponInstance {
+public class WeaponInstance implements QualityObject {
 
     private final WeaponType weaponType;
     private final List<WeaponPartInstance> weaponParts;
@@ -60,5 +62,16 @@ public class WeaponInstance {
     }
     public WeaponType getWeaponType() {
         return this.weaponType;
+    }
+
+    @Override
+    public QualityLevel getQualityLevel() {
+        return QualityLevel.calculate(this);
+    }
+    @Override
+    public List<QualityObject> getQualityObjects() {
+        List<QualityObject> ret = new ArrayList<>();
+        ret.addAll(this.weaponParts);
+        return ret;
     }
 }

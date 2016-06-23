@@ -2,9 +2,11 @@ package com.jadencode.main.material;
 
 import com.jadencode.main.Main;
 import com.jadencode.main.constants.Materials;
+import com.jadencode.main.generate.QualityLevel;
 import com.jadencode.main.scripts.ScriptMaterialType;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,8 +23,9 @@ public class MaterialType {
     public String getName() {
         return this.name;
     }
-    public void generateExotics() {
+    public List<Material> generateExotics() {
         List<String> exoticNames = this.script.getExoticNames();
+        List<Material> materials = new ArrayList<>();
         for (String name : exoticNames) {
             long hash = name.hashCode();
             long seed = Main.theWorld.getSeed();
@@ -34,7 +37,10 @@ public class MaterialType {
             Color c = new Color(color);
             float weight = (float) (Math.abs(code % 5) + 1) / 5F;
             float mod = (float) (Math.abs((code + 7) % 4) + 1) / 2F;
-            Materials.register(this, new Material(name, c, weight, mod, level, this));
+            Material material = new Material(name, c, weight, mod, level, QualityLevel.RARE, this);
+            Materials.register(this, material);
+            materials.add(material);
         }
+        return materials;
     }
 }
