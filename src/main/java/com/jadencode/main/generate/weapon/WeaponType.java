@@ -12,15 +12,17 @@ import java.util.stream.Collectors;
  */
 public class WeaponType implements WeightedItem {
 
-    private final String weaponTypeName;
+    private final String                            weaponTypeName;
     private final StatSet                           statSet;
+    private final WeaponPartType                    primaryPartType;
     private final List<WeaponPartType>              weaponPartTypes;
     private final float                             weight;
     private final ScriptWeapon                      script;
 
-    public WeaponType(String name, float w, StatSet stats, List<WeaponPartType> types, ScriptWeapon s) {
+    public WeaponType(String name, float w, StatSet stats, WeaponPartType primary, List<WeaponPartType> types, ScriptWeapon s) {
         this.weaponTypeName = name;
         this.weight = w;
+        this.primaryPartType = primary;
         this.weaponPartTypes = types;
         this.statSet = stats;
         this.script = s;
@@ -31,7 +33,9 @@ public class WeaponType implements WeightedItem {
     public String getWeaponTypeName() {
         return weaponTypeName;
     }
-
+    public WeaponPartType getPrimaryPartType() {
+        return primaryPartType;
+    }
     public StatSet getStatSet() {
         return statSet;
     }

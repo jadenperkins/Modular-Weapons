@@ -13,13 +13,15 @@ public class ItemWeaponType extends Item {
     private final String statSetName;
     private final String scriptName;
     private final float weight;
+    private final String primaryPart;
     private final List<String> partTypes;
 
-    public ItemWeaponType(String name, String owner, String stats, String script, float weight, List<String> parts) {
+    public ItemWeaponType(String name, String owner, String stats, String script, float weight, String primary, List<String> parts) {
         super(name, owner);
         this.statSetName = stats;
         this.scriptName = script;
         this.weight = weight > 0 ? weight : 1;
+        this.primaryPart = primary;
         this.partTypes = parts;
     }
     public String getStatSetName() {
@@ -31,6 +33,9 @@ public class ItemWeaponType extends Item {
     public float getWeight() {
         return this.weight;
     }
+    public String getPrimaryPart() {
+        return primaryPart;
+    }
     public List<String> getPartTypes() {
         return this.partTypes;
     }
@@ -40,6 +45,7 @@ public class ItemWeaponType extends Item {
                 .add("stats", this.statSetName)
                 .add("script", this.scriptName)
                 .add("weight", this.weight)
+                .add("primary", this.primaryPart)
                 .add("parts", JsonHelper.toArray(this.partTypes));
     }
 }

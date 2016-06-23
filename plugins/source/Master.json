@@ -3379,6 +3379,7 @@
       "stats": "Base Arrow",
       "script": "",
       "weight": 1.0,
+      "primary": "Arrow Tip",
       "parts": [
         "Arrow Tip",
         "Arrow Fletchings",
@@ -3390,6 +3391,7 @@
       "stats": "Base Axe",
       "script": "",
       "weight": 1.0,
+      "primary": "Axe Head",
       "parts": [
         "Axe Head",
         "Axe Handle"
@@ -3400,6 +3402,7 @@
       "stats": "Base Bolt",
       "script": "",
       "weight": 1.0,
+      "primary": "Bolt Tip",
       "parts": [
         "Bolt Tip",
         "Bolt Fletchings",
@@ -3411,6 +3414,7 @@
       "stats": "Base Bow",
       "script": "",
       "weight": 1.0,
+      "primary": "Bow Limbs",
       "parts": [
         "Bow Grip",
         "Bow String",
@@ -3422,6 +3426,7 @@
       "stats": "Base Crossbow",
       "script": "",
       "weight": 1.0,
+      "primary": "Crossbow Limbs",
       "parts": [
         "Crossbow Stock",
         "Crossbow String",
@@ -3433,6 +3438,7 @@
       "stats": "Base Hammer",
       "script": "",
       "weight": 1.0,
+      "primary": "Hammer Head",
       "parts": [
         "Hammer Head",
         "Hammer Handle"
@@ -3443,6 +3449,7 @@
       "stats": "Base Staff",
       "script": "",
       "weight": 1.0,
+      "primary": "Staff Head",
       "parts": [
         "Staff Head",
         "Staff Handle"
@@ -3453,6 +3460,7 @@
       "stats": "Base Sword",
       "script": "",
       "weight": 25.0,
+      "primary": "Sword Blade",
       "parts": [
         "Sword Hilt",
         "Sword Grip",

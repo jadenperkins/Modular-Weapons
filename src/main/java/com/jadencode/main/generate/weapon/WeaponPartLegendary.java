@@ -46,4 +46,8 @@ public class WeaponPartLegendary extends WeaponPart {
     public Color getColor() {
         return null;
     }
+    @Override
+    public String getMaterialName() {
+        return "";
+    }
 }

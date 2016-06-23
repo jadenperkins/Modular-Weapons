@@ -5,7 +5,6 @@ import com.jadencode.main.generate.QualityObject;
 import com.jadencode.main.stat.StatSet;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,7 +25,8 @@ public class WeaponInstance implements QualityObject {
     public WeaponInstance(WeaponType base, List<WeaponPartInstance> parts) {
         this.weaponType = base;
         this.weaponParts = parts;
-        this.level = Collections.max(parts.stream().map(WeaponPartInstance::getLevel).collect(Collectors.toList()));
+        this.level = (int) Math.ceil(Math.sqrt(parts.stream().mapToInt(part -> (int)Math.pow(part.getLevel(), 2)).sum() / parts.size()));
+//        this.level = Collections.max(parts.stream().map(WeaponPartInstance::getLevel).collect(Collectors.toList()));
         this.mappedParts = new HashMap<>();
         parts.forEach(part -> this.mappedParts.put(part.getWeaponPart().getType(), part));
         this.displayName = base.getDisplayName(this);

@@ -43,4 +43,5 @@ public abstract class WeaponPart implements WeightedItem {
     public abstract String getPartInfo();
     public abstract StatSet getStats();
     public abstract Color getColor();
+    public abstract String getMaterialName();
 }

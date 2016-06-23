@@ -16,6 +16,7 @@ public class WeaponPartBasic extends WeaponPart {
     private final String           partDescription;
     private final StatSet          stats;
     private final Color            partColor;
+    private final String           materialName;
 
     public WeaponPartBasic(WeaponPartBase part, Material resource) {
         super(part.getWeight() * resource.getWeight(), part.getIcon(), resource.getQualityLevel(), part.getPartType());
@@ -24,6 +25,7 @@ public class WeaponPartBasic extends WeaponPart {
         this.partDescription = String.format("A %s crafted from %s", part.getPartName(), resource.getName());
         this.stats = part.modifyStats(resource);
         this.partColor = resource.getColor();
+        this.materialName = resource.getName();
     }
     @Override
     public String getPartName() {
@@ -44,5 +46,9 @@ public class WeaponPartBasic extends WeaponPart {
     @Override
     public Color getColor() {
         return this.partColor;
+    }
+    @Override
+    public String getMaterialName() {
+        return this.materialName;
     }
 }
