@@ -1,5 +1,8 @@
 package com.jadencode.main;
 
+import com.jadencode.main.constants.PartTypes;
+import com.jadencode.main.constants.WeaponParts;
+import com.jadencode.main.constants.WeaponTypes;
 import com.jadencode.main.content.ContentLoader;
 import com.jadencode.main.generate.Generator;
 import com.jadencode.main.generate.character.Actor;
@@ -8,9 +11,7 @@ import com.jadencode.main.generate.character.crotan.KrotanCharacterGenerator;
 import com.jadencode.main.generate.character.crotan.KrotanSettlementGenerator;
 import com.jadencode.main.generate.character.viking.VikingCharacterGenerator;
 import com.jadencode.main.generate.character.viking.VikingSettlementGenerator;
-import com.jadencode.main.generate.weapon.WeaponGenerator;
-import com.jadencode.main.generate.weapon.WeaponInstance;
-import com.jadencode.main.generate.weapon.WeaponPartInstance;
+import com.jadencode.main.generate.weapon.*;
 import com.jadencode.main.magic.SpellBase;
 import com.jadencode.main.magic.SpellObject;
 import com.jadencode.main.nbt.CompressedStreamTools;
@@ -29,6 +30,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -228,6 +230,7 @@ public class Main {
 
         int weaponLevel = theWorld.getRNG().nextInt(250) + 1;
         WeaponInstance weap = new WeaponGenerator().generate(theWorld.getRNG(), weaponLevel);
+
         System.out.println("Created " + weap.getDisplayName() + " with quality " + weap.getQualityLevel().getQualityName());
 //        StatSet s = weap.getStatSet();
 //        Set<StatBase> base = weap.getWeaponType().getStatSet().getStatsRaw().keySet();

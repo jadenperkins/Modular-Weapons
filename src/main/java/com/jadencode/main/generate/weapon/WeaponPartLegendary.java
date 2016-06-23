@@ -20,7 +20,7 @@ public class WeaponPartLegendary extends WeaponPart {
     private final StatSet statSet;
 
     public WeaponPartLegendary(String partName, String nameMod, String partInfo, StatSet statSet, float weight, BufferedImage icon, WeaponPartType type) {
-        super(weight, icon, type);
+        super(weight, icon, QualityLevel.LEGENDARY, type);
         this.partName = partName;
         this.nameMod = nameMod;
         this.partInfo = partInfo;
@@ -45,13 +45,5 @@ public class WeaponPartLegendary extends WeaponPart {
     @Override
     public Color getColor() {
         return null;
-    }
-    @Override
-    public QualityLevel getQualityLevel() {
-        return QualityLevel.LEGENDARY;
-    }
-    @Override
-    public List<QualityObject> getQualityObjects() {
-        return Arrays.asList(this);
     }
 }

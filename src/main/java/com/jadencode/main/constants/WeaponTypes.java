@@ -27,4 +27,7 @@ public final class WeaponTypes {
     public static void register(WeaponType type) {
         WEAPON_TYPES.put(type.getWeaponTypeName(), type);
     }
+    public static WeaponType get(String name) {
+        return WEAPON_TYPES.get(name);
+    }
 }

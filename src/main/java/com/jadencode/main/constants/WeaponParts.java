@@ -17,9 +17,14 @@ import java.util.List;
 public final class WeaponParts {
     private static final List<WeaponPartBase> WEAPON_PARTS = new ArrayList<>();
     private static final HashMap<WeaponPartType, List<WeaponPart>> PARTS_LISTS = new HashMap<>();
+    private static final HashMap<String, WeaponPart> MAPPED_PARTS = new HashMap<>();
 
     public static void register(WeaponPart part) {
         getPartsList(part.getType()).add(part);
+        MAPPED_PARTS.put(part.getPartName(), part);
+    }
+    public static WeaponPart get(String name) {
+        return MAPPED_PARTS.get(name);
     }
 
     public static List<WeaponPartBase> getBaseParts() {
@@ -32,7 +37,7 @@ public final class WeaponParts {
         WeaponParts.getBaseParts()
                 .forEach(basePart -> basePart.getMaterials()
                         .forEach(type -> Materials.getMaterials(type)
-                                .forEach(material -> getPartsList(basePart.getPartType()).add(new WeaponPartBasic(basePart, material)))));
+                                .forEach(material -> register(new WeaponPartBasic(basePart, material)))));
     }
 
     public static List<WeaponPart> getPartsList(WeaponPartType type) {

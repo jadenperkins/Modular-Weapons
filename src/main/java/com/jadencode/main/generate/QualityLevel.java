@@ -5,13 +5,14 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by gtrpl on 6/22/2016.
  */
 public enum QualityLevel {
 
-    COMMON(1, "Common", new Color(0xFFFFFF)),
+    COMMON(1, "Common", new Color(0xBABABA)),
     UNCOMMON(2, "Uncommon", new Color(0x1EFF00)),
     RARE(3, "Rare", new Color(0x00070DD)),
     EPIC(4, "Epic", new Color(0xA335EE)),
@@ -36,12 +37,12 @@ public enum QualityLevel {
         return color;
     }
     public static QualityLevel calculate(QualityObject object) {
-        List<QualityObject> list = object.getQualityObjects();
+        List<QualityLevel> list = object.getQualityLevels();
         List<QualityValue> ordered = new ArrayList<>();
         for (QualityLevel level : values()) {
             double sum = 0;
-            for (QualityObject obj : list) {
-                double diff = obj.getQualityLevel().qualityPoints - level.qualityPoints;
+            for (QualityLevel obj : list) {
+                double diff = obj.qualityPoints - level.qualityPoints;
                 sum += Math.pow(diff, 2);
             }
             double sq = Math.sqrt(sum);

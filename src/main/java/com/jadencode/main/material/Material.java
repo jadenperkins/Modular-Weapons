@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by Jaden on 2/4/2015.
  */
-public class Material implements WeightedItem, QualityObject {
+public class Material implements WeightedItem {
     private final String name;
     private final Color color;
     private final float multiplier;
@@ -46,18 +46,12 @@ public class Material implements WeightedItem, QualityObject {
     public MaterialType getMaterialType() {
         return materialType;
     }
+    public QualityLevel getQualityLevel() {
+        return this.qualityLevel;
+    }
 
     @Override
     public float getWeight() {
         return this.weight;
-    }
-
-    @Override
-    public QualityLevel getQualityLevel() {
-        return this.qualityLevel;
-    }
-    @Override
-    public List<QualityObject> getQualityObjects() {
-        return Arrays.asList(this);
     }
 }

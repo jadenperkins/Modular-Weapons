@@ -13,14 +13,16 @@ import java.util.List;
 /**
  * Created by JPERKI8 on 6/13/2016.
  */
-public abstract class WeaponPart implements WeightedItem, QualityObject {
+public abstract class WeaponPart implements WeightedItem {
     private final float weight;
     private final WeaponPartType type;
     private final BufferedImage icon;
+    private final QualityLevel qualityLevel;
 
-    public WeaponPart(float w, BufferedImage icon, WeaponPartType type) {
+    public WeaponPart(float w, BufferedImage icon, QualityLevel level, WeaponPartType type) {
         this.weight = w;
         this.icon = icon;
+        this.qualityLevel = level;
         this.type = type;
     }
     public WeaponPartType getType() {
@@ -28,6 +30,9 @@ public abstract class WeaponPart implements WeightedItem, QualityObject {
     }
     public BufferedImage getIcon() {
         return this.icon == null ? this.getType().getIcon() : this.icon;
+    }
+    public QualityLevel getQualityLevel() {
+        return this.qualityLevel;
     }
     @Override
     public float getWeight() {

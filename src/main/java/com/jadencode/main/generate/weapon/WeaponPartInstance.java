@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Jaden on 6/15/2015.
  */
-public class WeaponPartInstance implements Comparable<WeaponPartInstance>, QualityObject {
+public class WeaponPartInstance implements Comparable<WeaponPartInstance> {
     private final WeaponPart weaponPart;
     private final int        level;
     private final StatSet    statSet;
@@ -44,17 +44,11 @@ public class WeaponPartInstance implements Comparable<WeaponPartInstance>, Quali
     public String getNameMod() {
         return this.weaponPart.getNameMod();
     }
-    @Override
-    public int compareTo(WeaponPartInstance o) {
-        return Integer.compare(this.level, o.level);
-    }
-
-    @Override
     public QualityLevel getQualityLevel() {
         return this.weaponPart.getQualityLevel();
     }
     @Override
-    public List<QualityObject> getQualityObjects() {
-        return this.weaponPart.getQualityObjects();
+    public int compareTo(WeaponPartInstance o) {
+        return Integer.compare(this.level, o.level);
     }
 }

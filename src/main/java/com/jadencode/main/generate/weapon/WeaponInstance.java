@@ -63,15 +63,12 @@ public class WeaponInstance implements QualityObject {
     public WeaponType getWeaponType() {
         return this.weaponType;
     }
-
-    @Override
     public QualityLevel getQualityLevel() {
         return QualityLevel.calculate(this);
     }
     @Override
-    public List<QualityObject> getQualityObjects() {
-        List<QualityObject> ret = new ArrayList<>();
-        ret.addAll(this.weaponParts);
+    public List<QualityLevel> getQualityLevels() {
+        List<QualityLevel> ret = this.weaponParts.stream().map(WeaponPartInstance::getQualityLevel).collect(Collectors.toList());
         return ret;
     }
 }
