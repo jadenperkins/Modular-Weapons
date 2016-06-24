@@ -1,9 +1,6 @@
 package com.jadencode.main.generate.location;
 
 import com.jadencode.main.generate.Generator;
-import com.jadencode.main.nbt.NBTTagCompound;
-import com.jadencode.main.nbt.NBTTagList;
-import com.jadencode.main.util.NBTUtils;
 
 import java.util.*;
 
@@ -92,24 +89,24 @@ public class LocationGenerator implements Generator<Location> {
 //        }
 //        this.index = json.get("index").getAsInt();
 //    }
-    public void writeNBT(NBTTagCompound nbt) {
-        NBTTagList list = NBTUtils.toStringList(this.instanceLocations);
-        nbt.setTag("instanceLocations", list);
-        nbt.setInteger("index", this.index);
-    }
-    public void readNBT(NBTTagCompound nbt) {
-        if(!nbt.hasKey("instanceLocations")) {
-            this.preGenerate();
-            this.index = 0;
-        } else {
-            List<String> list = NBTUtils.fromStringList(nbt.getTagList("instanceLocations"));
-            list.stream().forEach(i -> this.instanceLocations.add(i));
-            this.index = nbt.getInteger("index");
-        }
-    }
-
-    @Override
-    public void onCreated(Random r) {
-
-    }
+//    public void writeNBT(NBTTagCompound nbt) {
+//        NBTTagList list = NBTUtils.toStringList(this.instanceLocations);
+//        nbt.setTag("instanceLocations", list);
+//        nbt.setInteger("index", this.index);
+//    }
+//    public void readNBT(NBTTagCompound nbt) {
+//        if(!nbt.hasKey("instanceLocations")) {
+//            this.preGenerate();
+//            this.index = 0;
+//        } else {
+//            List<String> list = NBTUtils.fromStringList(nbt.getTagList("instanceLocations"));
+//            list.stream().forEach(i -> this.instanceLocations.add(i));
+//            this.index = nbt.getInteger("index");
+//        }
+//    }
+//
+//    @Override
+//    public void onCreated(Random r) {
+//
+//    }
 }

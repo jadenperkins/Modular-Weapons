@@ -1,6 +1,6 @@
 
 import com.jadencode.main.content.ContentLoader
-import com.jadencode.main.generate.weapon.WeaponGenerator
+import com.jadencode.main.generate.item.ItemGenerator
 import org.jetbrains.spek.api.Spek
 import parts.Joint
 import parts.Part
@@ -12,9 +12,9 @@ import kotlin.test.assertNotNull
  * Created by Andy on 6/5/2016.
  */
 class RandomWeaponTest : Spek({
-    describe("a weapon") {
+    describe("a item") {
         ContentLoader.load();
-        val weapon = WeaponGenerator().generate(Random(11181993L), 10);
+        val weapon = ItemGenerator().generate(Random(11181993L), 10);
 
         it("should have a name") {
             assertNotNull(weapon.displayName)
@@ -22,7 +22,7 @@ class RandomWeaponTest : Spek({
         it("should have info") {
             assertNotNull(weapon.displayInfo)
         }
-        it("should have a weapon type") {
+        it("should have a item type") {
             assertNotNull(weapon.weaponType)
         }
         it("should have the correct number of parts") {
@@ -36,7 +36,7 @@ class RandomWeaponTest : Spek({
         it("should have a quality") {
             assertNotNull(weapon.qualityLevel)
         }
-        it("should only have stats that the weapon type cares about") {
+        it("should only have stats that the item type cares about") {
             assert(weapon.statSet.statsRaw.keys.containsAll(weapon.weaponType.statSet.statsRaw.keys))
         }
     }

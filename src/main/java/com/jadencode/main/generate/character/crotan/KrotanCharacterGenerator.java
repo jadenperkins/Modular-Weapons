@@ -2,9 +2,6 @@ package com.jadencode.main.generate.character.crotan;
 
 import com.jadencode.main.generate.Generator;
 import com.jadencode.main.generate.character.Actor;
-import com.jadencode.main.nbt.NBTTagCompound;
-import com.jadencode.main.nbt.NBTTagList;
-import com.jadencode.main.util.NBTUtils;
 
 import java.util.*;
 
@@ -73,21 +70,21 @@ public class KrotanCharacterGenerator implements Generator<Actor> {
         }
         return new Actor(name, level+"", true);
     }
-    @Override
-    public void readNBT(NBTTagCompound nbt) {
-        List<String> list = NBTUtils.fromStringList(nbt.getTagList("instanceNames"));
-        this.instanceNames.addAll(list);
-        this.index = nbt.getInteger("index");
-    }
-    @Override
-    public void writeNBT(NBTTagCompound nbt) {
-        NBTTagList list = NBTUtils.toStringList(this.instanceNames);
-        nbt.setTag("instanceNames", list);
-        nbt.setInteger("index", this.index);
-    }
-    @Override
-    public void onCreated(Random r) {
-        this.preGenerate(r);
-        this.index = 0;
-    }
+//    @Override
+//    public void readNBT(NBTTagCompound nbt) {
+//        List<String> list = NBTUtils.fromStringList(nbt.getTagList("instanceNames"));
+//        this.instanceNames.addAll(list);
+//        this.index = nbt.getInteger("index");
+//    }
+//    @Override
+//    public void writeNBT(NBTTagCompound nbt) {
+//        NBTTagList list = NBTUtils.toStringList(this.instanceNames);
+//        nbt.setTag("instanceNames", list);
+//        nbt.setInteger("index", this.index);
+//    }
+//    @Override
+//    public void onCreated(Random r) {
+//        this.preGenerate(r);
+//        this.index = 0;
+//    }
 }

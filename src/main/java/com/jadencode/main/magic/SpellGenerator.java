@@ -1,7 +1,6 @@
 package com.jadencode.main.magic;
 
 import com.jadencode.main.generate.Generator;
-import com.jadencode.main.nbt.NBTTagCompound;
 import com.jadencode.main.util.WeightedRandomFloat;
 
 import java.util.Random;
@@ -17,18 +16,18 @@ public class SpellGenerator implements Generator<SpellObject> {
         return new SpellObject(spellBase, level, r);
     }
 
-    @Override
-    public void readNBT(NBTTagCompound nbt) {
-
-    }
-
-    @Override
-    public void writeNBT(NBTTagCompound nbt) {
-
-    }
-
-    @Override
-    public void onCreated(Random r) {
-
-    }
+//    @Override
+//    public void readNBT(NBTTagCompound nbt) {
+//
+//    }
+//
+//    @Override
+//    public void writeNBT(NBTTagCompound nbt) {
+//
+//    }
+//
+//    @Override
+//    public void onCreated(Random r) {
+//
+//    }
 }

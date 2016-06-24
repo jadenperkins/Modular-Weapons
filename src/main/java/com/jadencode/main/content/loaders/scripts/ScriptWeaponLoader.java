@@ -1,6 +1,6 @@
 package com.jadencode.main.content.loaders.scripts;
 
-import com.jadencode.main.constants.WeaponTypes;
+import com.jadencode.main.constants.ItemTypes;
 import com.jadencode.main.scripts.ScriptWeapon;
 
 /**
@@ -8,6 +8,6 @@ import com.jadencode.main.scripts.ScriptWeapon;
  */
 public class ScriptWeaponLoader extends ScriptLoader<ScriptWeapon> {
     public ScriptWeaponLoader() {
-        super("weapons", ScriptWeapon.class, WeaponTypes.getScripts());
+        super("weapons", ScriptWeapon.class, ItemTypes.getScripts());
     }
 }

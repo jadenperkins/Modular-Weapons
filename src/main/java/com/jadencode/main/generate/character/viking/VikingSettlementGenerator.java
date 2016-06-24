@@ -2,9 +2,6 @@ package com.jadencode.main.generate.character.viking;
 
 import com.jadencode.main.generate.Generator;
 import com.jadencode.main.generate.character.Settlement;
-import com.jadencode.main.nbt.NBTTagCompound;
-import com.jadencode.main.nbt.NBTTagList;
-import com.jadencode.main.util.NBTUtils;
 
 import java.util.*;
 
@@ -51,23 +48,23 @@ public class VikingSettlementGenerator implements Generator<Settlement> {
         return new Settlement(name);
     }
 
-    @Override
-    public void readNBT(NBTTagCompound nbt) {
-        List<String> list = NBTUtils.fromStringList(nbt.getTagList("instanceLocations"));
-        this.instanceLocations.addAll(list);
-        this.index = nbt.getInteger("index");
-    }
-
-    @Override
-    public void writeNBT(NBTTagCompound nbt) {
-        NBTTagList list = NBTUtils.toStringList(this.instanceLocations);
-        nbt.setTag("instanceLocations", list);
-        nbt.setInteger("index", this.index);
-    }
-
-    @Override
-    public void onCreated(Random r) {
-        this.preGenerate(r);
-        this.index = 0;
-    }
+//    @Override
+//    public void readNBT(NBTTagCompound nbt) {
+//        List<String> list = NBTUtils.fromStringList(nbt.getTagList("instanceLocations"));
+//        this.instanceLocations.addAll(list);
+//        this.index = nbt.getInteger("index");
+//    }
+//
+//    @Override
+//    public void writeNBT(NBTTagCompound nbt) {
+//        NBTTagList list = NBTUtils.toStringList(this.instanceLocations);
+//        nbt.setTag("instanceLocations", list);
+//        nbt.setInteger("index", this.index);
+//    }
+//
+//    @Override
+//    public void onCreated(Random r) {
+//        this.preGenerate(r);
+//        this.index = 0;
+//    }
 }

@@ -3,9 +3,7 @@ package com.jadencode.main.generate;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by gtrpl on 6/22/2016.

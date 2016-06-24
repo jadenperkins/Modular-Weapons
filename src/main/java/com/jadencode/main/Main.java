@@ -1,8 +1,5 @@
 package com.jadencode.main;
 
-import com.jadencode.main.constants.PartTypes;
-import com.jadencode.main.constants.WeaponParts;
-import com.jadencode.main.constants.WeaponTypes;
 import com.jadencode.main.content.ContentLoader;
 import com.jadencode.main.generate.Generator;
 import com.jadencode.main.generate.character.Actor;
@@ -11,11 +8,9 @@ import com.jadencode.main.generate.character.crotan.KrotanCharacterGenerator;
 import com.jadencode.main.generate.character.crotan.KrotanSettlementGenerator;
 import com.jadencode.main.generate.character.viking.VikingCharacterGenerator;
 import com.jadencode.main.generate.character.viking.VikingSettlementGenerator;
-import com.jadencode.main.generate.weapon.*;
+import com.jadencode.main.generate.item.*;
 import com.jadencode.main.magic.SpellBase;
 import com.jadencode.main.magic.SpellObject;
-import com.jadencode.main.nbt.CompressedStreamTools;
-import com.jadencode.main.nbt.NBTTagCompound;
 import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatSet;
 
@@ -28,11 +23,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Jaden on 1/19/2015.
@@ -44,51 +36,51 @@ public class Main {
     public static final  World theWorld   = new World();
     private static final File  WORLD_SAVE = new File("./WorldSave.dat");
 
-    private static void saveGame(File file, NBTTagCompound nbt) {
-        try {
-            file.createNewFile();
-
-            CompressedStreamTools.writeCompressed(nbt, new FileOutputStream(file));
-//            CompressedStreamTools.writeCompressed(nbt, new GZIPOutputStream(new FileOutputStream(save)));
-
-//          JsonObject json = new JsonObject();
-//          gen.toJson(json);
-//          FileUtils.writeStringToFile(save, json.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static NBTTagCompound loadGame(File file) {
-        try {
-            if (file.exists()) {
-
-                NBTTagCompound nbt = CompressedStreamTools.readCompressed(new FileInputStream(file));
-                return nbt;
-//                String fileString = FileUtils.readFileToString(save);
-//                JsonObject json = new Gson().fromJson(fileString, JsonObject.class);
-//                gen.fromJson(json);
-            } else {
-                return new NBTTagCompound();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new NBTTagCompound();
-        }
-    }
-
-    private static void loadGenerator(Generator gen, NBTTagCompound nbt) {
-        if(nbt == null) {
-            gen.onCreated(theWorld.getRNG());
-        } else {
-            gen.readNBT(nbt);
-        }
-    }
-    private static NBTTagCompound saveGenerator(Generator gen) {
-        NBTTagCompound nbt = new NBTTagCompound();
-        gen.writeNBT(nbt);
-        return nbt;
-    }
+//    private static void saveGame(File file, NBTTagCompound nbt) {
+//        try {
+//            file.createNewFile();
+//
+//            CompressedStreamTools.writeCompressed(nbt, new FileOutputStream(file));
+////            CompressedStreamTools.writeCompressed(nbt, new GZIPOutputStream(new FileOutputStream(save)));
+//
+////          JsonObject json = new JsonObject();
+////          gen.toJson(json);
+////          FileUtils.writeStringToFile(save, json.toString());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    private static NBTTagCompound loadGame(File file) {
+//        try {
+//            if (file.exists()) {
+//
+//                NBTTagCompound nbt = CompressedStreamTools.readCompressed(new FileInputStream(file));
+//                return nbt;
+////                String fileString = FileUtils.readFileToString(save);
+////                JsonObject json = new Gson().fromJson(fileString, JsonObject.class);
+////                gen.fromJson(json);
+//            } else {
+//                return new NBTTagCompound();
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return new NBTTagCompound();
+//        }
+//    }
+//
+//    private static void loadGenerator(Generator gen, NBTTagCompound nbt) {
+//        if(nbt == null) {
+//            gen.onCreated(theWorld.getRNG());
+//        } else {
+//            gen.readNBT(nbt);
+//        }
+//    }
+//    private static NBTTagCompound saveGenerator(Generator gen) {
+//        NBTTagCompound nbt = new NBTTagCompound();
+//        gen.writeNBT(nbt);
+//        return nbt;
+//    }
     private static boolean OR(Object target, Object... others) {
         for(Object o : others) {
             if(target == o) {
@@ -97,9 +89,17 @@ public class Main {
         }
         return false;
     }
-    private static void printWeapon(WeaponInstance weap) {
+    private static void printWeapon(ItemInstance weap) {
         boolean standard = true;
-        for (WeaponPartInstance part : weap.getPartsList()) {
+        int width = 0;
+        int height = 0;
+        for (ItemPartInstance part : weap.getPartsList()) {
+            if(part.getWeaponPart().getIcon().getWidth() > width) {
+                width = part.getWeaponPart().getIcon().getWidth();
+            }
+            if(part.getWeaponPart().getIcon().getHeight() > height) {
+                height = part.getWeaponPart().getIcon().getHeight();
+            }
             if(part.getWeaponPart().getType().getIcon() == null) {
                 standard = false;
             }
@@ -110,7 +110,7 @@ public class Main {
         try {
             out.mkdirs();
             out.createNewFile();
-            BufferedImage image = new BufferedImage(64, weap.getPartsList().size() * 16, BufferedImage.TYPE_INT_ARGB);
+            BufferedImage image = new BufferedImage(width + 64, height, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2d = image.createGraphics();
             if(!standard) {
                 for (int x = 0; x < weap.getPartsList().size(); x++) {
@@ -120,7 +120,7 @@ public class Main {
                     g2d.drawRect(0, x * 16, 16, 16);
                 }
             } else {
-                for(WeaponPartInstance part : weap.getPartsList()) {
+                for(ItemPartInstance part : weap.getPartsList()) {
                     BufferedImage icon = part.getWeaponPart().getIcon();
                     Color c = part.getColor();
                     if(c == null) {
@@ -136,7 +136,7 @@ public class Main {
                     }
                 }
                 g2d.setPaint(Color.WHITE);
-                g2d.fillRect(16, 0, 48, image.getHeight());
+                g2d.fillRect(width, 0, 64, image.getHeight());
 
                 BufferedImage after = new BufferedImage(image.getWidth() * 8, image.getHeight() * 8, BufferedImage.TYPE_INT_ARGB);
                 AffineTransform at = new AffineTransform();
@@ -150,17 +150,17 @@ public class Main {
                 g2d.setPaint(weap.getQualityLevel().getColor());
                 g2d.setFont(new Font("Helvetica", Font.BOLD, 14));
                 int i = 2;
-                g2d.drawString(String.format("%s (%d)", weap.getDisplayName(), weap.getLevel()), 16 * 8 + 8, g2d.getFontMetrics().getHeight() * i);
+                g2d.drawString(String.format("%s (%d)", weap.getDisplayName(), weap.getLevel()), width * 8 + 8, g2d.getFontMetrics().getHeight() * i);
 
                 i += 2;
                 g2d.setPaint(Color.DARK_GRAY);
                 g2d.setFont(new Font("Helvetica", Font.PLAIN, 12));
-                for (WeaponPartInstance weaponPartInstance : weap.getPartsList()) {
-                    g2d.drawString(String.format("        %s", weaponPartInstance.getPartInfo(), weaponPartInstance.getLevel()), 16 * 9, g2d.getFontMetrics().getHeight() * i);
+                for (ItemPartInstance weaponPartInstance : weap.getPartsList()) {
+                    g2d.drawString(String.format("        %s", weaponPartInstance.getPartInfo(), weaponPartInstance.getLevel()), width * 9, g2d.getFontMetrics().getHeight() * i);
                     i++;
                     StatSet stats = weaponPartInstance.getStats();
                     for (StatBase statBase : stats.getStatsRaw().keySet()) {
-                        g2d.drawString(String.format("                %s: %.2f", statBase.getStatName(), stats.get(statBase)), 16 * 9, g2d.getFontMetrics().getHeight() * i);
+                        g2d.drawString(String.format("                %s: %.2f", statBase.getStatName(), stats.get(statBase)), width * 9, g2d.getFontMetrics().getHeight() * i);
                         i++;
                     }
                 }
@@ -169,7 +169,7 @@ public class Main {
                 g2d.setPaint(Color.BLUE);
                 StatSet stats = weap.getStatSet();
                 for (StatBase statBase : stats.getStatsRaw().keySet()) {
-                    g2d.drawString(String.format("%s: %.2f", statBase.getStatName(), stats.get(statBase)), 16 * 9, g2d.getFontMetrics().getHeight() * i);
+                    g2d.drawString(String.format("%s: %.2f", statBase.getStatName(), stats.get(statBase)), width * 9, g2d.getFontMetrics().getHeight() * i);
                     i++;
                 }
 
@@ -229,12 +229,12 @@ public class Main {
 //        parts.forEach(i -> System.out.println(i.getPartName()));
 //        System.out.println(parts.size() + " parts");
 
-        //Create all weapon parts
+        //Create all item parts
 //        ArmorPart.generateArmorParts();
 
 
         int weaponLevel = theWorld.getRNG().nextInt(50) + 1;
-        WeaponInstance weap = new WeaponGenerator().generate(theWorld.getRNG(), weaponLevel);
+        ItemInstance weap = new ItemGenerator().generate(theWorld.getRNG(), weaponLevel);
 
         System.out.println("Created " + weap.getDisplayName() + " with quality " + weap.getQualityLevel().getQualityName());
 //        StatSet s = weap.getStatSet();
@@ -281,8 +281,8 @@ public class Main {
         Generator<Settlement> settlementGenerator = new KrotanSettlementGenerator();
         Generator<Actor> actorGenerator = new KrotanCharacterGenerator();
 
-        settlementGenerator.onCreated(theWorld.getRNG());
-        actorGenerator.onCreated(theWorld.getRNG());
+//        settlementGenerator.onCreated(theWorld.getRNG());
+//        actorGenerator.onCreated(theWorld.getRNG());
 
         for(int i = 0; i < 25; i++) {
             Actor actor = actorGenerator.generate(theWorld.getRNG(), 0);
@@ -290,15 +290,15 @@ public class Main {
         }
         System.exit(0);
 
-        //Instance of a weapon generator
-        WeaponGenerator generator = new WeaponGenerator();
+        //Instance of a item generator
+        ItemGenerator generator = new ItemGenerator();
 
-        //Generate a random weapon using the world's RNG, level 0 (NYI)
+        //Generate a random item using the world's RNG, level 0 (NYI)
         int weaponCount = 10;
         int maxItr = 5;
         int maxLvl = 250;
 
-        List<WeaponInstance> weapons = new ArrayList<>();
+        List<ItemInstance> weapons = new ArrayList<>();
 
         for(int i = 0; i < weaponCount; i++) {
             int itr = theWorld.getRNG().nextInt(maxItr + 1);
@@ -307,17 +307,17 @@ public class Main {
             for(int j = 0; j < itr; j++) {
                 level = theWorld.getRNG().nextInt(level + 1) + 1;
             }
-            WeaponInstance weapon = generator.generate(theWorld.getRNG(), level);
+            ItemInstance weapon = generator.generate(theWorld.getRNG(), level);
             weapons.add(weapon);
-//            System.out.println("\t" + weapon.getDisplayInfo());
+//            System.out.println("\t" + item.getDisplayInfo());
             printWeapon(weapon);
         }
 //        weapons.sort((weapon1, weapon2) -> Integer.compare(weapon1.getLevel(), weapon2.getLevel()));
-//        weapons.forEach(weapon -> System.out.println(String.format("%s (Level %d)", weapon.getDisplayName(), weapon.getLevel())));
-        //List all base weapon parts, true to write to enum.txt, false to write to console
+//        weapons.forEach(item -> System.out.println(String.format("%s (Level %d)", item.getDisplayName(), item.getLevel())));
+        //List all base item parts, true to write to enum.txt, false to write to console
 //        WeaponPartBase.enumerateParts(true);
 
-        //Count the parts - displays the total of each part list and the total of each weapon type, then total weapons
+        //Count the parts - displays the total of each part list and the total of each item type, then total weapons
 //        WeaponGenerator.countParts();
 
         //Early program termination
@@ -516,17 +516,17 @@ public class Main {
         TimeKeeper timer = new TimeKeeper();
 
         timer.start("Loading Game Save. . .");
-        NBTTagCompound rootNBT = loadGame(WORLD_SAVE);
+//        NBTTagCompound rootNBT = loadGame(WORLD_SAVE);
         timer.stopAndDisplay();
 
         VikingCharacterGenerator genCharacter = new VikingCharacterGenerator();
         VikingSettlementGenerator genLocations = new VikingSettlementGenerator();
 
-        NBTTagCompound characterNBT = rootNBT.hasKey("character") ? rootNBT.getCompoundTag("character") : null;
-        NBTTagCompound locationsNBT = rootNBT.hasKey("locations") ? rootNBT.getCompoundTag("locations") : null;
+//        NBTTagCompound characterNBT = rootNBT.hasKey("character") ? rootNBT.getCompoundTag("character") : null;
+//        NBTTagCompound locationsNBT = rootNBT.hasKey("locations") ? rootNBT.getCompoundTag("locations") : null;
 
-        loadGenerator(genCharacter, characterNBT);
-        loadGenerator(genLocations, locationsNBT);
+//        loadGenerator(genCharacter, characterNBT);
+//        loadGenerator(genLocations, locationsNBT);
 
         for(int i = 0; i < 10; i++) {
             System.out.println(genCharacter.generate(theWorld.getRNG(), 0).getName());
@@ -538,13 +538,13 @@ public class Main {
 
         timer.start("Saving Game. . .");
 
-        characterNBT = saveGenerator(genCharacter);
-        locationsNBT = saveGenerator(genLocations);
-        rootNBT = new NBTTagCompound();
-        rootNBT.setTag("character", characterNBT);
-        rootNBT.setTag("locations", locationsNBT);
+//        characterNBT = saveGenerator(genCharacter);
+//        locationsNBT = saveGenerator(genLocations);
+//        rootNBT = new NBTTagCompound();
+//        rootNBT.setTag("character", characterNBT);
+//        rootNBT.setTag("locations", locationsNBT);
 
-        saveGame(WORLD_SAVE, rootNBT);
+//        saveGame(WORLD_SAVE, rootNBT);
         timer.stopAndDisplay();
         System.exit(0);
     }

@@ -2,7 +2,6 @@ package com.jadencode.main.generate.character.crotan;
 
 import com.jadencode.main.generate.Generator;
 import com.jadencode.main.generate.character.Settlement;
-import com.jadencode.main.nbt.NBTTagCompound;
 
 import java.util.Random;
 
@@ -15,18 +14,18 @@ public class KrotanSettlementGenerator implements Generator<Settlement> {
         return null;
     }
 
-    @Override
-    public void writeNBT(NBTTagCompound nbt) {
-
-    }
-
-    @Override
-    public void readNBT(NBTTagCompound nbt) {
-
-    }
-
-    @Override
-    public void onCreated(Random r) {
-
-    }
+//    @Override
+//    public void writeNBT(NBTTagCompound nbt) {
+//
+//    }
+//
+//    @Override
+//    public void readNBT(NBTTagCompound nbt) {
+//
+//    }
+//
+//    @Override
+//    public void onCreated(Random r) {
+//
+//    }
 }
