@@ -1,0 +1,46 @@
+ItemType<T extends ItemInstance> - a definition for behaviors of a specific item
+	ItemSingle - items of this type only have one available item, they are unique
+	ItemMaterialized - items of this type are loaded as an ItemMaterializedBase and all
+		appropriate materials are applied at runtime, creating each ItemMaterialized
+		object
+	ItemPart - items of this type are loaded as an ItemPartBase and all appropriate
+		materials are applied at runtime, creating each ItemPart object. ItemPart is
+		different from ItemMaterialized because it has an ItemPartType reference
+
+		ItemPartMaterialized - sub of ItemPart which has a material reference
+		ItemPartUnique - sub of ItemPart which has only one definition (no material)
+	ItemModular - items of this type consist of one or more ItemPart(s) in the form of
+		a reference to a list of ItemPartType(s)
+
+ItemInstance - created from ItemType defintions, and add extra things that are independent of
+	the instance's ItemType
+
+	ItemSingleInstance - created from ItemSingle, represents an instance of a unique item
+		type
+	ItemModularInstance - created from ItemModular, represents an instance of a modular
+		item
+	ItemMaterializedInstance - created from ItemMaterialized, represents an instanced of
+		an item with a material
+	ItemPartInstance - create from ItemPart, represents an instance of an item part
+
+=====Examples=====
+ItemSingle
+	Coins
+	Books
+	Keys
+
+ItemMaterialized
+	Logs
+	Ore
+	Ingots
+	Plant Fibers
+	Gems
+
+ItemPart
+	Sword Blade
+	Helmet Attachment
+	Final Hammerhead
+
+ItemModular
+	Weapon
+	Armor
