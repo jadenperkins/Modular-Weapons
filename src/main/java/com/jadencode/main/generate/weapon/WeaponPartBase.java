@@ -1,13 +1,10 @@
 package com.jadencode.main.generate.weapon;
 
-import com.jadencode.main.constants.Materials;
-import com.jadencode.main.constants.WeaponParts;
 import com.jadencode.main.material.Material;
-import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.material.MaterialType;
+import com.jadencode.main.stat.StatSet;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.awt.image.BufferedImage;
 import java.util.List;
 
 /**
@@ -106,25 +103,26 @@ public class WeaponPartBase {
 //    public static final WeaponPartBase fastBoltFlight  = new WeaponPartBase("Rapid Bolt Flight", "Rapid", WeaponGenerator.BOLT_FLETCHINGS, MaterialLibrary.getPlantLibrary());
 //    public static final WeaponPartBase sharpBoltFlight = new WeaponPartBase("Accurate Bolt Flight", "Accurate", WeaponGenerator.BOLT_FLETCHINGS, MaterialLibrary.getPlantLibrary());
 
-    private final WeaponPartType   partType;
-    private final String           partName;
-    private final String           nameMod;
-    private final List<Material> materials = new ArrayList<>();
-    private final float   weight;
-    private final StatSet statSet;
+    private final WeaponPartType     partType;
+    private final String             partName;
+    private final String             nameMod;
+    private final List<MaterialType> materials;
+    private final float              weight;
+    private final StatSet            statSet;
+    private final BufferedImage      icon;
 
-    public WeaponPartBase(String name, String mod, float weight, StatSet stats, WeaponPartType type, MaterialType... mats) {
+    public WeaponPartBase(String name, String mod, float weight, StatSet stats, WeaponPartType type, BufferedImage icon, List<MaterialType> mats) {
         this.partName = name;
         this.nameMod = mod;
         this.weight = weight;
         this.partType = type;
 
         this.statSet = stats;
-        Arrays.stream(mats).forEach(lib -> this.materials.addAll(Materials.getMaterials(lib)));
-        WeaponParts.addBasePart(this);
+        this.icon = icon;
+        this.materials = mats;
     }
-    public WeaponPartBase(String name, String mod, StatSet stats, WeaponPartType type, MaterialType... mats) {
-        this(name, mod, 1F, stats, type, mats);
+    public BufferedImage getIcon() {
+        return this.icon;
     }
     public float getWeight() {
         return weight;
@@ -142,7 +140,7 @@ public class WeaponPartBase {
         return nameMod;
     }
 
-    public List<Material> getMaterials() {
+    public List<MaterialType> getMaterials() {
         return materials;
     }
 

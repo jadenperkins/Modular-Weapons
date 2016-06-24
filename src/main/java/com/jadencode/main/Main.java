@@ -1,9 +1,9 @@
 package com.jadencode.main;
 
-import com.jadencode.main.constants.MaterialTypes;
-import com.jadencode.main.constants.Materials;
-import com.jadencode.main.constants.Stats;
+import com.jadencode.main.constants.PartTypes;
 import com.jadencode.main.constants.WeaponParts;
+import com.jadencode.main.constants.WeaponTypes;
+import com.jadencode.main.content.ContentLoader;
 import com.jadencode.main.generate.Generator;
 import com.jadencode.main.generate.character.Actor;
 import com.jadencode.main.generate.character.Settlement;
@@ -11,21 +11,28 @@ import com.jadencode.main.generate.character.crotan.KrotanCharacterGenerator;
 import com.jadencode.main.generate.character.crotan.KrotanSettlementGenerator;
 import com.jadencode.main.generate.character.viking.VikingCharacterGenerator;
 import com.jadencode.main.generate.character.viking.VikingSettlementGenerator;
-import com.jadencode.main.generate.weapon.WeaponGenerator;
-import com.jadencode.main.generate.weapon.WeaponInstance;
-import com.jadencode.main.item.ItemPart;
-import com.jadencode.main.stat.StatBase;
-import com.jadencode.main.stat.StatSet;
+import com.jadencode.main.generate.weapon.*;
 import com.jadencode.main.magic.SpellBase;
 import com.jadencode.main.magic.SpellObject;
-import com.jadencode.main.material.MaterialType;
 import com.jadencode.main.nbt.CompressedStreamTools;
 import com.jadencode.main.nbt.NBTTagCompound;
+import com.jadencode.main.stat.StatBase;
+import com.jadencode.main.stat.StatSet;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.*;
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Jaden on 1/19/2015.
@@ -90,10 +97,94 @@ public class Main {
         }
         return false;
     }
+    private static void printWeapon(WeaponInstance weap) {
+        boolean standard = true;
+        for (WeaponPartInstance part : weap.getPartsList()) {
+            if(part.getWeaponPart().getType().getIcon() == null) {
+                standard = false;
+            }
+        }
+        File dir = new File("pictures");
+        File out = new File(dir, weap.getDisplayName().replace(" ", "_") + ".png");
 
+        try {
+            out.mkdirs();
+            out.createNewFile();
+            BufferedImage image = new BufferedImage(64, weap.getPartsList().size() * 16, BufferedImage.TYPE_INT_ARGB);
+            Graphics2D g2d = image.createGraphics();
+            if(!standard) {
+                for (int x = 0; x < weap.getPartsList().size(); x++) {
+                    Color c = weap.getPartsList().get(x).getColor();
+                    c = c == null ? Color.WHITE : c;
+                    g2d.setColor(c);
+                    g2d.drawRect(0, x * 16, 16, 16);
+                }
+            } else {
+                for(WeaponPartInstance part : weap.getPartsList()) {
+                    BufferedImage icon = part.getWeaponPart().getIcon();
+                    Color c = part.getColor();
+                    if(c == null) {
+                        g2d.drawImage(icon, 0, 0, null);
+                    } else {
+                        for(int x = 0; x < icon.getWidth(); x++) {
+                            for(int y = 0; y < icon.getHeight(); y++) {
+                                if(icon.getRGB(x, y) >> 24 != 0x00) {
+                                    image.setRGB(x, y, part.getColor().getRGB());
+                                }
+                            }
+                        }
+                    }
+                }
+                g2d.setPaint(Color.WHITE);
+                g2d.fillRect(16, 0, 48, image.getHeight());
+
+                BufferedImage after = new BufferedImage(image.getWidth() * 8, image.getHeight() * 8, BufferedImage.TYPE_INT_ARGB);
+                AffineTransform at = new AffineTransform();
+                at.scale(8, 8);
+                AffineTransformOp scaleOp = new AffineTransformOp(at, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+                after = scaleOp.filter(image, after);
+                image = after;
+
+                g2d = image.createGraphics();
+
+                g2d.setPaint(weap.getQualityLevel().getColor());
+                g2d.setFont(new Font("Helvetica", Font.BOLD, 14));
+                int i = 2;
+                g2d.drawString(String.format("%s (%d)", weap.getDisplayName(), weap.getLevel()), 16 * 8 + 8, g2d.getFontMetrics().getHeight() * i);
+
+                i += 2;
+                g2d.setPaint(Color.DARK_GRAY);
+                g2d.setFont(new Font("Helvetica", Font.PLAIN, 12));
+                for (WeaponPartInstance weaponPartInstance : weap.getPartsList()) {
+                    g2d.drawString(String.format("        %s", weaponPartInstance.getPartInfo(), weaponPartInstance.getLevel()), 16 * 9, g2d.getFontMetrics().getHeight() * i);
+                    i++;
+                    StatSet stats = weaponPartInstance.getStats();
+                    for (StatBase statBase : stats.getStatsRaw().keySet()) {
+                        g2d.drawString(String.format("                %s: %.2f", statBase.getStatName(), stats.get(statBase)), 16 * 9, g2d.getFontMetrics().getHeight() * i);
+                        i++;
+                    }
+                }
+
+                i += 1;
+                g2d.setPaint(Color.BLUE);
+                StatSet stats = weap.getStatSet();
+                for (StatBase statBase : stats.getStatsRaw().keySet()) {
+                    g2d.drawString(String.format("%s: %.2f", statBase.getStatName(), stats.get(statBase)), 16 * 9, g2d.getFontMetrics().getHeight() * i);
+                    i++;
+                }
+
+                g2d.dispose();
+
+            }
+            ImageIO.write(image, "PNG", out);
+            System.out.println("Images stored in " + dir.getAbsolutePath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) {
+        ContentLoader.load();
         //Initialize all materials
-        Materials.load();
 
 //        for(MaterialModified resource : MaterialLibrary.getMetalLibrary().getMaterialResources().values()) {
 //            System.out.println(String.format("%s: %f, %f, %f", resource.getName(), resource.getStrengthMultiplier(), resource.getRangeMultiplier(), resource.getWeaknessMultiplier()));
@@ -139,28 +230,31 @@ public class Main {
 //        System.out.println(parts.size() + " parts");
 
         //Create all weapon parts
-        WeaponParts.generateWeaponParts();
-
 //        ArmorPart.generateArmorParts();
 
-        WeaponInstance weap = new WeaponGenerator().generate(theWorld.getRNG(), 1);
-        StatSet s = weap.getStatSet();
-        Set<StatBase> base = weap.getWeaponType().getStatSet().getStatsRaw().keySet();
 
-        System.out.println(weap.getDisplayName());
-        base.forEach(stat -> System.out.println(String.format("\t%s: %s", stat.getStatName(), s.get(stat).toString())));
+        int weaponLevel = theWorld.getRNG().nextInt(50) + 1;
+        WeaponInstance weap = new WeaponGenerator().generate(theWorld.getRNG(), weaponLevel);
 
-        System.out.println("\t\t" + weap.getDisplayInfo());
+        System.out.println("Created " + weap.getDisplayName() + " with quality " + weap.getQualityLevel().getQualityName());
+//        StatSet s = weap.getStatSet();
+//        Set<StatBase> base = weap.getWeaponType().getStatSet().getStatsRaw().keySet();
+//
+//
+//        System.out.println(weap.getDisplayName());
+//        base.forEach(stat -> System.out.println(String.format("\t%s: %f", stat.getStatName(), s.get(stat))));
+//
+//        System.out.println("\t\t" + weap.getDisplayInfo());
 
+//        WeaponInstance scaled = weap.scaled(20);
+//        StatSet s1 = scaled.getStatSet();
+//        s1.getStatsRaw().keySet().forEach(stat -> System.out.println(String.format("\t%s: %f", stat.getStatName(), s1.get(stat))));
 
-        //291 / 89
-        WeaponInstance scaled = weap.scaled(20);
-        StatSet s1 = scaled.getStatSet();
-        System.out.println(String.format("%s: Slash: %f, Pierce: %f, Blunt: %f", scaled.getDisplayName(), s1.get(Stats.DAMAGE_SLASH), s1.get(Stats.DAMAGE_PIERCE), s1.get(Stats.DAMAGE_BLUNT)));
+        printWeapon(weap);
 
 //        for(WeaponPartInstance part : weap.getWeaponParts().values()) {
-//            for(String key : part.getStats().getFloatKeys()) {
-//                System.out.println(String.format("%s = %f", key, part.getStats().getFloat(key)));
+//            for(String key : part.getPartTypes().getFloatKeys()) {
+//                System.out.println(String.format("%s = %f", key, part.getPartTypes().getFloat(key)));
 //            }
 //        }
 
@@ -213,8 +307,10 @@ public class Main {
             for(int j = 0; j < itr; j++) {
                 level = theWorld.getRNG().nextInt(level + 1) + 1;
             }
-            weapons.add(generator.generate(theWorld.getRNG(), level));
+            WeaponInstance weapon = generator.generate(theWorld.getRNG(), level);
+            weapons.add(weapon);
 //            System.out.println("\t" + weapon.getDisplayInfo());
+            printWeapon(weapon);
         }
 //        weapons.sort((weapon1, weapon2) -> Integer.compare(weapon1.getLevel(), weapon2.getLevel()));
 //        weapons.forEach(weapon -> System.out.println(String.format("%s (Level %d)", weapon.getDisplayName(), weapon.getLevel())));

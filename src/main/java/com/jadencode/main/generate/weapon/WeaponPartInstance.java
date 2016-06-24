@@ -1,6 +1,12 @@
 package com.jadencode.main.generate.weapon;
 
+import com.jadencode.main.generate.QualityLevel;
+import com.jadencode.main.generate.QualityObject;
 import com.jadencode.main.stat.StatSet;
+
+import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 /**
  * Created by Jaden on 6/15/2015.
@@ -23,7 +29,9 @@ public class WeaponPartInstance implements Comparable<WeaponPartInstance> {
     public int getLevel() {
         return level;
     }
-
+    public Color getColor() {
+        return this.getWeaponPart().getColor();
+    }
     public WeaponPart getWeaponPart() {
         return weaponPart;
     }
@@ -35,6 +43,9 @@ public class WeaponPartInstance implements Comparable<WeaponPartInstance> {
     }
     public String getNameMod() {
         return this.weaponPart.getNameMod();
+    }
+    public QualityLevel getQualityLevel() {
+        return this.weaponPart.getQualityLevel();
     }
     @Override
     public int compareTo(WeaponPartInstance o) {

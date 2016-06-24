@@ -99,7 +99,7 @@ public class NBTTagList extends NBTBase
     }
 
     /**
-     * Retrieves the tag at the specified index from the list.
+     * Retrieves the tag at the specified index consume the list.
      */
     public NBTBase tagAt(int par1)
     {

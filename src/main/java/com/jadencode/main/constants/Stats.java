@@ -1,24 +1,28 @@
 package com.jadencode.main.constants;
 
+import com.jadencode.main.scripts.ScriptStat;
 import com.jadencode.main.stat.StatBase;
-import com.jadencode.main.stat.StatDef;
 
-import java.util.function.BiFunction;
+import java.util.HashMap;
+
 
 /**
  * Created by gtrpl on 6/11/2016.
  */
-public class Stats {
-    public static final BiFunction<Integer, Float, Float> SCALE_LEVEL = (i, t) -> t * (float) Math.pow(1.1F, i - 1);
-    public static final BiFunction<Integer, Float, Float> SCALE_NONE = (i, t) -> t;
-    public static final BiFunction<Float, Float, Float> COMBINE_FLOAT = (a, b) -> a + b;
-    public static final BiFunction<Float, Float, Float> MODIFY_FLOAT = (a, b) -> a * b;
+public final class Stats {
+    private static final HashMap<String, StatBase> STATS = new HashMap<>();
+    private static final HashMap<String, ScriptStat> SCRIPTS = new HashMap<>();
 
-    public static final StatBase<Float> DAMAGE_SLASH = new StatDef<>("Slash Damage", 0F, SCALE_LEVEL, COMBINE_FLOAT, MODIFY_FLOAT);
-    public static final StatBase<Float> DAMAGE_PIERCE = new StatDef<>("Pierce Damage", 0F, SCALE_LEVEL, COMBINE_FLOAT, MODIFY_FLOAT);
-    public static final StatBase<Float> DAMAGE_BLUNT = new StatDef<>("Blunt Damage", 0F, SCALE_LEVEL, COMBINE_FLOAT, MODIFY_FLOAT);
-    public static final StatBase<Float> ATTACK_TIME = new StatDef<>("Attack Time", 0F, SCALE_NONE, COMBINE_FLOAT, MODIFY_FLOAT);
-    public static final StatBase<Float> RANGE = new StatDef<>("Range", 0F, SCALE_NONE, COMBINE_FLOAT, MODIFY_FLOAT);
-    public static final StatBase<Float> DRAW_TIME = new StatDef<>("Draw Time", 0F, SCALE_NONE, COMBINE_FLOAT, MODIFY_FLOAT);
-
+    public static HashMap<String, ScriptStat> getScripts() {
+        return SCRIPTS;
+    }
+    public static ScriptStat script(String name) {
+        return SCRIPTS.getOrDefault(name, SCRIPTS.get(null));
+    }
+    public static void register(StatBase stat) {
+        STATS.put(stat.getStatName(), stat);
+    }
+    public static StatBase get(String name) {
+        return STATS.get(name);
+    }
 }

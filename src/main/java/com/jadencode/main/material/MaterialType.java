@@ -1,29 +1,31 @@
 package com.jadencode.main.material;
 
 import com.jadencode.main.Main;
-import com.jadencode.main.constants.MaterialTypes;
+import com.jadencode.main.constants.Materials;
+import com.jadencode.main.generate.QualityLevel;
+import com.jadencode.main.scripts.ScriptMaterialType;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Supplier;
 
 /**
  * Created by Jaden on 2/10/2015.
  */
 public class MaterialType {
     private final String name;
-    private final List<String> exoticNames;
+    private final ScriptMaterialType script;
 
-    public MaterialType(String name, Supplier<List<String>> s) {
+    public MaterialType(String name, ScriptMaterialType script) {
         this.name = name;
-        this.exoticNames = s.get();
-        MaterialTypes.register(this);
+        this.script = script;
     }
     public String getName() {
         return this.name;
     }
-    public void generateExotics() {
+    public List<Material> generateExotics() {
+        List<String> exoticNames = this.script.getExoticNames();
+        List<Material> materials = new ArrayList<>();
         for (String name : exoticNames) {
             long hash = name.hashCode();
             long seed = Main.theWorld.getSeed();
@@ -35,7 +37,10 @@ public class MaterialType {
             Color c = new Color(color);
             float weight = (float) (Math.abs(code % 5) + 1) / 5F;
             float mod = (float) (Math.abs((code + 7) % 4) + 1) / 2F;
-            new Material(name, c, weight, mod, level, this);
+            Material material = new Material(name, c, weight, mod, level, QualityLevel.RARE, this);
+            Materials.register(this, material);
+            materials.add(material);
         }
+        return materials;
     }
 }

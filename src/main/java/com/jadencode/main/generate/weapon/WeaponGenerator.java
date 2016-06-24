@@ -6,7 +6,7 @@ import com.jadencode.main.generate.Generator;
 import com.jadencode.main.nbt.NBTTagCompound;
 import com.jadencode.main.util.WeightedRandomFloat;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -20,13 +20,13 @@ public class WeaponGenerator implements Generator<WeaponInstance> { //Generator<
         return this.generate(r, level, weaponType);
     }
     public WeaponInstance generate(Random r, int level, WeaponType weaponType) {
-        HashMap<WeaponPartType, WeaponPartInstance> partInstances = new HashMap<>();
+        List<WeaponPartInstance> partInstances = new ArrayList<>();
 
         for(WeaponPartType type : weaponType.getWeaponPartTypes()) {
             List<WeaponPart> parts = WeaponParts.getPartsList(type);
             WeaponPart part = WeightedRandomFloat.getRandomItem(r, parts);
             WeaponPartInstance instance = new WeaponPartInstance(part, level);
-            partInstances.put(type, instance);
+            partInstances.add(instance);
         }
         WeaponInstance weapon = new WeaponInstance(weaponType, partInstances);
 
