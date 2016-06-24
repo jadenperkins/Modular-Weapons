@@ -1,46 +1,44 @@
-ItemType<T extends ItemInstance> - a definition for behaviors of a specific item
-	ItemSingle - items of this type only have one available item, they are unique
-	ItemMaterialized - items of this type are loaded as an ItemMaterializedBase and all
-		appropriate materials are applied at runtime, creating each ItemMaterialized
-		object
-	ItemPart - items of this type are loaded as an ItemPartBase and all appropriate
-		materials are applied at runtime, creating each ItemPart object. ItemPart is
-		different from ItemMaterialized because it has an ItemPartType reference
+ItemType<T extends Item> - a definition for behaviors of a specific item
+	ItemTypeUnique - items of this type only have one available item; they are unique
+	ItemTypeMaterialized - items of this type are loaded as an ItemBaseMaterialized and all appropriate materials are applied at
+		runtime, creating each ItemTypeMaterialized object
+	ItemTypePart - items of this type are loaded as an ItemBasePart and all appropriate materials are applied at runtime, creating
+		each ItemTypePart object. ItemTypePart is different from ItemTypeMaterialized because it has an ItemPartType reference
+		
+		ItemTypePartUnique - sub of ItemTypePart which has only one definition (analog to ItemTypeUnique, usable by
+			ItemTypeModular)
+		ItemTypePartMaterialized - sub of ItemTypePart which has a material (analog to ItemTypeMaterialized, usable by
+			ItemTypeModular)
+	ItemTypeModular - items of this type consist of one or more ItemTypePart(s) in the form of a reference to a list of
+		ItemPartType(s)
 
-		ItemPartMaterialized - sub of ItemPart which has a material reference
-		ItemPartUnique - sub of ItemPart which has only one definition (no material)
-	ItemModular - items of this type consist of one or more ItemPart(s) in the form of
-		a reference to a list of ItemPartType(s)
+Item - created from ItemType defintions, and add extra things that are independent of the instance's ItemType
 
-ItemInstance - created from ItemType defintions, and add extra things that are independent of
-	the instance's ItemType
-
-	ItemSingleInstance - created from ItemSingle, represents an instance of a unique item
-		type
-	ItemModularInstance - created from ItemModular, represents an instance of a modular
-		item
-	ItemMaterializedInstance - created from ItemMaterialized, represents an instanced of
-		an item with a material
-	ItemPartInstance - create from ItemPart, represents an instance of an item part
+	ItemUnique - created from ItemTypeUnique, represents an instance of a unique item type
+	ItemMaterialized - created from ItemTypeMaterialized, represents an instanced of an item with a material
+	ItemPart - create from ItemTypePart, represents an instance of an item part
+	ItemModular - created from ItemTypeModular, represents an instance of a modular item
 
 =====Examples=====
-ItemSingle
-	Coins
-	Books
-	Keys
+ItemTypeUnique; materials don't serve a valuable purpose here
+	Coins - currency, no need to have "Gold Coin", "Shadow Gold Coin", "Exanite Coin", it just doesn't have a purpose
+	Books - similar to currency, why have something like "Bloodgleam-Bound" book when its contents are respective to itself?
+	Keys - here, have an Iron key to door A, and I'll continue to have my key to door A that is made of Silver
 
-ItemMaterialized
-	Logs
-	Ore
-	Ingots
-	Plant Fibers
-	Gems
+ItemTypeMaterialized; materials are important to the actual items made from them
+	Logs - probably made from wood material, there has to be a log for each wood material - saves logic work when check crafting
+	Ore - probably metal, needs to have an individual item for each metal material
+	Ingots - see above
+	Plant Fibers - plant materials, above
+	Gems - gem materials, above
 
-ItemPart
-	Sword Blade
-	Helmet Attachment
-	Final Hammerhead
+ItemTypePart; the material type reference(s) or lack of references determines which ItemTypePart is made
+	Sword Blade - has materials, so the engine loads it as an ItemBasePart and creates a new ItemTypePartMaterialized for each material it uses
+	Helmet Attachment - has materials, see above
+	Final Hammerhead - has no materials, so engine immediately loads it as an ItemTypePartUnique
 
-ItemModular
-	Weapon
-	Armor
+ItemTypeModular; takes a list of ItemPartType(s) and creates ItemModular instances by getting a part instance for each when necessary
+	Sword - passed a list of Sword Grip, Sword Hilt, and Sword Blade, so when an ItemModular is created, its parts consist of a list of
+		each ItemPart
+	Chest Armor - passed a list of ItemPartTypes(s): Left Shoulder, Right Shoulder, Chest Guard, and the resulting ItemModular has a list
+		of ItemPart which each have the correct ItemPartType
