@@ -32,6 +32,9 @@ public abstract class Item<T extends ItemType> {
     public String getDisplayName() {
         return this.itemType.getDisplayName(this);
     }
+    public void printItemCard() {
+        this.itemType.printItemCard(this);
+    }
     public List<String> getDisplayInfo() {
         return this.itemType.getDisplayInfo(this);
     }

@@ -15,21 +15,21 @@ import java.util.Random;
  * Created by gtrpl on 6/24/2016.
  */
 public abstract class ItemTypePart extends ItemType<ItemPart> {
-    private final BufferedImage icon;
     private final QualityLevel qualityLevel;
     private final ItemPartType type;
 
-    public ItemTypePart(String name, float w, StatSet stats, ScriptItem s, BufferedImage icon, QualityLevel level, ItemPartType type) {
-        super(name, w, stats, s);
-        this.icon = icon;
+    public ItemTypePart(String name, float w, StatSet stats, ScriptItem s, BufferedImage icon, QualityLevel level, Color c, ItemPartType type) {
+        super(name, w, stats, icon, c, s);
         this.qualityLevel = level;
         this.type = type;
     }
     public ItemPartType getType() {
         return type;
     }
+
+    @Override
     public BufferedImage getIcon() {
-        return this.icon == null ? this.getType().getIcon() : this.icon;
+        return super.getIcon() == null ? this.type.getIcon() : super.getIcon();
     }
 
     @Override

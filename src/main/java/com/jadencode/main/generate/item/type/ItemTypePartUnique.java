@@ -19,7 +19,7 @@ public class ItemTypePartUnique extends ItemTypePart {
     private final List<String> partInfo;
 
     public ItemTypePartUnique(String partName, String nameMod, String partInfo, StatSet statSet, float weight, ScriptItem s, QualityLevel level, BufferedImage icon, ItemPartType type) {
-        super(partName, weight, statSet, s, icon, level, type);
+        super(partName, weight, statSet, s, icon, level, Color.WHITE, type);
         this.nameMod = nameMod;
         this.partInfo = Arrays.asList(partInfo);
     }

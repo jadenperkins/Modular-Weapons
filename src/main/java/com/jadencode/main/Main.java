@@ -190,7 +190,7 @@ public class Main {
 
         Item item = new ItemGenerator().generate(theWorld.getRNG(), itemLevel);
         System.out.println(item.getDisplayName());
-        System.out.println(item.getDisplayInfo());
+        item.printItemCard();
     }
 
     public static void loadSaveTest() {

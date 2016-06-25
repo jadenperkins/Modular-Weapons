@@ -21,7 +21,7 @@ public class ItemTypePartMaterialized extends ItemTypePart {
     private final String       materialName;
 
     public ItemTypePartMaterialized(ItemPartBase part, Material material) {
-        super(material.getName() + " " + part.getPartName(), part.getWeight() * material.getWeight(), part.modifyStats(material), part.getScript(), part.getIcon(), material.getQualityLevel(), part.getPartType());
+        super(material.getName() + " " + part.getPartName(), part.getWeight() * material.getWeight(), part.modifyStats(material), part.getScript(), part.getIcon(), material.getQualityLevel(), material.getColor(), part.getPartType());
         this.nameMod = part.getNameMod();
         if(part.getPartInfo().equals(""))
             this.partDescription = Arrays.asList(String.format("%s crafted from %s", part.getPartName(), material.getName()));

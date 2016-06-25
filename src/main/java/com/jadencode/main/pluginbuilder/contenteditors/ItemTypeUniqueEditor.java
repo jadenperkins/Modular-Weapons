@@ -24,6 +24,7 @@ public class ItemTypeUniqueEditor extends ContentEditor<ContentObjectItemTypeUni
     private final JTextField weightField;
     private final JTextField infoField;
     private final JComboBox<String> qualitySelection;
+    private final JComboBox<String> iconSelection;
 
     public ItemTypeUniqueEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
@@ -33,6 +34,7 @@ public class ItemTypeUniqueEditor extends ContentEditor<ContentObjectItemTypeUni
         this.weightField = helper.add(new JTextField(), "Weight", H_S, V_E + 2 * (H_FLD + V_PAD), H_L, H_FLD);
         this.infoField = helper.add(new JTextField(), "Description", H_S, V_E + 3 * (H_FLD + V_PAD), H_L, H_FLD);
         this.qualitySelection = helper.add(new JComboBox<>(), "Quality Level", H_S, V_E + 4 * (H_FLD + V_PAD), H_L, H_FLD);
+        this.iconSelection = helper.add(new JComboBox<>(), "Icon", H_S, V_E + 5 * (H_FLD + V_PAD), H_L, H_FLD);
     }
     @Override
     public void populate(ContentObjectItemTypeUnique item) {
@@ -41,6 +43,7 @@ public class ItemTypeUniqueEditor extends ContentEditor<ContentObjectItemTypeUni
         this.weightField.setText(item.getWeight() + "");
         this.qualitySelection.setSelectedItem(item.getQualityLevel());
         this.infoField.setText(item.getDescription());
+        this.iconSelection.setSelectedItem(item.getIconName());
     }
     @Override
     public void onOpened(Module<ContentObjectItemTypeUnique> parent, PluginBuilderPanel panel) {
@@ -52,6 +55,10 @@ public class ItemTypeUniqueEditor extends ContentEditor<ContentObjectItemTypeUni
         this.scriptSelection.setModel(new DefaultComboBoxModel<>(scripts.toArray(new String[0])));
 
         this.qualitySelection.setModel(new DefaultComboBoxModel<>(QUALITY_LEVELS));
+
+        Module iconsModule = panel.getModule("Icons");
+        List<String> icons = iconsModule.getItemKeys();
+        this.iconSelection.setModel(new DefaultComboBoxModel<>(icons.toArray(new String[0])));
     }
     @Override
     public ContentObjectItemTypeUnique createItem(String name, String owner) {
@@ -60,8 +67,9 @@ public class ItemTypeUniqueEditor extends ContentEditor<ContentObjectItemTypeUni
         float weight = this.getFloat(this.weightField);
         String quality = (String)this.qualitySelection.getSelectedItem();
         String info = this.infoField.getText();
+        String icon = (String)this.iconSelection.getSelectedItem();
 
-        return new ContentObjectItemTypeUnique(name, owner, stat, script, weight, quality, info);
+        return new ContentObjectItemTypeUnique(name, owner, stat, script, weight, icon, quality, info);
     }
     public float getFloat(JTextField field) {
         float value;
@@ -74,7 +82,7 @@ public class ItemTypeUniqueEditor extends ContentEditor<ContentObjectItemTypeUni
     }
     @Override
     public ContentObjectItemTypeUnique getDefault() {
-        return new ContentObjectItemTypeUnique("", "", "", "", 1F, "", "");
+        return new ContentObjectItemTypeUnique("", "", "", "", 1F, "", "", "");
     }
 
     @Override
@@ -85,7 +93,8 @@ public class ItemTypeUniqueEditor extends ContentEditor<ContentObjectItemTypeUni
         float weight = helper.getFloat("weight");
         String quality = helper.getString("quality");
         String info = helper.getString("partInfo");
+        String icon = helper.getString("icon");
 
-        return new ContentObjectItemTypeUnique(name, owner, statSet, script, weight, quality, info);
+        return new ContentObjectItemTypeUnique(name, owner, statSet, script, weight, icon, quality, info);
     }
 }
