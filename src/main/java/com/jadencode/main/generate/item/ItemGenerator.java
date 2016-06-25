@@ -31,6 +31,7 @@ public class ItemGenerator implements Generator<Item> { //Generator<Sword> {
         else {
             types = ItemTypes.getItemTypes();
         }
+        if(types.isEmpty()) types = ItemTypes.getItemTypes();
 
         ItemType itemType = WeightedRandomFloat.getRandomItem(r, types);
         return this.generate(r, level, itemType);
