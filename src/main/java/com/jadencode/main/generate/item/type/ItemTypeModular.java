@@ -1,12 +1,13 @@
 package com.jadencode.main.generate.item.type;
 
+import com.jadencode.main.constants.ItemParts;
 import com.jadencode.main.generate.QualityLevel;
-import com.jadencode.main.generate.item.WeaponPartInstance;
 import com.jadencode.main.generate.item.base.ItemPartType;
 import com.jadencode.main.generate.item.instance.ItemModular;
 import com.jadencode.main.generate.item.instance.ItemPart;
 import com.jadencode.main.scripts.ScriptItem;
 import com.jadencode.main.stat.StatSet;
+import com.jadencode.main.util.WeightedRandomFloat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,23 @@ public class ItemTypeModular extends ItemType<ItemModular> {
     }
     @Override
     public ItemModular create(Random r, int level) {
-        return null;
+        List<ItemPart> partInstances = new ArrayList<>();
+
+        for(ItemPartType type : this.itemPartTypes) {
+            List<ItemTypePart> parts = ItemParts.getPartsList(type);
+            ItemTypePart part = WeightedRandomFloat.getRandomItem(r, parts);
+            ItemPart instance = part.create(r, level);
+            partInstances.add(instance);
+        }
+        return new ItemModular(this, partInstances);
+    }
+    @Override
+    public String getDisplayFallback(ItemModular instance) {
+        String s = instance.getPart(instance.getItemType().getPrimaryPartType()).getItemType().getMaterialName();
+        for (ItemPartType type : instance.getItemType().getItemPartTypes()) {
+            s = s + " " + instance.getPart(type).getItemType().getNameMod();
+        }
+        return s.trim();
     }
     @Override
     public ItemModular scaled(ItemModular original, int i) {

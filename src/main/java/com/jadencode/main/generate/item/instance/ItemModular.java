@@ -2,15 +2,9 @@ package com.jadencode.main.generate.item.instance;
 
 import com.jadencode.main.generate.QualityLevel;
 import com.jadencode.main.generate.QualityObject;
-import com.jadencode.main.generate.item.WeaponInstance;
-import com.jadencode.main.generate.item.WeaponPartInstance;
-import com.jadencode.main.generate.item.WeaponPartType;
-import com.jadencode.main.generate.item.WeaponType;
 import com.jadencode.main.generate.item.base.ItemPartType;
 import com.jadencode.main.generate.item.type.ItemTypeModular;
-import com.jadencode.main.stat.StatSet;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;

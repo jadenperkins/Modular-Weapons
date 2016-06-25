@@ -10,10 +10,6 @@ public class ScriptItem extends ScriptBase {
         super(scriptName, scriptContents);
     }
     public String getDisplayName(Item instance, String fallback) {
-//        String s = instance.getPart(instance.getWeaponType().getPrimaryPartType()).getWeaponPart().getMaterialName();
-//        for (ItemPartType type : instance.getWeaponType().getItemPartTypes()) {
-//            s = s + " " + instance.getPart(type).getNameMod();
-//        }
         return this.invokeWithDefault("getDisplayName", fallback, instance);
     }
 }

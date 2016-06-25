@@ -4,9 +4,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.GuiHelper;
-import com.jadencode.main.pluginbuilder.JsonHelper;
+import com.jadencode.main.util.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
-import com.jadencode.main.pluginbuilder.items.ItemMaterialModifier;
+import com.jadencode.main.pluginbuilder.content.ContentObjectMaterialModifier;
 import com.jadencode.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> {
+public class MaterialModifierEditor extends ContentEditor<ContentObjectMaterialModifier> {
 
     private final JComboBox<String> colorSelection;
     private final JTextField weightField;
@@ -34,7 +34,7 @@ public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> 
         this.materialsList = helper.addScrolling(new JList<>(), "Material Types", H_S, V_E + 4 * (H_FLD + V_PAD), H_L, 10 * H_FLD);
     }
     @Override
-    public void onOpened(Module<ItemMaterialModifier> parent, PluginBuilderPanel panel) {
+    public void onOpened(Module<ContentObjectMaterialModifier> parent, PluginBuilderPanel panel) {
         Module colorModule = panel.getModule("Colors");
         List<String> colors = colorModule.getItemKeys();
         this.colorSelection.setModel(new DefaultComboBoxModel<>(colors.toArray(new String[0])));
@@ -45,7 +45,7 @@ public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> 
         this.materialsList.setSize(200, 18 * Math.max(1, materialTypes.size()));
     }
     @Override
-    public void populate(ItemMaterialModifier item) {
+    public void populate(ContentObjectMaterialModifier item) {
         this.colorSelection.setSelectedItem(item.getColorName());
         this.weightField.setText(item.getWeight() + "");
         this.levelField.setText(item.getLevel() + "");
@@ -68,14 +68,14 @@ public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> 
 
     }
     @Override
-    public ItemMaterialModifier createItem(String name, String owner) {
+    public ContentObjectMaterialModifier createItem(String name, String owner) {
         String colorName = (String) this.colorSelection.getSelectedItem();
         float weight = this.getValue(this.weightField);
         float level = this.getValue(this.levelField);
         float mod = this.getValue(this.modField);
 
         List<String> values = this.materialsList.getSelectedValuesList();
-        return new ItemMaterialModifier(name, owner, colorName, weight, level, mod, values);
+        return new ContentObjectMaterialModifier(name, owner, colorName, weight, level, mod, values);
     }
     private float getValue(JTextField field) {
         float value;
@@ -87,12 +87,12 @@ public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> 
         return value;
     }
     @Override
-    public ItemMaterialModifier getDefault() {
-        return new ItemMaterialModifier("", "", "", 0F, 0F, 0F, new ArrayList<>());
+    public ContentObjectMaterialModifier getDefault() {
+        return new ContentObjectMaterialModifier("", "", "", 0F, 0F, 0F, new ArrayList<>());
     }
 
     @Override
-    public ItemMaterialModifier consume(String name, JsonObject json, String owner) {
+    public ContentObjectMaterialModifier consume(String name, JsonObject json, String owner) {
         JsonHelper helper = new JsonHelper(json);
         String color = helper.getString("color");
         float weight = helper.getFloat("weight", 1F);
@@ -103,6 +103,6 @@ public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> 
         for (JsonElement jsonElement : array)
             types.add(jsonElement.getAsString());
 
-        return new ItemMaterialModifier(name, owner, color, weight, level, mod, types);
+        return new ContentObjectMaterialModifier(name, owner, color, weight, level, mod, types);
     }
 }

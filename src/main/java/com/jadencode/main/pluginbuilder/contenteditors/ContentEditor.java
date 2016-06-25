@@ -3,8 +3,8 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
-import com.jadencode.main.pluginbuilder.items.Item;
-import com.jadencode.main.pluginbuilder.items.ItemScript;
+import com.jadencode.main.pluginbuilder.content.ContentObject;
+import com.jadencode.main.pluginbuilder.content.ContentObjectScript;
 import com.jadencode.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public abstract class ContentEditor<T extends Item> extends JPanel {
+public abstract class ContentEditor<T extends ContentObject> extends JPanel {
 
     public static final int H_BTN = 40;
     public static final int H_FLD = 20;
@@ -67,10 +67,10 @@ public abstract class ContentEditor<T extends Item> extends JPanel {
         });
     }
     public List<String> getScripts(String type, PluginBuilderPanel panel) {
-        Module<? extends Item> scriptsModule = panel.getModule("Scripts");
+        Module<? extends ContentObject> scriptsModule = panel.getModule("Scripts");
         List<String> scripts = new ArrayList<>();
         for (String key : scriptsModule.getItemKeys()) {
-            String scriptType = ((ItemScript) scriptsModule.getItem(key)).getScriptType();
+            String scriptType = ((ContentObjectScript) scriptsModule.getItem(key)).getScriptType();
             if(type.equals(scriptType)) scripts.add(key);
         }
         scripts.add("");

@@ -2,9 +2,9 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.GuiHelper;
-import com.jadencode.main.pluginbuilder.JsonHelper;
+import com.jadencode.main.util.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
-import com.jadencode.main.pluginbuilder.items.ItemIcon;
+import com.jadencode.main.pluginbuilder.content.ContentObjectIcon;
 import com.jadencode.main.pluginbuilder.modules.Module;
 import org.apache.commons.io.FileUtils;
 
@@ -19,7 +19,7 @@ import java.io.*;
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public class IconEditor extends ContentEditor<ItemIcon> {
+public class IconEditor extends ContentEditor<ContentObjectIcon> {
 
     private final JButton selectImage;
     private final JLabel displayLabel;
@@ -61,7 +61,7 @@ public class IconEditor extends ContentEditor<ItemIcon> {
         });
     }
     @Override
-    public void populate(ItemIcon item) {
+    public void populate(ContentObjectIcon item) {
         this.base64String = item.getBase64();
         try {
             byte[] imageBytes = DatatypeConverter.parseBase64Binary(this.base64String);
@@ -76,16 +76,16 @@ public class IconEditor extends ContentEditor<ItemIcon> {
         }
     }
     @Override
-    public ItemIcon createItem(String name, String owner) {
-        return new ItemIcon(name, owner, this.base64String);
+    public ContentObjectIcon createItem(String name, String owner) {
+        return new ContentObjectIcon(name, owner, this.base64String);
     }
     @Override
-    public ItemIcon getDefault() {
-        return new ItemIcon("", "", "");
+    public ContentObjectIcon getDefault() {
+        return new ContentObjectIcon("", "", "");
     }
 
     @Override
-    public ItemIcon consume(String name, JsonObject json, String owner) {
-        return new ItemIcon(name, owner, new JsonHelper(json).getString("base64"));
+    public ContentObjectIcon consume(String name, JsonObject json, String owner) {
+        return new ContentObjectIcon(name, owner, new JsonHelper(json).getString("base64"));
     }
 }

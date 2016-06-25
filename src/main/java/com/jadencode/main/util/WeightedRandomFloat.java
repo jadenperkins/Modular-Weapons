@@ -8,13 +8,13 @@ import java.util.stream.Collectors;
  */
 public class WeightedRandomFloat {
     /**
-     * Returns the total weight of all items in a collection.
+     * Returns the total weight of all content in a collection.
      */
     public static <T extends WeightedItem> float getTotalWeight(Collection<T> weightedItems) {
         return weightedItems.stream().map(a -> a.getWeight()).reduce(0F, (a, b) -> a + b);
     }
     /**
-     * Returns a random choice consume the input items, with a total weight value.
+     * Returns a random choice consume the input content, with a total weight value.
      */
     public static <T extends WeightedItem> T getRandomItem(Random rng, Collection<T> weightedItems, float weight) {
         if(weightedItems.isEmpty()) throw new IllegalArgumentException("Must have at lest 1 item!");
@@ -32,7 +32,7 @@ public class WeightedRandomFloat {
         return null;
     }
     /**
-     * Returns a random choice consume the input items.
+     * Returns a random choice consume the input content.
      */
     public static <T extends WeightedItem> T getRandomItem(Random r, Collection<T> collection) {
         return getRandomItem(r, collection, getTotalWeight(collection));

@@ -25,7 +25,10 @@ public abstract class ItemType<T extends Item> implements WeightedItem {
         this.script = s;
     }
     public String getDisplayName(T instance) {
-        return this.script.getDisplayName(instance, this.itemBaseName);
+        return this.script.getDisplayName(instance, this.getDisplayFallback(instance));
+    }
+    public String getDisplayFallback(T instance) {
+        return this.getItemBaseName();
     }
 
     public String getItemBaseName() {

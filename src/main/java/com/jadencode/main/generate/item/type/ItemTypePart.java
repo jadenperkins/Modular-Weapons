@@ -1,7 +1,6 @@
 package com.jadencode.main.generate.item.type;
 
 import com.jadencode.main.generate.QualityLevel;
-import com.jadencode.main.generate.item.WeaponPartType;
 import com.jadencode.main.generate.item.base.ItemPartType;
 import com.jadencode.main.generate.item.instance.ItemPart;
 import com.jadencode.main.scripts.ScriptItem;
@@ -9,7 +8,6 @@ import com.jadencode.main.stat.StatSet;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -43,16 +41,11 @@ public abstract class ItemTypePart extends ItemType<ItemPart> {
         return new ItemPart(this, i);
     }
     @Override
-    public List<String> getDisplayInfo(ItemPart instance) {
-        return null;
-    }
-    @Override
     public QualityLevel getQualityLevel(ItemPart instance) {
         return this.qualityLevel;
     }
 
     public abstract String getNameMod();
-    public abstract String getPartInfo();
     public abstract Color getColor();
     public abstract String getMaterialName();
 }

@@ -2,7 +2,7 @@ package com.jadencode.main.pluginbuilder.modules;
 
 import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.contenteditors.ContentEditor;
-import com.jadencode.main.pluginbuilder.items.Item;
+import com.jadencode.main.pluginbuilder.content.ContentObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public abstract class Module<T extends Item> {
+public abstract class Module<T extends ContentObject> {
     private final List<String> itemKeys = new ArrayList<>();
     private final HashMap<String, T> items = new HashMap<>();
     private final String name;

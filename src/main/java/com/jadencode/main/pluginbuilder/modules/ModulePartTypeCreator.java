@@ -2,22 +2,20 @@ package com.jadencode.main.pluginbuilder.modules;
 
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.contenteditors.ContentEditor;
-import com.jadencode.main.pluginbuilder.contenteditors.MaterialTypeEditor;
 import com.jadencode.main.pluginbuilder.contenteditors.PartTypeEditor;
-import com.jadencode.main.pluginbuilder.items.ItemMaterialType;
-import com.jadencode.main.pluginbuilder.items.ItemPartType;
+import com.jadencode.main.pluginbuilder.content.ContentObjectPartType;
 
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public class ModulePartTypeCreator extends Module<ItemPartType> {
-    private final ContentEditor<ItemPartType> contentEditor;
+public class ModulePartTypeCreator extends Module<ContentObjectPartType> {
+    private final ContentEditor<ContentObjectPartType> contentEditor;
     public ModulePartTypeCreator(PluginBuilderPanel parent) {
         super("Part Types");
         this.contentEditor = new PartTypeEditor(this, parent);
     }
     @Override
-    public ContentEditor<ItemPartType> getContentEditor() {
+    public ContentEditor<ContentObjectPartType> getContentEditor() {
         return this.contentEditor;
     }
 }

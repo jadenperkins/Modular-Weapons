@@ -2,9 +2,9 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.GuiHelper;
-import com.jadencode.main.pluginbuilder.JsonHelper;
+import com.jadencode.main.util.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
-import com.jadencode.main.pluginbuilder.items.ItemScript;
+import com.jadencode.main.pluginbuilder.content.ContentObjectScript;
 import com.jadencode.main.pluginbuilder.modules.Module;
 import org.apache.commons.io.FileUtils;
 
@@ -16,9 +16,9 @@ import java.nio.charset.Charset;
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public class ScriptEditor extends ContentEditor<ItemScript> {
+public class ScriptEditor extends ContentEditor<ContentObjectScript> {
     private static final String[] SCRIPT_TYPES = {
-            "material types", "weapons", "stats"
+            "material types", "items", "stats"
     };
 
     private final JButton selectScript;
@@ -59,22 +59,22 @@ public class ScriptEditor extends ContentEditor<ItemScript> {
         this.scriptTypeSelection = helper.add(new JComboBox<>(SCRIPT_TYPES), "Script Type", H_S, V_E + H_BTN + V_PAD, H_L, H_FLD);
     }
     @Override
-    public void populate(ItemScript item) {
+    public void populate(ContentObjectScript item) {
         this.scriptTypeSelection.setSelectedItem(item.getScriptType());
         this.scriptView.setText(item.getScriptContents());
     }
     @Override
-    public ItemScript createItem(String name, String owner) {
-        return new ItemScript(name, owner, (String) this.scriptTypeSelection.getSelectedItem(), this.scriptView.getText());
+    public ContentObjectScript createItem(String name, String owner) {
+        return new ContentObjectScript(name, owner, (String) this.scriptTypeSelection.getSelectedItem(), this.scriptView.getText());
     }
     @Override
-    public ItemScript getDefault() {
-        return new ItemScript("", "", "", "");
+    public ContentObjectScript getDefault() {
+        return new ContentObjectScript("", "", "", "");
     }
 
     @Override
-    public ItemScript consume(String name, JsonObject json, String owner) {
+    public ContentObjectScript consume(String name, JsonObject json, String owner) {
         JsonHelper helper = new JsonHelper(json);
-        return new ItemScript(name, owner, helper.getString("type"), helper.getString("script"));
+        return new ContentObjectScript(name, owner, helper.getString("type"), helper.getString("script"));
     }
 }

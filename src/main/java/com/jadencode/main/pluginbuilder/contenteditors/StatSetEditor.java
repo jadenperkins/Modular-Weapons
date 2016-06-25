@@ -4,9 +4,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.GuiHelper;
-import com.jadencode.main.pluginbuilder.JsonHelper;
+import com.jadencode.main.util.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
-import com.jadencode.main.pluginbuilder.items.ItemStatSet;
+import com.jadencode.main.pluginbuilder.content.ContentObjectStatSet;
 import com.jadencode.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public class StatSetEditor extends ContentEditor<ItemStatSet> {
+public class StatSetEditor extends ContentEditor<ContentObjectStatSet> {
 
     private final JTable statsTable;
 
@@ -28,7 +28,7 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
         this.statsTable = helper.add(new JTable(), "Stats", H_E, V_S, H_L, H_NTR);
     }
     @Override
-    public void onOpened(Module<ItemStatSet> parent, PluginBuilderPanel panel) {
+    public void onOpened(Module<ContentObjectStatSet> parent, PluginBuilderPanel panel) {
         Module statsModule = panel.getModule("Stats");
         List<String> stats = new ArrayList<>(statsModule.getItemKeys());
         stats.add("");
@@ -39,7 +39,7 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
         this.statsTable.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(box));
     }
     @Override
-    public void populate(ItemStatSet item) {
+    public void populate(ContentObjectStatSet item) {
         for(int row = 0; row < this.statsTable.getModel().getRowCount(); row++) {
             this.statsTable.setValueAt("", row, 0);
             this.statsTable.setValueAt("", row, 1);
@@ -55,7 +55,7 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
         }
     }
     @Override
-    public ItemStatSet createItem(String name, String owner) {
+    public ContentObjectStatSet createItem(String name, String owner) {
         int rows = this.statsTable.getModel().getRowCount();
         HashMap<String, Double> stats = new HashMap<>();
         for(int row = 0; row < rows; row++) {
@@ -73,15 +73,15 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
                 stats.put(stat, value);
             }
         }
-        return new ItemStatSet(name, owner, stats);
+        return new ContentObjectStatSet(name, owner, stats);
     }
     @Override
-    public ItemStatSet getDefault() {
-        return new ItemStatSet("", "", new HashMap<>());
+    public ContentObjectStatSet getDefault() {
+        return new ContentObjectStatSet("", "", new HashMap<>());
     }
 
     @Override
-    public ItemStatSet consume(String name, JsonObject json, String owner) {
+    public ContentObjectStatSet consume(String name, JsonObject json, String owner) {
         JsonHelper helper = new JsonHelper(json);
 
         HashMap<String, Double> stats = new HashMap<>();
@@ -90,6 +90,6 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
             JsonHelper obj = new JsonHelper(jsonElement.getAsJsonObject());
             stats.put(obj.getString("stat"), obj.getDouble("value"));
         }
-        return new ItemStatSet(name, owner, stats);
+        return new ContentObjectStatSet(name, owner, stats);
     }
 }

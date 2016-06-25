@@ -18,8 +18,8 @@ public class ItemTypeMaterialized extends ItemType<ItemMaterialized> {
     private final String itemDescription;
     private final Color  itemColor;
     private final QualityLevel itemQuality;
-    public ItemTypeMaterialized(ItemMaterializedBase base, Material material, ScriptItem s) {
-        super(material.getName() + " " + base.getPartName(), base.getWeight() * material.getWeight(), base.modifyStats(material), s);
+    public ItemTypeMaterialized(ItemMaterializedBase base, Material material) {
+        super(material.getName() + " " + base.getPartName(), base.getWeight() * material.getWeight(), base.modifyStats(material), base.getScript());
         this.itemDescription = base.getDescription().replace("%s", material.getName());
         this.itemColor = material.getColor();
         this.itemQuality = material.getQualityLevel();

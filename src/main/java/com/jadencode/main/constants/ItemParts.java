@@ -1,7 +1,13 @@
 package com.jadencode.main.constants;
 
 import com.jadencode.main.TimeKeeper;
-import com.jadencode.main.generate.item.*;
+import com.jadencode.main.generate.item.base.ItemPartBase;
+import com.jadencode.main.generate.item.base.ItemPartType;
+import com.jadencode.main.generate.item.type.ItemType;
+import com.jadencode.main.generate.item.type.ItemTypePart;
+import com.jadencode.main.generate.item.type.ItemTypePartMaterialized;
+import com.jadencode.main.material.Material;
+import com.jadencode.main.material.MaterialType;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,87 +21,88 @@ import java.util.List;
  * Created by gtrpl on 6/11/2016.
  */
 public final class ItemParts {
-    private static final List<WeaponPartBase> WEAPON_PARTS = new ArrayList<>();
-    private static final HashMap<WeaponPartType, List<WeaponPart>> PARTS_LISTS = new HashMap<>();
-    private static final HashMap<String, WeaponPart> MAPPED_PARTS = new HashMap<>();
+    private static final List<ItemPartBase> ITEM_PARTS = new ArrayList<>();
+    private static final HashMap<ItemPartType, List<ItemTypePart>> PARTS_LISTS = new HashMap<>();
+    private static final HashMap<String, ItemTypePart> MAPPED_PARTS = new HashMap<>();
 
-    public static void register(WeaponPart part) {
+    public static void register(ItemTypePart part) {
+        ItemTypes.register(part);
         getPartsList(part.getType()).add(part);
-        MAPPED_PARTS.put(part.getPartName(), part);
+        MAPPED_PARTS.put(part.getItemBaseName(), part);
     }
-    public static WeaponPart get(String name) {
+    public static ItemTypePart get(String name) {
         return MAPPED_PARTS.get(name);
     }
 
-    public static List<WeaponPartBase> getBaseParts() {
-        return WEAPON_PARTS;
+    public static List<ItemPartBase> getBaseParts() {
+        return ITEM_PARTS;
     }
-    public static void addBasePart(WeaponPartBase part) {
-        WEAPON_PARTS.add(part);
+    public static void addBasePart(ItemPartBase part) {
+        ITEM_PARTS.add(part);
     }
-    public static void generateWeaponParts() {
+    public static void generateItemParts() {
         ItemParts.getBaseParts()
                 .forEach(basePart -> basePart.getMaterials()
                         .forEach(type -> Materials.getMaterials(type)
-                                .forEach(material -> register(new WeaponPartBasic(basePart, material)))));
+                                .forEach(material -> register(new ItemTypePartMaterialized(basePart, material)))));
     }
 
-    public static List<WeaponPart> getPartsList(WeaponPartType type) {
+    public static List<ItemTypePart> getPartsList(ItemPartType type) {
         if(PARTS_LISTS.containsKey(type)) return PARTS_LISTS.get(type);
-        List<WeaponPart> parts = new ArrayList<>();
+        List<ItemTypePart> parts = new ArrayList<>();
         PARTS_LISTS.put(type, parts);
         return parts;
     }
-    public static void countParts() {
-        for(WeaponPartType type : PARTS_LISTS.keySet()) {
-            List<WeaponPart> parts = getPartsList(type);
-            System.out.println(parts.size() + " " + type.getTypeName());
-        }
-        DecimalFormat format = new DecimalFormat("#,###");
-        long total = 0;
-        for(WeaponType weaponType : ItemTypes.getWeaponTypes()) {
-            long sub = 1;
-            for(WeaponPartType type : weaponType.getWeaponPartTypes()) {
-                List<WeaponPart> parts = getPartsList(type);
-                if(parts != null && !parts.isEmpty()) {
-                    sub *= parts.size();
-                }
-            }
-            total += sub;
-            System.out.println(format.format(sub) + " total " + weaponType.getWeaponTypeName() + "s");
-        }
-        System.out.println(format.format(total) + " total weapons available!");
-    }
-    public static void enumerateParts(boolean storeFile) {
-        TimeKeeper timer = new TimeKeeper();
-        timer.start("Enumeration all item parts. . .");
-
-        List<WeaponPart> parts = getAll();
-        parts.sort((a, b) -> a.getPartName().compareTo(b.getPartName()));
-
-        PrintStream writer = System.out;
-
-        if(storeFile) {
-            File out = new File("./enum.txt");
-
-            try {
-                out.createNewFile();
-                writer = new PrintStream(new FileOutputStream(out));
-
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
-        }
-        for(WeaponPart part : parts) {
-            String msg = String.format("%s, %s\n\t", part.getPartName(), part.getPartInfo());
-            writer.println(msg);
-        }
-        writer.close();
-        timer.stopAndDisplay();
-    }
-    public static List<WeaponPart> getAll() {
-        List<WeaponPart> ret = new ArrayList<>();
-        PARTS_LISTS.values().forEach(ret::addAll);
-        return ret;
-    }
+//    public static void countParts() {
+//        for(ItemPartType type : PARTS_LISTS.keySet()) {
+//            List<ItemTypePart> parts = getPartsList(type);
+//            System.out.println(parts.size() + " " + type.getTypeName());
+//        }
+//        DecimalFormat format = new DecimalFormat("#,###");
+//        long total = 0;
+//        for(ItemType itemType : ItemTypes.getItemTypes()) {
+//            long sub = 1;
+////            for(ItemPartType type : itemType.get) {
+////                List<WeaponPart> parts = getPartsList(type);
+////                if(parts != null && !parts.isEmpty()) {
+////                    sub *= parts.size();
+////                }
+////            }
+//            total += sub;
+//            System.out.println(format.format(sub) + " total " + itemType.getWeaponTypeName() + "s");
+//        }
+//        System.out.println(format.format(total) + " total weapons available!");
+//    }
+//    public static void enumerateParts(boolean storeFile) {
+//        TimeKeeper timer = new TimeKeeper();
+//        timer.start("Enumeration all item parts. . .");
+//
+//        List<WeaponPart> parts = getAll();
+//        parts.sort((a, b) -> a.getPartName().compareTo(b.getPartName()));
+//
+//        PrintStream writer = System.out;
+//
+//        if(storeFile) {
+//            File out = new File("./enum.txt");
+//
+//            try {
+//                out.createNewFile();
+//                writer = new PrintStream(new FileOutputStream(out));
+//
+//            } catch(Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        for(WeaponPart part : parts) {
+//            String msg = String.format("%s, %s\n\t", part.getPartName(), part.getPartInfo());
+//            writer.println(msg);
+//        }
+//        writer.close();
+//        timer.stopAndDisplay();
+//    }
+//    public static List<WeaponPart> getAll() {
+//        List<WeaponPart> ret = new ArrayList<>();
+//        PARTS_LISTS.values().forEach(ret::addAll);
+//        return ret;
+//    }
 }

@@ -2,6 +2,7 @@ package com.jadencode.main.generate.item.base;
 
 import com.jadencode.main.material.Material;
 import com.jadencode.main.material.MaterialType;
+import com.jadencode.main.scripts.ScriptItem;
 import com.jadencode.main.stat.StatSet;
 
 import java.awt.image.BufferedImage;
@@ -19,8 +20,9 @@ public class ItemPartBase {
     private final float              weight;
     private final StatSet            statSet;
     private final BufferedImage      icon;
+    private final ScriptItem         script;
 
-    public ItemPartBase(String name, String mod, String info, float weight, StatSet stats, ItemPartType type, BufferedImage icon, List<MaterialType> mats) {
+    public ItemPartBase(String name, String mod, String info, float weight, StatSet stats, ItemPartType type, BufferedImage icon, List<MaterialType> mats, ScriptItem s) {
         this.partName = name;
         this.nameMod = mod;
         this.partInfo = info;
@@ -30,6 +32,7 @@ public class ItemPartBase {
         this.partType = type;
         this.icon = icon;
         this.materials = mats;
+        this.script = s;
     }
     public ItemPartType getPartType() {
         return partType;
@@ -54,6 +57,9 @@ public class ItemPartBase {
     }
     public BufferedImage getIcon() {
         return this.icon;
+    }
+    public ScriptItem getScript() {
+        return this.script;
     }
 
     public StatSet modifyStats(Material resource) {

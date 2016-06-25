@@ -1,10 +1,11 @@
 package com.jadencode.main.content;
 
 import com.google.gson.*;
+import com.jadencode.main.constants.ItemTypes;
 import com.jadencode.main.constants.Materials;
 import com.jadencode.main.constants.ItemParts;
 import com.jadencode.main.content.loaders.ContentManager;
-import com.jadencode.main.pluginbuilder.JsonHelper;
+import com.jadencode.main.util.JsonHelper;
 import org.reflections.Reflections;
 
 import java.io.*;
@@ -24,8 +25,8 @@ public final class ContentLoader {
         loadStaticContent();
 
         Materials.load();
-        ItemParts.generateWeaponParts();
-        ItemParts.countParts();
+        ItemParts.generateItemParts();
+        ItemTypes.generateMaterializedItems();
     }
     private static final void compressSourcePlugins() {
         File pluginDir = new File("plugins");

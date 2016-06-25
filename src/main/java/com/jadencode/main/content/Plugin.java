@@ -2,7 +2,7 @@ package com.jadencode.main.content;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.jadencode.main.pluginbuilder.JsonHelper;
+import com.jadencode.main.util.JsonHelper;
 
 import java.io.*;
 import java.util.List;

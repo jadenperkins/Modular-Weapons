@@ -3,8 +3,9 @@ package com.jadencode.main.pluginbuilder;
 import com.google.gson.*;
 import com.jadencode.main.content.Plugin;
 import com.jadencode.main.pluginbuilder.contenteditors.ContentEditor;
-import com.jadencode.main.pluginbuilder.items.Item;
+import com.jadencode.main.pluginbuilder.content.ContentObject;
 import com.jadencode.main.pluginbuilder.modules.Module;
+import com.jadencode.main.util.JsonHelper;
 import org.reflections.Reflections;
 
 import javax.swing.*;
@@ -19,7 +20,7 @@ import java.util.zip.GZIPOutputStream;
  * Created by gtrpl on 6/18/2016.
  */
 public class PluginBuilderPanel extends JPanel {
-    private final JList<Module<? extends Item>> contentModules;
+    private final JList<Module<? extends ContentObject>> contentModules;
     private final JList<String> currentContentObjects;
     private final JButton exportPlugin;
     private final JTextField activeFile;
@@ -27,7 +28,7 @@ public class PluginBuilderPanel extends JPanel {
     private final JScrollPane scrollingContentPane;
     private List<String> loadedFiles = new ArrayList<>();
 
-    private final HashMap<String, Module<? extends Item>> moduleMap = new HashMap<>();
+    private final HashMap<String, Module<? extends ContentObject>> moduleMap = new HashMap<>();
 
     private ContentEditor editor;
 
@@ -35,10 +36,10 @@ public class PluginBuilderPanel extends JPanel {
         this.setLayout(null);
         Set<Class<? extends Module>> moduleClasses = new Reflections("com.jadencode.main.pluginbuilder.modules").getSubTypesOf(Module.class);
 
-        List<Module<? extends Item>> modules = new ArrayList<>();
+        List<Module<? extends ContentObject>> modules = new ArrayList<>();
         for (Class<? extends Module> moduleClass : moduleClasses) {
             try {
-                Module<? extends Item> module = moduleClass.getConstructor(PluginBuilderPanel.class).newInstance(this);
+                Module<? extends ContentObject> module = moduleClass.getConstructor(PluginBuilderPanel.class).newInstance(this);
                 modules.add(module);
                 this.moduleMap.put(module.getName(), module);
             } catch (Exception e) {
@@ -72,7 +73,7 @@ public class PluginBuilderPanel extends JPanel {
     public void populateSelected() {
         String selected = this.getSelectedItem();
         if(this.getSelectedModule().getItemKeys().contains(selected)) {
-            Item item = this.getSelectedModule().getItems().get(selected);
+            ContentObject item = this.getSelectedModule().getItems().get(selected);
             this.editor.setName(item.getName());
             this.editor.populate(item);
         } else {
@@ -81,7 +82,7 @@ public class PluginBuilderPanel extends JPanel {
         }
         this.repaint();
     }
-    public Module<? extends Item> getModule(String name) {
+    public Module<? extends ContentObject> getModule(String name) {
         return this.moduleMap.get(name);
     }
     public void updateCurrentObjects(String name) {
@@ -111,7 +112,7 @@ public class PluginBuilderPanel extends JPanel {
     public String getSelectedItem() {
         return this.currentContentObjects.getSelectedValue();
     }
-    public Module<? extends Item> getSelectedModule() {
+    public Module<? extends ContentObject> getSelectedModule() {
         return this.contentModules.getSelectedValue();
     }
     private <T extends JComponent> T create(T component, int x, int y, int w, int h) {
@@ -127,7 +128,7 @@ public class PluginBuilderPanel extends JPanel {
         this.add(label);
         return this.create(component, x, y + 20, w, h);
     }
-    private void export(List<Module<? extends Item>> modules) {
+    private void export(List<Module<? extends ContentObject>> modules) {
         if(this.getActivePlugin() == null || this.getActivePlugin().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter a name for the file!");
             return;
@@ -138,7 +139,7 @@ public class PluginBuilderPanel extends JPanel {
         source.mkdirs();
         try {
             JsonObject json = new JsonObject();
-            for (Module<? extends Item> module : modules) {
+            for (Module<? extends ContentObject> module : modules) {
                 JsonArray array = new JsonArray();
                 for(String name : module.getItemKeys()) {
                     if(module.getItem(name).getOwner() != null && module.getItem(name).getOwner().equals(fileName)) {
@@ -176,7 +177,7 @@ public class PluginBuilderPanel extends JPanel {
             e1.printStackTrace();
         }
     }
-    private void importFiles(List<Module<? extends Item>> modules) {
+    private void importFiles(List<Module<? extends ContentObject>> modules) {
         JFileChooser chooser = new JFileChooser();
         chooser.setCurrentDirectory(new File("plugins"));
         chooser.setMultiSelectionEnabled(true);
@@ -199,7 +200,7 @@ public class PluginBuilderPanel extends JPanel {
             List<Plugin> plugins = Arrays.asList(pluginFiles).stream().map(Plugin::new).collect(Collectors.toList());
             plugins.sort(null);
 
-            for(Module<? extends Item> module : modules) {
+            for(Module<? extends ContentObject> module : modules) {
                 String moduleName = module.getName();
                 for(Plugin plugin : plugins) {
                     JsonArray array = new JsonHelper(plugin.getPluginObject()).getArray(moduleName);
