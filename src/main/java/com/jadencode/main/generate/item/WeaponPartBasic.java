@@ -9,7 +9,7 @@ import java.awt.*;
 /**
  * Created by Jaden on 5/28/2015.
  */
-public class ItemPartBasic extends ItemPart {
+public class WeaponPartBasic extends WeaponPart {
 
     private final String           partName;
     private final String           nameMod;
@@ -18,7 +18,7 @@ public class ItemPartBasic extends ItemPart {
     private final Color            partColor;
     private final String           materialName;
 
-    public ItemPartBasic(ItemPartBase part, Material resource) {
+    public WeaponPartBasic(WeaponPartBase part, Material resource) {
         super(part.getWeight() * resource.getWeight(), part.getIcon(), resource.getQualityLevel(), part.getPartType());
         this.partName = resource.getName() + " " + part.getPartName();
         this.nameMod = part.getNameMod();

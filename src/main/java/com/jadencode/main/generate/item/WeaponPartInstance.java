@@ -8,19 +8,19 @@ import java.awt.*;
 /**
  * Created by Jaden on 6/15/2015.
  */
-public class ItemPartInstance implements Comparable<ItemPartInstance> {
-    private final ItemPart weaponPart;
+public class WeaponPartInstance implements Comparable<WeaponPartInstance> {
+    private final WeaponPart weaponPart;
     private final int        level;
     private final StatSet    statSet;
 
-    public ItemPartInstance(ItemPart part, int l) {
+    public WeaponPartInstance(WeaponPart part, int l) {
         this.weaponPart = part;
         this.level = l;
 
         this.statSet = this.getWeaponPart().getStats().scaled(this.level);
     }
-    public ItemPartInstance scaledInstance(int i) {
-        ItemPartInstance scaled = new ItemPartInstance(this.weaponPart, i);
+    public WeaponPartInstance scaledInstance(int i) {
+        WeaponPartInstance scaled = new WeaponPartInstance(this.weaponPart, i);
         return scaled;
     }
     public int getLevel() {
@@ -29,7 +29,7 @@ public class ItemPartInstance implements Comparable<ItemPartInstance> {
     public Color getColor() {
         return this.getWeaponPart().getColor();
     }
-    public ItemPart getWeaponPart() {
+    public WeaponPart getWeaponPart() {
         return weaponPart;
     }
     public StatSet getStats() {
@@ -45,7 +45,7 @@ public class ItemPartInstance implements Comparable<ItemPartInstance> {
         return this.weaponPart.getQualityLevel();
     }
     @Override
-    public int compareTo(ItemPartInstance o) {
+    public int compareTo(WeaponPartInstance o) {
         return Integer.compare(this.level, o.level);
     }
 }

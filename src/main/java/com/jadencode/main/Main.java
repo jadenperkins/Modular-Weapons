@@ -20,8 +20,6 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,11 +87,11 @@ public class Main {
         }
         return false;
     }
-    private static void printWeapon(ItemInstance weap) {
+    private static void printWeapon(WeaponInstance weap) {
         boolean standard = true;
         int width = 0;
         int height = 0;
-        for (ItemPartInstance part : weap.getPartsList()) {
+        for (WeaponPartInstance part : weap.getPartsList()) {
             if(part.getWeaponPart().getIcon().getWidth() > width) {
                 width = part.getWeaponPart().getIcon().getWidth();
             }
@@ -120,7 +118,7 @@ public class Main {
                     g2d.drawRect(0, x * 16, 16, 16);
                 }
             } else {
-                for(ItemPartInstance part : weap.getPartsList()) {
+                for(WeaponPartInstance part : weap.getPartsList()) {
                     BufferedImage icon = part.getWeaponPart().getIcon();
                     Color c = part.getColor();
                     if(c == null) {
@@ -155,7 +153,7 @@ public class Main {
                 i += 2;
                 g2d.setPaint(Color.DARK_GRAY);
                 g2d.setFont(new Font("Helvetica", Font.PLAIN, 12));
-                for (ItemPartInstance weaponPartInstance : weap.getPartsList()) {
+                for (WeaponPartInstance weaponPartInstance : weap.getPartsList()) {
                     g2d.drawString(String.format("        %s", weaponPartInstance.getPartInfo(), weaponPartInstance.getLevel()), width * 9, g2d.getFontMetrics().getHeight() * i);
                     i++;
                     StatSet stats = weaponPartInstance.getStats();
@@ -234,15 +232,15 @@ public class Main {
 
 
         int weaponLevel = theWorld.getRNG().nextInt(50) + 1;
-        ItemInstance weap = new ItemGenerator().generate(theWorld.getRNG(), weaponLevel);
+        WeaponInstance weap = new WeaponGenerator().generate(theWorld.getRNG(), weaponLevel);
 
         System.out.println("Created " + weap.getDisplayName() + " with quality " + weap.getQualityLevel().getQualityName());
 //        StatSet s = weap.getStatSet();
-//        Set<StatBase> base = weap.getWeaponType().getStatSet().getStatsRaw().keySet();
+//        Set<StatBase> type = weap.getItemType().getStatSet().getStatsRaw().keySet();
 //
 //
 //        System.out.println(weap.getDisplayName());
-//        base.forEach(stat -> System.out.println(String.format("\t%s: %f", stat.getStatName(), s.get(stat))));
+//        type.forEach(stat -> System.out.println(String.format("\t%s: %f", stat.getStatName(), s.get(stat))));
 //
 //        System.out.println("\t\t" + weap.getDisplayInfo());
 
@@ -291,14 +289,14 @@ public class Main {
         System.exit(0);
 
         //Instance of a item generator
-        ItemGenerator generator = new ItemGenerator();
+        WeaponGenerator generator = new WeaponGenerator();
 
         //Generate a random item using the world's RNG, level 0 (NYI)
         int weaponCount = 10;
         int maxItr = 5;
         int maxLvl = 250;
 
-        List<ItemInstance> weapons = new ArrayList<>();
+        List<WeaponInstance> weapons = new ArrayList<>();
 
         for(int i = 0; i < weaponCount; i++) {
             int itr = theWorld.getRNG().nextInt(maxItr + 1);
@@ -307,14 +305,14 @@ public class Main {
             for(int j = 0; j < itr; j++) {
                 level = theWorld.getRNG().nextInt(level + 1) + 1;
             }
-            ItemInstance weapon = generator.generate(theWorld.getRNG(), level);
+            WeaponInstance weapon = generator.generate(theWorld.getRNG(), level);
             weapons.add(weapon);
 //            System.out.println("\t" + item.getDisplayInfo());
             printWeapon(weapon);
         }
 //        weapons.sort((weapon1, weapon2) -> Integer.compare(weapon1.getLevel(), weapon2.getLevel()));
 //        weapons.forEach(item -> System.out.println(String.format("%s (Level %d)", item.getDisplayName(), item.getLevel())));
-        //List all base item parts, true to write to enum.txt, false to write to console
+        //List all type item parts, true to write to enum.txt, false to write to console
 //        WeaponPartBase.enumerateParts(true);
 
         //Count the parts - displays the total of each part list and the total of each item type, then total weapons
@@ -430,8 +428,8 @@ public class Main {
 //            }
 //        });
 //
-//        for(SpellBase base : list) {
-//            System.out.println(String.format("%s (%f) - %s", base.getName(), base.getWeight(), base.getDescription()));
+//        for(SpellBase type : list) {
+//            System.out.println(String.format("%s (%f) - %s", type.getName(), type.getWeight(), type.getDescription()));
 //        }
 //        Counter<SpellBase> counter = new Counter<>();
 //        Random r = new Random();

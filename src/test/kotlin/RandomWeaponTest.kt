@@ -1,6 +1,6 @@
 
 import com.jadencode.main.content.ContentLoader
-import com.jadencode.main.generate.item.ItemGenerator
+import com.jadencode.main.generate.item.WeaponGenerator
 import org.jetbrains.spek.api.Spek
 import parts.Joint
 import parts.Part
@@ -14,7 +14,7 @@ import kotlin.test.assertNotNull
 class RandomWeaponTest : Spek({
     describe("a item") {
         ContentLoader.load();
-        val weapon = ItemGenerator().generate(Random(11181993L), 10);
+        val weapon = WeaponGenerator().generate(Random(11181993L), 10);
 
         it("should have a name") {
             assertNotNull(weapon.displayName)

@@ -4,10 +4,10 @@ import com.google.gson.JsonObject;
 import com.jadencode.main.constants.PartTypes;
 import com.jadencode.main.constants.StatSets;
 import com.jadencode.main.constants.ItemTypes;
-import com.jadencode.main.generate.item.ItemPartType;
-import com.jadencode.main.generate.item.ItemType;
+import com.jadencode.main.generate.item.WeaponPartType;
+import com.jadencode.main.generate.item.WeaponType;
 import com.jadencode.main.pluginbuilder.JsonHelper;
-import com.jadencode.main.scripts.ScriptWeapon;
+import com.jadencode.main.scripts.ScriptItem;
 import com.jadencode.main.stat.StatSet;
 
 import java.util.List;
@@ -24,12 +24,12 @@ public class ItemTypeLoader extends ContentManager {
     public void consume(String name, JsonObject obj) {
         JsonHelper helper = new JsonHelper(obj);
         StatSet stats = StatSets.get(helper.getString("stats"));
-        ScriptWeapon script = ItemTypes.script(helper.getString("script"));
+        ScriptItem script = ItemTypes.script(helper.getString("script"));
         float weight = helper.getFloat("weight", 1F);
-        List<ItemPartType> types = JsonHelper.fromArray(helper.getArray("parts")).stream().map(PartTypes::get).collect(Collectors.toList());
-        ItemPartType primary = obj.has("primary") ? PartTypes.get(helper.getString("primary")) : types.get(0);
+        List<WeaponPartType> types = JsonHelper.fromArray(helper.getArray("parts")).stream().map(PartTypes::get).collect(Collectors.toList());
+        WeaponPartType primary = obj.has("primary") ? PartTypes.get(helper.getString("primary")) : types.get(0);
 
-        ItemType weapon = new ItemType(name, weight, stats, primary, types, script);
+        WeaponType weapon = new WeaponType(name, weight, stats, primary, types, script);
         ItemTypes.register(weapon);
     }
 }

@@ -3,7 +3,7 @@ package com.jadencode.main.content.loaders;
 import com.google.gson.JsonObject;
 import com.jadencode.main.constants.Icons;
 import com.jadencode.main.constants.PartTypes;
-import com.jadencode.main.generate.item.ItemPartType;
+import com.jadencode.main.generate.item.WeaponPartType;
 
 import java.awt.image.BufferedImage;
 
@@ -18,6 +18,6 @@ public class PartTypeLoader extends ContentManager {
     public void consume(String name, JsonObject obj) {
         String iconName = obj.has("icon") ? obj.get("icon").getAsString() : null;
         BufferedImage icon = Icons.get(iconName);
-        PartTypes.register(new ItemPartType(name, icon));
+        PartTypes.register(new WeaponPartType(name, icon));
     }
 }

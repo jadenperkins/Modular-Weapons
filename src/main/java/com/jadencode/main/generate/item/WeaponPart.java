@@ -10,19 +10,19 @@ import java.awt.image.BufferedImage;
 /**
  * Created by JPERKI8 on 6/13/2016.
  */
-public abstract class ItemPart implements WeightedItem {
+public abstract class WeaponPart implements WeightedItem {
     private final float weight;
-    private final ItemPartType type;
+    private final WeaponPartType type;
     private final BufferedImage icon;
     private final QualityLevel qualityLevel;
 
-    public ItemPart(float w, BufferedImage icon, QualityLevel level, ItemPartType type) {
+    public WeaponPart(float w, BufferedImage icon, QualityLevel level, WeaponPartType type) {
         this.weight = w;
         this.icon = icon;
         this.qualityLevel = level;
         this.type = type;
     }
-    public ItemPartType getType() {
+    public WeaponPartType getType() {
         return type;
     }
     public BufferedImage getIcon() {

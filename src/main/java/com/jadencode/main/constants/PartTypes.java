@@ -1,6 +1,6 @@
 package com.jadencode.main.constants;
 
-import com.jadencode.main.generate.item.ItemPartType;
+import com.jadencode.main.generate.item.WeaponPartType;
 
 import java.util.HashMap;
 
@@ -9,12 +9,12 @@ import java.util.HashMap;
  */
 public final class PartTypes {
 
-    private static final HashMap<String, ItemPartType> PART_TYPES = new HashMap<>();
+    private static final HashMap<String, WeaponPartType> PART_TYPES = new HashMap<>();
 
-    public static final ItemPartType get(String name) {
+    public static final WeaponPartType get(String name) {
         return PART_TYPES.get(name);
     }
-    public static void register(ItemPartType type) {
+    public static void register(WeaponPartType type) {
         PART_TYPES.put(type.getTypeName(), type);
     }
 }

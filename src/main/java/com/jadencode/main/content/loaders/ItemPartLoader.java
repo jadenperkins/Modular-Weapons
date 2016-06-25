@@ -3,10 +3,10 @@ package com.jadencode.main.content.loaders;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.jadencode.main.constants.*;
-import com.jadencode.main.generate.item.ItemPart;
-import com.jadencode.main.generate.item.ItemPartBase;
-import com.jadencode.main.generate.item.ItemPartLegendary;
-import com.jadencode.main.generate.item.ItemPartType;
+import com.jadencode.main.generate.item.WeaponPart;
+import com.jadencode.main.generate.item.WeaponPartBase;
+import com.jadencode.main.generate.item.WeaponPartUnique;
+import com.jadencode.main.generate.item.WeaponPartType;
 import com.jadencode.main.material.MaterialType;
 import com.jadencode.main.stat.StatSet;
 
@@ -31,17 +31,17 @@ public class ItemPartLoader extends ContentManager {
         float weight = obj.has("weight") ? obj.get("weight").getAsFloat() : 1F;
         String iconName = obj.has("icon") ? obj.get("icon").getAsString() : null;
         BufferedImage icon = Icons.get(iconName);
-        ItemPartType type = PartTypes.get(obj.get("partType").getAsString());
+        WeaponPartType type = PartTypes.get(obj.get("partType").getAsString());
 
         if(isLegendary) {
-            ItemPart part = new ItemPartLegendary(name, nameMod, partInfo, set, weight, icon, type);
+            WeaponPart part = new WeaponPartUnique(name, nameMod, partInfo, set, weight, icon, type);
             ItemParts.register(part);
         } else {
             JsonArray materials = obj.get("materials").getAsJsonArray();
             List<String> mats = new ArrayList<>();
             materials.forEach(e -> mats.add(e.getAsString()));
             List<MaterialType> types = mats.stream().map(MaterialTypes::get).collect(Collectors.toList());
-            ItemPartBase part = new ItemPartBase(name, nameMod, weight, set, type, icon, types);
+            WeaponPartBase part = new WeaponPartBase(name, nameMod, weight, set, type, icon, types);
             ItemParts.addBasePart(part);
         }
     }

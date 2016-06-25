@@ -1,9 +1,9 @@
-package com.jadencode.main.generate.item;
+package com.jadencode.main.generate.item.base;
 
 import java.awt.image.BufferedImage;
 
 /**
- * Created by gtrpl on 6/11/2016.
+ * Created by gtrpl on 6/24/2016.
  */
 public class ItemPartType {
     private final String typeName;

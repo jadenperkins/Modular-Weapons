@@ -12,17 +12,17 @@ import java.util.stream.Collectors;
 /**
  * Created by Jaden on 6/1/2015.
  */
-public class ItemInstance implements QualityObject {
+public class WeaponInstance implements QualityObject {
 
-    private final ItemType weaponType;
-    private final List<ItemPartInstance> weaponParts;
-    private final HashMap<ItemPartType, ItemPartInstance> mappedParts;
+    private final WeaponType weaponType;
+    private final List<WeaponPartInstance> weaponParts;
+    private final HashMap<WeaponPartType, WeaponPartInstance> mappedParts;
     private final int level;
     private final String          displayName;
     private final List<String> displayInfo;
     private final StatSet statSet;
 
-    public ItemInstance(ItemType base, List<ItemPartInstance> parts) {
+    public WeaponInstance(WeaponType base, List<WeaponPartInstance> parts) {
         this.weaponType = base;
         this.weaponParts = parts;
         this.level = (int) Math.ceil(Math.sqrt(parts.stream().mapToInt(part -> (int)Math.pow(part.getLevel(), 2)).sum() / parts.size()));
@@ -31,16 +31,16 @@ public class ItemInstance implements QualityObject {
         parts.forEach(part -> this.mappedParts.put(part.getWeaponPart().getType(), part));
         this.displayName = base.getDisplayName(this);
 
-        this.displayInfo = parts.stream().map(ItemPartInstance::getPartInfo).collect(Collectors.toList());
+        this.displayInfo = parts.stream().map(WeaponPartInstance::getPartInfo).collect(Collectors.toList());
 
         this.statSet = this.weaponType.determineStats(this);
     }
-    public ItemInstance scaled(int i) {
-        List<ItemPartInstance> parts = new ArrayList<>();
+    public WeaponInstance scaled(int i) {
+        List<WeaponPartInstance> parts = new ArrayList<>();
         this.getPartsList().forEach(p -> parts.add(p.scaledInstance(i)));
-        return new ItemInstance(this.getWeaponType(), parts);
+        return new WeaponInstance(this.getWeaponType(), parts);
     }
-    public List<ItemPartInstance> getPartsList() {
+    public List<WeaponPartInstance> getPartsList() {
         return this.weaponParts;
     }
     public int getLevel() {
@@ -54,13 +54,13 @@ public class ItemInstance implements QualityObject {
     public List<String> getDisplayInfo() {
         return this.displayInfo;
     }
-    public ItemPartInstance getPart(ItemPartType type) {
+    public WeaponPartInstance getPart(WeaponPartType type) {
         return this.mappedParts.get(type);
     }
     public StatSet getStatSet() {
         return this.statSet;
     }
-    public ItemType getWeaponType() {
+    public WeaponType getWeaponType() {
         return this.weaponType;
     }
     public QualityLevel getQualityLevel() {
@@ -68,7 +68,7 @@ public class ItemInstance implements QualityObject {
     }
     @Override
     public List<QualityLevel> getQualityLevels() {
-        List<QualityLevel> ret = this.weaponParts.stream().map(ItemPartInstance::getQualityLevel).collect(Collectors.toList());
+        List<QualityLevel> ret = this.weaponParts.stream().map(WeaponPartInstance::getQualityLevel).collect(Collectors.toList());
         return ret;
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by Jaden on 5/28/2015.
  */
-public class ItemPartBase {
+public class WeaponPartBase {
 //    public static final ArmorPartBase plateHelmetBase = new ArmorPartBase("Plate Sallet", "Plate Helmet", 90F, 80F, 30F, 30F, ArmorGenerator.MELEE_HELMET_BASES, MaterialType.getMetalLibrary());
 //    public static final ArmorPartBase fluteHelmetBase = new ArmorPartBase("Fluted Sallet", "Fluted Helmet", 45F, 70F, 80F, 25F, ArmorGenerator.MELEE_HELMET_BASES, MaterialType.getMetalLibrary());
 //    public static final ArmorPartBase chainHelmetBase = new ArmorPartBase("Chainmail Coif", "Chain Coif", 70F, 90F, 30F, 20F, ArmorGenerator.MELEE_HELMET_BASES, MaterialType.getMetalLibrary());
@@ -28,7 +28,7 @@ public class ItemPartBase {
 
 
 
-    private final ItemPartType partType;
+    private final WeaponPartType partType;
     private final String             partName;
     private final String             nameMod;
     private final List<MaterialType> materials;
@@ -36,7 +36,7 @@ public class ItemPartBase {
     private final StatSet            statSet;
     private final BufferedImage      icon;
 
-    public ItemPartBase(String name, String mod, float weight, StatSet stats, ItemPartType type, BufferedImage icon, List<MaterialType> mats) {
+    public WeaponPartBase(String name, String mod, float weight, StatSet stats, WeaponPartType type, BufferedImage icon, List<MaterialType> mats) {
         this.partName = name;
         this.nameMod = mod;
         this.weight = weight;
@@ -57,7 +57,7 @@ public class ItemPartBase {
         return partName;
     }
 
-    public ItemPartType getPartType() {
+    public WeaponPartType getPartType() {
         return partType;
     }
 
@@ -75,7 +75,7 @@ public class ItemPartBase {
     public StatSet modifyStats(Material resource) {
         return this.getStatSet().modified(resource);
     }
-    public StatSet scaleStats(ItemPartInstance partInstance) {
+    public StatSet scaleStats(WeaponPartInstance partInstance) {
         return this.statSet.scaled(partInstance.getLevel());
     }
 }

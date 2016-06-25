@@ -9,13 +9,13 @@ import java.awt.image.BufferedImage;
 /**
  * Created by JPERKI8 on 6/13/2016.
  */
-public class ItemPartLegendary extends ItemPart {
+public class WeaponPartUnique extends WeaponPart {
     private final String partName;
     private final String nameMod;
     private final String partInfo;
     private final StatSet statSet;
 
-    public ItemPartLegendary(String partName, String nameMod, String partInfo, StatSet statSet, float weight, BufferedImage icon, ItemPartType type) {
+    public WeaponPartUnique(String partName, String nameMod, String partInfo, StatSet statSet, float weight, BufferedImage icon, WeaponPartType type) {
         super(weight, icon, QualityLevel.LEGENDARY, type);
         this.partName = partName;
         this.nameMod = nameMod;

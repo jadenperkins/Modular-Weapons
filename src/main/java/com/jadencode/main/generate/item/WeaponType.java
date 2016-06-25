@@ -1,6 +1,6 @@
 package com.jadencode.main.generate.item;
 
-import com.jadencode.main.scripts.ScriptWeapon;
+import com.jadencode.main.scripts.ScriptItem;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.util.WeightedItem;
 
@@ -10,16 +10,16 @@ import java.util.stream.Collectors;
 /**
  * Created by Jaden on 5/28/2015.
  */
-public class ItemType implements WeightedItem {
+public class WeaponType implements WeightedItem {
 
     private final String                            weaponTypeName;
     private final StatSet                           statSet;
-    private final ItemPartType primaryPartType;
-    private final List<ItemPartType>              weaponPartTypes;
+    private final WeaponPartType primaryPartType;
+    private final List<WeaponPartType>              weaponPartTypes;
     private final float                             weight;
-    private final ScriptWeapon                      script;
+    private final ScriptItem script;
 
-    public ItemType(String name, float w, StatSet stats, ItemPartType primary, List<ItemPartType> types, ScriptWeapon s) {
+    public WeaponType(String name, float w, StatSet stats, WeaponPartType primary, List<WeaponPartType> types, ScriptItem s) {
         this.weaponTypeName = name;
         this.weight = w;
         this.primaryPartType = primary;
@@ -27,24 +27,25 @@ public class ItemType implements WeightedItem {
         this.statSet = stats;
         this.script = s;
     }
-    public String getDisplayName(ItemInstance weapon) {
-        return this.script.getDisplayName(weapon);
+    public String getDisplayName(WeaponInstance weapon) {
+        return "I am obsolete";
+//        return this.script.getDisplayName(weapon);
     }
     public String getWeaponTypeName() {
         return weaponTypeName;
     }
-    public ItemPartType getPrimaryPartType() {
+    public WeaponPartType getPrimaryPartType() {
         return primaryPartType;
     }
     public StatSet getStatSet() {
         return statSet;
     }
-    public StatSet determineStats(ItemInstance instance) {
-        List<StatSet> others = instance.getPartsList().stream().map(ItemPartInstance::getStats).collect(Collectors.toList());
+    public StatSet determineStats(WeaponInstance instance) {
+        List<StatSet> others = instance.getPartsList().stream().map(WeaponPartInstance::getStats).collect(Collectors.toList());
         StatSet baseStats = this.getStatSet().scaled(instance.getLevel()).combine(others);
         return baseStats;
     }
-    public List<ItemPartType> getWeaponPartTypes() {
+    public List<WeaponPartType> getWeaponPartTypes() {
         return this.weaponPartTypes;
     }
 

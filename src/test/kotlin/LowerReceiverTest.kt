@@ -20,7 +20,7 @@ class LowerReceiverTest : Spek({
             assertEquals(lower.attachments.size, 4)
         }
 
-        it("should be a base part") {
+        it("should be a type part") {
             assertTrue(lower.isBase())
         }
     }
