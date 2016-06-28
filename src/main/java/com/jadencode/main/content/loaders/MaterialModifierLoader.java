@@ -30,7 +30,7 @@ public class MaterialModifierLoader extends ContentManager {
         List<String> mats = new ArrayList<>();
         materials.forEach(mat -> mats.add(mat.getAsString()));
         List<MaterialType> materialTypes = mats.stream().map(MaterialTypes::get).collect(Collectors.toList());
-        MaterialModifier modifier = new MaterialModifier(name, c, w, m, l, materialTypes);
+        MaterialModifier modifier = new MaterialModifier(name, c, m, l, w, materialTypes);
 
         materialTypes.forEach(type -> MaterialModifiers.register(type, modifier));
     }

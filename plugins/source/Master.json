@@ -631,7 +631,7 @@
     {
       "name": "Ancient",
       "color": "MOD_ANCIENT",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 1.0,
       "mod": 1.2,
       "materials": [
@@ -642,7 +642,7 @@
     {
       "name": "Black",
       "color": "MOD_BLACK",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 0.8,
       "mod": 0.8,
       "materials": [
@@ -653,7 +653,7 @@
     {
       "name": "Creeping",
       "color": "MOD_CREEPING",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 1.5,
       "mod": 1.5,
       "materials": [
@@ -663,19 +663,19 @@
     {
       "name": "Dark",
       "color": "MOD_DARK",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 1.25,
       "mod": 1.2,
       "materials": [
+        "Gem",
         "Metal",
-        "Wood",
-        "Gem"
+        "Wood"
       ]
     },
     {
       "name": "Dull",
       "color": "MOD_DULL",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 0.8,
       "mod": 0.8,
       "materials": [
@@ -685,7 +685,7 @@
     {
       "name": "Extinct",
       "color": "MOD_EXTINCT",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 1.8,
       "mod": 2.0,
       "materials": [
@@ -695,7 +695,7 @@
     {
       "name": "Faded",
       "color": "MOD_FADED",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 0.5,
       "mod": 1.2,
       "materials": [
@@ -705,7 +705,7 @@
     {
       "name": "Ghost",
       "color": "MOD_GHOST",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 1.5,
       "mod": 2.0,
       "materials": [
@@ -715,18 +715,18 @@
     {
       "name": "Hardy",
       "color": "MOD_HARDY",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 1.25,
       "mod": 0.8,
       "materials": [
-        "Wood",
-        "Plant"
+        "Plant",
+        "Wood"
       ]
     },
     {
       "name": "Juvenile",
       "color": "MOD_JUVENILE",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 0.5,
       "mod": 0.8,
       "materials": [
@@ -736,7 +736,7 @@
     {
       "name": "Leafy",
       "color": "MOD_LEAFY",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 1.8,
       "mod": 2.0,
       "materials": [
@@ -746,7 +746,7 @@
     {
       "name": "Light",
       "color": "MOD_LIGHT",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 1.0,
       "mod": 1.2,
       "materials": [
@@ -756,7 +756,7 @@
     {
       "name": "Lunar",
       "color": "MOD_LUNAR",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 0.5,
       "mod": 1.2,
       "materials": [
@@ -766,7 +766,7 @@
     {
       "name": "Mature",
       "color": "MOD_MATURE",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 0.8,
       "mod": 1.2,
       "materials": [
@@ -776,7 +776,7 @@
     {
       "name": "Polar",
       "color": "MOD_POLAR",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 1.5,
       "mod": 2.0,
       "materials": [
@@ -786,7 +786,7 @@
     {
       "name": "Red",
       "color": "MOD_RED",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 0.8,
       "mod": 1.2,
       "materials": [
@@ -796,7 +796,7 @@
     {
       "name": "Rough",
       "color": "MOD_ROUGH",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 0.8,
       "mod": 1.2,
       "materials": [
@@ -806,7 +806,7 @@
     {
       "name": "Shadow",
       "color": "MOD_SHADOW",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 1.0,
       "mod": 0.8,
       "materials": [
@@ -816,7 +816,7 @@
     {
       "name": "Solar",
       "color": "MOD_SOLAR",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 0.5,
       "mod": 0.8,
       "materials": [
@@ -826,7 +826,7 @@
     {
       "name": "Twilight",
       "color": "MOD_TWILIGHT",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 1.25,
       "mod": 0.8,
       "materials": [
@@ -836,7 +836,7 @@
     {
       "name": "Vibrant",
       "color": "MOD_VIBRANT",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 1.5,
       "mod": 2.0,
       "materials": [
@@ -846,7 +846,7 @@
     {
       "name": "White",
       "color": "MOD_WHITE",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 0.8,
       "mod": 1.2,
       "materials": [
@@ -857,7 +857,7 @@
     {
       "name": "Wild",
       "color": "MOD_WILD",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 1.5,
       "mod": 1.0,
       "materials": [
@@ -867,7 +867,7 @@
     {
       "name": "Withered",
       "color": "MOD_WITHERED",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 0.5,
       "mod": 0.3,
       "materials": [
@@ -877,7 +877,7 @@
     {
       "name": "Young",
       "color": "MOD_POLAR",
-      "weight": 1.0,
+      "weight": 0.1,
       "level": 0.5,
       "mod": 0.8,
       "materials": [
@@ -913,7 +913,9 @@
       "stats": "Accurate Crossbow Stock",
       "icon": "",
       "script": "",
-      "materials": ["Wood"]
+      "materials": [
+        "Wood"
+      ]
     },
     {
       "name": "Balanced Grip",
@@ -924,7 +926,9 @@
       "stats": "Balanced Bow Grip",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Balanced Stock",
@@ -935,7 +939,9 @@
       "stats": "Balanced Crossbow Stock",
       "icon": "",
       "script": "",
-      "materials": ["Wood"]
+      "materials": [
+        "Wood"
+      ]
     },
     {
       "name": "Basic Grip",
@@ -946,7 +952,9 @@
       "stats": "Grip Basic",
       "icon": "grip_basic",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Battle Handle",
@@ -957,7 +965,9 @@
       "stats": "Battleaxe Handle",
       "icon": "",
       "script": "",
-      "materials": ["Wood"]
+      "materials": [
+        "Wood"
+      ]
     },
     {
       "name": "Battlehammer Handle",
@@ -968,7 +978,9 @@
       "stats": "Battlehammer Handle",
       "icon": "",
       "script": "",
-      "materials": ["Wood"]
+      "materials": [
+        "Wood"
+      ]
     },
     {
       "name": "Blasting Crystal",
@@ -979,7 +991,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Gem"]
+      "materials": [
+        "Gem"
+      ]
     },
     {
       "name": "Blunt Arrow Tip",
@@ -990,7 +1004,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Blunt Bolt Tip",
@@ -1001,7 +1017,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Broad Axehead",
@@ -1012,7 +1030,9 @@
       "stats": "Broad Axehead",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Broad Blade",
@@ -1023,7 +1043,9 @@
       "stats": "Blade Broad",
       "icon": "blade_broad",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Charging Crystal",
@@ -1034,7 +1056,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Gem"]
+      "materials": [
+        "Gem"
+      ]
     },
     {
       "name": "Double Axehead",
@@ -1045,7 +1069,9 @@
       "stats": "Double Axehead",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Double Hammerhead",
@@ -1056,7 +1082,9 @@
       "stats": "Double Hammerhead",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Fast Arrow Fletchings",
@@ -1067,7 +1095,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Plant"]
+      "materials": [
+        "Plant"
+      ]
     },
     {
       "name": "Fast Bolt Fletchings",
@@ -1078,7 +1108,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Plant"]
+      "materials": [
+        "Plant"
+      ]
     },
     {
       "name": "Focusing Crystal",
@@ -1089,7 +1121,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Gem"]
+      "materials": [
+        "Gem"
+      ]
     },
     {
       "name": "Heavy Bowstring",
@@ -1100,7 +1134,9 @@
       "stats": "Heavy Bowstring",
       "icon": "",
       "script": "",
-      "materials": ["Plant"]
+      "materials": [
+        "Plant"
+      ]
     },
     {
       "name": "Heavy Crossbow String",
@@ -1111,7 +1147,9 @@
       "stats": "Heavy Crossbow String",
       "icon": "",
       "script": "",
-      "materials": ["Plant"]
+      "materials": [
+        "Plant"
+      ]
     },
     {
       "name": "Heavy Grip",
@@ -1122,7 +1160,9 @@
       "stats": "Grip Heavy",
       "icon": "grip_heavy",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Heavy Hammerhead",
@@ -1133,7 +1173,9 @@
       "stats": "Heavy Hammerhead",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Heavy Hilt",
@@ -1144,7 +1186,9 @@
       "stats": "Hilt Heavy",
       "icon": "hilt_heavy",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Light Bowstring",
@@ -1155,7 +1199,9 @@
       "stats": "Light Bowstring",
       "icon": "",
       "script": "",
-      "materials": ["Plant"]
+      "materials": [
+        "Plant"
+      ]
     },
     {
       "name": "Light Crossbow String",
@@ -1166,7 +1212,9 @@
       "stats": "Light Crossbow String",
       "icon": "",
       "script": "",
-      "materials": ["Plant"]
+      "materials": [
+        "Plant"
+      ]
     },
     {
       "name": "Light Grip",
@@ -1177,7 +1225,9 @@
       "stats": "Grip Light",
       "icon": "grip_light",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Light Hilt",
@@ -1188,7 +1238,9 @@
       "stats": "Hilt Light",
       "icon": "hilt_light",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Long Arrow Shaft",
@@ -1199,7 +1251,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Wood"]
+      "materials": [
+        "Wood"
+      ]
     },
     {
       "name": "Long Blade",
@@ -1210,7 +1264,9 @@
       "stats": "Blade Long",
       "icon": "blade_long",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Long Bolt Shaft",
@@ -1221,7 +1277,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Wood"]
+      "materials": [
+        "Wood"
+      ]
     },
     {
       "name": "Long Crossbow Limbs",
@@ -1229,10 +1287,13 @@
       "partInfo": "",
       "weight": 1.0,
       "partType": "Crossbow Limbs",
-      "stats": "",
+      "stats": "Heavy Crossbow Limbs",
       "icon": "",
       "script": "",
-      "materials": ["Wood", "Metal"]
+      "materials": [
+        "Wood",
+        "Metal"
+      ]
     },
     {
       "name": "Long Handle",
@@ -1243,7 +1304,9 @@
       "stats": "Longaxe Handle",
       "icon": "",
       "script": "",
-      "materials": ["Wood"]
+      "materials": [
+        "Wood"
+      ]
     },
     {
       "name": "Longbow Limbs",
@@ -1254,7 +1317,9 @@
       "stats": "Longbow Limbs",
       "icon": "",
       "script": "",
-      "materials": ["Wood"]
+      "materials": [
+        "Wood"
+      ]
     },
     {
       "name": "Maul Handle",
@@ -1265,7 +1330,9 @@
       "stats": "Maul Handle",
       "icon": "",
       "script": "",
-      "materials": ["Wood"]
+      "materials": [
+        "Wood"
+      ]
     },
     {
       "name": "Medium Hilt",
@@ -1276,7 +1343,9 @@
       "stats": "Hilt Medium",
       "icon": "hilt_balanced",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Plate Chest Piece",
@@ -1287,7 +1356,9 @@
       "stats": "Base Arrow",
       "icon": "chest_piece",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Plate Left Shoulder",
@@ -1298,7 +1369,9 @@
       "stats": "Base Arrow",
       "icon": "left_shoulder",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Plate Right Shoulder",
@@ -1309,7 +1382,9 @@
       "stats": "Base Arrow",
       "icon": "right_shoulder",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Pointed Arrow Tip",
@@ -1320,7 +1395,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Pointed Bolt Tip",
@@ -1331,7 +1408,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Quarter Handle",
@@ -1342,7 +1421,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Wood"]
+      "materials": [
+        "Wood"
+      ]
     },
     {
       "name": "Quick Grip",
@@ -1353,7 +1434,9 @@
       "stats": "Quick Bow Grip",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Rapid Stock",
@@ -1364,7 +1447,9 @@
       "stats": "Rapid Crossbow Stock",
       "icon": "",
       "script": "",
-      "materials": ["Wood"]
+      "materials": [
+        "Wood"
+      ]
     },
     {
       "name": "Razor Arrow Tip",
@@ -1375,7 +1460,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Razor Bolt Tip",
@@ -1386,7 +1473,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Recurve Limbs",
@@ -1397,7 +1486,9 @@
       "stats": "Recurve Limbs",
       "icon": "",
       "script": "",
-      "materials": ["Wood"]
+      "materials": [
+        "Wood"
+      ]
     },
     {
       "name": "Round Axehead",
@@ -1408,7 +1499,9 @@
       "stats": "Round Axehead",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Scythe Axehead",
@@ -1419,7 +1512,9 @@
       "stats": "Scythe Axehead",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Sharp Arrow Fletchings",
@@ -1430,7 +1525,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Plant"]
+      "materials": [
+        "Plant"
+      ]
     },
     {
       "name": "Sharp Bolt Fletchings",
@@ -1441,7 +1538,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Plant"]
+      "materials": [
+        "Plant"
+      ]
     },
     {
       "name": "Short Arrow Shaft",
@@ -1452,7 +1551,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Wood"]
+      "materials": [
+        "Wood"
+      ]
     },
     {
       "name": "Short Blade",
@@ -1463,7 +1564,9 @@
       "stats": "Blade Short",
       "icon": "blade_short",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Short Bolt Shaft",
@@ -1474,7 +1577,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Wood"]
+      "materials": [
+        "Wood"
+      ]
     },
     {
       "name": "Short Crossbow Limbs",
@@ -1485,7 +1590,10 @@
       "stats": "Light Crossbow Limbs",
       "icon": "",
       "script": "",
-      "materials": []
+      "materials": [
+        "Metal",
+        "Wood"
+      ]
     },
     {
       "name": "Short Handle",
@@ -1496,7 +1604,9 @@
       "stats": "",
       "icon": "",
       "script": "",
-      "materials": ["Wod"]
+      "materials": [
+        "Wood"
+      ]
     },
     {
       "name": "Shortbow Limbs",
@@ -1507,7 +1617,9 @@
       "stats": "Shortbow Limbs",
       "icon": "",
       "script": "",
-      "materials": ["Wood"]
+      "materials": [
+        "Wood"
+      ]
     },
     {
       "name": "Single Axehead",
@@ -1518,7 +1630,9 @@
       "stats": "Single Axehead",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Single Hammerhead",
@@ -1529,7 +1643,9 @@
       "stats": "Single Hammerhead",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Spiked Axehead",
@@ -1540,7 +1656,9 @@
       "stats": "Spiked Axehead",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Spiked Hammerhead",
@@ -1551,7 +1669,9 @@
       "stats": "Spiked Hammerhead",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "Steady Grip",
@@ -1562,7 +1682,9 @@
       "stats": "Steady Bow Grip",
       "icon": "",
       "script": "",
-      "materials": ["Metal"]
+      "materials": [
+        "Metal"
+      ]
     },
     {
       "name": "War Handle",
@@ -1573,7 +1695,9 @@
       "stats": "Waraxe Handle",
       "icon": "",
       "script": "",
-      "materials": ["Wood"]
+      "materials": [
+        "Wood"
+      ]
     },
     {
       "name": "Warhammer Handle",
@@ -1584,7 +1708,9 @@
       "stats": "Warhammer Handle",
       "icon": "",
       "script": "",
-      "materials": ["Wood"]
+      "materials": [
+        "Wood"
+      ]
     }
   ],
   "Materialized Item Types": [],
