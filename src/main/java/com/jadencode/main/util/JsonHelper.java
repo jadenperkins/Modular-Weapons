@@ -80,6 +80,9 @@ public class JsonHelper {
     public JsonObject getObject(String name, JsonObject def) {
         return this.jsonObject.has(name) && this.jsonObject.get(name).isJsonObject() ? this.jsonObject.get(name).getAsJsonObject() : def;
     }
+    public JsonObject get() {
+        return this.jsonObject;
+    }
     public String getString(String name) {
         return this.getString(name, "");
     }

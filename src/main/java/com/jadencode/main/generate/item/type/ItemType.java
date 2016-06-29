@@ -13,6 +13,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -56,23 +57,26 @@ public abstract class ItemType<T extends Item> implements WeightedItem {
     public Color getColor() {
         return this.color;
     }
-    public void drawItem(T instance, BufferedImage out, Graphics2D g2d) {
+    public void drawItem(T instance, BufferedImage out, Graphics2D g2d, int xOff, int yOff) {
         if(this.getIcon() == null) {
             g2d.setColor(this.getColor() == null ? Color.BLACK : this.getColor());
             g2d.fillRect(0, 0, 64, 64);
         } else {
             if(this.color == null) {
-                g2d.drawImage(this.getIcon(), 0, 0, Color.WHITE, null);
+                g2d.drawImage(this.getIcon(), xOff, yOff, Color.WHITE, null);
             } else {
                 for(int x = 0; x < this.getIcon().getWidth(); x++) {
                     for(int y = 0; y < this.getIcon().getHeight(); y++) {
                         if(this.getIcon().getRGB(x, y) >> 24 != 0x00) {
-                            out.setRGB(x, y, this.getColor().getRGB());
+                            out.setRGB(x + xOff, y + yOff, this.getColor().getRGB());
                         }
                     }
                 }
             }
         }
+    }
+    public void drawItem(T instance, BufferedImage out, Graphics2D g2d) {
+        this.drawItem(instance, out, g2d, 0, 0);
     }
     public List<String> getItemCardStrings(T instance) {
         List<String> strings = new ArrayList<>();

@@ -1,6 +1,7 @@
 package com.jadencode.main.generate.item.type;
 
 import com.jadencode.main.generate.QualityLevel;
+import com.jadencode.main.generate.item.Joint;
 import com.jadencode.main.generate.item.base.ItemPartType;
 import com.jadencode.main.generate.item.instance.ItemPart;
 import com.jadencode.main.scripts.ScriptItem;
@@ -18,8 +19,8 @@ public class ItemTypePartUnique extends ItemTypePart {
     private final String       nameMod;
     private final List<String> partInfo;
 
-    public ItemTypePartUnique(String partName, String nameMod, String partInfo, StatSet statSet, float weight, ScriptItem s, QualityLevel level, BufferedImage icon, ItemPartType type) {
-        super(partName, weight, statSet, s, icon, level, Color.WHITE, type);
+    public ItemTypePartUnique(String partName, String nameMod, String partInfo, StatSet statSet, float weight, ScriptItem s, QualityLevel level, BufferedImage icon, ItemPartType type, List<Joint> j) {
+        super(partName, weight, statSet, s, icon, level, Color.WHITE, type, j);
         this.nameMod = nameMod;
         this.partInfo = Arrays.asList(partInfo);
     }

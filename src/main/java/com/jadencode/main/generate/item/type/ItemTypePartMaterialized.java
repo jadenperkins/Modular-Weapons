@@ -1,12 +1,10 @@
 package com.jadencode.main.generate.item.type;
 
+import com.jadencode.main.generate.item.Joint;
 import com.jadencode.main.generate.item.base.ItemPartBase;
 import com.jadencode.main.generate.item.instance.ItemPart;
 import com.jadencode.main.material.Material;
-import com.jadencode.main.material.MaterialType;
-import com.jadencode.main.scripts.ScriptItem;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
@@ -21,7 +19,7 @@ public class ItemTypePartMaterialized extends ItemTypePart {
     private final String       materialName;
 
     public ItemTypePartMaterialized(ItemPartBase part, Material material) {
-        super(material.getName() + " " + part.getPartName(), part.getWeight() * material.getWeight(), part.modifyStats(material), part.getScript(), part.getIcon(), material.getQualityLevel(), material.getColor(), part.getPartType());
+        super(material.getName() + " " + part.getPartName(), part.getWeight() * material.getWeight(), part.modifyStats(material), part.getScript(), part.getIcon(), material.getQualityLevel(), material.getColor(), part.getPartType(), part.getJoints());
         this.nameMod = part.getNameMod();
         if(part.getPartInfo().equals(""))
             this.partDescription = Arrays.asList(String.format("%s crafted from %s", part.getPartName(), material.getName()));

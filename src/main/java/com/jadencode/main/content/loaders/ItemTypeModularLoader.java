@@ -5,6 +5,7 @@ import com.jadencode.main.constants.ItemPartTypes;
 import com.jadencode.main.constants.StatSets;
 import com.jadencode.main.constants.ItemTypes;
 import com.jadencode.main.generate.item.base.ItemPartType;
+import com.jadencode.main.generate.item.instance.ItemPart;
 import com.jadencode.main.generate.item.type.ItemTypeModular;
 import com.jadencode.main.util.JsonHelper;
 import com.jadencode.main.scripts.ScriptItem;
@@ -27,9 +28,11 @@ public class ItemTypeModularLoader extends ContentManager {
         ScriptItem script = ItemTypes.script(helper.getString("script"));
         float weight = helper.getFloat("weight", 1F);
         List<ItemPartType> types = JsonHelper.fromArray(helper.getArray("parts")).stream().map(ItemPartTypes::get).collect(Collectors.toList());
+        List<ItemPartType> opts = JsonHelper.fromArray(helper.getArray("optional parts")).stream().map(ItemPartTypes::get).collect(Collectors.toList());
         ItemPartType primary = obj.has("primary") ? ItemPartTypes.get(helper.getString("primary")) : types.get(0);
+        ItemPartType anchor = obj.has("anchor") ? ItemPartTypes.get(helper.getString("anchor")) : primary;
 
-        ItemTypeModular itemType = new ItemTypeModular(name, weight, stats, primary, types, script);
+        ItemTypeModular itemType = new ItemTypeModular(name, weight, stats, primary, anchor, types, opts, script);
         ItemTypes.register(itemType);
     }
 }

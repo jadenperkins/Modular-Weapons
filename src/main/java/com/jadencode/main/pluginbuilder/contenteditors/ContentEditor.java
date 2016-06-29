@@ -35,8 +35,11 @@ public abstract class ContentEditor<T extends ContentObject> extends JPanel {
     private final JButton updateItem;
     private final JButton deleteItem;
 
+    private final PluginBuilderPanel pluginBuilderPanel;
+
     public ContentEditor(Module<T> parent, PluginBuilderPanel panel) {
         this.setLayout(null);
+        this.pluginBuilderPanel = panel;
         this.setBackground(Color.LIGHT_GRAY);
         this.setLocation(430, 10);
         this.setSize(1000, 700);
@@ -65,6 +68,9 @@ public abstract class ContentEditor<T extends ContentObject> extends JPanel {
             parent.remove(itemName);
             panel.updateCurrentObjects(null);
         });
+    }
+    public PluginBuilderPanel getPluginBuilderPanel() {
+        return this.pluginBuilderPanel;
     }
     public List<String> getScripts(String type, PluginBuilderPanel panel) {
         Module<? extends ContentObject> scriptsModule = panel.getModule("Scripts");

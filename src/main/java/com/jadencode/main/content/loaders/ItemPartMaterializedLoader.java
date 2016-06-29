@@ -1,8 +1,10 @@
 package com.jadencode.main.content.loaders;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.jadencode.main.constants.*;
+import com.jadencode.main.generate.item.Joint;
 import com.jadencode.main.generate.item.base.ItemPartBase;
 import com.jadencode.main.generate.item.base.ItemPartType;
 import com.jadencode.main.material.MaterialType;
@@ -32,9 +34,15 @@ public class ItemPartMaterializedLoader extends ContentManager {
         BufferedImage icon = Icons.get(helper.getString("icon", null));
         ItemPartType type = ItemPartTypes.get(helper.getString("partType"));
         ScriptItem script = ItemTypes.script(helper.getString("script"));
+        List<Joint> joints = new ArrayList<>();
+        JsonArray array = helper.getArray("joints");
+        for (JsonElement jsonElement : array) {
+            JsonHelper object = new JsonHelper(jsonElement.getAsJsonObject());
+            joints.add(new Joint(object.getString("name"), object.getDouble("x"), object.getDouble("y")));
+        }
 
         List<MaterialType> types = JsonHelper.fromArray(helper.getArray("materials")).stream().map(MaterialTypes::get).collect(Collectors.toList());
-        ItemPartBase partBase = new ItemPartBase(name, nameMod, partInfo, weight, set, type, icon, types, script);
+        ItemPartBase partBase = new ItemPartBase(name, nameMod, partInfo, weight, set, type, icon, types, script, joints);
         ItemParts.addBasePart(partBase);
     }
 }

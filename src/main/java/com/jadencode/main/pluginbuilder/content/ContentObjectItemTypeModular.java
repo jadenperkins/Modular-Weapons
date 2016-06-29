@@ -14,15 +14,19 @@ public class ContentObjectItemTypeModular extends ContentObject {
     private final String scriptName;
     private final float weight;
     private final String primaryPart;
-    private final List<String> partTypes;
+    private final String anchorPart;
+    private final List<String> requiredParts;
+    private final List<String> optionalParts;
 
-    public ContentObjectItemTypeModular(String name, String owner, String stats, String script, float weight, String primary, List<String> parts) {
+    public ContentObjectItemTypeModular(String name, String owner, String stats, String script, float weight, String primary, String anchor, List<String> parts, List<String> opts) {
         super(name, owner);
         this.statSetName = stats;
         this.scriptName = script;
         this.weight = weight > 0 ? weight : 1;
         this.primaryPart = primary;
-        this.partTypes = parts;
+        this.anchorPart = anchor;
+        this.requiredParts = parts;
+        this.optionalParts = opts;
     }
     public String getStatSetName() {
         return this.statSetName;
@@ -36,8 +40,14 @@ public class ContentObjectItemTypeModular extends ContentObject {
     public String getPrimaryPart() {
         return primaryPart;
     }
-    public List<String> getPartTypes() {
-        return this.partTypes;
+    public String getAnchorPart() {
+        return anchorPart;
+    }
+    public List<String> getRequiredParts() {
+        return this.requiredParts;
+    }
+    public List<String> getOptionalParts() {
+        return this.optionalParts;
     }
     @Override
     public void toJson(JsonObject json) {
@@ -46,6 +56,8 @@ public class ContentObjectItemTypeModular extends ContentObject {
                 .add("script", this.scriptName)
                 .add("weight", this.weight)
                 .add("primary", this.primaryPart)
-                .add("parts", JsonHelper.toArray(this.partTypes));
+                .add("anchor", this.anchorPart)
+                .add("parts", JsonHelper.toArray(this.requiredParts))
+                .add("optional parts", JsonHelper.toArray(this.optionalParts));
     }
 }

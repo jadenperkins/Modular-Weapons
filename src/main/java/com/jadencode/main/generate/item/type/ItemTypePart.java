@@ -1,6 +1,7 @@
 package com.jadencode.main.generate.item.type;
 
 import com.jadencode.main.generate.QualityLevel;
+import com.jadencode.main.generate.item.Joint;
 import com.jadencode.main.generate.item.base.ItemPartType;
 import com.jadencode.main.generate.item.instance.ItemPart;
 import com.jadencode.main.scripts.ScriptItem;
@@ -17,14 +18,22 @@ import java.util.Random;
 public abstract class ItemTypePart extends ItemType<ItemPart> {
     private final QualityLevel qualityLevel;
     private final ItemPartType type;
+    private final List<Joint>  joints;
 
-    public ItemTypePart(String name, float w, StatSet stats, ScriptItem s, BufferedImage icon, QualityLevel level, Color c, ItemPartType type) {
+    public ItemTypePart(String name, float w, StatSet stats, ScriptItem s, BufferedImage icon, QualityLevel level, Color c, ItemPartType type, List<Joint> j) {
         super(name, w, stats, icon, c, s);
         this.qualityLevel = level;
         this.type = type;
+        this.joints = j;
     }
     public ItemPartType getType() {
         return type;
+    }
+    public QualityLevel getQualityLevel() {
+        return qualityLevel;
+    }
+    public List<Joint> getJoints() {
+        return joints;
     }
 
     @Override

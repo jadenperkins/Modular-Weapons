@@ -604,7 +604,7 @@
     },
     {
       "name": "limbs",
-      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAACJSURBVEhLpcxJCsMwEABB///TinOQ8NIJLnwoRvQM2sYYr2QUGUVGkVFkFBlFRpFR\nZBQZRUaRUWQUGUVGcQ97mv61tVuPw9H0aHc9mItfrrcrfqc4ffBGRpFRZBQZRUaRUWQUGUVGkVFk\nFBlFRpFRZBQZRUaRUWQUGUVGkVFkFBlFRpFRZHxubB9H8MepUg5+9QAAAABJRU5ErkJggg\u003d\u003d"
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABIAAAAICAYAAAD0g6+qAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAABGSURBVChTrYwJCgAgCAT7/6ftoJUaEQwSRmQPm5mljJnLoX8SBZQzQs8PBKtcj2gKhQR9sb0oVmDPBQarqL8Omq98fNSsA9n+PtCeffEjAAAAAElFTkSuQmCC"
     },
     {
       "name": "right_shoulder",
@@ -616,11 +616,11 @@
     },
     {
       "name": "stock",
-      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAABmSURBVEhL7c4xCsAgFAXB3P/SJhZ2U7ik/YEJssLDZ631C2PBWDAWjAVjwVgwFowF\nY8FYMBaMBWPBWDAe37d/39H3G+MxA3cYj98vmIEZ2GZgBm4xFowFY8FYMBaMBWPBWDDeW88L0qGf\n0XdqvXoAAAAASUVORK5CYII\u003d"
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAAAQAAAAVCAIAAADuGdgXAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAAOSURBVChTYxgFyICBAQABEQABD8PmfwAAAABJRU5ErkJggg\u003d\u003d"
     },
     {
       "name": "string",
-      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAAB4SURBVEhLpcwxCsAwDARB///TSsCQaoqsXcwJttCamSuMBWPBWDAWjAVjwVgwFowF\nY8FYMBaMBWPBWDAWjAVjwVjsec+J78ENxoKxYCwYC8aCsWAsGAvGgrFgLBgLxoKxYCwYC8aCsWAs\nGAvGgrFgLBgLxoLxv1kP78fblY7lRoYAAAAASUVORK5CYII\u003d"
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABIAAAABCAIAAABc7mk1AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAANSURBVBhXYyAHMDAAAAA3AAF9lyNCAAAAAElFTkSuQmCC"
     },
     {
       "name": "tip",
@@ -915,6 +915,13 @@
       "script": "",
       "materials": [
         "Wood"
+      ],
+      "joints": [
+        {
+          "name": "Limbs_Stock",
+          "x": 0.0,
+          "y": 0.0
+        }
       ]
     },
     {
@@ -928,7 +935,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Balanced Stock",
@@ -941,6 +949,13 @@
       "script": "",
       "materials": [
         "Wood"
+      ],
+      "joints": [
+        {
+          "name": "Limbs_Stock",
+          "x": 0.0,
+          "y": 0.0
+        }
       ]
     },
     {
@@ -954,7 +969,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Battle Handle",
@@ -967,7 +983,8 @@
       "script": "",
       "materials": [
         "Wood"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Battlehammer Handle",
@@ -980,7 +997,8 @@
       "script": "",
       "materials": [
         "Wood"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Blasting Crystal",
@@ -993,7 +1011,8 @@
       "script": "",
       "materials": [
         "Gem"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Blunt Arrow Tip",
@@ -1006,7 +1025,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Blunt Bolt Tip",
@@ -1019,7 +1039,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Broad Axehead",
@@ -1032,7 +1053,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Broad Blade",
@@ -1045,7 +1067,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Charging Crystal",
@@ -1058,7 +1081,8 @@
       "script": "",
       "materials": [
         "Gem"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Double Axehead",
@@ -1071,7 +1095,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Double Hammerhead",
@@ -1084,7 +1109,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Fast Arrow Fletchings",
@@ -1097,7 +1123,8 @@
       "script": "",
       "materials": [
         "Plant"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Fast Bolt Fletchings",
@@ -1110,7 +1137,8 @@
       "script": "",
       "materials": [
         "Plant"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Focusing Crystal",
@@ -1123,7 +1151,8 @@
       "script": "",
       "materials": [
         "Gem"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Heavy Bowstring",
@@ -1136,7 +1165,8 @@
       "script": "",
       "materials": [
         "Plant"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Heavy Crossbow String",
@@ -1149,6 +1179,18 @@
       "script": "",
       "materials": [
         "Plant"
+      ],
+      "joints": [
+        {
+          "name": "Limbs_String_1",
+          "x": 0.0,
+          "y": 0.0
+        },
+        {
+          "name": "Limbs_String_2",
+          "x": 17.0,
+          "y": 0.0
+        }
       ]
     },
     {
@@ -1162,7 +1204,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Heavy Hammerhead",
@@ -1175,7 +1218,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Heavy Hilt",
@@ -1188,7 +1232,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Light Bowstring",
@@ -1201,7 +1246,8 @@
       "script": "",
       "materials": [
         "Plant"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Light Crossbow String",
@@ -1214,6 +1260,18 @@
       "script": "",
       "materials": [
         "Plant"
+      ],
+      "joints": [
+        {
+          "name": "Limbs_String_1",
+          "x": 0.0,
+          "y": 0.0
+        },
+        {
+          "name": "Limbs_String_2",
+          "x": 17.0,
+          "y": 0.0
+        }
       ]
     },
     {
@@ -1227,7 +1285,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Light Hilt",
@@ -1240,7 +1299,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Long Arrow Shaft",
@@ -1253,7 +1313,8 @@
       "script": "",
       "materials": [
         "Wood"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Long Blade",
@@ -1266,7 +1327,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Long Bolt Shaft",
@@ -1279,7 +1341,8 @@
       "script": "",
       "materials": [
         "Wood"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Long Crossbow Limbs",
@@ -1291,8 +1354,25 @@
       "icon": "",
       "script": "",
       "materials": [
-        "Wood",
-        "Metal"
+        "Metal",
+        "Wood"
+      ],
+      "joints": [
+        {
+          "name": "Limbs_String_1",
+          "x": 0.0,
+          "y": 7.0
+        },
+        {
+          "name": "Limbs_String_2",
+          "x": 17.0,
+          "y": 7.0
+        },
+        {
+          "name": "Limbs_Stock",
+          "x": 7.0,
+          "y": 0.0
+        }
       ]
     },
     {
@@ -1306,7 +1386,8 @@
       "script": "",
       "materials": [
         "Wood"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Longbow Limbs",
@@ -1319,7 +1400,8 @@
       "script": "",
       "materials": [
         "Wood"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Maul Handle",
@@ -1332,7 +1414,8 @@
       "script": "",
       "materials": [
         "Wood"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Medium Hilt",
@@ -1345,7 +1428,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Plate Chest Piece",
@@ -1358,7 +1442,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Plate Left Shoulder",
@@ -1371,7 +1456,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Plate Right Shoulder",
@@ -1384,7 +1470,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Pointed Arrow Tip",
@@ -1397,7 +1484,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Pointed Bolt Tip",
@@ -1410,7 +1498,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Quarter Handle",
@@ -1423,7 +1512,8 @@
       "script": "",
       "materials": [
         "Wood"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Quick Grip",
@@ -1436,7 +1526,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Rapid Stock",
@@ -1449,6 +1540,13 @@
       "script": "",
       "materials": [
         "Wood"
+      ],
+      "joints": [
+        {
+          "name": "Limbs_Stock",
+          "x": 0.0,
+          "y": 0.0
+        }
       ]
     },
     {
@@ -1462,7 +1560,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Razor Bolt Tip",
@@ -1475,7 +1574,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Recurve Limbs",
@@ -1488,7 +1588,8 @@
       "script": "",
       "materials": [
         "Wood"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Round Axehead",
@@ -1501,7 +1602,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Scythe Axehead",
@@ -1514,7 +1616,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Sharp Arrow Fletchings",
@@ -1527,7 +1630,8 @@
       "script": "",
       "materials": [
         "Plant"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Sharp Bolt Fletchings",
@@ -1540,7 +1644,8 @@
       "script": "",
       "materials": [
         "Plant"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Short Arrow Shaft",
@@ -1553,7 +1658,8 @@
       "script": "",
       "materials": [
         "Wood"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Short Blade",
@@ -1566,7 +1672,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Short Bolt Shaft",
@@ -1579,7 +1686,8 @@
       "script": "",
       "materials": [
         "Wood"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Short Crossbow Limbs",
@@ -1593,6 +1701,23 @@
       "materials": [
         "Metal",
         "Wood"
+      ],
+      "joints": [
+        {
+          "name": "Limbs_String_1",
+          "x": 0.0,
+          "y": 7.0
+        },
+        {
+          "name": "Limbs_String_2",
+          "x": 17.0,
+          "y": 7.0
+        },
+        {
+          "name": "Limbs_Stock",
+          "x": 7.0,
+          "y": 0.0
+        }
       ]
     },
     {
@@ -1606,7 +1731,8 @@
       "script": "",
       "materials": [
         "Wood"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Shortbow Limbs",
@@ -1619,7 +1745,8 @@
       "script": "",
       "materials": [
         "Wood"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Single Axehead",
@@ -1632,7 +1759,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Single Hammerhead",
@@ -1645,7 +1773,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Spiked Axehead",
@@ -1658,7 +1787,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Spiked Hammerhead",
@@ -1671,7 +1801,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Steady Grip",
@@ -1684,7 +1815,8 @@
       "script": "",
       "materials": [
         "Metal"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "War Handle",
@@ -1697,7 +1829,8 @@
       "script": "",
       "materials": [
         "Wood"
-      ]
+      ],
+      "joints": []
     },
     {
       "name": "Warhammer Handle",
@@ -1710,7 +1843,8 @@
       "script": "",
       "materials": [
         "Wood"
-      ]
+      ],
+      "joints": []
     }
   ],
   "Materialized Item Types": [],
@@ -2019,11 +2153,13 @@
       "script": "",
       "weight": 1.0,
       "primary": "Arrow Tip",
+      "anchor": "Arrow Shaft",
       "parts": [
         "Arrow Tip",
         "Arrow Fletchings",
         "Arrow Shaft"
-      ]
+      ],
+      "optional parts": []
     },
     {
       "name": "Axe",
@@ -2031,10 +2167,12 @@
       "script": "",
       "weight": 1.0,
       "primary": "Axe Head",
+      "anchor": "Axe Handle",
       "parts": [
         "Axe Head",
         "Axe Handle"
-      ]
+      ],
+      "optional parts": []
     },
     {
       "name": "Bolt",
@@ -2042,11 +2180,13 @@
       "script": "",
       "weight": 1.0,
       "primary": "Bolt Tip",
+      "anchor": "Bolt Shaft",
       "parts": [
         "Bolt Tip",
         "Bolt Fletchings",
         "Bolt Shaft"
-      ]
+      ],
+      "optional parts": []
     },
     {
       "name": "Bow",
@@ -2054,35 +2194,41 @@
       "script": "",
       "weight": 1.0,
       "primary": "Bow Limbs",
+      "anchor": "Bow Grip",
       "parts": [
         "Bow Grip",
         "Bow String",
         "Bow Limbs"
-      ]
+      ],
+      "optional parts": []
     },
     {
       "name": "Chest Armor",
       "stats": "Base Arrow",
       "script": "",
-      "weight": 25.0,
+      "weight": 1.0,
       "primary": "Chest Piece",
+      "anchor": "Chest Piece",
       "parts": [
         "Left Shoulder",
         "Right Shoulder",
         "Chest Piece"
-      ]
+      ],
+      "optional parts": []
     },
     {
       "name": "Crossbow",
       "stats": "Base Crossbow",
       "script": "",
-      "weight": 1.0,
+      "weight": 25.0,
       "primary": "Crossbow Limbs",
+      "anchor": "Crossbow Stock",
       "parts": [
         "Crossbow Stock",
         "Crossbow String",
         "Crossbow Limbs"
-      ]
+      ],
+      "optional parts": []
     },
     {
       "name": "Hammer",
@@ -2090,10 +2236,12 @@
       "script": "",
       "weight": 1.0,
       "primary": "Hammer Head",
+      "anchor": "Hammer Handle",
       "parts": [
         "Hammer Head",
         "Hammer Handle"
-      ]
+      ],
+      "optional parts": []
     },
     {
       "name": "Staff",
@@ -2101,10 +2249,12 @@
       "script": "",
       "weight": 1.0,
       "primary": "Staff Head",
+      "anchor": "Staff Handle",
       "parts": [
         "Staff Head",
         "Staff Handle"
-      ]
+      ],
+      "optional parts": []
     },
     {
       "name": "Sword",
@@ -2112,109 +2262,194 @@
       "script": "",
       "weight": 1.0,
       "primary": "Sword Blade",
+      "anchor": "Sword Grip",
       "parts": [
         "Sword Hilt",
         "Sword Grip",
         "Sword Blade"
-      ]
+      ],
+      "optional parts": []
     }
   ],
   "Part Types": [
     {
       "name": "Arrow Fletchings",
-      "icon": "flights"
+      "icon": "flights",
+      "joints": [
+        "Shaft_Flight"
+      ]
     },
     {
       "name": "Arrow Shaft",
-      "icon": "shaft"
+      "icon": "shaft",
+      "joints": [
+        "Shaft_Flight",
+        "Shaft_Tip"
+      ]
     },
     {
       "name": "Arrow Tip",
-      "icon": "tip"
+      "icon": "tip",
+      "joints": [
+        "Shaft_Tip"
+      ]
     },
     {
       "name": "Axe Handle",
-      "icon": "handle"
+      "icon": "handle",
+      "joints": [
+        "Handle_Head"
+      ]
     },
     {
       "name": "Axe Head",
-      "icon": "axe"
+      "icon": "axe",
+      "joints": [
+        "Handle_Head"
+      ]
     },
     {
       "name": "Bolt Fletchings",
-      "icon": "flights"
+      "icon": "flights",
+      "joints": [
+        "Shaft_Flight"
+      ]
     },
     {
       "name": "Bolt Shaft",
-      "icon": "shaft"
+      "icon": "shaft",
+      "joints": [
+        "Shaft_Flight",
+        "Shaft_Tip"
+      ]
     },
     {
       "name": "Bolt Tip",
-      "icon": "tip"
+      "icon": "tip",
+      "joints": [
+        "Shaft_Tip"
+      ]
     },
     {
       "name": "Bow Grip",
-      "icon": "bowgrip"
+      "icon": "bowgrip",
+      "joints": [
+        "Grip_Limbs"
+      ]
     },
     {
       "name": "Bow Limbs",
-      "icon": "bowlimbs"
+      "icon": "bowlimbs",
+      "joints": [
+        "Grip_Limbs",
+        "Limbs_String_1",
+        "Limbs_String_2"
+      ]
     },
     {
       "name": "Bow String",
-      "icon": "bowstring"
+      "icon": "bowstring",
+      "joints": [
+        "Limbs_String_1",
+        "Limbs_String_2"
+      ]
     },
     {
       "name": "Chest Piece",
-      "icon": "chest_piece"
+      "icon": "chest_piece",
+      "joints": [
+        "Chest_Shoulder_Left",
+        "Chest_Shoulder_Right"
+      ]
     },
     {
       "name": "Crossbow Limbs",
-      "icon": "limbs"
+      "icon": "limbs",
+      "joints": [
+        "Limbs_Stock",
+        "Limbs_String_1",
+        "Limbs_String_2"
+      ]
     },
     {
       "name": "Crossbow Stock",
-      "icon": "stock"
+      "icon": "stock",
+      "joints": [
+        "Limbs_Stock"
+      ]
     },
     {
       "name": "Crossbow String",
-      "icon": "string"
+      "icon": "string",
+      "joints": [
+        "Limbs_String_1",
+        "Limbs_String_2"
+      ]
     },
     {
       "name": "Hammer Handle",
-      "icon": "handle"
+      "icon": "handle",
+      "joints": [
+        "Handle_Head"
+      ]
     },
     {
       "name": "Hammer Head",
-      "icon": "hammer"
+      "icon": "hammer",
+      "joints": [
+        "Handle_Head"
+      ]
     },
     {
       "name": "Left Shoulder",
-      "icon": "left_shoulder"
+      "icon": "left_shoulder",
+      "joints": [
+        "Chest_Should_Left"
+      ]
     },
     {
       "name": "Right Shoulder",
-      "icon": "right_shoulder"
+      "icon": "right_shoulder",
+      "joints": [
+        "Chest_Shoulder_Right"
+      ]
     },
     {
       "name": "Staff Handle",
-      "icon": "handle"
+      "icon": "handle",
+      "joints": [
+        "Handle_Head"
+      ]
     },
     {
       "name": "Staff Head",
-      "icon": "head"
+      "icon": "head",
+      "joints": [
+        "Handle_Head"
+      ]
     },
     {
       "name": "Sword Blade",
-      "icon": "blade"
+      "icon": "blade",
+      "joints": [
+        "Blade_Hilt"
+      ]
     },
     {
       "name": "Sword Grip",
-      "icon": "grip"
+      "icon": "grip",
+      "joints": [
+        "Hilt_Grip",
+        "Grip_Pommel"
+      ]
     },
     {
       "name": "Sword Hilt",
-      "icon": "hilt"
+      "icon": "hilt",
+      "joints": [
+        "Blade_Hilt",
+        "Hilt_Grip"
+      ]
     }
   ],
   "Scripts": [
@@ -3104,7 +3339,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Bringer Blade",
@@ -3115,7 +3351,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Chiller Blade",
@@ -3126,7 +3363,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Crawler Blade",
@@ -3137,7 +3375,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Dancer Blade",
@@ -3148,7 +3387,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Delver Blade",
@@ -3159,7 +3399,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Dire Hilt",
@@ -3170,7 +3411,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Drainer Blade",
@@ -3181,7 +3423,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Eater Blade",
@@ -3192,7 +3435,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Grip of Darkness",
@@ -3203,7 +3447,8 @@
       "stats": "",
       "icon": "grip_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Grip of Daylight",
@@ -3214,7 +3459,8 @@
       "stats": "",
       "icon": "grip_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Grip of Death",
@@ -3225,7 +3471,8 @@
       "stats": "",
       "icon": "grip_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Grip of Dreams",
@@ -3236,7 +3483,8 @@
       "stats": "",
       "icon": "grip_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Grip of Fate",
@@ -3247,7 +3495,8 @@
       "stats": "",
       "icon": "grip_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Grip of Ghosts",
@@ -3258,7 +3507,8 @@
       "stats": "",
       "icon": "grip_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Grip of Life",
@@ -3269,7 +3519,8 @@
       "stats": "",
       "icon": "grip_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Grip of Night",
@@ -3280,7 +3531,8 @@
       "stats": "",
       "icon": "grip_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Grip of Souls",
@@ -3291,7 +3543,8 @@
       "stats": "",
       "icon": "grip_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Grip of Spirits",
@@ -3302,7 +3555,8 @@
       "stats": "",
       "icon": "grip_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Grip of Will",
@@ -3313,7 +3567,8 @@
       "stats": "",
       "icon": "grip_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Grip of the Grave",
@@ -3324,7 +3579,8 @@
       "stats": "",
       "icon": "grip_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Grip of the Moon",
@@ -3335,7 +3591,8 @@
       "stats": "",
       "icon": "grip_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Grip of the Sun",
@@ -3346,7 +3603,8 @@
       "stats": "",
       "icon": "grip_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hater Blade",
@@ -3357,7 +3615,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hilt of Ascension",
@@ -3368,7 +3627,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hilt of Defiance",
@@ -3379,7 +3639,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hilt of Dragons",
@@ -3390,7 +3651,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hilt of Ghosts",
@@ -3401,7 +3663,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hilt of Incandescence",
@@ -3412,7 +3675,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hilt of Judgement",
@@ -3423,7 +3687,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hilt of Monsters",
@@ -3434,7 +3699,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hilt of Radiance",
@@ -3445,7 +3711,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hilt of Remorse",
@@ -3456,7 +3723,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hilt of Strength",
@@ -3467,7 +3735,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hilt of Voracity",
@@ -3478,7 +3747,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hilt of the All-seeing",
@@ -3489,7 +3759,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hilt of the Chosen",
@@ -3500,7 +3771,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hilt of the Cynics",
@@ -3511,7 +3783,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hilt of the Ever-present",
@@ -3522,7 +3795,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hilt of the Reverent",
@@ -3533,7 +3807,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hilt of the Slaves",
@@ -3544,7 +3819,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Hilt of the Zealots",
@@ -3555,7 +3831,8 @@
       "stats": "",
       "icon": "hilt_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Marcher Blade",
@@ -3566,7 +3843,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Reaper Blade",
@@ -3577,7 +3855,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Ripper Blade",
@@ -3588,7 +3867,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Runner Blade",
@@ -3599,7 +3879,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Screamer Blade",
@@ -3610,7 +3891,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Seeker Blade",
@@ -3621,7 +3903,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Shocker Blade",
@@ -3632,7 +3915,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Shredder Blade",
@@ -3643,7 +3927,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Singer Blade",
@@ -3654,7 +3939,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Strider Blade",
@@ -3665,7 +3951,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Waker Blade",
@@ -3676,7 +3963,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Walker Blade",
@@ -3687,7 +3975,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Waster Blade",
@@ -3698,7 +3987,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Watcher Blade",
@@ -3709,7 +3999,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     },
     {
       "name": "Wringer Blade",
@@ -3720,7 +4011,8 @@
       "stats": "",
       "icon": "blade_legendary",
       "script": "",
-      "quality": "LEGENDARY"
+      "quality": "LEGENDARY",
+      "joints": []
     }
   ],
   "Unique Item Types": [],
