@@ -1,8 +1,10 @@
 package com.jadencode.main.generate.item.type;
 
+import com.jadencode.main.StackMap;
 import com.jadencode.main.constants.ItemParts;
 import com.jadencode.main.generate.QualityLevel;
 import com.jadencode.main.generate.item.Joint;
+import com.jadencode.main.generate.item.Node;
 import com.jadencode.main.generate.item.base.ItemPartType;
 import com.jadencode.main.generate.item.instance.ItemModular;
 import com.jadencode.main.generate.item.instance.ItemPart;
@@ -10,13 +12,15 @@ import com.jadencode.main.scripts.ScriptItem;
 import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.util.WeightedRandomFloat;
+import com.sun.corba.se.impl.orbutil.graph.Graph;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 import java.util.List;
-import java.util.Random;
+import java.util.stream.Collectors;
+
+import static javafx.scene.input.KeyCode.T;
 
 /**
  * Created by gtrpl on 6/24/2016.
@@ -75,41 +79,25 @@ public class ItemTypeModular extends ItemType<ItemModular> {
                 width = itemPart.getItemType().getIcon().getWidth();
             }
             if(itemPart.getItemType().getIcon().getHeight() > height) {
-                width = itemPart.getItemType().getIcon().getHeight();
+                height = itemPart.getItemType().getIcon().getHeight();
             }
-//            itemPart.getItemType().drawItem(itemPart, out, g2d);
         }
         ItemPart anchor = instance.getPart(this.anchorPart);
-        List<ItemPart> parts = new ArrayList<>(instance.getPartsList());
-        parts.remove(anchor);
-        if(parts.size() > 0) {
-            this.drawPart(anchor, 0, parts, out, g2d, width, height);
-        } else {
-        }
-    }
-    private void drawPart(ItemPart anchor, int index, List<ItemPart> subParts, BufferedImage out, Graphics2D g2d, int xOff, int yOff) {
-        anchor.getItemType().drawItem(anchor, out, g2d, xOff, yOff);
 
-        //We draw the anchor part first
-        //Identify the next part in the list, and check all matching joints
-        if(subParts.size() == 0) return;
-
-        ItemPart next = subParts.get(index);
-        List<Joint> jointsInAnchor = anchor.getItemType().getJoints();
-        List<Joint> jointsInSub = next.getItemType().getJoints();
-        List<String> matchingJoints = new ArrayList<>();
-
-        for (Joint anchorJoint : jointsInAnchor) {
-            for (Joint subJoint : jointsInSub) {
-                if(anchorJoint.getName().equals(subJoint.getName())) {
-                    matchingJoints.add(anchorJoint.getName());
+        Node<ItemPart> tree = Node.tree(anchor, instance.getPartsList(), (c, p) -> {
+            for (Joint joint : c.getItemType().getJoints()) {
+                for (Joint j : p.getItemType().getJoints()) {
+                    if(joint.getName().equals(j.getName())) {
+                        return true;
+                    }
                 }
             }
-        }
-        if(matchingJoints.isEmpty()) {
-            this.drawPart(anchor, index + 1, subParts, out, g2d, xOff, yOff);
-        }
-        System.out.println(String.format("%s and %s have common joints: %s", anchor.getDisplayName(), next.getDisplayName(), matchingJoints));
+            return false;
+        });
+        System.out.println(tree);
+    }
+    private void drawPart(ItemPart anchor, BufferedImage out, Graphics2D g2d, int xOff, int yOff) {
+        anchor.getItemType().drawItem(anchor, out, g2d, xOff, yOff);
 
 //        for(Joint j : anchorJoints) {
 //            for(ItemPart itemPart : subParts) {

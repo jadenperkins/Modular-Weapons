@@ -936,7 +936,13 @@
       "materials": [
         "Metal"
       ],
-      "joints": []
+      "joints": [
+        {
+          "name": "Grip_Limbs",
+          "x": 0.0,
+          "y": 0.0
+        }
+      ]
     },
     {
       "name": "Balanced Stock",
@@ -970,7 +976,18 @@
       "materials": [
         "Metal"
       ],
-      "joints": []
+      "joints": [
+        {
+          "name": "Hilt_Grip",
+          "x": 0.0,
+          "y": 0.0
+        },
+        {
+          "name": "Grip_Pommel0",
+          "x": 0.0,
+          "y": 0.0
+        }
+      ]
     },
     {
       "name": "Battle Handle",
@@ -1443,7 +1460,18 @@
       "materials": [
         "Metal"
       ],
-      "joints": []
+      "joints": [
+        {
+          "name": "Chest_Shoulder_Right",
+          "x": 0.0,
+          "y": 0.0
+        },
+        {
+          "name": "Chest_Shoulder_Left",
+          "x": 0.0,
+          "y": 0.0
+        }
+      ]
     },
     {
       "name": "Plate Left Shoulder",
@@ -1457,7 +1485,13 @@
       "materials": [
         "Metal"
       ],
-      "joints": []
+      "joints": [
+        {
+          "name": "Chest_Shoulder_Left",
+          "x": 0.0,
+          "y": 0.0
+        }
+      ]
     },
     {
       "name": "Plate Right Shoulder",
@@ -1471,7 +1505,13 @@
       "materials": [
         "Metal"
       ],
-      "joints": []
+      "joints": [
+        {
+          "name": "Chest_Shoulder_Right",
+          "x": 0.0,
+          "y": 0.0
+        }
+      ]
     },
     {
       "name": "Pointed Arrow Tip",
@@ -2206,7 +2246,7 @@
       "name": "Chest Armor",
       "stats": "Base Arrow",
       "script": "",
-      "weight": 1.0,
+      "weight": 1000.0,
       "primary": "Chest Piece",
       "anchor": "Chest Piece",
       "parts": [
@@ -2220,7 +2260,7 @@
       "name": "Crossbow",
       "stats": "Base Crossbow",
       "script": "",
-      "weight": 25.0,
+      "weight": 125.0,
       "primary": "Crossbow Limbs",
       "anchor": "Crossbow Stock",
       "parts": [
