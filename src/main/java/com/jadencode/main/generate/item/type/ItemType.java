@@ -90,8 +90,8 @@ public abstract class ItemType<T extends Item> implements WeightedItem {
         try {
             out.mkdirs();
             out.createNewFile();
-            int width = 64;//this.getIcon() == null ? 64 : this.getIcon().getWidth();
-            int height = 64;//this.getIcon() == null ? 64 : this.getIcon().getHeight();
+            int width = 128;//this.getIcon() == null ? 64 : this.getIcon().getWidth();
+            int height = 128;//this.getIcon() == null ? 64 : this.getIcon().getHeight();
             BufferedImage image = new BufferedImage(width + 64, height, BufferedImage.TYPE_INT_ARGB);
 
             Graphics2D g2d = image.createGraphics();

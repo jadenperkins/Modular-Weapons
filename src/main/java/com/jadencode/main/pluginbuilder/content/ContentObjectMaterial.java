@@ -17,7 +17,7 @@ public class ContentObjectMaterial extends ContentObject {
     public ContentObjectMaterial(String name, String owner, String color, float w, float m, int l, String type) {
         super(name, owner);
         this.colorName = color;
-        this.weight = w > 0 ? w : 1;
+        this.weight = w > 0 ? w : 0F;
         this.mod = m;
         this.level = l;
         this.materialType = type;

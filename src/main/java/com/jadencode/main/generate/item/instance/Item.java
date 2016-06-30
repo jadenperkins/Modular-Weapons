@@ -14,10 +14,13 @@ public abstract class Item<T extends ItemType> {
     private final int level;
     private final StatSet statSet;
 
-    public Item(T type, int level) {
+    public Item(T type, int level, StatSet stats) {
         this.itemType = type;
         this.level = level;
-        this.statSet = this.itemType.getStatSet().scaled(level);
+        this.statSet = stats;
+    }
+    public Item(T type, int level) {
+        this(type, level, type.getStatSet().scaled(level));
     }
     public int getLevel() {
         return this.level;

@@ -504,7 +504,7 @@
     },
     {
       "name": "blade",
-      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAAB1SURBVEhL7cxBCsRQCETB3P/SfyQYGKQI6b1CbZ7idc5584x2N8Y/z2h3Y2xzdLMP\nCmObo5t9UBjbHN3sg8LY5uhmHxTGNkc3+6Awtjm62QeFsc3RzeuDTxgTjAnGBGOCMcGYYEwwJhgT\njAnGBGOCMcH43bl+cRp3CPOUt9YAAAAASUVORK5CYII\u003d"
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAAAQAAAAiCAYAAAB4BHhVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAAfSURBVChTY/j//z8DEIAIIBPMhnCQ8KjAqAAOAYb/ABIJi3VCGsxeAAAAAElFTkSuQmCC"
     },
     {
       "name": "blade_broad",
@@ -516,7 +516,7 @@
     },
     {
       "name": "blade_long",
-      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAF1JREFUSEvtzDEKgDAUBNHc/9LfbGE3YgYbixWehAnZNTOP9pffPvJ9YLx9Grgfv41gjA50IDrQgehAB6IDfxg4hdHAaGA0MBoYDYwGRgOjgdHAaGA0MBoYDYznZl3LRvhqvM9xoQAAAABJRU5ErkJggg\u003d\u003d"
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAAAQAAAAiCAYAAAB4BHhVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAAfSURBVChTY/j//z8DEIAIIBPMhnCQ8KjAqAAOAYb/ABIJi3VCGsxeAAAAAElFTkSuQmCC"
     },
     {
       "name": "blade_short",
@@ -548,7 +548,7 @@
     },
     {
       "name": "grip",
-      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAAB3SURBVEhL7cwxCsAwDARB///TSgpXYQovIV0E0yyH1sy8wlgwFowFY8FYMBaMBWPB\nWDAWjAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgwFowFY8FYMBaMBWPBWDAWjAXj9jxt/gc3xu15\n2nz74AhjwVgwFoznZl3uyBNsuid8wAAAAABJRU5ErkJggg\u003d\u003d"
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAAAQAAAAGCAIAAABrW6giAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAANSURBVBhXY6AiYGAAAABOAAF+J6QBAAAAAElFTkSuQmCC"
     },
     {
       "name": "grip_basic",
@@ -580,7 +580,7 @@
     },
     {
       "name": "hilt",
-      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAACTSURBVEhLrcwBCoJQFAVR979pSzCo3vnkVBcOyPh02/f9J4wFY8FYMBaMBWPBWDAW\njAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgwFowFY8FYMBaMBWPBWDwejr28uOAYf/BpL99c/Wi1\n//3ga4wFY8FYMBaMBWPBeLfauB3htNq4HeG02rgd4bTauB3hyftws2830R07RFyGC98AAAAASUVO\nRK5CYII\u003d"
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAAA4AAAAECAYAAAC+0w63AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAAkSURBVBhXYwCC/0AAIojGID0oGqECODGaOkwFRGKsggQww38Ax7FXqccAoiIAAAAASUVORK5CYII\u003d"
     },
     {
       "name": "hilt_balanced",
@@ -605,6 +605,10 @@
     {
       "name": "limbs",
       "base64": "iVBORw0KGgoAAAANSUhEUgAAABIAAAAICAYAAAD0g6+qAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAABGSURBVChTrYwJCgAgCAT7/6ftoJUaEQwSRmQPm5mljJnLoX8SBZQzQs8PBKtcj2gKhQR9sb0oVmDPBQarqL8Omq98fNSsA9n+PtCeffEjAAAAAElFTkSuQmCC"
+    },
+    {
+      "name": "pommel",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAAAYAAAAFCAYAAABmWJ3mAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAAjSURBVBhXYwCC/zgwVkEQxioIwlgF/zP8/w+iUQX////PAABXiCHfS3ndjgAAAABJRU5ErkJggg\u003d\u003d"
     },
     {
       "name": "right_shoulder",
@@ -971,7 +975,7 @@
       "weight": 1.0,
       "partType": "Sword Grip",
       "stats": "Grip Basic",
-      "icon": "grip_basic",
+      "icon": "grip",
       "script": "",
       "materials": [
         "Metal"
@@ -979,13 +983,33 @@
       "joints": [
         {
           "name": "Hilt_Grip",
-          "x": 0.0,
+          "x": 1.0,
           "y": 0.0
         },
         {
-          "name": "Grip_Pommel0",
-          "x": 0.0,
-          "y": 0.0
+          "name": "Grip_Pommel",
+          "x": 1.0,
+          "y": 5.0
+        }
+      ]
+    },
+    {
+      "name": "Basic Pommel",
+      "nameMod": "Single",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Sword Pommel",
+      "stats": "Grip Basic",
+      "icon": "pommel",
+      "script": "",
+      "materials": [
+        "Metal"
+      ],
+      "joints": [
+        {
+          "name": "Grip_Pommel",
+          "x": 2.0,
+          "y": -1.0
         }
       ]
     },
@@ -1077,7 +1101,7 @@
       "name": "Broad Blade",
       "nameMod": "Broadsword",
       "partInfo": "",
-      "weight": 1.0,
+      "weight": 0.0,
       "partType": "Sword Blade",
       "stats": "Blade Broad",
       "icon": "blade_broad",
@@ -1085,7 +1109,13 @@
       "materials": [
         "Metal"
       ],
-      "joints": []
+      "joints": [
+        {
+          "name": "Blade_Hilt",
+          "x": 0.0,
+          "y": 0.0
+        }
+      ]
     },
     {
       "name": "Charging Crystal",
@@ -1214,15 +1244,26 @@
       "name": "Heavy Grip",
       "nameMod": "Double",
       "partInfo": "",
-      "weight": 1.0,
+      "weight": 0.0,
       "partType": "Sword Grip",
       "stats": "Grip Heavy",
-      "icon": "grip_heavy",
+      "icon": "grip",
       "script": "",
       "materials": [
         "Metal"
       ],
-      "joints": []
+      "joints": [
+        {
+          "name": "Hilt_Grip",
+          "x": 0.0,
+          "y": 0.0
+        },
+        {
+          "name": "Grip_Pommel",
+          "x": 0.0,
+          "y": 0.0
+        }
+      ]
     },
     {
       "name": "Heavy Hammerhead",
@@ -1245,12 +1286,23 @@
       "weight": 1.0,
       "partType": "Sword Hilt",
       "stats": "Hilt Heavy",
-      "icon": "hilt_heavy",
+      "icon": "hilt",
       "script": "",
       "materials": [
         "Metal"
       ],
-      "joints": []
+      "joints": [
+        {
+          "name": "Hilt_Grip",
+          "x": 6.0,
+          "y": 4.0
+        },
+        {
+          "name": "Blade_Hilt",
+          "x": 6.0,
+          "y": 1.0
+        }
+      ]
     },
     {
       "name": "Light Bowstring",
@@ -1295,29 +1347,51 @@
       "name": "Light Grip",
       "nameMod": "Half",
       "partInfo": "",
-      "weight": 1.0,
+      "weight": 0.0,
       "partType": "Sword Grip",
       "stats": "Grip Light",
-      "icon": "grip_light",
+      "icon": "grip",
       "script": "",
       "materials": [
         "Metal"
       ],
-      "joints": []
+      "joints": [
+        {
+          "name": "Hilt_Grip",
+          "x": 0.0,
+          "y": 0.0
+        },
+        {
+          "name": "Grip_Pommel",
+          "x": 0.0,
+          "y": 0.0
+        }
+      ]
     },
     {
       "name": "Light Hilt",
       "nameMod": "Agile",
       "partInfo": "",
-      "weight": 1.0,
+      "weight": 0.0,
       "partType": "Sword Hilt",
       "stats": "Hilt Light",
-      "icon": "hilt_light",
+      "icon": "hilt",
       "script": "",
       "materials": [
         "Metal"
       ],
-      "joints": []
+      "joints": [
+        {
+          "name": "Hilt_Grip",
+          "x": 0.0,
+          "y": 0.0
+        },
+        {
+          "name": "Blade_Hilt",
+          "x": 0.0,
+          "y": 0.0
+        }
+      ]
     },
     {
       "name": "Long Arrow Shaft",
@@ -1340,12 +1414,18 @@
       "weight": 1.0,
       "partType": "Sword Blade",
       "stats": "Blade Long",
-      "icon": "blade_long",
+      "icon": "blade",
       "script": "",
       "materials": [
         "Metal"
       ],
-      "joints": []
+      "joints": [
+        {
+          "name": "Blade_Hilt",
+          "x": 1.0,
+          "y": 34.0
+        }
+      ]
     },
     {
       "name": "Long Bolt Shaft",
@@ -1438,7 +1518,7 @@
       "name": "Medium Hilt",
       "nameMod": "Balanced",
       "partInfo": "",
-      "weight": 1.0,
+      "weight": 0.0,
       "partType": "Sword Hilt",
       "stats": "Hilt Medium",
       "icon": "hilt_balanced",
@@ -1446,7 +1526,18 @@
       "materials": [
         "Metal"
       ],
-      "joints": []
+      "joints": [
+        {
+          "name": "Hilt_Grip",
+          "x": 0.0,
+          "y": 0.0
+        },
+        {
+          "name": "Blade_Hilt",
+          "x": 0.0,
+          "y": 0.0
+        }
+      ]
     },
     {
       "name": "Plate Chest Piece",
@@ -1705,7 +1796,7 @@
       "name": "Short Blade",
       "nameMod": "Shortsword",
       "partInfo": "",
-      "weight": 1.0,
+      "weight": 0.0,
       "partType": "Sword Blade",
       "stats": "Blade Short",
       "icon": "blade_short",
@@ -1713,7 +1804,13 @@
       "materials": [
         "Metal"
       ],
-      "joints": []
+      "joints": [
+        {
+          "name": "Blade_Hilt",
+          "x": 0.0,
+          "y": 0.0
+        }
+      ]
     },
     {
       "name": "Short Bolt Shaft",
@@ -2246,7 +2343,7 @@
       "name": "Chest Armor",
       "stats": "Base Arrow",
       "script": "",
-      "weight": 1000.0,
+      "weight": 1.0,
       "primary": "Chest Piece",
       "anchor": "Chest Piece",
       "parts": [
@@ -2260,7 +2357,7 @@
       "name": "Crossbow",
       "stats": "Base Crossbow",
       "script": "",
-      "weight": 125.0,
+      "weight": 1.0,
       "primary": "Crossbow Limbs",
       "anchor": "Crossbow Stock",
       "parts": [
@@ -2300,13 +2397,14 @@
       "name": "Sword",
       "stats": "Base Sword",
       "script": "",
-      "weight": 1.0,
+      "weight": 125.0,
       "primary": "Sword Blade",
       "anchor": "Sword Grip",
       "parts": [
         "Sword Hilt",
         "Sword Grip",
-        "Sword Blade"
+        "Sword Blade",
+        "Sword Pommel"
       ],
       "optional parts": []
     }
@@ -2489,6 +2587,13 @@
       "joints": [
         "Blade_Hilt",
         "Hilt_Grip"
+      ]
+    },
+    {
+      "name": "Sword Pommel",
+      "icon": "grip",
+      "joints": [
+        "Grip_Pommel"
       ]
     }
   ],

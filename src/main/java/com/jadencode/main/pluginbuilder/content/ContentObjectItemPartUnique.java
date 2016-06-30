@@ -27,7 +27,7 @@ public class ContentObjectItemPartUnique extends ContentObject {
         super(name, owner);
         this.nameMod = nameMod;
         this.partInfo = partInfo;
-        this.weight = weight > 0 ? weight : 1F;
+        this.weight = weight > 0 ? weight : 0F;
         this.partType = partType;
         this.statSet = statSet;
         this.iconName = icon;

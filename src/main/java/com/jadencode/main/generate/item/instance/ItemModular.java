@@ -4,6 +4,7 @@ import com.jadencode.main.generate.QualityLevel;
 import com.jadencode.main.generate.QualityObject;
 import com.jadencode.main.generate.item.base.ItemPartType;
 import com.jadencode.main.generate.item.type.ItemTypeModular;
+import com.jadencode.main.stat.StatSet;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,8 +21,8 @@ public class ItemModular extends Item<ItemTypeModular> implements QualityObject 
         //return Collections.max(parts.stream().map(WeaponPartInstance::getLevel).collect(Collectors.toList()));
         return (int) Math.ceil(Math.sqrt(parts.stream().mapToInt(part -> (int) Math.pow(part.getLevel(), 2)).sum() / parts.size()));
     }
-    public ItemModular(ItemTypeModular type, List<ItemPart> itemParts) {
-        super(type, getLevel(itemParts));
+    public ItemModular(ItemTypeModular type, List<ItemPart> itemParts, StatSet stats) {
+        super(type, getLevel(itemParts), stats);
         this.itemParts = itemParts;
         this.mappedParts = new HashMap<>();
         itemParts.forEach(part -> this.mappedParts.put(part.getItemType().getType(), part));

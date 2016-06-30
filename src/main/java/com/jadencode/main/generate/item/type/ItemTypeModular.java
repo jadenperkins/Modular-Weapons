@@ -60,7 +60,8 @@ public class ItemTypeModular extends ItemType<ItemModular> {
             ItemPart instance = part.create(r, level);
             partInstances.add(instance);
         }
-        return new ItemModular(this, partInstances);
+        StatSet stats = this.getStatSet().scaled(level).combine(partInstances.stream().map(ItemPart::getStatSet).collect(Collectors.toList()));
+        return new ItemModular(this, partInstances, stats);
     }
     @Override
     public String getDisplayFallback(ItemModular instance) {
@@ -95,26 +96,34 @@ public class ItemTypeModular extends ItemType<ItemModular> {
             return false;
         });
         System.out.println(tree);
+        for (Node<ItemPart> itemPartNode : tree.getChildren()) {
+            System.out.println(itemPartNode);
+        }
+        this.drawTree(tree, out, g2d, width * 2, height * 2);
     }
-    private void drawPart(ItemPart anchor, BufferedImage out, Graphics2D g2d, int xOff, int yOff) {
-        anchor.getItemType().drawItem(anchor, out, g2d, xOff, yOff);
-
-//        for(Joint j : anchorJoints) {
-//            for(ItemPart itemPart : subParts) {
-//                if(itemPart != anchor) {
-//                    List<Joint> subJoints = itemPart.getItemType().getJoints();
-//                    for(Joint s : subJoints) {
-//                        if(j.getName().equals(s.getName())) {
-//                            double x = j.getX() - s.getX();
-//                            double y = j.getY() - s.getY();
-//                            List<ItemPart> parts = new ArrayList<>(subParts);
-//                            parts.remove(itemPart);
-//                            this.drawPart(itemPart, parts, out, g2d, xOff + (int)x, yOff + (int)y);
-//                        }
-//                    }
-//                }
-//            }
-//        }
+    private void drawTree(Node<ItemPart> anchor, BufferedImage out, Graphics2D g2d, int xOff, int yOff) {
+        ItemPart item = anchor.getData();
+        int x = xOff;
+        int y = yOff;
+        if(anchor.getParent() == null) {
+            item.getItemType().drawItem(item, out, g2d, x, y);
+        } else {
+            ItemPart parent = anchor.getParent().getData();
+            int joints = 0;
+            for (Joint parentJoint : parent.getItemType().getJoints()) {
+                for (Joint childJoint : item.getItemType().getJoints()) {
+                    if(parentJoint.getName().equals(childJoint.getName()) && joints == 0) {
+                        joints++;
+                        x += (int) (parentJoint.getX() - childJoint.getX());
+                        y += (int) (parentJoint.getY() - childJoint.getY());
+                        item.getItemType().drawItem(item, out, g2d, x, y);
+                    }
+                }
+            }
+        }
+        for (Node<ItemPart> childNode : anchor.getChildren()) {
+            this.drawTree(childNode, out, g2d, x, y);
+        }
     }
     @Override
     public List<String> getItemCardStrings(ItemModular instance) {
@@ -132,7 +141,9 @@ public class ItemTypeModular extends ItemType<ItemModular> {
     public ItemModular scaled(ItemModular original, int i) {
         List<ItemPart> parts = new ArrayList<>();
         original.getPartsList().forEach(p -> parts.add(p.getItemType().scaled(p, i)));
-        return new ItemModular(this, parts);
+        StatSet stats = this.getStatSet().scaled(i).combine(parts.stream().map(ItemPart::getStatSet).collect(Collectors.toList()));
+
+        return new ItemModular(this, parts, stats);
     }
     @Override
     public List<String> getDisplayInfo(ItemModular instance) {

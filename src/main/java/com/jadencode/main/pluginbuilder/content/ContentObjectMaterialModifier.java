@@ -19,7 +19,7 @@ public class ContentObjectMaterialModifier extends ContentObject {
     public ContentObjectMaterialModifier(String name, String owner, String color, float w, float l, float m, List<String> types) {
         super(name, owner);
         this.colorName = color;
-        this.weight = w > 0 ? w : 1;
+        this.weight = w > 0 ? w : 0F;
         this.level = l;
         this.mod = m;
         this.materialTypes = types;

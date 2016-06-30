@@ -20,7 +20,7 @@ public class ContentObjectItemTypeMaterialized extends ContentObject {
         super(name, owner);
         this.statSetName = stats;
         this.scriptName = script;
-        this.weight = weight > 0 ? weight : 1;
+        this.weight = weight > 0 ? weight : 0F;
         this.description = info;
         this.materialTypes = types;
     }

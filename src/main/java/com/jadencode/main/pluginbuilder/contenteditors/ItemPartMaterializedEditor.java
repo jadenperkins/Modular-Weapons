@@ -3,6 +3,7 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.internal.ObjectConstructor;
 import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.content.ContentObjectPartType;
 import com.jadencode.main.util.JsonHelper;
@@ -137,11 +138,17 @@ public class ItemPartMaterializedEditor extends ContentEditor<ContentObjectItemP
             }
         }
     }
-    private double getDouble(String s) {
+    private double getDouble(Object s) {
         double value = 0;
-        try {
-            value = Double.parseDouble(s);
-        } catch (Exception e) {
+        if(s instanceof Double) {
+            value = (Double) s;
+        } else {
+            if(s instanceof String) {
+                try {
+                    value = Double.parseDouble((String)s);
+                } catch (Exception e) {
+                }
+            }
         }
         return value;
     }
@@ -161,8 +168,8 @@ public class ItemPartMaterializedEditor extends ContentEditor<ContentObjectItemP
         for(int i = 0; i < rows; i++) {
             String s = (String) this.jointsTable.getValueAt(i, 0);
             if(s != null && !s.isEmpty()) {
-                double x = getDouble((String)this.jointsTable.getValueAt(i, 1));
-                double y = getDouble((String)this.jointsTable.getValueAt(i, 2));
+                double x = getDouble(this.jointsTable.getValueAt(i, 1));
+                double y = getDouble(this.jointsTable.getValueAt(i, 2));
                 joints.put(s, new Point.Double(x, y));
             }
         }
