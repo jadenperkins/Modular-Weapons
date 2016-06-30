@@ -555,6 +555,10 @@
       "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAHlJREFUSEvtzLENgDAMAMHsv3QgBRToirxoKLB0Lt6Sx5zzFcaCsWAsGAvGgrFgLBgLxoKxYCwYC8aCsWAsGAvGgrFgLBgLxoKxYCwYC8aCsWAsGAvGgrFgLBgLxoKxYCwYl3PWuj3vF8blf/CFB7sYC8aCsWDcN8cBJbC/sUUaq8kAAAAASUVORK5CYII\u003d"
     },
     {
+      "name": "grip_double",
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAAAQAAAAMCAIAAADKwItEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAANSURBVBhXYxi0gIEBAACcAAE53+5BAAAAAElFTkSuQmCC"
+    },
+    {
       "name": "grip_heavy",
       "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAJRJREFUSEulzDEOwyAQAMH8/9MkZ4kUeAqvjDQUyx2ftdYrjAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgwFowFY8FYMBaMBWPBWDCO35nr73zfGMerD87l7Zwbt3DFY3E758YtXPFY3M65cQvbk+XBOF5/8BRjwVgwFozPrc8XRiKzvY+i2lIAAAAASUVORK5CYII\u003d"
     },
@@ -1144,6 +1148,31 @@
         "Metal"
       ],
       "joints": []
+    },
+    {
+      "name": "Double Grip",
+      "nameMod": "Two-Handed",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Sword Grip",
+      "stats": "Grip Basic",
+      "icon": "grip_double",
+      "script": "",
+      "materials": [
+        "Metal"
+      ],
+      "joints": [
+        {
+          "name": "Hilt_Grip",
+          "x": 1.0,
+          "y": 0.0
+        },
+        {
+          "name": "Grip_Pommel",
+          "x": 1.0,
+          "y": 11.0
+        }
+      ]
     },
     {
       "name": "Double Hammerhead",

@@ -18,6 +18,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import static javafx.scene.input.KeyCode.T;
@@ -71,8 +73,9 @@ public class ItemTypeModular extends ItemType<ItemModular> {
         }
         return s.trim();
     }
+
     @Override
-    public void drawItem(ItemModular instance, BufferedImage out, Graphics2D g2d) {
+    public BufferedImage render(ItemModular instance)  {
         int width = 0;
         int height = 0;
         for (ItemPart itemPart : instance.getPartsList()) {
@@ -95,18 +98,72 @@ public class ItemTypeModular extends ItemType<ItemModular> {
             }
             return false;
         });
-        System.out.println(tree);
-        for (Node<ItemPart> itemPartNode : tree.getChildren()) {
-            System.out.println(itemPartNode);
+        BufferedImage untrimmed = new BufferedImage(256, 256, BufferedImage.TYPE_INT_ARGB);
+        this.drawTree(tree, untrimmed, untrimmed.createGraphics(), width * 2, height * 2);
+        BufferedImage trimmed = trim(untrimmed);
+        return trimmed;
+    }
+    private static BufferedImage trim(BufferedImage image) {
+        int l, r, t, b;
+        l = r = t = b = 0;
+
+        Function<Integer, Boolean> isColumnTrans = i -> {
+            for(int j = 0; j < image.getHeight(); j++) {
+                if(image.getRGB(i, j) >> 24 != 0x00) {
+                    return false;
+                }
+            }
+            return true;
+        };
+
+        for(int i = 0; i < image.getWidth(); i++) {
+            if(!isColumnTrans.apply(i)) {
+                break;
+            } else {
+                l = i;
+            }
         }
-        this.drawTree(tree, out, g2d, width * 2, height * 2);
+        for(int i = image.getWidth() - 1; i >= 0; i--) {
+            if(!isColumnTrans.apply(i)) {
+                break;
+            } else {
+                r = i;
+            }
+        }
+
+        Function<Integer, Boolean> isRowTrans = j -> {
+            for(int i = 0; i < image.getWidth(); i++) {
+                if(image.getRGB(i, j) >> 24 != 0x00) {
+                    return false;
+                }
+            }
+            return true;
+        };
+
+        for(int j = 0; j < image.getHeight(); j++) {
+            if(!isRowTrans.apply(j)) {
+                break;
+            } else {
+                t = j;
+            }
+        }
+        for(int j = image.getHeight() - 1; j >= 0; j--) {
+            if(!isRowTrans.apply(j)) {
+                break;
+            } else {
+                b = j;
+            }
+        }
+        BufferedImage ret = image.getSubimage(l, t, r - l + 1, b - t + 1);
+        return ret;
     }
     private void drawTree(Node<ItemPart> anchor, BufferedImage out, Graphics2D g2d, int xOff, int yOff) {
         ItemPart item = anchor.getData();
         int x = xOff;
         int y = yOff;
         if(anchor.getParent() == null) {
-            item.getItemType().drawItem(item, out, g2d, x, y);
+            BufferedImage itemRender = item.getItemType().render(item);
+            g2d.drawImage(itemRender, x, y, null);
         } else {
             ItemPart parent = anchor.getParent().getData();
             int joints = 0;
@@ -116,7 +173,8 @@ public class ItemTypeModular extends ItemType<ItemModular> {
                         joints++;
                         x += (int) (parentJoint.getX() - childJoint.getX());
                         y += (int) (parentJoint.getY() - childJoint.getY());
-                        item.getItemType().drawItem(item, out, g2d, x, y);
+                        BufferedImage itemRender = item.getItemType().render(item);
+                        g2d.drawImage(itemRender, x, y, null);
                     }
                 }
             }

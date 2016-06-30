@@ -57,26 +57,29 @@ public abstract class ItemType<T extends Item> implements WeightedItem {
     public Color getColor() {
         return this.color;
     }
-    public void drawItem(T instance, BufferedImage out, Graphics2D g2d, int xOff, int yOff) {
+    /**Render an item instance to and return a BufferedImage*/
+    public BufferedImage render(T instance) {
         if(this.getIcon() == null) {
-            g2d.setColor(this.getColor() == null ? Color.BLACK : this.getColor());
+            BufferedImage ret = new BufferedImage(64, 64, BufferedImage.TYPE_INT_ARGB);
+            Graphics2D g2d = ret.createGraphics();
+            g2d.setPaint(this.getColor() == null ? Color.BLACK : this.getColor());
             g2d.fillRect(0, 0, 64, 64);
+            return ret;
+        }
+        BufferedImage ret = new BufferedImage(this.getIcon().getWidth(), this.getIcon().getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = ret.createGraphics();
+        if(this.getColor() == null) {
+            g2d.drawImage(this.getIcon(), 0, 0, Color.WHITE, null);
         } else {
-            if(this.color == null) {
-                g2d.drawImage(this.getIcon(), xOff, yOff, Color.WHITE, null);
-            } else {
-                for(int x = 0; x < this.getIcon().getWidth(); x++) {
-                    for(int y = 0; y < this.getIcon().getHeight(); y++) {
-                        if(this.getIcon().getRGB(x, y) >> 24 != 0x00) {
-                            out.setRGB(x + xOff, y + yOff, this.getColor().getRGB());
-                        }
+            for(int x = 0; x < this.getIcon().getWidth(); x++) {
+                for(int y = 0; y < this.getIcon().getHeight(); y++) {
+                    if(this.getIcon().getRGB(x, y) >> 24 != 0x00) {
+                        ret.setRGB(x, y, this.getColor().getRGB());
                     }
                 }
             }
         }
-    }
-    public void drawItem(T instance, BufferedImage out, Graphics2D g2d) {
-        this.drawItem(instance, out, g2d, 0, 0);
+        return ret;
     }
     public List<String> getItemCardStrings(T instance) {
         List<String> strings = new ArrayList<>();
@@ -90,23 +93,26 @@ public abstract class ItemType<T extends Item> implements WeightedItem {
         try {
             out.mkdirs();
             out.createNewFile();
-            int width = 128;//this.getIcon() == null ? 64 : this.getIcon().getWidth();
-            int height = 128;//this.getIcon() == null ? 64 : this.getIcon().getHeight();
-            BufferedImage image = new BufferedImage(width + 64, height, BufferedImage.TYPE_INT_ARGB);
+            BufferedImage renderedItem = this.render(instance);
+            int width = renderedItem.getWidth();
+            int height = Math.max(renderedItem.getHeight(), 40);
 
-            Graphics2D g2d = image.createGraphics();
+//            BufferedImage image = new BufferedImage(width + 64, height, BufferedImage.TYPE_INT_ARGB);
 
-            this.drawItem(instance, image, g2d);
-
+            BufferedImage itemCard = new BufferedImage(width + 64, height, BufferedImage.TYPE_INT_ARGB);
+            Graphics2D g2d = itemCard.createGraphics();
+            g2d.drawImage(renderedItem, 0, 0, null);
             g2d.setPaint(Color.WHITE);
-            g2d.fillRect(width, 0, 64, image.getHeight());
-            BufferedImage after = new BufferedImage(image.getWidth() * 8, image.getHeight() * 8, BufferedImage.TYPE_INT_ARGB);
+            g2d.fillRect(width, 0, 64, height);
+
+            BufferedImage after = new BufferedImage(itemCard.getWidth() * 8, itemCard.getHeight() * 8, BufferedImage.TYPE_INT_ARGB);
             AffineTransform at = new AffineTransform();
             at.scale(8, 8);
             AffineTransformOp scaleOp = new AffineTransformOp(at, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-            after = scaleOp.filter(image, after);
-            image = after;
-            g2d = image.createGraphics();
+            after = scaleOp.filter(itemCard, after);
+
+            itemCard = after;
+            g2d = itemCard.createGraphics();
 
             g2d.setPaint(instance.getQualityLevel().getColor());
             g2d.setFont(new Font("Helvetica", Font.BOLD, 14));
@@ -137,98 +143,10 @@ public abstract class ItemType<T extends Item> implements WeightedItem {
             }
 
             g2d.dispose();
-            ImageIO.write(image, "PNG", out);
+            ImageIO.write(itemCard, "PNG", out);
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        for (WeaponPartInstance part : item.getPartsList()) {
-//            if(part.getWeaponPart().getIcon().getWidth() > width) {
-//                width = part.getWeaponPart().getIcon().getWidth();
-//            }
-//            if(part.getWeaponPart().getIcon().getHeight() > height) {
-//                height = part.getWeaponPart().getIcon().getHeight();
-//            }
-//            if(part.getWeaponPart().getType().getIcon() == null) {
-//                standard = false;
-//            }
-//        }
-//        File dir = new File("pictures");
-//        File out = new File(dir, item.getDisplayName().replace(" ", "_") + ".png");
-//
-//        try {
-//            out.mkdirs();
-//            out.createNewFile();
-//            BufferedImage image = new BufferedImage(width + 64, height, BufferedImage.TYPE_INT_ARGB);
-//            Graphics2D g2d = image.createGraphics();
-//            if(!standard) {
-//                for (int x = 0; x < item.getPartsList().size(); x++) {
-//                    Color c = item.getPartsList().get(x).getColor();
-//                    c = c == null ? Color.WHITE : c;
-//                    g2d.setColor(c);
-//                    g2d.drawRect(0, x * 16, 16, 16);
-//                }
-//            } else {
-//                for(WeaponPartInstance part : item.getPartsList()) {
-//                    BufferedImage icon = part.getWeaponPart().getIcon();
-//                    Color c = part.getColor();
-//                    if(c == null) {
-//                        g2d.drawImage(icon, 0, 0, null);
-//                    } else {
-//                        for(int x = 0; x < icon.getWidth(); x++) {
-//                            for(int y = 0; y < icon.getHeight(); y++) {
-//                                if(icon.getRGB(x, y) >> 24 != 0x00) {
-//                                    image.setRGB(x, y, part.getColor().getRGB());
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//                g2d.setPaint(Color.WHITE);
-//                g2d.fillRect(width, 0, 64, image.getHeight());
-//
-//                BufferedImage after = new BufferedImage(image.getWidth() * 8, image.getHeight() * 8, BufferedImage.TYPE_INT_ARGB);
-//                AffineTransform at = new AffineTransform();
-//                at.scale(8, 8);
-//                AffineTransformOp scaleOp = new AffineTransformOp(at, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-//                after = scaleOp.filter(image, after);
-//                image = after;
-//
-//                g2d = image.createGraphics();
-//
-//                g2d.setPaint(item.getQualityLevel().getColor());
-//                g2d.setFont(new Font("Helvetica", Font.BOLD, 14));
-//                int i = 2;
-//                g2d.drawString(String.format("%s (%d)", item.getDisplayName(), item.getLevel()), width * 8 + 8, g2d.getFontMetrics().getHeight() * i);
-//
-//                i += 2;
-//                g2d.setPaint(Color.DARK_GRAY);
-//                g2d.setFont(new Font("Helvetica", Font.PLAIN, 12));
-//                for (WeaponPartInstance weaponPartInstance : item.getPartsList()) {
-//                    g2d.drawString(String.format("        %s", weaponPartInstance.getPartInfo(), weaponPartInstance.getLevel()), width * 9, g2d.getFontMetrics().getHeight() * i);
-//                    i++;
-//                    StatSet stats = weaponPartInstance.getStats();
-//                    for (StatBase statBase : stats.getStatsRaw().keySet()) {
-//                        g2d.drawString(String.format("                %s: %.2f", statBase.getStatName(), stats.get(statBase)), width * 9, g2d.getFontMetrics().getHeight() * i);
-//                        i++;
-//                    }
-//                }
-//
-//                i += 1;
-//                g2d.setPaint(Color.BLUE);
-//                StatSet stats = item.getStatSet();
-//                for (StatBase statBase : stats.getStatsRaw().keySet()) {
-//                    g2d.drawString(String.format("%s: %.2f", statBase.getStatName(), stats.get(statBase)), width * 9, g2d.getFontMetrics().getHeight() * i);
-//                    i++;
-//                }
-//
-//                g2d.dispose();
-//
-//            }
-//            ImageIO.write(image, "PNG", out);
-//            System.out.println("Images stored in " + dir.getAbsolutePath());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
     }
     @Override
     public float getWeight() {
