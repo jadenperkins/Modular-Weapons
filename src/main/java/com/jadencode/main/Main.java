@@ -14,6 +14,8 @@ import com.jadencode.main.magic.SpellBase;
 import com.jadencode.main.magic.SpellObject;
 import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatSet;
+import org.lwjgl.opengl.*;
+import org.lwjgl.opengl.DisplayMode;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -181,7 +183,29 @@ public class Main {
 //            e.printStackTrace();
 //        }
 //    }
+    private static final int WIDTH = 1280;
+    private static final int HEIGHT = 720;
+    private static final int FPS_CAP = 120;
     public static void main(String[] args) {
+        ContextAttribs attribs = new ContextAttribs(3, 2).withForwardCompatible(true).withProfileCore(true);
+        try {
+            Display.setDisplayMode(new DisplayMode(WIDTH, HEIGHT));
+            Display.create(new PixelFormat(), attribs);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        GL11.glViewport(0, 0, WIDTH, HEIGHT);
+
+        while(!Display.isCloseRequested()) {
+            Display.sync(FPS_CAP);
+            Display.update();
+        }
+        Display.destroy();
+
+        System.exit(0);
+
+
+
         ContentLoader.load();
 
 
