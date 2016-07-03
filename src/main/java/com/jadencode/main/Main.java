@@ -8,6 +8,7 @@ import com.jadencode.main.generate.item.instance.Item;
 import com.jadencode.main.renderengine.*;
 import com.jadencode.main.renderengine.entities.Camera;
 import com.jadencode.main.renderengine.entities.Entity;
+import com.jadencode.main.renderengine.entities.Light;
 import com.jadencode.main.renderengine.models.RawModel;
 import com.jadencode.main.renderengine.models.TexturedModel;
 import com.jadencode.main.renderengine.textures.ModelTexture;
@@ -195,7 +196,8 @@ public class Main {
         RawModel model = objLoader.loadObjModel("Stall");
         ModelTexture texture = new ModelTexture(loader.loadTexture("models/Stall"));
         TexturedModel texturedModel = new TexturedModel(model, texture);
-        Entity entity = new Entity(texturedModel, new Vector3f(0, -2, -10), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
+        Entity entity = new Entity(texturedModel, new Vector3f(0, -2, -15), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
+        Light light = new Light(new Vector3f(0, 50, -10), new Vector3f(1, 1, 1));
         Camera camera = new Camera();
 
         while(!display.isCloseRequested()) {
@@ -203,6 +205,7 @@ public class Main {
             camera.move();
             renderer.prepare();
             shader.start();
+            shader.loadLight(light);
             shader.loadViewMatrix(camera);
             renderer.render(entity, shader);
             shader.stop();
