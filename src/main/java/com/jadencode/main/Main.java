@@ -11,6 +11,7 @@ import com.jadencode.main.renderengine.entities.Entity;
 import com.jadencode.main.renderengine.models.RawModel;
 import com.jadencode.main.renderengine.models.TexturedModel;
 import com.jadencode.main.renderengine.textures.ModelTexture;
+import com.jadencode.main.renderengine.toolbox.OBJLoader;
 import org.lwjgl.util.vector.Vector3f;
 
 import java.io.File;
@@ -174,6 +175,7 @@ public class Main {
     public static void main(String[] args) {
         DisplayManager display = new DisplayManager();
         Loader loader = new Loader();
+        OBJLoader objLoader = new OBJLoader(loader);
         StaticShader shader = new StaticShader();
         Renderer renderer = new Renderer(shader);
 
@@ -190,14 +192,14 @@ public class Main {
                 0, 0, 0, 1, 1, 1, 1, 0
         };
 
-        RawModel model = loader.loadToVAO(vertices, indices, textureCoords);
-        ModelTexture texture = new ModelTexture(loader.loadTexture("crossbow"));
+        RawModel model = objLoader.loadObjModel("Stall");
+        ModelTexture texture = new ModelTexture(loader.loadTexture("models/Stall"));
         TexturedModel texturedModel = new TexturedModel(model, texture);
-        Entity entity = new Entity(texturedModel, new Vector3f(0, 0, -1), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
+        Entity entity = new Entity(texturedModel, new Vector3f(0, -2, -10), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
         Camera camera = new Camera();
 
         while(!display.isCloseRequested()) {
-            entity.translate(0, 0, -0.002F);
+            entity.rotate(0, 1, 0);
             camera.move();
             renderer.prepare();
             shader.start();
