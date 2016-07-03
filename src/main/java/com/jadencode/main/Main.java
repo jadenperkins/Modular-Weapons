@@ -13,6 +13,9 @@ import com.jadencode.main.generate.item.instance.Item;
 import com.jadencode.main.magic.SpellBase;
 import com.jadencode.main.magic.SpellObject;
 import com.jadencode.main.renderengine.DisplayManager;
+import com.jadencode.main.renderengine.ModelLoader;
+import com.jadencode.main.renderengine.RawModel;
+import com.jadencode.main.renderengine.Renderer;
 import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatSet;
 import org.lwjgl.opengl.*;
@@ -186,10 +189,26 @@ public class Main {
 //    }
     public static void main(String[] args) {
         DisplayManager display = new DisplayManager();
+        ModelLoader loader = new ModelLoader();
+        Renderer renderer = new Renderer();
+
+        float[] vertices = {
+                -0.5F, 0.5F, 0F,
+                -0.5F, -0.5F, 0F,
+                0.5F, -0.5F, 0F,
+                0.5F, -0.5F, 0F,
+                0.5F, 0.5F, 0F,
+                -0.5F, 0.5F, 0F
+        };
+
+        RawModel model = loader.loadToVAO(vertices);
 
         while(!display.isCloseRequested()) {
+            renderer.prepare();
+            renderer.render(model);
             display.update();
         }
+        loader.cleanUp();
         display.destroy();
 
         System.exit(0);
