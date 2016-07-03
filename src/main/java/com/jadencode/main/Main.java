@@ -195,6 +195,8 @@ public class Main {
 
         RawModel model = objLoader.loadObjModel("Stall");
         ModelTexture texture = new ModelTexture(loader.loadTexture("models/Stall"));
+        texture.setShineDamper(10);
+        texture.setReflectivity(1);
         TexturedModel texturedModel = new TexturedModel(model, texture);
         Entity entity = new Entity(texturedModel, new Vector3f(0, -2, -15), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
         Light light = new Light(new Vector3f(0, 50, -10), new Vector3f(1, 1, 1));

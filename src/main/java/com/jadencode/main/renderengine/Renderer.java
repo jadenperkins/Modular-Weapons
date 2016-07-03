@@ -3,6 +3,7 @@ package com.jadencode.main.renderengine;
 import com.jadencode.main.renderengine.entities.Entity;
 import com.jadencode.main.renderengine.models.RawModel;
 import com.jadencode.main.renderengine.models.TexturedModel;
+import com.jadencode.main.renderengine.textures.ModelTexture;
 import com.jadencode.main.renderengine.toolbox.Maths;
 import org.lwjgl.opengl.*;
 import org.lwjgl.util.vector.Matrix4f;
@@ -39,7 +40,8 @@ public class Renderer {
 
         Matrix4f transform = Maths.createTransformationMatrix(entity);
         shader.loadTransformationMatrix(transform);
-
+        ModelTexture texture = texturedModel.getTexture();
+        shader.loadShineVariables(texture.getShineDamper(), texture.getReflectivity());
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, texturedModel.getTexture().getTextureID());
         GL11.glDrawElements(GL11.GL_TRIANGLES, model.getVertexCount(), GL11.GL_UNSIGNED_INT, 0);

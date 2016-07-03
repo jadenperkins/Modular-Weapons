@@ -18,6 +18,8 @@ public class StaticShader extends ShaderProgram {
     private int location_viewMatrix;
     private int location_lightPosition;
     private int location_lightColor;
+    private int location_shineDamper;
+    private int location_reflectivity;
 
     public StaticShader() {
         super(VERT_FILE, FRAG_FILE);
@@ -36,6 +38,12 @@ public class StaticShader extends ShaderProgram {
         this.location_viewMatrix = this.getUniformLocation("viewMatrix");
         this.location_lightPosition = this.getUniformLocation("lightPosition");
         this.location_lightColor = this.getUniformLocation("lightColor");
+        this.location_shineDamper = this.getUniformLocation("shineDamper");
+        this.location_reflectivity = this.getUniformLocation("reflectivity");
+    }
+    public void loadShineVariables(float damper, float reflect) {
+        this.loadFloat(this.location_shineDamper, damper);
+        this.loadFloat(this.location_reflectivity, reflect);
     }
     public void loadTransformationMatrix(Matrix4f matrix) {
         this.loadMatrix(this.location_transformationMatrix, matrix);
