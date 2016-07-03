@@ -6,9 +6,12 @@ import com.jadencode.main.generate.character.viking.VikingSettlementGenerator;
 import com.jadencode.main.generate.item.*;
 import com.jadencode.main.generate.item.instance.Item;
 import com.jadencode.main.renderengine.*;
+import com.jadencode.main.renderengine.entities.Camera;
+import com.jadencode.main.renderengine.entities.Entity;
 import com.jadencode.main.renderengine.models.RawModel;
 import com.jadencode.main.renderengine.models.TexturedModel;
 import com.jadencode.main.renderengine.textures.ModelTexture;
+import org.lwjgl.util.vector.Vector3f;
 
 import java.io.File;
 
@@ -171,8 +174,8 @@ public class Main {
     public static void main(String[] args) {
         DisplayManager display = new DisplayManager();
         Loader loader = new Loader();
-        Renderer renderer = new Renderer();
         StaticShader shader = new StaticShader();
+        Renderer renderer = new Renderer(shader);
 
         float[] vertices = {
                 -0.5F, 0.5F, 0F,
@@ -190,11 +193,16 @@ public class Main {
         RawModel model = loader.loadToVAO(vertices, indices, textureCoords);
         ModelTexture texture = new ModelTexture(loader.loadTexture("crossbow"));
         TexturedModel texturedModel = new TexturedModel(model, texture);
+        Entity entity = new Entity(texturedModel, new Vector3f(0, 0, -1), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
+        Camera camera = new Camera();
 
         while(!display.isCloseRequested()) {
+            entity.translate(0, 0, -0.002F);
+            camera.move();
             renderer.prepare();
             shader.start();
-            renderer.render(texturedModel);
+            shader.loadViewMatrix(camera);
+            renderer.render(entity, shader);
             shader.stop();
             display.update();
         }
