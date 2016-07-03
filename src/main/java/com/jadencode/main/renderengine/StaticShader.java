@@ -13,5 +13,6 @@ public class StaticShader extends ShaderProgram {
     @Override
     public void bindAttributes() {
         this.bindAttribute(0, "position");
+        this.bindAttribute(1, "textureCoords");
     }
 }

@@ -1,4 +1,4 @@
-package com.jadencode.main.renderengine;
+package com.jadencode.main.renderengine.models;
 
 /**
  * Created by gtrpl on 7/2/2016.

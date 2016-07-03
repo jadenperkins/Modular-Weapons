@@ -1,32 +1,16 @@
 package com.jadencode.main;
 
 import com.jadencode.main.content.ContentLoader;
-import com.jadencode.main.generate.Generator;
-import com.jadencode.main.generate.character.Actor;
-import com.jadencode.main.generate.character.Settlement;
-import com.jadencode.main.generate.character.crotan.KrotanCharacterGenerator;
-import com.jadencode.main.generate.character.crotan.KrotanSettlementGenerator;
 import com.jadencode.main.generate.character.viking.VikingCharacterGenerator;
 import com.jadencode.main.generate.character.viking.VikingSettlementGenerator;
 import com.jadencode.main.generate.item.*;
 import com.jadencode.main.generate.item.instance.Item;
-import com.jadencode.main.magic.SpellBase;
-import com.jadencode.main.magic.SpellObject;
 import com.jadencode.main.renderengine.*;
-import com.jadencode.main.stat.StatBase;
-import com.jadencode.main.stat.StatSet;
-import org.lwjgl.opengl.*;
-import org.lwjgl.opengl.DisplayMode;
+import com.jadencode.main.renderengine.models.RawModel;
+import com.jadencode.main.renderengine.models.TexturedModel;
+import com.jadencode.main.renderengine.textures.ModelTexture;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Jaden on 1/19/2015.
@@ -186,7 +170,7 @@ public class Main {
 //    }
     public static void main(String[] args) {
         DisplayManager display = new DisplayManager();
-        ModelLoader loader = new ModelLoader();
+        Loader loader = new Loader();
         Renderer renderer = new Renderer();
         StaticShader shader = new StaticShader();
 
@@ -199,13 +183,18 @@ public class Main {
         int[] indices = {
                 0, 1, 3, 3, 1, 2
         };
+        float[] textureCoords = {
+                0, 0, 0, 1, 1, 1, 1, 0
+        };
 
-        RawModel model = loader.loadToVAO(vertices, indices);
+        RawModel model = loader.loadToVAO(vertices, indices, textureCoords);
+        ModelTexture texture = new ModelTexture(loader.loadTexture("crossbow"));
+        TexturedModel texturedModel = new TexturedModel(model, texture);
 
         while(!display.isCloseRequested()) {
             renderer.prepare();
             shader.start();
-            renderer.render(model);
+            renderer.render(texturedModel);
             shader.stop();
             display.update();
         }
