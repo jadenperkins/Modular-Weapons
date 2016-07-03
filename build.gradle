@@ -2,6 +2,8 @@ buildscript {
     ext.kotlin_version = '1.0.2'
     repositories {
         mavenCentral()
+        jcenter()
+        maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -9,11 +11,18 @@ buildscript {
         classpath "com.google.code.gson:gson:2.6.2"
         classpath "org.mozilla:rhino:1.7R4"
         classpath "commons-io:commons-io:2.5"
+        classpath "gradle.plugin.com.stehno:gradle-natives:0.2.3"
     }
 }
 
 apply plugin: 'kotlin'
 apply plugin: 'jacoco'
+apply plugin: "com.stehno.natives"
+apply plugin: 'application'
+
+mainClassName = 'com.jadencode.main.Main'
+
+def lwjglVersion = "2.9.3"
 
 dependencies {
     compile fileTree(dir: 'lib', include: '*.jar')
@@ -21,34 +30,46 @@ dependencies {
     compile "com.google.code.gson:gson:2.6.2"
     compile "org.mozilla:rhino:1.7R4"
     compile "commons-io:commons-io:2.5"
+    compile "org.lwjgl.lwjgl:lwjgl:$lwjglVersion"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     testCompile "org.jetbrains.spek:spek:1.0.25"
     testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
     testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 }
+
 repositories {
     mavenCentral()
-    maven {
-        url "http://repository.jetbrains.com/all"
-    }
-    maven {
-        url "http://mvnrepository.com/artifact/org.reflections/reflections"
-    }
-    maven {
-        url = "http://mvnrepository.com/artifact/com.google.code.gson/gson"
-    }
-    maven {
-        url = "http://mvnrepository.com/artifact/org.mozilla/rhino"
-    }
-    maven {
-        url = "http://mvnrepository.com/artifact/commons-io/commons-io"
-    }
+    maven { url "http://repository.jetbrains.com/all" }
+    maven { url "http://mvnrepository.com/artifact/org.reflections/reflections" }
+    maven { url = "http://mvnrepository.com/artifact/com.google.code.gson/gson" }
+    maven { url = "http://mvnrepository.com/artifact/org.mozilla/rhino" }
+    maven { url = "http://mvnrepository.com/artifact/commons-io/commons-io" }
 }
+
+natives {
+    jars = [
+            "lwjgl-platform-$lwjglVersion-natives-windows",
+            "lwjgl-platform-$lwjglVersion-natives-osx",
+            "lwjgl-platform-$lwjglVersion-natives-linux"
+    ]
+}
+
 sourceSets {
     main.java.srcDirs += 'src/main/kotlin'
     test.java.srcDirs += 'src/test/kotlin'
 }
+
+compileJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+run {
+    systemProperty 'java.library.path', file( 'build/natives/windows' )
+}
+
+run.dependsOn unpackNatives
 
 jacocoTestReport {
     reports {

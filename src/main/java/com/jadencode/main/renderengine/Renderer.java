@@ -4,7 +4,6 @@ import com.jadencode.main.renderengine.entities.Entity;
 import com.jadencode.main.renderengine.models.RawModel;
 import com.jadencode.main.renderengine.models.TexturedModel;
 import com.jadencode.main.renderengine.toolbox.Maths;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import org.lwjgl.opengl.*;
 import org.lwjgl.util.vector.Matrix4f;
 
