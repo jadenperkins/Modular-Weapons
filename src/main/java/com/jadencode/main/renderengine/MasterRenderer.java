@@ -8,6 +8,7 @@ import com.jadencode.main.renderengine.terrain.Terrain;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Matrix4f;
+import org.lwjgl.util.vector.Vector3f;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,6 +22,10 @@ public class MasterRenderer {
     private static final float nearPlane = 0.1F;
     private static final float farPlane = 1000F;
 
+    private static final float RED = 0.5F;
+    private static final float GREEN = 0.5F;
+    private static final float BLUE = 0.5F;
+
     private Matrix4f projectionMatrix = createProjectionMatrix();
 
     private EntityShader entityShader = new EntityShader();
@@ -32,12 +37,19 @@ public class MasterRenderer {
     private List<Terrain> terrains = new ArrayList<>();
 
     public MasterRenderer() {
+        this.enableCulling();
+    }
+    public static void enableCulling() {
         GL11.glEnable(GL11.GL_CULL_FACE);
         GL11.glCullFace(GL11.GL_BACK);
+    }
+    public static void disableCulling() {
+        GL11.glDisable(GL11.GL_CULL_FACE);
     }
     public void render(Light sun, Camera camera) {
         this.prepare();
         this.entityShader.start();
+        this.entityShader.loadSkyColor(new Vector3f(RED, GREEN, BLUE));
         this.entityShader.loadLight(sun);
         this.entityShader.loadViewMatrix(camera);
         this.entityRenderer.render(this.entities);
@@ -45,6 +57,7 @@ public class MasterRenderer {
         this.entities.clear();
 
         this.terrainShader.start();
+        this.terrainShader.loadSkyColor(new Vector3f(RED, GREEN, BLUE));
         this.terrainShader.loadLight(sun);
         this.terrainShader.loadViewMatrix(camera);
         this.terrainRenderer.render(this.terrains);
@@ -66,7 +79,7 @@ public class MasterRenderer {
     public void prepare() {
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
-        GL11.glClearColor(1, 0, 0, 1);
+        GL11.glClearColor(RED, GREEN, BLUE, 1);
     }
     private static Matrix4f createProjectionMatrix() {
         Matrix4f projectionMatrix = new Matrix4f();

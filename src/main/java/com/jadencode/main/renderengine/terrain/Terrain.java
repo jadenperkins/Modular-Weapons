@@ -3,6 +3,8 @@ package com.jadencode.main.renderengine.terrain;
 import com.jadencode.main.renderengine.Loader;
 import com.jadencode.main.renderengine.models.RawModel;
 import com.jadencode.main.renderengine.textures.ModelTexture;
+import com.jadencode.main.renderengine.textures.TerrainTexture;
+import com.jadencode.main.renderengine.textures.TerrainTexturePack;
 import com.jadencode.main.renderengine.toolbox.Transform;
 import org.lwjgl.util.vector.Vector3f;
 
@@ -16,14 +18,16 @@ public class Terrain implements Transform {
     private float x;
     private float z;
     private RawModel model;
-    private ModelTexture texture;
+    private TerrainTexturePack texture;
+    private TerrainTexture blendMap;
 
     private final Vector3f translation;
     private final Vector3f rotation = new Vector3f(0, 0, 0);
     private final Vector3f scale = new Vector3f(1, 1, 1);
 
-    public Terrain(int gridX, int gridZ, Loader loader, ModelTexture texture) {
+    public Terrain(int gridX, int gridZ, Loader loader, TerrainTexturePack texture, TerrainTexture blendMap) {
         this.texture = texture;
+        this.blendMap = blendMap;
         this.x = gridX * SIZE;
         this.z = gridZ * SIZE;
         this.translation = new Vector3f(this.x, 0, this.z);
@@ -38,7 +42,7 @@ public class Terrain implements Transform {
     public RawModel getModel() {
         return model;
     }
-    public ModelTexture getTexture() {
+    public TerrainTexturePack getTexture() {
         return texture;
     }
     @Override
@@ -52,6 +56,9 @@ public class Terrain implements Transform {
     @Override
     public Vector3f getScale() {
         return scale;
+    }
+    public TerrainTexture getBlendMap() {
+        return blendMap;
     }
     private RawModel generateTerrain(Loader loader){
         int count = VERTEX_COUNT * VERTEX_COUNT;

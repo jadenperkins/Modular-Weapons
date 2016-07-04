@@ -13,6 +13,8 @@ import com.jadencode.main.renderengine.models.RawModel;
 import com.jadencode.main.renderengine.models.TexturedModel;
 import com.jadencode.main.renderengine.terrain.Terrain;
 import com.jadencode.main.renderengine.textures.ModelTexture;
+import com.jadencode.main.renderengine.textures.TerrainTexture;
+import com.jadencode.main.renderengine.textures.TerrainTexturePack;
 import com.jadencode.main.renderengine.toolbox.OBJLoader;
 import org.lwjgl.util.vector.Vector3f;
 
@@ -180,24 +182,41 @@ public class Main {
     public static void main(String[] args) {
         DisplayManager display = new DisplayManager();
         Loader loader = new Loader();
+
+        TerrainTexture background = new TerrainTexture(loader.loadTexture("grassy2"));
+        TerrainTexture rTexture = new TerrainTexture(loader.loadTexture("mud"));
+        TerrainTexture gTexture = new TerrainTexture(loader.loadTexture("grassFlowers"));
+        TerrainTexture bTexture = new TerrainTexture(loader.loadTexture("path"));
+
+        TerrainTexturePack texturePack = new TerrainTexturePack(background, rTexture, gTexture, bTexture);
+        TerrainTexture blendMap = new TerrainTexture(loader.loadTexture("blendMap"));
+
         OBJLoader objLoader = new OBJLoader(loader);
 
         ModelTexture texture = new ModelTexture(loader.loadTexture("grass"));
         texture.setShineDamper(10);
         texture.setReflectivity(1);
-        Light light = new Light(new Vector3f(0, 50, -10), new Vector3f(1, 1, 1));
+        Light light = new Light(new Vector3f(0, 2000, 0), new Vector3f(1, 1, 1));
         Camera camera = new Camera();
 
+        Entity entity = new Entity(
+                new TexturedModel(objLoader.loadObjModel("Stall"), new ModelTexture(loader.loadTexture("models/Stall"))),
+                new Vector3f(0, 0, -10), new Vector3f(0, 45, 0), new Vector3f(1, 1, 1));
+
         MasterRenderer renderer = new MasterRenderer();
-        Terrain terrain1 = new Terrain(0, -1, loader, texture);
-        Terrain terrain2 = new Terrain(1, -1, loader, texture);
+        List<Terrain> terrains = new ArrayList<>();
 
-
+        int rad = 3;
+        for(int i = -rad; i <= rad; i++) {
+            for(int j = -rad; j <= rad; j++) {
+                terrains.add(new Terrain(i, j, loader, texturePack, blendMap));
+            }
+        }
 
         while(!display.isCloseRequested()) {
             camera.move();
-            renderer.processTerrain(terrain1);
-            renderer.processTerrain(terrain2);
+            renderer.processEntity(entity);
+            terrains.forEach(renderer::processTerrain);
             renderer.render(light, camera);
             display.update();
         }

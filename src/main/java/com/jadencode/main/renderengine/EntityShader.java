@@ -4,6 +4,7 @@ import com.jadencode.main.renderengine.entities.Camera;
 import com.jadencode.main.renderengine.entities.Light;
 import com.jadencode.main.renderengine.toolbox.Maths;
 import org.lwjgl.util.vector.Matrix4f;
+import org.lwjgl.util.vector.Vector3f;
 
 /**
  * Created by gtrpl on 7/3/2016.
@@ -20,6 +21,8 @@ public class EntityShader extends ShaderProgram {
     private int location_lightColor;
     private int location_shineDamper;
     private int location_reflectivity;
+    private int location_useFakeLighting;
+    private int location_skyColor;
 
     public EntityShader() {
         super(VERT_FILE, FRAG_FILE);
@@ -40,6 +43,14 @@ public class EntityShader extends ShaderProgram {
         this.location_lightColor = this.getUniformLocation("lightColor");
         this.location_shineDamper = this.getUniformLocation("shineDamper");
         this.location_reflectivity = this.getUniformLocation("reflectivity");
+        this.location_useFakeLighting = this.getUniformLocation("useFakeLighting");
+        this.location_skyColor = this.getUniformLocation("skyColor");
+    }
+    public void loadSkyColor(Vector3f skyColor) {
+        this.loadVector(this.location_skyColor, skyColor);
+    }
+    public void loadUseFakeLighting(boolean val) {
+        this.loadBoolean(this.location_useFakeLighting, val);
     }
     public void loadShineVariables(float damper, float reflect) {
         this.loadFloat(this.location_shineDamper, damper);

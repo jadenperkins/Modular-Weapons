@@ -4,6 +4,7 @@ import com.jadencode.main.renderengine.entities.Camera;
 import com.jadencode.main.renderengine.entities.Light;
 import com.jadencode.main.renderengine.toolbox.Maths;
 import org.lwjgl.util.vector.Matrix4f;
+import org.lwjgl.util.vector.Vector3f;
 
 /**
  * Created by gtrpl on 7/3/2016.
@@ -20,6 +21,12 @@ public class TerrainShader extends ShaderProgram {
     private int location_lightColor;
     private int location_shineDamper;
     private int location_reflectivity;
+    private int location_skyColor;
+    private int location_backgroundTexture;
+    private int location_rTexture;
+    private int location_gTexture;
+    private int location_bTexture;
+    private int location_blendMap;
 
     public TerrainShader() {
         super(VERT_FILE, FRAG_FILE);
@@ -40,6 +47,22 @@ public class TerrainShader extends ShaderProgram {
         this.location_lightColor = this.getUniformLocation("lightColor");
         this.location_shineDamper = this.getUniformLocation("shineDamper");
         this.location_reflectivity = this.getUniformLocation("reflectivity");
+        this.location_skyColor = this.getUniformLocation("skyColor");
+        this.location_backgroundTexture = this.getUniformLocation("backgroundTexture");
+        this.location_rTexture = this.getUniformLocation("rTexture");
+        this.location_gTexture = this.getUniformLocation("gTexture");
+        this.location_bTexture = this.getUniformLocation("bTexture");
+        this.location_blendMap = this.getUniformLocation("blendMap");
+    }
+    public void connectTextureUnits() {
+        this.loadInt(this.location_backgroundTexture, 0);
+        this.loadInt(this.location_rTexture, 1);
+        this.loadInt(this.location_gTexture, 2);
+        this.loadInt(this.location_bTexture, 3);
+        this.loadInt(this.location_blendMap, 4);
+    }
+    public void loadSkyColor(Vector3f skyColor) {
+        this.loadVector(this.location_skyColor, skyColor);
     }
     public void loadShineVariables(float damper, float reflect) {
         this.loadFloat(this.location_shineDamper, damper);

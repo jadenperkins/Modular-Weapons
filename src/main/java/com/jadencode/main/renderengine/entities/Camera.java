@@ -8,8 +8,8 @@ import org.lwjgl.util.vector.Vector3f;
  */
 public class Camera {
     private static final float MOVE_SPEED = 1;
-    private Vector3f position = new Vector3f(0, 5, 0);
-    private float pitch = 0;
+    private Vector3f position = new Vector3f(0, 20, 0);
+    private float pitch = 20;
     private float yaw = 0;
     private float roll = 0;
 
