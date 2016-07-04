@@ -11,6 +11,7 @@ import com.jadencode.main.renderengine.entities.Entity;
 import com.jadencode.main.renderengine.entities.Light;
 import com.jadencode.main.renderengine.models.RawModel;
 import com.jadencode.main.renderengine.models.TexturedModel;
+import com.jadencode.main.renderengine.terrain.Terrain;
 import com.jadencode.main.renderengine.textures.ModelTexture;
 import com.jadencode.main.renderengine.toolbox.OBJLoader;
 import org.lwjgl.util.vector.Vector3f;
@@ -181,38 +182,22 @@ public class Main {
         Loader loader = new Loader();
         OBJLoader objLoader = new OBJLoader(loader);
 
-        RawModel model = objLoader.loadObjModel("Stall");
-        ModelTexture texture = new ModelTexture(loader.loadTexture("models/Stall"));
+        ModelTexture texture = new ModelTexture(loader.loadTexture("grass"));
         texture.setShineDamper(10);
         texture.setReflectivity(1);
-        TexturedModel texturedModel = new TexturedModel(model, texture);
         Light light = new Light(new Vector3f(0, 50, -10), new Vector3f(1, 1, 1));
         Camera camera = new Camera();
 
-        List<Entity> stalls = new ArrayList<>();
-        Random r = new Random();
-        for(int i = 0; i < 1000; i++) {
-            stalls.add(new Entity(texturedModel,
-                    new Vector3f(
-                            r.nextInt(21) - 10,
-                            r.nextInt(21) - 10,
-                            r.nextInt(51) - 25),
-                    new Vector3f(
-                            r.nextInt(360),
-                            r.nextInt(360),
-                            r.nextInt(360)),
-                    new Vector3f(
-                            0.5F + r.nextFloat() * 0.5F,
-                            0.5F + r.nextFloat() * 0.5F,
-                            0.5F + r.nextFloat() * 0.5F)
-            ));
-        }
-
         MasterRenderer renderer = new MasterRenderer();
+        Terrain terrain1 = new Terrain(0, -1, loader, texture);
+        Terrain terrain2 = new Terrain(1, -1, loader, texture);
+
+
 
         while(!display.isCloseRequested()) {
             camera.move();
-            stalls.forEach(renderer::processEntity);
+            renderer.processTerrain(terrain1);
+            renderer.processTerrain(terrain2);
             renderer.render(light, camera);
             display.update();
         }

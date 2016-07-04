@@ -8,7 +8,7 @@ import org.lwjgl.util.vector.Matrix4f;
 /**
  * Created by gtrpl on 7/3/2016.
  */
-public class StaticShader extends ShaderProgram {
+public class EntityShader extends ShaderProgram {
     private static final String SRC_PATH = "";
     private static final String VERT_FILE = "shaders/vertexShader.txt";
     private static final String FRAG_FILE = "shaders/fragmentShader.txt";
@@ -21,7 +21,7 @@ public class StaticShader extends ShaderProgram {
     private int location_shineDamper;
     private int location_reflectivity;
 
-    public StaticShader() {
+    public EntityShader() {
         super(VERT_FILE, FRAG_FILE);
     }
     @Override
