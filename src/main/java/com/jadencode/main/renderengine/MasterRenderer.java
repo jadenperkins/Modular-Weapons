@@ -26,6 +26,9 @@ public class MasterRenderer {
     private static final float GREEN = 0.5F;
     private static final float BLUE = 0.5F;
 
+    private static final float FOG_DENSITY = 0.007f;
+    private static final float FOG_GRADIENT = 4.0f;
+
     private Matrix4f projectionMatrix = createProjectionMatrix();
 
     private EntityShader entityShader = new EntityShader();
@@ -50,6 +53,7 @@ public class MasterRenderer {
         this.prepare();
         this.entityShader.start();
         this.entityShader.loadSkyColor(new Vector3f(RED, GREEN, BLUE));
+        this.entityShader.loadFogValues(FOG_DENSITY, FOG_GRADIENT);
         this.entityShader.loadLight(sun);
         this.entityShader.loadViewMatrix(camera);
         this.entityRenderer.render(this.entities);
@@ -58,6 +62,7 @@ public class MasterRenderer {
 
         this.terrainShader.start();
         this.terrainShader.loadSkyColor(new Vector3f(RED, GREEN, BLUE));
+        this.terrainShader.loadFogValues(FOG_DENSITY, FOG_GRADIENT);
         this.terrainShader.loadLight(sun);
         this.terrainShader.loadViewMatrix(camera);
         this.terrainRenderer.render(this.terrains);

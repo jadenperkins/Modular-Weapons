@@ -22,6 +22,8 @@ public class TerrainShader extends ShaderProgram {
     private int location_shineDamper;
     private int location_reflectivity;
     private int location_skyColor;
+    private int location_fogDensity;
+    private int location_fogGradient;
     private int location_backgroundTexture;
     private int location_rTexture;
     private int location_gTexture;
@@ -31,6 +33,7 @@ public class TerrainShader extends ShaderProgram {
     public TerrainShader() {
         super(VERT_FILE, FRAG_FILE);
     }
+
     @Override
     public void bindAttributes() {
         this.bindAttribute(0, "position");
@@ -53,7 +56,10 @@ public class TerrainShader extends ShaderProgram {
         this.location_gTexture = this.getUniformLocation("gTexture");
         this.location_bTexture = this.getUniformLocation("bTexture");
         this.location_blendMap = this.getUniformLocation("blendMap");
+        this.location_fogDensity = this.getUniformLocation("fogDensity");
+        this.location_fogGradient = this.getUniformLocation("fogGradient");
     }
+
     public void connectTextureUnits() {
         this.loadInt(this.location_backgroundTexture, 0);
         this.loadInt(this.location_rTexture, 1);
@@ -61,25 +67,36 @@ public class TerrainShader extends ShaderProgram {
         this.loadInt(this.location_bTexture, 3);
         this.loadInt(this.location_blendMap, 4);
     }
+
     public void loadSkyColor(Vector3f skyColor) {
         this.loadVector(this.location_skyColor, skyColor);
     }
+
     public void loadShineVariables(float damper, float reflect) {
         this.loadFloat(this.location_shineDamper, damper);
         this.loadFloat(this.location_reflectivity, reflect);
     }
+
     public void loadTransformationMatrix(Matrix4f matrix) {
         this.loadMatrix(this.location_transformationMatrix, matrix);
     }
+
     public void loadLight(Light light) {
         this.loadVector(this.location_lightPosition, light.getPosition());
         this.loadVector(this.location_lightColor, light.getColor());
     }
+
     public void loadViewMatrix(Camera camera) {
         Matrix4f matrix = Maths.createViewMatrix(camera);
         this.loadMatrix(this.location_viewMatrix, matrix);
     }
+
     public void loadProjectionMatrix(Matrix4f matrix) {
         this.loadMatrix(this.location_projectionMatrix, matrix);
+    }
+
+    public void loadFogValues(float density, float gradient) {
+        this.loadFloat(location_fogDensity, density);
+        this.loadFloat(location_fogGradient, gradient);
     }
 }

@@ -15,8 +15,8 @@ uniform mat4 projectionMatrix;
 uniform mat4 viewMatrix;
 uniform vec3 lightPosition;
 
-const float density = 0.007;
-const float gradient = 4.0;
+uniform float fogDensity;
+uniform float fogGradient;
 
 void main(void) {
     vec4 worldPosition = transformationMatrix * vec4(position, 1.0);
@@ -29,7 +29,7 @@ void main(void) {
     toCameraVector = (inverse(viewMatrix) * vec4(0.0, 0.0, 0.0, 1.0)).xyz - worldPosition.xyz;
 
     float distance = length(positionRelativeToCam.xyz);
-    visibility = exp(-pow((distance * density), gradient));
+    visibility = exp(-pow((distance * fogDensity), fogGradient));
     visibility = clamp(visibility, 0.0, 1.0);
 }
 
