@@ -11,6 +11,7 @@ import com.jadencode.main.renderengine.MasterRenderer;
 import com.jadencode.main.renderengine.entities.Camera;
 import com.jadencode.main.renderengine.entities.Entity;
 import com.jadencode.main.renderengine.entities.Light;
+import com.jadencode.main.renderengine.entities.Player;
 import com.jadencode.main.renderengine.models.TexturedModel;
 import com.jadencode.main.renderengine.terrain.Terrain;
 import com.jadencode.main.renderengine.textures.ModelTexture;
@@ -214,8 +215,12 @@ public class Main {
             }
         }
 
+        Player player = new Player(entity.getModel(), new Vector3f(100, 0, -50), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
+
         while (!display.isCloseRequested()) {
             camera.move();
+            player.move();
+            renderer.processEntity(player);
             renderer.processEntity(entity);
             terrains.forEach(renderer::processTerrain);
             renderer.render(light, camera);

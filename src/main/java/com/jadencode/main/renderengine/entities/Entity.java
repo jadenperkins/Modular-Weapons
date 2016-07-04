@@ -60,4 +60,9 @@ public class Entity implements Transform {
     public Vector3f getScale() {
         return scale;
     }
+
+    public float getYRot() {
+        return rotation.getY();
+    }
+
 }

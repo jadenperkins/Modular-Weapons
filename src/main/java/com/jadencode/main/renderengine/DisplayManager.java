@@ -1,6 +1,7 @@
 package com.jadencode.main.renderengine;
 
 import org.lwjgl.LWJGLException;
+import org.lwjgl.Sys;
 import org.lwjgl.opengl.*;
 
 /**
@@ -14,6 +15,9 @@ public class DisplayManager {
     private final int width;
     private final int height;
     private final int fpsSync;
+
+    private static long lastFrameTime;
+    private static long lastFrameRenderTime;
 
     public DisplayManager(int w, int h, int f) {
         this.width = w;
@@ -45,9 +49,20 @@ public class DisplayManager {
     public void update() {
         Display.sync(this.fpsSync);
         Display.update();
+        long currentFrameTime = getCurrentTime();
+        lastFrameRenderTime = (currentFrameTime - lastFrameTime);
+        lastFrameTime = currentFrameTime;
+    }
+    
+    public static long getRenderMs() {
+        return lastFrameRenderTime;
     }
 
     public void destroy() {
         Display.destroy();
+    }
+
+    private static long getCurrentTime() {
+        return Sys.getTime() * 1000 / Sys.getTimerResolution();
     }
 }
