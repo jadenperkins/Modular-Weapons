@@ -11,33 +11,32 @@ import java.util.Set;
  */
 public class Clan {
 
-    private static final HashMap<String, Clan> clans = new HashMap<>();
     public static final Clan clanless = new Clan("Clanless");
+    private static final HashMap<String, Clan> clans = new HashMap<>();
+
     static {
         clans.put("", clanless);
     }
 
+    private final StackMap<Actor, Actor, Relationship> relationships = new StackMap<>();
+    private final HashMap<String, Actor> denizens = new HashMap<>();
+    private final HashMap<Actor, Set<Relationship>> actorRelationships = new HashMap<>();
+    private final Set<Actor> males = new HashSet<>();
+    private final Set<Actor> females = new HashSet<>();
+    private final Set<Actor> allActors = new HashSet<>();
+    private final String name;
+
+    public Clan(String name) {
+        this.name = name;
+    }
+
     public static Clan getClan(String name) {
-        if(clans.get(name) != null) {
+        if (clans.get(name) != null) {
             return clans.get(name);
         }
         Clan clan = new Clan(name);
         clans.put(name, clan);
         return clan;
-    }
-
-
-    private final StackMap<Actor, Actor, Relationship> relationships               = new StackMap<>();
-    private final HashMap<String, Actor>                        denizens           = new HashMap<>();
-    private final HashMap<Actor, Set<Relationship>>             actorRelationships = new HashMap<>();
-    private final Set<Actor>                                    males              = new HashSet<>();
-    private final Set<Actor>                                    females            = new HashSet<>();
-    private final Set<Actor>                                    allActors          = new HashSet<>();
-
-    private final String name;
-
-    public Clan(String name) {
-        this.name = name;
     }
 
     public int clanSize() {
@@ -115,9 +114,9 @@ public class Clan {
         Relationship theRelationship = null;
 
         //both are males
-        if(gender1 && gender2) {
+        if (gender1 && gender2) {
             //assume that fathers are at least 18 years older
-            if(age1 - age2 >= 18) {
+            if (age1 - age2 >= 18) {
             }
         }
         return theRelationship;

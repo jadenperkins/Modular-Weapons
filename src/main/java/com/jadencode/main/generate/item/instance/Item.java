@@ -10,7 +10,7 @@ import java.util.List;
  * Created by gtrpl on 6/24/2016.
  */
 public abstract class Item<T extends ItemType> {
-    private final T   itemType;
+    private final T itemType;
     private final int level;
     private final StatSet statSet;
 
@@ -19,15 +19,19 @@ public abstract class Item<T extends ItemType> {
         this.level = level;
         this.statSet = stats;
     }
+
     public Item(T type, int level) {
         this(type, level, type.getStatSet().scaled(level));
     }
+
     public int getLevel() {
         return this.level;
     }
+
     public T getItemType() {
         return this.itemType;
     }
+
     public StatSet getStatSet() {
         return this.statSet;
     }
@@ -35,12 +39,15 @@ public abstract class Item<T extends ItemType> {
     public String getDisplayName() {
         return this.itemType.getDisplayName(this);
     }
+
     public void printItemCard() {
         this.itemType.printItemCard(this);
     }
+
     public List<String> getDisplayInfo() {
         return this.itemType.getDisplayInfo(this);
     }
+
     public QualityLevel getQualityLevel() {
         return this.itemType.getQualityLevel(this);
     }

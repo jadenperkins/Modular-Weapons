@@ -8,9 +8,6 @@ import java.util.*;
  * Created by Jaden on 1/19/2015.
  */
 public class LocationGenerator implements Generator<Location> {
-    private static final List<String> BEGINNING_WORDS = Arrays.asList("Battle", "Black", "Diamond", "Dragon", "Dust",
-            "Dusk", "East", "Gleam", "Gray", "Jade", "Lake", "Moon", "North", "Oak", "Red", "River", "Ruby", "Shear",
-            "Sky", "South", "Sun", "Wind", "Winter", "White", "West");
     public static final List<String> ENDING_WORDS = Arrays.asList(
             "camp", "post", "watch", "guard", "hold", "mill",
             "mood", "shire", "shore", "wind", "rift", "forge", "ward", "arch", "rim", "bridge", "sword", "view",
@@ -18,19 +15,23 @@ public class LocationGenerator implements Generator<Location> {
             "glare", "blaze", "flare", "ruin", "march", "pass", "night", "gloom", "light", "hail", "heart", "shade",
             "shadow", "flame", "blade", "creed", "sun", "moon", "rock", "fire", "view", "crest", "belt", "spire",
             "run", "point", "shear", "vale", "ville");
-
+    private static final List<String> BEGINNING_WORDS = Arrays.asList("Battle", "Black", "Diamond", "Dragon", "Dust",
+            "Dusk", "East", "Gleam", "Gray", "Jade", "Lake", "Moon", "North", "Oak", "Red", "River", "Ruby", "Shear",
+            "Sky", "South", "Sun", "Wind", "Winter", "White", "West");
     private final List<String> instanceLocations = new ArrayList<>();
 
     private int index = 0;
 
     public LocationGenerator() {
     }
+
     public Location generate(Random r, int level) {
         return null;
     }
+
     private void preGenerate() {
-        for(String s1 : BEGINNING_WORDS) {
-            for(String s2: ENDING_WORDS) {
+        for (String s1 : BEGINNING_WORDS) {
+            for (String s2 : ENDING_WORDS) {
                 String name = s1 + s2.toLowerCase();
                 this.instanceLocations.add(name);
             }
@@ -39,6 +40,7 @@ public class LocationGenerator implements Generator<Location> {
 
         System.out.println("Locations pregenerated");
     }
+
     public void checkNames() {
 //        List<String> sorted = new ArrayList<>();
 //        sorted.addAll(this.instanceLocations);

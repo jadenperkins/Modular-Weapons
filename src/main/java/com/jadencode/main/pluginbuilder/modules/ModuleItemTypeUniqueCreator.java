@@ -10,6 +10,7 @@ import com.jadencode.main.pluginbuilder.contenteditors.ItemTypeUniqueEditor;
  */
 public class ModuleItemTypeUniqueCreator extends Module<ContentObjectItemTypeUnique> {
     private final ContentEditor<ContentObjectItemTypeUnique> editor;
+
     public ModuleItemTypeUniqueCreator(PluginBuilderPanel panel) {
         super("Unique Item Types");
         this.editor = new ItemTypeUniqueEditor(this, panel);

@@ -23,6 +23,7 @@ public class ItemPartUniqueLoader extends ContentManager {
     public ItemPartUniqueLoader() {
         super("Unique Item Parts", 8);
     }
+
     @Override
     public void consume(String name, JsonObject obj) {
         JsonHelper helper = new JsonHelper(obj);

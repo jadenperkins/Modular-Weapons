@@ -13,6 +13,7 @@ public class StatLoader extends ContentManager {
     public StatLoader() {
         super("Stats", 3);
     }
+
     @Override
     public void consume(String name, JsonObject obj) {
         double defaultValue = obj.get("default").getAsDouble();

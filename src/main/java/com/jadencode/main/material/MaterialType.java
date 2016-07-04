@@ -20,9 +20,11 @@ public class MaterialType {
         this.name = name;
         this.script = script;
     }
+
     public String getName() {
         return this.name;
     }
+
     public List<Material> generateExotics() {
         List<String> exoticNames = this.script.getExoticNames();
         List<Material> materials = new ArrayList<>();
@@ -31,7 +33,7 @@ public class MaterialType {
             long seed = Main.theWorld.getSeed();
             long code = hash % seed;
 
-            int color = (int)(code % 16777216);
+            int color = (int) (code % 16777216);
             int level = (int) Math.abs(code % 41) + 20;
 
             Color c = new Color(color);

@@ -1,18 +1,10 @@
 package com.jadencode.main.constants;
 
-import com.jadencode.main.TimeKeeper;
 import com.jadencode.main.generate.item.base.ItemPartBase;
 import com.jadencode.main.generate.item.base.ItemPartType;
-import com.jadencode.main.generate.item.type.ItemType;
 import com.jadencode.main.generate.item.type.ItemTypePart;
 import com.jadencode.main.generate.item.type.ItemTypePartMaterialized;
-import com.jadencode.main.material.Material;
-import com.jadencode.main.material.MaterialType;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +22,7 @@ public final class ItemParts {
         getPartsList(part.getType()).add(part);
         MAPPED_PARTS.put(part.getItemBaseName(), part);
     }
+
     public static ItemTypePart get(String name) {
         return MAPPED_PARTS.get(name);
     }
@@ -37,9 +30,11 @@ public final class ItemParts {
     public static List<ItemPartBase> getBaseParts() {
         return ITEM_PARTS;
     }
+
     public static void addBasePart(ItemPartBase part) {
         ITEM_PARTS.add(part);
     }
+
     public static void generateItemParts() {
         ItemParts.getBaseParts()
                 .forEach(basePart -> basePart.getMaterials()
@@ -48,7 +43,7 @@ public final class ItemParts {
     }
 
     public static List<ItemTypePart> getPartsList(ItemPartType type) {
-        if(PARTS_LISTS.containsKey(type)) return PARTS_LISTS.get(type);
+        if (PARTS_LISTS.containsKey(type)) return PARTS_LISTS.get(type);
         List<ItemTypePart> parts = new ArrayList<>();
         PARTS_LISTS.put(type, parts);
         return parts;

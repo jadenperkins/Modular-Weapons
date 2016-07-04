@@ -13,30 +13,39 @@ public class ModelTexture {
     public ModelTexture(int id) {
         this.textureID = id;
     }
+
     public int getTextureID() {
         return textureID;
     }
+
     public boolean getHasTransparency() {
         return this.hasTransparency;
     }
+
     public void setHasTransparency(boolean val) {
         hasTransparency = val;
     }
+
     public boolean getUseFakeLighting() {
         return this.useFakeLighting;
     }
+
     public void setUseFakeLighting(boolean useFakeLighting) {
         this.useFakeLighting = useFakeLighting;
     }
+
     public float getShineDamper() {
         return shineDamper;
     }
-    public float getReflectivity() {
-        return reflectivity;
-    }
+
     public void setShineDamper(float shineDamper) {
         this.shineDamper = shineDamper;
     }
+
+    public float getReflectivity() {
+        return reflectivity;
+    }
+
     public void setReflectivity(float reflectivity) {
         this.reflectivity = reflectivity;
     }

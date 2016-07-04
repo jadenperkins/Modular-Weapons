@@ -9,6 +9,7 @@ public class Settlement {
     public Settlement(String n) {
         this.name = n;
     }
+
     public String getName() {
         return this.name;
     }

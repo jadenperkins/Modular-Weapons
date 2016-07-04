@@ -1,6 +1,9 @@
 package com.jadencode.main.util;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 /**
@@ -13,12 +16,13 @@ public class WeightedRandomFloat {
     public static <T extends WeightedItem> float getTotalWeight(Collection<T> weightedItems) {
         return weightedItems.stream().map(a -> a.getWeight()).reduce(0F, (a, b) -> a + b);
     }
+
     /**
      * Returns a random choice consume the input content, with a total weight value.
      */
     public static <T extends WeightedItem> T getRandomItem(Random rng, Collection<T> weightedItems, float weight) {
-        if(weightedItems.isEmpty()) throw new IllegalArgumentException("Must have at lest 1 item!");
-        if(weight <= 0) throw new IllegalArgumentException("Weight must be greater than 0!");
+        if (weightedItems.isEmpty()) throw new IllegalArgumentException("Must have at lest 1 item!");
+        if (weight <= 0) throw new IllegalArgumentException("Weight must be greater than 0!");
         List<T> asList = weightedItems.stream().collect(Collectors.toList());
         Collections.shuffle(asList);
         weightedItems = asList;
@@ -27,10 +31,11 @@ public class WeightedRandomFloat {
 
         for (T item : weightedItems) {
             threshold -= item.getWeight();
-            if(threshold <= 0) return item;
+            if (threshold <= 0) return item;
         }
         return null;
     }
+
     /**
      * Returns a random choice consume the input content.
      */

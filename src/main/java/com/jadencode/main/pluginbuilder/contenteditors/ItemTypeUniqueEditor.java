@@ -2,10 +2,10 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.GuiHelper;
-import com.jadencode.main.util.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.content.ContentObjectItemTypeUnique;
 import com.jadencode.main.pluginbuilder.modules.Module;
+import com.jadencode.main.util.JsonHelper;
 
 import javax.swing.*;
 import java.util.List;
@@ -36,6 +36,7 @@ public class ItemTypeUniqueEditor extends ContentEditor<ContentObjectItemTypeUni
         this.qualitySelection = helper.add(new JComboBox<>(), "Quality Level", H_S, V_E + 4 * (H_FLD + V_PAD), H_L, H_FLD);
         this.iconSelection = helper.add(new JComboBox<>(), "Icon", H_S, V_E + 5 * (H_FLD + V_PAD), H_L, H_FLD);
     }
+
     @Override
     public void populate(ContentObjectItemTypeUnique item) {
         this.statSetSelection.setSelectedItem(item.getStatSetName());
@@ -45,6 +46,7 @@ public class ItemTypeUniqueEditor extends ContentEditor<ContentObjectItemTypeUni
         this.infoField.setText(item.getDescription());
         this.iconSelection.setSelectedItem(item.getIconName());
     }
+
     @Override
     public void onOpened(Module<ContentObjectItemTypeUnique> parent, PluginBuilderPanel panel) {
         Module statSetModule = panel.getModule("Stat Sets");
@@ -60,17 +62,19 @@ public class ItemTypeUniqueEditor extends ContentEditor<ContentObjectItemTypeUni
         List<String> icons = iconsModule.getItemKeys();
         this.iconSelection.setModel(new DefaultComboBoxModel<>(icons.toArray(new String[0])));
     }
+
     @Override
     public ContentObjectItemTypeUnique createItem(String name, String owner) {
-        String stat = (String)this.statSetSelection.getSelectedItem();
-        String script = (String)this.scriptSelection.getSelectedItem();
+        String stat = (String) this.statSetSelection.getSelectedItem();
+        String script = (String) this.scriptSelection.getSelectedItem();
         float weight = this.getFloat(this.weightField);
-        String quality = (String)this.qualitySelection.getSelectedItem();
+        String quality = (String) this.qualitySelection.getSelectedItem();
         String info = this.infoField.getText();
-        String icon = (String)this.iconSelection.getSelectedItem();
+        String icon = (String) this.iconSelection.getSelectedItem();
 
         return new ContentObjectItemTypeUnique(name, owner, stat, script, weight, icon, quality, info);
     }
+
     public float getFloat(JTextField field) {
         float value;
         try {
@@ -80,6 +84,7 @@ public class ItemTypeUniqueEditor extends ContentEditor<ContentObjectItemTypeUni
         }
         return value;
     }
+
     @Override
     public ContentObjectItemTypeUnique getDefault() {
         return new ContentObjectItemTypeUnique("", "", "", "", 1F, "", "", "");

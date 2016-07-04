@@ -2,10 +2,10 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.GuiHelper;
-import com.jadencode.main.util.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.content.ContentObjectIcon;
 import com.jadencode.main.pluginbuilder.modules.Module;
+import com.jadencode.main.util.JsonHelper;
 import org.apache.commons.io.FileUtils;
 
 import javax.imageio.ImageIO;
@@ -14,7 +14,8 @@ import javax.swing.filechooser.FileFilter;
 import javax.xml.bind.DatatypeConverter;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.File;
 
 /**
  * Created by gtrpl on 6/18/2016.
@@ -23,8 +24,8 @@ public class IconEditor extends ContentEditor<ContentObjectIcon> {
 
     private final JButton selectImage;
     private final JLabel displayLabel;
-    private String base64String;
     private final JFileChooser imageChooser = new JFileChooser();
+    private String base64String;
 
     public IconEditor(Module module, PluginBuilderPanel parent) {
         super(module, parent);
@@ -37,6 +38,7 @@ public class IconEditor extends ContentEditor<ContentObjectIcon> {
             public boolean accept(File f) {
                 return f.isDirectory() || f.getName().endsWith(".png");
             }
+
             @Override
             public String getDescription() {
                 return "PNG Files";
@@ -46,7 +48,7 @@ public class IconEditor extends ContentEditor<ContentObjectIcon> {
         this.selectImage = helper.add(new JButton("Select Image"), H_S, V_E, H_L, H_BTN);
         this.selectImage.addActionListener(e -> {
             this.imageChooser.showOpenDialog(null);
-            if(this.imageChooser.getSelectedFile() != null) {
+            if (this.imageChooser.getSelectedFile() != null) {
                 File iconFile = this.imageChooser.getSelectedFile();
                 try {
                     BufferedImage image = ImageIO.read(iconFile);
@@ -60,6 +62,7 @@ public class IconEditor extends ContentEditor<ContentObjectIcon> {
             }
         });
     }
+
     @Override
     public void populate(ContentObjectIcon item) {
         this.base64String = item.getBase64();
@@ -68,17 +71,19 @@ public class IconEditor extends ContentEditor<ContentObjectIcon> {
             ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
             BufferedImage image = ImageIO.read(bis);
             bis.close();
-            if(image != null) {
+            if (image != null) {
                 this.displayLabel.setIcon(new ImageIcon(image.getScaledInstance(image.getWidth() * 8, image.getHeight() * 8, 0)));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     @Override
     public ContentObjectIcon createItem(String name, String owner) {
         return new ContentObjectIcon(name, owner, this.base64String);
     }
+
     @Override
     public ContentObjectIcon getDefault() {
         return new ContentObjectIcon("", "", "");

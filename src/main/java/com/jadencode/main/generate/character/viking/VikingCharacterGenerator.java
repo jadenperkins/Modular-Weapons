@@ -10,23 +10,23 @@ import java.util.*;
  */
 public class VikingCharacterGenerator implements Generator<Actor> {
 
-    private static final List<String> MALE_FIRST  = Arrays.asList("Hak", "Ran", "Ral", "Gjal", "Kul", "Tal",
+    private static final List<String> MALE_FIRST = Arrays.asList("Hak", "Ran", "Ral", "Gjal", "Kul", "Tal",
             "Stal", "Rogg", "Hal", "Bjor", "Skul", "Had");
     private static final List<String> MALE_MIDDLE = Arrays.asList("un", "on", "ar", "en", "ir", "");
-    private static final List<String> MALE_LAST   = Arrays.asList("vir", "mir", "of", "lund", "jar", "var",
+    private static final List<String> MALE_LAST = Arrays.asList("vir", "mir", "of", "lund", "jar", "var",
             "nir", "nar", "dir", "lam");
 
-    private static final List<String> FEMALE_FIRST  = Arrays.asList("Aa", "Ab", "Ad", "Ae", "Af", "Ag", "Ai",
+    private static final List<String> FEMALE_FIRST = Arrays.asList("Aa", "Ab", "Ad", "Ae", "Af", "Ag", "Ai",
             "Aj", "Ak", "Al", "Am", "An", "Ap", "Aq", "Ar", "As", "At", "Au", "Aw");
     private static final List<String> FEMALE_MIDDLE = Arrays.asList("ka", "dol", "ku", "el", "ri", "");
-    private static final List<String> FEMALE_LAST   = Arrays.asList("da", "fia", "ja", "sta", "lu", "pak", "run",
+    private static final List<String> FEMALE_LAST = Arrays.asList("da", "fia", "ja", "sta", "lu", "pak", "run",
             "ina", "la", "elle", "da");
 
     private static final List<String> LAST_FIRST = Arrays.asList("Axe", "Salt", "Strong", "Iron", "Steel", "Dragon",
             "Shadow", "Snake", "White");
-    private static final List<String> LAST_LAST  = Arrays.asList("sage", "will", "hand", "arm", "kin", "born", "bound",
+    private static final List<String> LAST_LAST = Arrays.asList("sage", "will", "hand", "arm", "kin", "born", "bound",
             "mane", "back", "tongue", "skin");
-    private static final List<String> HONOR      = Arrays.asList("", "the Hated", "the Skald", "the Bard",
+    private static final List<String> HONOR = Arrays.asList("", "the Hated", "the Skald", "the Bard",
             "the Untouchable", "the Unmarked", "the Feared", "the Cruel", "the Fearless", "the Wise", "the Everlasting",
             "the Illusive", "the Deceitful");
 
@@ -49,9 +49,9 @@ public class VikingCharacterGenerator implements Generator<Actor> {
                             }
                         }
                     }
-                    for(String s1 : FEMALE_FIRST) {
-                        for(String s2 : FEMALE_MIDDLE) {
-                            for(String s3 : FEMALE_LAST) {
+                    for (String s1 : FEMALE_FIRST) {
+                        for (String s2 : FEMALE_MIDDLE) {
+                            for (String s3 : FEMALE_LAST) {
                                 String n = String.format("%s%s%s %s %s", s1, s2, s3, last, h);
                                 instanceNames.add(n);
                             }
@@ -70,12 +70,12 @@ public class VikingCharacterGenerator implements Generator<Actor> {
 
         String name = this.instanceNames.get(this.index);
         this.index++;
-        if(this.index == this.instanceNames.size()) {
+        if (this.index == this.instanceNames.size()) {
             this.index = 0;
             this.instanceNames.clear();
             this.preGenerate(r);
         }
-        return new Actor(name, level+"", true);
+        return new Actor(name, level + "", true);
     }
 //    @Override
 //    public void readNBT(NBTTagCompound nbt) {

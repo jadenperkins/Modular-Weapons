@@ -8,9 +8,9 @@ import com.jadencode.main.generate.item.Joint;
 import com.jadencode.main.generate.item.base.ItemPartBase;
 import com.jadencode.main.generate.item.base.ItemPartType;
 import com.jadencode.main.material.MaterialType;
-import com.jadencode.main.util.JsonHelper;
 import com.jadencode.main.scripts.ScriptItem;
 import com.jadencode.main.stat.StatSet;
+import com.jadencode.main.util.JsonHelper;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -24,6 +24,7 @@ public class ItemPartMaterializedLoader extends ContentManager {
     public ItemPartMaterializedLoader() {
         super("Materialized Item Parts", 8);
     }
+
     @Override
     public void consume(String name, JsonObject obj) {
         JsonHelper helper = new JsonHelper(obj);

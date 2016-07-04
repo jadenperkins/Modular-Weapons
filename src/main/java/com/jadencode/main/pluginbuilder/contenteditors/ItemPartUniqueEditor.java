@@ -4,11 +4,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.GuiHelper;
-import com.jadencode.main.pluginbuilder.content.ContentObjectPartType;
-import com.jadencode.main.util.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.content.ContentObjectItemPartUnique;
+import com.jadencode.main.pluginbuilder.content.ContentObjectPartType;
 import com.jadencode.main.pluginbuilder.modules.Module;
+import com.jadencode.main.util.JsonHelper;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -51,6 +51,7 @@ public class ItemPartUniqueEditor extends ContentEditor<ContentObjectItemPartUni
         this.qualitySelection = helper.add(new JComboBox<>(), "Quality Level", H_S, V_E + 7 * (H_FLD + V_PAD), H_L, H_FLD);
         this.jointsTable = helper.add(new JTable(), "Joints", H_E, V_S, H_L, H_NTR, GuiHelper.Align.ABOVE);
     }
+
     @Override
     public void onOpened(Module<ContentObjectItemPartUnique> parent, PluginBuilderPanel panel) {
         Module partTypesModule = panel.getModule("Part Types");
@@ -77,6 +78,7 @@ public class ItemPartUniqueEditor extends ContentEditor<ContentObjectItemPartUni
 
         this.qualitySelection.setModel(new DefaultComboBoxModel<>(QUALITY_LEVELS));
     }
+
     @Override
     public void populate(ContentObjectItemPartUnique item) {
         this.nameModField.setText(item.getNameMod());
@@ -91,17 +93,17 @@ public class ItemPartUniqueEditor extends ContentEditor<ContentObjectItemPartUni
         this.checkJoints();
 
         Module partTypes = this.getPluginBuilderPanel().getModule("Part Types");
-        ContentObjectPartType type = (ContentObjectPartType) partTypes.getItem((String)this.partTypeSelection.getSelectedItem());
+        ContentObjectPartType type = (ContentObjectPartType) partTypes.getItem((String) this.partTypeSelection.getSelectedItem());
 
-        if(type != null) {
+        if (type != null) {
             int size = type.getJoints().size();
-            if(size > 0) {
+            if (size > 0) {
                 this.jointsTable.setModel(new DefaultTableModel(size, 3));
                 HashMap<String, Point.Double> itemJoints = item.getJoints();
-                for(int row = 0; row < type.getJoints().size(); row++) {
+                for (int row = 0; row < type.getJoints().size(); row++) {
                     String name = type.getJoints().get(row);
                     this.jointsTable.setValueAt(name, row, 0);
-                    if(itemJoints.get(name) != null) {
+                    if (itemJoints.get(name) != null) {
                         Point2D value = itemJoints.get(name);
                         this.jointsTable.setValueAt(value.getX(), row, 1);
                         this.jointsTable.setValueAt(value.getY(), row, 2);
@@ -110,20 +112,22 @@ public class ItemPartUniqueEditor extends ContentEditor<ContentObjectItemPartUni
             }
         }
     }
+
     public void checkJoints() {
         Module partTypes = this.getPluginBuilderPanel().getModule("Part Types");
-        ContentObjectPartType type = (ContentObjectPartType) partTypes.getItem((String)this.partTypeSelection.getSelectedItem());
-        if(type != null) {
+        ContentObjectPartType type = (ContentObjectPartType) partTypes.getItem((String) this.partTypeSelection.getSelectedItem());
+        if (type != null) {
             this.jointsTable.setSize(H_L, H_NTR * Math.max(1, type.getJoints().size()));
             this.jointsTable.setModel(new DefaultTableModel(type.getJoints().size(), 3));
             List<String> joints = type.getJoints();
-            for(int row = 0; row < joints.size(); row++) {
+            for (int row = 0; row < joints.size(); row++) {
                 this.jointsTable.setValueAt(joints.get(row), row, 0);
                 this.jointsTable.setValueAt(0, row, 1);
                 this.jointsTable.setValueAt(0, row, 2);
             }
         }
     }
+
     private double getDouble(String s) {
         double value = 0;
         try {
@@ -132,6 +136,7 @@ public class ItemPartUniqueEditor extends ContentEditor<ContentObjectItemPartUni
         }
         return value;
     }
+
     @Override
     public ContentObjectItemPartUnique createItem(String name, String owner) {
         String nameMod = this.nameModField.getText();
@@ -145,17 +150,18 @@ public class ItemPartUniqueEditor extends ContentEditor<ContentObjectItemPartUni
 
         HashMap<String, Point.Double> joints = new HashMap<>();
         int rows = this.jointsTable.getRowCount();
-        for(int i = 0; i < rows; i++) {
+        for (int i = 0; i < rows; i++) {
             String s = (String) this.jointsTable.getValueAt(i, 0);
-            if(s != null && !s.isEmpty()) {
-                double x = getDouble((String)this.jointsTable.getValueAt(i, 1));
-                double y = getDouble((String)this.jointsTable.getValueAt(i, 2));
+            if (s != null && !s.isEmpty()) {
+                double x = getDouble((String) this.jointsTable.getValueAt(i, 1));
+                double y = getDouble((String) this.jointsTable.getValueAt(i, 2));
                 joints.put(s, new Point.Double(x, y));
             }
         }
 
         return new ContentObjectItemPartUnique(name, owner, nameMod, partInfo, weight, partType, statSet, iconName, script, quality, joints);
     }
+
     private float getValue(JTextField field) {
         float value;
         try {
@@ -165,6 +171,7 @@ public class ItemPartUniqueEditor extends ContentEditor<ContentObjectItemPartUni
         }
         return value;
     }
+
     @Override
     public ContentObjectItemPartUnique getDefault() {
         return new ContentObjectItemPartUnique("", "", "", "", 0F, "", "", "", "", "", new HashMap<>());

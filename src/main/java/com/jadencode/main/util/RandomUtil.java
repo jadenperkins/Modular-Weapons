@@ -11,6 +11,7 @@ public class RandomUtil {
 
         return list.get(randomIndex(list, r));
     }
+
     public static <T> int randomIndex(List<T> list, Random r) {
         return r.nextInt(list.size());
     }

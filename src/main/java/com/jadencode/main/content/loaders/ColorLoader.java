@@ -13,6 +13,7 @@ public class ColorLoader extends ContentManager {
     public ColorLoader() {
         super("Colors", 2);
     }
+
     @Override
     public void consume(String name, JsonObject obj) {
         JsonArray rgb = obj.get("rgb").getAsJsonArray();

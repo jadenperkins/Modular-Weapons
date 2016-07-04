@@ -25,15 +25,7 @@ public enum QualityLevel {
         this.qualityName = qualityName;
         this.color = color;
     }
-    public int getQualityPoints() {
-        return qualityPoints;
-    }
-    public String getQualityName() {
-        return qualityName;
-    }
-    public Color getColor() {
-        return color;
-    }
+
     public static QualityLevel calculate(QualityObject object) {
         List<QualityLevel> list = object.getQualityLevels();
         List<QualityValue> ordered = new ArrayList<>();
@@ -49,6 +41,19 @@ public enum QualityLevel {
         ordered.sort(null);
         return ordered.get(0).level;
     }
+
+    public int getQualityPoints() {
+        return qualityPoints;
+    }
+
+    public String getQualityName() {
+        return qualityName;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
     private static class QualityValue implements Comparable<QualityValue> {
         private final double closeness;
         private final QualityLevel level;
@@ -57,6 +62,7 @@ public enum QualityLevel {
             this.closeness = closeness;
             this.level = level;
         }
+
         @Override
         public int compareTo(QualityValue o) {
             int d = Double.compare(this.closeness, o.closeness);

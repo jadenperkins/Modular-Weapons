@@ -9,7 +9,7 @@ import com.jadencode.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,11 +53,11 @@ public abstract class ContentEditor<T extends ContentObject> extends JPanel {
         this.deleteItem = helper.add(new JButton("Delete Item"), H_S, V_S + H_FLD + H_BTN + 2 * V_PAD, H_L, H_BTN);
 
         this.updateItem.addActionListener(e -> {
-            if(panel.getActivePlugin() == null || panel.getActivePlugin().isEmpty()) {
+            if (panel.getActivePlugin() == null || panel.getActivePlugin().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "An active plugin must be named before adding content!");
             } else {
                 String itemName = this.nameField.getText();
-                if(itemName != null && !itemName.isEmpty()) {
+                if (itemName != null && !itemName.isEmpty()) {
                     parent.addItem(itemName, panel.getActivePlugin());
                     panel.updateCurrentObjects(itemName);
                 }
@@ -69,27 +69,35 @@ public abstract class ContentEditor<T extends ContentObject> extends JPanel {
             panel.updateCurrentObjects(null);
         });
     }
+
     public PluginBuilderPanel getPluginBuilderPanel() {
         return this.pluginBuilderPanel;
     }
+
     public List<String> getScripts(String type, PluginBuilderPanel panel) {
         Module<? extends ContentObject> scriptsModule = panel.getModule("Scripts");
         List<String> scripts = new ArrayList<>();
         for (String key : scriptsModule.getItemKeys()) {
             String scriptType = ((ContentObjectScript) scriptsModule.getItem(key)).getScriptType();
-            if(type.equals(scriptType)) scripts.add(key);
+            if (type.equals(scriptType)) scripts.add(key);
         }
         scripts.add("");
         return scripts;
     }
+
     public void onOpened(Module<T> parent, PluginBuilderPanel panel) {
 
     }
+
     public void setName(String name) {
         this.nameField.setText(name);
     }
+
     public abstract T createItem(String name, String owner);
+
     public abstract void populate(T item);
+
     public abstract T getDefault();
+
     public abstract T consume(String name, JsonObject json, String owner);
 }

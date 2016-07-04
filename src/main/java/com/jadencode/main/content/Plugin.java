@@ -23,19 +23,10 @@ public class Plugin implements Comparable<Plugin> {
         JsonHelper helper = new JsonHelper(this.pluginObject);
         this.dependencies = JsonHelper.fromArray(helper.getArray("Dependencies"));
     }
-    public String getPluginName() {
-        return pluginName;
-    }
-    public JsonObject getPluginObject() {
-        return this.pluginObject;
-    }
-    @Override
-    public int compareTo(Plugin o) {
-        return this.dependencies.contains(o.pluginName) ? 1 : -1;
-    }
+
     private static JsonObject load(File file) {
         try {
-            if(file.getName().endsWith(".plugin")) {
+            if (file.getName().endsWith(".plugin")) {
                 DataInputStream datainputstream = new DataInputStream(new BufferedInputStream(new GZIPInputStream(new FileInputStream(file))));
                 String s = datainputstream.readUTF();
                 datainputstream.close();
@@ -48,5 +39,18 @@ public class Plugin implements Comparable<Plugin> {
             e.printStackTrace();
         }
         return new JsonObject();
+    }
+
+    public String getPluginName() {
+        return pluginName;
+    }
+
+    public JsonObject getPluginObject() {
+        return this.pluginObject;
+    }
+
+    @Override
+    public int compareTo(Plugin o) {
+        return this.dependencies.contains(o.pluginName) ? 1 : -1;
     }
 }

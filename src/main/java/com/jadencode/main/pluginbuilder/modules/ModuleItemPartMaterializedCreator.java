@@ -10,10 +10,12 @@ import com.jadencode.main.pluginbuilder.contenteditors.ItemPartMaterializedEdito
  */
 public class ModuleItemPartMaterializedCreator extends Module<ContentObjectItemPartMaterialized> {
     private final ContentEditor<ContentObjectItemPartMaterialized> contentEditor;
+
     public ModuleItemPartMaterializedCreator(PluginBuilderPanel parent) {
         super("Materialized Item Parts");
         this.contentEditor = new ItemPartMaterializedEditor(this, parent);
     }
+
     @Override
     public ContentEditor<ContentObjectItemPartMaterialized> getContentEditor() {
         return this.contentEditor;

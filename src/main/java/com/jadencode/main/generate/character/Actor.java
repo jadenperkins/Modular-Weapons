@@ -6,11 +6,11 @@ import java.util.Random;
  * Created by Jaden on 2/3/2015.
  */
 public class Actor {
+    private final String name;
+    private final Clan clan;
     private Random rand = new Random();
-    private final String  name;
-    private final Clan    clan;
-    private       int     age;
-    private       boolean isMale;
+    private int age;
+    private boolean isMale;
 
     public Actor(String fullName, String clanName, boolean isMale) {
         this.name = fullName;
@@ -20,18 +20,23 @@ public class Actor {
         int mark = this.rand.nextInt(40);
         this.age = mark + this.rand.nextInt(mark + 1);
     }
+
     public String getName() {
         return this.name;
     }
+
     public boolean hasClan() {
         return this.clan != Clan.clanless;
     }
+
     public Clan getClan() {
         return this.clan;
     }
+
     public int getAge() {
         return this.age;
     }
+
     public boolean isMale() {
         return this.isMale;
     }

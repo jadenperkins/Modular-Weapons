@@ -1,6 +1,5 @@
 package com.jadencode.main.generate.item.type;
 
-import com.jadencode.main.StackMap;
 import com.jadencode.main.constants.ItemParts;
 import com.jadencode.main.generate.QualityLevel;
 import com.jadencode.main.generate.item.Joint;
@@ -9,20 +8,16 @@ import com.jadencode.main.generate.item.base.ItemPartType;
 import com.jadencode.main.generate.item.instance.ItemModular;
 import com.jadencode.main.generate.item.instance.ItemPart;
 import com.jadencode.main.scripts.ScriptItem;
-import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.util.WeightedRandomFloat;
-import com.sun.corba.se.impl.orbutil.graph.Graph;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.function.Function;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
-
-import static javafx.scene.input.KeyCode.T;
 
 /**
  * Created by gtrpl on 6/24/2016.
@@ -40,23 +35,83 @@ public class ItemTypeModular extends ItemType<ItemModular> {
         this.itemPartTypes = types;
         this.optionalParts = optional;
     }
+
+    private static BufferedImage trim(BufferedImage image) {
+        int l, r, t, b;
+        l = r = t = b = 0;
+
+        Function<Integer, Boolean> isColumnTrans = i -> {
+            for (int j = 0; j < image.getHeight(); j++) {
+                if (image.getRGB(i, j) >> 24 != 0x00) {
+                    return false;
+                }
+            }
+            return true;
+        };
+
+        for (int i = 0; i < image.getWidth(); i++) {
+            if (!isColumnTrans.apply(i)) {
+                break;
+            } else {
+                l = i;
+            }
+        }
+        for (int i = image.getWidth() - 1; i >= 0; i--) {
+            if (!isColumnTrans.apply(i)) {
+                break;
+            } else {
+                r = i;
+            }
+        }
+
+        Function<Integer, Boolean> isRowTrans = j -> {
+            for (int i = 0; i < image.getWidth(); i++) {
+                if (image.getRGB(i, j) >> 24 != 0x00) {
+                    return false;
+                }
+            }
+            return true;
+        };
+
+        for (int j = 0; j < image.getHeight(); j++) {
+            if (!isRowTrans.apply(j)) {
+                break;
+            } else {
+                t = j;
+            }
+        }
+        for (int j = image.getHeight() - 1; j >= 0; j--) {
+            if (!isRowTrans.apply(j)) {
+                break;
+            } else {
+                b = j;
+            }
+        }
+        BufferedImage ret = image.getSubimage(l, t, r - l + 1, b - t + 1);
+        return ret;
+    }
+
     public ItemPartType getPrimaryPartType() {
         return primaryPartType;
     }
+
     public ItemPartType getAnchorPart() {
         return anchorPart;
     }
+
     public List<ItemPartType> getItemPartTypes() {
         return this.itemPartTypes;
     }
+
     public List<ItemPartType> getOptionalParts() {
         return optionalParts;
     }
+
     @Override
     public ItemModular create(Random r, int level) {
         List<ItemPart> partInstances = new ArrayList<>();
 
-        for(ItemPartType type : this.itemPartTypes) {
+        for (ItemPartType type : this.itemPartTypes) {
             List<ItemTypePart> parts = ItemParts.getPartsList(type);
             ItemTypePart part = WeightedRandomFloat.getRandomItem(r, parts);
             ItemPart instance = part.create(r, level);
@@ -65,6 +120,7 @@ public class ItemTypeModular extends ItemType<ItemModular> {
         StatSet stats = this.getStatSet().scaled(level).combine(partInstances.stream().map(ItemPart::getStatSet).collect(Collectors.toList()));
         return new ItemModular(this, partInstances, stats);
     }
+
     @Override
     public String getDisplayFallback(ItemModular instance) {
         String s = instance.getPart(instance.getItemType().getPrimaryPartType()).getItemType().getMaterialName();
@@ -75,14 +131,14 @@ public class ItemTypeModular extends ItemType<ItemModular> {
     }
 
     @Override
-    public BufferedImage render(ItemModular instance)  {
+    public BufferedImage render(ItemModular instance) {
         int width = 0;
         int height = 0;
         for (ItemPart itemPart : instance.getPartsList()) {
-            if(itemPart.getItemType().getIcon().getWidth() > width) {
+            if (itemPart.getItemType().getIcon().getWidth() > width) {
                 width = itemPart.getItemType().getIcon().getWidth();
             }
-            if(itemPart.getItemType().getIcon().getHeight() > height) {
+            if (itemPart.getItemType().getIcon().getHeight() > height) {
                 height = itemPart.getItemType().getIcon().getHeight();
             }
         }
@@ -91,7 +147,7 @@ public class ItemTypeModular extends ItemType<ItemModular> {
         Node<ItemPart> tree = Node.tree(anchor, instance.getPartsList(), (c, p) -> {
             for (Joint joint : c.getItemType().getJoints()) {
                 for (Joint j : p.getItemType().getJoints()) {
-                    if(joint.getName().equals(j.getName())) {
+                    if (joint.getName().equals(j.getName())) {
                         return true;
                     }
                 }
@@ -103,65 +159,12 @@ public class ItemTypeModular extends ItemType<ItemModular> {
         BufferedImage trimmed = trim(untrimmed);
         return trimmed;
     }
-    private static BufferedImage trim(BufferedImage image) {
-        int l, r, t, b;
-        l = r = t = b = 0;
 
-        Function<Integer, Boolean> isColumnTrans = i -> {
-            for(int j = 0; j < image.getHeight(); j++) {
-                if(image.getRGB(i, j) >> 24 != 0x00) {
-                    return false;
-                }
-            }
-            return true;
-        };
-
-        for(int i = 0; i < image.getWidth(); i++) {
-            if(!isColumnTrans.apply(i)) {
-                break;
-            } else {
-                l = i;
-            }
-        }
-        for(int i = image.getWidth() - 1; i >= 0; i--) {
-            if(!isColumnTrans.apply(i)) {
-                break;
-            } else {
-                r = i;
-            }
-        }
-
-        Function<Integer, Boolean> isRowTrans = j -> {
-            for(int i = 0; i < image.getWidth(); i++) {
-                if(image.getRGB(i, j) >> 24 != 0x00) {
-                    return false;
-                }
-            }
-            return true;
-        };
-
-        for(int j = 0; j < image.getHeight(); j++) {
-            if(!isRowTrans.apply(j)) {
-                break;
-            } else {
-                t = j;
-            }
-        }
-        for(int j = image.getHeight() - 1; j >= 0; j--) {
-            if(!isRowTrans.apply(j)) {
-                break;
-            } else {
-                b = j;
-            }
-        }
-        BufferedImage ret = image.getSubimage(l, t, r - l + 1, b - t + 1);
-        return ret;
-    }
     private void drawTree(Node<ItemPart> anchor, BufferedImage out, Graphics2D g2d, int xOff, int yOff) {
         ItemPart item = anchor.getData();
         int x = xOff;
         int y = yOff;
-        if(anchor.getParent() == null) {
+        if (anchor.getParent() == null) {
             BufferedImage itemRender = item.getItemType().render(item);
             g2d.drawImage(itemRender, x, y, null);
         } else {
@@ -169,7 +172,7 @@ public class ItemTypeModular extends ItemType<ItemModular> {
             int joints = 0;
             for (Joint parentJoint : parent.getItemType().getJoints()) {
                 for (Joint childJoint : item.getItemType().getJoints()) {
-                    if(parentJoint.getName().equals(childJoint.getName()) && joints == 0) {
+                    if (parentJoint.getName().equals(childJoint.getName()) && joints == 0) {
                         joints++;
                         x += (int) (parentJoint.getX() - childJoint.getX());
                         y += (int) (parentJoint.getY() - childJoint.getY());
@@ -183,6 +186,7 @@ public class ItemTypeModular extends ItemType<ItemModular> {
             this.drawTree(childNode, out, g2d, x, y);
         }
     }
+
     @Override
     public List<String> getItemCardStrings(ItemModular instance) {
         List<String> ret = new ArrayList<>();
@@ -203,10 +207,12 @@ public class ItemTypeModular extends ItemType<ItemModular> {
 
         return new ItemModular(this, parts, stats);
     }
+
     @Override
     public List<String> getDisplayInfo(ItemModular instance) {
         return new ArrayList<>();
     }
+
     @Override
     public QualityLevel getQualityLevel(ItemModular instance) {
         return QualityLevel.calculate(instance);

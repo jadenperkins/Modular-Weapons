@@ -12,6 +12,7 @@ public final class Icons {
     public static void register(String name, BufferedImage icon) {
         ICONS.put(name, icon);
     }
+
     public static BufferedImage get(String name) {
         return ICONS.get(name);
     }

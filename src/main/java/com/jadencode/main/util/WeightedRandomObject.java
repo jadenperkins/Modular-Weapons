@@ -11,10 +11,12 @@ public class WeightedRandomObject<T> implements WeightedItem {
         this.itemWeight = f;
         this.theObject = o;
     }
+
     @Override
     public String toString() {
         return theObject.toString() + " of " + this.itemWeight;
     }
+
     @Override
     public float getWeight() {
         return this.itemWeight;

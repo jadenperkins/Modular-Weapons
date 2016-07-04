@@ -16,12 +16,15 @@ public final class Stats {
     public static HashMap<String, ScriptStat> getScripts() {
         return SCRIPTS;
     }
+
     public static ScriptStat script(String name) {
         return SCRIPTS.getOrDefault(name, SCRIPTS.get(null));
     }
+
     public static void register(StatBase stat) {
         STATS.put(stat.getStatName(), stat);
     }
+
     public static StatBase get(String name) {
         return STATS.get(name);
     }

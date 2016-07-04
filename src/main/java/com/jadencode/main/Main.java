@@ -30,10 +30,10 @@ public class Main {
 
     public static final int LEVEL_CAP = 100;
 
-    public static final  World theWorld   = new World();
-    private static final File  WORLD_SAVE = new File("./WorldSave.dat");
+    public static final World theWorld = new World();
+    private static final File WORLD_SAVE = new File("./WorldSave.dat");
 
-//    private static void saveGame(File file, NBTTagCompound nbt) {
+    //    private static void saveGame(File file, NBTTagCompound nbt) {
 //        try {
 //            file.createNewFile();
 //
@@ -79,14 +79,15 @@ public class Main {
 //        return nbt;
 //    }
     private static boolean OR(Object target, Object... others) {
-        for(Object o : others) {
-            if(target == o) {
+        for (Object o : others) {
+            if (target == o) {
                 return true;
             }
         }
         return false;
     }
-//    private static void printItem(Item item) {
+
+    //    private static void printItem(Item item) {
 //        boolean standard = true;
 //        int width = 0;
 //        int height = 0;
@@ -207,13 +208,13 @@ public class Main {
         List<Terrain> terrains = new ArrayList<>();
 
         int rad = 3;
-        for(int i = -rad; i <= rad; i++) {
-            for(int j = -rad; j <= rad; j++) {
+        for (int i = -rad; i <= rad; i++) {
+            for (int j = -rad; j <= rad; j++) {
                 terrains.add(new Terrain(i, j, loader, texturePack, blendMap));
             }
         }
 
-        while(!display.isCloseRequested()) {
+        while (!display.isCloseRequested()) {
             camera.move();
             renderer.processEntity(entity);
             terrains.forEach(renderer::processTerrain);
@@ -227,7 +228,6 @@ public class Main {
         System.exit(0);
 
         ContentLoader.load();
-
 
 
         int itemLevel = theWorld.getRNG().nextInt(50) + 1;
@@ -253,11 +253,11 @@ public class Main {
 //        loadGenerator(genCharacter, characterNBT);
 //        loadGenerator(genLocations, locationsNBT);
 
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             System.out.println(genCharacter.generate(theWorld.getRNG(), 0).getName());
         }
 
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             System.out.println(genLocations.generate(theWorld.getRNG(), 0).getName());
         }
 

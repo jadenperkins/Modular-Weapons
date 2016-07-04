@@ -13,15 +13,19 @@ public class RangeObject<T> {
         this.rangeMax = max;
         this.rangeObj = obj;
     }
+
     public RangeObject(int min, T obj) {
         this(min, min, obj);
     }
+
     public int getRangeMax() {
         return rangeMax;
     }
+
     public int getRangeMin() {
         return rangeMin;
     }
+
     public T getRangeObj() {
         return rangeObj;
     }

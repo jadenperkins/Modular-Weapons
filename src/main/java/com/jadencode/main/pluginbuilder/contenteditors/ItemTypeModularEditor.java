@@ -1,13 +1,11 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.GuiHelper;
-import com.jadencode.main.util.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.content.ContentObjectItemTypeModular;
 import com.jadencode.main.pluginbuilder.modules.Module;
+import com.jadencode.main.util.JsonHelper;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -38,6 +36,7 @@ public class ItemTypeModularEditor extends ContentEditor<ContentObjectItemTypeMo
         this.partsList = helper.add(new JTable(), "Part Types", H_E, V_S, H_L, 10 * H_NTR, GuiHelper.Align.ABOVE);
         this.optionalList = helper.add(new JTable(), "Attachments", H_E + H_L + H_PAD, V_S, H_L, 10 * H_NTR, GuiHelper.Align.ABOVE);
     }
+
     @Override
     public void populate(ContentObjectItemTypeModular item) {
         this.statSetSelection.setSelectedItem(item.getStatSetName());
@@ -46,7 +45,7 @@ public class ItemTypeModularEditor extends ContentEditor<ContentObjectItemTypeMo
         this.primarySelection.setSelectedItem(item.getPrimaryPart());
         this.anchorSelection.setSelectedItem(item.getAnchorPart());
 
-        for(int row = 0; row < this.partsList.getModel().getRowCount(); row++) {
+        for (int row = 0; row < this.partsList.getModel().getRowCount(); row++) {
             this.partsList.setValueAt("", row, 0);
         }
 
@@ -64,6 +63,7 @@ public class ItemTypeModularEditor extends ContentEditor<ContentObjectItemTypeMo
             this.optionalList.getModel().setValueAt(partType, i, 0);
         }
     }
+
     @Override
     public void onOpened(Module<ContentObjectItemTypeModular> parent, PluginBuilderPanel panel) {
         Module statSetModule = panel.getModule("Stat Sets");
@@ -86,34 +86,36 @@ public class ItemTypeModularEditor extends ContentEditor<ContentObjectItemTypeMo
         this.optionalList.setModel(new DefaultTableModel(partTypes.size(), 1));
         this.optionalList.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(box));
     }
+
     @Override
     public ContentObjectItemTypeModular createItem(String name, String owner) {
-        String stat = (String)this.statSetSelection.getSelectedItem();
-        String script = (String)this.scriptSelection.getSelectedItem();
+        String stat = (String) this.statSetSelection.getSelectedItem();
+        String script = (String) this.scriptSelection.getSelectedItem();
         float weight = this.getFloat(this.weightField);
-        String primary = (String)this.primarySelection.getSelectedItem();
-        String anchor = (String)this.anchorSelection.getSelectedItem();
+        String primary = (String) this.primarySelection.getSelectedItem();
+        String anchor = (String) this.anchorSelection.getSelectedItem();
 
         List<String> parts = new ArrayList<>();
         int rows = this.partsList.getModel().getRowCount();
-        for(int row = 0; row < rows; row++) {
+        for (int row = 0; row < rows; row++) {
             String part = (String) this.partsList.getValueAt(row, 0);
-            if(part != null && !part.isEmpty()) {
+            if (part != null && !part.isEmpty()) {
                 parts.add(part);
             }
         }
 
         List<String> opt = new ArrayList<>();
         rows = this.optionalList.getModel().getRowCount();
-        for(int row = 0; row < rows; row++) {
+        for (int row = 0; row < rows; row++) {
             String part = (String) this.optionalList.getValueAt(row, 0);
-            if(part != null && !part.isEmpty()) {
+            if (part != null && !part.isEmpty()) {
                 opt.add(part);
             }
         }
 
         return new ContentObjectItemTypeModular(name, owner, stat, script, weight, primary, anchor, parts, opt);
     }
+
     public float getFloat(JTextField field) {
         float value;
         try {
@@ -123,6 +125,7 @@ public class ItemTypeModularEditor extends ContentEditor<ContentObjectItemTypeMo
         }
         return value;
     }
+
     @Override
     public ContentObjectItemTypeModular getDefault() {
         return new ContentObjectItemTypeModular("", "", "", "", 1F, "", "", new ArrayList<>(), new ArrayList<>());

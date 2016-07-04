@@ -12,6 +12,7 @@ public final class Colors {
     public static void register(String name, Color color) {
         COLORS.put(name, color);
     }
+
     public static Color get(String name) {
         return COLORS.get(name);
     }

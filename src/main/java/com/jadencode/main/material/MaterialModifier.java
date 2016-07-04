@@ -1,10 +1,8 @@
 package com.jadencode.main.material;
 
-import com.jadencode.main.constants.MaterialModifiers;
 import com.jadencode.main.util.WeightedItem;
 
 import java.awt.*;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -24,18 +22,23 @@ public class MaterialModifier implements WeightedItem {
         this.level = level;
         this.weight = weight;
     }
+
     public String getName() {
         return name;
     }
+
     public Color getColor() {
         return color;
     }
+
     public float getMod() {
         return mod;
     }
+
     public float getLevel() {
         return level;
     }
+
     @Override
     public float getWeight() {
         return weight;

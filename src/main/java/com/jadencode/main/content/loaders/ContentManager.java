@@ -13,11 +13,14 @@ public abstract class ContentManager {
         this.name = name;
         this.loadOrder = loadOrder;
     }
+
     public String getName() {
         return name;
     }
+
     public int getLoadOrder() {
         return loadOrder;
     }
+
     public abstract void consume(String name, JsonObject obj);
 }

@@ -16,12 +16,15 @@ public class ItemPartType {
         this.icon = i;
         this.jointNames = joints;
     }
+
     public String getTypeName() {
         return typeName;
     }
+
     public BufferedImage getIcon() {
         return icon;
     }
+
     public List<String> getJointNames() {
         return jointNames;
     }

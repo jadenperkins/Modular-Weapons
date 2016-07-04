@@ -35,30 +35,39 @@ public class ContentObjectItemPartMaterialized extends ContentObject {
         this.materialTypes = mats;
         this.joints = joints;
     }
+
     public String getIconName() {
         return iconName;
     }
+
     public String getNameMod() {
         return nameMod;
     }
+
     public String getPartInfo() {
         return partInfo;
     }
+
     public float getWeight() {
         return weight;
     }
+
     public String getPartType() {
         return partType;
     }
+
     public String getStatSet() {
         return statSet;
     }
+
     public String getScript() {
         return script;
     }
+
     public List<String> getMaterialTypes() {
         return materialTypes;
     }
+
     public HashMap<String, Point.Double> getJoints() {
         return joints;
     }

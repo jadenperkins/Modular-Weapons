@@ -10,7 +10,6 @@ import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.util.vector.Matrix4f;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -27,6 +26,7 @@ public class TerrainRenderer {
         shader.connectTextureUnits();
         shader.stop();
     }
+
     public void render(List<Terrain> terrains) {
         for (Terrain terrain : terrains) {
             this.prepareTerrain(terrain);
@@ -35,6 +35,7 @@ public class TerrainRenderer {
             this.unbindTexturedModel();
         }
     }
+
     private void prepareTerrain(Terrain terrain) {
         RawModel model = terrain.getModel();
         GL30.glBindVertexArray(model.getVaoID());
@@ -45,6 +46,7 @@ public class TerrainRenderer {
         this.bindTextures(terrain);
         this.shader.loadShineVariables(1, 0);
     }
+
     private void bindTextures(Terrain terrain) {
         TerrainTexturePack texturePack = terrain.getTexture();
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
@@ -59,12 +61,14 @@ public class TerrainRenderer {
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, terrain.getBlendMap().getTextureID());
 
     }
+
     private void unbindTexturedModel() {
         GL20.glDisableVertexAttribArray(0);
         GL20.glDisableVertexAttribArray(1);
         GL20.glDisableVertexAttribArray(2);
         GL30.glBindVertexArray(0);
     }
+
     private void loadModelMatrix(Terrain terrain) {
         Matrix4f transform = Maths.createTransformationMatrix(terrain);
         shader.loadTransformationMatrix(transform);

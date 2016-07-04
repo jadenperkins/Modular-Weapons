@@ -18,7 +18,7 @@ import java.util.Random;
 public abstract class ItemTypePart extends ItemType<ItemPart> {
     private final QualityLevel qualityLevel;
     private final ItemPartType type;
-    private final List<Joint>  joints;
+    private final List<Joint> joints;
 
     public ItemTypePart(String name, float w, StatSet stats, ScriptItem s, BufferedImage icon, QualityLevel level, Color c, ItemPartType type, List<Joint> j) {
         super(name, w, stats, icon, c, s);
@@ -26,12 +26,15 @@ public abstract class ItemTypePart extends ItemType<ItemPart> {
         this.type = type;
         this.joints = j;
     }
+
     public ItemPartType getType() {
         return type;
     }
+
     public QualityLevel getQualityLevel() {
         return qualityLevel;
     }
+
     public List<Joint> getJoints() {
         return joints;
     }
@@ -45,16 +48,20 @@ public abstract class ItemTypePart extends ItemType<ItemPart> {
     public ItemPart create(Random r, int level) {
         return new ItemPart(this, level);
     }
+
     @Override
     public ItemPart scaled(ItemPart original, int i) {
         return new ItemPart(this, i);
     }
+
     @Override
     public QualityLevel getQualityLevel(ItemPart instance) {
         return this.qualityLevel;
     }
 
     public abstract String getNameMod();
+
     public abstract Color getColor();
+
     public abstract String getMaterialName();
 }

@@ -10,10 +10,12 @@ import com.jadencode.main.pluginbuilder.contenteditors.ItemPartUniqueEditor;
  */
 public class ModuleItemPartUniqueCreator extends Module<ContentObjectItemPartUnique> {
     private final ContentEditor<ContentObjectItemPartUnique> contentEditor;
+
     public ModuleItemPartUniqueCreator(PluginBuilderPanel parent) {
         super("Unique Item Parts");
         this.contentEditor = new ItemPartUniqueEditor(this, parent);
     }
+
     @Override
     public ContentEditor<ContentObjectItemPartUnique> getContentEditor() {
         return this.contentEditor;

@@ -17,9 +17,10 @@ public final class Materials {
     private static final HashMap<MaterialType, List<Material>> MATERIALS = new HashMap<>();
 
     public static void register(MaterialType type, Material material) {
-        if(!MATERIALS.containsKey(type)) MATERIALS.put(type, new ArrayList<>());
+        if (!MATERIALS.containsKey(type)) MATERIALS.put(type, new ArrayList<>());
         MATERIALS.get(type).add(material);
     }
+
     public static List<Material> getMaterials(MaterialType type) {
         return MATERIALS.getOrDefault(type, new ArrayList<>());
     }

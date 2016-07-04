@@ -1,8 +1,10 @@
 package com.jadencode.main.constants;
 
 import com.jadencode.main.generate.item.base.ItemMaterializedBase;
-import com.jadencode.main.generate.item.base.ItemPartType;
-import com.jadencode.main.generate.item.type.*;
+import com.jadencode.main.generate.item.type.ItemType;
+import com.jadencode.main.generate.item.type.ItemTypeMaterialized;
+import com.jadencode.main.generate.item.type.ItemTypeModular;
+import com.jadencode.main.generate.item.type.ItemTypeUnique;
 import com.jadencode.main.scripts.ScriptItem;
 
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public final class ItemTypes {
     public static HashMap<String, ScriptItem> getScripts() {
         return SCRIPTS;
     }
+
     public static ScriptItem script(String name) {
         return SCRIPTS.getOrDefault(name, SCRIPTS.get(null));
     }
@@ -31,12 +34,15 @@ public final class ItemTypes {
     public static List<ItemType> getItemTypes() {
         return new ArrayList<>(ITEM_TYPES.values());
     }
+
     public static List<ItemType> getModularTypes() {
         return new ArrayList<>(MODULAR_TYPES.values());
     }
+
     public static List<ItemType> getUniqueTypes() {
         return new ArrayList<>(UNIQUE_TYPES.values());
     }
+
     public static List<ItemType> getMaterializedTypes() {
         return new ArrayList<>(MATERIALIZED_TYPES.values());
     }
@@ -45,16 +51,19 @@ public final class ItemTypes {
     public static void register(ItemType type) {
         ITEM_TYPES.put(type.getItemBaseName(), type);
     }
+
     public static void register(ItemTypeModular type) {
-        register((ItemType)type);
+        register((ItemType) type);
         MODULAR_TYPES.put(type.getItemBaseName(), type);
     }
+
     public static void register(ItemTypeUnique type) {
-        register((ItemType)type);
+        register((ItemType) type);
         UNIQUE_TYPES.put(type.getItemBaseName(), type);
     }
+
     public static void register(ItemTypeMaterialized type) {
-        register((ItemType)type);
+        register((ItemType) type);
         MATERIALIZED_TYPES.put(type.getItemBaseName(), type);
     }
 
@@ -65,9 +74,11 @@ public final class ItemTypes {
     public static List<ItemMaterializedBase> getMaterializedBases() {
         return MATERIALIZED_BASES;
     }
+
     public static void addMaterializedBase(ItemMaterializedBase part) {
         MATERIALIZED_BASES.add(part);
     }
+
     public static void generateMaterializedItems() {
         ItemTypes.getMaterializedBases()
                 .forEach(item -> item.getMaterials()

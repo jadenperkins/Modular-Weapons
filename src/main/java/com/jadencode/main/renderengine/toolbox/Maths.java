@@ -15,12 +15,13 @@ public class Maths {
         Matrix4f matrix = new Matrix4f();
         matrix.setIdentity();
         matrix.translate(translation);
-        matrix.rotate((float)Math.toRadians(rotation.getX()), new Vector3f(1, 0, 0));
-        matrix.rotate((float)Math.toRadians(rotation.getY()), new Vector3f(0, 1, 0));
-        matrix.rotate((float)Math.toRadians(rotation.getZ()), new Vector3f(0, 0, 1));
+        matrix.rotate((float) Math.toRadians(rotation.getX()), new Vector3f(1, 0, 0));
+        matrix.rotate((float) Math.toRadians(rotation.getY()), new Vector3f(0, 1, 0));
+        matrix.rotate((float) Math.toRadians(rotation.getZ()), new Vector3f(0, 0, 1));
         matrix.scale(scale);
         return matrix;
     }
+
     public static Matrix4f createViewMatrix(Camera camera) {
         Matrix4f matrix = new Matrix4f();
         matrix.setIdentity();

@@ -16,6 +16,7 @@ public final class StatSets {
     public static void register(String name, StatSet set) {
         STAT_SETS.put(name, set);
     }
+
     public static StatSet get(String name) {
         return STAT_SETS.getOrDefault(name, EMPTY);
     }

@@ -17,11 +17,13 @@ public class Chunk {
         this.chunkY = y;
         this.chunkZ = z;
     }
+
     public void setBlock(int i, int j, int k, Block block) {
         int index = i * CHUNK_SIZE * CHUNK_SIZE + j * CHUNK_SIZE + k;
         System.out.println(String.format("%d, %d, %d, %d", i, j, k, index));
         this.blocks[index] = block;
     }
+
     public Block getBlock(int i, int j, int k) {
         int index = i * CHUNK_SIZE * CHUNK_SIZE + j * CHUNK_SIZE + k;
         return this.blocks[index];

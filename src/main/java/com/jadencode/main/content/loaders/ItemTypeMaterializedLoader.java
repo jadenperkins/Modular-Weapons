@@ -1,12 +1,15 @@
 package com.jadencode.main.content.loaders;
 
 import com.google.gson.JsonObject;
-import com.jadencode.main.constants.*;
+import com.jadencode.main.constants.Icons;
+import com.jadencode.main.constants.ItemTypes;
+import com.jadencode.main.constants.MaterialTypes;
+import com.jadencode.main.constants.StatSets;
 import com.jadencode.main.generate.item.base.ItemMaterializedBase;
 import com.jadencode.main.material.MaterialType;
-import com.jadencode.main.util.JsonHelper;
 import com.jadencode.main.scripts.ScriptItem;
 import com.jadencode.main.stat.StatSet;
+import com.jadencode.main.util.JsonHelper;
 
 import java.awt.image.BufferedImage;
 import java.util.List;
@@ -19,6 +22,7 @@ public class ItemTypeMaterializedLoader extends ContentManager {
     public ItemTypeMaterializedLoader() {
         super("Materialized Item Types", 5);
     }
+
     @Override
     public void consume(String name, JsonObject obj) {
         JsonHelper helper = new JsonHelper(obj);

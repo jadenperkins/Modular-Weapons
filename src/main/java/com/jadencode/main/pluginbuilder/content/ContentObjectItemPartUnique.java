@@ -5,7 +5,6 @@ import com.google.gson.JsonObject;
 import com.jadencode.main.util.JsonHelper;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
 import java.util.HashMap;
 
 /**
@@ -35,27 +34,35 @@ public class ContentObjectItemPartUnique extends ContentObject {
         this.qualityLevel = quality.equals("") ? "LEGENDARY" : quality;
         this.joints = joints;
     }
+
     public String getIconName() {
         return iconName;
     }
+
     public String getNameMod() {
         return nameMod;
     }
+
     public String getPartInfo() {
         return partInfo;
     }
+
     public float getWeight() {
         return weight;
     }
+
     public String getPartType() {
         return partType;
     }
+
     public String getStatSet() {
         return statSet;
     }
+
     public String getScript() {
         return script;
     }
+
     public String getQualityLevel() {
         return qualityLevel;
     }

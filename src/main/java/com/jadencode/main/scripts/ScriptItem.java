@@ -9,6 +9,7 @@ public class ScriptItem extends ScriptBase {
     public ScriptItem(String scriptName, String scriptContents) {
         super(scriptName, scriptContents);
     }
+
     public String getDisplayName(Item instance, String fallback) {
         return this.invokeWithDefault("getDisplayName", fallback, instance);
     }

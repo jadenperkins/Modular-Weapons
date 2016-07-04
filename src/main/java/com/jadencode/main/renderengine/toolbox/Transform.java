@@ -7,6 +7,8 @@ import org.lwjgl.util.vector.Vector3f;
  */
 public interface Transform {
     Vector3f getTranslation();
+
     Vector3f getRotation();
+
     Vector3f getScale();
 }

@@ -18,6 +18,7 @@ public class ContentObjectPartType extends ContentObject {
         this.iconName = icon;
         this.joints = joints;
     }
+
     public String getIconName() {
         return this.iconName;
     }

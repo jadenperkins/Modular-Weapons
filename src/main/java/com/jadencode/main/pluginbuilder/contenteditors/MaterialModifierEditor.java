@@ -4,10 +4,10 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.GuiHelper;
-import com.jadencode.main.util.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.content.ContentObjectMaterialModifier;
 import com.jadencode.main.pluginbuilder.modules.Module;
+import com.jadencode.main.util.JsonHelper;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -33,6 +33,7 @@ public class MaterialModifierEditor extends ContentEditor<ContentObjectMaterialM
         this.modField = helper.add(new JTextField(), "Modifier", H_S, V_E + 3 * (H_FLD + V_PAD), H_L, H_FLD);
         this.materialsList = helper.addScrolling(new JList<>(), "Material Types", H_S, V_E + 4 * (H_FLD + V_PAD), H_L, 10 * H_FLD);
     }
+
     @Override
     public void onOpened(Module<ContentObjectMaterialModifier> parent, PluginBuilderPanel panel) {
         Module colorModule = panel.getModule("Colors");
@@ -44,6 +45,7 @@ public class MaterialModifierEditor extends ContentEditor<ContentObjectMaterialM
         this.materialsList.setListData(materialTypes.toArray(new String[0]));
         this.materialsList.setSize(200, 18 * Math.max(1, materialTypes.size()));
     }
+
     @Override
     public void populate(ContentObjectMaterialModifier item) {
         this.colorSelection.setSelectedItem(item.getColorName());
@@ -55,18 +57,19 @@ public class MaterialModifierEditor extends ContentEditor<ContentObjectMaterialM
         List<Integer> indices = new ArrayList<>();
 
         for (String materialType : materialTypes)
-            for(int i = 0; i < this.materialsList.getModel().getSize(); i++)
-                if(this.materialsList.getModel().getElementAt(i).equals(materialType))
+            for (int i = 0; i < this.materialsList.getModel().getSize(); i++)
+                if (this.materialsList.getModel().getElementAt(i).equals(materialType))
                     indices.add(i);
 
         int[] i = new int[indices.size()];
-        for(int x = 0; x < i.length; x++) {
+        for (int x = 0; x < i.length; x++) {
             i[x] = indices.get(x);
         }
 
         this.materialsList.setSelectedIndices(i);
 
     }
+
     @Override
     public ContentObjectMaterialModifier createItem(String name, String owner) {
         String colorName = (String) this.colorSelection.getSelectedItem();
@@ -77,6 +80,7 @@ public class MaterialModifierEditor extends ContentEditor<ContentObjectMaterialM
         List<String> values = this.materialsList.getSelectedValuesList();
         return new ContentObjectMaterialModifier(name, owner, colorName, weight, level, mod, values);
     }
+
     private float getValue(JTextField field) {
         float value;
         try {
@@ -86,6 +90,7 @@ public class MaterialModifierEditor extends ContentEditor<ContentObjectMaterialM
         }
         return value;
     }
+
     @Override
     public ContentObjectMaterialModifier getDefault() {
         return new ContentObjectMaterialModifier("", "", "", 0F, 0F, 0F, new ArrayList<>());

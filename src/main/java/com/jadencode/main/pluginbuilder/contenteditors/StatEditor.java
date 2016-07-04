@@ -2,10 +2,10 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.GuiHelper;
-import com.jadencode.main.util.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.content.ContentObjectStat;
 import com.jadencode.main.pluginbuilder.modules.Module;
+import com.jadencode.main.util.JsonHelper;
 
 import javax.swing.*;
 import java.util.List;
@@ -24,16 +24,19 @@ public class StatEditor extends ContentEditor<ContentObjectStat> {
         this.scriptSelection = helper.add(new JComboBox<>(), "Script", H_S, V_E, H_L, H_FLD);
         this.defaultValue = helper.add(new JTextField(), "Default Value", H_S, V_E + H_FLD + V_PAD, H_L, H_FLD);
     }
+
     @Override
     public void onOpened(Module<ContentObjectStat> parent, PluginBuilderPanel panel) {
         List<String> scripts = this.getScripts("stats", panel);
         this.scriptSelection.setModel(new DefaultComboBoxModel<>(scripts.toArray(new String[0])));
     }
+
     @Override
     public void populate(ContentObjectStat item) {
         this.scriptSelection.setSelectedItem(item.getScriptName());
         this.defaultValue.setText(item.getDefaultValue() + "");
     }
+
     @Override
     public ContentObjectStat createItem(String name, String owner) {
         double value;
@@ -45,6 +48,7 @@ public class StatEditor extends ContentEditor<ContentObjectStat> {
         }
         return new ContentObjectStat(name, owner, (String) this.scriptSelection.getSelectedItem(), value);
     }
+
     @Override
     public ContentObjectStat getDefault() {
         return new ContentObjectStat("", "", "", 0.0);

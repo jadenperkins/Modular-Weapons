@@ -3,13 +3,12 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.internal.ObjectConstructor;
 import com.jadencode.main.pluginbuilder.GuiHelper;
-import com.jadencode.main.pluginbuilder.content.ContentObjectPartType;
-import com.jadencode.main.util.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.content.ContentObjectItemPartMaterialized;
+import com.jadencode.main.pluginbuilder.content.ContentObjectPartType;
 import com.jadencode.main.pluginbuilder.modules.Module;
+import com.jadencode.main.util.JsonHelper;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -48,6 +47,7 @@ public class ItemPartMaterializedEditor extends ContentEditor<ContentObjectItemP
         this.materialsList = helper.add(new JList<>(), "Material Types", H_E, V_S, H_L, H_FLD * 10, GuiHelper.Align.ABOVE);
         this.jointsTable = helper.add(new JTable(), "Joints", H_E + H_L + H_PAD, V_S, H_L, H_NTR, GuiHelper.Align.ABOVE);
     }
+
     @Override
     public void onOpened(Module<ContentObjectItemPartMaterialized> parent, PluginBuilderPanel panel) {
         Module partTypesModule = panel.getModule("Part Types");
@@ -77,6 +77,7 @@ public class ItemPartMaterializedEditor extends ContentEditor<ContentObjectItemP
         this.materialsList.setListData(materialTypes.toArray(new String[0]));
         this.materialsList.setSize(H_L, H_FLD * Math.max(1, materialTypes.size()));
     }
+
     @Override
     public void populate(ContentObjectItemPartMaterialized item) {
         this.nameModField.setText(item.getNameMod());
@@ -105,17 +106,17 @@ public class ItemPartMaterializedEditor extends ContentEditor<ContentObjectItemP
         this.checkJoints();
 
         Module partTypes = this.getPluginBuilderPanel().getModule("Part Types");
-        ContentObjectPartType type = (ContentObjectPartType) partTypes.getItem((String)this.partTypeSelection.getSelectedItem());
+        ContentObjectPartType type = (ContentObjectPartType) partTypes.getItem((String) this.partTypeSelection.getSelectedItem());
 
-        if(type != null) {
+        if (type != null) {
             int size = type.getJoints().size();
-            if(size > 0) {
+            if (size > 0) {
                 this.jointsTable.setModel(new DefaultTableModel(size, 3));
                 HashMap<String, Point.Double> itemJoints = item.getJoints();
-                for(int row = 0; row < type.getJoints().size(); row++) {
+                for (int row = 0; row < type.getJoints().size(); row++) {
                     String name = type.getJoints().get(row);
                     this.jointsTable.setValueAt(name, row, 0);
-                    if(itemJoints.get(name) != null) {
+                    if (itemJoints.get(name) != null) {
                         Point2D value = itemJoints.get(name);
                         this.jointsTable.setValueAt(value.getX(), row, 1);
                         this.jointsTable.setValueAt(value.getY(), row, 2);
@@ -124,34 +125,37 @@ public class ItemPartMaterializedEditor extends ContentEditor<ContentObjectItemP
             }
         }
     }
+
     public void checkJoints() {
         Module partTypes = this.getPluginBuilderPanel().getModule("Part Types");
-        ContentObjectPartType type = (ContentObjectPartType) partTypes.getItem((String)this.partTypeSelection.getSelectedItem());
-        if(type != null) {
+        ContentObjectPartType type = (ContentObjectPartType) partTypes.getItem((String) this.partTypeSelection.getSelectedItem());
+        if (type != null) {
             this.jointsTable.setSize(H_L, H_NTR * Math.max(1, type.getJoints().size()));
             this.jointsTable.setModel(new DefaultTableModel(type.getJoints().size(), 3));
             List<String> joints = type.getJoints();
-            for(int row = 0; row < joints.size(); row++) {
+            for (int row = 0; row < joints.size(); row++) {
                 this.jointsTable.setValueAt(joints.get(row), row, 0);
                 this.jointsTable.setValueAt(0, row, 1);
                 this.jointsTable.setValueAt(0, row, 2);
             }
         }
     }
+
     private double getDouble(Object s) {
         double value = 0;
-        if(s instanceof Double) {
+        if (s instanceof Double) {
             value = (Double) s;
         } else {
-            if(s instanceof String) {
+            if (s instanceof String) {
                 try {
-                    value = Double.parseDouble((String)s);
+                    value = Double.parseDouble((String) s);
                 } catch (Exception e) {
                 }
             }
         }
         return value;
     }
+
     @Override
     public ContentObjectItemPartMaterialized createItem(String name, String owner) {
         String nameMod = this.nameModField.getText();
@@ -165,9 +169,9 @@ public class ItemPartMaterializedEditor extends ContentEditor<ContentObjectItemP
 
         HashMap<String, Point.Double> joints = new HashMap<>();
         int rows = this.jointsTable.getRowCount();
-        for(int i = 0; i < rows; i++) {
+        for (int i = 0; i < rows; i++) {
             String s = (String) this.jointsTable.getValueAt(i, 0);
-            if(s != null && !s.isEmpty()) {
+            if (s != null && !s.isEmpty()) {
                 double x = getDouble(this.jointsTable.getValueAt(i, 1));
                 double y = getDouble(this.jointsTable.getValueAt(i, 2));
                 joints.put(s, new Point.Double(x, y));
@@ -176,6 +180,7 @@ public class ItemPartMaterializedEditor extends ContentEditor<ContentObjectItemP
 
         return new ContentObjectItemPartMaterialized(name, owner, nameMod, partInfo, weight, partType, statSet, iconName, script, materialTypes, joints);
     }
+
     private float getValue(JTextField field) {
         float value;
         try {
@@ -185,6 +190,7 @@ public class ItemPartMaterializedEditor extends ContentEditor<ContentObjectItemP
         }
         return value;
     }
+
     @Override
     public ContentObjectItemPartMaterialized getDefault() {
         return new ContentObjectItemPartMaterialized("", "", "", "", 0F, "", "", "", "", new ArrayList<>(), new HashMap<>());

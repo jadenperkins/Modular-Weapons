@@ -6,9 +6,9 @@ import com.jadencode.main.constants.ItemTypes;
 import com.jadencode.main.constants.StatSets;
 import com.jadencode.main.generate.QualityLevel;
 import com.jadencode.main.generate.item.type.ItemTypeUnique;
-import com.jadencode.main.util.JsonHelper;
 import com.jadencode.main.scripts.ScriptItem;
 import com.jadencode.main.stat.StatSet;
+import com.jadencode.main.util.JsonHelper;
 
 import java.awt.image.BufferedImage;
 
@@ -19,6 +19,7 @@ public class ItemTypeUniqueLoader extends ContentManager {
     public ItemTypeUniqueLoader() {
         super("Unique Item Types", 5);
     }
+
     @Override
     public void consume(String name, JsonObject obj) {
         JsonHelper helper = new JsonHelper(obj);

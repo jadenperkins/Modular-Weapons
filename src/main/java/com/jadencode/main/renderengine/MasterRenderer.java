@@ -40,15 +40,33 @@ public class MasterRenderer {
     private List<Terrain> terrains = new ArrayList<>();
 
     public MasterRenderer() {
-        this.enableCulling();
+        enableCulling();
     }
+
     public static void enableCulling() {
         GL11.glEnable(GL11.GL_CULL_FACE);
         GL11.glCullFace(GL11.GL_BACK);
     }
+
     public static void disableCulling() {
         GL11.glDisable(GL11.GL_CULL_FACE);
     }
+
+    private static Matrix4f createProjectionMatrix() {
+        Matrix4f projectionMatrix = new Matrix4f();
+        float aspectRatio = (float) Display.getWidth() / (float) Display.getHeight();
+        float y_scale = (float) ((1F / Math.tan(Math.toRadians(fieldOfView / 2F))) * aspectRatio);
+        float x_scale = y_scale / aspectRatio;
+        float frustum_length = farPlane - nearPlane;
+        projectionMatrix.m00 = x_scale;
+        projectionMatrix.m11 = y_scale;
+        projectionMatrix.m22 = -((farPlane + nearPlane) / frustum_length);
+        projectionMatrix.m23 = -1;
+        projectionMatrix.m32 = -((2 * nearPlane * farPlane) / frustum_length);
+        projectionMatrix.m33 = 0;
+        return projectionMatrix;
+    }
+
     public void render(Light sun, Camera camera) {
         this.prepare();
         this.entityShader.start();
@@ -69,35 +87,25 @@ public class MasterRenderer {
         this.terrainShader.stop();
         this.terrains.clear();
     }
+
     public void processTerrain(Terrain terrain) {
         this.terrains.add(terrain);
     }
+
     public void processEntity(Entity entity) {
         TexturedModel model = entity.getModel();
-        if(!this.entities.containsKey(model)) this.entities.put(model, new ArrayList<>());
+        if (!this.entities.containsKey(model)) this.entities.put(model, new ArrayList<>());
         this.entities.get(model).add(entity);
     }
+
     public void cleanUp() {
         this.entityShader.cleanUp();
         this.terrainShader.cleanUp();
     }
+
     public void prepare() {
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
         GL11.glClearColor(RED, GREEN, BLUE, 1);
-    }
-    private static Matrix4f createProjectionMatrix() {
-        Matrix4f projectionMatrix = new Matrix4f();
-        float aspectRatio = (float) Display.getWidth() / (float) Display.getHeight();
-        float y_scale = (float)((1F / Math.tan(Math.toRadians(fieldOfView / 2F))) * aspectRatio);
-        float x_scale = y_scale / aspectRatio;
-        float frustum_length = farPlane - nearPlane;
-        projectionMatrix.m00 = x_scale;
-        projectionMatrix.m11 = y_scale;
-        projectionMatrix.m22 = -((farPlane + nearPlane) / frustum_length);
-        projectionMatrix.m23 = -1;
-        projectionMatrix.m32 = -((2 * nearPlane * farPlane) / frustum_length);
-        projectionMatrix.m33 = 0;
-        return projectionMatrix;
     }
 }

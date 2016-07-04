@@ -5,7 +5,10 @@ import com.jadencode.main.renderengine.models.RawModel;
 import com.jadencode.main.renderengine.models.TexturedModel;
 import com.jadencode.main.renderengine.textures.ModelTexture;
 import com.jadencode.main.renderengine.toolbox.Maths;
-import org.lwjgl.opengl.*;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL13;
+import org.lwjgl.opengl.GL20;
+import org.lwjgl.opengl.GL30;
 import org.lwjgl.util.vector.Matrix4f;
 
 import java.util.HashMap;
@@ -24,8 +27,9 @@ public class EntityRenderer {
         shader.loadProjectionMatrix(projectionMatrix);
         shader.stop();
     }
+
     public void render(HashMap<TexturedModel, List<Entity>> entities) {
-        for(TexturedModel model : entities.keySet()) {
+        for (TexturedModel model : entities.keySet()) {
             prepareTexturedModel(model);
             List<Entity> entityGroup = entities.get(model);
             for (Entity entity : entityGroup) {
@@ -35,6 +39,7 @@ public class EntityRenderer {
             unbindTexturedModel();
         }
     }
+
     private void prepareTexturedModel(TexturedModel texturedModel) {
         RawModel model = texturedModel.getRawModel();
         GL30.glBindVertexArray(model.getVaoID());
@@ -43,12 +48,13 @@ public class EntityRenderer {
         GL20.glEnableVertexAttribArray(2);
 
         ModelTexture texture = texturedModel.getTexture();
-        if(texture.getHasTransparency()) MasterRenderer.disableCulling();
+        if (texture.getHasTransparency()) MasterRenderer.disableCulling();
         this.shader.loadUseFakeLighting(texture.getUseFakeLighting());
         shader.loadShineVariables(texture.getShineDamper(), texture.getReflectivity());
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, texturedModel.getTexture().getTextureID());
     }
+
     private void unbindTexturedModel() {
         MasterRenderer.enableCulling();
         GL20.glDisableVertexAttribArray(0);
@@ -56,6 +62,7 @@ public class EntityRenderer {
         GL20.glDisableVertexAttribArray(2);
         GL30.glBindVertexArray(0);
     }
+
     private void prepareInstance(Entity entity) {
         Matrix4f transform = Maths.createTransformationMatrix(entity);
         shader.loadTransformationMatrix(transform);

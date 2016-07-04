@@ -16,12 +16,15 @@ public class ContentObjectStat extends ContentObject {
         this.scriptName = script;
         this.defaultValue = value;
     }
+
     public String getScriptName() {
         return this.scriptName;
     }
+
     public double getDefaultValue() {
         return this.defaultValue;
     }
+
     @Override
     public void toJson(JsonObject json) {
         new JsonHelper(json).add("default", this.defaultValue).add("script", this.scriptName);

@@ -24,24 +24,31 @@ public class ContentObjectItemTypeUnique extends ContentObject {
         this.qualityLevel = quality.equals("") ? "LEGENDARY" : quality;
         this.description = info;
     }
+
     public String getStatSetName() {
         return this.statSetName;
     }
+
     public String getScriptName() {
         return this.scriptName;
     }
+
     public float getWeight() {
         return this.weight;
     }
+
     public String getQualityLevel() {
         return qualityLevel;
     }
+
     public String getDescription() {
         return description;
     }
+
     public String getIconName() {
         return iconName;
     }
+
     @Override
     public void toJson(JsonObject json) {
         new JsonHelper(json)

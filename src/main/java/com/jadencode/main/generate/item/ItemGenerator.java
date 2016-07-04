@@ -1,13 +1,11 @@
 package com.jadencode.main.generate.item;
 
-import com.jadencode.main.constants.ItemParts;
 import com.jadencode.main.constants.ItemTypes;
 import com.jadencode.main.generate.Generator;
 import com.jadencode.main.generate.item.instance.Item;
 import com.jadencode.main.generate.item.type.ItemType;
 import com.jadencode.main.util.WeightedRandomFloat;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -36,6 +34,7 @@ public class ItemGenerator implements Generator<Item> { //Generator<Sword> {
         ItemType itemType = WeightedRandomFloat.getRandomItem(r, types);
         return this.generate(r, level, itemType);
     }
+
     public Item generate(Random r, int level, ItemType itemType) {
         return itemType.create(r, level);
     }

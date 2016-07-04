@@ -14,6 +14,7 @@ public class StatSetLoader extends ContentManager {
     public StatSetLoader() {
         super("Stat Sets", 4);
     }
+
     @Override
     public void consume(String name, JsonObject obj) {
         StatSet set = new StatSet();

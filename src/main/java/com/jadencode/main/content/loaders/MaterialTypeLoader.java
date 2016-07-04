@@ -12,6 +12,7 @@ public class MaterialTypeLoader extends ContentManager {
     public MaterialTypeLoader() {
         super("Material Types", 0);
     }
+
     @Override
     public void consume(String name, JsonObject obj) {
         String scriptName = obj.has("script") ? obj.get("script").getAsString() : null;

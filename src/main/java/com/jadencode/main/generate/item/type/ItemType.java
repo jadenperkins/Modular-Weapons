@@ -3,7 +3,6 @@ package com.jadencode.main.generate.item.type;
 import com.jadencode.main.generate.QualityLevel;
 import com.jadencode.main.generate.item.instance.Item;
 import com.jadencode.main.scripts.ScriptItem;
-import com.jadencode.main.stat.StatBase;
 import com.jadencode.main.stat.StatSet;
 import com.jadencode.main.util.WeightedItem;
 
@@ -13,7 +12,6 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -38,9 +36,11 @@ public abstract class ItemType<T extends Item> implements WeightedItem {
         this.icon = icon;
         this.color = color;
     }
+
     public String getDisplayName(T instance) {
         return this.script.getDisplayName(instance, this.getDisplayFallback(instance));
     }
+
     public String getDisplayFallback(T instance) {
         return this.getItemBaseName();
     }
@@ -48,18 +48,24 @@ public abstract class ItemType<T extends Item> implements WeightedItem {
     public String getItemBaseName() {
         return itemBaseName;
     }
+
     public StatSet getStatSet() {
         return this.statSet;
     }
+
     public BufferedImage getIcon() {
         return this.icon;
     }
+
     public Color getColor() {
         return this.color;
     }
-    /**Render an item instance to and return a BufferedImage*/
+
+    /**
+     * Render an item instance to and return a BufferedImage
+     */
     public BufferedImage render(T instance) {
-        if(this.getIcon() == null) {
+        if (this.getIcon() == null) {
             BufferedImage ret = new BufferedImage(64, 64, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2d = ret.createGraphics();
             g2d.setPaint(this.getColor() == null ? Color.BLACK : this.getColor());
@@ -68,12 +74,12 @@ public abstract class ItemType<T extends Item> implements WeightedItem {
         }
         BufferedImage ret = new BufferedImage(this.getIcon().getWidth(), this.getIcon().getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = ret.createGraphics();
-        if(this.getColor() == null) {
+        if (this.getColor() == null) {
             g2d.drawImage(this.getIcon(), 0, 0, Color.WHITE, null);
         } else {
-            for(int x = 0; x < this.getIcon().getWidth(); x++) {
-                for(int y = 0; y < this.getIcon().getHeight(); y++) {
-                    if(this.getIcon().getRGB(x, y) >> 24 != 0x00) {
+            for (int x = 0; x < this.getIcon().getWidth(); x++) {
+                for (int y = 0; y < this.getIcon().getHeight(); y++) {
+                    if (this.getIcon().getRGB(x, y) >> 24 != 0x00) {
                         ret.setRGB(x, y, this.getColor().getRGB());
                     }
                 }
@@ -81,12 +87,14 @@ public abstract class ItemType<T extends Item> implements WeightedItem {
         }
         return ret;
     }
+
     public List<String> getItemCardStrings(T instance) {
         List<String> strings = new ArrayList<>();
         StatSet stats = instance.getStatSet();
         strings.addAll(stats.getStatsRaw().keySet().stream().map(statBase -> String.format("%s: %.2f", statBase.getStatName(), stats.get(statBase))).collect(Collectors.toList()));
         return strings;
     }
+
     public void printItemCard(T instance) {
         File dir = new File("pictures");
         File out = new File(dir, instance.getDisplayName().replace(" ", "_") + ".png");
@@ -118,7 +126,7 @@ public abstract class ItemType<T extends Item> implements WeightedItem {
             g2d.setFont(new Font("Helvetica", Font.BOLD, 14));
             int i = 2;
             String name;
-            if(instance.getLevel() == 0) {
+            if (instance.getLevel() == 0) {
                 name = instance.getDisplayName();
             } else {
                 name = String.format("%s (%d)", instance.getDisplayName(), instance.getLevel());
@@ -128,7 +136,7 @@ public abstract class ItemType<T extends Item> implements WeightedItem {
             g2d.drawString(name, width * 8 + 8, g2d.getFontMetrics().getHeight() * i);
 
             i += 1;
-            for(String s : this.getDisplayInfo(instance)) {
+            for (String s : this.getDisplayInfo(instance)) {
                 g2d.drawString("    " + s, width * 8 + 8, g2d.getFontMetrics().getHeight() * i);
                 i++;
             }
@@ -148,13 +156,17 @@ public abstract class ItemType<T extends Item> implements WeightedItem {
             e.printStackTrace();
         }
     }
+
     @Override
     public float getWeight() {
         return this.weight;
     }
 
     public abstract T create(Random r, int level);
+
     public abstract T scaled(T original, int i);
+
     public abstract List<String> getDisplayInfo(T instance);
+
     public abstract QualityLevel getQualityLevel(T instance);
 }

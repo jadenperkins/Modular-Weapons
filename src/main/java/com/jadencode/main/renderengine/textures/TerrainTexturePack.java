@@ -15,15 +15,19 @@ public class TerrainTexturePack {
         this.gTexture = gTexture;
         this.bTexture = bTexture;
     }
+
     public TerrainTexture getBackgroundTexture() {
         return backgroundTexture;
     }
+
     public TerrainTexture getrTexture() {
         return rTexture;
     }
+
     public TerrainTexture getgTexture() {
         return gTexture;
     }
+
     public TerrainTexture getbTexture() {
         return bTexture;
     }

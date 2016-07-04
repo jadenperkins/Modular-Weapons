@@ -2,10 +2,10 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.GuiHelper;
-import com.jadencode.main.util.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.content.ContentObjectMaterial;
 import com.jadencode.main.pluginbuilder.modules.Module;
+import com.jadencode.main.util.JsonHelper;
 
 import javax.swing.*;
 import java.util.List;
@@ -30,6 +30,7 @@ public class MaterialEditor extends ContentEditor<ContentObjectMaterial> {
         this.levelField = helper.add(new JTextField(), "Level", H_S, V_E + 3 * H_FLD + 3 * V_PAD, H_L, H_FLD);
         this.materialSelection = helper.add(new JComboBox<>(), "Material Type", H_S, V_E + 4 * H_FLD + 4 * V_PAD, H_L, H_FLD);
     }
+
     @Override
     public void onOpened(Module<ContentObjectMaterial> parent, PluginBuilderPanel panel) {
         Module colorModule = panel.getModule("Colors");
@@ -40,6 +41,7 @@ public class MaterialEditor extends ContentEditor<ContentObjectMaterial> {
         List<String> types = materalTypesModule.getItemKeys();
         this.materialSelection.setModel(new DefaultComboBoxModel<>(types.toArray(new String[0])));
     }
+
     @Override
     public void populate(ContentObjectMaterial item) {
         this.colorSelection.setSelectedItem(item.getColorName());
@@ -48,16 +50,18 @@ public class MaterialEditor extends ContentEditor<ContentObjectMaterial> {
         this.levelField.setText(item.getLevel() + "");
         this.materialSelection.setSelectedItem(item.getMaterialType());
     }
+
     @Override
     public ContentObjectMaterial createItem(String name, String owner) {
-        String colorName = (String)this.colorSelection.getSelectedItem();
+        String colorName = (String) this.colorSelection.getSelectedItem();
         float weight = this.getValue(this.weightField);
         float mod = this.getValue(this.modField);
         int level = this.getInt(this.levelField);
-        String material = (String)this.materialSelection.getSelectedItem();
+        String material = (String) this.materialSelection.getSelectedItem();
 
         return new ContentObjectMaterial(name, owner, colorName, weight, mod, level, material);
     }
+
     private float getValue(JTextField field) {
         float value;
         try {
@@ -67,6 +71,7 @@ public class MaterialEditor extends ContentEditor<ContentObjectMaterial> {
         }
         return value;
     }
+
     private int getInt(JTextField field) {
         int value;
         try {
@@ -76,6 +81,7 @@ public class MaterialEditor extends ContentEditor<ContentObjectMaterial> {
         }
         return value;
     }
+
     @Override
     public ContentObjectMaterial getDefault() {
         return new ContentObjectMaterial("", "", "", 0F, 0F, 0, "");

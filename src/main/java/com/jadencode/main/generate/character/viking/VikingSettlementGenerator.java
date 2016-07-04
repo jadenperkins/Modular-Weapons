@@ -10,22 +10,21 @@ import java.util.*;
  */
 public class VikingSettlementGenerator implements Generator<Settlement> {
 
+    public static final List<String> types = Arrays.asList("Monastery", "Province", "Retreat", "Command", "Harbor",
+            "Village", "Outpost", "Refuge", "Sanctuary", "Landing", "Sanctum", "Stronghold", "Citadel", "Bastion",
+            "Castle", "Redoubt", "Plateau", "Fields", "Embrace", "Isle", "Keep", "Rise", "Overlook", "Shrine", "Lair",
+            "Hills", "Oasis", "River", "Lake", "City");
     //22
     private static final List<String> BEGINNING_WORDS = Arrays.asList("Battle", "Black", "Dragon", "Dusk", "Dust",
             "East", "Gleam", "Gray", "Lake", "Moon", "North", "Oak", "Red", "River", "Sky", "South", "Storm", "Sun",
             "West", "White", "Wind", "Winter");
     //55
-    private static final List<String> ENDING_WORDS    = Arrays.asList("arch", "belt", "blade", "blaze", "bridge",
+    private static final List<String> ENDING_WORDS = Arrays.asList("arch", "belt", "blade", "blaze", "bridge",
             "brook", "camp", "creed", "crest", "den", "fire", "flame", "flare", "forge", "fort", "glare", "gleam",
             "gloom", "glow", "grove", "guard", "heart", "helm", "hold", "light", "march", "mill", "mood", "night",
             "pass", "point", "post", "reach", "rift", "rim", "rock", "rook", "ruin", "run", "shade", "shadow", "shear",
             "shire", "shore", "spear", "spire", "stable", "sword", "tree", "vale", "view", "ville", "ward", "watch",
             "wind");
-    public static final List<String> types  = Arrays.asList("Monastery", "Province", "Retreat", "Command", "Harbor",
-            "Village", "Outpost", "Refuge", "Sanctuary", "Landing", "Sanctum", "Stronghold", "Citadel", "Bastion",
-            "Castle", "Redoubt", "Plateau", "Fields", "Embrace", "Isle", "Keep", "Rise", "Overlook", "Shrine", "Lair",
-            "Hills", "Oasis", "River", "Lake", "City");
-
     private final List<String> instanceLocations = new ArrayList<>();
     private int index = 0;
 
@@ -40,7 +39,7 @@ public class VikingSettlementGenerator implements Generator<Settlement> {
     public Settlement generate(Random r, int level) {
         String name = this.instanceLocations.get(this.index);
         this.index++;
-        if(this.index == this.instanceLocations.size()) {
+        if (this.index == this.instanceLocations.size()) {
             this.index = 0;
             this.instanceLocations.clear();
             this.preGenerate(r);

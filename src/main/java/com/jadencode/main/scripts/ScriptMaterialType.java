@@ -8,10 +8,12 @@ import java.util.List;
  */
 public class ScriptMaterialType extends ScriptBase {
     private final List<String> exoticNames;
+
     public ScriptMaterialType(String scriptName, String scriptContents) {
         super(scriptName, scriptContents);
         this.exoticNames = this.getFieldDefault("exoticNames", new ArrayList<>());
     }
+
     public List<String> getExoticNames() {
         return this.exoticNames;
     }

@@ -13,15 +13,17 @@ public class Light {
         this.position = position;
         this.color = color;
     }
+
     public Vector3f getPosition() {
         return position;
-    }
-    public Vector3f getColor() {
-        return color;
     }
 
     public void setPosition(Vector3f position) {
         this.position = position;
+    }
+
+    public Vector3f getColor() {
+        return color;
     }
 
     public void setColor(Vector3f color) {

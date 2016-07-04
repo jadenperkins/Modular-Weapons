@@ -20,6 +20,7 @@ public class MaterialModifierLoader extends ContentManager {
     public MaterialModifierLoader() {
         super("Material Modifiers", 6);
     }
+
     @Override
     public void consume(String name, JsonObject obj) {
         Color c = Colors.get(obj.get("color").getAsString());

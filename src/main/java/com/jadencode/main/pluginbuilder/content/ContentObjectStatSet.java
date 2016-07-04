@@ -16,9 +16,11 @@ public class ContentObjectStatSet extends ContentObject {
         super(name, owner);
         this.stats = stats;
     }
+
     public HashMap<String, Double> getStats() {
         return this.stats;
     }
+
     @Override
     public void toJson(JsonObject json) {
         new JsonHelper(json).add("stats", JsonHelper.toArray(this.stats, "stat", "value"));

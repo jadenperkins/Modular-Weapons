@@ -2,10 +2,10 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.GuiHelper;
-import com.jadencode.main.util.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.content.ContentObjectItemTypeMaterialized;
 import com.jadencode.main.pluginbuilder.modules.Module;
+import com.jadencode.main.util.JsonHelper;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -31,6 +31,7 @@ public class ItemTypeMaterializedEditor extends ContentEditor<ContentObjectItemT
         this.infoField = helper.add(new JTextField(), "Description", H_S, V_E + 3 * (H_FLD + V_PAD), H_L, H_FLD);
         this.materialsList = helper.add(new JList<>(), "Material Types", H_E, V_S, H_L, H_FLD * 10, GuiHelper.Align.ABOVE);
     }
+
     @Override
     public void populate(ContentObjectItemTypeMaterialized item) {
         this.statSetSelection.setSelectedItem(item.getStatSetName());
@@ -42,17 +43,18 @@ public class ItemTypeMaterializedEditor extends ContentEditor<ContentObjectItemT
         List<Integer> indices = new ArrayList<>();
 
         for (String materialType : materialTypes)
-            for(int i = 0; i < this.materialsList.getModel().getSize(); i++)
-                if(this.materialsList.getModel().getElementAt(i).equals(materialType))
+            for (int i = 0; i < this.materialsList.getModel().getSize(); i++)
+                if (this.materialsList.getModel().getElementAt(i).equals(materialType))
                     indices.add(i);
 
         int[] i = new int[indices.size()];
-        for(int x = 0; x < i.length; x++) {
+        for (int x = 0; x < i.length; x++) {
             i[x] = indices.get(x);
         }
 
         this.materialsList.setSelectedIndices(i);
     }
+
     @Override
     public void onOpened(Module<ContentObjectItemTypeMaterialized> parent, PluginBuilderPanel panel) {
         Module statSetModule = panel.getModule("Stat Sets");
@@ -67,16 +69,18 @@ public class ItemTypeMaterializedEditor extends ContentEditor<ContentObjectItemT
         this.materialsList.setListData(materialTypes.toArray(new String[0]));
         this.materialsList.setSize(H_L, H_FLD * Math.max(1, materialTypes.size()));
     }
+
     @Override
     public ContentObjectItemTypeMaterialized createItem(String name, String owner) {
-        String stat = (String)this.statSetSelection.getSelectedItem();
-        String script = (String)this.scriptSelection.getSelectedItem();
+        String stat = (String) this.statSetSelection.getSelectedItem();
+        String script = (String) this.scriptSelection.getSelectedItem();
         float weight = this.getFloat(this.weightField);
         String info = this.infoField.getText();
         List<String> materialTypes = this.materialsList.getSelectedValuesList();
 
         return new ContentObjectItemTypeMaterialized(name, owner, stat, script, weight, info, materialTypes);
     }
+
     public float getFloat(JTextField field) {
         float value;
         try {
@@ -86,6 +90,7 @@ public class ItemTypeMaterializedEditor extends ContentEditor<ContentObjectItemT
         }
         return value;
     }
+
     @Override
     public ContentObjectItemTypeMaterialized getDefault() {
         return new ContentObjectItemTypeMaterialized("", "", "", "", 1F, "", new ArrayList<>());

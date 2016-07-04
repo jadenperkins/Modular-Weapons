@@ -15,12 +15,7 @@ public class IconLoader extends ContentManager {
     public IconLoader() {
         super("Icons", -2);
     }
-    @Override
-    public void consume(String name, JsonObject obj) {
-        String base64 = obj.get("base64").getAsString();
-        BufferedImage image = decodeToImage(base64);
-        Icons.register(name, image);
-    }
+
     private static BufferedImage decodeToImage(String imageString) {
         try {
             byte[] imageBytes = DatatypeConverter.parseBase64Binary(imageString);
@@ -32,6 +27,13 @@ public class IconLoader extends ContentManager {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public void consume(String name, JsonObject obj) {
+        String base64 = obj.get("base64").getAsString();
+        BufferedImage image = decodeToImage(base64);
+        Icons.register(name, image);
     }
 //    private static BufferedImage getResizedCanvas(BufferedImage in) {
 //        int w = 16 * in.getWidth();

@@ -14,9 +14,11 @@ public class ContentObjectMaterializedBase extends ContentObject {
         super(name, owner);
         this.iconName = icon;
     }
+
     public String getIconName() {
         return this.iconName;
     }
+
     @Override
     public void toJson(JsonObject json) {
         new JsonHelper(json).add("icon", this.iconName);

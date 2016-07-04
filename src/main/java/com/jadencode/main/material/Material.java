@@ -1,13 +1,9 @@
 package com.jadencode.main.material;
 
-import com.jadencode.main.constants.Materials;
 import com.jadencode.main.generate.QualityLevel;
-import com.jadencode.main.generate.QualityObject;
 import com.jadencode.main.util.WeightedItem;
 
 import java.awt.*;
-import java.util.*;
-import java.util.List;
 
 /**
  * Created by Jaden on 2/4/2015.
@@ -34,18 +30,23 @@ public class Material implements WeightedItem {
     public Color getColor() {
         return color;
     }
+
     public String getName() {
         return name;
     }
+
     public float getMultiplier() {
         return this.multiplier;
     }
+
     public int getLevel() {
         return this.level;
     }
+
     public MaterialType getMaterialType() {
         return materialType;
     }
+
     public QualityLevel getQualityLevel() {
         return this.qualityLevel;
     }

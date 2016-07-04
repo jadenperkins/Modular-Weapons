@@ -14,6 +14,7 @@ public final class ItemPartTypes {
     public static final ItemPartType get(String name) {
         return PART_TYPES.get(name);
     }
+
     public static void register(ItemPartType type) {
         PART_TYPES.put(type.getTypeName(), type);
     }

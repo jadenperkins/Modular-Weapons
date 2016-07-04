@@ -11,12 +11,14 @@ public class ContentObjectColor extends ContentObject {
     public int red;
     public int green;
     public int blue;
+
     public ContentObjectColor(String name, String owner, int r, int g, int b) {
         super(name, owner);
         this.red = r;
         this.green = g;
         this.blue = b;
     }
+
     @Override
     public void toJson(JsonObject json) {
         JsonArray rgb = new JsonArray();

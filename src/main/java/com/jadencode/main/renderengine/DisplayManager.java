@@ -14,18 +14,22 @@ public class DisplayManager {
     private final int width;
     private final int height;
     private final int fpsSync;
+
     public DisplayManager(int w, int h, int f) {
         this.width = w;
         this.height = h;
         this.fpsSync = f;
         this.create();
     }
+
     public DisplayManager() {
         this(WIDTH, HEIGHT, FPS_CAP);
     }
+
     public boolean isCloseRequested() {
         return Display.isCloseRequested();
     }
+
     public void create() {
         ContextAttribs attribs = new ContextAttribs(3, 2).withForwardCompatible(true).withProfileCore(true);
         try {
@@ -37,10 +41,12 @@ public class DisplayManager {
         }
         GL11.glViewport(0, 0, this.width, this.height);
     }
+
     public void update() {
         Display.sync(this.fpsSync);
         Display.update();
     }
+
     public void destroy() {
         Display.destroy();
     }

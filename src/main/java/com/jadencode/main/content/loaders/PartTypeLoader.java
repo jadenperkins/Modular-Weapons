@@ -16,6 +16,7 @@ public class PartTypeLoader extends ContentManager {
     public PartTypeLoader() {
         super("Part Types", 1);
     }
+
     @Override
     public void consume(String name, JsonObject obj) {
         JsonHelper helper = new JsonHelper(obj);

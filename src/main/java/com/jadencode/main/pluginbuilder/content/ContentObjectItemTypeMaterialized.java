@@ -24,12 +24,15 @@ public class ContentObjectItemTypeMaterialized extends ContentObject {
         this.description = info;
         this.materialTypes = types;
     }
+
     public String getStatSetName() {
         return this.statSetName;
     }
+
     public String getScriptName() {
         return this.scriptName;
     }
+
     public float getWeight() {
         return this.weight;
     }

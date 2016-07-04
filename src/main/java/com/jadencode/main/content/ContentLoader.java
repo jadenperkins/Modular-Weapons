@@ -1,9 +1,12 @@
 package com.jadencode.main.content;
 
-import com.google.gson.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.jadencode.main.constants.ItemParts;
 import com.jadencode.main.constants.ItemTypes;
 import com.jadencode.main.constants.Materials;
-import com.jadencode.main.constants.ItemParts;
 import com.jadencode.main.content.loaders.ContentManager;
 import com.jadencode.main.util.JsonHelper;
 import org.reflections.Reflections;
@@ -28,6 +31,7 @@ public final class ContentLoader {
         ItemParts.generateItemParts();
         ItemTypes.generateMaterializedItems();
     }
+
     private static final void compressSourcePlugins() {
         File pluginDir = new File("plugins");
         File[] compressedPlugins = pluginDir.listFiles(a -> a.getName().endsWith(".plugin"));
@@ -38,7 +42,7 @@ public final class ContentLoader {
 
         for (File s : source) {
             String sourceName = s.getName().replace(".json", "");
-            if(!compressed.contains(sourceName)) {
+            if (!compressed.contains(sourceName)) {
                 try {
                     File out = new File(pluginDir, sourceName + ".plugin");
                     out.createNewFile();
@@ -54,6 +58,7 @@ public final class ContentLoader {
             }
         }
     }
+
     private static final void loadStaticContent() {
         Set<Class<? extends ContentManager>> managerClasses = new Reflections("com.jadencode.main.content.loaders").getSubTypesOf(ContentManager.class);
         List<ContentManager> managers = new ArrayList<>();
@@ -70,7 +75,7 @@ public final class ContentLoader {
         managers.sort((a, b) -> Integer.compare(a.getLoadOrder(), b.getLoadOrder()));
 
         File dir = new File("./plugins");
-        if(!dir.exists()) {
+        if (!dir.exists()) {
             dir.mkdirs();
         }
         File[] pluginFiles = dir.listFiles(a -> a.getName().endsWith(".plugin"));
@@ -80,7 +85,7 @@ public final class ContentLoader {
 
         for (ContentManager manager : managers) {
             String managerName = manager.getName();
-            for(Plugin plugin : plugins) {
+            for (Plugin plugin : plugins) {
                 System.out.println("Loading " + managerName + " from " + plugin.getPluginName());
                 JsonArray array = new JsonHelper(plugin.getPluginObject()).getArray(managerName);
                 for (JsonElement jsonElement : array) {
@@ -114,6 +119,7 @@ public final class ContentLoader {
 //            }
 //        }
     }
+
     private static final void loadScripts() {
 //        Set<Class<? extends ScriptLoader>> managerClasses = new Reflections("com.jadencode.main.content.loaders.scripts").getSubTypesOf(ScriptLoader.class);
 //        List<ScriptLoader> managers = new ArrayList<>();

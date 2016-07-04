@@ -22,15 +22,19 @@ public class ContentObjectMaterial extends ContentObject {
         this.level = l;
         this.materialType = type;
     }
+
     public String getColorName() {
         return colorName;
     }
+
     public float getWeight() {
         return weight;
     }
+
     public float getMod() {
         return mod;
     }
+
     public int getLevel() {
         return level;
     }
@@ -38,6 +42,7 @@ public class ContentObjectMaterial extends ContentObject {
     public String getMaterialType() {
         return materialType;
     }
+
     @Override
     public void toJson(JsonObject json) {
         new JsonHelper(json)

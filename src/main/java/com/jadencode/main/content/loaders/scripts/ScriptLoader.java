@@ -20,9 +20,11 @@ public abstract class ScriptLoader<S extends ScriptBase> {
 
         this.load(null, "");
     }
+
     public String getTypeName() {
         return this.typeName;
     }
+
     public void load(String scriptName, String string) {
         try {
             S script = this.newScript(scriptName, string);
@@ -31,6 +33,7 @@ public abstract class ScriptLoader<S extends ScriptBase> {
             e.printStackTrace();
         }
     }
+
     public S newScript(String name, String contents) throws
             NoSuchMethodException,
             IllegalAccessException,

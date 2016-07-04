@@ -5,6 +5,7 @@ package com.jadencode.main.generate.location;
  */
 public class Location {
     private String name;
+
     public Location(String name) {
         this.name = name;
     }
@@ -12,6 +13,7 @@ public class Location {
     public String getName() {
         return this.name;
     }
+
     @Override
     public int hashCode() {
         return this.getName().hashCode();

@@ -9,14 +9,14 @@ import com.jadencode.main.stat.StatSet;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.*;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by gtrpl on 6/24/2016.
  */
 public class ItemTypePartUnique extends ItemTypePart {
-    private final String       nameMod;
+    private final String nameMod;
     private final List<String> partInfo;
 
     public ItemTypePartUnique(String partName, String nameMod, String partInfo, StatSet statSet, float weight, ScriptItem s, QualityLevel level, BufferedImage icon, ItemPartType type, List<Joint> j) {
@@ -24,6 +24,7 @@ public class ItemTypePartUnique extends ItemTypePart {
         this.nameMod = nameMod;
         this.partInfo = Arrays.asList(partInfo);
     }
+
     @Override
     public String getNameMod() {
         return nameMod;
@@ -33,10 +34,12 @@ public class ItemTypePartUnique extends ItemTypePart {
     public List<String> getDisplayInfo(ItemPart instance) {
         return partInfo;
     }
+
     @Override
     public Color getColor() {
         return null;
     }
+
     @Override
     public String getMaterialName() {
         return "";

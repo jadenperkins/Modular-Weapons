@@ -25,6 +25,7 @@ public class ScriptBase {
         this.sharedScope = new ImporterTopLevel(ctx);
         this.compiledScript.exec(ctx, sharedScope);
     }
+
     public String getScriptContents() {
         return this.scriptContents;
     }
@@ -39,15 +40,17 @@ public class ScriptBase {
             Object asJava = Context.jsToJava(property, Object.class);
 
             return asJava == UniqueTag.NOT_FOUND ? null : asJava;
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
+
     protected <T> T getFieldDefault(String name, T def) {
         T ret = (T) this.getField(name);
         return ret == null ? def : ret;
     }
+
     protected Object invoke(String name, Object... params) {
         try {
             Context localContext = Context.enter();
@@ -64,11 +67,12 @@ public class ScriptBase {
                 Context.exit();
             }
             return asJava == UniqueTag.NOT_FOUND ? null : asJava;
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
+
     protected <T> T invokeWithDefault(String name, T def, Object... params) {
         T ret = (T) this.invoke(name, params);
         return ret == null ? def : ret;

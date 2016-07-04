@@ -28,27 +28,35 @@ public class ContentObjectItemTypeModular extends ContentObject {
         this.requiredParts = parts;
         this.optionalParts = opts;
     }
+
     public String getStatSetName() {
         return this.statSetName;
     }
+
     public String getScriptName() {
         return this.scriptName;
     }
+
     public float getWeight() {
         return this.weight;
     }
+
     public String getPrimaryPart() {
         return primaryPart;
     }
+
     public String getAnchorPart() {
         return anchorPart;
     }
+
     public List<String> getRequiredParts() {
         return this.requiredParts;
     }
+
     public List<String> getOptionalParts() {
         return this.optionalParts;
     }
+
     @Override
     public void toJson(JsonObject json) {
         new JsonHelper(json)

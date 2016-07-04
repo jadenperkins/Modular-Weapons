@@ -14,9 +14,11 @@ public class ContentObjectMaterialType extends ContentObject {
         super(name, owner);
         this.scriptName = script;
     }
+
     public String getScriptName() {
         return this.scriptName;
     }
+
     @Override
     public void toJson(JsonObject json) {
         new JsonHelper(json).add("script", this.scriptName);

@@ -2,10 +2,10 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
 import com.jadencode.main.pluginbuilder.GuiHelper;
-import com.jadencode.main.util.JsonHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.content.ContentObjectScript;
 import com.jadencode.main.pluginbuilder.modules.Module;
+import com.jadencode.main.util.JsonHelper;
 import org.apache.commons.io.FileUtils;
 
 import javax.swing.*;
@@ -35,6 +35,7 @@ public class ScriptEditor extends ContentEditor<ContentObjectScript> {
             public boolean accept(File f) {
                 return f.isDirectory() || f.getName().endsWith(".js");
             }
+
             @Override
             public String getDescription() {
                 return "JavaScript Files";
@@ -46,7 +47,7 @@ public class ScriptEditor extends ContentEditor<ContentObjectScript> {
         this.selectScript = helper.add(new JButton("Import Script"), H_S, V_E, H_L, H_BTN);
         this.selectScript.addActionListener(e -> {
             this.scriptChooser.showOpenDialog(null);
-            if(this.scriptChooser.getSelectedFile() != null) {
+            if (this.scriptChooser.getSelectedFile() != null) {
                 File file = this.scriptChooser.getSelectedFile();
                 try {
                     this.scriptView.setText(FileUtils.readFileToString(file, Charset.defaultCharset()));
@@ -58,15 +59,18 @@ public class ScriptEditor extends ContentEditor<ContentObjectScript> {
 
         this.scriptTypeSelection = helper.add(new JComboBox<>(SCRIPT_TYPES), "Script Type", H_S, V_E + H_BTN + V_PAD, H_L, H_FLD);
     }
+
     @Override
     public void populate(ContentObjectScript item) {
         this.scriptTypeSelection.setSelectedItem(item.getScriptType());
         this.scriptView.setText(item.getScriptContents());
     }
+
     @Override
     public ContentObjectScript createItem(String name, String owner) {
         return new ContentObjectScript(name, owner, (String) this.scriptTypeSelection.getSelectedItem(), this.scriptView.getText());
     }
+
     @Override
     public ContentObjectScript getDefault() {
         return new ContentObjectScript("", "", "", "");

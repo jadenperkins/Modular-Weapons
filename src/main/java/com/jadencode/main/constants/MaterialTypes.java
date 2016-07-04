@@ -18,15 +18,19 @@ public final class MaterialTypes {
     public static ScriptMaterialType script(String name) {
         return SCRIPTS.getOrDefault(name, SCRIPTS.get(null));
     }
+
     public static HashMap<String, ScriptMaterialType> getScripts() {
         return SCRIPTS;
     }
+
     public static void register(MaterialType type) {
         MATERIAL_TYPES.put(type.getName(), type);
     }
+
     public static MaterialType get(String name) {
         return MATERIAL_TYPES.get(name);
     }
+
     public static List<MaterialType> getMaterialTypes() {
         return new ArrayList<>(MATERIAL_TYPES.values());
     }
