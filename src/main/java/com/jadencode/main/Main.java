@@ -16,6 +16,9 @@ import com.jadencode.main.renderengine.toolbox.OBJLoader;
 import org.lwjgl.util.vector.Vector3f;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Jaden on 1/19/2015.
@@ -177,43 +180,43 @@ public class Main {
         DisplayManager display = new DisplayManager();
         Loader loader = new Loader();
         OBJLoader objLoader = new OBJLoader(loader);
-        StaticShader shader = new StaticShader();
-        Renderer renderer = new Renderer(shader);
-
-        float[] vertices = {
-                -0.5F, 0.5F, 0F,
-                -0.5F, -0.5F, 0F,
-                0.5F, -0.5F, 0F,
-                0.5F, 0.5F, 0F
-        };
-        int[] indices = {
-                0, 1, 3, 3, 1, 2
-        };
-        float[] textureCoords = {
-                0, 0, 0, 1, 1, 1, 1, 0
-        };
 
         RawModel model = objLoader.loadObjModel("Stall");
         ModelTexture texture = new ModelTexture(loader.loadTexture("models/Stall"));
         texture.setShineDamper(10);
         texture.setReflectivity(1);
         TexturedModel texturedModel = new TexturedModel(model, texture);
-        Entity entity = new Entity(texturedModel, new Vector3f(0, -2, -15), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
         Light light = new Light(new Vector3f(0, 50, -10), new Vector3f(1, 1, 1));
         Camera camera = new Camera();
 
+        List<Entity> stalls = new ArrayList<>();
+        Random r = new Random();
+        for(int i = 0; i < 1000; i++) {
+            stalls.add(new Entity(texturedModel,
+                    new Vector3f(
+                            r.nextInt(21) - 10,
+                            r.nextInt(21) - 10,
+                            r.nextInt(51) - 25),
+                    new Vector3f(
+                            r.nextInt(360),
+                            r.nextInt(360),
+                            r.nextInt(360)),
+                    new Vector3f(
+                            0.5F + r.nextFloat() * 0.5F,
+                            0.5F + r.nextFloat() * 0.5F,
+                            0.5F + r.nextFloat() * 0.5F)
+            ));
+        }
+
+        MasterRenderer renderer = new MasterRenderer();
+
         while(!display.isCloseRequested()) {
-            entity.rotate(0, 1, 0);
             camera.move();
-            renderer.prepare();
-            shader.start();
-            shader.loadLight(light);
-            shader.loadViewMatrix(camera);
-            renderer.render(entity, shader);
-            shader.stop();
+            stalls.forEach(renderer::processEntity);
+            renderer.render(light, camera);
             display.update();
         }
-        shader.cleanUp();
+        renderer.cleanUp();
         loader.cleanUp();
         display.destroy();
 
