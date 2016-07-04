@@ -3,13 +3,14 @@ package com.jadencode.main;
 import com.jadencode.main.content.ContentLoader;
 import com.jadencode.main.generate.character.viking.VikingCharacterGenerator;
 import com.jadencode.main.generate.character.viking.VikingSettlementGenerator;
-import com.jadencode.main.generate.item.*;
+import com.jadencode.main.generate.item.ItemGenerator;
 import com.jadencode.main.generate.item.instance.Item;
-import com.jadencode.main.renderengine.*;
+import com.jadencode.main.renderengine.DisplayManager;
+import com.jadencode.main.renderengine.Loader;
+import com.jadencode.main.renderengine.MasterRenderer;
 import com.jadencode.main.renderengine.entities.Camera;
 import com.jadencode.main.renderengine.entities.Entity;
 import com.jadencode.main.renderengine.entities.Light;
-import com.jadencode.main.renderengine.models.RawModel;
 import com.jadencode.main.renderengine.models.TexturedModel;
 import com.jadencode.main.renderengine.terrain.Terrain;
 import com.jadencode.main.renderengine.textures.ModelTexture;
@@ -21,7 +22,6 @@ import org.lwjgl.util.vector.Vector3f;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by Jaden on 1/19/2015.
