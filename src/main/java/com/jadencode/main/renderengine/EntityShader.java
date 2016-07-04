@@ -11,8 +11,8 @@ import org.lwjgl.util.vector.Vector3f;
  */
 public class EntityShader extends ShaderProgram {
     private static final String SRC_PATH = "";
-    private static final String VERT_FILE = "shaders/vertexShader.txt";
-    private static final String FRAG_FILE = "shaders/fragmentShader.txt";
+    private static final String VERT_FILE = "shaders/vertexShader.glsl";
+    private static final String FRAG_FILE = "shaders/fragmentShader.glsl";
 
     private int location_transformationMatrix;
     private int location_projectionMatrix;

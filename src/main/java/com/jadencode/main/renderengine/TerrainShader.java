@@ -11,8 +11,8 @@ import org.lwjgl.util.vector.Vector3f;
  */
 public class TerrainShader extends ShaderProgram {
     private static final String SRC_PATH = "";
-    private static final String VERT_FILE = "shaders/terrainVertexShader.txt";
-    private static final String FRAG_FILE = "shaders/terrainFragmentShader.txt";
+    private static final String VERT_FILE = "shaders/terrainVertexShader.glsl";
+    private static final String FRAG_FILE = "shaders/terrainFragmentShader.glsl";
 
     private int location_transformationMatrix;
     private int location_projectionMatrix;
