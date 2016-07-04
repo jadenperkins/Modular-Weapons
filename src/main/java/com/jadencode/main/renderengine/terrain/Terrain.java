@@ -5,6 +5,8 @@ import com.jadencode.main.renderengine.models.RawModel;
 import com.jadencode.main.renderengine.textures.TerrainTexture;
 import com.jadencode.main.renderengine.textures.TerrainTexturePack;
 import com.jadencode.main.renderengine.toolbox.Transform;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL13;
 import org.lwjgl.util.vector.Vector3f;
 
 /**
@@ -31,20 +33,8 @@ public class Terrain implements Transform {
         this.model = this.generateTerrain(loader);
     }
 
-    public float getX() {
-        return x;
-    }
-
-    public float getZ() {
-        return z;
-    }
-
     public RawModel getModel() {
         return model;
-    }
-
-    public TerrainTexturePack getTexture() {
-        return texture;
     }
 
     @Override
@@ -60,10 +50,6 @@ public class Terrain implements Transform {
     @Override
     public Vector3f getScale() {
         return scale;
-    }
-
-    public TerrainTexture getBlendMap() {
-        return blendMap;
     }
 
     private RawModel generateTerrain(Loader loader) {
@@ -102,5 +88,18 @@ public class Terrain implements Transform {
             }
         }
         return loader.loadToVAO(vertices, textureCoords, normals, indices);
+    }
+
+    public void bindTextures() {
+        GL13.glActiveTexture(GL13.GL_TEXTURE0);
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.backgroundTexture.textureID);
+        GL13.glActiveTexture(GL13.GL_TEXTURE1);
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.rTexture.textureID);
+        GL13.glActiveTexture(GL13.GL_TEXTURE2);
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.gTexture.textureID);
+        GL13.glActiveTexture(GL13.GL_TEXTURE3);
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.bTexture.textureID);
+        GL13.glActiveTexture(GL13.GL_TEXTURE4);
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D, blendMap.textureID);
     }
 }

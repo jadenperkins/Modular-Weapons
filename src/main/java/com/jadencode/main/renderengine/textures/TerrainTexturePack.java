@@ -4,10 +4,11 @@ package com.jadencode.main.renderengine.textures;
  * Created by gtrpl on 7/4/2016.
  */
 public class TerrainTexturePack {
-    private final TerrainTexture backgroundTexture;
-    private final TerrainTexture rTexture;
-    private final TerrainTexture gTexture;
-    private final TerrainTexture bTexture;
+
+    public final TerrainTexture backgroundTexture;
+    public final TerrainTexture rTexture;
+    public final TerrainTexture gTexture;
+    public final TerrainTexture bTexture;
 
     public TerrainTexturePack(TerrainTexture backgroundTexture, TerrainTexture rTexture, TerrainTexture gTexture, TerrainTexture bTexture) {
         this.backgroundTexture = backgroundTexture;
@@ -16,19 +17,4 @@ public class TerrainTexturePack {
         this.bTexture = bTexture;
     }
 
-    public TerrainTexture getBackgroundTexture() {
-        return backgroundTexture;
-    }
-
-    public TerrainTexture getrTexture() {
-        return rTexture;
-    }
-
-    public TerrainTexture getgTexture() {
-        return gTexture;
-    }
-
-    public TerrainTexture getbTexture() {
-        return bTexture;
-    }
 }
