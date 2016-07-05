@@ -1,5 +1,6 @@
 package com.jadencode.main.renderengine.entities;
 
+import com.jadencode.main.renderengine.terrain.Terrain;
 import com.jadencode.main.renderengine.toolbox.DisplayManager;
 import com.jadencode.main.renderengine.models.TexturedModel;
 import com.jadencode.main.renderengine.toolbox.Time;
@@ -27,7 +28,7 @@ public class Player extends Entity {
         super(model, translation, rotation, scale);
     }
 
-    public void move() {
+    public void move(Terrain terrain) {
         checkInputs();
         float frameTimeSecs = Time.getFrameTimeSeconds();
         this.rotate(0, currentTurnSpeed * frameTimeSecs, 0);
@@ -39,10 +40,10 @@ public class Player extends Entity {
 
         this.upwardsSpeed += GRAVITY * frameTimeSecs;
         this.translate(0, upwardsSpeed * frameTimeSecs, 0);
-
-        if (this.getTranslation().y < TERRAIN_HEIGHT) {
+        float terrainHeight = terrain.getHeight(this.getTranslation().x, this.getTranslation().z);
+        if (this.getTranslation().y < terrainHeight) {
             upwardsSpeed = 0;
-            this.getTranslation().y = TERRAIN_HEIGHT;
+            this.getTranslation().y = terrainHeight;
             this.isInAir = false;
         }
     }

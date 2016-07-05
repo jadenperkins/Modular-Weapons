@@ -4,6 +4,7 @@ import com.jadencode.main.renderengine.entities.Camera;
 import com.jadencode.main.renderengine.entities.Light;
 import com.jadencode.main.renderengine.toolbox.Maths;
 import org.lwjgl.util.vector.Matrix4f;
+import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
 /**
@@ -25,6 +26,8 @@ public class EntityShader extends ShaderProgram {
     private int location_fogDensity;
     private int location_fogGradient;
     private int location_skyColor;
+    private int location_numberOfRows;
+    private int location_offset;
 
     public EntityShader() {
         super(VERT_FILE, FRAG_FILE);
@@ -50,13 +53,20 @@ public class EntityShader extends ShaderProgram {
         this.location_fogDensity = this.getUniformLocation("fogDensity");
         this.location_fogGradient = this.getUniformLocation("fogGradient");
         this.location_skyColor = this.getUniformLocation("skyColor");
+        this.location_numberOfRows = this.getUniformLocation("numberOfRows");
+        this.location_offset = this.getUniformLocation("offset");
     }
 
     public void loadFogValues(float density, float gradient) {
         this.loadFloat(location_fogDensity, density);
         this.loadFloat(location_fogGradient, gradient);
     }
-
+    public void loadNumberOfROws(int num) {
+        this.loadInt(this.location_numberOfRows, num);
+    }
+    public void loadOffset(Vector2f offset) {
+        this.loadVector(this.location_offset, offset);
+    }
     public void loadSkyColor(Vector3f skyColor) {
         this.loadVector(this.location_skyColor, skyColor);
     }

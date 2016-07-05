@@ -208,24 +208,26 @@ public class Main {
         MasterRenderer renderer = new MasterRenderer();
         List<Terrain> terrains = new ArrayList<>();
 
-        int rad = 3;
-        for (int i = -rad; i <= rad; i++) {
-            for (int j = -rad; j <= rad; j++) {
-                terrains.add(new Terrain(i, j, loader, texturePack, blendMap));
-            }
-        }
+//        int rad = 3;
+//        for (int i = -rad; i <= rad; i++) {
+//            for (int j = -rad; j <= rad; j++) {
+//                terrains.add(new Terrain(i, j, loader, texturePack, blendMap, "heightmap"));
+//            }
+//        }
+
+        Terrain terrain = new Terrain(0, -1, loader, texturePack, blendMap, "heightmap");
 
         Player player = new Player(entity.getModel(), new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
         Camera camera = new Camera(player);
 
         while (!display.isCloseRequested()) {
             Time.update();
-
             camera.move();
-            player.move();
+            player.move(terrain);
             renderer.processEntity(player);
             renderer.processEntity(entity);
-            terrains.forEach(renderer::processTerrain);
+            renderer.processTerrain(terrain);
+//            terrains.forEach(renderer::processTerrain);
             renderer.render(light, camera);
             display.update();
         }

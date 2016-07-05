@@ -48,6 +48,7 @@ public class EntityRenderer {
         GL20.glEnableVertexAttribArray(2);
 
         ModelTexture texture = texturedModel.getTexture();
+        shader.loadNumberOfROws(texture.getNumberOfRows());
         if (texture.getHasTransparency()) MasterRenderer.disableCulling();
         this.shader.loadUseFakeLighting(texture.getUseFakeLighting());
         shader.loadShineVariables(texture.getShineDamper(), texture.getReflectivity());
@@ -66,5 +67,6 @@ public class EntityRenderer {
     private void prepareInstance(Entity entity) {
         Matrix4f transform = Maths.createTransformationMatrix(entity);
         shader.loadTransformationMatrix(transform);
+        shader.loadOffset(entity.getTextureOffset());
     }
 }
