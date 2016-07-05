@@ -11,7 +11,8 @@ import org.lwjgl.util.vector.Vector3f;
  */
 public class Player extends Entity {
 
-    private static final float RUN_SPEED = 20; //distance per second
+    private static final float SPRINT_BOOST = 30;
+    private static final float WALK_SPEED = 20; //distance per second
     private static final float TURN_SPEED = 160; //degrees per second
     private static final float GRAVITY = -50;
     private static final float JUMP_POWER = 30;
@@ -57,9 +58,9 @@ public class Player extends Entity {
      */
     private void checkInputs() {
         if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
-            this.currentSpeed = -RUN_SPEED;
+            this.currentSpeed = -(WALK_SPEED + (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) ? SPRINT_BOOST : 0));
         } else if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
-            this.currentSpeed = RUN_SPEED;
+            this.currentSpeed = WALK_SPEED + (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) ? SPRINT_BOOST : 0);
         } else {
             this.currentSpeed = 0;
         }

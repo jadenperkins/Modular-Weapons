@@ -200,7 +200,6 @@ public class Main {
         texture.setShineDamper(10);
         texture.setReflectivity(1);
         Light light = new Light(new Vector3f(0, 2000, 0), new Vector3f(1, 1, 1));
-        Camera camera = new Camera();
 
         Entity entity = new Entity(
                 new TexturedModel(objLoader.loadObjModel("Stall"), new ModelTexture(loader.loadTexture("models/Stall"))),
@@ -217,6 +216,7 @@ public class Main {
         }
 
         Player player = new Player(entity.getModel(), new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
+        Camera camera = new Camera(player);
 
         while (!display.isCloseRequested()) {
             Time.update();
