@@ -1,7 +1,8 @@
 package com.jadencode.main.renderengine.entities;
 
-import com.jadencode.main.renderengine.DisplayManager;
+import com.jadencode.main.renderengine.toolbox.DisplayManager;
 import com.jadencode.main.renderengine.models.TexturedModel;
+import com.jadencode.main.renderengine.toolbox.Time;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.util.vector.Vector3f;
 
@@ -19,6 +20,7 @@ public class Player extends Entity {
     private float currentSpeed = 0;
     private float currentTurnSpeed = 0;
     private float upwardsSpeed = 0;
+    private boolean isInAir = false;
 
     public Player(TexturedModel model, Vector3f translation, Vector3f rotation, Vector3f scale) {
         super(model, translation, rotation, scale);
@@ -26,23 +28,28 @@ public class Player extends Entity {
 
     public void move() {
         checkInputs();
-        float frameTimeSecs = DisplayManager.getRenderMs() / 1000f;
-        super.rotate(0, currentTurnSpeed * frameTimeSecs, 0);
+        float frameTimeSecs = Time.getFrameTimeSeconds();
+        this.rotate(0, currentTurnSpeed * frameTimeSecs, 0);
 
         float distance = currentSpeed * frameTimeSecs;
-        float dx = (float) (distance * Math.sin(Math.toRadians(getYRot())));
-        float dz = (float) (distance * Math.cos(Math.toRadians(getYRot())));
-        super.translate(dx, 0, dz);
-        upwardsSpeed += GRAVITY * frameTimeSecs;
-        super.setPosition(0, upwardsSpeed * frameTimeSecs , 0);
-        if (super.getTranslation().y < TERRAIN_HEIGHT) {
+        float dx = (float) (distance * Math.sin(Math.toRadians(this.getRotation().getY())));
+        float dz = (float) (distance * Math.cos(Math.toRadians(this.getRotation().getY())));
+        this.translate(dx, 0, dz);
+
+        this.upwardsSpeed += GRAVITY * frameTimeSecs;
+        this.translate(0, upwardsSpeed * frameTimeSecs, 0);
+
+        if (this.getTranslation().y < TERRAIN_HEIGHT) {
             upwardsSpeed = 0;
-            super.getTranslation().y = TERRAIN_HEIGHT;
+            this.getTranslation().y = TERRAIN_HEIGHT;
+            this.isInAir = false;
         }
     }
-
     private void jump() {
-        this.upwardsSpeed = JUMP_POWER;
+        if(!isInAir) {
+            this.upwardsSpeed = JUMP_POWER;
+            this.isInAir = true;
+        }
     }
 
     /**
@@ -50,9 +57,9 @@ public class Player extends Entity {
      */
     private void checkInputs() {
         if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
-            this.currentSpeed = RUN_SPEED;
-        } else if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
             this.currentSpeed = -RUN_SPEED;
+        } else if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
+            this.currentSpeed = RUN_SPEED;
         } else {
             this.currentSpeed = 0;
         }

@@ -5,7 +5,7 @@ import com.jadencode.main.generate.character.viking.VikingCharacterGenerator;
 import com.jadencode.main.generate.character.viking.VikingSettlementGenerator;
 import com.jadencode.main.generate.item.ItemGenerator;
 import com.jadencode.main.generate.item.instance.Item;
-import com.jadencode.main.renderengine.DisplayManager;
+import com.jadencode.main.renderengine.toolbox.DisplayManager;
 import com.jadencode.main.renderengine.Loader;
 import com.jadencode.main.renderengine.MasterRenderer;
 import com.jadencode.main.renderengine.entities.Camera;
@@ -18,6 +18,7 @@ import com.jadencode.main.renderengine.textures.ModelTexture;
 import com.jadencode.main.renderengine.textures.TerrainTexture;
 import com.jadencode.main.renderengine.textures.TerrainTexturePack;
 import com.jadencode.main.renderengine.toolbox.OBJLoader;
+import com.jadencode.main.renderengine.toolbox.Time;
 import org.lwjgl.util.vector.Vector3f;
 
 import java.io.File;
@@ -215,9 +216,11 @@ public class Main {
             }
         }
 
-        Player player = new Player(entity.getModel(), new Vector3f(100, 0, -50), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
+        Player player = new Player(entity.getModel(), new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
 
         while (!display.isCloseRequested()) {
+            Time.update();
+
             camera.move();
             player.move();
             renderer.processEntity(player);
