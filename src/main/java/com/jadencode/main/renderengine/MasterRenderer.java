@@ -67,12 +67,12 @@ public class MasterRenderer {
         return projectionMatrix;
     }
 
-    public void render(Light sun, Camera camera) {
+    public void render(List<Light> lights, Camera camera) {
         this.prepare();
         this.entityShader.start();
         this.entityShader.loadSkyColor(new Vector3f(RED, GREEN, BLUE));
         this.entityShader.loadFogValues(FOG_DENSITY, FOG_GRADIENT);
-        this.entityShader.loadLight(sun);
+        this.entityShader.loadLights(lights);
         this.entityShader.loadViewMatrix(camera);
         this.entityRenderer.render(this.entities);
         this.entityShader.stop();
@@ -81,7 +81,7 @@ public class MasterRenderer {
         this.terrainShader.start();
         this.terrainShader.loadSkyColor(new Vector3f(RED, GREEN, BLUE));
         this.terrainShader.loadFogValues(FOG_DENSITY, FOG_GRADIENT);
-        this.terrainShader.loadLight(sun);
+        this.terrainShader.loadLights(lights);
         this.terrainShader.loadViewMatrix(camera);
         this.terrainRenderer.render(this.terrains);
         this.terrainShader.stop();

@@ -6,10 +6,13 @@ import com.jadencode.main.renderengine.toolbox.Maths;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
 
+import java.util.List;
+
 /**
  * Created by gtrpl on 7/3/2016.
  */
 public class TerrainShader extends ShaderProgram {
+    private static final int MAX_LIGHTS = 4;
     private static final String SRC_PATH = "";
     private static final String VERT_FILE = "shaders/terrainVertexShader.glsl";
     private static final String FRAG_FILE = "shaders/terrainFragmentShader.glsl";
@@ -17,8 +20,8 @@ public class TerrainShader extends ShaderProgram {
     private int location_transformationMatrix;
     private int location_projectionMatrix;
     private int location_viewMatrix;
-    private int location_lightPosition;
-    private int location_lightColor;
+    private int[] location_lightPosition;
+    private int[] location_lightColor;
     private int location_shineDamper;
     private int location_reflectivity;
     private int location_skyColor;
@@ -46,8 +49,6 @@ public class TerrainShader extends ShaderProgram {
         this.location_transformationMatrix = this.getUniformLocation("transformationMatrix");
         this.location_projectionMatrix = this.getUniformLocation("projectionMatrix");
         this.location_viewMatrix = this.getUniformLocation("viewMatrix");
-        this.location_lightPosition = this.getUniformLocation("lightPosition");
-        this.location_lightColor = this.getUniformLocation("lightColor");
         this.location_shineDamper = this.getUniformLocation("shineDamper");
         this.location_reflectivity = this.getUniformLocation("reflectivity");
         this.location_skyColor = this.getUniformLocation("skyColor");
@@ -58,6 +59,14 @@ public class TerrainShader extends ShaderProgram {
         this.location_blendMap = this.getUniformLocation("blendMap");
         this.location_fogDensity = this.getUniformLocation("fogDensity");
         this.location_fogGradient = this.getUniformLocation("fogGradient");
+
+        this.location_lightPosition = new int[MAX_LIGHTS];
+        this.location_lightColor = new int[MAX_LIGHTS];
+
+        for(int i = 0; i < MAX_LIGHTS; i++) {
+            this.location_lightPosition[i] = this.getUniformLocation("lightPosition[" + i + "]");
+            this.location_lightColor[i] = this.getUniformLocation("lightColor[" + i + "]");
+        }
     }
 
     public void connectTextureUnits() {
@@ -81,9 +90,16 @@ public class TerrainShader extends ShaderProgram {
         this.loadMatrix(this.location_transformationMatrix, matrix);
     }
 
-    public void loadLight(Light light) {
-        this.loadVector(this.location_lightPosition, light.getPosition());
-        this.loadVector(this.location_lightColor, light.getColor());
+    public void loadLights(List<Light> lights) {
+        for(int i = 0; i < MAX_LIGHTS; i++) {
+            if(i < lights.size()) {
+                this.loadVector(this.location_lightPosition[i], lights.get(i).getPosition());
+                this.loadVector(this.location_lightColor[i], lights.get(i).getColor());
+            } else {
+                this.loadVector(this.location_lightPosition[i], new Vector3f(0, 0, 0));
+                this.loadVector(this.location_lightColor[i], new Vector3f(0, 0, 0));
+            }
+        }
     }
 
     public void loadViewMatrix(Camera camera) {

@@ -5,6 +5,8 @@ import com.jadencode.main.generate.character.viking.VikingCharacterGenerator;
 import com.jadencode.main.generate.character.viking.VikingSettlementGenerator;
 import com.jadencode.main.generate.item.ItemGenerator;
 import com.jadencode.main.generate.item.instance.Item;
+import com.jadencode.main.renderengine.gui.GuiRenderer;
+import com.jadencode.main.renderengine.gui.GuiTexture;
 import com.jadencode.main.renderengine.toolbox.DisplayManager;
 import com.jadencode.main.renderengine.Loader;
 import com.jadencode.main.renderengine.MasterRenderer;
@@ -19,6 +21,7 @@ import com.jadencode.main.renderengine.textures.TerrainTexture;
 import com.jadencode.main.renderengine.textures.TerrainTexturePack;
 import com.jadencode.main.renderengine.toolbox.OBJLoader;
 import com.jadencode.main.renderengine.toolbox.Time;
+import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
 import java.io.File;
@@ -199,7 +202,11 @@ public class Main {
         ModelTexture texture = new ModelTexture(loader.loadTexture("grass"));
         texture.setShineDamper(10);
         texture.setReflectivity(1);
-        Light light = new Light(new Vector3f(0, 2000, 0), new Vector3f(1, 1, 1));
+        Light light = new Light(new Vector3f(0, 20000, -7000), new Vector3f(1, 1, 1));
+        List<Light> lights = new ArrayList<>();
+        lights.add(light);
+        lights.add(new Light(new Vector3f(-200, 10, -200), new Vector3f(10, 0, 0)));
+        lights.add(new Light(new Vector3f(200, 10, 200), new Vector3f(0, 0, 10)));
 
         Entity entity = new Entity(
                 new TexturedModel(objLoader.loadObjModel("Stall"), new ModelTexture(loader.loadTexture("models/Stall"))),
@@ -220,6 +227,10 @@ public class Main {
         Player player = new Player(entity.getModel(), new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
         Camera camera = new Camera(player);
 
+        List<GuiTexture> guis = new ArrayList<>();
+        guis.add(new GuiTexture(loader.loadTexture("crossbow"), new Vector2f(0.5F, 0.5F), new Vector2f(0.25F, 0.25F)));
+        GuiRenderer guiRenderer = new GuiRenderer(loader);
+
         while (!display.isCloseRequested()) {
             Time.update();
             camera.move();
@@ -228,9 +239,11 @@ public class Main {
             renderer.processEntity(entity);
             renderer.processTerrain(terrain);
 //            terrains.forEach(renderer::processTerrain);
-            renderer.render(light, camera);
+            renderer.render(lights, camera);
+            guiRenderer.render(guis);
             display.update();
         }
+        guiRenderer.cleanUp();
         renderer.cleanUp();
         loader.cleanUp();
         display.destroy();
