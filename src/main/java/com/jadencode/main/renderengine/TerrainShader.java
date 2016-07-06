@@ -1,6 +1,8 @@
 package com.jadencode.main.renderengine;
 
-import com.jadencode.main.renderengine.toolbox.ShaderUniform;
+import com.jadencode.main.renderengine.toolbox.Uniform;
+import com.jadencode.main.renderengine.toolbox.UniformArray;
+import com.jadencode.main.renderengine.toolbox.UniformSingle;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
 
@@ -13,22 +15,22 @@ public class TerrainShader extends ShaderProgram {
     private static final String VERT_FILE = "shaders/terrainVertexShader.glsl";
     private static final String FRAG_FILE = "shaders/terrainFragmentShader.glsl";
 
-    public final ShaderUniform<Matrix4f> TRANSFORMATION_MATRIX = new ShaderUniform<>("transformationMatrix", this, (i, v) -> this.load(i, v));
-    public final ShaderUniform<Matrix4f> PROJECTION_MATRIX = new ShaderUniform<>("projectionMatrix", this, (i, v) -> this.load(i, v));
-    public final ShaderUniform<Matrix4f> VIEW_MATRIX = new ShaderUniform<>("viewMatrix", this, (i, v) -> this.load(i, v));
-    public final ShaderUniform<Float> SHINE_DAMPER = new ShaderUniform<>("shineDamper", this, (i, v) -> this.load(i, v));
-    public final ShaderUniform<Float> REFLECTIVITY = new ShaderUniform<>("reflectivity", this, (i, v) -> this.load(i, v));
-    public final ShaderUniform<Vector3f> SKY_COLOR = new ShaderUniform<>("skyColor", this, (i, v) -> this.load(i, v));
-    public final ShaderUniform<Float> FOG_DENSITY = new ShaderUniform<>("fogDensity", this, (i, v) -> this.load(i, v));
-    public final ShaderUniform<Float> FOG_GRADIENT = new ShaderUniform<>("fogGradient", this, (i, v) -> this.load(i, v));
-    public final ShaderUniform<Integer> BACKGROUND_TEXTURE = new ShaderUniform<>("backgroundTexture", this, (i, v) -> this.load(i, v));
-    public final ShaderUniform<Integer> R_TEXTURE = new ShaderUniform<>("rTexture", this, (i, v) -> this.load(i, v));
-    public final ShaderUniform<Integer> G_TEXTURE = new ShaderUniform<>("gTexture", this, (i, v) -> this.load(i, v));
-    public final ShaderUniform<Integer> B_TEXTURE = new ShaderUniform<>("bTexture", this, (i, v) -> this.load(i, v));
-    public final ShaderUniform<Integer> BLEND_MAP = new ShaderUniform<>("blendMap", this, (i, v) -> this.load(i, v));
-    public final ShaderUniform<Vector3f> LIGHT_POSITION = new ShaderUniform<>("lightPosition", this, (i, v) -> this.load(i, v));
-    public final ShaderUniform<Vector3f> LIGHT_COLOR = new ShaderUniform<>("lightColor", this, (i, v) -> this.load(i, v));
-    public final ShaderUniform<Vector3f> ATTENUATION = new ShaderUniform<>("attenuation", this, (i, v) -> this.load(i, v));
+    public final Uniform<Matrix4f> TRANSFORMATION_MATRIX = new UniformSingle<>("transformationMatrix", this, (i, v) -> this.load(i, v));
+    public final Uniform<Matrix4f> PROJECTION_MATRIX = new UniformSingle<>("projectionMatrix", this, (i, v) -> this.load(i, v));
+    public final Uniform<Matrix4f> VIEW_MATRIX = new UniformSingle<>("viewMatrix", this, (i, v) -> this.load(i, v));
+    public final Uniform<Float> SHINE_DAMPER = new UniformSingle<>("shineDamper", this, (i, v) -> this.load(i, v));
+    public final Uniform<Float> REFLECTIVITY = new UniformSingle<>("reflectivity", this, (i, v) -> this.load(i, v));
+    public final Uniform<Vector3f> SKY_COLOR = new UniformSingle<>("skyColor", this, (i, v) -> this.load(i, v));
+    public final Uniform<Float> FOG_DENSITY = new UniformSingle<>("fogDensity", this, (i, v) -> this.load(i, v));
+    public final Uniform<Float> FOG_GRADIENT = new UniformSingle<>("fogGradient", this, (i, v) -> this.load(i, v));
+    public final Uniform<Integer> BACKGROUND_TEXTURE = new UniformSingle<>("backgroundTexture", this, (i, v) -> this.load(i, v));
+    public final Uniform<Integer> R_TEXTURE = new UniformSingle<>("rTexture", this, (i, v) -> this.load(i, v));
+    public final Uniform<Integer> G_TEXTURE = new UniformSingle<>("gTexture", this, (i, v) -> this.load(i, v));
+    public final Uniform<Integer> B_TEXTURE = new UniformSingle<>("bTexture", this, (i, v) -> this.load(i, v));
+    public final Uniform<Integer> BLEND_MAP = new UniformSingle<>("blendMap", this, (i, v) -> this.load(i, v));
+    public final Uniform<Vector3f> LIGHT_POSITION = new UniformArray<>("lightPosition", this, (i, v) -> this.load(i, v), () -> new Vector3f(0, 0, 0), MAX_LIGHTS);
+    public final Uniform<Vector3f> LIGHT_COLOR = new UniformArray<>("lightColor", this, (i, v) -> this.load(i, v), () -> new Vector3f(0, 0, 0), MAX_LIGHTS);
+    public final Uniform<Vector3f> ATTENUATION = new UniformArray<>("attenuation", this, (i, v) -> this.load(i, v), () -> new Vector3f(1, 0, 0), MAX_LIGHTS);
 
     public TerrainShader() {
         super(VERT_FILE, FRAG_FILE);

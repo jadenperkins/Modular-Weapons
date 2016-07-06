@@ -5,21 +5,18 @@ import com.jadencode.main.renderengine.ShaderProgram;
 import java.util.function.BiConsumer;
 
 /**
- * Created by JPERKI8 on 7/6/2016.
+ * Created by gtrpl on 7/6/2016.
  */
-public class ShaderUniform<T> {
-    private final String name;
+public class UniformSingle<T> extends Uniform<T> {
     private final int location;
     private final BiConsumer<Integer, T> consumer;
 
-    public ShaderUniform(String name, ShaderProgram shaderProgram, BiConsumer<Integer, T> consumer) {
-        this.name = name;
+    public UniformSingle(String name, ShaderProgram shaderProgram, BiConsumer<Integer, T> consumer) {
+        super(name, shaderProgram, consumer);
         this.consumer = consumer;
         this.location = shaderProgram.bindUniform(this);
     }
-    public String getName() {
-        return this.name;
-    }
+    @Override
     public void load(T val) {
         this.consumer.accept(this.location, val);
     }

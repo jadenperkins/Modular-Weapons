@@ -1,6 +1,6 @@
 package com.jadencode.main.renderengine;
 
-import com.jadencode.main.renderengine.toolbox.ShaderUniform;
+import com.jadencode.main.renderengine.toolbox.Uniform;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
@@ -69,14 +69,14 @@ public abstract class ShaderProgram {
         this.uniformLocations.put(name, location);
         return location;
     }
-    public int bindUniform(ShaderUniform uniform) {
+    public int bindUniform(Uniform uniform) {
         return this.bindLocation(uniform.getName());
     }
-    protected int bindUniform(ShaderUniform uniform, int index) {
+    public int bindUniform(Uniform uniform, int index) {
         String resolved = String.format("%s[%d]", uniform.getName(), index);
         return this.bindLocation(resolved);
     }
-    protected int[] bindUniforms(ShaderUniform uniform, int amount) {
+    public int[] bindUniforms(Uniform uniform, int amount) {
         int[] locations = new int[amount];
         for(int i = 0; i < amount; i++) {
             locations[i] = this.bindUniform(uniform, i);
@@ -86,13 +86,13 @@ public abstract class ShaderProgram {
     private int getLocation(String name) {
         return this.uniformLocations.get(name);
     }
-    protected int getLocation(ShaderUniform uniform) {
+    protected int getLocation(Uniform uniform) {
         return this.getLocation(uniform.getName());
     }
-    protected int getLocation(ShaderUniform uniform, int index) {
+    protected int getLocation(Uniform uniform, int index) {
         return this.getLocation(String.format("%s[%d]", uniform.getName(), index));
     }
-    protected int[] getLocations(ShaderUniform uniform, int amount) {
+    protected int[] getLocations(Uniform uniform, int amount) {
         int[] locations = new int[amount];
         for(int i = 0; i < amount; i++) {
             locations[i] = this.getLocation(uniform, i);
@@ -124,35 +124,35 @@ public abstract class ShaderProgram {
     private void loadFloat(int location, float value) {
         GL20.glUniform1f(location, value);
     }
-    public void loadFloat(ShaderUniform<Float> uniform, float value) {
+    public void loadFloat(Uniform<Float> uniform, float value) {
         this.loadFloat(this.getLocation(uniform), value);
     }
 
     private void loadInt(int location, int value) {
         GL20.glUniform1i(location, value);
     }
-    public void loadInt(ShaderUniform<Integer> uniform, int value) {
+    public void loadInt(Uniform<Integer> uniform, int value) {
         this.loadInt(this.getLocation(uniform), value);
     }
 
     private void loadVector(int location, Vector3f value) {
         GL20.glUniform3f(location, value.getX(), value.getY(), value.getZ());
     }
-    public void loadVector(ShaderUniform<Vector3f> uniform, Vector3f value) {
+    public void loadVector(Uniform<Vector3f> uniform, Vector3f value) {
         this.loadVector(this.getLocation(uniform), value);
     }
 
     private void loadVector(int location, Vector2f value) {
         GL20.glUniform2f(location, value.getX(), value.getY());
     }
-    public void loadVector(ShaderUniform<Vector2f> uniform, Vector2f value) {
+    public void loadVector(Uniform<Vector2f> uniform, Vector2f value) {
         this.loadVector(this.getLocation(uniform), value);
     }
 
     private void loadBoolean(int location, boolean value) {
         GL20.glUniform1f(location, value ? 1 : 0);
     }
-    public void loadBoolean(ShaderUniform<Boolean> uniform, boolean value) {
+    public void loadBoolean(Uniform<Boolean> uniform, boolean value) {
         this.loadBoolean(this.getLocation(uniform), value);
     }
 
@@ -161,7 +161,7 @@ public abstract class ShaderProgram {
         matrixBuffer.flip();
         GL20.glUniformMatrix4(location, false, matrixBuffer);
     }
-    public void loadMatrix(ShaderUniform<Matrix4f> uniform, Matrix4f value) {
+    public void loadMatrix(Uniform<Matrix4f> uniform, Matrix4f value) {
         this.loadMatrix(this.getLocation(uniform), value);
     }
 

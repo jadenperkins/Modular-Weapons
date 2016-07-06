@@ -14,6 +14,7 @@ import org.lwjgl.util.vector.Vector3f;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by gtrpl on 7/3/2016.
@@ -74,7 +75,10 @@ public class MasterRenderer {
         this.entityShader.SKY_COLOR.load(new Vector3f(RED, GREEN, BLUE));
         this.entityShader.FOG_DENSITY.load(FOG_DENSITY);
         this.entityShader.FOG_GRADIENT.load(FOG_GRADIENT);
-//        this.entityShader.loadLights(lights);
+        this.entityShader.LIGHT_POSITION.load(lights.stream().map(Light::getPosition).collect(Collectors.toList()));
+        this.entityShader.LIGHT_COLOR.load(lights.stream().map(Light::getColor).collect(Collectors.toList()));
+        this.entityShader.ATTENUATION.load(lights.stream().map(Light::getAttenuation).collect(Collectors.toList()));
+        this.entityShader.loadLights(lights);
         this.entityShader.VIEW_MATRIX.load(Maths.createViewMatrix(camera));
         this.entityRenderer.render(this.entities);
         this.entityShader.stop();
@@ -84,7 +88,9 @@ public class MasterRenderer {
         this.terrainShader.SKY_COLOR.load(new Vector3f(RED, GREEN, BLUE));
         this.terrainShader.FOG_DENSITY.load(FOG_DENSITY);
         this.terrainShader.FOG_GRADIENT.load(FOG_GRADIENT);
-//        this.terrainShader.loadLights(lights);
+        this.terrainShader.LIGHT_POSITION.load(lights.stream().map(Light::getPosition).collect(Collectors.toList()));
+        this.terrainShader.LIGHT_COLOR.load(lights.stream().map(Light::getColor).collect(Collectors.toList()));
+        this.terrainShader.ATTENUATION.load(lights.stream().map(Light::getAttenuation).collect(Collectors.toList()));
         this.terrainShader.VIEW_MATRIX.load(Maths.createViewMatrix(camera));
         this.terrainRenderer.render(this.terrains);
         this.terrainShader.stop();
