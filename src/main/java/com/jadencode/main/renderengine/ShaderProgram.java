@@ -1,5 +1,6 @@
 package com.jadencode.main.renderengine;
 
+import com.sun.javafx.geom.Vec2d;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
@@ -11,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.FloatBuffer;
+import java.util.HashMap;
 
 /**
  * Created by gtrpl on 7/3/2016.
@@ -20,6 +22,7 @@ public abstract class ShaderProgram {
     private int programID;
     private int vertID;
     private int fragID;
+    private final HashMap<String, Integer> attributeLocations = new HashMap<>();
 
     public ShaderProgram(String vertex, String fragment) {
         this.vertID = loadShader(vertex, GL20.GL_VERTEX_SHADER);
@@ -58,8 +61,38 @@ public abstract class ShaderProgram {
         return shaderID;
     }
 
-    protected int getUniformLocation(String uniformName) {
+    private int getUniformLocation(String uniformName) {
         return GL20.glGetUniformLocation(this.programID, uniformName);
+    }
+    protected int bindLocation(String uniformName) {
+        if(this.attributeLocations.containsKey(uniformName)) return this.attributeLocations.get(uniformName);
+        int location = this.getUniformLocation(uniformName);
+        this.attributeLocations.put(uniformName, location);
+        return location;
+    }
+    protected int getLocation(String uniformName) {
+        return this.attributeLocations.get(uniformName);
+    }
+    protected int bindLocation(String uniformName, int index) {
+        String resolved = String.format("%s[%d]", uniformName, index);
+        return this.bindLocation(resolved);
+    }
+    protected int getLocation(String uniformName, int index) {
+        return this.attributeLocations.get(String.format("%s[%d]", uniformName, index));
+    }
+    protected int[] bindLocations(String uniformName, int amount) {
+        int[] locations = new int[amount];
+        for(int i = 0; i < amount; i++) {
+            locations[i] = this.bindLocation(uniformName, i);
+        }
+        return locations;
+    }
+    protected int[] getLocations(String uniformName, int amount) {
+        int[] locations = new int[amount];
+        for(int i = 0; i < amount; i++) {
+            locations[i] = this.getLocation(uniformName, i);
+        }
+        return locations;
     }
 
     public void start() {
@@ -83,29 +116,47 @@ public abstract class ShaderProgram {
         GL20.glBindAttribLocation(this.programID, attribute, variableName);
     }
 
-    protected void loadFloat(int location, float value) {
+    private void loadFloat(int location, float value) {
         GL20.glUniform1f(location, value);
     }
+    protected void loadFloat(String uniform, float value) {
+        this.loadFloat(this.getUniformLocation(uniform), value);
+    }
 
-    protected void loadInt(int location, int value) {
+    private void loadInt(int location, int value) {
         GL20.glUniform1i(location, value);
     }
+    protected void loadInt(String uniform, int value) {
+        this.loadInt(this.getUniformLocation(uniform), value);
+    }
 
-    protected void loadVector(int location, Vector3f value) {
+    private void loadVector(int location, Vector3f value) {
         GL20.glUniform3f(location, value.getX(), value.getY(), value.getZ());
     }
-    protected void loadVector(int location, Vector2f value) {
+    protected void loadVector(String uniform, Vector3f value) {
+        this.loadVector(this.getUniformLocation(uniform), value);
+    }
+    private void loadVector(int location, Vector2f value) {
         GL20.glUniform2f(location, value.getX(), value.getY());
     }
-
-    protected void loadBoolean(int location, boolean value) {
-        GL20.glUniform1f(location, value ? 1 : 0);
+    protected void loadVector(String uniform, Vector2f value) {
+        this.loadVector(this.getUniformLocation(uniform), value);
     }
 
-    protected void loadMatrix(int location, Matrix4f value) {
+    private void loadBoolean(int location, boolean value) {
+        GL20.glUniform1f(location, value ? 1 : 0);
+    }
+    protected void loadBoolean(String uniform, boolean value) {
+        this.loadBoolean(this.getUniformLocation(uniform), value);
+    }
+
+    private void loadMatrix(int location, Matrix4f value) {
         value.store(matrixBuffer);
         matrixBuffer.flip();
         GL20.glUniformMatrix4(location, false, matrixBuffer);
+    }
+    protected void loadMatrix(String uniform, Matrix4f value) {
+        this.loadMatrix(this.getUniformLocation(uniform), value);
     }
 
     protected abstract void getAllUniformLocations();

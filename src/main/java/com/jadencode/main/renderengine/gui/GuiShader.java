@@ -10,17 +10,17 @@ public class GuiShader extends ShaderProgram {
     private static final String VERTEX_FILE = "shaders/guiVertexShader.glsl";
     private static final String FRAGMET_FILE = "shaders/guiFragmentShader.glsl";
 
-    private int location_transformationMatrix;
+    private static final String TRANSFORMATION_MATRIX = "transformationMatrix";
 
     public GuiShader() {
         super(VERTEX_FILE, FRAGMET_FILE);
     }
     public void loadTransformation(Matrix4f matrix) {
-        this.loadMatrix(this.location_transformationMatrix, matrix);
+        this.loadMatrix(TRANSFORMATION_MATRIX, matrix);
     }
     @Override
     protected void getAllUniformLocations() {
-        this.location_transformationMatrix = this.getUniformLocation("transformationMatrix");
+        this.bindLocation(TRANSFORMATION_MATRIX);
     }
     @Override
     public void bindAttributes() {

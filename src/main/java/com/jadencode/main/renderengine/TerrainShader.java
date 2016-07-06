@@ -17,22 +17,22 @@ public class TerrainShader extends ShaderProgram {
     private static final String VERT_FILE = "shaders/terrainVertexShader.glsl";
     private static final String FRAG_FILE = "shaders/terrainFragmentShader.glsl";
 
-    private int location_transformationMatrix;
-    private int location_projectionMatrix;
-    private int location_viewMatrix;
-    private int[] location_lightPosition;
-    private int[] location_lightColor;
-    private int location_shineDamper;
-    private int location_reflectivity;
-    private int location_skyColor;
-    private int location_fogDensity;
-    private int location_fogGradient;
-    private int location_backgroundTexture;
-    private int location_rTexture;
-    private int location_gTexture;
-    private int location_bTexture;
-    private int location_blendMap;
-    private int[] location_attenuation;
+    private static final String TRANSFORMATION_MATRIX = "transformationMatrix";
+    private static final String PROJECTION_MATRIX = "projectionMatrix";
+    private static final String VIEW_MATRIX = "viewMatrix";
+    private static final String SHINE_DAMPER = "shineDamper";
+    private static final String REFLECTIVITY = "reflectivity";
+    private static final String SKY_COLOR = "skyColor";
+    private static final String FOG_DENSITY = "fogDensity";
+    private static final String FOG_GRADIENT = "fogGradient";
+    private static final String BACKGROUND_TEXTURE = "backgroundTexture";
+    private static final String R_TEXTURE = "rTexture";
+    private static final String G_TEXTURE = "gTexture";
+    private static final String B_TEXTURE = "bTexture";
+    private static final String BLEND_MAP = "blendMap";
+    private static final String LIGHT_POSITION = "lightPosition";
+    private static final String LIGHT_COLOR = "lightColor";
+    private static final String ATTENUATION = "attenuation";
 
     public TerrainShader() {
         super(VERT_FILE, FRAG_FILE);
@@ -44,80 +44,71 @@ public class TerrainShader extends ShaderProgram {
         this.bindAttribute(1, "textureCoords");
         this.bindAttribute(2, "normal");
     }
-
     @Override
     protected void getAllUniformLocations() {
-        this.location_transformationMatrix = this.getUniformLocation("transformationMatrix");
-        this.location_projectionMatrix = this.getUniformLocation("projectionMatrix");
-        this.location_viewMatrix = this.getUniformLocation("viewMatrix");
-        this.location_shineDamper = this.getUniformLocation("shineDamper");
-        this.location_reflectivity = this.getUniformLocation("reflectivity");
-        this.location_skyColor = this.getUniformLocation("skyColor");
-        this.location_backgroundTexture = this.getUniformLocation("backgroundTexture");
-        this.location_rTexture = this.getUniformLocation("rTexture");
-        this.location_gTexture = this.getUniformLocation("gTexture");
-        this.location_bTexture = this.getUniformLocation("bTexture");
-        this.location_blendMap = this.getUniformLocation("blendMap");
-        this.location_fogDensity = this.getUniformLocation("fogDensity");
-        this.location_fogGradient = this.getUniformLocation("fogGradient");
+        this.bindLocation(TRANSFORMATION_MATRIX);
+        this.bindLocation(PROJECTION_MATRIX);
+        this.bindLocation(VIEW_MATRIX);
+        this.bindLocation(SHINE_DAMPER);
+        this.bindLocation(REFLECTIVITY);
+        this.bindLocation(SKY_COLOR);
+        this.bindLocation(BACKGROUND_TEXTURE);
+        this.bindLocation(R_TEXTURE);
+        this.bindLocation(G_TEXTURE);
+        this.bindLocation(B_TEXTURE);
+        this.bindLocation(BLEND_MAP);
+        this.bindLocation(FOG_DENSITY);
+        this.bindLocation(FOG_GRADIENT);
 
-        this.location_lightPosition = new int[MAX_LIGHTS];
-        this.location_lightColor = new int[MAX_LIGHTS];
-        this.location_attenuation = new int[MAX_LIGHTS];
-
-        for(int i = 0; i < MAX_LIGHTS; i++) {
-            this.location_lightPosition[i] = this.getUniformLocation("lightPosition[" + i + "]");
-            this.location_lightColor[i] = this.getUniformLocation("lightColor[" + i + "]");
-            this.location_attenuation[i] = this.getUniformLocation("attenuation[" + i + "]");
-        }
+        this.bindLocations(LIGHT_POSITION, MAX_LIGHTS);
+        this.bindLocations(LIGHT_COLOR, MAX_LIGHTS);
+        this.bindLocations(ATTENUATION, MAX_LIGHTS);
     }
-
     public void connectTextureUnits() {
-        this.loadInt(this.location_backgroundTexture, 0);
-        this.loadInt(this.location_rTexture, 1);
-        this.loadInt(this.location_gTexture, 2);
-        this.loadInt(this.location_bTexture, 3);
-        this.loadInt(this.location_blendMap, 4);
+        this.loadInt(BACKGROUND_TEXTURE, 0);
+        this.loadInt(R_TEXTURE, 1);
+        this.loadInt(G_TEXTURE, 2);
+        this.loadInt(B_TEXTURE, 3);
+        this.loadInt(BLEND_MAP, 4);
     }
-
     public void loadSkyColor(Vector3f skyColor) {
-        this.loadVector(this.location_skyColor, skyColor);
+        this.loadVector(SKY_COLOR, skyColor);
     }
 
     public void loadShineVariables(float damper, float reflect) {
-        this.loadFloat(this.location_shineDamper, damper);
-        this.loadFloat(this.location_reflectivity, reflect);
+        this.loadFloat(SHINE_DAMPER, damper);
+        this.loadFloat(REFLECTIVITY, reflect);
     }
 
     public void loadTransformationMatrix(Matrix4f matrix) {
-        this.loadMatrix(this.location_transformationMatrix, matrix);
+        this.loadMatrix(TRANSFORMATION_MATRIX, matrix);
     }
 
     public void loadLights(List<Light> lights) {
         for(int i = 0; i < MAX_LIGHTS; i++) {
             if(i < lights.size()) {
-                this.loadVector(this.location_lightPosition[i], lights.get(i).getPosition());
-                this.loadVector(this.location_lightColor[i], lights.get(i).getColor());
-                this.loadVector(this.location_attenuation[i], lights.get(i).getAttenuation());
+                this.loadVector(LIGHT_POSITION + "[" + i + "]", lights.get(i).getPosition());
+                this.loadVector(LIGHT_COLOR + "[" + i + "]", lights.get(i).getColor());
+                this.loadVector(ATTENUATION + "[" + i + "]", lights.get(i).getAttenuation());
             } else {
-                this.loadVector(this.location_lightPosition[i], new Vector3f(0, 0, 0));
-                this.loadVector(this.location_lightColor[i], new Vector3f(0, 0, 0));
-                this.loadVector(this.location_attenuation[i], new Vector3f(1, 0, 0));
+                this.loadVector(LIGHT_POSITION + "[" + i + "]", new Vector3f(0, 0, 0));
+                this.loadVector(LIGHT_COLOR + "[" + i + "]", new Vector3f(0, 0, 0));
+                this.loadVector(ATTENUATION + "[" + i + "]", new Vector3f(1, 0, 0));
             }
         }
     }
 
     public void loadViewMatrix(Camera camera) {
         Matrix4f matrix = Maths.createViewMatrix(camera);
-        this.loadMatrix(this.location_viewMatrix, matrix);
+        this.loadMatrix(VIEW_MATRIX, matrix);
     }
 
     public void loadProjectionMatrix(Matrix4f matrix) {
-        this.loadMatrix(this.location_projectionMatrix, matrix);
+        this.loadMatrix(PROJECTION_MATRIX, matrix);
     }
 
     public void loadFogValues(float density, float gradient) {
-        this.loadFloat(location_fogDensity, density);
-        this.loadFloat(location_fogGradient, gradient);
+        this.loadFloat(FOG_DENSITY, density);
+        this.loadFloat(FOG_GRADIENT, gradient);
     }
 }
