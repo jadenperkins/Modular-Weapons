@@ -15,8 +15,8 @@ import java.util.List;
 public class EntityShader extends ShaderProgram {
     private static final String SRC_PATH = "";
     private static final int MAX_LIGHTS = 4;
-    private static final String VERT_FILE = "shaders/vertexShader.glsl";
-    private static final String FRAG_FILE = "shaders/fragmentShader.glsl";
+    private static final String VERT_FILE = "shaders/entityVertexShader.glsl";
+    private static final String FRAG_FILE = "shaders/entityFragmentShader.glsl";
 
     private int location_transformationMatrix;
     private int location_projectionMatrix;
@@ -31,6 +31,7 @@ public class EntityShader extends ShaderProgram {
     private int location_skyColor;
     private int location_numberOfRows;
     private int location_offset;
+    private int[] location_attenuation;
 
     public EntityShader() {
         super(VERT_FILE, FRAG_FILE);
@@ -59,10 +60,12 @@ public class EntityShader extends ShaderProgram {
 
         this.location_lightPosition = new int[MAX_LIGHTS];
         this.location_lightColor = new int[MAX_LIGHTS];
+        this.location_attenuation = new int[MAX_LIGHTS];
 
         for(int i = 0; i < MAX_LIGHTS; i++) {
             this.location_lightPosition[i] = this.getUniformLocation("lightPosition[" + i + "]");
             this.location_lightColor[i] = this.getUniformLocation("lightColor[" + i + "]");
+            this.location_attenuation[i] = this.getUniformLocation("attenuation[" + i + "]");
         }
     }
 
@@ -70,8 +73,8 @@ public class EntityShader extends ShaderProgram {
         this.loadFloat(location_fogDensity, density);
         this.loadFloat(location_fogGradient, gradient);
     }
-    public void loadNumberOfROws(int num) {
-        this.loadInt(this.location_numberOfRows, num);
+    public void loadNumberOfRows(int num) {
+        this.loadFloat(this.location_numberOfRows, num);
     }
     public void loadOffset(Vector2f offset) {
         this.loadVector(this.location_offset, offset);
@@ -98,9 +101,11 @@ public class EntityShader extends ShaderProgram {
             if(i < lights.size()) {
                 this.loadVector(this.location_lightPosition[i], lights.get(i).getPosition());
                 this.loadVector(this.location_lightColor[i], lights.get(i).getColor());
+                this.loadVector(this.location_attenuation[i], lights.get(i).getAttenuation());
             } else {
                 this.loadVector(this.location_lightPosition[i], new Vector3f(0, 0, 0));
                 this.loadVector(this.location_lightColor[i], new Vector3f(0, 0, 0));
+                this.loadVector(this.location_attenuation[i], new Vector3f(1, 0, 0));
             }
         }
     }

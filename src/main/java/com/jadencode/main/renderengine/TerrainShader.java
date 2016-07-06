@@ -32,6 +32,7 @@ public class TerrainShader extends ShaderProgram {
     private int location_gTexture;
     private int location_bTexture;
     private int location_blendMap;
+    private int[] location_attenuation;
 
     public TerrainShader() {
         super(VERT_FILE, FRAG_FILE);
@@ -62,10 +63,12 @@ public class TerrainShader extends ShaderProgram {
 
         this.location_lightPosition = new int[MAX_LIGHTS];
         this.location_lightColor = new int[MAX_LIGHTS];
+        this.location_attenuation = new int[MAX_LIGHTS];
 
         for(int i = 0; i < MAX_LIGHTS; i++) {
             this.location_lightPosition[i] = this.getUniformLocation("lightPosition[" + i + "]");
             this.location_lightColor[i] = this.getUniformLocation("lightColor[" + i + "]");
+            this.location_attenuation[i] = this.getUniformLocation("attenuation[" + i + "]");
         }
     }
 
@@ -95,9 +98,11 @@ public class TerrainShader extends ShaderProgram {
             if(i < lights.size()) {
                 this.loadVector(this.location_lightPosition[i], lights.get(i).getPosition());
                 this.loadVector(this.location_lightColor[i], lights.get(i).getColor());
+                this.loadVector(this.location_attenuation[i], lights.get(i).getAttenuation());
             } else {
                 this.loadVector(this.location_lightPosition[i], new Vector3f(0, 0, 0));
                 this.loadVector(this.location_lightColor[i], new Vector3f(0, 0, 0));
+                this.loadVector(this.location_attenuation[i], new Vector3f(1, 0, 0));
             }
         }
     }

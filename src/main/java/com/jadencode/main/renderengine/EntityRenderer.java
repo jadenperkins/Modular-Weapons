@@ -48,7 +48,7 @@ public class EntityRenderer {
         GL20.glEnableVertexAttribArray(2);
 
         ModelTexture texture = texturedModel.getTexture();
-        shader.loadNumberOfROws(texture.getNumberOfRows());
+        shader.loadNumberOfRows(texture.getNumberOfRows());
         if (texture.getHasTransparency()) MasterRenderer.disableCulling();
         this.shader.loadUseFakeLighting(texture.getUseFakeLighting());
         shader.loadShineVariables(texture.getShineDamper(), texture.getReflectivity());

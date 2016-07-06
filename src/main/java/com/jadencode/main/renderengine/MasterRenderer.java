@@ -22,12 +22,12 @@ public class MasterRenderer {
     private static final float nearPlane = 0.1F;
     private static final float farPlane = 1000F;
 
-    private static final float RED = 0.5F;
-    private static final float GREEN = 0.5F;
-    private static final float BLUE = 0.5F;
+    private static final float RED = 0.7F;
+    private static final float GREEN = 0.7F;
+    private static final float BLUE = 0.7F;
 
     private static final float FOG_DENSITY = 0.007f;
-    private static final float FOG_GRADIENT = 4.0f;
+    private static final float FOG_GRADIENT = 5.0f;
 
     private Matrix4f projectionMatrix = createProjectionMatrix();
 
