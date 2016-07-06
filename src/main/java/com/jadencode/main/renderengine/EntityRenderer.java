@@ -24,7 +24,7 @@ public class EntityRenderer {
     public EntityRenderer(EntityShader shader, Matrix4f projectionMatrix) {
         this.shader = shader;
         shader.start();
-        shader.loadProjectionMatrix(projectionMatrix);
+        shader.PROJECTION_MATRIX.load(projectionMatrix);
         shader.stop();
     }
 
@@ -48,10 +48,11 @@ public class EntityRenderer {
         GL20.glEnableVertexAttribArray(2);
 
         ModelTexture texture = texturedModel.getTexture();
-        shader.loadNumberOfRows(texture.getNumberOfRows());
+        this.shader.NUMBER_OF_ROWS.load(texture.getNumberOfRows());
         if (texture.getHasTransparency()) MasterRenderer.disableCulling();
-        this.shader.loadUseFakeLighting(texture.getUseFakeLighting());
-        shader.loadShineVariables(texture.getShineDamper(), texture.getReflectivity());
+        this.shader.USE_FAKE_LIGHTING.load(texture.getUseFakeLighting());
+        this.shader.SHINE_DAMPER.load(texture.getShineDamper());
+        this.shader.REFLECTIVITY.load(texture.getReflectivity());
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, texturedModel.getTexture().getTextureID());
     }
@@ -66,7 +67,7 @@ public class EntityRenderer {
 
     private void prepareInstance(Entity entity) {
         Matrix4f transform = Maths.createTransformationMatrix(entity);
-        shader.loadTransformationMatrix(transform);
-        shader.loadOffset(entity.getTextureOffset());
+        this.shader.TRANSFORMATION_MATRIX.load(transform);
+        this.shader.OFFSET.load(entity.getTextureOffset());
     }
 }

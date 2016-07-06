@@ -5,6 +5,7 @@ import com.jadencode.main.renderengine.entities.Entity;
 import com.jadencode.main.renderengine.entities.Light;
 import com.jadencode.main.renderengine.models.TexturedModel;
 import com.jadencode.main.renderengine.terrain.Terrain;
+import com.jadencode.main.renderengine.toolbox.Maths;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Matrix4f;
@@ -70,19 +71,21 @@ public class MasterRenderer {
     public void render(List<Light> lights, Camera camera) {
         this.prepare();
         this.entityShader.start();
-        this.entityShader.loadSkyColor(new Vector3f(RED, GREEN, BLUE));
-        this.entityShader.loadFogValues(FOG_DENSITY, FOG_GRADIENT);
-        this.entityShader.loadLights(lights);
-        this.entityShader.loadViewMatrix(camera);
+        this.entityShader.SKY_COLOR.load(new Vector3f(RED, GREEN, BLUE));
+        this.entityShader.FOG_DENSITY.load(FOG_DENSITY);
+        this.entityShader.FOG_GRADIENT.load(FOG_GRADIENT);
+//        this.entityShader.loadLights(lights);
+        this.entityShader.VIEW_MATRIX.load(Maths.createViewMatrix(camera));
         this.entityRenderer.render(this.entities);
         this.entityShader.stop();
         this.entities.clear();
 
         this.terrainShader.start();
-        this.terrainShader.loadSkyColor(new Vector3f(RED, GREEN, BLUE));
-        this.terrainShader.loadFogValues(FOG_DENSITY, FOG_GRADIENT);
-        this.terrainShader.loadLights(lights);
-        this.terrainShader.loadViewMatrix(camera);
+        this.terrainShader.SKY_COLOR.load(new Vector3f(RED, GREEN, BLUE));
+        this.terrainShader.FOG_DENSITY.load(FOG_DENSITY);
+        this.terrainShader.FOG_GRADIENT.load(FOG_GRADIENT);
+//        this.terrainShader.loadLights(lights);
+        this.terrainShader.VIEW_MATRIX.load(Maths.createViewMatrix(camera));
         this.terrainRenderer.render(this.terrains);
         this.terrainShader.stop();
         this.terrains.clear();

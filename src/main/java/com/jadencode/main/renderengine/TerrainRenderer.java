@@ -20,7 +20,7 @@ public class TerrainRenderer {
     public TerrainRenderer(TerrainShader shader, Matrix4f projectionMatrix) {
         this.shader = shader;
         shader.start();
-        shader.loadProjectionMatrix(projectionMatrix);
+        shader.PROJECTION_MATRIX.load(projectionMatrix);
         shader.connectTextureUnits();
         shader.stop();
     }
@@ -42,19 +42,17 @@ public class TerrainRenderer {
         GL20.glEnableVertexAttribArray(2);
 
         terrain.bindTextures();
-
-        this.shader.loadShineVariables(1, 0);
+        this.shader.SHINE_DAMPER.load(1F);
+        this.shader.REFLECTIVITY.load(0F);
     }
-
     private void unbindTexturedModel() {
         GL20.glDisableVertexAttribArray(0);
         GL20.glDisableVertexAttribArray(1);
         GL20.glDisableVertexAttribArray(2);
         GL30.glBindVertexArray(0);
     }
-
     private void loadModelMatrix(Terrain terrain) {
         Matrix4f transform = Maths.createTransformationMatrix(terrain);
-        shader.loadTransformationMatrix(transform);
+        this.shader.TRANSFORMATION_MATRIX.load(transform);
     }
 }
