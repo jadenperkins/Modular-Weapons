@@ -4,6 +4,7 @@ import com.jadencode.main.renderengine.entities.Camera;
 import com.jadencode.main.renderengine.entities.Entity;
 import com.jadencode.main.renderengine.entities.Light;
 import com.jadencode.main.renderengine.models.TexturedModel;
+import com.jadencode.main.renderengine.skybox.SkyboxRenderer;
 import com.jadencode.main.renderengine.terrain.Terrain;
 import com.jadencode.main.renderengine.toolbox.Maths;
 import org.lwjgl.opengl.Display;
@@ -41,8 +42,11 @@ public class MasterRenderer {
     private TerrainRenderer terrainRenderer = new TerrainRenderer(terrainShader, projectionMatrix);
     private List<Terrain> terrains = new ArrayList<>();
 
-    public MasterRenderer() {
+    private SkyboxRenderer skyboxRenderer;
+
+    public MasterRenderer(Loader loader) {
         enableCulling();
+        this.skyboxRenderer = new SkyboxRenderer(loader, this.projectionMatrix);
     }
 
     public static void enableCulling() {
@@ -70,9 +74,10 @@ public class MasterRenderer {
     }
 
     public void render(List<Light> lights, Camera camera) {
+        Vector3f fogColor = new Vector3f(RED, GREEN, BLUE);
         this.prepare();
         this.entityShader.start();
-        this.entityShader.SKY_COLOR.load(new Vector3f(RED, GREEN, BLUE));
+        this.entityShader.SKY_COLOR.load(fogColor);
         this.entityShader.FOG_DENSITY.load(FOG_DENSITY);
         this.entityShader.FOG_GRADIENT.load(FOG_GRADIENT);
         this.entityShader.LIGHT_POSITION.load(lights.stream().map(Light::getPosition).collect(Collectors.toList()));
@@ -85,7 +90,7 @@ public class MasterRenderer {
         this.entities.clear();
 
         this.terrainShader.start();
-        this.terrainShader.SKY_COLOR.load(new Vector3f(RED, GREEN, BLUE));
+        this.terrainShader.SKY_COLOR.load(fogColor);
         this.terrainShader.FOG_DENSITY.load(FOG_DENSITY);
         this.terrainShader.FOG_GRADIENT.load(FOG_GRADIENT);
         this.terrainShader.LIGHT_POSITION.load(lights.stream().map(Light::getPosition).collect(Collectors.toList()));
@@ -95,6 +100,8 @@ public class MasterRenderer {
         this.terrainRenderer.render(this.terrains);
         this.terrainShader.stop();
         this.terrains.clear();
+
+        this.skyboxRenderer.render(camera, fogColor);
     }
 
     public void processTerrain(Terrain terrain) {

@@ -20,7 +20,7 @@ public class GuiRenderer {
     private GuiShader shader;
 
     public GuiRenderer(Loader loader) {
-        this.quad = loader.loadToVAO(COORDINATES);
+        this.quad = loader.loadToVAO(COORDINATES, 2);
         this.shader = new GuiShader();
     }
     public void render(List<GuiTexture> guis) {
