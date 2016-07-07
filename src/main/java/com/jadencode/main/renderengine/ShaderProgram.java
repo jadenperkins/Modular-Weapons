@@ -7,6 +7,7 @@ import org.lwjgl.opengl.GL20;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
+import org.lwjgl.util.vector.Vector4f;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -142,6 +143,13 @@ public abstract class ShaderProgram {
         this.loadVector(this.getLocation(uniform), value);
     }
 
+    private void loadVector(int location, Vector4f value) {
+        GL20.glUniform4f(location, value.getX(), value.getY(), value.getZ(), value.getW());
+    }
+    public void loadVector(Uniform<Vector4f> uniform, Vector4f value) {
+        this.loadVector(this.getLocation(uniform), value);
+    }
+
     private void loadVector(int location, Vector2f value) {
         GL20.glUniform2f(location, value.getX(), value.getY());
     }
@@ -171,10 +179,13 @@ public abstract class ShaderProgram {
     protected void load(int uniform, int value) {
         this.loadInt(uniform, value);
     }
+    protected void load(int uniform, Vector2f value) {
+        this.loadVector(uniform, value);
+    }
     protected void load(int uniform, Vector3f value) {
         this.loadVector(uniform, value);
     }
-    protected void load(int uniform, Vector2f value) {
+    protected void load(int uniform, Vector4f value) {
         this.loadVector(uniform, value);
     }
     protected void load(int uniform, boolean value) {

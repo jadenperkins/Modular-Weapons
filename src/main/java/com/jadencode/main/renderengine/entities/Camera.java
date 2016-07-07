@@ -61,7 +61,9 @@ public class Camera {
             this.angleAround -= angleChange;
         }
     }
-
+    public void invertPitch() {
+        this.pitch = -this.pitch;
+    }
     public Vector3f getPosition() {
         return position;
     }

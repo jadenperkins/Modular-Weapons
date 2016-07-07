@@ -7,6 +7,7 @@ import com.jadencode.main.generate.item.ItemGenerator;
 import com.jadencode.main.generate.item.instance.Item;
 import com.jadencode.main.renderengine.gui.GuiRenderer;
 import com.jadencode.main.renderengine.gui.GuiTexture;
+import com.jadencode.main.renderengine.terrain.*;
 import com.jadencode.main.renderengine.toolbox.DisplayManager;
 import com.jadencode.main.renderengine.Loader;
 import com.jadencode.main.renderengine.MasterRenderer;
@@ -15,14 +16,17 @@ import com.jadencode.main.renderengine.entities.Entity;
 import com.jadencode.main.renderengine.entities.Light;
 import com.jadencode.main.renderengine.entities.Player;
 import com.jadencode.main.renderengine.models.TexturedModel;
-import com.jadencode.main.renderengine.terrain.Terrain;
 import com.jadencode.main.renderengine.textures.ModelTexture;
 import com.jadencode.main.renderengine.textures.TerrainTexture;
 import com.jadencode.main.renderengine.textures.TerrainTexturePack;
+import com.jadencode.main.renderengine.toolbox.MousePicker;
 import com.jadencode.main.renderengine.toolbox.OBJLoader;
 import com.jadencode.main.renderengine.toolbox.Time;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL30;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
+import org.lwjgl.util.vector.Vector4f;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -68,35 +72,64 @@ public class Main {
         MasterRenderer renderer = new MasterRenderer(loader);
         List<Terrain> terrains = new ArrayList<>();
 
-//        int rad = 3;
-//        for (int i = -rad; i <= rad; i++) {
-//            for (int j = -rad; j <= rad; j++) {
-//                terrains.add(new Terrain(i, j, loader, texturePack, blendMap, "heightmap"));
-//            }
-//        }
-
+        List<Entity> entities = new ArrayList<>();
         Terrain terrain = new Terrain(0, -1, loader, texturePack, blendMap, "heightmap");
+        terrains.add(terrain);
 
         Player player = new Player(entity.getModel(), new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
         Camera camera = new Camera(player);
+        entities.add(player);
+        entities.add(entity);
+
+        WaterShader waterShader = new WaterShader();
+        WaterRenderer waterRenderer = new WaterRenderer(loader, waterShader, renderer.getProjectionMatrix());
+        List<WaterTile> waters = new ArrayList<>();
+        WaterTile water = new WaterTile(75, -75, 5);
+        waters.add(water);
 
         List<GuiTexture> guis = new ArrayList<>();
-        guis.add(new GuiTexture(loader.loadTexture("crossbow"), new Vector2f(0.5F, 0.5F), new Vector2f(0.25F, 0.25F)));
         GuiRenderer guiRenderer = new GuiRenderer(loader);
 
-//        passTextureCoords = (textureCoords / numberOfRows) + offset;
+        MousePicker picker = new MousePicker(camera, renderer.getProjectionMatrix(), terrain);
+
+        WaterFrameBuffers fbos = new WaterFrameBuffers();
+
+        GuiTexture refraction = new GuiTexture(fbos.getRefractionTexture(), new Vector2f(0.5F, 0.5F), new Vector2f(0.25F, 0.25F));
+        GuiTexture reflection = new GuiTexture(fbos.getReflectionTexture(), new Vector2f(-0.5F, 0.5F), new Vector2f(0.25F, 0.25F));
+        guis.add(reflection);
+        guis.add(refraction);
+
         while (!display.isCloseRequested()) {
             Time.update();
             camera.move();
             player.move(terrain);
-            renderer.processEntity(player);
-            renderer.processEntity(entity);
-            renderer.processTerrain(terrain);
-//            terrains.forEach(renderer::processTerrain);
-            renderer.render(lights, camera);
+            picker.update();
+
+            GL11.glEnable(GL30.GL_CLIP_DISTANCE0);
+
+            fbos.bindReflectionFrameBuffer();
+            float distance = 2 * (camera.getPosition().y - water.getTranslation().getY());
+            camera.getPosition().y -= distance;
+            camera.invertPitch();
+            renderer.renderScene(entities, terrains, lights, camera, new Vector4f(0, 1, 0, -water.getTranslation().getY()));
+            camera.getPosition().y += distance;
+            camera.invertPitch();
+
+            fbos.bindRefractionFrameBuffer();
+            renderer.renderScene(entities, terrains, lights, camera, new Vector4f(0, -1, 0, water.getTranslation().getY()));
+
+            GL11.glDisable(GL30.GL_CLIP_DISTANCE0);
+
+            fbos.unbindCurrentFrameBuffer();
+
+            renderer.renderScene(entities, terrains, lights, camera, new Vector4f(0, 1, 0, 10000));
+            waterRenderer.render(waters, camera);
             guiRenderer.render(guis);
+
             display.update();
         }
+        fbos.cleanUp();
+        waterShader.cleanUp();
         guiRenderer.cleanUp();
         renderer.cleanUp();
         loader.cleanUp();

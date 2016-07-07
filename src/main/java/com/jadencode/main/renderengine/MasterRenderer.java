@@ -11,6 +11,7 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
+import org.lwjgl.util.vector.Vector4f;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -72,24 +73,29 @@ public class MasterRenderer {
         projectionMatrix.m33 = 0;
         return projectionMatrix;
     }
-
-    public void render(List<Light> lights, Camera camera) {
+    public void renderScene(List<Entity> entities, List<Terrain> terrains, List<Light> lights, Camera camera, Vector4f clipPlane) {
+        terrains.forEach(this::processTerrain);
+        entities.forEach(this::processEntity);
+        render(lights, camera, clipPlane);
+    }
+    public void render(List<Light> lights, Camera camera, Vector4f clipPlane) {
         Vector3f fogColor = new Vector3f(RED, GREEN, BLUE);
         this.prepare();
         this.entityShader.start();
+        this.entityShader.CLIP_PLANE.load(clipPlane);
         this.entityShader.SKY_COLOR.load(fogColor);
         this.entityShader.FOG_DENSITY.load(FOG_DENSITY);
         this.entityShader.FOG_GRADIENT.load(FOG_GRADIENT);
         this.entityShader.LIGHT_POSITION.load(lights.stream().map(Light::getPosition).collect(Collectors.toList()));
         this.entityShader.LIGHT_COLOR.load(lights.stream().map(Light::getColor).collect(Collectors.toList()));
         this.entityShader.ATTENUATION.load(lights.stream().map(Light::getAttenuation).collect(Collectors.toList()));
-        this.entityShader.loadLights(lights);
         this.entityShader.VIEW_MATRIX.load(Maths.createViewMatrix(camera));
         this.entityRenderer.render(this.entities);
         this.entityShader.stop();
         this.entities.clear();
 
         this.terrainShader.start();
+        this.terrainShader.CLIP_PLANE.load(clipPlane);
         this.terrainShader.SKY_COLOR.load(fogColor);
         this.terrainShader.FOG_DENSITY.load(FOG_DENSITY);
         this.terrainShader.FOG_GRADIENT.load(FOG_GRADIENT);
@@ -102,6 +108,9 @@ public class MasterRenderer {
         this.terrains.clear();
 
         this.skyboxRenderer.render(camera, fogColor);
+    }
+    public Matrix4f getProjectionMatrix() {
+        return projectionMatrix;
     }
 
     public void processTerrain(Terrain terrain) {
