@@ -10,6 +10,8 @@ public class ModelTexture {
     private boolean hasTransparency = false;
     private boolean useFakeLighting = false;
 
+    private int normalMap;
+
     private int numberOfRows = 1;
 
     public ModelTexture(int id) {
@@ -19,6 +21,12 @@ public class ModelTexture {
         this.numberOfRows = numberOfRows;
     }
 
+    public int getNormalMap() {
+        return normalMap;
+    }
+    public void setNormalMap(int normalMap) {
+        this.normalMap = normalMap;
+    }
     public int getNumberOfRows() {
         return numberOfRows;
     }

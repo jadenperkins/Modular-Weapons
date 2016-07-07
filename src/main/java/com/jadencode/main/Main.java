@@ -8,7 +8,7 @@ import com.jadencode.main.generate.item.instance.Item;
 import com.jadencode.main.renderengine.gui.GuiRenderer;
 import com.jadencode.main.renderengine.gui.GuiTexture;
 import com.jadencode.main.renderengine.terrain.*;
-import com.jadencode.main.renderengine.toolbox.DisplayManager;
+import com.jadencode.main.renderengine.toolbox.*;
 import com.jadencode.main.renderengine.Loader;
 import com.jadencode.main.renderengine.MasterRenderer;
 import com.jadencode.main.renderengine.entities.Camera;
@@ -19,9 +19,6 @@ import com.jadencode.main.renderengine.models.TexturedModel;
 import com.jadencode.main.renderengine.textures.ModelTexture;
 import com.jadencode.main.renderengine.textures.TerrainTexture;
 import com.jadencode.main.renderengine.textures.TerrainTexturePack;
-import com.jadencode.main.renderengine.toolbox.MousePicker;
-import com.jadencode.main.renderengine.toolbox.OBJLoader;
-import com.jadencode.main.renderengine.toolbox.Time;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.util.vector.Vector2f;
@@ -81,6 +78,13 @@ public class Main {
         entities.add(player);
         entities.add(entity);
 
+        List<Entity> normalMapEntities = new ArrayList<>();
+        TexturedModel barrelModel = new TexturedModel(NormalMappedObjLoader.loadOBJ("barrel", loader), new ModelTexture(loader.loadTexture("models/barrel")));
+//        barrelModel.getTexture().setShineDamper(10);
+//        barrelModel.getTexture().setReflectivity(0.5F);
+        barrelModel.getTexture().setNormalMap(loader.loadTexture("models/barrelNormal"));
+
+        normalMapEntities.add(new Entity(barrelModel, new Vector3f(0, 10, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1)));
 
         WaterFrameBuffers fbos = new WaterFrameBuffers();
 
@@ -107,18 +111,18 @@ public class Main {
             float distance = 2 * (camera.getPosition().y - water.getTranslation().getY());
             camera.getPosition().y -= distance;
             camera.invertPitch();
-            renderer.renderScene(entities, terrains, lights, camera, new Vector4f(0, 1, 0, -water.getTranslation().getY() + 1F));
+            renderer.renderScene(entities, normalMapEntities, terrains, lights, camera, new Vector4f(0, 1, 0, -water.getTranslation().getY() + 1F));
             camera.getPosition().y += distance;
             camera.invertPitch();
 
             fbos.bindRefractionFrameBuffer();
-            renderer.renderScene(entities, terrains, lights, camera, new Vector4f(0, -1, 0, water.getTranslation().getY()));
+            renderer.renderScene(entities, normalMapEntities, terrains, lights, camera, new Vector4f(0, -1, 0, water.getTranslation().getY()));
 
             GL11.glDisable(GL30.GL_CLIP_DISTANCE0);
 
             fbos.unbindCurrentFrameBuffer();
 
-            renderer.renderScene(entities, terrains, lights, camera, new Vector4f(0, 1, 0, 10000));
+            renderer.renderScene(entities, normalMapEntities, terrains, lights, camera, new Vector4f(0, 1, 0, 10000));
             waterRenderer.render(waters, camera, sun);
             guiRenderer.render(guis);
 

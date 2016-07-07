@@ -47,7 +47,4 @@ public class EntityShader extends ShaderProgram {
         this.bindAttribute(1, "textureCoords");
         this.bindAttribute(2, "normal");
     }
-    @Override
-    protected void getAllUniformLocations() {
-    }
 }

@@ -34,7 +34,6 @@ public abstract class ShaderProgram {
         this.bindAttributes();
         GL20.glLinkProgram(this.programID);
         GL20.glValidateProgram(this.programID);
-        this.getAllUniformLocations();
     }
 
     private static int loadShader(String file, int type) {
@@ -196,6 +195,5 @@ public abstract class ShaderProgram {
     }
 
 
-    protected abstract void getAllUniformLocations();
     public abstract void bindAttributes();
 }

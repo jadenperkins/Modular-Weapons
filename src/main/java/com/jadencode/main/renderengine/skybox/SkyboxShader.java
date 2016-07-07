@@ -28,9 +28,6 @@ public class SkyboxShader extends ShaderProgram {
         this.loadInt(CUBE_MAP_2, 1);
     }
 	@Override
-	protected void getAllUniformLocations() {
-	}
-	@Override
 	public void bindAttributes() {
 		this.bindAttribute(0, "position");
 	}

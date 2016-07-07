@@ -17,13 +17,6 @@ public class GuiShader extends ShaderProgram {
     public GuiShader() {
         super(VERTEX_FILE, FRAGMET_FILE);
     }
-//    public void loadTransformation(Matrix4f matrix) {
-//        this.loadMatrix(TRANSFORMATION_MATRIX, matrix);
-//    }
-    @Override
-    protected void getAllUniformLocations() {
-//        this.bindLocation(TRANSFORMATION_MATRIX);
-    }
     @Override
     public void bindAttributes() {
         this.bindAttribute(0, "position");

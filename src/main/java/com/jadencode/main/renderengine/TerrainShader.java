@@ -44,9 +44,6 @@ public class TerrainShader extends ShaderProgram {
         this.bindAttribute(1, "textureCoords");
         this.bindAttribute(2, "normal");
     }
-    @Override
-    protected void getAllUniformLocations() {
-    }
     public void connectTextureUnits() {
         this.loadInt(BACKGROUND_TEXTURE, 0);
         this.loadInt(R_TEXTURE, 1);

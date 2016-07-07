@@ -16,6 +16,7 @@ import org.lwjgl.util.vector.Vector4f;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -45,6 +46,10 @@ public class MasterRenderer {
 
     private SkyboxRenderer skyboxRenderer;
 
+    private NormalMappingShader normalMappingShader = new NormalMappingShader();
+    private NormalMappingRenderer normalMappingRenderer = new NormalMappingRenderer(normalMappingShader, projectionMatrix);
+    private Map<TexturedModel, List<Entity>> normalMapEntities = new HashMap<>();
+
     public MasterRenderer(Loader loader) {
         enableCulling();
         this.skyboxRenderer = new SkyboxRenderer(loader, this.projectionMatrix);
@@ -73,10 +78,17 @@ public class MasterRenderer {
         projectionMatrix.m33 = 0;
         return projectionMatrix;
     }
-    public void renderScene(List<Entity> entities, List<Terrain> terrains, List<Light> lights, Camera camera, Vector4f clipPlane) {
+    public void renderScene(List<Entity> entities, List<Entity> normal, List<Terrain> terrains, List<Light> lights, Camera camera, Vector4f clipPlane) {
         terrains.forEach(this::processTerrain);
         entities.forEach(this::processEntity);
+        for (Entity entity : normal) {
+            this.processNormalMapEntity(entity);
+        }
+//        normal.forEach(this::processNormalMapEntity);
         render(lights, camera, clipPlane);
+    }
+    public static Vector3f getSkyColor() {
+        return new Vector3f(RED, GREEN, BLUE);
     }
     public void render(List<Light> lights, Camera camera, Vector4f clipPlane) {
         Vector3f fogColor = new Vector3f(RED, GREEN, BLUE);
@@ -93,6 +105,19 @@ public class MasterRenderer {
         this.entityRenderer.render(this.entities);
         this.entityShader.stop();
         this.entities.clear();
+
+        this.normalMappingShader.start();
+        this.normalMappingShader.PLANE.load(clipPlane);
+        this.normalMappingShader.SKY_COLOR.load(fogColor);
+        this.normalMappingShader.FOG_DENSITY.load(FOG_DENSITY);
+        this.normalMappingShader.FOG_GRADIENT.load(FOG_GRADIENT);
+        this.normalMappingShader.LIGHT_POSITION_EYES.load(lights.stream().map(l -> NormalMappingShader.getEyeSpacePosition(l, Maths.createViewMatrix(camera))).collect(Collectors.toList()));
+        this.normalMappingShader.LIGHT_COLOR.load(lights.stream().map(Light::getColor).collect(Collectors.toList()));
+        this.normalMappingShader.ATTENUATION.load(lights.stream().map(Light::getAttenuation).collect(Collectors.toList()));
+        this.normalMappingShader.VIEW_MATRIX.load(Maths.createViewMatrix(camera));
+        this.normalMappingRenderer.render(normalMapEntities);
+        this.normalMappingShader.stop();
+        this.normalMapEntities.clear();
 
         this.terrainShader.start();
         this.terrainShader.CLIP_PLANE.load(clipPlane);
@@ -122,10 +147,16 @@ public class MasterRenderer {
         if (!this.entities.containsKey(model)) this.entities.put(model, new ArrayList<>());
         this.entities.get(model).add(entity);
     }
+    public void processNormalMapEntity(Entity entity) {
+        TexturedModel model = entity.getModel();
+        if (!this.normalMapEntities.containsKey(model)) this.normalMapEntities.put(model, new ArrayList<>());
+        this.normalMapEntities.get(model).add(entity);
+    }
 
     public void cleanUp() {
         this.entityShader.cleanUp();
         this.terrainShader.cleanUp();
+        this.normalMappingRenderer.cleanUp();
     }
 
     public void prepare() {
