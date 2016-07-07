@@ -23,8 +23,8 @@ import java.util.stream.Collectors;
  */
 public class MasterRenderer {
     private static final float fieldOfView = 70;
-    private static final float nearPlane = 0.1F;
-    private static final float farPlane = 1000F;
+    public static final float nearPlane = 0.1F;
+    public static final float farPlane = 1000F;
 
     private static final float RED = 0.7F;
     private static final float GREEN = 0.7F;

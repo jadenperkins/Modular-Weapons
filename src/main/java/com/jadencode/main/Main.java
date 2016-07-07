@@ -58,9 +58,9 @@ public class Main {
         ModelTexture texture = new ModelTexture(loader.loadTexture("grass"));
         texture.setShineDamper(10);
         texture.setReflectivity(1);
-        Light light = new Light(new Vector3f(0, 1000, -7000), new Vector3f(1F, 1F, 1F));
+        Light sun = new Light(new Vector3f(0, 1000, -7000), new Vector3f(1F, 1F, 1F));
         List<Light> lights = new ArrayList<>();
-        lights.add(light);
+        lights.add(sun);
         lights.add(new Light(new Vector3f(185, 10, -293), new Vector3f(2, 0, 0), new Vector3f(1, 0.001F, 0.002F)));
 //        lights.add(new Light(new Vector3f(370, 17, -300), new Vector3f(0, 2, 2), new Vector3f(1, 0.01F, 0.002F)));
 //        lights.add(new Light(new Vector3f(293, 7, -305), new Vector3f(2, 2, 0), new Vector3f(1, 0.01F, 0.002F)));
@@ -81,23 +81,19 @@ public class Main {
         entities.add(player);
         entities.add(entity);
 
+
+        WaterFrameBuffers fbos = new WaterFrameBuffers();
+
         WaterShader waterShader = new WaterShader();
-        WaterRenderer waterRenderer = new WaterRenderer(loader, waterShader, renderer.getProjectionMatrix());
+        WaterRenderer waterRenderer = new WaterRenderer(loader, waterShader, renderer.getProjectionMatrix(), fbos);
         List<WaterTile> waters = new ArrayList<>();
-        WaterTile water = new WaterTile(75, -75, 5);
+        WaterTile water = new WaterTile(75, -125, 1);
         waters.add(water);
 
         List<GuiTexture> guis = new ArrayList<>();
         GuiRenderer guiRenderer = new GuiRenderer(loader);
 
         MousePicker picker = new MousePicker(camera, renderer.getProjectionMatrix(), terrain);
-
-        WaterFrameBuffers fbos = new WaterFrameBuffers();
-
-        GuiTexture refraction = new GuiTexture(fbos.getRefractionTexture(), new Vector2f(0.5F, 0.5F), new Vector2f(0.25F, 0.25F));
-        GuiTexture reflection = new GuiTexture(fbos.getReflectionTexture(), new Vector2f(-0.5F, 0.5F), new Vector2f(0.25F, 0.25F));
-        guis.add(reflection);
-        guis.add(refraction);
 
         while (!display.isCloseRequested()) {
             Time.update();
@@ -111,7 +107,7 @@ public class Main {
             float distance = 2 * (camera.getPosition().y - water.getTranslation().getY());
             camera.getPosition().y -= distance;
             camera.invertPitch();
-            renderer.renderScene(entities, terrains, lights, camera, new Vector4f(0, 1, 0, -water.getTranslation().getY()));
+            renderer.renderScene(entities, terrains, lights, camera, new Vector4f(0, 1, 0, -water.getTranslation().getY() + 1F));
             camera.getPosition().y += distance;
             camera.invertPitch();
 
@@ -123,7 +119,7 @@ public class Main {
             fbos.unbindCurrentFrameBuffer();
 
             renderer.renderScene(entities, terrains, lights, camera, new Vector4f(0, 1, 0, 10000));
-            waterRenderer.render(waters, camera);
+            waterRenderer.render(waters, camera, sun);
             guiRenderer.render(guis);
 
             display.update();
