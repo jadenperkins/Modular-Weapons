@@ -7,6 +7,7 @@ import com.jadencode.main.generate.item.ItemGenerator;
 import com.jadencode.main.generate.item.instance.Item;
 import com.jadencode.main.renderengine.gui.GuiRenderer;
 import com.jadencode.main.renderengine.gui.GuiTexture;
+import com.jadencode.main.renderengine.gui.TextMaster;
 import com.jadencode.main.renderengine.terrain.*;
 import com.jadencode.main.renderengine.toolbox.*;
 import com.jadencode.main.renderengine.Loader;
@@ -41,6 +42,11 @@ public class Main {
     public static void main(String[] args) {
         DisplayManager display = new DisplayManager();
         Loader loader = new Loader();
+        TextMaster.init(loader);
+
+        FontType font = new FontType(loader.loadFontAtlas("timesEffect"), new File("res/timesEffect.fnt"));
+        GuiText text = new GuiText("This is just a test", 3, font, new Vector2f(0.5F, 0.5F), 0.5F, true);
+        text.setColour(0.1F, 0.1F, 0.1F);
 
         TerrainTexture background = new TerrainTexture(loader.loadTexture("grassy2"));
         TerrainTexture rTexture = new TerrainTexture(loader.loadTexture("mud"));
@@ -126,8 +132,11 @@ public class Main {
             waterRenderer.render(waters, camera, sun);
             guiRenderer.render(guis);
 
+            TextMaster.render();
+
             display.update();
         }
+        TextMaster.cleanUp();
         fbos.cleanUp();
         waterShader.cleanUp();
         guiRenderer.cleanUp();
