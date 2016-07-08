@@ -83,8 +83,15 @@ public class Main {
         List<Terrain> terrains = new ArrayList<>();
 
         List<Entity> entities = new ArrayList<>();
-        Terrain terrain = new Terrain(0, -1, loader, texturePack, blendMap, "heightmap");
+        Terrain terrain = new Terrain(0, -1, loader, texturePack, blendMap, "heightmap".hashCode());
         terrains.add(terrain);
+
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) {
+                terrains.add(new Terrain(i, j, loader, texturePack, blendMap, "JadenRocks".hashCode()));
+            }
+        }
+
 
         Player player = new Player(entity.getModel(), new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
         Camera camera = new Camera(player);

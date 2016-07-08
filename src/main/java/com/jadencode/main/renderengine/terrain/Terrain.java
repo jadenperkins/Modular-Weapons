@@ -24,6 +24,7 @@ public class Terrain implements Transform {
     private static final float SIZE = 800;
     private static final float MAX_HEIGHT = 40;
     private static final float MAX_PIXEL_COLOR = 256 * 256 * 256;
+    private static final int VERTEX_COUNT = 128;
 
     private final Vector3f translation;
     private final Vector3f rotation = new Vector3f(0, 0, 0);
@@ -33,16 +34,18 @@ public class Terrain implements Transform {
     private RawModel model;
     private TerrainTexturePack texture;
     private TerrainTexture blendMap;
+    private final HeightsGenerator heightsGenerator;
 
     private float[][] heights;
 
-    public Terrain(int gridX, int gridZ, Loader loader, TerrainTexturePack texture, TerrainTexture blendMap, String heightMap) {
+    public Terrain(int gridX, int gridZ, Loader loader, TerrainTexturePack texture, TerrainTexture blendMap, long seed) {
         this.texture = texture;
         this.blendMap = blendMap;
         this.x = gridX * SIZE;
         this.z = gridZ * SIZE;
         this.translation = new Vector3f(this.x, 0, this.z);
-        this.model = this.generateTerrain(loader, heightMap);
+        this.heightsGenerator = new HeightsGenerator(gridX, gridZ, VERTEX_COUNT, seed);
+        this.model = this.generateTerrain(loader);
     }
     public float getHeight(float x, float z) {
         float terrainX = x - this.x;
@@ -89,14 +92,7 @@ public class Terrain implements Transform {
         return scale;
     }
 
-    private RawModel generateTerrain(Loader loader, String heightMap) {
-        BufferedImage image = null;
-        try {
-            image = ImageIO.read(new File(String.format("res/%s.png", heightMap)));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        int VERTEX_COUNT = image.getHeight();
+    private RawModel generateTerrain(Loader loader) {
         heights = new float[VERTEX_COUNT][VERTEX_COUNT];
 
         int count = VERTEX_COUNT * VERTEX_COUNT;
@@ -108,11 +104,11 @@ public class Terrain implements Transform {
         for (int i = 0; i < VERTEX_COUNT; i++) {
             for (int j = 0; j < VERTEX_COUNT; j++) {
                 vertices[vertexPointer * 3] = (float) j / ((float) VERTEX_COUNT - 1) * SIZE;
-                float height = getHeight(j, i, image);
+                float height = getHeight(j, i);
                 heights[j][i] = height;
                 vertices[vertexPointer * 3 + 1] = height;
                 vertices[vertexPointer * 3 + 2] = (float) i / ((float) VERTEX_COUNT - 1) * SIZE;
-                Vector3f normal = this.calculateNormal(j, i, image);
+                Vector3f normal = this.calculateNormal(j, i);
                 normals[vertexPointer * 3] = normal.x;
                 normals[vertexPointer * 3 + 1] = normal.y;
                 normals[vertexPointer * 3 + 2] = normal.z;
@@ -151,23 +147,16 @@ public class Terrain implements Transform {
         GL13.glActiveTexture(GL13.GL_TEXTURE4);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, blendMap.textureID);
     }
-    private Vector3f calculateNormal(int x, int y, BufferedImage image) {
-        float heightL = getHeight(x - 1, y, image);
-        float heightR = getHeight(x + 1, y, image);
-        float heightU = getHeight(x, y + 1, image);
-        float heightD = getHeight(x, y - 1, image);
+    private Vector3f calculateNormal(int x, int y) {
+        float heightL = getHeight(x - 1, y);
+        float heightR = getHeight(x + 1, y);
+        float heightU = getHeight(x, y + 1);
+        float heightD = getHeight(x, y - 1);
         Vector3f normal = new Vector3f(heightL - heightR, 2, heightD - heightU);
         normal.normalise();
         return normal;
     }
-    private float getHeight(int x, int y, BufferedImage image) {
-        if(x < 0 || x >= image.getWidth() || y < 0 || y >= image.getHeight()) {
-            return 0;
-        }
-        float height = image.getRGB(x, y);
-        height += MAX_PIXEL_COLOR / 2F;
-        height /= MAX_PIXEL_COLOR / 2F;
-        height *= MAX_HEIGHT;
-        return height;
+    private float getHeight(int x, int z) {
+        return this.heightsGenerator.generateHeight(x, z);
     }
 }
