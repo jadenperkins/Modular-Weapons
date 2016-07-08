@@ -8,6 +8,10 @@ import com.jadencode.main.generate.item.instance.Item;
 import com.jadencode.main.renderengine.gui.GuiRenderer;
 import com.jadencode.main.renderengine.gui.GuiTexture;
 import com.jadencode.main.renderengine.gui.TextMaster;
+import com.jadencode.main.renderengine.particles.Particle;
+import com.jadencode.main.renderengine.particles.ParticleMaster;
+import com.jadencode.main.renderengine.particles.ParticleSystem;
+import com.jadencode.main.renderengine.particles.ParticleTexture;
 import com.jadencode.main.renderengine.terrain.*;
 import com.jadencode.main.renderengine.toolbox.*;
 import com.jadencode.main.renderengine.Loader;
@@ -20,6 +24,7 @@ import com.jadencode.main.renderengine.models.TexturedModel;
 import com.jadencode.main.renderengine.textures.ModelTexture;
 import com.jadencode.main.renderengine.textures.TerrainTexture;
 import com.jadencode.main.renderengine.textures.TerrainTexturePack;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.util.vector.Vector2f;
@@ -27,6 +32,7 @@ import org.lwjgl.util.vector.Vector3f;
 import org.lwjgl.util.vector.Vector4f;
 
 import java.io.File;
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,6 +79,7 @@ public class Main {
                 new Vector3f(0, 0, -10), new Vector3f(0, 45, 0), new Vector3f(1, 1, 1));
 
         MasterRenderer renderer = new MasterRenderer(loader);
+        ParticleMaster.init(loader, renderer.getProjectionMatrix());
         List<Terrain> terrains = new ArrayList<>();
 
         List<Entity> entities = new ArrayList<>();
@@ -104,12 +111,18 @@ public class Main {
         GuiRenderer guiRenderer = new GuiRenderer(loader);
 
         MousePicker picker = new MousePicker(camera, renderer.getProjectionMatrix(), terrain);
+        ParticleTexture particleTexture = new ParticleTexture(loader.loadTexture("particleAtlas"), 4);
+        ParticleSystem system = new ParticleSystem(particleTexture, 50, 25, 0.3F, 4);
 
         while (!display.isCloseRequested()) {
             Time.update();
             camera.move();
             player.move(terrain);
             picker.update();
+
+            system.generateParticles(player.getTranslation());
+
+            ParticleMaster.update(camera);
 
             GL11.glEnable(GL30.GL_CLIP_DISTANCE0);
 
@@ -130,12 +143,16 @@ public class Main {
 
             renderer.renderScene(entities, normalMapEntities, terrains, lights, camera, new Vector4f(0, 1, 0, 10000));
             waterRenderer.render(waters, camera, sun);
+
+            ParticleMaster.renderParticles(camera);
+
             guiRenderer.render(guis);
 
             TextMaster.render();
 
             display.update();
         }
+        ParticleMaster.cleanup();
         TextMaster.cleanUp();
         fbos.cleanUp();
         waterShader.cleanUp();
