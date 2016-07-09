@@ -34,8 +34,9 @@ public class DisplayManager {
         ContextAttribs attribs = new ContextAttribs(3, 3).withForwardCompatible(true).withProfileCore(true);
         try {
             Display.setDisplayMode(new DisplayMode(this.width, this.height));
-            Display.create(new PixelFormat(), attribs);
+            Display.create(new PixelFormat().withSamples(8), attribs);
             Display.setTitle("3D Item View");
+            GL11.glEnable(GL13.GL_MULTISAMPLE);
         } catch (LWJGLException e) {
             e.printStackTrace();
         }
