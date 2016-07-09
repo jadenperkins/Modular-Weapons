@@ -5,6 +5,8 @@ import com.jadencode.main.generate.character.viking.VikingCharacterGenerator;
 import com.jadencode.main.generate.character.viking.VikingSettlementGenerator;
 import com.jadencode.main.generate.item.ItemGenerator;
 import com.jadencode.main.generate.item.instance.Item;
+import com.jadencode.main.renderengine.audio.AudioMaster;
+import com.jadencode.main.renderengine.audio.Source;
 import com.jadencode.main.renderengine.gui.GuiRenderer;
 import com.jadencode.main.renderengine.gui.GuiTexture;
 import com.jadencode.main.renderengine.gui.TextMaster;
@@ -28,6 +30,8 @@ import com.jadencode.main.renderengine.textures.ModelTexture;
 import com.jadencode.main.renderengine.textures.TerrainTexture;
 import com.jadencode.main.renderengine.textures.TerrainTexturePack;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.openal.AL10;
+import org.lwjgl.openal.AL11;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL30;
@@ -36,6 +40,7 @@ import org.lwjgl.util.vector.Vector3f;
 import org.lwjgl.util.vector.Vector4f;
 
 import java.io.File;
+import java.io.IOException;
 import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +55,7 @@ public class Main {
 
     public static final World theWorld = new World();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         DisplayManager display = new DisplayManager();
         Loader loader = new Loader();
         TextMaster.init(loader);
@@ -121,7 +126,28 @@ public class Main {
 
         normalMapEntities.add(new Entity(lanternModel, new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1)));
 
+        AudioMaster.init();
+        AudioMaster.setListenerData(0, 0, 0);
+        int buffer = AudioMaster.loadSound("./audio/bounce.wav");
+        AL10.alDistanceModel(AL10.AL_INVERSE_DISTANCE_CLAMPED);
 
+        Source source = new Source();
+        source.setLooping(true);
+        source.play(buffer);
+        source.setPosition(0, 0, 0);
+        float xPos = 0;
+
+        char c = ' ';
+        while(c != 'q') {
+            xPos -= 0.02F;
+            source.setPosition(xPos, 0, 0);
+            System.out.println(xPos);
+            Thread.sleep(10);
+        }
+        source.delete();
+        AudioMaster.cleanUp();
+
+        System.exit(0);
 
 
         normalMapEntities.add(new Entity(barrelModel, new Vector3f(0, 10, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1)));
