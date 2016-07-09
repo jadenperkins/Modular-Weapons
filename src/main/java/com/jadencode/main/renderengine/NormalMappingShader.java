@@ -32,6 +32,8 @@ public class NormalMappingShader extends ShaderProgram {
 	public final Uniform<Float> FOG_DENSITY = new UniformSingle<>("density", this, this::load);
 	public final Uniform<Float> FOG_GRADIENT = new UniformSingle<>("gradient", this, this::load);
 	public final Uniform<Integer> NORMAL_MAP = new UniformSingle<>("normalMap", this, this::load);
+	public final Uniform<Integer> SPECULAR_MAP = new UniformSingle<>("specularMap", this, this::load);
+	public final Uniform<Boolean> USES_SPECULAR = new UniformSingle<>("usesSpecularMap", this, this::load);
 
 	public NormalMappingShader() {
 		super(VERTEX_FILE, FRAGMENT_FILE);
@@ -47,6 +49,7 @@ public class NormalMappingShader extends ShaderProgram {
 	public void connectTextureUnits(){
 		this.MODEL_TEXTURE.load(0);
 		this.NORMAL_MAP.load(1);
+		this.SPECULAR_MAP.load(2);
 	}
 	public static Vector3f getEyeSpacePosition(Light light, Matrix4f viewMatrix) {
 		Vector3f position = light.getPosition();

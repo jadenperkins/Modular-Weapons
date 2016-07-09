@@ -5,17 +5,30 @@ package com.jadencode.main.renderengine.textures;
  */
 public class ModelTexture {
     private final int textureID;
+    private int normalMap;
+    private int specularMap;
+
     private float shineDamper = 1;
     private float reflectivity = 0;
     private boolean hasTransparency = false;
     private boolean useFakeLighting = false;
+    private boolean hasSpecularMap = false;
 
-    private int normalMap;
 
     private int numberOfRows = 1;
 
     public ModelTexture(int id) {
         this.textureID = id;
+    }
+    public void setSpecularMap(int specMap) {
+        this.specularMap = specMap;
+        this.hasSpecularMap = true;
+    }
+    public boolean hasSpecularMap() {
+        return this.hasSpecularMap;
+    }
+    public int getSpecularMap() {
+        return this.specularMap;
     }
     public void setNumberOfRows(int numberOfRows) {
         this.numberOfRows = numberOfRows;

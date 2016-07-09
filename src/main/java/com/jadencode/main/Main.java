@@ -109,8 +109,24 @@ public class Main {
         List<Entity> normalMapEntities = new ArrayList<>();
         TexturedModel barrelModel = new TexturedModel(NormalMappedObjLoader.loadOBJ("barrel", loader), new ModelTexture(loader.loadTexture("models/barrel")));
         barrelModel.getTexture().setNormalMap(loader.loadTexture("models/barrelNormal"));
+        barrelModel.getTexture().setShineDamper(10);
+        barrelModel.getTexture().setReflectivity(0.5F);
+        barrelModel.getTexture().setSpecularMap(loader.loadTexture("models/barrelS"));
+
+        TexturedModel lanternModel = new TexturedModel(NormalMappedObjLoader.loadOBJ("lantern", loader), new ModelTexture(loader.loadTexture("models/lantern")));
+//        barrelModel.getTexture().setNormalMap(loader.loadTexture("models/lanternNormal"));
+        lanternModel.getTexture().setShineDamper(10);
+        lanternModel.getTexture().setReflectivity(0.5F);
+        lanternModel.getTexture().setSpecularMap(loader.loadTexture("models/lanternS"));
+
+        normalMapEntities.add(new Entity(lanternModel, new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1)));
+
+
+
 
         normalMapEntities.add(new Entity(barrelModel, new Vector3f(0, 10, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1)));
+
+
 
         WaterFrameBuffers fbos = new WaterFrameBuffers();
         WaterShader waterShader = new WaterShader();

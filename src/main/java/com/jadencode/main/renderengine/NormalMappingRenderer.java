@@ -65,6 +65,11 @@ public class NormalMappingRenderer {
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, model.getTexture().getTextureID());
 		GL13.glActiveTexture(GL13.GL_TEXTURE1);
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, model.getTexture().getNormalMap());
+		shader.USES_SPECULAR.load(texture.hasSpecularMap());
+		if(texture.hasSpecularMap()) {
+			GL13.glActiveTexture(GL13.GL_TEXTURE2);
+			GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getSpecularMap());
+		}
 	}
 	private void unbindTexturedModel() {
 		MasterRenderer.enableCulling();
