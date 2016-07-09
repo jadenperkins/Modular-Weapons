@@ -127,27 +127,27 @@ public class Main {
         normalMapEntities.add(new Entity(lanternModel, new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1)));
 
         AudioMaster.init();
-        AudioMaster.setListenerData(0, 0, 0);
-        int buffer = AudioMaster.loadSound("./audio/bounce.wav");
-        AL10.alDistanceModel(AL10.AL_INVERSE_DISTANCE_CLAMPED);
-
-        Source source = new Source();
-        source.setLooping(true);
-        source.play(buffer);
-        source.setPosition(0, 0, 0);
-        float xPos = 0;
-
-        char c = ' ';
-        while(c != 'q') {
-            xPos -= 0.02F;
-            source.setPosition(xPos, 0, 0);
-            System.out.println(xPos);
-            Thread.sleep(10);
-        }
-        source.delete();
-        AudioMaster.cleanUp();
-
-        System.exit(0);
+//        AudioMaster.setListenerData(0, 0, 0);
+//        int buffer = AudioMaster.loadSound("./audio/bounce.wav");
+//        AL10.alDistanceModel(AL10.AL_INVERSE_DISTANCE_CLAMPED);
+//
+//        Source source = new Source();
+//        source.setLooping(true);
+//        source.play(buffer);
+//        source.setPosition(0, 0, 0);
+//        float xPos = 0;
+//
+//        char c = ' ';
+//        while(c != 'q') {
+//            xPos -= 0.02F;
+//            source.setPosition(xPos, 0, 0);
+//            System.out.println(xPos);
+//            Thread.sleep(10);
+//        }
+//        source.delete();
+//        AudioMaster.cleanUp();
+//
+//        System.exit(0);
 
 
         normalMapEntities.add(new Entity(barrelModel, new Vector3f(0, 10, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1)));
