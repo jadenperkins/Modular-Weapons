@@ -25,10 +25,12 @@ public class EntityRenderer {
         this.shader = shader;
         shader.start();
         shader.PROJECTION_MATRIX.load(projectionMatrix);
+        shader.SHADOW_MAP.load(5);
         shader.stop();
     }
 
-    public void render(HashMap<TexturedModel, List<Entity>> entities) {
+    public void render(HashMap<TexturedModel, List<Entity>> entities, Matrix4f toShadowSpace) {
+        shader.SHADOW_SPACE.load(toShadowSpace);
         for (TexturedModel model : entities.keySet()) {
             prepareTexturedModel(model);
             List<Entity> entityGroup = entities.get(model);

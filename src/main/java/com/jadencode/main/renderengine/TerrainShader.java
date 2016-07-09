@@ -33,6 +33,8 @@ public class TerrainShader extends ShaderProgram {
     public final Uniform<Vector3f> LIGHT_POSITION = new UniformArray<>("lightPosition", this, this::load, () -> new Vector3f(0, 0, 0), MAX_LIGHTS);
     public final Uniform<Vector3f> LIGHT_COLOR = new UniformArray<>("lightColor", this, this::load, () -> new Vector3f(0, 0, 0), MAX_LIGHTS);
     public final Uniform<Vector3f> ATTENUATION = new UniformArray<>("attenuation", this, this::load, () -> new Vector3f(1, 0, 0), MAX_LIGHTS);
+    public final Uniform<Matrix4f> SHADOW_MAP_SPACE = new UniformSingle<>("toShadowMapSpace", this, this::load);
+    public final Uniform<Integer> SHADOW_MAP = new UniformSingle<>("shadowMap", this, this::load);
 
     public TerrainShader() {
         super(VERT_FILE, FRAG_FILE);
@@ -45,10 +47,11 @@ public class TerrainShader extends ShaderProgram {
         this.bindAttribute(2, "normal");
     }
     public void connectTextureUnits() {
-        this.loadInt(BACKGROUND_TEXTURE, 0);
-        this.loadInt(R_TEXTURE, 1);
-        this.loadInt(G_TEXTURE, 2);
-        this.loadInt(B_TEXTURE, 3);
-        this.loadInt(BLEND_MAP, 4);
+        this.BACKGROUND_TEXTURE.load(0);
+        this.R_TEXTURE.load(1);
+        this.G_TEXTURE.load(2);
+        this.B_TEXTURE.load(3);
+        this.BLEND_MAP.load(4);
+        this.SHADOW_MAP.load(5);
     }
 }

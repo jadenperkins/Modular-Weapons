@@ -12,6 +12,7 @@ import com.jadencode.main.renderengine.particles.Particle;
 import com.jadencode.main.renderengine.particles.ParticleMaster;
 import com.jadencode.main.renderengine.particles.ParticleSystem;
 import com.jadencode.main.renderengine.particles.ParticleTexture;
+import com.jadencode.main.renderengine.shadows.ShadowMapMasterRenderer;
 import com.jadencode.main.renderengine.terrain.*;
 import com.jadencode.main.renderengine.toolbox.*;
 import com.jadencode.main.renderengine.Loader;
@@ -35,6 +36,7 @@ import java.io.File;
 import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Jaden on 1/19/2015.
@@ -67,47 +69,47 @@ public class Main {
         ModelTexture texture = new ModelTexture(loader.loadTexture("grass"));
         texture.setShineDamper(10);
         texture.setReflectivity(1);
-        Light sun = new Light(new Vector3f(0, 1000, -7000), new Vector3f(1F, 1F, 1F));
+        Light sun = new Light(new Vector3f(1000000, 1500000, -1000000), new Vector3f(1.3F, 1.3F, 1.3F));
         List<Light> lights = new ArrayList<>();
         lights.add(sun);
-        lights.add(new Light(new Vector3f(185, 10, -293), new Vector3f(2, 0, 0), new Vector3f(1, 0.001F, 0.002F)));
-//        lights.add(new Light(new Vector3f(370, 17, -300), new Vector3f(0, 2, 2), new Vector3f(1, 0.01F, 0.002F)));
-//        lights.add(new Light(new Vector3f(293, 7, -305), new Vector3f(2, 2, 0), new Vector3f(1, 0.01F, 0.002F)));
 
         Entity entity = new Entity(
                 new TexturedModel(objLoader.loadObjModel("Stall"), new ModelTexture(loader.loadTexture("models/Stall"))),
                 new Vector3f(0, 0, -10), new Vector3f(0, 45, 0), new Vector3f(1, 1, 1));
 
-        MasterRenderer renderer = new MasterRenderer(loader);
-        ParticleMaster.init(loader, renderer.getProjectionMatrix());
-        List<Terrain> terrains = new ArrayList<>();
+        Player player = new Player(entity.getModel(), new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
+        Camera camera = new Camera(player);
 
         List<Entity> entities = new ArrayList<>();
-        Terrain terrain = new Terrain(0, -1, loader, texturePack, blendMap, "heightmap".hashCode());
+        entities.add(player);
+
+        List<Terrain> terrains = new ArrayList<>();
+        Terrain terrain = new Terrain(0, 0, loader, texturePack, blendMap, "hashcode".hashCode());
         terrains.add(terrain);
 
-        for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < 3; j++) {
-                terrains.add(new Terrain(i, j, loader, texturePack, blendMap, "JadenRocks".hashCode()));
-            }
+        Random r = new Random("hashcode".hashCode());
+
+        for(int i = 0; i < 100; i++) {
+            float x = r.nextFloat() * 800;
+            float z = r.nextFloat() * 800;
+            float y = terrain.getHeight(x, z);
+
+            float ry = r.nextFloat() * 360;
+            Entity entityAdd = new Entity(entity.getModel(), new Vector3f(x, y, z), new Vector3f(0, ry, 0), new Vector3f(2, 2, 2));
+            entities.add(entityAdd);
         }
 
 
-        Player player = new Player(entity.getModel(), new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
-        Camera camera = new Camera(player);
-        entities.add(player);
-        entities.add(entity);
+        MasterRenderer renderer = new MasterRenderer(loader, camera);
+        ParticleMaster.init(loader, renderer.getProjectionMatrix());
 
         List<Entity> normalMapEntities = new ArrayList<>();
         TexturedModel barrelModel = new TexturedModel(NormalMappedObjLoader.loadOBJ("barrel", loader), new ModelTexture(loader.loadTexture("models/barrel")));
-//        barrelModel.getTexture().setShineDamper(10);
-//        barrelModel.getTexture().setReflectivity(0.5F);
         barrelModel.getTexture().setNormalMap(loader.loadTexture("models/barrelNormal"));
 
         normalMapEntities.add(new Entity(barrelModel, new Vector3f(0, 10, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1)));
 
         WaterFrameBuffers fbos = new WaterFrameBuffers();
-
         WaterShader waterShader = new WaterShader();
         WaterRenderer waterRenderer = new WaterRenderer(loader, waterShader, renderer.getProjectionMatrix(), fbos);
         List<WaterTile> waters = new ArrayList<>();
@@ -116,6 +118,8 @@ public class Main {
 
         List<GuiTexture> guis = new ArrayList<>();
         GuiRenderer guiRenderer = new GuiRenderer(loader);
+
+//        guis.add(new GuiTexture(renderer.getShadowMapTexture(), new Vector2f(0.5F, 0.5F), new Vector2f(0.5F, 0.5F)));
 
         MousePicker picker = new MousePicker(camera, renderer.getProjectionMatrix(), terrain);
         ParticleTexture particleTexture = new ParticleTexture(loader.loadTexture("particleAtlas"), 4);
@@ -127,9 +131,10 @@ public class Main {
             player.move(terrain);
             picker.update();
 
-            system.generateParticles(player.getTranslation());
-
+//            system.generateParticles(player.getTranslation());
             ParticleMaster.update(camera);
+
+            renderer.renderShadowMap(entities, sun);
 
             GL11.glEnable(GL30.GL_CLIP_DISTANCE0);
 
