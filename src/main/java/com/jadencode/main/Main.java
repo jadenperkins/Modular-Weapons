@@ -12,6 +12,8 @@ import com.jadencode.main.renderengine.particles.Particle;
 import com.jadencode.main.renderengine.particles.ParticleMaster;
 import com.jadencode.main.renderengine.particles.ParticleSystem;
 import com.jadencode.main.renderengine.particles.ParticleTexture;
+import com.jadencode.main.renderengine.postprocess.Fbo;
+import com.jadencode.main.renderengine.postprocess.PostProcessing;
 import com.jadencode.main.renderengine.shadows.ShadowMapMasterRenderer;
 import com.jadencode.main.renderengine.terrain.*;
 import com.jadencode.main.renderengine.toolbox.*;
@@ -26,6 +28,7 @@ import com.jadencode.main.renderengine.textures.ModelTexture;
 import com.jadencode.main.renderengine.textures.TerrainTexture;
 import com.jadencode.main.renderengine.textures.TerrainTexturePack;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.util.vector.Vector2f;
@@ -125,6 +128,10 @@ public class Main {
         ParticleTexture particleTexture = new ParticleTexture(loader.loadTexture("particleAtlas"), 4);
         ParticleSystem system = new ParticleSystem(particleTexture, 50, 25, 0.3F, 4);
 
+        Fbo multisampleFbo = new Fbo(Display.getWidth(), Display.getHeight());
+        Fbo outputFbo = new Fbo(Display.getWidth(), Display.getHeight(), Fbo.DEPTH_TEXTURE);
+        PostProcessing.init(loader);
+
         while (!display.isCloseRequested()) {
             Time.update();
             camera.move();
@@ -150,20 +157,26 @@ public class Main {
             renderer.renderScene(entities, normalMapEntities, terrains, lights, camera, new Vector4f(0, -1, 0, water.getTranslation().getY()));
 
             GL11.glDisable(GL30.GL_CLIP_DISTANCE0);
-
             fbos.unbindCurrentFrameBuffer();
 
+            multisampleFbo.bindFrameBuffer();
             renderer.renderScene(entities, normalMapEntities, terrains, lights, camera, new Vector4f(0, 1, 0, 10000));
             waterRenderer.render(waters, camera, sun);
-
             ParticleMaster.renderParticles(camera);
+            multisampleFbo.unbindFrameBuffer();
+//            multisampleFbo.resolveToScreen();
+            multisampleFbo.resolveToFbo(outputFbo);
+
+            PostProcessing.doPostProcessing(outputFbo.getColourTexture());
 
             guiRenderer.render(guis);
-
             TextMaster.render();
 
             display.update();
         }
+        PostProcessing.cleanUp();
+        multisampleFbo.cleanUp();
+        outputFbo.cleanUp();
         ParticleMaster.cleanup();
         TextMaster.cleanUp();
         fbos.cleanUp();
