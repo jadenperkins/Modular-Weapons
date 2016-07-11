@@ -71,5 +71,6 @@ public class EntityRenderer {
         Matrix4f transform = Maths.createTransformationMatrix(entity);
         this.shader.TRANSFORMATION_MATRIX.load(transform);
         this.shader.OFFSET.load(entity.getTextureOffset());
+        this.shader.ENTITY_COLOR.load(entity.getColor());
     }
 }

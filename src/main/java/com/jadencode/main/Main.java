@@ -97,16 +97,36 @@ public class Main {
 
         Random r = new Random("hashcode".hashCode());
 
-        for(int i = 0; i < 100; i++) {
-            float x = r.nextFloat() * 800;
-            float z = r.nextFloat() * 800;
-            float y = terrain.getHeight(x, z);
+//        for(int i = 0; i < 100; i++) {
+//            float x = r.nextFloat() * 800;
+//            float z = r.nextFloat() * 800;
+//            float y = terrain.getHeight(x, z);
+//
+//            float ry = r.nextFloat() * 360;
+//            Entity entityAdd = new Entity(entity.getModel(), new Vector3f(x, y, z), new Vector3f(0, ry, 0), new Vector3f(2, 2, 2));
+//            entities.add(entityAdd);
+//        }
 
-            float ry = r.nextFloat() * 360;
-            Entity entityAdd = new Entity(entity.getModel(), new Vector3f(x, y, z), new Vector3f(0, ry, 0), new Vector3f(2, 2, 2));
-            entities.add(entityAdd);
-        }
+        Entity pommel = new Entity(
+                new TexturedModel(objLoader.loadObjModel("Pommel"), new ModelTexture(loader.loadTexture("models/Pommel"))),
+                new Vector3f(0, -10 - 2.8F, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1), new Vector3f(0.6f, 0.4F, 0.0F));
 
+        Entity grip = new Entity(
+                new TexturedModel(objLoader.loadObjModel("Grip"), new ModelTexture(loader.loadTexture("models/Grip"))),
+                new Vector3f(0, -10, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1), new Vector3f(0.3f, 0.3F, 0.3F));
+
+        Entity hilt = new Entity(
+                new TexturedModel(objLoader.loadObjModel("Hilt"), new ModelTexture(loader.loadTexture("models/Hilt"))),
+                new Vector3f(0, -10 + 2.8F, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1), new Vector3f(0.6f, 0.4F, 0.0F));
+
+        Entity blade = new Entity(
+                new TexturedModel(objLoader.loadObjModel("Blade"), new ModelTexture(loader.loadTexture("models/Blade"))),
+                new Vector3f(0, -10 + 2.8F + 10, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1), new Vector3f(0.0F, 0.0F, 0.0F));
+
+        entities.add(pommel);
+        entities.add(grip);
+        entities.add(hilt);
+        entities.add(blade);
 
         MasterRenderer renderer = new MasterRenderer(loader, camera);
         ParticleMaster.init(loader, renderer.getProjectionMatrix());
@@ -124,7 +144,7 @@ public class Main {
         lanternModel.getTexture().setReflectivity(0.5F);
         lanternModel.getTexture().setSpecularMap(loader.loadTexture("models/lanternS"));
 
-        normalMapEntities.add(new Entity(lanternModel, new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1)));
+//        normalMapEntities.add(new Entity(lanternModel, new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1)));
 
         AudioMaster.init();
 //        AudioMaster.setListenerData(0, 0, 0);
@@ -150,7 +170,7 @@ public class Main {
 //        System.exit(0);
 
 
-        normalMapEntities.add(new Entity(barrelModel, new Vector3f(0, 10, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1)));
+//        normalMapEntities.add(new Entity(barrelModel, new Vector3f(0, 10, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1)));
 
 
 

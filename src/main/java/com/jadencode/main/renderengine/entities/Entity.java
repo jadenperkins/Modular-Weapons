@@ -1,9 +1,11 @@
 package com.jadencode.main.renderengine.entities;
 
+import com.jadencode.main.renderengine.gui.TextMaster;
 import com.jadencode.main.renderengine.models.TexturedModel;
 import com.jadencode.main.renderengine.toolbox.Transform;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
+import org.lwjgl.util.vector.Vector4f;
 
 /**
  * Created by gtrpl on 7/3/2016.
@@ -14,17 +16,25 @@ public class Entity implements Transform {
     private Vector3f rotation;
     private Vector3f scale;
     private final int textureIndex;
+    private final Vector3f color;
 
     public Entity(TexturedModel model, Vector3f translation, Vector3f rotation, Vector3f scale) {
-        this(model, translation, rotation, scale, 0);
+        this(model, translation, rotation, scale, 0, new Vector3f(1, 1, 1));
+    }
+    public Entity(TexturedModel model, Vector3f translation, Vector3f rotation, Vector3f scale, Vector3f color) {
+        this(model, translation, rotation, scale, 0, color);
     }
 
-    public Entity(TexturedModel model, Vector3f translation, Vector3f rotation, Vector3f scale, int textureIndex) {
+    public Entity(TexturedModel model, Vector3f translation, Vector3f rotation, Vector3f scale, int textureIndex, Vector3f color) {
         this.model = model;
         this.translation = translation;
         this.rotation = rotation;
         this.scale = scale;
         this.textureIndex = textureIndex;
+        this.color = color;
+    }
+    public Vector3f getColor() {
+        return this.color;
     }
     public Vector2f getTextureOffset() {
         int col = textureIndex % model.getTexture().getNumberOfRows();

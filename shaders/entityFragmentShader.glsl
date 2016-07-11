@@ -16,6 +16,7 @@ uniform vec3 attenuation[4];
 uniform float shineDamper;
 uniform float reflectivity;
 uniform vec3 skyColor;
+uniform vec3 entityColor;
 
 const int pcfCount = 2;
 const float totalTexels = (pcfCount * 2.0 + 1.0) * (pcfCount * 2.0 + 1.0);
@@ -65,5 +66,6 @@ void main(void) {
     }
 
     outColor = vec4(totalSpecular, 1.0) + vec4(totalDiffuse, 1.0) * texture(textureSampler, passTextureCoords);
+    outColor *= vec4(entityColor, 1.0);
     outColor = mix(vec4(skyColor, 1.0), outColor, visibility);
 }

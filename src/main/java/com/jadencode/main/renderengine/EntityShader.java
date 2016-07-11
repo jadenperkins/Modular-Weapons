@@ -38,6 +38,7 @@ public class EntityShader extends ShaderProgram {
     public final Uniform<Vector3f> ATTENUATION = new UniformArray<>("attenuation", this, this::load, () -> new Vector3f(1, 0, 0), MAX_LIGHTS);
     public final Uniform<Matrix4f> SHADOW_SPACE = new UniformSingle<>("toShadowMapSpace", this, this::load);
     public final Uniform<Integer> SHADOW_MAP = new UniformSingle<>("shadowMap", this, this::load);
+    public final Uniform<Vector3f> ENTITY_COLOR = new UniformSingle<>("entityColor", this, this::load);
 
     public EntityShader() {
         super(VERT_FILE, FRAG_FILE);
