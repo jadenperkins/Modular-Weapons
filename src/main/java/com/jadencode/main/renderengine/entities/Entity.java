@@ -52,6 +52,9 @@ public class Entity implements Transform {
         this.translation.y = y;
         this.translation.z = z;
     }
+    public void setPosition(Vector3f pos) {
+        this.setPosition(pos.x, pos.y, pos.z);
+    }
 
     public void rotate(float x, float y, float z) {
         this.rotation.x += x;

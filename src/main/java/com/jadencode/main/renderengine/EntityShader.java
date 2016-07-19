@@ -39,9 +39,15 @@ public class EntityShader extends ShaderProgram {
     public final Uniform<Matrix4f> SHADOW_SPACE = new UniformSingle<>("toShadowMapSpace", this, this::load);
     public final Uniform<Integer> SHADOW_MAP = new UniformSingle<>("shadowMap", this, this::load);
     public final Uniform<Vector3f> ENTITY_COLOR = new UniformSingle<>("entityColor", this, this::load);
+    public final Uniform<Integer> SPECULAR_MAP = new UniformSingle<>("specularMap", this, this::load);
+    public final Uniform<Boolean> USES_SPECULAR = new UniformSingle<>("usesSpecularMap", this, this::load);
 
     public EntityShader() {
         super(VERT_FILE, FRAG_FILE);
+    }
+
+    public void connectTextureUnits() {
+        this.SPECULAR_MAP.load(2);
     }
 
     @Override

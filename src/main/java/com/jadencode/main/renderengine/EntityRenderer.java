@@ -26,6 +26,7 @@ public class EntityRenderer {
         shader.start();
         shader.PROJECTION_MATRIX.load(projectionMatrix);
         shader.SHADOW_MAP.load(5);
+        shader.connectTextureUnits();
         shader.stop();
     }
 
@@ -49,6 +50,8 @@ public class EntityRenderer {
         GL20.glEnableVertexAttribArray(1);
         GL20.glEnableVertexAttribArray(2);
 
+//        totalDiffuse = clamp(totalDiffuse, vec3(0.0), vec3(1.0))
+
         ModelTexture texture = texturedModel.getTexture();
         this.shader.NUMBER_OF_ROWS.load(texture.getNumberOfRows());
         if (texture.getHasTransparency()) MasterRenderer.disableCulling();
@@ -57,6 +60,11 @@ public class EntityRenderer {
         this.shader.REFLECTIVITY.load(texture.getReflectivity());
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, texturedModel.getTexture().getTextureID());
+        this.shader.USES_SPECULAR.load(texture.hasSpecularMap());
+        if(texture.hasSpecularMap()) {
+            GL13.glActiveTexture(GL13.GL_TEXTURE2);
+            GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getSpecularMap());
+        }
     }
 
     private void unbindTexturedModel() {

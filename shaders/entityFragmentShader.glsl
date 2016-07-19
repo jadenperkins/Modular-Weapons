@@ -11,6 +11,8 @@ out vec4 outColor;
 
 uniform sampler2D textureSampler;
 uniform sampler2D shadowMap;
+uniform sampler2D specularMap;
+uniform float usesSpecularMap;
 uniform vec3 lightColor[4];
 uniform vec3 attenuation[4];
 uniform float shineDamper;
@@ -22,7 +24,6 @@ const int pcfCount = 2;
 const float totalTexels = (pcfCount * 2.0 + 1.0) * (pcfCount * 2.0 + 1.0);
 
 void main(void) {
-
     float mapSize = 4096.0;
     float texelSize = 1.0 / mapSize;
     float total = 0.0;
@@ -63,6 +64,12 @@ void main(void) {
     vec4 textureColor = texture(textureSampler, passTextureCoords);
     if(textureColor.a < 0.5) {
         discard;
+    }
+
+    if(usesSpecularMap > 0.5) {
+        vec4 mapInfo = texture(specularMap, passTextureCoords);
+        totalSpecular *= mapInfo.r;
+        totalDiffuse = clamp(totalDiffuse * (1 + mapInfo.g), vec3(0.0), vec3(1.0));
     }
 
     outColor = vec4(totalSpecular, 1.0) + vec4(totalDiffuse, 1.0) * texture(textureSampler, passTextureCoords);

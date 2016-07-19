@@ -131,20 +131,13 @@ public class Main {
         MasterRenderer renderer = new MasterRenderer(loader, camera);
         ParticleMaster.init(loader, renderer.getProjectionMatrix());
 
-        List<Entity> normalMapEntities = new ArrayList<>();
-        TexturedModel barrelModel = new TexturedModel(NormalMappedObjLoader.loadOBJ("barrel", loader), new ModelTexture(loader.loadTexture("models/barrel")));
-        barrelModel.getTexture().setNormalMap(loader.loadTexture("models/barrelNormal"));
-        barrelModel.getTexture().setShineDamper(10);
-        barrelModel.getTexture().setReflectivity(0.5F);
-        barrelModel.getTexture().setSpecularMap(loader.loadTexture("models/barrelS"));
-
         TexturedModel lanternModel = new TexturedModel(NormalMappedObjLoader.loadOBJ("lantern", loader), new ModelTexture(loader.loadTexture("models/lantern")));
-//        barrelModel.getTexture().setNormalMap(loader.loadTexture("models/lanternNormal"));
         lanternModel.getTexture().setShineDamper(10);
         lanternModel.getTexture().setReflectivity(0.5F);
         lanternModel.getTexture().setSpecularMap(loader.loadTexture("models/lanternS"));
 
-//        normalMapEntities.add(new Entity(lanternModel, new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1)));
+        Entity lantern = new Entity(lanternModel, new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
+        entities.add(lantern);
 
         AudioMaster.init();
 //        AudioMaster.setListenerData(0, 0, 0);
@@ -169,8 +162,6 @@ public class Main {
 //
 //        System.exit(0);
 
-
-//        normalMapEntities.add(new Entity(barrelModel, new Vector3f(0, 10, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1)));
 
 
 
@@ -211,18 +202,18 @@ public class Main {
             float distance = 2 * (camera.getPosition().y - water.getTranslation().getY());
             camera.getPosition().y -= distance;
             camera.invertPitch();
-            renderer.renderScene(entities, normalMapEntities, terrains, lights, camera, new Vector4f(0, 1, 0, -water.getTranslation().getY() + 1F));
+            renderer.renderScene(entities, terrains, lights, camera, new Vector4f(0, 1, 0, -water.getTranslation().getY() + 1F));
             camera.getPosition().y += distance;
             camera.invertPitch();
 
             fbos.bindRefractionFrameBuffer();
-            renderer.renderScene(entities, normalMapEntities, terrains, lights, camera, new Vector4f(0, -1, 0, water.getTranslation().getY()));
+            renderer.renderScene(entities, terrains, lights, camera, new Vector4f(0, -1, 0, water.getTranslation().getY()));
 
             GL11.glDisable(GL30.GL_CLIP_DISTANCE0);
             fbos.unbindCurrentFrameBuffer();
 
             multisampleFbo.bindFrameBuffer();
-            renderer.renderScene(entities, normalMapEntities, terrains, lights, camera, new Vector4f(0, 1, 0, 10000));
+            renderer.renderScene(entities, terrains, lights, camera, new Vector4f(0, 1, 0, 10000));
             waterRenderer.render(waters, camera, sun);
             ParticleMaster.renderParticles(camera);
             multisampleFbo.unbindFrameBuffer();

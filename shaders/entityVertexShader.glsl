@@ -15,25 +15,19 @@ uniform mat4 transformationMatrix;
 uniform mat4 projectionMatrix;
 uniform mat4 viewMatrix;
 uniform vec3 lightPosition[4];
-
 uniform mat4 toShadowMapSpace;
-
 uniform int numberOfRows;
 uniform vec2 offset;
-
 uniform float useFakeLighting;
 uniform float fogDensity;
 uniform float fogGradient;
-
 uniform vec4 clipPlane;
 
 const float shadowDistance = 150.0;
 const float transitionDistance = 10.0;
 
 void main(void) {
-
     vec4 worldPosition = transformationMatrix * vec4(position, 1.0);
-
     shadowCoords = toShadowMapSpace * worldPosition;
 
     gl_ClipDistance[0] = dot(worldPosition, clipPlane);
@@ -61,6 +55,3 @@ void main(void) {
     distance = distance / transitionDistance;
     shadowCoords.w = clamp(1.0 - distance, 0.0, 1.0);
 }
-
-
-
