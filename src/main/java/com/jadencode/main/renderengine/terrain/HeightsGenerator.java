@@ -1,7 +1,8 @@
 package com.jadencode.main.renderengine.terrain;
 
-import org.lwjgl.Sys;
-
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -17,11 +18,47 @@ public class HeightsGenerator {
     private final int xOffset;
     private final int zOffset;
 
+    private final MapGenerator temperatureGenerator;
+    private final MapGenerator heightGenerator;
+    private final MapGenerator rainfallGenerator;
+    private final int terrainSize;
+
     public HeightsGenerator(int gridX, int gridZ, int vertexCount, long seed) {
         this.seed = seed;
         this.xOffset = gridX * (vertexCount - 1);
         this.zOffset = gridZ * (vertexCount - 1);
         this.RNG = new Random(seed);
+        this.terrainSize = vertexCount;
+
+        this.temperatureGenerator = new MapGenerator(20, this.seed + "temperature".hashCode(), 2, this.terrainSize).setColor(1, 0, 0);
+        this.heightGenerator = new MapGenerator(20, this.seed + "heights".hashCode(), 2, this.terrainSize).setColor(0, 1, 0);
+        this.rainfallGenerator = new MapGenerator(20, this.seed + "rainfall".hashCode(), 2, this.terrainSize).setColor(0, 0, 1);
+    }
+    public float[][] generateHeights() {
+        System.out.println("Generating height map");
+        float[][] height = heightGenerator.generateMap();
+        System.out.println("Generating rainfall map");
+        float[][] rainfall = rainfallGenerator.generateMap();
+        System.out.println("Generating temperature map");
+        float[][] temperature = temperatureGenerator.generateMap();
+
+        System.out.println("Generating biome map");
+        Biome[][] biomeMap = new Biome[terrainSize][terrainSize];
+        BufferedImage image = new BufferedImage(terrainSize, terrainSize, BufferedImage.TYPE_INT_ARGB);
+        for(int i = 0; i < terrainSize; i++) {
+            for (int j = 0; j < terrainSize; j++) {
+                float h = height[i][j];
+                float t = temperature[i][j];
+                float r = rainfall[i][j];
+
+                List<Biome> biomes = new ArrayList<>(Biome.getBiomes());
+                biomes.sort((b1, b2) -> Float.compare(b1.calculate(t, r, h), b2.calculate(t, r, h)));
+                biomeMap[i][j] = biomes.get(0);
+                image.setRGB(i, j, biomes.get(0).getColor().getRGB());
+            }
+        }
+        float[][] newHeight = heightGenerator.normalize(heightGenerator.modify(height, biomeMap));
+        return newHeight;
     }
     public float generateHeight(int x, int z) {
         float total = 0;

@@ -93,7 +93,8 @@ public class Terrain implements Transform {
     }
 
     private RawModel generateTerrain(Loader loader) {
-        heights = new float[VERTEX_COUNT][VERTEX_COUNT];
+        this.heights = this.heightsGenerator.generateHeights();
+//        heights = new float[VERTEX_COUNT][VERTEX_COUNT];
 
         int count = VERTEX_COUNT * VERTEX_COUNT;
         float[] vertices = new float[count * 3];
@@ -157,6 +158,8 @@ public class Terrain implements Transform {
         return normal;
     }
     private float getHeight(int x, int z) {
-        return this.heightsGenerator.generateHeight(x, z);
+        if(x < 0 || x >= VERTEX_COUNT || z < 0 || z >= VERTEX_COUNT) return 0F;
+        return this.heights[x][z];
+//        return this.heightsGenerator.generateHeight(x, z);
     }
 }
