@@ -96,7 +96,7 @@ public class HeightsGenerator {
         return corners + edges + center;
     }
     private float getNoise(int x, int z) {
-        Random r = new Random(x * 49631 + z * 3151);
+        Random r = new Random(this.seed + x * 49631 + z * 3151);
         return r.nextFloat() * 2F - 1F;
     }
 }

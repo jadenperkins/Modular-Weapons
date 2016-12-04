@@ -76,25 +76,48 @@ public class MapGenerator {
         for(int i = 0; i < size; i++) {
             for(int j = 0; j < size; j++) {
                 Biome biome = biomes[i][j];
-                out[i][j] = original[i][j] * biome.getIntensity() + biome.getHeightShift() + this.rand.nextFloat() * biome.getRoughness() * 0.05F;
+                out[i][j] = original[i][j] * biome.getIntensity() + biome.getHeightShift() + this.getNoise(i, j) * biome.getRoughness() * 0.05F;
             }
         }
         return out;
     }
     public float[][] generateMap() {
-        float[][] noiseArray = new float[size][size];
-        for(int j = 0; j < size; j++) {
-            for(int i = 0; i < size; i++) {
-                float noise = this.rand.nextFloat() + this.vertical * (float)j / (float)size + this.horizontal * (float) i / (float)size;
-                noiseArray[i][j] = noise;
+        float[][] output = new float[size][size];
+
+        for(int i = 0; i < size; i++) {
+            for(int j = 0; j < size; j++) {
+                float sum = 0;
+                for(int l = 0; l <= scale; l++) {
+                    float divisor = (float)Math.pow(2, l + 1);
+                    int loop = scale - l;
+
+                    for(int x = -loop; x <= loop; x++) {
+                        for(int y = -loop; y <= loop; y++) {
+                            sum += this.getNoise(i + x, j + y) / divisor;
+                        }
+                    }
+                }
+                output[i][j] = sum;
             }
         }
-        float[][] smoothed = smooth(noiseArray);
-        for(int i = 0; i < this.smoothness; i++) {
-            smoothed = smooth(smoothed);
-        }
-        float[][] out = this.normalize(smoothed);
+
+//        float[][] noiseArray = new float[size][size];
+//        for(int j = 0; j < size; j++) {
+//            for(int i = 0; i < size; i++) {
+//                float noise = this.getNoise(i, j) + this.vertical * (float)j / (float)size + this.horizontal * (float) i / (float)size;
+//                noiseArray[i][j] = noise;
+//            }
+//        }
+//        float[][] smoothed = smooth(noiseArray);
+//        for(int i = 0; i < this.smoothness; i++) {
+//            smoothed = smooth(smoothed);
+//        }
+        float[][] out = this.normalize(output);
         return out;
+    }
+    private float getNoise(int x, int z) {
+        Random r = new Random(this.seed + x * 49631 + z * 3151);
+        return r.nextFloat();
     }
     private float[][] smooth(float[][] noiseArray) {
         float[][] smoothed = new float[size][size];
