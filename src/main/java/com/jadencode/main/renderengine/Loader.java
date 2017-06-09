@@ -1,9 +1,7 @@
 package com.jadencode.main.renderengine;
 
 import com.jadencode.main.renderengine.models.RawModel;
-import com.jadencode.main.renderengine.models.TexturedModel;
 import com.jadencode.main.renderengine.textures.TextureData;
-import com.sun.glass.ui.Pixels;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.*;
 import org.newdawn.slick.opengl.PNGDecoder;

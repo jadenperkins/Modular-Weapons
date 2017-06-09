@@ -22,9 +22,7 @@ public class ScriptsLoader extends ContentManager {
             try {
                 ScriptLoader loader = managerClass.newInstance();
                 scriptLoaders.put(loader.getTypeName(), loader);
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
+            } catch (InstantiationException | IllegalAccessException e) {
                 e.printStackTrace();
             }
         }

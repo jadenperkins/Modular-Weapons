@@ -1,4 +1,4 @@
-package normalMappingObjConverter;
+package com.jadencode.main.renderengine.toolbox;
 
 public class ModelDataNM {
 

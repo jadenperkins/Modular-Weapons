@@ -7,6 +7,7 @@ import com.jadencode.main.material.Material;
 
 import java.awt.*;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -37,7 +38,7 @@ public class ItemTypeMaterialized extends ItemType<ItemMaterialized> {
 
     @Override
     public List<String> getDisplayInfo(ItemMaterialized instance) {
-        return Arrays.asList(this.itemDescription);
+        return Collections.singletonList(this.itemDescription);
     }
 
     @Override

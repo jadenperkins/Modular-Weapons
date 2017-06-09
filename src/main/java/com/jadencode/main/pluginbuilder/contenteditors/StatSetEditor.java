@@ -70,7 +70,7 @@ public class StatSetEditor extends ContentEditor<ContentObjectStatSet> {
                 } catch (Exception e) {
                     try {
                         value = Double.parseDouble((String) this.statsTable.getValueAt(row, 1));
-                    } catch (Exception e1) {
+                    } catch (Exception ignored) {
                     }
                 }
                 stats.put(stat, value);

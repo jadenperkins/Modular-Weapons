@@ -1,7 +1,6 @@
 package com.jadencode.main.renderengine.skybox;
 
 import com.jadencode.main.renderengine.ShaderProgram;
-import com.jadencode.main.renderengine.toolbox.Time;
 import com.jadencode.main.renderengine.toolbox.Uniform;
 import com.jadencode.main.renderengine.toolbox.UniformSingle;
 import org.lwjgl.util.vector.Matrix4f;

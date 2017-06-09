@@ -6,6 +6,7 @@ import com.jadencode.main.material.Material;
 
 import java.awt.*;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -21,9 +22,9 @@ public class ItemTypePartMaterialized extends ItemTypePart {
         super(material.getName() + " " + part.getPartName(), part.getWeight() * material.getWeight(), part.modifyStats(material), part.getScript(), part.getIcon(), material.getQualityLevel(), material.getColor(), part.getPartType(), part.getJoints());
         this.nameMod = part.getNameMod();
         if (part.getPartInfo().equals(""))
-            this.partDescription = Arrays.asList(String.format("%s crafted from %s", part.getPartName(), material.getName()));
+            this.partDescription = Collections.singletonList(String.format("%s crafted from %s", part.getPartName(), material.getName()));
         else
-            this.partDescription = Arrays.asList(part.getPartInfo().replace("%s", material.getName()));
+            this.partDescription = Collections.singletonList(part.getPartInfo().replace("%s", material.getName()));
         this.partColor = material.getColor();
         this.materialName = material.getName();
     }

@@ -12,7 +12,7 @@ public class GuiShader extends ShaderProgram {
     private static final String VERTEX_FILE = "shaders/guiVertexShader.glsl";
     private static final String FRAGMET_FILE = "shaders/guiFragmentShader.glsl";
 
-    public final Uniform<Matrix4f> TRANSFORMATION_MATRIX = new UniformSingle<>("transformationMatrix", this, (i, v) -> this.load(i, v));
+    public final Uniform<Matrix4f> TRANSFORMATION_MATRIX = new UniformSingle<>("transformationMatrix", this, this::load);
 
     public GuiShader() {
         super(VERTEX_FILE, FRAGMET_FILE);

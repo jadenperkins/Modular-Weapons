@@ -142,18 +142,14 @@ public class ItemPartMaterializedEditor extends ContentEditor<ContentObjectItemP
     }
 
     private double getDouble(Object s) {
-        double value = 0;
-        if (s instanceof Double) {
-            value = (Double) s;
-        } else {
-            if (s instanceof String) {
-                try {
-                    value = Double.parseDouble((String) s);
-                } catch (Exception e) {
-                }
+        if (s instanceof Double) return (Double) s;
+        if (s instanceof String) {
+            try {
+                return Double.parseDouble((String) s);
+            } catch (Exception ignored) {
             }
         }
-        return value;
+        return 0D;
     }
 
     @Override

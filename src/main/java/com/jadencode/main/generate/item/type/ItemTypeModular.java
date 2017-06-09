@@ -87,8 +87,7 @@ public class ItemTypeModular extends ItemType<ItemModular> {
                 b = j;
             }
         }
-        BufferedImage ret = image.getSubimage(l, t, r - l + 1, b - t + 1);
-        return ret;
+        return image.getSubimage(l, t, r - l + 1, b - t + 1);
     }
 
     public ItemPartType getPrimaryPartType() {
@@ -123,11 +122,11 @@ public class ItemTypeModular extends ItemType<ItemModular> {
 
     @Override
     public String getDisplayFallback(ItemModular instance) {
-        String s = instance.getPart(instance.getItemType().getPrimaryPartType()).getItemType().getMaterialName();
+        StringBuilder s = new StringBuilder(instance.getPart(instance.getItemType().getPrimaryPartType()).getItemType().getMaterialName());
         for (ItemPartType type : instance.getItemType().getItemPartTypes()) {
-            s = s + " " + instance.getPart(type).getItemType().getNameMod();
+            s.append(" ").append(instance.getPart(type).getItemType().getNameMod());
         }
-        return s.trim();
+        return s.toString().trim();
     }
 
     @Override
@@ -156,8 +155,7 @@ public class ItemTypeModular extends ItemType<ItemModular> {
         });
         BufferedImage untrimmed = new BufferedImage(256, 256, BufferedImage.TYPE_INT_ARGB);
         this.drawTree(tree, untrimmed, untrimmed.createGraphics(), width * 2, height * 2);
-        BufferedImage trimmed = trim(untrimmed);
-        return trimmed;
+        return trim(untrimmed);
     }
 
     private void drawTree(Node<ItemPart> anchor, BufferedImage out, Graphics2D g2d, int xOff, int yOff) {

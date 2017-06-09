@@ -19,7 +19,7 @@ public class Node<T> {
     }
 
     public static <T> Node<T> tree(T root, List<T> items, BiPredicate<T, T> comparison) {
-        items = new ArrayList<T>(items);
+        items = new ArrayList<>(items);
         if (items.get(0) != root) {
             items.remove(root);
             items.add(0, root);
@@ -47,7 +47,7 @@ public class Node<T> {
     }
 
     public Node<T> addNode(T val) {
-        return this.add(new Node<T>(val));
+        return this.add(new Node<>(val));
     }
 
     public Node<T> add(Node<T> node) {

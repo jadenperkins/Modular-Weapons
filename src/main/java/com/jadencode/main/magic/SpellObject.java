@@ -31,8 +31,7 @@ public class SpellObject {
         int max = (int) Math.floor((double) playerLevel * 1.1D);
         int level = Math.min(r.nextInt(max - min + 1) + min, Main.LEVEL_CAP);
 
-        SpellObject ret = new SpellObject(base, level, r);
-        return ret;
+        return new SpellObject(base, level, r);
     }
 
     public static SpellObject generateRandom(int level) {

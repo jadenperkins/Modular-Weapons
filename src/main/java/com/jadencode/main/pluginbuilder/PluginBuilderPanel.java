@@ -43,7 +43,7 @@ public class PluginBuilderPanel extends JPanel {
                 e.printStackTrace();
             }
         }
-        modules.sort((a, b) -> a.getName().compareTo(b.getName()));
+        modules.sort(Comparator.comparing(Module::getName));
 
         GuiHelper helper = GuiHelper.above(this);
         this.activeFile = helper.add(new JTextField(), "Active Plugin", 10, 10, 200, 18);

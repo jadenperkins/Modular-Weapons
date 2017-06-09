@@ -1,7 +1,5 @@
 package com.jadencode.main.renderengine.terrain;
 
-import org.lwjgl.Sys;
-
 import java.util.Random;
 
 /**

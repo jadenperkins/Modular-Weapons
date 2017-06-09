@@ -116,8 +116,8 @@ public class Clan {
         //both are males
         if (gender1 && gender2) {
             //assume that fathers are at least 18 years older
-            if (age1 - age2 >= 18) {
-            }
+//            if (age1 - age2 >= 18) {
+//            }
         }
         return theRelationship;
     }

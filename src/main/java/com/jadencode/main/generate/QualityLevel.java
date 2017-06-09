@@ -1,6 +1,8 @@
 package com.jadencode.main.generate;
 
 
+import org.jetbrains.annotations.NotNull;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +66,7 @@ public enum QualityLevel {
         }
 
         @Override
-        public int compareTo(QualityValue o) {
+        public int compareTo(@NotNull QualityValue o) {
             int d = Double.compare(this.closeness, o.closeness);
             return d == 0 ? Integer.compare(this.level.ordinal(), o.level.ordinal()) : d;
         }

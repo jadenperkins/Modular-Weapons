@@ -1,11 +1,9 @@
 package com.jadencode.main.renderengine.entities;
 
-import com.jadencode.main.renderengine.gui.TextMaster;
 import com.jadencode.main.renderengine.models.TexturedModel;
 import com.jadencode.main.renderengine.toolbox.Transform;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
-import org.lwjgl.util.vector.Vector4f;
 
 /**
  * Created by gtrpl on 7/3/2016.

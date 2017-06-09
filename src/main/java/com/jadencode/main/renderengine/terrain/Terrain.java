@@ -11,12 +11,6 @@ import org.lwjgl.opengl.GL13;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.nio.Buffer;
-
 /**
  * Created by gtrpl on 7/3/2016.
  */

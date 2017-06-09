@@ -12,10 +12,7 @@ import com.jadencode.main.util.JsonHelper;
 import org.reflections.Reflections;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.zip.GZIPOutputStream;
 
@@ -23,7 +20,7 @@ import java.util.zip.GZIPOutputStream;
  * Created by gtrpl on 6/15/2016.
  */
 public final class ContentLoader {
-    public static final void load() {
+    public static void load() {
         compressSourcePlugins();
         loadStaticContent();
 
@@ -32,7 +29,7 @@ public final class ContentLoader {
         ItemTypes.generateMaterializedItems();
     }
 
-    private static final void compressSourcePlugins() {
+    private static void compressSourcePlugins() {
         File pluginDir = new File("plugins");
         File[] compressedPlugins = pluginDir.listFiles(a -> a.getName().endsWith(".plugin"));
         File[] sourcePlugins = new File("plugins/source").listFiles(a -> a.getName().endsWith(".json"));
@@ -59,20 +56,18 @@ public final class ContentLoader {
         }
     }
 
-    private static final void loadStaticContent() {
+    private static void loadStaticContent() {
         Set<Class<? extends ContentManager>> managerClasses = new Reflections("com.jadencode.main.content.loaders").getSubTypesOf(ContentManager.class);
         List<ContentManager> managers = new ArrayList<>();
 
         for (Class<? extends ContentManager> managerClass : managerClasses) {
             try {
                 managers.add(managerClass.newInstance());
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
+            } catch (InstantiationException | IllegalAccessException e) {
                 e.printStackTrace();
             }
         }
-        managers.sort((a, b) -> Integer.compare(a.getLoadOrder(), b.getLoadOrder()));
+        managers.sort(Comparator.comparingInt(ContentManager::getLoadOrder));
 
         File dir = new File("./plugins");
         if (!dir.exists()) {
@@ -120,7 +115,7 @@ public final class ContentLoader {
 //        }
     }
 
-    private static final void loadScripts() {
+    private static void loadScripts() {
 //        Set<Class<? extends ScriptLoader>> managerClasses = new Reflections("com.jadencode.main.content.loaders.scripts").getSubTypesOf(ScriptLoader.class);
 //        List<ScriptLoader> managers = new ArrayList<>();
 //

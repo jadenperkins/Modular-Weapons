@@ -3,6 +3,7 @@ package com.jadencode.main.content;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.jadencode.main.util.JsonHelper;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.util.List;
@@ -50,7 +51,7 @@ public class Plugin implements Comparable<Plugin> {
     }
 
     @Override
-    public int compareTo(Plugin o) {
+    public int compareTo(@NotNull Plugin o) {
         return this.dependencies.contains(o.pluginName) ? 1 : -1;
     }
 }

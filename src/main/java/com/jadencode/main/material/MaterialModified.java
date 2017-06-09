@@ -30,7 +30,6 @@ public class MaterialModified extends Material {
 
     private static int combine(int c1, int c2) {
         int mod = COMPONENT_1_TIMES * c1 + COMPONENT_2_TIMES * c2;
-        int ret = (int) Math.ceil(Math.min(255, (double) mod / (double) (COMPONENT_TOTAL)));
-        return ret;
+        return (int) Math.ceil(Math.min(255, (double) mod / (double) (COMPONENT_TOTAL)));
     }
 }

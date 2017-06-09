@@ -1,7 +1,6 @@
 package com.jadencode.main.renderengine.entities;
 
 import com.jadencode.main.renderengine.terrain.Terrain;
-import com.jadencode.main.renderengine.toolbox.DisplayManager;
 import com.jadencode.main.renderengine.models.TexturedModel;
 import com.jadencode.main.renderengine.toolbox.Time;
 import org.lwjgl.input.Keyboard;

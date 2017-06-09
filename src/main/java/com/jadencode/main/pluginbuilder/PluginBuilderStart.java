@@ -10,7 +10,7 @@ public class PluginBuilderStart {
         JFrame frame = new JFrame("Plugin Creator");
         frame.setSize(1500, 800);
         frame.setContentPane(new PluginBuilderPanel());
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
 }

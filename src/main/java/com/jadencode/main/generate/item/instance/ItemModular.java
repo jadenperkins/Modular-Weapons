@@ -39,7 +39,6 @@ public class ItemModular extends Item<ItemTypeModular> implements QualityObject 
 
     @Override
     public List<QualityLevel> getQualityLevels() {
-        List<QualityLevel> ret = this.itemParts.stream().map(ItemPart::getQualityLevel).collect(Collectors.toList());
-        return ret;
+        return this.itemParts.stream().map(ItemPart::getQualityLevel).collect(Collectors.toList());
     }
 }

@@ -59,7 +59,7 @@ public class SpellBase {
     }
 
     public static SpellBase getRandom(Random r) {
-        return WeightedRandomFloat.getRandomItem(r, weightedReferences).theObject;
+        return WeightedRandomFloat.getRandomItem(r, weightedReferences).getObject();
     }
 
     public String getName() {

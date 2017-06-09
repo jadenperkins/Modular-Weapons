@@ -1,6 +1,5 @@
 package com.jadencode.main.renderengine;
 
-import com.jadencode.main.renderengine.entities.Light;
 import com.jadencode.main.renderengine.toolbox.Uniform;
 import com.jadencode.main.renderengine.toolbox.UniformArray;
 import com.jadencode.main.renderengine.toolbox.UniformSingle;
@@ -8,9 +7,6 @@ import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 import org.lwjgl.util.vector.Vector4f;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by gtrpl on 7/3/2016.

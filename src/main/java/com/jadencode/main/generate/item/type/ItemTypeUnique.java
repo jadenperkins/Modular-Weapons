@@ -7,6 +7,7 @@ import com.jadencode.main.stat.StatSet;
 
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -19,7 +20,7 @@ public class ItemTypeUnique extends ItemType<ItemUnique> {
 
     public ItemTypeUnique(String name, float w, StatSet stats, String info, QualityLevel level, BufferedImage icon, ScriptItem s) {
         super(name, w, stats, icon, null, s);
-        this.displayInfo = Arrays.asList(info);
+        this.displayInfo = Collections.singletonList(info);
         this.itemQuality = level;
     }
 

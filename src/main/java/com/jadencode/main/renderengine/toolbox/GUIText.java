@@ -158,7 +158,7 @@ public class GuiText {
 	 * Sets the number of lines that this text covers (method used only in
 	 * loading).
 	 * 
-	 * @param number
+	 * @param number number of lines
 	 */
 	protected void setNumberOfLines(int number) {
 		this.numberOfLines = number;

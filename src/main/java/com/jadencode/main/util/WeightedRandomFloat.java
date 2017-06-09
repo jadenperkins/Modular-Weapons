@@ -14,7 +14,7 @@ public class WeightedRandomFloat {
      * Returns the total weight of all content in a collection.
      */
     public static <T extends WeightedItem> float getTotalWeight(Collection<T> weightedItems) {
-        return weightedItems.stream().map(a -> a.getWeight()).reduce(0F, (a, b) -> a + b);
+        return weightedItems.stream().map(WeightedItem::getWeight).reduce(0F, (a, b) -> a + b);
     }
 
     /**

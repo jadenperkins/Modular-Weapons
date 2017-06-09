@@ -1,24 +1,20 @@
 package com.jadencode.main.util;
 
 /**
- * Created by Jaden on 7/3/2014.
+ * Created by JPERKI8 on 6/9/2017.
  */
-public class WeightedRandomObject<T> implements WeightedItem {
-    public float itemWeight;
-    public T theObject;
+public class WeightedRandomObject<T> implements WeightedItem{
+    private final T object;
+    private final float weight;
 
-    public WeightedRandomObject(float f, T o) {
-        this.itemWeight = f;
-        this.theObject = o;
+    public WeightedRandomObject(float weight, T object) {
+        this.weight = weight;
+        this.object = object;
     }
-
-    @Override
-    public String toString() {
-        return theObject.toString() + " of " + this.itemWeight;
+    public T getObject() {
+        return object;
     }
-
-    @Override
     public float getWeight() {
-        return this.itemWeight;
+        return weight;
     }
 }

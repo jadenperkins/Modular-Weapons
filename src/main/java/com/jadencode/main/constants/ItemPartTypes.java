@@ -11,7 +11,7 @@ public final class ItemPartTypes {
 
     private static final HashMap<String, ItemPartType> PART_TYPES = new HashMap<>();
 
-    public static final ItemPartType get(String name) {
+    public static ItemPartType get(String name) {
         return PART_TYPES.get(name);
     }
 

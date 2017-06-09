@@ -10,6 +10,7 @@ import com.jadencode.main.stat.StatSet;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ public class ItemTypePartUnique extends ItemTypePart {
     public ItemTypePartUnique(String partName, String nameMod, String partInfo, StatSet statSet, float weight, ScriptItem s, QualityLevel level, BufferedImage icon, ItemPartType type, List<Joint> j) {
         super(partName, weight, statSet, s, icon, level, Color.WHITE, type, j);
         this.nameMod = nameMod;
-        this.partInfo = Arrays.asList(partInfo);
+        this.partInfo = Collections.singletonList(partInfo);
     }
 
     @Override

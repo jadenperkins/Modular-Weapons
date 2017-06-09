@@ -1,5 +1,7 @@
 package com.jadencode.main;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 
 /**
@@ -42,7 +44,7 @@ public class Counter<T> {
     public void displaySorted() {
         List<CountEntry<T>> entries = new ArrayList<>();
         for (T obj : this.counts.keySet()) {
-            entries.add(new CountEntry<T>(obj, this.getCount(obj)));
+            entries.add(new CountEntry<>(obj, this.getCount(obj)));
         }
         Collections.sort(entries);
         for (CountEntry<T> entry : entries) {
@@ -50,8 +52,8 @@ public class Counter<T> {
         }
     }
 
-    public static interface CounterDisplay<T> {
-        public String display(T t);
+    public interface CounterDisplay<T> {
+        String display(T t);
     }
 
     private static class CountEntry<T> implements Comparable<CountEntry> {
@@ -65,7 +67,7 @@ public class Counter<T> {
         }
 
         @Override
-        public int compareTo(CountEntry o) {
+        public int compareTo(@NotNull CountEntry o) {
             return Integer.compare(this.amount, o.amount);
         }
     }

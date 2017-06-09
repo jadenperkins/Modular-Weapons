@@ -129,12 +129,11 @@ public class ItemPartUniqueEditor extends ContentEditor<ContentObjectItemPartUni
     }
 
     private double getDouble(String s) {
-        double value = 0;
         try {
-            value = Double.parseDouble(s);
-        } catch (Exception e) {
+            return Double.parseDouble(s);
+        } catch (Exception ignored) {
         }
-        return value;
+        return 0D;
     }
 
     @Override

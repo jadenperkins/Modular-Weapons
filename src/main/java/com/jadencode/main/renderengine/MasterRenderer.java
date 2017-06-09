@@ -4,7 +4,6 @@ import com.jadencode.main.renderengine.entities.Camera;
 import com.jadencode.main.renderengine.entities.Entity;
 import com.jadencode.main.renderengine.entities.Light;
 import com.jadencode.main.renderengine.models.TexturedModel;
-import com.jadencode.main.renderengine.shadows.ShadowMapEntityRenderer;
 import com.jadencode.main.renderengine.shadows.ShadowMapMasterRenderer;
 import com.jadencode.main.renderengine.skybox.SkyboxRenderer;
 import com.jadencode.main.renderengine.terrain.Terrain;
@@ -19,7 +18,6 @@ import org.lwjgl.util.vector.Vector4f;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
