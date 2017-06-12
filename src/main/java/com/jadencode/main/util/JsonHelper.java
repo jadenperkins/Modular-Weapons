@@ -8,6 +8,7 @@ import com.google.gson.JsonPrimitive;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * Created by JPERKI8 on 6/20/2016.
@@ -85,16 +86,20 @@ public class JsonHelper {
         return this;
     }
 
+    private boolean checkType(String name, Function<JsonPrimitive, Boolean> function) {
+        return this.jsonObject.has(name) && this.jsonObject.get(name).isJsonPrimitive() && function.apply(this.jsonObject.get(name).getAsJsonPrimitive());
+    }
+
     public String getString(String name, String def) {
-        return this.jsonObject.has(name) && this.jsonObject.get(name).isJsonPrimitive() && this.jsonObject.get(name).getAsJsonPrimitive().isString() ? this.jsonObject.get(name).getAsString() : def;
+        return checkType(name, JsonPrimitive::isString) ? this.jsonObject.get(name).getAsString() : def;
     }
 
     public boolean getBoolean(String name, boolean def) {
-        return this.jsonObject.has(name) && this.jsonObject.get(name).isJsonPrimitive() && this.jsonObject.get(name).getAsJsonPrimitive().isBoolean() ? this.jsonObject.get(name).getAsBoolean() : def;
+        return checkType(name, JsonPrimitive::isBoolean) ? this.jsonObject.get(name).getAsBoolean() : def;
     }
 
     public char getChar(String name, char def) {
-        return this.jsonObject.has(name) && this.jsonObject.get(name).isJsonPrimitive() && this.jsonObject.get(name).getAsJsonPrimitive().isString() && !this.jsonObject.get(name).getAsString().isEmpty() ? this.getString(name).charAt(0) : def;
+        return checkType(name, JsonPrimitive::isString) && !this.jsonObject.get(name).getAsString().isEmpty() ? this.getString(name).charAt(0) : def;
     }
 
     public byte getByte(String name, byte def) {
@@ -182,6 +187,6 @@ public class JsonHelper {
     }
 
     private boolean isNumber(String name) {
-        return this.jsonObject.has(name) && this.jsonObject.get(name).isJsonPrimitive() && this.jsonObject.get(name).getAsJsonPrimitive().isNumber();
+        return checkType(name, JsonPrimitive::isNumber);
     }
 }

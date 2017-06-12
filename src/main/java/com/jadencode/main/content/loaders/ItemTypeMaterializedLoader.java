@@ -1,10 +1,7 @@
 package com.jadencode.main.content.loaders;
 
 import com.google.gson.JsonObject;
-import com.jadencode.main.constants.Icons;
-import com.jadencode.main.constants.ItemTypes;
-import com.jadencode.main.constants.MaterialTypes;
-import com.jadencode.main.constants.StatSets;
+import com.jadencode.main.constants.*;
 import com.jadencode.main.generate.item.base.ItemMaterializedBase;
 import com.jadencode.main.material.MaterialType;
 import com.jadencode.main.scripts.ScriptItem;
@@ -19,20 +16,21 @@ import java.util.stream.Collectors;
  * Created by JPERKI8 on 6/16/2016.
  */
 public class ItemTypeMaterializedLoader extends ContentManager {
+
     public ItemTypeMaterializedLoader() {
-        super("Materialized Item Types", 5);
+        super(Strings.Loaders.MATERIALIZED_ITEM_TYPES, 5);
     }
 
     @Override
     public void consume(String name, JsonObject obj) {
         JsonHelper helper = new JsonHelper(obj);
 
-        String info = helper.getString("itemInfo");
-        float weight = helper.getFloat("weight", 1F);
-        StatSet stats = StatSets.get(helper.getString("stats"));
-        BufferedImage icon = Icons.get(helper.getString("icon"));
-        ScriptItem script = ItemTypes.script(helper.getString("script"));
-        List<MaterialType> types = JsonHelper.fromArray(helper.getArray("materials")).stream().map(MaterialTypes::get).collect(Collectors.toList());
+        String info = helper.getString(Strings.JsonKey.ITEM_INFO);
+        float weight = helper.getFloat(Strings.JsonKey.WEIGHT, 1F);
+        StatSet stats = StatSets.get(helper.getString(Strings.JsonKey.STATS));
+        BufferedImage icon = Icons.get(helper.getString(Strings.JsonKey.ICON));
+        ScriptItem script = ItemTypes.script(helper.getString(Strings.JsonKey.SCRIPT));
+        List<MaterialType> types = JsonHelper.fromArray(helper.getArray(Strings.JsonKey.MATERIALS)).stream().map(MaterialTypes::get).collect(Collectors.toList());
 
         ItemMaterializedBase base = new ItemMaterializedBase(name, info, weight, stats, icon, script, types);
 

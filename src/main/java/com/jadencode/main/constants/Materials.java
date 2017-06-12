@@ -32,22 +32,9 @@ public final class Materials {
 
             List<MaterialModifier> modifiers = MaterialModifiers.getModifiers(type);
             for (MaterialModifier modifier : modifiers) {
-                for (Material commonMaterial : commonMaterials) {
-                    Material m = new MaterialModified(commonMaterial, QualityLevel.UNCOMMON, modifier);
-                    Materials.register(type, m);
-                }
-                for (Material exoticMaterial : exoticMaterials) {
-                    Material m = new MaterialModified(exoticMaterial, QualityLevel.EPIC, modifier);
-                    Materials.register(type, m);
-                }
+                commonMaterials.forEach(material -> Materials.register(type, new MaterialModified(material, QualityLevel.UNCOMMON, modifier)));
+                exoticMaterials.forEach(material -> Materials.register(type, new MaterialModified(material, QualityLevel.EPIC, modifier)));
             }
-
-//            for (Material material : baseMaterials) {
-//                for (MaterialModifier modifier : MaterialModifiers.getModifiers(type)) {
-//                    Material m = new MaterialModified(material, modifier);
-//                    Materials.register(type, m);
-//                }
-//            }
             System.out.println(String.format("Registered %d %s materials!", getMaterials(type).size(), type.getName()));
         }
     }

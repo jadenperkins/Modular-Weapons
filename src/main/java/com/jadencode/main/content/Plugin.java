@@ -2,7 +2,9 @@ package com.jadencode.main.content;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.jadencode.main.constants.Strings;
 import com.jadencode.main.util.JsonHelper;
+import org.apache.commons.io.IOUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
@@ -13,33 +15,51 @@ import java.util.zip.GZIPInputStream;
  * Created by gtrpl on 6/20/2016.
  */
 public class Plugin implements Comparable<Plugin> {
+
     private final String pluginName;
-    private final List<String> dependencies;
     private final JsonObject pluginObject;
+    private final List<String> dependencies;
 
     public Plugin(File pluginFile) {
-        this.pluginName = pluginFile.getName().replace(".json", "").replace(".plugin", "");
+        this.pluginName = pluginFile.getName().replace(Strings.IO.EXT_JSON, "").replace(Strings.IO.EXT_PLUGIN, "");
         this.pluginObject = load(pluginFile);
 
         JsonHelper helper = new JsonHelper(this.pluginObject);
-        this.dependencies = JsonHelper.fromArray(helper.getArray("Dependencies"));
+        this.dependencies = JsonHelper.fromArray(helper.getArray(Strings.JsonKey.DEPENDENCIES));
     }
 
     private static JsonObject load(File file) {
+        return file.getName().endsWith(Strings.IO.EXT_PLUGIN) ? loadStandard(file) : loadNonstandard(file);
+    }
+    private static JsonObject loadStandard(File file) {
+        DataInputStream dataInputStream = null;
+        JsonObject returnedObject = null;
         try {
-            if (file.getName().endsWith(".plugin")) {
-                DataInputStream datainputstream = new DataInputStream(new BufferedInputStream(new GZIPInputStream(new FileInputStream(file))));
-                String s = datainputstream.readUTF();
-                datainputstream.close();
+            dataInputStream = new DataInputStream(new BufferedInputStream(new GZIPInputStream(new FileInputStream(file))));
 
-                return new JsonParser().parse(s).getAsJsonObject();
-            } else {
-                return new JsonParser().parse(new FileReader(file)).getAsJsonObject();
-            }
-        } catch (Exception e) {
+            String jsonString = dataInputStream.readUTF();
+            returnedObject = new JsonParser().parse(jsonString).getAsJsonObject();
+        } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            IOUtils.closeQuietly(dataInputStream);
         }
-        return new JsonObject();
+        if(returnedObject == null) returnedObject = new JsonObject();
+        return returnedObject;
+    }
+    private static JsonObject loadNonstandard(File file) {
+        FileReader reader = null;
+        JsonObject returnedObject = null;
+        try {
+            reader = new FileReader(file);
+            returnedObject = new JsonParser().parse(reader).getAsJsonObject();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            IOUtils.closeQuietly(reader);
+        }
+        if(returnedObject == null) returnedObject = new JsonObject();
+        return returnedObject;
     }
 
     public String getPluginName() {

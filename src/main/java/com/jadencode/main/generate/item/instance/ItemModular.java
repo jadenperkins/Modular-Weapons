@@ -6,6 +6,7 @@ import com.jadencode.main.generate.item.base.ItemPartType;
 import com.jadencode.main.generate.item.type.ItemTypeModular;
 import com.jadencode.main.stat.StatSet;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,6 +40,6 @@ public class ItemModular extends Item<ItemTypeModular> implements QualityObject 
 
     @Override
     public List<QualityLevel> getQualityLevels() {
-        return this.itemParts.stream().map(ItemPart::getQualityLevel).collect(Collectors.toList());
+        return Collections.singletonList(getQualityLevel());
     }
 }
