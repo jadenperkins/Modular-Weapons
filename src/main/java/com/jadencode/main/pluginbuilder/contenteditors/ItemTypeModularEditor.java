@@ -1,6 +1,7 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
+import com.jadencode.main.constants.Strings;
 import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.content.ContentObjectItemTypeModular;
@@ -25,8 +26,8 @@ public class ItemTypeModularEditor extends ContentEditor<ContentObjectItemTypeMo
     private final JTable partsList;
     private final JTable optionalList;
 
-    public ItemTypeModularEditor(Module module, PluginBuilderPanel parent) {
-        super(module, parent);
+    public ItemTypeModularEditor(PluginBuilderPanel parent) {
+        super(Strings.ContentEditors.MODULAR_ITEM_TYPES, parent);
         GuiHelper helper = GuiHelper.left(this);
         this.statSetSelection = helper.add(new JComboBox<>(), "Stat Set", H_S, V_E, H_L, H_FLD);
         this.scriptSelection = helper.add(new JComboBox<>(), "Script", H_S, V_E + H_FLD + V_PAD, H_L, H_FLD);

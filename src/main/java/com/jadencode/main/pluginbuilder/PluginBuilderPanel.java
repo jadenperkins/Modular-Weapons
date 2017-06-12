@@ -11,6 +11,7 @@ import org.reflections.Reflections;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.zip.GZIPOutputStream;
@@ -31,15 +32,16 @@ public class PluginBuilderPanel extends JPanel {
 
     public PluginBuilderPanel() {
         this.setLayout(null);
-        Set<Class<? extends Module>> moduleClasses = new Reflections("com.jadencode.main.pluginbuilder.modules").getSubTypesOf(Module.class);
+        Set<Class<? extends ContentEditor>> contentEditorClasses = new Reflections("com.jadencode.main.pluginbuilder.contenteditors").getSubTypesOf(ContentEditor.class);
 
         List<Module<? extends ContentObject>> modules = new ArrayList<>();
-        for (Class<? extends Module> moduleClass : moduleClasses) {
+        for (Class<? extends ContentEditor> contentEditorClass : contentEditorClasses) {
             try {
-                Module<? extends ContentObject> module = moduleClass.getConstructor(PluginBuilderPanel.class).newInstance(this);
+                ContentEditor<? extends ContentObject> editor = contentEditorClass.getConstructor(PluginBuilderPanel.class).newInstance(this);
+                Module<? extends ContentObject> module = new Module<>(editor);
                 modules.add(module);
                 this.moduleMap.put(module.getName(), module);
-            } catch (Exception e) {
+            } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
                 e.printStackTrace();
             }
         }

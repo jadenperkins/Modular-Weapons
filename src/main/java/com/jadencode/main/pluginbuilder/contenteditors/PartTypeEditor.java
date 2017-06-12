@@ -1,6 +1,7 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
+import com.jadencode.main.constants.Strings;
 import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.content.ContentObjectPartType;
@@ -20,8 +21,8 @@ public class PartTypeEditor extends ContentEditor<ContentObjectPartType> {
     private final JComboBox<String> iconSelection;
     private final JTable jointsTable;
 
-    public PartTypeEditor(Module module, PluginBuilderPanel parent) {
-        super(module, parent);
+    public PartTypeEditor(PluginBuilderPanel parent) {
+        super(Strings.ContentEditors.PART_TYPES, parent);
         GuiHelper helper = GuiHelper.left(this);
         this.iconSelection = helper.add(new JComboBox<>(), "Icon", H_S, V_E, H_L, H_FLD);
         this.jointsTable = helper.add(new JTable(new DefaultTableModel(10, 1)), "Joints", H_E, V_S, H_L, 10 * H_NTR, GuiHelper.Align.ABOVE);

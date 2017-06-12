@@ -1,6 +1,7 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
+import com.jadencode.main.constants.Strings;
 import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.content.ContentObjectMaterial;
@@ -21,8 +22,8 @@ public class MaterialEditor extends ContentEditor<ContentObjectMaterial> {
     private final JTextField levelField;
     private final JComboBox<String> materialSelection;
 
-    public MaterialEditor(Module module, PluginBuilderPanel parent) {
-        super(module, parent);
+    public MaterialEditor(PluginBuilderPanel parent) {
+        super(Strings.ContentEditors.MATERIALS, parent);
         GuiHelper helper = GuiHelper.left(this);
         this.colorSelection = helper.add(new JComboBox<>(), "Color", H_S, V_E, H_L, H_FLD);
         this.weightField = helper.add(new JTextField(), "Weight", H_S, V_E + H_FLD + V_PAD, H_L, H_FLD);

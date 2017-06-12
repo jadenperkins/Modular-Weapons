@@ -27,8 +27,8 @@ public class IconEditor extends ContentEditor<ContentObjectIcon> {
     private final JFileChooser imageChooser = new JFileChooser();
     private String base64String;
 
-    public IconEditor(Module module, PluginBuilderPanel parent) {
-        super(module, parent);
+    public IconEditor(PluginBuilderPanel parent) {
+        super("Icons", parent);
 
         GuiHelper helper = GuiHelper.above(this);
 

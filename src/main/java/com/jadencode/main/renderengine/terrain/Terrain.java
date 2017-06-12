@@ -87,8 +87,8 @@ public class Terrain implements Transform {
     }
 
     private RawModel generateTerrain(Loader loader) {
-        this.heights = this.heightsGenerator.generateHeights();
-//        heights = new float[VERTEX_COUNT][VERTEX_COUNT];
+//        this.heights = this.heightsGenerator.generateHeights();
+        heights = new float[VERTEX_COUNT][VERTEX_COUNT];
 
         int count = VERTEX_COUNT * VERTEX_COUNT;
         float[] vertices = new float[count * 3];

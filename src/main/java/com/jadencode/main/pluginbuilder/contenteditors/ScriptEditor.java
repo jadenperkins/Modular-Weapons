@@ -1,6 +1,7 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
+import com.jadencode.main.constants.Strings;
 import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.content.ContentObjectScript;
@@ -27,8 +28,8 @@ public class ScriptEditor extends ContentEditor<ContentObjectScript> {
 
     private final JFileChooser scriptChooser = new JFileChooser();
 
-    public ScriptEditor(Module module, PluginBuilderPanel parent) {
-        super(module, parent);
+    public ScriptEditor(PluginBuilderPanel parent) {
+        super(Strings.ContentEditors.SCRIPTS, parent);
 
         this.scriptChooser.setFileFilter(new FileFilter() {
             @Override

@@ -1,8 +1,12 @@
 package com.jadencode.main;
 
+import com.jadencode.main.constants.MaterialTypes;
+import com.jadencode.main.constants.Materials;
 import com.jadencode.main.content.ContentLoader;
 import com.jadencode.main.generate.item.ItemGenerator;
 import com.jadencode.main.generate.item.instance.Item;
+import com.jadencode.main.material.Material;
+import com.jadencode.main.material.MaterialType;
 import com.jadencode.main.renderengine.audio.AudioMaster;
 import com.jadencode.main.renderengine.gui.GuiRenderer;
 import com.jadencode.main.renderengine.gui.GuiTexture;
@@ -24,6 +28,9 @@ import com.jadencode.main.renderengine.models.TexturedModel;
 import com.jadencode.main.renderengine.textures.ModelTexture;
 import com.jadencode.main.renderengine.textures.TerrainTexture;
 import com.jadencode.main.renderengine.textures.TerrainTexturePack;
+import com.jadencode.main.util.WeightedItem;
+import com.jadencode.main.util.WeightedRandomFloat;
+import com.jadencode.main.util.WeightedRandomObject;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL30;
@@ -35,6 +42,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 /**
  * Created by Jaden on 1/19/2015.
@@ -97,21 +107,32 @@ public class Main {
 //            entities.add(entityAdd);
 //        }
 
+        ContentLoader.load();
+
+        List<WeightedRandomObject<MaterialType>> weightedTypes = MaterialTypes.getMaterialTypes().stream().map(type -> new WeightedRandomObject<>(1F, type)).collect(Collectors.toList());
+        Supplier<Material> randomMaterial = () -> WeightedRandomFloat.getRandomItem(r, Materials.getMaterials(WeightedRandomFloat.getRandomItem(r, weightedTypes).getObject()));
+        Function<Material, Vector3f> materialToColor = material -> new Vector3f((float) material.getColor().getRed() / 255F, (float) material.getColor().getGreen() / 255F, (float) material.getColor().getBlue() / 255F);
+
+        Vector3f pommelColor = materialToColor.apply(randomMaterial.get());
+        Vector3f gripColor = materialToColor.apply(randomMaterial.get());
+        Vector3f hiltColor = materialToColor.apply(randomMaterial.get());
+        Vector3f bladeColor = materialToColor.apply(randomMaterial.get());
+
         Entity pommel = new Entity(
                 new TexturedModel(objLoader.loadObjModel("Pommel"), new ModelTexture(loader.loadTexture("models/Pommel"))),
-                new Vector3f(0, -10 - 2.8F, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1), new Vector3f(0.6f, 0.4F, 0.0F));
+                new Vector3f(0, 0 - 2.8F, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1), pommelColor);
 
         Entity grip = new Entity(
                 new TexturedModel(objLoader.loadObjModel("Grip"), new ModelTexture(loader.loadTexture("models/Grip"))),
-                new Vector3f(0, -10, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1), new Vector3f(0.3f, 0.3F, 0.3F));
+                new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1), gripColor);
 
         Entity hilt = new Entity(
                 new TexturedModel(objLoader.loadObjModel("Hilt"), new ModelTexture(loader.loadTexture("models/Hilt"))),
-                new Vector3f(0, -10 + 2.8F, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1), new Vector3f(0.6f, 0.4F, 0.0F));
+                new Vector3f(0, 0 + 2.8F, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1), hiltColor);
 
         Entity blade = new Entity(
                 new TexturedModel(objLoader.loadObjModel("Blade"), new ModelTexture(loader.loadTexture("models/Blade"))),
-                new Vector3f(0, -10 + 2.8F + 10, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1), new Vector3f(0.0F, 0.0F, 0.0F));
+                new Vector3f(0, 0 + 2.8F + 10, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1), bladeColor);
 
         entities.add(pommel);
         entities.add(grip);
@@ -121,13 +142,13 @@ public class Main {
         MasterRenderer renderer = new MasterRenderer(loader, camera);
         ParticleMaster.init(loader, renderer.getProjectionMatrix());
 
-        TexturedModel lanternModel = new TexturedModel(NormalMappedObjLoader.loadOBJ("lantern", loader), new ModelTexture(loader.loadTexture("models/lantern")));
-        lanternModel.getTexture().setShineDamper(10);
-        lanternModel.getTexture().setReflectivity(0.5F);
-        lanternModel.getTexture().setSpecularMap(loader.loadTexture("models/lanternS"));
-
-        Entity lantern = new Entity(lanternModel, new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
-        entities.add(lantern);
+//        TexturedModel lanternModel = new TexturedModel(NormalMappedObjLoader.loadOBJ("lantern", loader), new ModelTexture(loader.loadTexture("models/lantern")));
+//        lanternModel.getTexture().setShineDamper(10);
+//        lanternModel.getTexture().setReflectivity(0.5F);
+//        lanternModel.getTexture().setSpecularMap(loader.loadTexture("models/lanternS"));
+//
+//        Entity lantern = new Entity(lanternModel, new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
+//        entities.add(lantern);
 
         AudioMaster.init();
 //        AudioMaster.setListenerData(0, 0, 0);

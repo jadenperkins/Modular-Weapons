@@ -11,16 +11,22 @@ import java.util.List;
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public abstract class Module<T extends ContentObject> {
+public class Module<T extends ContentObject> {
     private final List<String> itemKeys = new ArrayList<>();
     private final HashMap<String, T> items = new HashMap<>();
-    private final String name;
 
-    public Module(String name) {
-        this.name = name;
+    private final String name;
+    private final ContentEditor<T> contentEditor;
+
+    public Module(ContentEditor<T> contentEditor) {
+        this.name = contentEditor.getEditorName();
+        this.contentEditor = contentEditor;
+        this.contentEditor.connectModule(this);
     }
 
-    public abstract ContentEditor<T> getContentEditor();
+    public ContentEditor<T> getContentEditor() {
+        return contentEditor;
+    }
 
     public String getName() {
         return this.name;

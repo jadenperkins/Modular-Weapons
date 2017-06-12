@@ -29,7 +29,7 @@ public class MaterialModifierLoader extends ContentManager {
         float w = obj.has(Strings.JsonKey.WEIGHT) ? obj.get(Strings.JsonKey.WEIGHT).getAsFloat() : 1F;
         float m = obj.get(Strings.JsonKey.MODIFIER).getAsFloat();
         float l = obj.get(Strings.JsonKey.LEVEL).getAsFloat();
-        JsonArray materials = obj.get(Strings.JsonKey.MATERIAL).getAsJsonArray();
+        JsonArray materials = obj.get(Strings.JsonKey.MATERIALS).getAsJsonArray();
         List<String> mats = new ArrayList<>();
         materials.forEach(mat -> mats.add(mat.getAsString()));
         List<MaterialType> materialTypes = mats.stream().map(MaterialTypes::get).collect(Collectors.toList());

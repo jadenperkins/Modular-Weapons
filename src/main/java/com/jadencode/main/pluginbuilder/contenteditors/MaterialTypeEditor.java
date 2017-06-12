@@ -1,6 +1,7 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
+import com.jadencode.main.constants.Strings;
 import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.content.ContentObjectMaterialType;
@@ -17,8 +18,8 @@ public class MaterialTypeEditor extends ContentEditor<ContentObjectMaterialType>
 
     private final JComboBox<String> scriptSelection;
 
-    public MaterialTypeEditor(Module module, PluginBuilderPanel parent) {
-        super(module, parent);
+    public MaterialTypeEditor(PluginBuilderPanel parent) {
+        super(Strings.ContentEditors.MATERIAL_TYPES, parent);
         GuiHelper helper = GuiHelper.left(this);
         this.scriptSelection = helper.add(new JComboBox<>(), "Script", H_S, V_E, H_L, H_FLD);
     }

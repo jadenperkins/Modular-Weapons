@@ -1,6 +1,7 @@
 package com.jadencode.main.pluginbuilder.contenteditors;
 
 import com.google.gson.JsonObject;
+import com.jadencode.main.constants.Strings;
 import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.content.ContentObjectItemTypeUnique;
@@ -26,8 +27,8 @@ public class ItemTypeUniqueEditor extends ContentEditor<ContentObjectItemTypeUni
     private final JComboBox<String> qualitySelection;
     private final JComboBox<String> iconSelection;
 
-    public ItemTypeUniqueEditor(Module module, PluginBuilderPanel parent) {
-        super(module, parent);
+    public ItemTypeUniqueEditor(PluginBuilderPanel parent) {
+        super(Strings.ContentEditors.UNIQUE_ITEM_TYPES, parent);
         GuiHelper helper = GuiHelper.left(this);
         this.statSetSelection = helper.add(new JComboBox<>(), "Stat Set", H_S, V_E, H_L, H_FLD);
         this.scriptSelection = helper.add(new JComboBox<>(), "Script", H_S, V_E + H_FLD + V_PAD, H_L, H_FLD);

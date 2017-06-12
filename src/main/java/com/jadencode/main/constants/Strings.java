@@ -6,6 +6,22 @@ package com.jadencode.main.constants;
 public class Strings {
     public static final String AN_ITEM_PART = "An item part";
 
+    public static class ContentEditors {
+        public static final String COLORS = "Colors";
+        public static final String ICONS = "Icons";
+        public static final String MATERIALIZED_ITEM_PARTS = "Materialized Item Parts";
+        public static final String UNIQUE_ITEM_PARTS = "Unique Item Parts";
+        public static final String MATERIALIZED_ITEM_TYPES = "Materialized Item Types";
+        public static final String MODULAR_ITEM_TYPES = "Modular Item Types";
+        public static final String UNIQUE_ITEM_TYPES = "Unique Item Types";
+        public static final String MATERIALS = "Materials";
+        public static final String MATERIAL_MODIFIERS = "Material Modifiers";
+        public static final String MATERIAL_TYPES = "Material Types";
+        public static final String SCRIPTS = "Scripts";
+        public static final String PART_TYPES = "Part Types";
+        public static final String STATS = "Stats";
+        public static final String STAT_SETS = "Stat Sets";
+    }
     public static class Loaders {
         public static final String COLORS = "Colors";
         public static final String ICONS = "Icons";

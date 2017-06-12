@@ -19,8 +19,8 @@ public class ColorEditor extends ContentEditor<ContentObjectColor> {
     private final JPanel displayPanel;
     private Color color = Color.WHITE;
 
-    public ColorEditor(Module module, PluginBuilderPanel parent) {
-        super(module, parent);
+    public ColorEditor(PluginBuilderPanel parent) {
+        super("Colors", parent);
 
         GuiHelper helper = GuiHelper.above(this);
 

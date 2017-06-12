@@ -3,6 +3,7 @@ package com.jadencode.main.pluginbuilder.contenteditors;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.jadencode.main.constants.Strings;
 import com.jadencode.main.pluginbuilder.GuiHelper;
 import com.jadencode.main.pluginbuilder.PluginBuilderPanel;
 import com.jadencode.main.pluginbuilder.content.ContentObjectItemPartMaterialized;
@@ -33,8 +34,8 @@ public class ItemPartMaterializedEditor extends ContentEditor<ContentObjectItemP
     private final JList<String> materialsList;
     private final JTable jointsTable;
 
-    public ItemPartMaterializedEditor(Module module, PluginBuilderPanel parent) {
-        super(module, parent);
+    public ItemPartMaterializedEditor(PluginBuilderPanel parent) {
+        super(Strings.ContentEditors.MATERIALIZED_ITEM_PARTS, parent);
         GuiHelper helper = GuiHelper.left(this);
         this.nameModField = helper.add(new JTextField(), "Name Modifier", H_S, V_E, H_L, H_FLD);
         this.partInfoField = helper.add(new JTextField(), "Part Info", H_S, V_E + H_FLD + V_PAD, H_L, H_FLD);

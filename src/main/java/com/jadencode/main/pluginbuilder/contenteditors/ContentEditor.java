@@ -36,9 +36,11 @@ public abstract class ContentEditor<T extends ContentObject> extends JPanel {
     private final JButton deleteItem;
 
     private final PluginBuilderPanel pluginBuilderPanel;
+    private final String editorName;
 
-    public ContentEditor(Module<T> parent, PluginBuilderPanel panel) {
+    public ContentEditor(String editorName, PluginBuilderPanel panel) {
         this.setLayout(null);
+        this.editorName = editorName;
         this.pluginBuilderPanel = panel;
         this.setBackground(Color.LIGHT_GRAY);
         this.setLocation(430, 10);
@@ -51,23 +53,28 @@ public abstract class ContentEditor<T extends ContentObject> extends JPanel {
         this.nameField = helper.add(new JTextField(), "Item Name", H_S, V_S, H_L, H_FLD);
         this.updateItem = helper.add(new JButton("Update Item"), H_S, V_S + H_FLD + V_PAD, H_L, H_BTN);
         this.deleteItem = helper.add(new JButton("Delete Item"), H_S, V_S + H_FLD + H_BTN + 2 * V_PAD, H_L, H_BTN);
-
+    }
+    public ContentEditor<T> connectModule(Module parent) {
         this.updateItem.addActionListener(e -> {
-            if (panel.getActivePlugin() == null || panel.getActivePlugin().isEmpty()) {
+            if (pluginBuilderPanel.getActivePlugin() == null || pluginBuilderPanel.getActivePlugin().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "An active plugin must be named before adding content!");
             } else {
                 String itemName = this.nameField.getText();
                 if (itemName != null && !itemName.isEmpty()) {
-                    parent.addItem(itemName, panel.getActivePlugin());
-                    panel.updateCurrentObjects(itemName);
+                    parent.addItem(itemName, pluginBuilderPanel.getActivePlugin());
+                    pluginBuilderPanel.updateCurrentObjects(itemName);
                 }
             }
         });
         this.deleteItem.addActionListener(e -> {
             String itemName = this.nameField.getText();
             parent.remove(itemName);
-            panel.updateCurrentObjects(null);
+            pluginBuilderPanel.updateCurrentObjects(null);
         });
+        return this;
+    }
+    public String getEditorName() {
+        return editorName;
     }
 
     public PluginBuilderPanel getPluginBuilderPanel() {
