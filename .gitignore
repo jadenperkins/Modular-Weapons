@@ -2,3 +2,6 @@
 *.iml
 .gradle
 build/
+pictures/
+res/Thumbs.db
+res/models/Thumbs.db
