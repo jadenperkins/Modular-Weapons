@@ -3,6 +3,7 @@ package com.jadencode.main.content.loaders;
 import com.google.gson.JsonObject;
 import com.jadencode.main.constants.Icons;
 import com.jadencode.main.constants.Strings;
+import org.apache.commons.io.IOUtils;
 
 import javax.imageio.ImageIO;
 import javax.xml.bind.DatatypeConverter;
@@ -19,16 +20,18 @@ public class IconLoader extends ContentManager {
     }
 
     private static BufferedImage decodeToImage(String imageString) {
+        ByteArrayInputStream byteArrayInputStream = null;
+        BufferedImage image = null;
         try {
             byte[] imageBytes = DatatypeConverter.parseBase64Binary(imageString);
-            ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
-            BufferedImage image = ImageIO.read(bis);
-            bis.close();
-            return image;
+            byteArrayInputStream = new ByteArrayInputStream(imageBytes);
+            image = ImageIO.read(byteArrayInputStream);
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            IOUtils.closeQuietly(byteArrayInputStream);
         }
-        return null;
+        return image;
     }
     @Override
     public void consume(String name, JsonObject obj) {
