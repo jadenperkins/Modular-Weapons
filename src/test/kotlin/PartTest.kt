@@ -43,11 +43,11 @@ class PartTest : Spek({
             assertEquals(testPart.joints.size, 4)
         }
 
-        it ("shouldn't be able to add an attachment without a valid joint") {
+        it ("shouldn't be able to addNode an attachment without a valid joint") {
             assertFalse(testPart.addAttachment(Joint("New joint"), Part("New part")))
         }
 
-        it ("shouldn't be able to add an attachment if it's already been added") {
+        it ("shouldn't be able to addNode an attachment if it's already been added") {
             assertFalse(testPart.addAttachment(jointTop, attachmentRight))
         }
 

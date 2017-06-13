@@ -35,59 +35,52 @@ public class ItemTypeModular extends ItemType<ItemModular> {
         this.itemPartTypes = types;
         this.optionalParts = optional;
     }
-
     private static BufferedImage trim(BufferedImage image) {
         int l, r, t, b;
         l = r = t = b = 0;
 
-        Function<Integer, Boolean> isColumnTrans = i -> {
-            for (int j = 0; j < image.getHeight(); j++) {
-                if (image.getRGB(i, j) >> 24 != 0x00) {
-                    return false;
-                }
-            }
-            return true;
-        };
-
-        for (int i = 0; i < image.getWidth(); i++) {
-            if (!isColumnTrans.apply(i)) {
-                break;
-            } else {
+        for (int i = 0; i < image.getWidth() && isColumnTrans(image, i); i++) {
+//            if (!isColumnTrans(image, i)) {
+//                break;
+//            } else {
                 l = i;
-            }
+//            }
         }
-        for (int i = image.getWidth() - 1; i >= 0; i--) {
-            if (!isColumnTrans.apply(i)) {
-                break;
-            } else {
+        for (int i = image.getWidth() - 1; i >= 0 && isColumnTrans(image, i); i--) {
+//            if (!isColumnTrans(image, i)) {
+//                break;
+//            } else {
                 r = i;
-            }
+//            }
         }
 
-        Function<Integer, Boolean> isRowTrans = j -> {
-            for (int i = 0; i < image.getWidth(); i++) {
-                if (image.getRGB(i, j) >> 24 != 0x00) {
-                    return false;
-                }
-            }
-            return true;
-        };
-
-        for (int j = 0; j < image.getHeight(); j++) {
-            if (!isRowTrans.apply(j)) {
-                break;
-            } else {
+        for (int j = 0; j < image.getHeight() && isRowTrans(image, j); j++) {
+//            if (!isRowTrans(image, j)) {
+//                break;
+//            } else {
                 t = j;
-            }
+//            }
         }
-        for (int j = image.getHeight() - 1; j >= 0; j--) {
-            if (!isRowTrans.apply(j)) {
-                break;
-            } else {
+        for (int j = image.getHeight() - 1; j >= 0 && isRowTrans(image, j); j--) {
+//            if (!isRowTrans(image, j)) {
+//                break;
+//            } else {
                 b = j;
-            }
+//            }
         }
         return image.getSubimage(l, t, r - l + 1, b - t + 1);
+    }
+    private static boolean isColumnTrans(BufferedImage image, int i) {
+        for (int j = 0; j < image.getHeight(); j++) {
+            if(image.getRGB(i, j) >> 24 != 0x00) return false;
+        }
+        return true;
+    }
+    private static boolean isRowTrans(BufferedImage image, int j) {
+        for (int i = 0; i < image.getWidth(); i++) {
+            if(image.getRGB(i, j) >> 24 != 0x00) return false;
+        }
+        return true;
     }
 
     public ItemPartType getPrimaryPartType() {
@@ -123,24 +116,26 @@ public class ItemTypeModular extends ItemType<ItemModular> {
     @Override
     public String getDisplayFallback(ItemModular instance) {
         StringBuilder s = new StringBuilder(instance.getPart(instance.getItemType().getPrimaryPartType()).getItemType().getMaterialName());
-        for (ItemPartType type : instance.getItemType().getItemPartTypes()) {
-            s.append(" ").append(instance.getPart(type).getItemType().getNameMod());
-        }
+        List<ItemPartType> partTypes = instance.getItemType().getItemPartTypes();
+        partTypes.forEach(type -> s.append(" ").append(instance.getPart(type).getItemType().getNameMod()));
         return s.toString().trim();
     }
-
     @Override
     public BufferedImage render(ItemModular instance) {
-        int width = 0;
-        int height = 0;
-        for (ItemPart itemPart : instance.getPartsList()) {
-            if (itemPart.getItemType().getIcon().getWidth() > width) {
-                width = itemPart.getItemType().getIcon().getWidth();
-            }
-            if (itemPart.getItemType().getIcon().getHeight() > height) {
-                height = itemPart.getItemType().getIcon().getHeight();
-            }
-        }
+//        int width = 0;
+//        int height = 0;
+//        for (ItemPart itemPart : instance.getPartsList()) {
+//            if (itemPart.getItemType().getIcon().getWidth() > width) {
+//                width = itemPart.getItemType().getIcon().getWidth();
+//            }
+//            if (itemPart.getItemType().getIcon().getHeight() > height) {
+//                height = itemPart.getItemType().getIcon().getHeight();
+//            }
+//        }
+        List<ItemPart> parts = instance.getPartsList();
+        int width = parts.stream().mapToInt(part -> part.getItemType().getIcon().getWidth()).max().orElse(0);
+        int height = parts.stream().mapToInt(part -> part.getItemType().getIcon().getWidth()).max().orElse(0);
+
         ItemPart anchor = instance.getPart(this.anchorPart);
 
         Node<ItemPart> tree = Node.tree(anchor, instance.getPartsList(), (c, p) -> {
@@ -180,7 +175,8 @@ public class ItemTypeModular extends ItemType<ItemModular> {
                 }
             }
         }
-        for (Node<ItemPart> childNode : anchor.getChildren()) {
+        List<Node<ItemPart>> children = anchor.getChildren();
+        for (Node<ItemPart> childNode : children) {
             this.drawTree(childNode, out, g2d, x, y);
         }
     }
@@ -188,7 +184,8 @@ public class ItemTypeModular extends ItemType<ItemModular> {
     @Override
     public List<String> getItemCardStrings(ItemModular instance) {
         List<String> ret = new ArrayList<>();
-        for (ItemPart itemPart : instance.getPartsList()) {
+        List<ItemPart> parts = instance.getPartsList();
+        for (ItemPart itemPart : parts) {
             ret.add(String.format("        %s (%s - %d)", itemPart.getDisplayName(), itemPart.getQualityLevel().getQualityName(), itemPart.getLevel()));
             List<String> part = itemPart.getItemType().getItemCardStrings(itemPart);
             part.forEach(s -> ret.add("                " + s));

@@ -10,9 +10,8 @@ import java.util.function.BiPredicate;
  * Created by gtrpl on 6/29/2016.
  */
 public class Node<T> {
-    private T data;
-    private Node<T> parent;
-    private List<Node<T>> children = new ArrayList<>();
+    private final T data;
+    private final List<Node<T>> children = new ArrayList<>();
 
     public Node(T val) {
         this.data = val;
@@ -40,20 +39,18 @@ public class Node<T> {
             if (comparison.test(currentItem, item)) {
                 newItems.remove(item);
                 newItems.add(0, item);
-                root.add(tree(newItems, comparison, used));
+                root.addNode(tree(newItems, comparison, used));
             }
         }
         return root;
     }
-
-    public Node<T> addNode(T val) {
-        return this.add(new Node<>(val));
-    }
-
-    public Node<T> add(Node<T> node) {
-        node.parent = this;
-        this.children.add(node);
+    public Node<T> addNode(Node<T> node) {
+        this.getChildren().add(node);
         return node;
+    }
+    public Node<T> addNodeMe(Node<T> node) {
+        this.addNode(node);
+        return this;
     }
 
     public List<Node<T>> getChildren() {
@@ -65,14 +62,16 @@ public class Node<T> {
     }
 
     public Node<T> getParent() {
-        return this.parent;
+        return this;
+    }
+    public Node<T> getRoot() {
+        return this;
     }
 
     @Override
     public String toString() {
         return "Node{" +
-                "data=" + data +
-                ", parent=" + parent +
+                "data=" + data.toString() +
                 ", children=" + children.size() +
                 '}';
     }

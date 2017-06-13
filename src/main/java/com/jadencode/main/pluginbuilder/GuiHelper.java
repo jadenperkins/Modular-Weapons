@@ -52,7 +52,7 @@ public class GuiHelper {
     }
 
     /**
-     * Creates a label with the specified alignment and puts it on the parent, then add the component
+     * Creates a label with the specified alignment and puts it on the parent, then addNode the component
      */
     public <T extends JComponent> T add(T component, String title, int x, int y, int width, int height, Align align) {
         return this.add(component, title, x, y, width, height, this.stringWidth(title), align);

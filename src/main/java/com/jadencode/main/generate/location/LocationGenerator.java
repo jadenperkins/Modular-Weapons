@@ -56,13 +56,13 @@ public class LocationGenerator implements Generator<Location> {
 //            for(String name : POSSIBLE_NAMES) {
 //                if(!sorted.contains(name)) {
 //                    System.out.println(name + " not found in instance, adding!");
-//                    newNames.add(name);
+//                    newNames.addNode(name);
 //                }
 //            }
 //
 //            List<String> unusedNames = new ArrayList<>();
 //            for(int i = this.index; i < this.instanceLocations.size(); i++) {
-//                unusedNames.add(this.instanceLocations.get(i));
+//                unusedNames.addNode(this.instanceLocations.get(i));
 //            }
 //            this.instanceLocations.removeAll(unusedNames);
 //
@@ -77,17 +77,17 @@ public class LocationGenerator implements Generator<Location> {
 //    public void toJson(JsonObject json) {
 //        JsonArray array = new JsonArray();
 //        for(String name : this.instanceLocations) {
-//            array.add(new JsonPrimitive(name));
+//            array.addNode(new JsonPrimitive(name));
 //        }
 //
-//        json.add("instanceLocations", array);
-//        json.add("index", new JsonPrimitive(this.index));
+//        json.addNode("instanceLocations", array);
+//        json.addNode("index", new JsonPrimitive(this.index));
 //    }
 //    public void fromJson(JsonObject json) {
 //
 //        JsonArray array = json.get("instanceLocations").getAsJsonArray();
 //        for(JsonElement e : array) {
-//            this.instanceLocations.add(e.getAsString());
+//            this.instanceLocations.addNode(e.getAsString());
 //        }
 //        this.index = json.get("index").getAsInt();
 //    }
@@ -102,7 +102,7 @@ public class LocationGenerator implements Generator<Location> {
 //            this.index = 0;
 //        } else {
 //            List<String> list = NBTUtils.fromStringList(nbt.getTagList("instanceLocations"));
-//            list.stream().forEach(i -> this.instanceLocations.add(i));
+//            list.stream().forEach(i -> this.instanceLocations.addNode(i));
 //            this.index = nbt.getInteger("index");
 //        }
 //    }

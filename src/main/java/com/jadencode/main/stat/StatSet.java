@@ -54,7 +54,7 @@ public class StatSet {
                 ret.add(stat, stat.combine(ret.get(stat), other.get(stat)));
             }
         }
-//        this.getStatsRaw().keySet().forEach(stat -> others.forEach(other -> ret.add(stat, stat.combine(ret.get(stat), other.get(stat)))));
+//        this.getStatsRaw().keySet().forEach(stat -> others.forEach(other -> ret.addNode(stat, stat.combine(ret.get(stat), other.get(stat)))));
         return ret;
     }
 

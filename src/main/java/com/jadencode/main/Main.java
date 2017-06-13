@@ -94,7 +94,7 @@ public class Main {
 //
 //            float ry = r.nextFloat() * 360;
 //            Entity entityAdd = new Entity(entity.getModel(), new Vector3f(x, y, z), new Vector3f(0, ry, 0), new Vector3f(2, 2, 2));
-//            entities.add(entityAdd);
+//            entities.addNode(entityAdd);
 //        }
 
         Entity pommel = new Entity(
@@ -165,7 +165,7 @@ public class Main {
         List<GuiTexture> guis = new ArrayList<>();
         GuiRenderer guiRenderer = new GuiRenderer(loader);
 
-//        guis.add(new GuiTexture(renderer.getShadowMapTexture(), new Vector2f(0.5F, 0.5F), new Vector2f(0.5F, 0.5F)));
+//        guis.addNode(new GuiTexture(renderer.getShadowMapTexture(), new Vector2f(0.5F, 0.5F), new Vector2f(0.5F, 0.5F)));
 
         MousePicker picker = new MousePicker(camera, renderer.getProjectionMatrix(), terrain);
         ParticleTexture particleTexture = new ParticleTexture(loader.loadTexture("particleAtlas"), 4);
