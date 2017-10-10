@@ -2,3 +2,5 @@
 *.iml
 .gradle
 build/
+pictures/
+out/
