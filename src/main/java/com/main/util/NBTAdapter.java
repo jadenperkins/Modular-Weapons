@@ -7,7 +7,7 @@ import com.main.nbt.NBTTagCompound;
  */
 public interface NBTAdapter<T>
 {
-    public NBTTagCompound getTagCompound();
-    public boolean hasTagCompound();
-    public T getObject();
+    NBTTagCompound getTagCompound();
+    boolean hasTagCompound();
+    T getObject();
 }

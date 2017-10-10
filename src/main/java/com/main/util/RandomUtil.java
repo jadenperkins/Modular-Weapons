@@ -8,7 +8,6 @@ import java.util.Random;
  */
 public class RandomUtil {
     public static <T> T random(List<T> list, Random r) {
-
         return list.get(randomIndex(list, r));
     }
     public static <T> int randomIndex(List<T> list, Random r) {

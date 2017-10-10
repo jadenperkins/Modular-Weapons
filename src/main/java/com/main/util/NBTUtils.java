@@ -91,17 +91,13 @@ public class NBTUtils {
     }
     public static boolean hasKeysAnd(NBTTagCompound nbt, String... keys) {
         for (String k : keys) {
-            if (!nbt.hasKey(k)) {
-                return false;
-            }
+            if (!nbt.hasKey(k)) return false;
         }
         return true;
     }
     public static boolean hasKeysOr(NBTTagCompound nbt, String... keys) {
         for (String k : keys) {
-            if (nbt.hasKey(k)) {
-                return true;
-            }
+            if (nbt.hasKey(k)) return true;
         }
         return false;
     }

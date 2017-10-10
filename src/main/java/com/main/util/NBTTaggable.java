@@ -5,8 +5,7 @@ import com.main.nbt.NBTTagCompound;
 /**
  * Created by Jaden on 7/23/2014.
  */
-public interface NBTTaggable
-{
-    public void writeToNBT(NBTTagCompound nbt);
-    public void readFromNBT(NBTTagCompound nbt);
+public interface NBTTaggable {
+    void writeToNBT(NBTTagCompound nbt);
+    void readFromNBT(NBTTagCompound nbt);
 }

@@ -4,8 +4,8 @@ package com.main.util;
  * Created by Jaden on 7/3/2014.
  */
 public class WeightedRandomObject<T> implements WeightedItem {
-    public float itemWeight;
-    public T theObject;
+    public final float itemWeight;
+    public final T theObject;
 
     public WeightedRandomObject(float f, T o) {
         this.itemWeight = f;
