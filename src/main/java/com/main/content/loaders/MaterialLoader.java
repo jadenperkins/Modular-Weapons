@@ -6,6 +6,7 @@ import com.main.constants.MaterialTypes;
 import com.main.constants.Materials;
 import com.main.generate.QualityLevel;
 import com.main.material.Material;
+import com.main.material.MaterialBase;
 import com.main.material.MaterialType;
 
 import java.awt.*;
@@ -24,7 +25,7 @@ public class MaterialLoader extends ContentManager {
         float m = obj.get("mod").getAsFloat();
         int l = obj.get("level").getAsInt();
         MaterialType t = MaterialTypes.get(obj.get("material").getAsString());
-        Material material = new Material(name, c, w, m, l, QualityLevel.COMMON, t);
+        Material material = new MaterialBase(name, c, w, m, l, QualityLevel.COMMON, t);
         Materials.register(t, material);
     }
 }

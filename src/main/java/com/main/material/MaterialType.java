@@ -37,7 +37,7 @@ public class MaterialType {
             Color c = new Color(color);
             float weight = (float) (Math.abs(code % 5) + 1) / 5F;
             float mod = (float) (Math.abs((code + 7) % 4) + 1) / 2F;
-            Material material = new Material(name, c, weight, mod, level, QualityLevel.RARE, this);
+            Material material = new MaterialBase(name, c, weight, mod, level, QualityLevel.RARE, this);
             Materials.register(this, material);
             materials.add(material);
         }

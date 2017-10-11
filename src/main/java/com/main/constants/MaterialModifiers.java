@@ -18,6 +18,6 @@ public final class MaterialModifiers {
         MODIFIERS.get(type).add(modifier);
     }
     public static List<MaterialModifier> getModifiers(MaterialType type) {
-        return MODIFIERS.getOrDefault(type, new ArrayList<>());
+        return !MODIFIERS.containsKey(type) ? new ArrayList<>() : MODIFIERS.get(type);
     }
 }

@@ -25,7 +25,8 @@ public final class Materials {
     }
 
     public static void load() {
-        for (MaterialType type : MaterialTypes.getMaterialTypes()) {
+        List<MaterialType> materialTypes = MaterialTypes.getMaterialTypes();
+        for (MaterialType type : materialTypes) {
             List<Material> commonMaterials = new ArrayList<>(getMaterials(type));
             List<Material> exoticMaterials = type.generateExotics();
 
@@ -40,13 +41,6 @@ public final class Materials {
                     Materials.register(type, m);
                 }
             }
-
-//            for (Material material : baseMaterials) {
-//                for (MaterialModifier modifier : MaterialModifiers.getModifiers(type)) {
-//                    Material m = new MaterialModified(material, modifier);
-//                    Materials.register(type, m);
-//                }
-//            }
             System.out.println(String.format("Registered %d %s materials!", getMaterials(type).size(), type.getName()));
         }
     }

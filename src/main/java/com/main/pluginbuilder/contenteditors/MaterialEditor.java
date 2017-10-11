@@ -28,7 +28,7 @@ public class MaterialEditor extends ContentEditor<ItemMaterial> {
         this.weightField = helper.add(new JTextField(), "Weight", H_S, V_E + H_FLD + V_PAD, H_L, H_FLD);
         this.modField = helper.add(new JTextField(), "Modifier", H_S, V_E + 2 * H_FLD + 2 * V_PAD, H_L, H_FLD);
         this.levelField = helper.add(new JTextField(), "Level", H_S, V_E + 3 * H_FLD + 3 * V_PAD, H_L, H_FLD);
-        this.materialSelection = helper.add(new JComboBox<>(), "Material Type", H_S, V_E + 4 * H_FLD + 4 * V_PAD, H_L, H_FLD);
+        this.materialSelection = helper.add(new JComboBox<>(), "MaterialBase Type", H_S, V_E + 4 * H_FLD + 4 * V_PAD, H_L, H_FLD);
     }
     @Override
     public void onOpened(Module<ItemMaterial> parent, PluginBuilderPanel panel) {
@@ -36,7 +36,7 @@ public class MaterialEditor extends ContentEditor<ItemMaterial> {
         List<String> colors = colorModule.getItemKeys();
         this.colorSelection.setModel(new DefaultComboBoxModel<>(colors.toArray(new String[0])));
 
-        Module materalTypesModule = panel.getModule("Material Types");
+        Module materalTypesModule = panel.getModule("MaterialBase Types");
         List<String> types = materalTypesModule.getItemKeys();
         this.materialSelection.setModel(new DefaultComboBoxModel<>(types.toArray(new String[0])));
     }

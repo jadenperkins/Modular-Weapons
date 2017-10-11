@@ -1,7 +1,7 @@
 package com.main.stat;
 
-import com.main.scripts.ScriptStat;
 import com.main.material.Material;
+import com.main.scripts.ScriptStat;
 
 /**
  * Created by gtrpl on 6/5/2016.

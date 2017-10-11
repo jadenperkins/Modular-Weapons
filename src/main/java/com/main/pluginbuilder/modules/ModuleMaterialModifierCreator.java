@@ -11,7 +11,7 @@ import com.main.pluginbuilder.items.ItemMaterialModifier;
 public class ModuleMaterialModifierCreator extends Module<ItemMaterialModifier> {
     private final ContentEditor<ItemMaterialModifier> contentEditor;
     public ModuleMaterialModifierCreator(PluginBuilderPanel parent) {
-        super("Material Modifiers");
+        super("MaterialBase Modifiers");
         this.contentEditor = new MaterialModifierEditor(this, parent);
     }
     @Override

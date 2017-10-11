@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  */
 public class MaterialModifierLoader extends ContentManager {
     public MaterialModifierLoader() {
-        super("Material Modifiers", 6);
+        super("MaterialBase Modifiers", 6);
     }
     @Override
     public void consume(String name, JsonObject obj) {

@@ -35,7 +35,7 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         this.partTypeSelection = helper.add(new JComboBox<>(), "Part Type", H_S, V_E + 3 * (H_FLD + V_PAD), H_L, H_FLD);
         this.statSetSelection = helper.add(new JComboBox<>(), "Stat Set", H_S, V_E + 4 * (H_FLD + V_PAD), H_L, H_FLD);
         this.iconSelection = helper.add(new JComboBox<>(), "Icon", H_S, V_E + 5 * (H_FLD + V_PAD), H_L, H_FLD);
-        this.materialsList = helper.add(new JList<>(), "Material Types", H_E, V_S, H_L, H_FLD * 10, GuiHelper.Align.ABOVE);
+        this.materialsList = helper.add(new JList<>(), "MaterialBase Types", H_E, V_S, H_L, H_FLD * 10, GuiHelper.Align.ABOVE);
     }
     @Override
     public void onOpened(Module<ItemWeaponPart> parent, PluginBuilderPanel panel) {
@@ -55,7 +55,7 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         icons.addAll(iconsModule.getItemKeys());
         this.iconSelection.setModel(new DefaultComboBoxModel<>(icons.toArray(new String[0])));
 
-        Module materialTypesModule = panel.getModule("Material Types");
+        Module materialTypesModule = panel.getModule("MaterialBase Types");
         List<String> materialTypes = materialTypesModule.getItemKeys();
         this.materialsList.setListData(materialTypes.toArray(new String[0]));
         this.materialsList.setSize(H_L, H_FLD * Math.max(1, materialTypes.size()));

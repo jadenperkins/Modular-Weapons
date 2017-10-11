@@ -10,7 +10,7 @@ import com.main.scripts.ScriptMaterialType;
  */
 public class MaterialTypeLoader extends ContentManager {
     public MaterialTypeLoader() {
-        super("Material Types", 0);
+        super("MaterialBase Types", 0);
     }
     @Override
     public void consume(String name, JsonObject obj) {

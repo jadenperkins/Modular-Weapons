@@ -2,12 +2,15 @@ package com.main.constants;
 
 import com.main.TimeKeeper;
 import com.main.generate.weapon.*;
+import com.main.material.Material;
+import com.main.material.MaterialType;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -34,17 +37,21 @@ public final class WeaponParts {
         WEAPON_PARTS.add(part);
     }
     public static void generateWeaponParts() {
-        WeaponParts.getBaseParts()
-                .forEach(basePart -> basePart.getMaterials()
-                        .forEach(type -> Materials.getMaterials(type)
-                                .forEach(material -> register(new WeaponPartBasic(basePart, material)))));
+        List<WeaponPartBase> baseWeaponParts = WeaponParts.getBaseParts();
+        for (WeaponPartBase baseWeaponPart : baseWeaponParts) {
+            List<MaterialType> materialTypes = baseWeaponPart.getMaterials();
+            for (MaterialType materialType : materialTypes) {
+                List<Material> materials = Materials.getMaterials(materialType);
+                for (Material material : materials) {
+                    register(new WeaponPartBasic(baseWeaponPart, material));
+                }
+            }
+        }
     }
 
     public static List<WeaponPart> getPartsList(WeaponPartType type) {
-        if(PARTS_LISTS.containsKey(type)) return PARTS_LISTS.get(type);
-        List<WeaponPart> parts = new ArrayList<>();
-        PARTS_LISTS.put(type, parts);
-        return parts;
+        if (!PARTS_LISTS.containsKey(type)) PARTS_LISTS.put(type, new ArrayList<>());
+        return PARTS_LISTS.get(type);
     }
     public static void countParts() {
         for(WeaponPartType type : PARTS_LISTS.keySet()) {
@@ -57,9 +64,7 @@ public final class WeaponParts {
             long sub = 1;
             for(WeaponPartType type : weaponType.getWeaponPartTypes()) {
                 List<WeaponPart> parts = getPartsList(type);
-                if(parts != null && !parts.isEmpty()) {
-                    sub *= parts.size();
-                }
+                if(parts != null && !parts.isEmpty()) sub *= parts.size();
             }
             total += sub;
             System.out.println(format.format(sub) + " total " + weaponType.getWeaponTypeName() + "s");
@@ -71,7 +76,7 @@ public final class WeaponParts {
         timer.start("Enumeration all weapon parts. . .");
 
         List<WeaponPart> parts = getAll();
-        parts.sort((a, b) -> a.getPartName().compareTo(b.getPartName()));
+        parts.sort(Comparator.comparing(WeaponPart::getPartName));
 
         PrintStream writer = System.out;
 

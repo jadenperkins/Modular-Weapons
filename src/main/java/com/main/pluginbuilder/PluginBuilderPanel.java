@@ -11,7 +11,6 @@ import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import java.io.*;
 import java.util.*;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.zip.GZIPOutputStream;
 
@@ -202,7 +201,7 @@ public class PluginBuilderPanel extends JPanel {
             for(Module<? extends Item> module : modules) {
                 String moduleName = module.getName();
                 for(Plugin plugin : plugins) {
-                    JsonArray array = new JsonHelper(plugin.getPluginObject()).getArray(moduleName);
+                    JsonArray array = new JsonHelper(plugin.getContent()).getArray(moduleName);
                     for (JsonElement jsonElement : array) {
                         JsonObject content = jsonElement.getAsJsonObject();
                         module.addItem(content.get("name").getAsString(), content, plugin.getPluginName());

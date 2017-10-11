@@ -31,7 +31,7 @@ public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> 
         this.weightField = helper.add(new JTextField(), "Weight", H_S, V_E + H_FLD + V_PAD, H_L, H_FLD);
         this.levelField = helper.add(new JTextField(), "Level Modifier", H_S, V_E + 2 * (H_FLD + V_PAD), H_L, H_FLD);
         this.modField = helper.add(new JTextField(), "Modifier", H_S, V_E + 3 * (H_FLD + V_PAD), H_L, H_FLD);
-        this.materialsList = helper.addScrolling(new JList<>(), "Material Types", H_S, V_E + 4 * (H_FLD + V_PAD), H_L, 10 * H_FLD);
+        this.materialsList = helper.addScrolling(new JList<>(), "MaterialBase Types", H_S, V_E + 4 * (H_FLD + V_PAD), H_L, 10 * H_FLD);
     }
     @Override
     public void onOpened(Module<ItemMaterialModifier> parent, PluginBuilderPanel panel) {
@@ -39,7 +39,7 @@ public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> 
         List<String> colors = colorModule.getItemKeys();
         this.colorSelection.setModel(new DefaultComboBoxModel<>(colors.toArray(new String[0])));
 
-        Module materialTypesModule = panel.getModule("Material Types");
+        Module materialTypesModule = panel.getModule("MaterialBase Types");
         List<String> materialTypes = materialTypesModule.getItemKeys();
         this.materialsList.setListData(materialTypes.toArray(new String[0]));
         this.materialsList.setSize(200, 18 * Math.max(1, materialTypes.size()));
