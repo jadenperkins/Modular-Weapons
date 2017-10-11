@@ -1,11 +1,11 @@
 package com.main.content.loaders;
 
-import com.google.gson.JsonObject;
+import com.main.pipeline.PipelineObject;
 
 /**
  * Created by JPERKI8 on 6/16/2016.
  */
-public abstract class ContentManager {
+public abstract class ContentManager<C extends PipelineObject> {
     private final String name;
     private final int loadOrder;
 
@@ -19,5 +19,5 @@ public abstract class ContentManager {
     public int getLoadOrder() {
         return loadOrder;
     }
-    public abstract void consume(String name, JsonObject obj);
+    public abstract void consume(C object);
 }

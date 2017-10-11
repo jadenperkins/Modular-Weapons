@@ -1,13 +1,13 @@
 package com.main.content;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.main.constants.Materials;
 import com.main.constants.WeaponParts;
 import com.main.content.loaders.ContentManager;
-import com.main.pluginbuilder.JsonHelper;
+import com.main.pipeline.PipelineObject;
 import org.apache.commons.io.IOUtils;
 import org.reflections.Reflections;
 
@@ -89,19 +89,32 @@ public final class ContentLoader {
 
         File[] pluginFiles = getPluginDirectory().listFiles(a -> a.getName().endsWith(".plugin"));
 
-        List<Plugin> plugins = Arrays.asList(pluginFiles).stream().map(Plugin::new).collect(Collectors.toList());
+        Gson gson = new GsonBuilder().create();
+
+        List<Plugin> plugins = Arrays.asList(pluginFiles).stream().map(file -> fromJson(gson, file)).collect(Collectors.toList());
         plugins.sort(null);
 
         for (ContentManager manager : managers) {
             String managerName = manager.getName();
             for(Plugin plugin : plugins) {
                 System.out.println("Loading " + managerName + " from " + plugin.getPluginName());
-                JsonArray array = new JsonHelper(plugin.getContent()).getArray(managerName);
-                for (JsonElement jsonElement : array) {
-                    JsonObject content = jsonElement.getAsJsonObject();
-                    manager.consume(content.get("name").getAsString(), content);
+                List<PipelineObject> objects = plugin.getContent(managerName);
+                for (PipelineObject object : objects) {
+                    manager.consume(object);
                 }
             }
         }
+    }
+    private Plugin fromJson(Gson gson, File file) {
+        FileReader reader = null;
+        try {
+            reader = new FileReader(file);
+            return gson.fromJson(reader, Plugin.class);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            IOUtils.closeQuietly(reader);
+        }
+        return null;
     }
 }

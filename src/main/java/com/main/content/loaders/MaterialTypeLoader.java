@@ -1,21 +1,21 @@
 package com.main.content.loaders;
 
-import com.google.gson.JsonObject;
 import com.main.constants.MaterialTypes;
 import com.main.material.MaterialType;
+import com.main.pipeline.PipelineObjectMaterialType;
 import com.main.scripts.ScriptMaterialType;
 
 /**
  * Created by JPERKI8 on 6/16/2016.
  */
-public class MaterialTypeLoader extends ContentManager {
+public class MaterialTypeLoader extends ContentManager<PipelineObjectMaterialType> {
     public MaterialTypeLoader() {
-        super("MaterialBase Types", 0);
+        super("material_types", 0);
     }
     @Override
-    public void consume(String name, JsonObject obj) {
-        String scriptName = obj.has("script") ? obj.get("script").getAsString() : null;
+    public void consume(PipelineObjectMaterialType object) {
+        String scriptName = object.getScript();
         ScriptMaterialType script = MaterialTypes.script(scriptName);
-        MaterialTypes.register(new MaterialType(name, script));
+        MaterialTypes.register(new MaterialType(object.getName(), script));
     }
 }
