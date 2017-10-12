@@ -127,7 +127,7 @@ public class ArmorPartBase {
 //        for(ArmorPart part : parts) {
 //            String msg = String.format("%s, %s\n\t", part.getPartName(), part.getPartInfo());
 //            if(part.hasBaseResource()) {
-//                msg += part.getBaseResource().getName();
+//                msg += part.getBaseResource().getModuleName();
 //            } else {
 //                msg += "No Resource";
 //            }

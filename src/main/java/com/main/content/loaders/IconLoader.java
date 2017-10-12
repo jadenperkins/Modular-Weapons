@@ -1,6 +1,7 @@
 package com.main.content.loaders;
 
 import com.main.constants.Icons;
+import com.main.content.Plugin;
 import com.main.pipeline.PipelineObjectIcon;
 
 import javax.imageio.ImageIO;
@@ -13,7 +14,7 @@ import java.io.ByteArrayInputStream;
  */
 public class IconLoader extends ContentManager<PipelineObjectIcon> {
     public IconLoader() {
-        super("icons", -2);
+        super("icons", -2, Plugin::getIcons);
     }
     @Override
     public void consume(PipelineObjectIcon object) {

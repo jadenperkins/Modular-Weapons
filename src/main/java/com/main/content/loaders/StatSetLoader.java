@@ -1,29 +1,29 @@
 package com.main.content.loaders;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.main.constants.StatSets;
 import com.main.constants.Stats;
+import com.main.content.Plugin;
+import com.main.pipeline.PipelineObjectStatSet;
 import com.main.stat.StatSet;
+
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by JPERKI8 on 6/16/2016.
  */
-public class StatSetLoader extends ContentManager {
+public class StatSetLoader extends ContentManager<PipelineObjectStatSet> {
     public StatSetLoader() {
-        super("Stat Sets", 4);
+        super("stat_sets", 4, Plugin::getStatSets);
     }
     @Override
-    public void consume(String name, JsonObject obj) {
+    public void consume(PipelineObjectStatSet object) {
         StatSet set = new StatSet();
-        JsonArray stats = obj.get("stats").getAsJsonArray();
-        for (JsonElement stat : stats) {
-            JsonObject json = stat.getAsJsonObject();
-            String statName = json.get("stat").getAsString();
-            double value = json.get("value").getAsDouble();
-            set.add(Stats.get(statName), value);
+        Map<String, Double> stats = object.getStats();
+        Set<String> statNames = stats.keySet();
+        for (String stat : statNames) {
+            set.add(Stats.get(stat), stats.get(stat));
         }
-        StatSets.register(name, set);
+        StatSets.register(object.getName(), set);
     }
 }

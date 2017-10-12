@@ -1,10 +1,8 @@
 package com.main.pluginbuilder.contenteditors;
 
-import com.google.gson.JsonObject;
+import com.main.pipeline.PipelineObjectScript;
 import com.main.pluginbuilder.GuiHelper;
-import com.main.pluginbuilder.JsonHelper;
 import com.main.pluginbuilder.PluginBuilderPanel;
-import com.main.pluginbuilder.items.ItemScript;
 import com.main.pluginbuilder.modules.Module;
 import org.apache.commons.io.FileUtils;
 
@@ -16,7 +14,7 @@ import java.nio.charset.Charset;
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public class ScriptEditor extends ContentEditor<ItemScript> {
+public class ScriptEditor extends ContentEditor<PipelineObjectScript> {
     private static final String[] SCRIPT_TYPES = {
             "material types", "weapons", "stats"
     };
@@ -59,22 +57,16 @@ public class ScriptEditor extends ContentEditor<ItemScript> {
         this.scriptTypeSelection = helper.add(new JComboBox<>(SCRIPT_TYPES), "Script Type", H_S, V_E + H_BTN + V_PAD, H_L, H_FLD);
     }
     @Override
-    public void populate(ItemScript item) {
-        this.scriptTypeSelection.setSelectedItem(item.getScriptType());
-        this.scriptView.setText(item.getScriptContents());
+    public void populate(PipelineObjectScript item) {
+        this.scriptTypeSelection.setSelectedItem(item.getType());
+        this.scriptView.setText(item.getScript());
     }
     @Override
-    public ItemScript createItem(String name, String owner) {
-        return new ItemScript(name, owner, (String) this.scriptTypeSelection.getSelectedItem(), this.scriptView.getText());
+    public PipelineObjectScript createItem(String name) {
+        return new PipelineObjectScript(name, (String) this.scriptTypeSelection.getSelectedItem(), this.scriptView.getText());
     }
     @Override
-    public ItemScript getDefault() {
-        return new ItemScript("", "", "", "");
-    }
-
-    @Override
-    public ItemScript consume(String name, JsonObject json, String owner) {
-        JsonHelper helper = new JsonHelper(json);
-        return new ItemScript(name, owner, helper.getString("type"), helper.getString("script"));
+    public PipelineObjectScript getDefault() {
+        return new PipelineObjectScript("", "", "");
     }
 }

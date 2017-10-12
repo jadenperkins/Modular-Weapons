@@ -1,6 +1,7 @@
 package com.main.content.loaders;
 
 import com.main.constants.MaterialTypes;
+import com.main.content.Plugin;
 import com.main.material.MaterialType;
 import com.main.pipeline.PipelineObjectMaterialType;
 import com.main.scripts.ScriptMaterialType;
@@ -10,7 +11,7 @@ import com.main.scripts.ScriptMaterialType;
  */
 public class MaterialTypeLoader extends ContentManager<PipelineObjectMaterialType> {
     public MaterialTypeLoader() {
-        super("material_types", 0);
+        super("material_types", 0, Plugin::getMaterialTypes);
     }
     @Override
     public void consume(PipelineObjectMaterialType object) {

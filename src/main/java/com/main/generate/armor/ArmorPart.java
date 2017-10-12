@@ -18,8 +18,8 @@ public class ArmorPart {/*implements Weightable {
     public ArmorPart(ArmorPartBase part, MaterialModified resource) {//}, StatSet stats) {
         this.baseArmorPart = part;
         this.baseResource = resource;
-        this.partName = resource.getName() + " " + part.getPartName();
-        this.partDescription = String.format("A %s crafted consume %s", part.getPartName(), resource.getName());
+        this.partName = resource.getModuleName() + " " + part.getPartName();
+        this.partDescription = String.format("A %s crafted consume %s", part.getPartName(), resource.getModuleName());
         this.weight = part.getWeight() * resource.getWeight();
 
 //        this.slash = part.getSlash() * (float) Math.pow(resource.getStrengthMultiplier(), Math.signum(part.getSlash()));

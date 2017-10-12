@@ -1,12 +1,8 @@
 package com.main.pluginbuilder.contenteditors;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.main.pipeline.PipelineObjectWeaponPart;
 import com.main.pluginbuilder.GuiHelper;
-import com.main.pluginbuilder.JsonHelper;
 import com.main.pluginbuilder.PluginBuilderPanel;
-import com.main.pluginbuilder.items.ItemWeaponPart;
 import com.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
@@ -16,7 +12,7 @@ import java.util.List;
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
+public class WeaponPartEditor extends ContentEditor<PipelineObjectWeaponPart> {
 
     private final JTextField nameModField;
     private final JTextField partInfoField;
@@ -38,7 +34,7 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         this.materialsList = helper.add(new JList<>(), "MaterialBase Types", H_E, V_S, H_L, H_FLD * 10, GuiHelper.Align.ABOVE);
     }
     @Override
-    public void onOpened(Module<ItemWeaponPart> parent, PluginBuilderPanel panel) {
+    public void onOpened(Module<PipelineObjectWeaponPart> parent, PluginBuilderPanel panel) {
         Module partTypesModule = panel.getModule("Part Types");
         List<String> partTypes = partTypesModule.getItemKeys();
         this.partTypeSelection.setModel(new DefaultComboBoxModel<>(partTypes.toArray(new String[0])));
@@ -61,15 +57,15 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         this.materialsList.setSize(H_L, H_FLD * Math.max(1, materialTypes.size()));
     }
     @Override
-    public void populate(ItemWeaponPart item) {
+    public void populate(PipelineObjectWeaponPart item) {
         this.nameModField.setText(item.getNameMod());
         this.partInfoField.setText(item.getPartInfo());
         this.weightField.setText(item.getWeight() + "");
         this.partTypeSelection.setSelectedItem(item.getPartType());
-        this.statSetSelection.setSelectedItem(item.getStatSet());
-        this.iconSelection.setSelectedItem(item.getIconName());
+        this.statSetSelection.setSelectedItem(item.getStats());
+        this.iconSelection.setSelectedItem(item.getIcon());
 
-        List<String> materialTypes = item.getMaterialTypes();
+        List<String> materialTypes = item.getMaterials();
         List<Integer> indices = new ArrayList<>();
 
         for (String materialType : materialTypes)
@@ -85,7 +81,7 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         this.materialsList.setSelectedIndices(i);
     }
     @Override
-    public ItemWeaponPart createItem(String name, String owner) {
+    public PipelineObjectWeaponPart createItem(String name) {
         String nameMod = this.nameModField.getText();
         String partInfo = this.partInfoField.getText();
         float weight = this.getValue(this.weightField);
@@ -94,7 +90,7 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         String iconName = (String) this.iconSelection.getSelectedItem();
 
         List<String> materialTypes = this.materialsList.getSelectedValuesList();
-        return new ItemWeaponPart(name, owner, nameMod, partInfo, weight, partType, statSet, iconName, materialTypes);
+        return new PipelineObjectWeaponPart(name, nameMod, partInfo, weight, partType, statSet, iconName, materialTypes);
     }
     private float getValue(JTextField field) {
         float value;
@@ -106,25 +102,7 @@ public class WeaponPartEditor extends ContentEditor<ItemWeaponPart> {
         return value;
     }
     @Override
-    public ItemWeaponPart getDefault() {
-        return new ItemWeaponPart("", "", "", "", 0F, "", "", "", new ArrayList<>());
-    }
-
-    @Override
-    public ItemWeaponPart consume(String name, JsonObject json, String owner) {
-        JsonHelper helper = new JsonHelper(json);
-        String nameMod = helper.getString("nameMod");
-        String partInfo = helper.getString("partInfo");
-        float weight = helper.getFloat("weight", 1F);
-        String partType = helper.getString("partType");
-        String statSet = helper.getString("stats");
-        String iconName = helper.getString("icon");
-        List<String> materials = new ArrayList<>();
-        JsonArray array = helper.getArray("materials");
-
-        for (JsonElement jsonElement : array)
-            materials.add(jsonElement.getAsString());
-
-        return new ItemWeaponPart(name, owner, nameMod, partInfo, weight, partType, statSet, iconName, materials);
+    public PipelineObjectWeaponPart getDefault() {
+        return new PipelineObjectWeaponPart("", "", "", 0F, "", "", "", new ArrayList<>());
     }
 }

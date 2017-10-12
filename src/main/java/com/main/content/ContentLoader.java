@@ -7,7 +7,6 @@ import com.google.gson.JsonParser;
 import com.main.constants.Materials;
 import com.main.constants.WeaponParts;
 import com.main.content.loaders.ContentManager;
-import com.main.pipeline.PipelineObject;
 import org.apache.commons.io.IOUtils;
 import org.reflections.Reflections;
 
@@ -98,10 +97,7 @@ public final class ContentLoader {
             String managerName = manager.getName();
             for(Plugin plugin : plugins) {
                 System.out.println("Loading " + managerName + " from " + plugin.getPluginName());
-                List<PipelineObject> objects = plugin.getContent(managerName);
-                for (PipelineObject object : objects) {
-                    manager.consume(object);
-                }
+                manager.loadContent(plugin);
             }
         }
     }

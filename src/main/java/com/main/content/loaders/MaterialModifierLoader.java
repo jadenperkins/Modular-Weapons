@@ -3,6 +3,7 @@ package com.main.content.loaders;
 import com.main.constants.Colors;
 import com.main.constants.MaterialModifiers;
 import com.main.constants.MaterialTypes;
+import com.main.content.Plugin;
 import com.main.material.MaterialModifier;
 import com.main.material.MaterialType;
 import com.main.pipeline.PipelineObjectMaterialModifier;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
  */
 public class MaterialModifierLoader extends ContentManager<PipelineObjectMaterialModifier> {
     public MaterialModifierLoader() {
-        super("MaterialBase Modifiers", 6);
+        super("material_modifiers", 6, Plugin::getMaterialModifiers);
     }
     @Override
     public void consume(PipelineObjectMaterialModifier object) {

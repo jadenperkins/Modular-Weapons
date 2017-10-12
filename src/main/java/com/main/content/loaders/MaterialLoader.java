@@ -3,6 +3,7 @@ package com.main.content.loaders;
 import com.main.constants.Colors;
 import com.main.constants.MaterialTypes;
 import com.main.constants.Materials;
+import com.main.content.Plugin;
 import com.main.generate.QualityLevel;
 import com.main.material.Material;
 import com.main.material.MaterialBase;
@@ -16,7 +17,7 @@ import java.awt.*;
  */
 public class MaterialLoader extends ContentManager<PipelineObjectMaterial> {
     public MaterialLoader() {
-        super("materials", 7);
+        super("materials", 7, Plugin::getMaterials);
     }
     @Override
     public void consume(PipelineObjectMaterial object) {

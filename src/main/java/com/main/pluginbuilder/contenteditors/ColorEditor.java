@@ -1,10 +1,8 @@
 package com.main.pluginbuilder.contenteditors;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
+import com.main.pipeline.PipelineObjectColor;
 import com.main.pluginbuilder.GuiHelper;
 import com.main.pluginbuilder.PluginBuilderPanel;
-import com.main.pluginbuilder.items.ItemColor;
 import com.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
@@ -13,7 +11,7 @@ import java.awt.*;
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public class ColorEditor extends ContentEditor<ItemColor> {
+public class ColorEditor extends ContentEditor<PipelineObjectColor> {
 
     private final JButton selectColor;
     private Color color = Color.WHITE;
@@ -37,22 +35,16 @@ public class ColorEditor extends ContentEditor<ItemColor> {
         });
     }
     @Override
-    public void populate(ItemColor item) {
-        this.color = new Color(item.red, item.green, item.blue);
+    public void populate(PipelineObjectColor item) {
+        this.color = new Color(item.getRed(), item.getGreen(), item.getBlue());
         this.displayPanel.setBackground(this.color);
     }
     @Override
-    public ItemColor createItem(String name, String owner) {
-        return new ItemColor(name, owner, this.color.getRed(), this.color.getGreen(), this.color.getBlue());
+    public PipelineObjectColor createItem(String name) {
+        return new PipelineObjectColor(name, this.color.getRed(), this.color.getGreen(), this.color.getBlue());
     }
     @Override
-    public ItemColor getDefault() {
-        return new ItemColor("", "", 255, 255, 255);
-    }
-
-    @Override
-    public ItemColor consume(String name, JsonObject json, String owner) {
-        JsonArray rgb = json.get("rgb").getAsJsonArray();
-        return new ItemColor(name, owner, rgb.get(0).getAsInt(), rgb.get(1).getAsInt(), rgb.get(2).getAsInt());
+    public PipelineObjectColor getDefault() {
+        return new PipelineObjectColor("", 255, 255, 255);
     }
 }

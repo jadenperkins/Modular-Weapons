@@ -1,21 +1,20 @@
 package com.main.pluginbuilder.contenteditors;
 
-import com.google.gson.JsonObject;
+import com.main.pipeline.PipelineObject;
+import com.main.pipeline.PipelineObjectScript;
 import com.main.pluginbuilder.GuiHelper;
 import com.main.pluginbuilder.PluginBuilderPanel;
-import com.main.pluginbuilder.items.Item;
-import com.main.pluginbuilder.items.ItemScript;
 import com.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public abstract class ContentEditor<T extends Item> extends JPanel {
+public abstract class ContentEditor<P extends PipelineObject> extends JPanel {
 
     public static final int H_BTN = 40;
     public static final int H_FLD = 20;
@@ -35,7 +34,7 @@ public abstract class ContentEditor<T extends Item> extends JPanel {
     private final JButton updateItem;
     private final JButton deleteItem;
 
-    public ContentEditor(Module<T> parent, PluginBuilderPanel panel) {
+    public ContentEditor(Module<P> parent, PluginBuilderPanel panel) {
         this.setLayout(null);
         this.setBackground(Color.LIGHT_GRAY);
         this.setLocation(430, 10);
@@ -50,14 +49,15 @@ public abstract class ContentEditor<T extends Item> extends JPanel {
         this.deleteItem = helper.add(new JButton("Delete Item"), H_S, V_S + H_FLD + H_BTN + 2 * V_PAD, H_L, H_BTN);
 
         this.updateItem.addActionListener(e -> {
-            if(panel.getActivePlugin() == null || panel.getActivePlugin().isEmpty()) {
+            if(panel.getActivePlugin() == null) {
                 JOptionPane.showMessageDialog(null, "An active plugin must be named before adding content!");
-            } else {
-                String itemName = this.nameField.getText();
-                if(itemName != null && !itemName.isEmpty()) {
-                    parent.addItem(itemName, panel.getActivePlugin());
-                    panel.updateCurrentObjects(itemName);
-                }
+                return;
+            }
+            String itemName = this.nameField.getText();
+            if(itemName != null && !itemName.isEmpty()) {
+                parent.addItem(itemName);
+                panel.updateObject(itemName);
+                panel.updateCurrentObjects(itemName);
             }
         });
         this.deleteItem.addActionListener(e -> {
@@ -67,23 +67,22 @@ public abstract class ContentEditor<T extends Item> extends JPanel {
         });
     }
     public List<String> getScripts(String type, PluginBuilderPanel panel) {
-        Module<? extends Item> scriptsModule = panel.getModule("Scripts");
+        Module<? extends PipelineObject> scriptsModule = panel.getModule("Scripts");
         List<String> scripts = new ArrayList<>();
         for (String key : scriptsModule.getItemKeys()) {
-            String scriptType = ((ItemScript) scriptsModule.getItem(key)).getScriptType();
+            String scriptType = ((PipelineObjectScript) scriptsModule.getItem(key)).getScript();
             if(type.equals(scriptType)) scripts.add(key);
         }
         scripts.add("");
         return scripts;
     }
-    public void onOpened(Module<T> parent, PluginBuilderPanel panel) {
+    public void onOpened(Module<P> parent, PluginBuilderPanel panel) {
 
     }
     public void setName(String name) {
         this.nameField.setText(name);
     }
-    public abstract T createItem(String name, String owner);
-    public abstract void populate(T item);
-    public abstract T getDefault();
-    public abstract T consume(String name, JsonObject json, String owner);
+    public abstract P createItem(String name);
+    public abstract void populate(P item);
+    public abstract P getDefault();
 }

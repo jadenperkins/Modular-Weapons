@@ -1,12 +1,8 @@
 package com.main.pluginbuilder.contenteditors;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.main.pipeline.PipelineObjectStatSet;
 import com.main.pluginbuilder.GuiHelper;
-import com.main.pluginbuilder.JsonHelper;
 import com.main.pluginbuilder.PluginBuilderPanel;
-import com.main.pluginbuilder.items.ItemStatSet;
 import com.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
@@ -14,11 +10,12 @@ import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public class StatSetEditor extends ContentEditor<ItemStatSet> {
+public class StatSetEditor extends ContentEditor<PipelineObjectStatSet> {
 
     private final JTable statsTable;
 
@@ -28,7 +25,7 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
         this.statsTable = helper.add(new JTable(), "Stats", H_E, V_S, H_L, H_NTR);
     }
     @Override
-    public void onOpened(Module<ItemStatSet> parent, PluginBuilderPanel panel) {
+    public void onOpened(Module<PipelineObjectStatSet> parent, PluginBuilderPanel panel) {
         Module statsModule = panel.getModule("Stats");
         List<String> stats = new ArrayList<>(statsModule.getItemKeys());
         stats.add("");
@@ -39,13 +36,13 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
         this.statsTable.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(box));
     }
     @Override
-    public void populate(ItemStatSet item) {
+    public void populate(PipelineObjectStatSet item) {
         for(int row = 0; row < this.statsTable.getModel().getRowCount(); row++) {
             this.statsTable.setValueAt("", row, 0);
             this.statsTable.setValueAt("", row, 1);
         }
 
-        HashMap<String, Double> stats = item.getStats();
+        Map<String, Double> stats = item.getStats();
         List<String> keys = new ArrayList<>(stats.keySet());
         for(int row = 0; row < keys.size(); row++) {
             String name = keys.get(row);
@@ -55,7 +52,7 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
         }
     }
     @Override
-    public ItemStatSet createItem(String name, String owner) {
+    public PipelineObjectStatSet createItem(String name) {
         int rows = this.statsTable.getModel().getRowCount();
         HashMap<String, Double> stats = new HashMap<>();
         for(int row = 0; row < rows; row++) {
@@ -73,23 +70,10 @@ public class StatSetEditor extends ContentEditor<ItemStatSet> {
                 stats.put(stat, value);
             }
         }
-        return new ItemStatSet(name, owner, stats);
+        return new PipelineObjectStatSet(name, stats);
     }
     @Override
-    public ItemStatSet getDefault() {
-        return new ItemStatSet("", "", new HashMap<>());
-    }
-
-    @Override
-    public ItemStatSet consume(String name, JsonObject json, String owner) {
-        JsonHelper helper = new JsonHelper(json);
-
-        HashMap<String, Double> stats = new HashMap<>();
-        JsonArray array = helper.getArray("stats");
-        for (JsonElement jsonElement : array) {
-            JsonHelper obj = new JsonHelper(jsonElement.getAsJsonObject());
-            stats.put(obj.getString("stat"), obj.getDouble("value"));
-        }
-        return new ItemStatSet(name, owner, stats);
+    public PipelineObjectStatSet getDefault() {
+        return new PipelineObjectStatSet("", new HashMap<>());
     }
 }

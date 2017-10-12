@@ -1,10 +1,8 @@
 package com.main.pluginbuilder.contenteditors;
 
-import com.google.gson.JsonObject;
+import com.main.pipeline.PipelineObjectMaterialType;
 import com.main.pluginbuilder.GuiHelper;
-import com.main.pluginbuilder.JsonHelper;
 import com.main.pluginbuilder.PluginBuilderPanel;
-import com.main.pluginbuilder.items.ItemMaterialType;
 import com.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
@@ -13,7 +11,7 @@ import java.util.List;
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public class MaterialTypeEditor extends ContentEditor<ItemMaterialType> {
+public class MaterialTypeEditor extends ContentEditor<PipelineObjectMaterialType> {
 
     private final JComboBox<String> scriptSelection;
 
@@ -23,25 +21,20 @@ public class MaterialTypeEditor extends ContentEditor<ItemMaterialType> {
         this.scriptSelection = helper.add(new JComboBox<>(), "Script", H_S, V_E, H_L, H_FLD);
     }
     @Override
-    public void onOpened(Module<ItemMaterialType> parent, PluginBuilderPanel panel) {
+    public void onOpened(Module<PipelineObjectMaterialType> parent, PluginBuilderPanel panel) {
         List<String> scripts = this.getScripts("material types", panel);
         this.scriptSelection.setModel(new DefaultComboBoxModel<>(scripts.toArray(new String[0])));
     }
     @Override
-    public void populate(ItemMaterialType item) {
-        this.scriptSelection.setSelectedItem(item.getScriptName());
+    public void populate(PipelineObjectMaterialType item) {
+        this.scriptSelection.setSelectedItem(item.getScript());
     }
     @Override
-    public ItemMaterialType createItem(String name, String owner) {
-        return new ItemMaterialType(name, owner, (String)this.scriptSelection.getSelectedItem());
+    public PipelineObjectMaterialType createItem(String name) {
+        return new PipelineObjectMaterialType(name, (String)this.scriptSelection.getSelectedItem());
     }
     @Override
-    public ItemMaterialType getDefault() {
-        return new ItemMaterialType("", "", "");
-    }
-
-    @Override
-    public ItemMaterialType consume(String name, JsonObject json, String owner) {
-        return new ItemMaterialType(name, owner, new JsonHelper(json).getString("script"));
+    public PipelineObjectMaterialType getDefault() {
+        return new PipelineObjectMaterialType("", "");
     }
 }

@@ -1,48 +1,43 @@
 package com.main.content.loaders;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.main.constants.*;
-import com.main.generate.weapon.WeaponPart;
+import com.main.content.Plugin;
 import com.main.generate.weapon.WeaponPartBase;
 import com.main.generate.weapon.WeaponPartLegendary;
 import com.main.generate.weapon.WeaponPartType;
 import com.main.material.MaterialType;
+import com.main.pipeline.PipelineObjectWeaponPart;
 import com.main.stat.StatSet;
 
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
  * Created by JPERKI8 on 6/16/2016.
  */
-public class WeaponPartLoader extends ContentManager {
+public class WeaponPartLoader extends ContentManager<PipelineObjectWeaponPart> {
     public WeaponPartLoader() {
-        super("Weapon Parts", 8);
+        super("weapon_parts", 8, Plugin::getWeaponParts);
     }
     @Override
-    public void consume(String name, JsonObject obj) {
-        boolean isLegendary = !obj.has("materials");
-        String nameMod = obj.get("nameMod").getAsString();
-        String partInfo = obj.has("partInfo") ? obj.get("partInfo").getAsString() : "A weapon part";
-        StatSet set = obj.has("stats") ? StatSets.get(obj.get("stats").getAsString()) : StatSets.EMPTY;
-        float weight = obj.has("weight") ? obj.get("weight").getAsFloat() : 1F;
-        String iconName = obj.has("icon") ? obj.get("icon").getAsString() : null;
+    public void consume(PipelineObjectWeaponPart obj) {
+        boolean isLegendary = obj.getMaterials().isEmpty();
+        String nameMod = obj.getNameMod();
+        String partInfo = obj.getPartInfo();
+        String stats = obj.getStats();
+        StatSet set = stats == null ? StatSets.EMPTY : StatSets.get(stats);
+        float weight = obj.getWeight();
+        String iconName = obj.getIcon();
         BufferedImage icon = Icons.get(iconName);
-        WeaponPartType type = PartTypes.get(obj.get("partType").getAsString());
+        WeaponPartType type = PartTypes.get(obj.getPartType());
 
         if(isLegendary) {
-            WeaponPart part = new WeaponPartLegendary(name, nameMod, partInfo, set, weight, icon, type);
-            WeaponParts.register(part);
+            WeaponParts.register(new WeaponPartLegendary(obj.getName(), nameMod, partInfo, set, weight, icon, type));
         } else {
-            JsonArray materials = obj.get("materials").getAsJsonArray();
-            List<String> mats = new ArrayList<>();
-            materials.forEach(e -> mats.add(e.getAsString()));
-            List<MaterialType> types = mats.stream().map(MaterialTypes::get).collect(Collectors.toList());
-            WeaponPartBase part = new WeaponPartBase(name, nameMod, weight, set, type, icon, types);
-            WeaponParts.addBasePart(part);
+            List<String> materials = obj.getMaterials();
+            List<MaterialType> types = materials.stream().map(MaterialTypes::get).collect(Collectors.toList());
+            WeaponParts.addBasePart(new WeaponPartBase(obj.getName(), nameMod, weight, set, type, icon, types));
         }
     }
 }

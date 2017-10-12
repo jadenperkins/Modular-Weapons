@@ -1,12 +1,8 @@
 package com.main.pluginbuilder.contenteditors;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.main.pipeline.PipelineObjectMaterialModifier;
 import com.main.pluginbuilder.GuiHelper;
-import com.main.pluginbuilder.JsonHelper;
 import com.main.pluginbuilder.PluginBuilderPanel;
-import com.main.pluginbuilder.items.ItemMaterialModifier;
 import com.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
@@ -16,7 +12,7 @@ import java.util.List;
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> {
+public class MaterialModifierEditor extends ContentEditor<PipelineObjectMaterialModifier> {
 
     private final JComboBox<String> colorSelection;
     private final JTextField weightField;
@@ -31,10 +27,10 @@ public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> 
         this.weightField = helper.add(new JTextField(), "Weight", H_S, V_E + H_FLD + V_PAD, H_L, H_FLD);
         this.levelField = helper.add(new JTextField(), "Level Modifier", H_S, V_E + 2 * (H_FLD + V_PAD), H_L, H_FLD);
         this.modField = helper.add(new JTextField(), "Modifier", H_S, V_E + 3 * (H_FLD + V_PAD), H_L, H_FLD);
-        this.materialsList = helper.addScrolling(new JList<>(), "MaterialBase Types", H_S, V_E + 4 * (H_FLD + V_PAD), H_L, 10 * H_FLD);
+        this.materialsList = helper.addScrolling(new JList<>(), "Material Types", H_S, V_E + 4 * (H_FLD + V_PAD), H_L, 10 * H_FLD);
     }
     @Override
-    public void onOpened(Module<ItemMaterialModifier> parent, PluginBuilderPanel panel) {
+    public void onOpened(Module<PipelineObjectMaterialModifier> parent, PluginBuilderPanel panel) {
         Module colorModule = panel.getModule("Colors");
         List<String> colors = colorModule.getItemKeys();
         this.colorSelection.setModel(new DefaultComboBoxModel<>(colors.toArray(new String[0])));
@@ -45,13 +41,13 @@ public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> 
         this.materialsList.setSize(200, 18 * Math.max(1, materialTypes.size()));
     }
     @Override
-    public void populate(ItemMaterialModifier item) {
-        this.colorSelection.setSelectedItem(item.getColorName());
+    public void populate(PipelineObjectMaterialModifier item) {
+        this.colorSelection.setSelectedItem(item.getColor());
         this.weightField.setText(item.getWeight() + "");
         this.levelField.setText(item.getLevel() + "");
         this.modField.setText(item.getMod() + "");
 
-        List<String> materialTypes = item.getMaterialTypes();
+        List<String> materialTypes = item.getMaterials();
         List<Integer> indices = new ArrayList<>();
 
         for (String materialType : materialTypes)
@@ -68,14 +64,14 @@ public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> 
 
     }
     @Override
-    public ItemMaterialModifier createItem(String name, String owner) {
+    public PipelineObjectMaterialModifier createItem(String name) {
         String colorName = (String) this.colorSelection.getSelectedItem();
         float weight = this.getValue(this.weightField);
         float level = this.getValue(this.levelField);
         float mod = this.getValue(this.modField);
 
         List<String> values = this.materialsList.getSelectedValuesList();
-        return new ItemMaterialModifier(name, owner, colorName, weight, level, mod, values);
+        return new PipelineObjectMaterialModifier(name, colorName, weight, level, mod, values);
     }
     private float getValue(JTextField field) {
         float value;
@@ -87,22 +83,7 @@ public class MaterialModifierEditor extends ContentEditor<ItemMaterialModifier> 
         return value;
     }
     @Override
-    public ItemMaterialModifier getDefault() {
-        return new ItemMaterialModifier("", "", "", 0F, 0F, 0F, new ArrayList<>());
-    }
-
-    @Override
-    public ItemMaterialModifier consume(String name, JsonObject json, String owner) {
-        JsonHelper helper = new JsonHelper(json);
-        String color = helper.getString("color");
-        float weight = helper.getFloat("weight", 1F);
-        float level = helper.getFloat("level", 1F);
-        float mod = helper.getFloat("mod", 1F);
-        List<String> types = new ArrayList<>();
-        JsonArray array = helper.getArray("materials");
-        for (JsonElement jsonElement : array)
-            types.add(jsonElement.getAsString());
-
-        return new ItemMaterialModifier(name, owner, color, weight, level, mod, types);
+    public PipelineObjectMaterialModifier getDefault() {
+        return new PipelineObjectMaterialModifier("", "", 0F, 0F, 0F, new ArrayList<>());
     }
 }

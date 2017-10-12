@@ -1,6 +1,7 @@
 package com.main.content.loaders;
 
 import com.main.constants.Colors;
+import com.main.content.Plugin;
 import com.main.pipeline.PipelineObjectColor;
 
 import java.awt.*;
@@ -10,7 +11,7 @@ import java.awt.*;
  */
 public class ColorLoader extends ContentManager<PipelineObjectColor> {
     public ColorLoader() {
-        super("colors", 2);
+        super("colors", 2, Plugin::getColors);
     }
     @Override
     public void consume(PipelineObjectColor color) {

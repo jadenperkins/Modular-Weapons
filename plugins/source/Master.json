@@ -1,503 +1,381 @@
 {
-  "Colors": [
+  "pluginName": "Master",
+  "dependencies": [],
+  "colors": [
     {
       "name": "GEM_AMETHYST",
-      "rgb": [
-        193,
-        27,
-        207
-      ]
+      "red": 193,
+      "green": 27,
+      "blue": 207
     },
     {
       "name": "GEM_DIAMOND",
-      "rgb": [
-        205,
-        255,
-        224
-      ]
+      "red": 205,
+      "green": 255,
+      "blue": 224
     },
     {
       "name": "GEM_EMERALD",
-      "rgb": [
-        30,
-        222,
-        94
-      ]
+      "red": 30,
+      "green": 222,
+      "blue": 94
     },
     {
       "name": "GEM_GARNET",
-      "rgb": [
-        221,
-        134,
-        59
-      ]
+      "red": 221,
+      "green": 134,
+      "blue": 59
     },
     {
       "name": "GEM_JADE",
-      "rgb": [
-        0,
-        157,
-        0
-      ]
+      "red": 0,
+      "green": 157,
+      "blue": 0
     },
     {
       "name": "GEM_RUBY",
-      "rgb": [
-        211,
-        0,
-        0
-      ]
+      "red": 211,
+      "green": 0,
+      "blue": 0
     },
     {
       "name": "GEM_SAPPHIRE",
-      "rgb": [
-        65,
-        154,
-        255
-      ]
+      "red": 65,
+      "green": 154,
+      "blue": 255
     },
     {
       "name": "GEM_TOPAZ",
-      "rgb": [
-        230,
-        230,
-        0
-      ]
+      "red": 230,
+      "green": 230,
+      "blue": 0
     },
     {
       "name": "METAL_COBALT",
-      "rgb": [
-        165,
-        175,
-        198
-      ]
+      "red": 165,
+      "green": 175,
+      "blue": 198
     },
     {
       "name": "METAL_GOLD",
-      "rgb": [
-        223,
-        223,
-        0
-      ]
+      "red": 223,
+      "green": 223,
+      "blue": 0
     },
     {
       "name": "METAL_IRON",
-      "rgb": [
-        100,
-        100,
-        100
-      ]
+      "red": 100,
+      "green": 100,
+      "blue": 100
     },
     {
       "name": "METAL_SILVER",
-      "rgb": [
-        200,
-        200,
-        200
-      ]
+      "red": 200,
+      "green": 200,
+      "blue": 200
     },
     {
       "name": "METAL_TITANIUM",
-      "rgb": [
-        200,
-        235,
-        235
-      ]
+      "red": 200,
+      "green": 235,
+      "blue": 235
     },
     {
       "name": "METAL_TUNGSTEN",
-      "rgb": [
-        182,
-        129,
-        101
-      ]
+      "red": 182,
+      "green": 129,
+      "blue": 101
     },
     {
       "name": "MOD_ANCIENT",
-      "rgb": [
-        127,
-        138,
-        0
-      ]
+      "red": 127,
+      "green": 138,
+      "blue": 0
     },
     {
       "name": "MOD_BLACK",
-      "rgb": [
-        55,
-        55,
-        55
-      ]
+      "red": 55,
+      "green": 55,
+      "blue": 55
     },
     {
       "name": "MOD_CREEPING",
-      "rgb": [
-        220,
-        0,
-        50
-      ]
+      "red": 220,
+      "green": 0,
+      "blue": 50
     },
     {
       "name": "MOD_DARK",
-      "rgb": [
-        105,
-        105,
-        105
-      ]
+      "red": 105,
+      "green": 105,
+      "blue": 105
     },
     {
       "name": "MOD_DULL",
-      "rgb": [
-        123,
-        150,
-        126
-      ]
+      "red": 123,
+      "green": 150,
+      "blue": 126
     },
     {
       "name": "MOD_EXTINCT",
-      "rgb": [
-        110,
-        180,
-        200
-      ]
+      "red": 110,
+      "green": 180,
+      "blue": 200
     },
     {
       "name": "MOD_FADED",
-      "rgb": [
-        180,
-        153,
-        147
-      ]
+      "red": 180,
+      "green": 153,
+      "blue": 147
     },
     {
       "name": "MOD_GHOST",
-      "rgb": [
-        179,
-        255,
-        220
-      ]
+      "red": 179,
+      "green": 255,
+      "blue": 220
     },
     {
       "name": "MOD_HARDY",
-      "rgb": [
-        80,
-        150,
-        59
-      ]
+      "red": 80,
+      "green": 150,
+      "blue": 59
     },
     {
       "name": "MOD_JUVENILE",
-      "rgb": [
-        200,
-        210,
-        0
-      ]
+      "red": 200,
+      "green": 210,
+      "blue": 0
     },
     {
       "name": "MOD_LEAFY",
-      "rgb": [
-        64,
-        230,
-        50
-      ]
+      "red": 64,
+      "green": 230,
+      "blue": 50
     },
     {
       "name": "MOD_LIGHT",
-      "rgb": [
-        190,
-        190,
-        190
-      ]
+      "red": 190,
+      "green": 190,
+      "blue": 190
     },
     {
       "name": "MOD_LUNAR",
-      "rgb": [
-        92,
-        144,
-        195
-      ]
+      "red": 92,
+      "green": 144,
+      "blue": 195
     },
     {
       "name": "MOD_MATURE",
-      "rgb": [
-        0,
-        150,
-        0
-      ]
+      "red": 0,
+      "green": 150,
+      "blue": 0
     },
     {
       "name": "MOD_POLAR",
-      "rgb": [
-        140,
-        194,
-        216
-      ]
+      "red": 140,
+      "green": 194,
+      "blue": 216
     },
     {
       "name": "MOD_RED",
-      "rgb": [
-        175,
-        0,
-        0
-      ]
+      "red": 175,
+      "green": 0,
+      "blue": 0
     },
     {
       "name": "MOD_ROUGH",
-      "rgb": [
-        116,
-        83,
-        140
-      ]
+      "red": 116,
+      "green": 83,
+      "blue": 140
     },
     {
       "name": "MOD_SHADOW",
-      "rgb": [
-        126,
-        126,
-        126
-      ]
+      "red": 126,
+      "green": 126,
+      "blue": 126
     },
     {
       "name": "MOD_SOLAR",
-      "rgb": [
-        210,
-        178,
-        0
-      ]
+      "red": 210,
+      "green": 178,
+      "blue": 0
     },
     {
       "name": "MOD_TWILIGHT",
-      "rgb": [
-        106,
-        211,
-        87
-      ]
+      "red": 106,
+      "green": 211,
+      "blue": 87
     },
     {
       "name": "MOD_VIBRANT",
-      "rgb": [
-        177,
-        250,
-        200
-      ]
+      "red": 177,
+      "green": 250,
+      "blue": 200
     },
     {
       "name": "MOD_WHITE",
-      "rgb": [
-        255,
-        255,
-        255
-      ]
+      "red": 255,
+      "green": 255,
+      "blue": 255
     },
     {
       "name": "MOD_WILD",
-      "rgb": [
-        220,
-        240,
-        120
-      ]
+      "red": 220,
+      "green": 240,
+      "blue": 120
     },
     {
       "name": "MOD_WITHERED",
-      "rgb": [
-        150,
-        170,
-        80
-      ]
+      "red": 150,
+      "green": 170,
+      "blue": 80
     },
     {
       "name": "MOD_YOUNG",
-      "rgb": [
-        0,
-        220,
-        0
-      ]
+      "red": 0,
+      "green": 220,
+      "blue": 0
     },
     {
       "name": "PLANT_COTTON",
-      "rgb": [
-        240,
-        240,
-        240
-      ]
+      "red": 240,
+      "green": 240,
+      "blue": 240
     },
     {
       "name": "PLANT_JUTE",
-      "rgb": [
-        180,
-        150,
-        100
-      ]
+      "red": 180,
+      "green": 150,
+      "blue": 100
     },
     {
       "name": "WOOD_ASH",
-      "rgb": [
-        215,
-        205,
-        141
-      ]
+      "red": 215,
+      "green": 205,
+      "blue": 141
     },
     {
       "name": "WOOD_BEECH",
-      "rgb": [
-        208,
-        193,
-        123
-      ]
+      "red": 208,
+      "green": 193,
+      "blue": 123
     },
     {
       "name": "WOOD_BIRCH",
-      "rgb": [
-        228,
-        183,
-        152
-      ]
+      "red": 228,
+      "green": 183,
+      "blue": 152
     },
     {
       "name": "WOOD_EBONY",
-      "rgb": [
-        77,
-        77,
-        77
-      ]
+      "red": 77,
+      "green": 77,
+      "blue": 77
     },
     {
       "name": "WOOD_ELM",
-      "rgb": [
-        194,
-        168,
-        141
-      ]
+      "red": 194,
+      "green": 168,
+      "blue": 141
     },
     {
       "name": "WOOD_HOLLY",
-      "rgb": [
-        235,
-        233,
-        200
-      ]
+      "red": 235,
+      "green": 233,
+      "blue": 200
     },
     {
       "name": "WOOD_HORNBEAM",
-      "rgb": [
-        228,
-        206,
-        162
-      ]
+      "red": 228,
+      "green": 206,
+      "blue": 162
     },
     {
       "name": "WOOD_JUNIPER",
-      "rgb": [
-        186,
-        173,
-        98
-      ]
+      "red": 186,
+      "green": 173,
+      "blue": 98
     },
     {
       "name": "WOOD_KOA",
-      "rgb": [
-        163,
-        118,
-        25
-      ]
+      "red": 163,
+      "green": 118,
+      "blue": 25
     },
     {
       "name": "WOOD_LAUREL",
-      "rgb": [
-        226,
-        218,
-        140
-      ]
+      "red": 226,
+      "green": 218,
+      "blue": 140
     },
     {
       "name": "WOOD_LOCUST",
-      "rgb": [
-        207,
-        198,
-        43
-      ]
+      "red": 207,
+      "green": 198,
+      "blue": 43
     },
     {
       "name": "WOOD_MAHOGANY",
-      "rgb": [
-        207,
-        142,
-        73
-      ]
+      "red": 207,
+      "green": 142,
+      "blue": 73
     },
     {
       "name": "WOOD_MAPLE",
-      "rgb": [
-        205,
-        187,
-        119
-      ]
+      "red": 205,
+      "green": 187,
+      "blue": 119
     },
     {
       "name": "WOOD_MESQUITE",
-      "rgb": [
-        177,
-        109,
-        27
-      ]
+      "red": 177,
+      "green": 109,
+      "blue": 27
     },
     {
       "name": "WOOD_OAK",
-      "rgb": [
-        188,
-        142,
-        42
-      ]
+      "red": 188,
+      "green": 142,
+      "blue": 42
     },
     {
       "name": "WOOD_PALM",
-      "rgb": [
-        224,
-        191,
-        145
-      ]
+      "red": 224,
+      "green": 191,
+      "blue": 145
     },
     {
       "name": "WOOD_SNAKEWOOD",
-      "rgb": [
-        168,
-        102,
-        29
-      ]
+      "red": 168,
+      "green": 102,
+      "blue": 29
     },
     {
       "name": "WOOD_TEAK",
-      "rgb": [
-        196,
-        178,
-        121
-      ]
+      "red": 196,
+      "green": 178,
+      "blue": 121
     },
     {
       "name": "WOOD_WALNUT",
-      "rgb": [
-        74,
-        62,
-        36
-      ]
+      "red": 74,
+      "green": 62,
+      "blue": 36
     },
     {
       "name": "WOOD_YEW",
-      "rgb": [
-        196,
-        153,
-        44
-      ]
+      "red": 196,
+      "green": 153,
+      "blue": 44
     },
     {
       "name": "WOOD_ZEBRAWOOD",
-      "rgb": [
-        232,
-        186,
-        114
-      ]
+      "red": 232,
+      "green": 186,
+      "blue": 114
     }
   ],
-  "Icons": [
+  "icons": [
     {
       "name": "axe",
       "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAgCAYAAAAbifjMAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAACRSURBVEhLrYxRDoAwCMW8/6WnIw6ZVmOjH12g742ltfaJqwg1uyfmZVt/OWCOHEP5\nTAfIdY6hfB6MrObVhY9nD89kCVxm8ZRCJUvgMsuhlAYjq3l14XPYC7dFcJ15eThwx7zIz52r+HrA\ngtKA0oDSgNKA0oDSgNKA0oDSgNKA0oDSgNKA0oDSgNKA0oDyPW1ZAXVqjrggXQbmAAAAAElFTkSu\nQmCC"
@@ -611,7 +489,7 @@
       "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAACASURBVEhLxcwxCsAgEADB/P/TRgu7gbhYRBg5VrxnjHGFsWDc5lnXHP2+MG5XC/bn\nryWMy/8LTjEWjAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgw\nFowFY8FYMBaMBWPBWDAWjAVjwXhuPC+ZqdeZAe1JHgAAAABJRU5ErkJggg\u003d\u003d"
     }
   ],
-  "Material Modifiers": [
+  "materialModifiers": [
     {
       "name": "Ancient",
       "color": "MOD_ANCIENT",
@@ -869,7 +747,7 @@
       ]
     }
   ],
-  "Material Types": [
+  "materialTypes": [
     {
       "name": "Gem",
       "script": "gems"
@@ -887,7 +765,7 @@
       "script": "woods"
     }
   ],
-  "Materials": [
+  "materials": [
     {
       "name": "Amethyst",
       "color": "GEM_AMETHYST",
@@ -1185,7 +1063,7 @@
       "material": "Wood"
     }
   ],
-  "Part Types": [
+  "partTypes": [
     {
       "name": "Arrow Fletchings",
       "icon": "flights"
@@ -1271,7 +1149,7 @@
       "icon": "hilt"
     }
   ],
-  "Scripts": [
+  "scripts": [
     {
       "name": "gems",
       "type": "material types",
@@ -1298,825 +1176,393 @@
       "script": "importPackage(java.util);\r\n\r\nvar first  \u003d [\"Ac\", \"Za\", \"Mat\", \"Ni\"];\r\nvar second \u003d [\"tan\", \"rop\", \"cat\", \"mat\"];\r\nvar third  \u003d [\"ta\", \"in\", \"or\", \"za\"];\r\n\r\nvar exoticNames \u003d getNames();\r\n\r\nfunction getNames() {\r\n    var list \u003d new ArrayList();\r\n    for(var s1 in first) {\r\n        for(var s2 in second) {\r\n            for(var s3 in third) {\r\n                list.add(first[s1] + second[s2] + third[s3]);\r\n            }\r\n        }\r\n    }\r\n    return list;\r\n}"
     }
   ],
-  "Stat Sets": [
+  "statSets": [
     {
       "name": "Accurate Crossbow Stock",
-      "stats": [
-        {
-          "stat": "Draw Time",
-          "value": 2.0
-        },
-        {
-          "stat": "Attack Time",
-          "value": 1.0
-        },
-        {
-          "stat": "Range",
-          "value": 50.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 10.0
-        }
-      ]
+      "stats": {
+        "Draw Time": 2.0,
+        "Attack Time": 1.0,
+        "Range": 50.0,
+        "Blunt Damage": 10.0
+      }
     },
     {
       "name": "Balanced Bow Grip",
-      "stats": [
-        {
-          "stat": "Draw Time",
-          "value": 1.0
-        },
-        {
-          "stat": "Attack Time",
-          "value": 0.5
-        },
-        {
-          "stat": "Range",
-          "value": 30.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 5.0
-        }
-      ]
+      "stats": {
+        "Draw Time": 1.0,
+        "Attack Time": 0.5,
+        "Range": 30.0,
+        "Blunt Damage": 5.0
+      }
     },
     {
       "name": "Balanced Crossbow Stock",
-      "stats": [
-        {
-          "stat": "Draw Time",
-          "value": 1.5
-        },
-        {
-          "stat": "Attack Time",
-          "value": 0.5
-        },
-        {
-          "stat": "Range",
-          "value": 35.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 10.0
-        }
-      ]
+      "stats": {
+        "Draw Time": 1.5,
+        "Attack Time": 0.5,
+        "Range": 35.0,
+        "Blunt Damage": 10.0
+      }
     },
     {
       "name": "Base Arrow",
-      "stats": [
-        {
-          "stat": "Pierce Damage",
-          "value": 0.0
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 0.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 0.0
-        }
-      ]
+      "stats": {
+        "Pierce Damage": 0.0,
+        "Slash Damage": 0.0,
+        "Blunt Damage": 0.0
+      }
     },
     {
       "name": "Base Axe",
-      "stats": [
-        {
-          "stat": "Pierce Damage",
-          "value": 0.0
-        },
-        {
-          "stat": "Attack Time",
-          "value": 0.0
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 50.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 30.0
-        }
-      ]
+      "stats": {
+        "Pierce Damage": 0.0,
+        "Attack Time": 0.0,
+        "Slash Damage": 50.0,
+        "Blunt Damage": 30.0
+      }
     },
     {
       "name": "Base Bolt",
-      "stats": [
-        {
-          "stat": "Pierce Damage",
-          "value": 0.0
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 0.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 0.0
-        }
-      ]
+      "stats": {
+        "Pierce Damage": 0.0,
+        "Slash Damage": 0.0,
+        "Blunt Damage": 0.0
+      }
     },
     {
       "name": "Base Bow",
-      "stats": [
-        {
-          "stat": "Attack Time",
-          "value": 0.0
-        },
-        {
-          "stat": "Draw Time",
-          "value": 0.0
-        },
-        {
-          "stat": "Range",
-          "value": 50.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 10.0
-        }
-      ]
+      "stats": {
+        "Attack Time": 0.0,
+        "Draw Time": 0.0,
+        "Range": 50.0,
+        "Blunt Damage": 10.0
+      }
     },
     {
       "name": "Base Crossbow",
-      "stats": [
-        {
-          "stat": "Attack Time",
-          "value": 0.0
-        },
-        {
-          "stat": "Draw Time",
-          "value": 0.0
-        },
-        {
-          "stat": "Range",
-          "value": 50.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 10.0
-        }
-      ]
+      "stats": {
+        "Attack Time": 0.0,
+        "Draw Time": 0.0,
+        "Range": 50.0,
+        "Blunt Damage": 10.0
+      }
     },
     {
       "name": "Base Hammer",
-      "stats": [
-        {
-          "stat": "Pierce Damage",
-          "value": 0.0
-        },
-        {
-          "stat": "Attack Time",
-          "value": 0.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 80.0
-        }
-      ]
+      "stats": {
+        "Pierce Damage": 0.0,
+        "Attack Time": 0.0,
+        "Blunt Damage": 80.0
+      }
     },
     {
       "name": "Base Staff",
-      "stats": [
-        {
-          "stat": "Attack Time",
-          "value": 0.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 10.0
-        }
-      ]
+      "stats": {
+        "Attack Time": 0.0,
+        "Blunt Damage": 10.0
+      }
     },
     {
       "name": "Base Sword",
-      "stats": [
-        {
-          "stat": "Pierce Damage",
-          "value": 10.0
-        },
-        {
-          "stat": "Attack Time",
-          "value": 0.0
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 50.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 0.0
-        }
-      ]
+      "stats": {
+        "Pierce Damage": 10.0,
+        "Attack Time": 0.0,
+        "Slash Damage": 50.0,
+        "Blunt Damage": 0.0
+      }
     },
     {
       "name": "Battleaxe Handle",
-      "stats": [
-        {
-          "stat": "Attack Time",
-          "value": 2.0
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 20.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 20.0
-        }
-      ]
+      "stats": {
+        "Attack Time": 2.0,
+        "Slash Damage": 20.0,
+        "Blunt Damage": 20.0
+      }
     },
     {
       "name": "Battlehammer Handle",
-      "stats": [
-        {
-          "stat": "Attack Time",
-          "value": 2.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 20.0
-        }
-      ]
+      "stats": {
+        "Attack Time": 2.0,
+        "Blunt Damage": 20.0
+      }
     },
     {
       "name": "Blade Broad",
-      "stats": [
-        {
-          "stat": "Pierce Damage",
-          "value": 15.0
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 15.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 0.0
-        }
-      ]
+      "stats": {
+        "Pierce Damage": 15.0,
+        "Slash Damage": 15.0,
+        "Blunt Damage": 0.0
+      }
     },
     {
       "name": "Blade Long",
-      "stats": [
-        {
-          "stat": "Pierce Damage",
-          "value": 10.0
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 20.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 0.0
-        }
-      ]
+      "stats": {
+        "Pierce Damage": 10.0,
+        "Slash Damage": 20.0,
+        "Blunt Damage": 0.0
+      }
     },
     {
       "name": "Blade Short",
-      "stats": [
-        {
-          "stat": "Pierce Damage",
-          "value": 5.0
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 10.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 0.0
-        }
-      ]
+      "stats": {
+        "Pierce Damage": 5.0,
+        "Slash Damage": 10.0,
+        "Blunt Damage": 0.0
+      }
     },
     {
       "name": "Broad Axehead",
-      "stats": [
-        {
-          "stat": "Attack Time",
-          "value": 1.5
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 10.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 5.0
-        }
-      ]
+      "stats": {
+        "Attack Time": 1.5,
+        "Slash Damage": 10.0,
+        "Blunt Damage": 5.0
+      }
     },
     {
       "name": "Double Axehead",
-      "stats": [
-        {
-          "stat": "Attack Time",
-          "value": 2.0
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 10.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 10.0
-        }
-      ]
+      "stats": {
+        "Attack Time": 2.0,
+        "Slash Damage": 10.0,
+        "Blunt Damage": 10.0
+      }
     },
     {
       "name": "Double Hammerhead",
-      "stats": [
-        {
-          "stat": "Attack Time",
-          "value": 2.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 20.0
-        }
-      ]
+      "stats": {
+        "Attack Time": 2.0,
+        "Blunt Damage": 20.0
+      }
     },
     {
       "name": "Grip Basic",
-      "stats": [
-        {
-          "stat": "Pierce Damage",
-          "value": 2.0
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 5.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 0.0
-        }
-      ]
+      "stats": {
+        "Pierce Damage": 2.0,
+        "Slash Damage": 5.0,
+        "Blunt Damage": 0.0
+      }
     },
     {
       "name": "Grip Heavy",
-      "stats": [
-        {
-          "stat": "Pierce Damage",
-          "value": 4.0
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 10.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 1.0
-        }
-      ]
+      "stats": {
+        "Pierce Damage": 4.0,
+        "Slash Damage": 10.0,
+        "Blunt Damage": 1.0
+      }
     },
     {
       "name": "Grip Light",
-      "stats": [
-        {
-          "stat": "Pierce Damage",
-          "value": 0.0
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 0.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 0.0
-        }
-      ]
+      "stats": {
+        "Pierce Damage": 0.0,
+        "Slash Damage": 0.0,
+        "Blunt Damage": 0.0
+      }
     },
     {
       "name": "Heavy Bowstring",
-      "stats": [
-        {
-          "stat": "Draw Time",
-          "value": 2.0
-        },
-        {
-          "stat": "Range",
-          "value": 50.0
-        }
-      ]
+      "stats": {
+        "Draw Time": 2.0,
+        "Range": 50.0
+      }
     },
     {
       "name": "Heavy Crossbow Limbs",
-      "stats": [
-        {
-          "stat": "Draw Time",
-          "value": 2.0
-        },
-        {
-          "stat": "Attack Time",
-          "value": 1.0
-        },
-        {
-          "stat": "Range",
-          "value": 40.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 20.0
-        }
-      ]
+      "stats": {
+        "Draw Time": 2.0,
+        "Attack Time": 1.0,
+        "Range": 40.0,
+        "Blunt Damage": 20.0
+      }
     },
     {
       "name": "Heavy Crossbow String",
-      "stats": [
-        {
-          "stat": "Draw Time",
-          "value": 2.5
-        },
-        {
-          "stat": "Range",
-          "value": 70.0
-        }
-      ]
+      "stats": {
+        "Draw Time": 2.5,
+        "Range": 70.0
+      }
     },
     {
       "name": "Heavy Hammerhead",
-      "stats": [
-        {
-          "stat": "Attack Time",
-          "value": 1.5
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 15.0
-        }
-      ]
+      "stats": {
+        "Attack Time": 1.5,
+        "Blunt Damage": 15.0
+      }
     },
     {
       "name": "Hilt Heavy",
-      "stats": [
-        {
-          "stat": "Pierce Damage",
-          "value": 6.0
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 16.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 2.0
-        }
-      ]
+      "stats": {
+        "Pierce Damage": 6.0,
+        "Slash Damage": 16.0,
+        "Blunt Damage": 2.0
+      }
     },
     {
       "name": "Hilt Light",
-      "stats": [
-        {
-          "stat": "Pierce Damage",
-          "value": 0.0
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 0.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 0.0
-        }
-      ]
+      "stats": {
+        "Pierce Damage": 0.0,
+        "Slash Damage": 0.0,
+        "Blunt Damage": 0.0
+      }
     },
     {
       "name": "Hilt Medium",
-      "stats": [
-        {
-          "stat": "Pierce Damage",
-          "value": 3.0
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 8.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 1.0
-        }
-      ]
+      "stats": {
+        "Pierce Damage": 3.0,
+        "Slash Damage": 8.0,
+        "Blunt Damage": 1.0
+      }
     },
     {
       "name": "Light Bowstring",
-      "stats": [
-        {
-          "stat": "Draw Time",
-          "value": 1.0
-        },
-        {
-          "stat": "Range",
-          "value": 25.0
-        }
-      ]
+      "stats": {
+        "Draw Time": 1.0,
+        "Range": 25.0
+      }
     },
     {
       "name": "Light Crossbow Limbs",
-      "stats": [
-        {
-          "stat": "Draw Time",
-          "value": 1.0
-        },
-        {
-          "stat": "Attack Time",
-          "value": 0.5
-        },
-        {
-          "stat": "Range",
-          "value": 20.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 10.0
-        }
-      ]
+      "stats": {
+        "Draw Time": 1.0,
+        "Attack Time": 0.5,
+        "Range": 20.0,
+        "Blunt Damage": 10.0
+      }
     },
     {
       "name": "Light Crossbow String",
-      "stats": [
-        {
-          "stat": "Draw Time",
-          "value": 1.5
-        },
-        {
-          "stat": "Range",
-          "value": 35.0
-        }
-      ]
+      "stats": {
+        "Draw Time": 1.5,
+        "Range": 35.0
+      }
     },
     {
       "name": "Longaxe Handle",
-      "stats": [
-        {
-          "stat": "Attack Time",
-          "value": 1.5
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 15.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 15.0
-        }
-      ]
+      "stats": {
+        "Attack Time": 1.5,
+        "Slash Damage": 15.0,
+        "Blunt Damage": 15.0
+      }
     },
     {
       "name": "Longbow Limbs",
-      "stats": [
-        {
-          "stat": "Draw Time",
-          "value": 1.5
-        },
-        {
-          "stat": "Attack Time",
-          "value": 2.0
-        },
-        {
-          "stat": "Range",
-          "value": 30.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 20.0
-        }
-      ]
+      "stats": {
+        "Draw Time": 1.5,
+        "Attack Time": 2.0,
+        "Range": 30.0,
+        "Blunt Damage": 20.0
+      }
     },
     {
       "name": "Maul Handle",
-      "stats": [
-        {
-          "stat": "Attack Time",
-          "value": 3.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 30.0
-        }
-      ]
+      "stats": {
+        "Attack Time": 3.0,
+        "Blunt Damage": 30.0
+      }
     },
     {
       "name": "Quick Bow Grip",
-      "stats": [
-        {
-          "stat": "Draw Time",
-          "value": 0.5
-        },
-        {
-          "stat": "Attack Time",
-          "value": 0.5
-        },
-        {
-          "stat": "Range",
-          "value": 20.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 5.0
-        }
-      ]
+      "stats": {
+        "Draw Time": 0.5,
+        "Attack Time": 0.5,
+        "Range": 20.0,
+        "Blunt Damage": 5.0
+      }
     },
     {
       "name": "Rapid Crossbow Stock",
-      "stats": [
-        {
-          "stat": "Draw Time",
-          "value": 1.0
-        },
-        {
-          "stat": "Attack Time",
-          "value": 0.5
-        },
-        {
-          "stat": "Range",
-          "value": 20.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 10.0
-        }
-      ]
+      "stats": {
+        "Draw Time": 1.0,
+        "Attack Time": 0.5,
+        "Range": 20.0,
+        "Blunt Damage": 10.0
+      }
     },
     {
       "name": "Recurve Limbs",
-      "stats": [
-        {
-          "stat": "Draw Time",
-          "value": 1.0
-        },
-        {
-          "stat": "Attack Time",
-          "value": 1.5
-        },
-        {
-          "stat": "Range",
-          "value": 20.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 15.0
-        }
-      ]
+      "stats": {
+        "Draw Time": 1.0,
+        "Attack Time": 1.5,
+        "Range": 20.0,
+        "Blunt Damage": 15.0
+      }
     },
     {
       "name": "Round Axehead",
-      "stats": [
-        {
-          "stat": "Attack Time",
-          "value": 1.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 20.0
-        }
-      ]
+      "stats": {
+        "Attack Time": 1.0,
+        "Blunt Damage": 20.0
+      }
     },
     {
       "name": "Scythe Axehead",
-      "stats": [
-        {
-          "stat": "Attack Time",
-          "value": 1.0
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 20.0
-        }
-      ]
+      "stats": {
+        "Attack Time": 1.0,
+        "Slash Damage": 20.0
+      }
     },
     {
       "name": "Shortbow Limbs",
-      "stats": [
-        {
-          "stat": "Draw Time",
-          "value": 0.5
-        },
-        {
-          "stat": "Attack Time",
-          "value": 1.0
-        },
-        {
-          "stat": "Range",
-          "value": 10.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 10.0
-        }
-      ]
+      "stats": {
+        "Draw Time": 0.5,
+        "Attack Time": 1.0,
+        "Range": 10.0,
+        "Blunt Damage": 10.0
+      }
     },
     {
       "name": "Single Axehead",
-      "stats": [
-        {
-          "stat": "Attack Time",
-          "value": 1.0
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 5.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 5.0
-        }
-      ]
+      "stats": {
+        "Attack Time": 1.0,
+        "Slash Damage": 5.0,
+        "Blunt Damage": 5.0
+      }
     },
     {
       "name": "Single Hammerhead",
-      "stats": [
-        {
-          "stat": "Attack Time",
-          "value": 1.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 10.0
-        }
-      ]
+      "stats": {
+        "Attack Time": 1.0,
+        "Blunt Damage": 10.0
+      }
     },
     {
       "name": "Spiked Axehead",
-      "stats": [
-        {
-          "stat": "Pierce Damage",
-          "value": 20.0
-        },
-        {
-          "stat": "Attack Time",
-          "value": 1.0
-        }
-      ]
+      "stats": {
+        "Pierce Damage": 20.0,
+        "Attack Time": 1.0
+      }
     },
     {
       "name": "Spiked Hammerhead",
-      "stats": [
-        {
-          "stat": "Pierce Damage",
-          "value": 20.0
-        },
-        {
-          "stat": "Attack Time",
-          "value": 0.5
-        }
-      ]
+      "stats": {
+        "Pierce Damage": 20.0,
+        "Attack Time": 0.5
+      }
     },
     {
       "name": "Steady Bow Grip",
-      "stats": [
-        {
-          "stat": "Draw Time",
-          "value": 2.0
-        },
-        {
-          "stat": "Attack Time",
-          "value": 1.0
-        },
-        {
-          "stat": "Range",
-          "value": 50.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 5.0
-        }
-      ]
+      "stats": {
+        "Draw Time": 2.0,
+        "Attack Time": 1.0,
+        "Range": 50.0,
+        "Blunt Damage": 5.0
+      }
     },
     {
       "name": "Waraxe Handle",
-      "stats": [
-        {
-          "stat": "Attack Time",
-          "value": 1.0
-        },
-        {
-          "stat": "Slash Damage",
-          "value": 10.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 10.0
-        }
-      ]
+      "stats": {
+        "Attack Time": 1.0,
+        "Slash Damage": 10.0,
+        "Blunt Damage": 10.0
+      }
     },
     {
       "name": "Warhammer Handle",
-      "stats": [
-        {
-          "stat": "Attack Time",
-          "value": 1.0
-        },
-        {
-          "stat": "Blunt Damage",
-          "value": 10.0
-        }
-      ]
+      "stats": {
+        "Attack Time": 1.0,
+        "Blunt Damage": 10.0
+      }
     }
   ],
-  "Stats": [
+  "stats": [
     {
       "name": "Attack Time",
       "default": 0.0,
@@ -2148,7 +1594,7 @@
       "script": "scaled"
     }
   ],
-  "Weapon Parts": [
+  "weaponParts": [
     {
       "name": "Accurate Stock",
       "nameMod": "Accurate",
@@ -3373,7 +2819,7 @@
       "icon": "blade_legendary"
     }
   ],
-  "Weapon Types": [
+  "weaponTypes": [
     {
       "name": "Arrow",
       "stats": "Base Arrow",
@@ -3467,6 +2913,5 @@
         "Sword Blade"
       ]
     }
-  ],
-  "Dependencies": []
+  ]
 }

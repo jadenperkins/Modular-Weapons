@@ -1,7 +1,8 @@
 package com.main.content.loaders;
 
-import com.google.gson.JsonObject;
+import com.main.content.Plugin;
 import com.main.content.loaders.scripts.ScriptLoader;
+import com.main.pipeline.PipelineObjectScript;
 import org.reflections.Reflections;
 
 import java.util.HashMap;
@@ -10,10 +11,10 @@ import java.util.Set;
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public class ScriptsLoader extends ContentManager {
+public class ScriptsLoader extends ContentManager<PipelineObjectScript> {
     private final HashMap<String, ScriptLoader> scriptLoaders = new HashMap<>();
     public ScriptsLoader() {
-        super("Scripts", -1);
+        super("scripts", -1, Plugin::getScripts);
 
         Set<Class<? extends ScriptLoader>> managerClasses = new Reflections("com.main.content.loaders.scripts").getSubTypesOf(ScriptLoader.class);
 
@@ -29,12 +30,12 @@ public class ScriptsLoader extends ContentManager {
         }
     }
     @Override
-    public void consume(String name, JsonObject obj) {
-        String type = obj.get("type").getAsString();
-        if(this.scriptLoaders.containsKey(type)) {
-            ScriptLoader loader = this.scriptLoaders.get(type);
-            String contents = obj.get("script").getAsString();
-            loader.load(name, contents);
-        }
+    public void consume(PipelineObjectScript object) {
+        String type = object.getType();
+        if (!scriptLoaders.containsKey(type)) return;
+
+        ScriptLoader loader = scriptLoaders.get(type);
+        String contents = object.getScript();
+        loader.load(object.getName(), contents);
     }
 }

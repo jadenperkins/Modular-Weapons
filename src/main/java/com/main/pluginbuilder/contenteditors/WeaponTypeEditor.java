@@ -1,12 +1,8 @@
 package com.main.pluginbuilder.contenteditors;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.main.pipeline.PipelineObjectWeaponType;
 import com.main.pluginbuilder.GuiHelper;
-import com.main.pluginbuilder.JsonHelper;
 import com.main.pluginbuilder.PluginBuilderPanel;
-import com.main.pluginbuilder.items.ItemWeaponType;
 import com.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
@@ -17,7 +13,7 @@ import java.util.List;
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public class WeaponTypeEditor extends ContentEditor<ItemWeaponType> {
+public class WeaponTypeEditor extends ContentEditor<PipelineObjectWeaponType> {
 
     private final JComboBox<String> statSetSelection;
     private final JComboBox<String> scriptSelection;
@@ -35,17 +31,17 @@ public class WeaponTypeEditor extends ContentEditor<ItemWeaponType> {
         this.partsList = helper.add(new JTable(), "Part Types", H_E, V_S, H_L, 10 * H_NTR, GuiHelper.Align.ABOVE);
     }
     @Override
-    public void populate(ItemWeaponType item) {
-        this.statSetSelection.setSelectedItem(item.getStatSetName());
-        this.scriptSelection.setSelectedItem(item.getScriptName());
+    public void populate(PipelineObjectWeaponType item) {
+        this.statSetSelection.setSelectedItem(item.getStats());
+        this.scriptSelection.setSelectedItem(item.getScript());
         this.weightField.setText(item.getWeight() + "");
-        this.primarySelection.setSelectedItem(item.getPrimaryPart());
+        this.primarySelection.setSelectedItem(item.getPrimary());
 
         for(int row = 0; row < this.partsList.getModel().getRowCount(); row++) {
             this.partsList.setValueAt("", row, 0);
         }
 
-        List<String> partTypes = item.getPartTypes();
+        List<String> partTypes = item.getParts();
 
         for (int i = 0; i < partTypes.size(); i++) {
             String partType = partTypes.get(i);
@@ -53,7 +49,7 @@ public class WeaponTypeEditor extends ContentEditor<ItemWeaponType> {
         }
     }
     @Override
-    public void onOpened(Module<ItemWeaponType> parent, PluginBuilderPanel panel) {
+    public void onOpened(Module<PipelineObjectWeaponType> parent, PluginBuilderPanel panel) {
         Module statSetModule = panel.getModule("Stat Sets");
         List<String> statSets = statSetModule.getItemKeys();
         this.statSetSelection.setModel(new DefaultComboBoxModel<>(statSets.toArray(new String[0])));
@@ -73,7 +69,7 @@ public class WeaponTypeEditor extends ContentEditor<ItemWeaponType> {
         this.partsList.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(box));
     }
     @Override
-    public ItemWeaponType createItem(String name, String owner) {
+    public PipelineObjectWeaponType createItem(String name) {
         String stat = (String)this.statSetSelection.getSelectedItem();
         String script = (String)this.scriptSelection.getSelectedItem();
         float weight = this.getFloat(this.weightField);
@@ -88,7 +84,7 @@ public class WeaponTypeEditor extends ContentEditor<ItemWeaponType> {
             }
         }
 
-        return new ItemWeaponType(name, owner, stat, script, weight, primary, parts);
+        return new PipelineObjectWeaponType(name, script, stat, weight, parts, primary);
     }
     public float getFloat(JTextField field) {
         float value;
@@ -100,22 +96,7 @@ public class WeaponTypeEditor extends ContentEditor<ItemWeaponType> {
         return value;
     }
     @Override
-    public ItemWeaponType getDefault() {
-        return new ItemWeaponType("", "", "", "", 1F, "", new ArrayList<>());
-    }
-
-    @Override
-    public ItemWeaponType consume(String name, JsonObject json, String owner) {
-        JsonHelper helper = new JsonHelper(json);
-        String statSet = helper.getString("stats");
-        String script = helper.getString("script");
-        float weight = helper.getFloat("weight");
-        String primary = helper.getString("primary");
-        List<String> parts = new ArrayList<>();
-        JsonArray array = helper.getArray("parts");
-        for (JsonElement jsonElement : array)
-            parts.add(jsonElement.getAsString());
-
-        return new ItemWeaponType(name, owner, statSet, script, weight, primary, parts);
+    public PipelineObjectWeaponType getDefault() {
+        return new PipelineObjectWeaponType("", "", "", 1F, new ArrayList<>(), "");
     }
 }

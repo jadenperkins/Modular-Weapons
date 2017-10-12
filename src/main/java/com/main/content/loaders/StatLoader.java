@@ -1,6 +1,7 @@
 package com.main.content.loaders;
 
 import com.main.constants.Stats;
+import com.main.content.Plugin;
 import com.main.pipeline.PipelineObjectStat;
 import com.main.scripts.ScriptStat;
 import com.main.stat.StatBase;
@@ -11,7 +12,7 @@ import com.main.stat.StatDef;
  */
 public class StatLoader extends ContentManager<PipelineObjectStat> {
     public StatLoader() {
-        super("Stats", 3);
+        super("stats", 3, Plugin::getStats);
     }
     @Override
     public void consume(PipelineObjectStat object) {

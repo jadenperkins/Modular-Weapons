@@ -1,10 +1,8 @@
 package com.main.pluginbuilder.contenteditors;
 
-import com.google.gson.JsonObject;
+import com.main.pipeline.PipelineObjectIcon;
 import com.main.pluginbuilder.GuiHelper;
-import com.main.pluginbuilder.JsonHelper;
 import com.main.pluginbuilder.PluginBuilderPanel;
-import com.main.pluginbuilder.items.ItemIcon;
 import com.main.pluginbuilder.modules.Module;
 import org.apache.commons.io.FileUtils;
 
@@ -14,12 +12,13 @@ import javax.swing.filechooser.FileFilter;
 import javax.xml.bind.DatatypeConverter;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.File;
 
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public class IconEditor extends ContentEditor<ItemIcon> {
+public class IconEditor extends ContentEditor<PipelineObjectIcon> {
 
     private final JButton selectImage;
     private final JLabel displayLabel;
@@ -37,6 +36,7 @@ public class IconEditor extends ContentEditor<ItemIcon> {
             public boolean accept(File f) {
                 return f.isDirectory() || f.getName().endsWith(".png");
             }
+
             @Override
             public String getDescription() {
                 return "PNG Files";
@@ -46,7 +46,7 @@ public class IconEditor extends ContentEditor<ItemIcon> {
         this.selectImage = helper.add(new JButton("Select Image"), H_S, V_E, H_L, H_BTN);
         this.selectImage.addActionListener(e -> {
             this.imageChooser.showOpenDialog(null);
-            if(this.imageChooser.getSelectedFile() != null) {
+            if (this.imageChooser.getSelectedFile() != null) {
                 File iconFile = this.imageChooser.getSelectedFile();
                 try {
                     BufferedImage image = ImageIO.read(iconFile);
@@ -60,32 +60,30 @@ public class IconEditor extends ContentEditor<ItemIcon> {
             }
         });
     }
+
     @Override
-    public void populate(ItemIcon item) {
+    public void populate(PipelineObjectIcon item) {
         this.base64String = item.getBase64();
         try {
             byte[] imageBytes = DatatypeConverter.parseBase64Binary(this.base64String);
             ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
             BufferedImage image = ImageIO.read(bis);
             bis.close();
-            if(image != null) {
+            if (image != null) {
                 this.displayLabel.setIcon(new ImageIcon(image.getScaledInstance(image.getWidth() * 8, image.getHeight() * 8, 0)));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     @Override
-    public ItemIcon createItem(String name, String owner) {
-        return new ItemIcon(name, owner, this.base64String);
-    }
-    @Override
-    public ItemIcon getDefault() {
-        return new ItemIcon("", "", "");
+    public PipelineObjectIcon createItem(String name) {
+        return new PipelineObjectIcon(name, this.base64String);
     }
 
     @Override
-    public ItemIcon consume(String name, JsonObject json, String owner) {
-        return new ItemIcon(name, owner, new JsonHelper(json).getString("base64"));
+    public PipelineObjectIcon getDefault() {
+        return new PipelineObjectIcon("", "");
     }
 }

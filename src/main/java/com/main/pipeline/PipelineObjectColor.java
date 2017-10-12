@@ -1,23 +1,23 @@
 package com.main.pipeline;
 
 public class PipelineObjectColor extends PipelineObject {
-    private final int r;
-    private final int g;
-    private final int b;
+    private final int red;
+    private final int green;
+    private final int blue;
 
     public PipelineObjectColor(String name, int r, int g, int b) {
         super(name);
-        this.r = r;
-        this.g = g;
-        this.b = b;
+        this.red = r;
+        this.green = g;
+        this.blue = b;
     }
     public int getRed() {
-        return r;
+        return red;
     }
     public int getGreen() {
-        return g;
+        return green;
     }
     public int getBlue() {
-        return b;
+        return blue;
     }
 }

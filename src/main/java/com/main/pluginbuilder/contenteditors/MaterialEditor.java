@@ -1,10 +1,8 @@
 package com.main.pluginbuilder.contenteditors;
 
-import com.google.gson.JsonObject;
+import com.main.pipeline.PipelineObjectMaterial;
 import com.main.pluginbuilder.GuiHelper;
-import com.main.pluginbuilder.JsonHelper;
 import com.main.pluginbuilder.PluginBuilderPanel;
-import com.main.pluginbuilder.items.ItemMaterial;
 import com.main.pluginbuilder.modules.Module;
 
 import javax.swing.*;
@@ -13,7 +11,7 @@ import java.util.List;
 /**
  * Created by gtrpl on 6/18/2016.
  */
-public class MaterialEditor extends ContentEditor<ItemMaterial> {
+public class MaterialEditor extends ContentEditor<PipelineObjectMaterial> {
 
     private final JComboBox<String> colorSelection;
     private final JTextField weightField;
@@ -31,7 +29,7 @@ public class MaterialEditor extends ContentEditor<ItemMaterial> {
         this.materialSelection = helper.add(new JComboBox<>(), "MaterialBase Type", H_S, V_E + 4 * H_FLD + 4 * V_PAD, H_L, H_FLD);
     }
     @Override
-    public void onOpened(Module<ItemMaterial> parent, PluginBuilderPanel panel) {
+    public void onOpened(Module<PipelineObjectMaterial> parent, PluginBuilderPanel panel) {
         Module colorModule = panel.getModule("Colors");
         List<String> colors = colorModule.getItemKeys();
         this.colorSelection.setModel(new DefaultComboBoxModel<>(colors.toArray(new String[0])));
@@ -41,22 +39,22 @@ public class MaterialEditor extends ContentEditor<ItemMaterial> {
         this.materialSelection.setModel(new DefaultComboBoxModel<>(types.toArray(new String[0])));
     }
     @Override
-    public void populate(ItemMaterial item) {
-        this.colorSelection.setSelectedItem(item.getColorName());
+    public void populate(PipelineObjectMaterial item) {
+        this.colorSelection.setSelectedItem(item.getName());
         this.weightField.setText(item.getWeight() + "");
         this.modField.setText(item.getMod() + "");
         this.levelField.setText(item.getLevel() + "");
-        this.materialSelection.setSelectedItem(item.getMaterialType());
+        this.materialSelection.setSelectedItem(item.getMaterial());
     }
     @Override
-    public ItemMaterial createItem(String name, String owner) {
+    public PipelineObjectMaterial createItem(String name) {
         String colorName = (String)this.colorSelection.getSelectedItem();
         float weight = this.getValue(this.weightField);
         float mod = this.getValue(this.modField);
         int level = this.getInt(this.levelField);
         String material = (String)this.materialSelection.getSelectedItem();
 
-        return new ItemMaterial(name, owner, colorName, weight, mod, level, material);
+        return new PipelineObjectMaterial(name, colorName, weight, mod, level, material);
     }
     private float getValue(JTextField field) {
         float value;
@@ -77,18 +75,7 @@ public class MaterialEditor extends ContentEditor<ItemMaterial> {
         return value;
     }
     @Override
-    public ItemMaterial getDefault() {
-        return new ItemMaterial("", "", "", 0F, 0F, 0, "");
-    }
-
-    @Override
-    public ItemMaterial consume(String name, JsonObject json, String owner) {
-        JsonHelper helper = new JsonHelper(json);
-        String colorName = helper.getString("color");
-        float w = helper.getFloat("weight", 1F);
-        float m = helper.getFloat("mod", 1F);
-        int l = helper.getInt("level");
-        String material = helper.getString("material");
-        return new ItemMaterial(name, owner, colorName, w, m, l, material);
+    public PipelineObjectMaterial getDefault() {
+        return new PipelineObjectMaterial("", "", 0F, 0F, 0, "");
     }
 }
