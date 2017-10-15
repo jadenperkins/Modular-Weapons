@@ -1,9 +1,9 @@
 package com.main;
 
-import com.main.content.ContentLoader;
 import com.main.generate.weapon.WeaponGenerator;
 import com.main.generate.weapon.WeaponInstance;
 import com.main.generate.weapon.WeaponPartInstance;
+import com.main.plugins.ContentLoader;
 import com.main.stat.StatBase;
 import com.main.stat.StatSet;
 
