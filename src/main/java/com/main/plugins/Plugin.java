@@ -3,14 +3,16 @@ package com.main.plugins;
 import com.main.plugins.pipeline.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by gtrpl on 6/20/2016.
  */
 public class Plugin implements Comparable<Plugin> {
     private final String pluginName;
-    private final List<String> dependencies = new ArrayList<>();
+    private final Set<String> dependencies = new HashSet<>();
 
     private final List<PipelineObjectColor> colors = new ArrayList<>();
     private final List<PipelineObjectIcon> icons = new ArrayList<>();
@@ -31,7 +33,7 @@ public class Plugin implements Comparable<Plugin> {
     public String getPluginName() {
         return pluginName;
     }
-    public List<String> getDependencies() {
+    public Set<String> getDependencies() {
         return dependencies;
     }
 

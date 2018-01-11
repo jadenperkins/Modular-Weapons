@@ -35,6 +35,7 @@ public class StatDef implements StatBase {
     }
     @Override
     public double scale(int i, double original) {
+        if (this.script == null) return original;
         return this.script.scale(i, original);
     }
 }

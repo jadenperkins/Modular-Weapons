@@ -24,6 +24,8 @@ public class MaterialType {
         return this.name;
     }
     public List<Material> generateExotics() {
+        if (this.script == null) return new ArrayList<>();
+
         List<String> exoticNames = this.script.getExoticNames();
         List<Material> materials = new ArrayList<>();
         for (String name : exoticNames) {

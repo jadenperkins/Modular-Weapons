@@ -28,6 +28,7 @@ public class WeaponType implements WeightedItem {
         this.script = s;
     }
     public String getDisplayName(WeaponInstance weapon) {
+        if (this.script == null) return "";
         return this.script.getDisplayName(weapon);
     }
     public String getWeaponTypeName() {

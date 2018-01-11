@@ -1,0 +1,2917 @@
+{
+  "pluginName": "Master",
+  "dependencies": [],
+  "colors": [
+    {
+      "red": 193,
+      "green": 27,
+      "blue": 207,
+      "name": "GEM_AMETHYST"
+    },
+    {
+      "red": 205,
+      "green": 255,
+      "blue": 224,
+      "name": "GEM_DIAMOND"
+    },
+    {
+      "red": 30,
+      "green": 222,
+      "blue": 94,
+      "name": "GEM_EMERALD"
+    },
+    {
+      "red": 221,
+      "green": 134,
+      "blue": 59,
+      "name": "GEM_GARNET"
+    },
+    {
+      "red": 0,
+      "green": 157,
+      "blue": 0,
+      "name": "GEM_JADE"
+    },
+    {
+      "red": 211,
+      "green": 0,
+      "blue": 0,
+      "name": "GEM_RUBY"
+    },
+    {
+      "red": 65,
+      "green": 154,
+      "blue": 255,
+      "name": "GEM_SAPPHIRE"
+    },
+    {
+      "red": 230,
+      "green": 230,
+      "blue": 0,
+      "name": "GEM_TOPAZ"
+    },
+    {
+      "red": 165,
+      "green": 175,
+      "blue": 198,
+      "name": "METAL_COBALT"
+    },
+    {
+      "red": 223,
+      "green": 223,
+      "blue": 0,
+      "name": "METAL_GOLD"
+    },
+    {
+      "red": 100,
+      "green": 100,
+      "blue": 100,
+      "name": "METAL_IRON"
+    },
+    {
+      "red": 200,
+      "green": 200,
+      "blue": 200,
+      "name": "METAL_SILVER"
+    },
+    {
+      "red": 200,
+      "green": 235,
+      "blue": 235,
+      "name": "METAL_TITANIUM"
+    },
+    {
+      "red": 182,
+      "green": 129,
+      "blue": 101,
+      "name": "METAL_TUNGSTEN"
+    },
+    {
+      "red": 127,
+      "green": 138,
+      "blue": 0,
+      "name": "MOD_ANCIENT"
+    },
+    {
+      "red": 55,
+      "green": 55,
+      "blue": 55,
+      "name": "MOD_BLACK"
+    },
+    {
+      "red": 220,
+      "green": 0,
+      "blue": 50,
+      "name": "MOD_CREEPING"
+    },
+    {
+      "red": 105,
+      "green": 105,
+      "blue": 105,
+      "name": "MOD_DARK"
+    },
+    {
+      "red": 123,
+      "green": 150,
+      "blue": 126,
+      "name": "MOD_DULL"
+    },
+    {
+      "red": 110,
+      "green": 180,
+      "blue": 200,
+      "name": "MOD_EXTINCT"
+    },
+    {
+      "red": 180,
+      "green": 153,
+      "blue": 147,
+      "name": "MOD_FADED"
+    },
+    {
+      "red": 179,
+      "green": 255,
+      "blue": 220,
+      "name": "MOD_GHOST"
+    },
+    {
+      "red": 80,
+      "green": 150,
+      "blue": 59,
+      "name": "MOD_HARDY"
+    },
+    {
+      "red": 200,
+      "green": 210,
+      "blue": 0,
+      "name": "MOD_JUVENILE"
+    },
+    {
+      "red": 64,
+      "green": 230,
+      "blue": 50,
+      "name": "MOD_LEAFY"
+    },
+    {
+      "red": 190,
+      "green": 190,
+      "blue": 190,
+      "name": "MOD_LIGHT"
+    },
+    {
+      "red": 92,
+      "green": 144,
+      "blue": 195,
+      "name": "MOD_LUNAR"
+    },
+    {
+      "red": 0,
+      "green": 150,
+      "blue": 0,
+      "name": "MOD_MATURE"
+    },
+    {
+      "red": 140,
+      "green": 194,
+      "blue": 216,
+      "name": "MOD_POLAR"
+    },
+    {
+      "red": 175,
+      "green": 0,
+      "blue": 0,
+      "name": "MOD_RED"
+    },
+    {
+      "red": 116,
+      "green": 83,
+      "blue": 140,
+      "name": "MOD_ROUGH"
+    },
+    {
+      "red": 126,
+      "green": 126,
+      "blue": 126,
+      "name": "MOD_SHADOW"
+    },
+    {
+      "red": 210,
+      "green": 178,
+      "blue": 0,
+      "name": "MOD_SOLAR"
+    },
+    {
+      "red": 106,
+      "green": 211,
+      "blue": 87,
+      "name": "MOD_TWILIGHT"
+    },
+    {
+      "red": 177,
+      "green": 250,
+      "blue": 200,
+      "name": "MOD_VIBRANT"
+    },
+    {
+      "red": 255,
+      "green": 255,
+      "blue": 255,
+      "name": "MOD_WHITE"
+    },
+    {
+      "red": 220,
+      "green": 240,
+      "blue": 120,
+      "name": "MOD_WILD"
+    },
+    {
+      "red": 150,
+      "green": 170,
+      "blue": 80,
+      "name": "MOD_WITHERED"
+    },
+    {
+      "red": 0,
+      "green": 220,
+      "blue": 0,
+      "name": "MOD_YOUNG"
+    },
+    {
+      "red": 240,
+      "green": 240,
+      "blue": 240,
+      "name": "PLANT_COTTON"
+    },
+    {
+      "red": 180,
+      "green": 150,
+      "blue": 100,
+      "name": "PLANT_JUTE"
+    },
+    {
+      "red": 215,
+      "green": 205,
+      "blue": 141,
+      "name": "WOOD_ASH"
+    },
+    {
+      "red": 208,
+      "green": 193,
+      "blue": 123,
+      "name": "WOOD_BEECH"
+    },
+    {
+      "red": 228,
+      "green": 183,
+      "blue": 152,
+      "name": "WOOD_BIRCH"
+    },
+    {
+      "red": 77,
+      "green": 77,
+      "blue": 77,
+      "name": "WOOD_EBONY"
+    },
+    {
+      "red": 194,
+      "green": 168,
+      "blue": 141,
+      "name": "WOOD_ELM"
+    },
+    {
+      "red": 235,
+      "green": 233,
+      "blue": 200,
+      "name": "WOOD_HOLLY"
+    },
+    {
+      "red": 228,
+      "green": 206,
+      "blue": 162,
+      "name": "WOOD_HORNBEAM"
+    },
+    {
+      "red": 186,
+      "green": 173,
+      "blue": 98,
+      "name": "WOOD_JUNIPER"
+    },
+    {
+      "red": 163,
+      "green": 118,
+      "blue": 25,
+      "name": "WOOD_KOA"
+    },
+    {
+      "red": 226,
+      "green": 218,
+      "blue": 140,
+      "name": "WOOD_LAUREL"
+    },
+    {
+      "red": 207,
+      "green": 198,
+      "blue": 43,
+      "name": "WOOD_LOCUST"
+    },
+    {
+      "red": 207,
+      "green": 142,
+      "blue": 73,
+      "name": "WOOD_MAHOGANY"
+    },
+    {
+      "red": 205,
+      "green": 187,
+      "blue": 119,
+      "name": "WOOD_MAPLE"
+    },
+    {
+      "red": 177,
+      "green": 109,
+      "blue": 27,
+      "name": "WOOD_MESQUITE"
+    },
+    {
+      "red": 188,
+      "green": 142,
+      "blue": 42,
+      "name": "WOOD_OAK"
+    },
+    {
+      "red": 224,
+      "green": 191,
+      "blue": 145,
+      "name": "WOOD_PALM"
+    },
+    {
+      "red": 168,
+      "green": 102,
+      "blue": 29,
+      "name": "WOOD_SNAKEWOOD"
+    },
+    {
+      "red": 196,
+      "green": 178,
+      "blue": 121,
+      "name": "WOOD_TEAK"
+    },
+    {
+      "red": 74,
+      "green": 62,
+      "blue": 36,
+      "name": "WOOD_WALNUT"
+    },
+    {
+      "red": 196,
+      "green": 153,
+      "blue": 44,
+      "name": "WOOD_YEW"
+    },
+    {
+      "red": 232,
+      "green": 186,
+      "blue": 114,
+      "name": "WOOD_ZEBRAWOOD"
+    }
+  ],
+  "icons": [
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAgCAYAAAAbifjMAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAACRSURBVEhLrYxRDoAwCMW8/6WnIw6ZVmOjH12g742ltfaJqwg1uyfmZVt/OWCOHEP5\nTAfIdY6hfB6MrObVhY9nD89kCVxm8ZRCJUvgMsuhlAYjq3l14XPYC7dFcJ15eThwx7zIz52r+HrA\ngtKA0oDSgNKA0oDSgNKA0oDSgNKA0oDSgNKA0oDSgNKA0oDyPW1ZAXVqjrggXQbmAAAAAElFTkSu\nQmCC",
+      "name": "axe"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAAB1SURBVEhL7cxBCsRQCETB3P/SfyQYGKQI6b1CbZ7idc5584x2N8Y/z2h3Y2xzdLMP\nCmObo5t9UBjbHN3sg8LY5uhmHxTGNkc3+6Awtjm62QeFsc3RzeuDTxgTjAnGBGOCMcGYYEwwJhgT\njAnGBGOCMcH43bl+cRp3CPOUt9YAAAAASUVORK5CYII\u003d",
+      "name": "blade"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAHJJREFUSEvtzEEKgDAMBdHe/9KxEbpyxAxdSCHCExnJHxHxaj75mp/8P2FctgbW8dcIxnT4QPU4ceyBvQFznJ6hB3ogQw/sD9xRjHA8fyBVRzCm/weqMBoYDYwGRgOjgdHAaGA0MBoYDYwGRgOjgbEuxgUPyvhqfOt2twAAAABJRU5ErkJggg\u003d\u003d",
+      "name": "blade_broad"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAANNJREFUSEvV0cEKgzAQBmFf21766Clz+CGEadxFofTwgUzYNegxxvjqPF/jffDo59AIBnG1RGPMS9az0Ii8eTcMjVFZohEZxno20xgsyaL1LDQib99dHxqjskQjcv1bN6gs0QiGbn+D2ze4GobGYPiP/0Ku/rsbVIahMSpLNCKDfIv1bKYxHrnBbhgao/IrNeKRG1SWaERlGBojC3a/UiMqw9AYWYL1LDSiMgyNmBfslmjs0NihsUNjh8YOjR0aOzR2aOzQ2KGxQ2OHxg6NHRrrxvEBfOaqE28p9+MAAAAASUVORK5CYII\u003d",
+      "name": "blade_legendary"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAF1JREFUSEvtzDEKgDAUBNHc/9LfbGE3YgYbixWehAnZNTOP9pffPvJ9YLx9Grgfv41gjA50IDrQgehAB6IDfxg4hdHAaGA0MBoYDYwGRgOjgdHAaGA0MBoYDYznZl3LRvhqvM9xoQAAAABJRU5ErkJggg\u003d\u003d",
+      "name": "blade_long"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAG1JREFUSEvtzLEKwCAQBFH//6cvrGgjUzjYpDjhQTKJO6rqCUYDo4HRwGhgNDAaGA2MsU4e5gv9ExhjnaeBfXk6v28Yowd6IHqgB6IH/jBwC6OB0cBoYDQwGhgNjAZGA6OB0cBoYDQwGhjv1fgA7t4sRSgBYRgAAAAASUVORK5CYII\u003d",
+      "name": "blade_short"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAABvSURBVEhL7cwxDoAgAMBA/v9plFXOxIbVocsNHXPOo4glYolYIpaIJWKJWCKWiCVi\niVgiloglYolYIpaIJWJph5tWT39rh3/wDxacDmrEErFELBFLxBKxRCwRS8QSsUQsEUvEErFELBFL\nxBLxe3Nc7wnPoSyMA8sAAAAASUVORK5CYII\u003d",
+      "name": "bowgrip"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAAB5SURBVEhL7dJLCoAwEATR3P/SMa0MBFPKNNn4ifBclEyvLLXWKRgdGHvt0Wt3/iZD\n6N0dBozh5QOZY8Eofx/IHgvHNfCAAQdGB0YHRgdGB0YHRgdGB0YHRgfHlqd+5TXwhAHJjmCUNXDI\njGAMHxiQGLkaGoILY14tG/+XbAV6zeI3AAAAAElFTkSuQmCC",
+      "name": "bowlimbs"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAABASURBVEhL7cxBCgAgDAPB/v/TsblKFMWbbGEo5LAl6Ukcb8Rxpa/ftM3DDgECRoCA\nESBgBAgYAQL2QSCJ4znVAORun9FwuuehAAAAAElFTkSuQmCC",
+      "name": "bowstring"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAACOSURBVEhLvcwBCoMwEABB///p1BYsIZlCF8HAEh3PO8YYtyKWiCViiVgiloglYolY\nIpaIJWKJWCKWiCViiVgiloglYolYIpaIJWKJWCKWiCViiVgiloglYolYIpaIJWKJ+O4857U/rxlP\nXhfM73MbfPDOgmt4/kH2/bbBr8GyYLWrZxbUiCViiVgi/t84Xl9Jx6lg3e4GAAAAAElFTkSuQmCC",
+      "name": "flights"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAAB3SURBVEhL7cwxCsAwDARB///TSgpXYQovIV0E0yyH1sy8wlgwFowFY8FYMBaMBWPB\nWDAWjAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgwFowFY8FYMBaMBWPBWDAWjAXj9jxt/gc3xu15\n2nz74AhjwVgwFoznZl3uyBNsuid8wAAAAABJRU5ErkJggg\u003d\u003d",
+      "name": "grip"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAHlJREFUSEvtzLENgDAMAMHsv3QgBRToirxoKLB0Lt6Sx5zzFcaCsWAsGAvGgrFgLBgLxoKxYCwYC8aCsWAsGAvGgrFgLBgLxoKxYCwYC8aCsWAsGAvGgrFgLBgLxoKxYCwYl3PWuj3vF8blf/CFB7sYC8aCsWDcN8cBJbC/sUUaq8kAAAAASUVORK5CYII\u003d",
+      "name": "grip_basic"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAJRJREFUSEulzDEOwyAQAMH8/9MkZ4kUeAqvjDQUyx2ftdYrjAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgwFowFY8FYMBaMBWPBWDCO35nr73zfGMerD87l7Zwbt3DFY3E758YtXPFY3M65cQvbk+XBOF5/8BRjwVgwFozPrc8XRiKzvY+i2lIAAAAASUVORK5CYII\u003d",
+      "name": "grip_heavy"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAADrSURBVEhLpdHBSoJBFEBhX8IXEKlFaGm7NAuUSG0X4ca1LyCSC5G0diJuet/bjDAQchYeXHyLe+bCMP9fiYiLYDQwGhgNjAZGA6OB0cBoYDQwGhgNjAZGA6OB0cBoYDQwGhgNjAZGA6OB0cBoYDQwGhgNjAZGA6OB0cBoYDQwGhgNjMXP233MO7X4HrfTyDsYi99pP7aj1tHpWYGx2AzvYvf+EOuXRhp5B2NxmPRi/9GNz6erNPIOxiy/O9/89XqbRt7JMGbL5+vjx1s81tPIOxnGbNasxmpwE/lPnJ79h9HAaGA0MBoYzxeVP8Cd4fgex9cGAAAAAElFTkSuQmCC",
+      "name": "grip_legendary"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAHhJREFUSEvtzDEKwCAQAEH//2mjhd0ULmlS5GAOWeHGnPMVxoKxYCwYC8aCsWAsGAvGgrFgLBgLxoKxYCwYC8aCsWAsGAvGgrFgLBgLxoKxYCwYC8aCsWAsGAvGgrFgLBiPNXutp/83xuM/8IUDNxgLxoKxYLw3xwOEnNuVxU1T1QAAAABJRU5ErkJggg\u003d\u003d",
+      "name": "grip_light"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAgCAYAAAAbifjMAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAABuSURBVEhLndBRDsAQEABR97/0tiIUmWQ7K3nC4EeLiOUdfUpdb74415nr7nlYgNHA\naGA0xqL8iX0zrZg43uybCowGRgOjgdHAaGA0MBoYDYwGRgOjgdHAaGA0MBoYDYwGRgOjgdHAaGA0\nMP4X7QEeWBssoAhNjgAAAABJRU5ErkJggg\u003d\u003d",
+      "name": "hammer"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAgCAYAAAAbifjMAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAAA7SURBVEhL7cwxCgAgDEPR3v/SsRm6ZSkd/cITifBL0kkcN+K4EcfRx1c/87/FcRAg\nYAQIGAEC9kVA9QDkT4bA6UYrWAAAAABJRU5ErkJggg\u003d\u003d",
+      "name": "handle"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAgCAYAAAAbifjMAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAAB3SURBVEhLlcsxDoAwDARB/v9pgyOZ4rxFFmkoNr6nqtD39e+X74NjjEfetRVOjOHI\nu7bCiTEceddWODGGI+/aCuNm3DAaGA2MBkYDo4HRwGhgNDAaGA2MBkYDo4HRwGhgNDAaGA2MBkYD\no4HRwGhgNDAaGO/V8wItqrqMelkMigAAAABJRU5ErkJggg\u003d\u003d",
+      "name": "head"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAACTSURBVEhLrcwBCoJQFAVR979pSzCo3vnkVBcOyPh02/f9J4wFY8FYMBaMBWPBWDAW\njAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgwFowFY8FYMBaMBWPBWDwejr28uOAYf/BpL99c/Wi1\n//3ga4wFY8FYMBaMBWPBeLfauB3htNq4HeG02rgd4bTauB3hyftws2830R07RFyGC98AAAAASUVO\nRK5CYII\u003d",
+      "name": "hilt"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwQAADsEBuJFr7QAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAHlJREFUSEvd0rENgDAMAMHsv7QB0V7BEyqKi6VX5MprZrYwFowFY8FYMBaMBWPBWDAWjAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgwFowFY8FYMBaMBWPBWNzPOd74boHoszAWjAVjwVgwFowFY8F42b6DHyx4ZtYBamSX2ZDFKCkAAAAASUVORK5CYII\u003d",
+      "name": "hilt_balanced"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAJ1JREFUSEutzOEOQDAMAGHv/9JllSZ0Rxx+fGaXdktEfILRwGhgNDAaGA2MBkYDo4HRwGhgNDAaGA2MBkYDo4HRwGhgNDAaGA2MBkYDo4HRwGhgNDAaGA2MBkZj/+TBA1dq53Sp/zvHuTzr8sZ/D3yB0cBoYDQwGhgNjAbHLZM+N0whY1ssfW6YQsa2WPrcMIWMbbH0uWEK5clyRCwrcedwASat9FoAAAAASUVORK5CYII\u003d",
+      "name": "hilt_heavy"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAGWSURBVEhLpZNXSwNBFIUDCiIqNuy9ISKIT/5tBREVG/ZegmgwRtTYOyKC+HLdM3GHrB5Ijj58e+98u3d2ZvdOzMz+BZUKVCpQqUClApUKVCpQqUClApUKVCpQqUClApUKVCpQqUClApUKVCpQqUClApUKVCpQqUClApUKVCpQqUClgk/uNtuC8PsBxsVyQxAyeUamh7zIl9RsVRC+JzhfrHMDhduN1iBkbeF4ptKJfHjd7w1CJo/InZFCw/6e97oN3+Rsoda2hwvcGEt+3Om0m/UWX4wal7wn+r3ESlB8NFVulyuNdjhRavdb7XYwXmJXq03+uXCiSPHpfI19JAfcm1GEgqfdLnvY7rCXeI99pgZdnpgs8zXuAtJL9V7mYn+sOAiZ3F3+8hfCGjfAshAVsDVEL7K7Kxf0G/wVKhWoVPglwv3FR4tc16FP0ANw7G9FBgDNgk7EVz6Zq3bdiELA/lZkAPBGrAK9D9DKmAynL/schEQG4HqtOQgWw8HBBMnpCn8Gss9CSGTwE7z17aAvSPl9M4t9AR5l5oSwgSzhAAAAAElFTkSuQmCC",
+      "name": "hilt_legendary"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwQAADsEBuJFr7QAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAIdJREFUSEul0jEKw0AMAEH//9OXXBE4wxB7UTGFFqRK11prhLFgLBgLxoKxYCwYC8aCsWAsGAvGgrFgLBgLxoKxYCwYC8aCsWAsGAvGgrFgLBgLxoKxYCwYC8biPnzHN24753D6t3Ri3MYH3mIsGAvGgrFgLBgLxm38B+MD29PyxvgzPvBsXR9SFru1ucueqgAAAABJRU5ErkJggg\u003d\u003d",
+      "name": "hilt_light"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAACJSURBVEhLpcxJCsMwEABB///TinOQ8NIJLnwoRvQM2sYYr2QUGUVGkVFkFBlFRpFR\nZBQZRUaRUWQUGUVGcQ97mv61tVuPw9H0aHc9mItfrrcrfqc4ffBGRpFRZBQZRUaRUWQUGUVGkVFk\nFBlFRpFRZBQZRUaRUWQUGUVGkVFkFBlFRpFRZHxubB9H8MepUg5+9QAAAABJRU5ErkJggg\u003d\u003d",
+      "name": "limbs"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAABTSURBVEhL7cwxCgAhFANR73/pv6awm8LBYpsIT2SErJl5gtHAaGA0MBoYDYwGxmOf\nXPvJ/4Hx6EAHogMdiA50IDrQgfh/4AZGA6OB0cBoYLw36wPK5WwFFr0s7gAAAABJRU5ErkJggg\u003d\u003d",
+      "name": "shaft"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAABmSURBVEhL7c4xCsAgFAXB3P/SJhZ2U7ik/YEJssLDZ631C2PBWDAWjAVjwVgwFowF\nY8FYMBaMBWPBWDAe37d/39H3G+MxA3cYj98vmIEZ2GZgBm4xFowFY8FYMBaMBWPBWDDeW88L0qGf\n0XdqvXoAAAAASUVORK5CYII\u003d",
+      "name": "stock"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAAB4SURBVEhLpcwxCsAwDARB///TSsCQaoqsXcwJttCamSuMBWPBWDAWjAVjwVgwFowF\nY8FYMBaMBWPBWDAWjAVjwVjsec+J78ENxoKxYCwYC8aCsWAsGAvGgrFgLBgLxoKxYCwYC8aCsWAs\nGAvGgrFgLBgLxoLxv1kP78fblY7lRoYAAAAASUVORK5CYII\u003d",
+      "name": "string"
+    },
+    {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAwCAYAAAAYX/pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACx\njwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu\nOWwzfk4AAACASURBVEhLxcwxCsAgEADB/P/TRgu7gbhYRBg5VrxnjHGFsWDc5lnXHP2+MG5XC/bn\nryWMy/8LTjEWjAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgwFowFY8FYMBaMBWPBWDAWjAVjwVgw\nFowFY8FYMBaMBWPBWDAWjAVjwXhuPC+ZqdeZAe1JHgAAAABJRU5ErkJggg\u003d\u003d",
+      "name": "tip"
+    }
+  ],
+  "materials": [
+    {
+      "color": "GEM_AMETHYST",
+      "weight": 16.0,
+      "mod": 1.0,
+      "level": 24,
+      "material": "Gem",
+      "name": "Amethyst"
+    },
+    {
+      "color": "WOOD_ASH",
+      "weight": 21.0,
+      "mod": 1.0,
+      "level": 0,
+      "material": "Wood",
+      "name": "Ash"
+    },
+    {
+      "color": "WOOD_BEECH",
+      "weight": 20.0,
+      "mod": 1.0,
+      "level": 3,
+      "material": "Wood",
+      "name": "Beech"
+    },
+    {
+      "color": "WOOD_BIRCH",
+      "weight": 19.0,
+      "mod": 1.0,
+      "level": 6,
+      "material": "Wood",
+      "name": "Birch"
+    },
+    {
+      "color": "METAL_COBALT",
+      "weight": 4.0,
+      "mod": 1.2,
+      "level": 30,
+      "material": "Metal",
+      "name": "Cobalt"
+    },
+    {
+      "color": "PLANT_COTTON",
+      "weight": 1.0,
+      "mod": 1.0,
+      "level": 0,
+      "material": "Plant",
+      "name": "Cotton"
+    },
+    {
+      "color": "GEM_DIAMOND",
+      "weight": 1.0,
+      "mod": 1.0,
+      "level": 56,
+      "material": "Gem",
+      "name": "Diamond"
+    },
+    {
+      "color": "WOOD_EBONY",
+      "weight": 17.0,
+      "mod": 1.0,
+      "level": 12,
+      "material": "Wood",
+      "name": "Ebony"
+    },
+    {
+      "color": "WOOD_ELM",
+      "weight": 18.0,
+      "mod": 1.0,
+      "level": 9,
+      "material": "Wood",
+      "name": "Elm"
+    },
+    {
+      "color": "GEM_EMERALD",
+      "weight": 4.0,
+      "mod": 1.0,
+      "level": 40,
+      "material": "Gem",
+      "name": "Emerald"
+    },
+    {
+      "color": "GEM_GARNET",
+      "weight": 32.0,
+      "mod": 1.0,
+      "level": 16,
+      "material": "Gem",
+      "name": "Garnet"
+    },
+    {
+      "color": "METAL_GOLD",
+      "weight": 8.0,
+      "mod": 0.8,
+      "level": 20,
+      "material": "Metal",
+      "name": "Gold"
+    },
+    {
+      "color": "WOOD_HOLLY",
+      "weight": 16.0,
+      "mod": 1.0,
+      "level": 15,
+      "material": "Wood",
+      "name": "Holly"
+    },
+    {
+      "color": "WOOD_HORNBEAM",
+      "weight": 15.0,
+      "mod": 1.0,
+      "level": 18,
+      "material": "Wood",
+      "name": "Hornbeam"
+    },
+    {
+      "color": "METAL_IRON",
+      "weight": 32.0,
+      "mod": 1.0,
+      "level": 0,
+      "material": "Metal",
+      "name": "Iron"
+    },
+    {
+      "color": "GEM_JADE",
+      "weight": 128.0,
+      "mod": 1.0,
+      "level": 0,
+      "material": "Gem",
+      "name": "Jade"
+    },
+    {
+      "color": "WOOD_JUNIPER",
+      "weight": 14.0,
+      "mod": 1.0,
+      "level": 21,
+      "material": "Wood",
+      "name": "Juniper"
+    },
+    {
+      "color": "PLANT_JUTE",
+      "weight": 1.0,
+      "mod": 1.0,
+      "level": 25,
+      "material": "Plant",
+      "name": "Jute"
+    },
+    {
+      "color": "WOOD_KOA",
+      "weight": 13.0,
+      "mod": 1.0,
+      "level": 24,
+      "material": "Wood",
+      "name": "Koa"
+    },
+    {
+      "color": "WOOD_LAUREL",
+      "weight": 12.0,
+      "mod": 1.0,
+      "level": 27,
+      "material": "Wood",
+      "name": "Laurel"
+    },
+    {
+      "color": "WOOD_LOCUST",
+      "weight": 11.0,
+      "mod": 1.0,
+      "level": 30,
+      "material": "Wood",
+      "name": "Locust"
+    },
+    {
+      "color": "WOOD_MAHOGANY",
+      "weight": 8.0,
+      "mod": 1.0,
+      "level": 39,
+      "material": "Wood",
+      "name": "Mahogany"
+    },
+    {
+      "color": "WOOD_MAPLE",
+      "weight": 10.0,
+      "mod": 1.0,
+      "level": 33,
+      "material": "Wood",
+      "name": "Maple"
+    },
+    {
+      "color": "WOOD_MESQUITE",
+      "weight": 9.0,
+      "mod": 1.0,
+      "level": 36,
+      "material": "Wood",
+      "name": "Mesquite"
+    },
+    {
+      "color": "WOOD_OAK",
+      "weight": 7.0,
+      "mod": 1.0,
+      "level": 42,
+      "material": "Wood",
+      "name": "Oak"
+    },
+    {
+      "color": "WOOD_PALM",
+      "weight": 6.0,
+      "mod": 1.0,
+      "level": 45,
+      "material": "Wood",
+      "name": "Palm"
+    },
+    {
+      "color": "GEM_RUBY",
+      "weight": 2.0,
+      "mod": 1.0,
+      "level": 48,
+      "material": "Gem",
+      "name": "Ruby"
+    },
+    {
+      "color": "GEM_SAPPHIRE",
+      "weight": 8.0,
+      "mod": 1.0,
+      "level": 32,
+      "material": "Gem",
+      "name": "Sapphire"
+    },
+    {
+      "color": "METAL_SILVER",
+      "weight": 16.0,
+      "mod": 0.6,
+      "level": 10,
+      "material": "Metal",
+      "name": "Silver"
+    },
+    {
+      "color": "WOOD_SNAKEWOOD",
+      "weight": 5.0,
+      "mod": 1.0,
+      "level": 48,
+      "material": "Wood",
+      "name": "Snakewood"
+    },
+    {
+      "color": "WOOD_TEAK",
+      "weight": 4.0,
+      "mod": 1.0,
+      "level": 51,
+      "material": "Wood",
+      "name": "Teak"
+    },
+    {
+      "color": "METAL_TITANIUM",
+      "weight": 1.0,
+      "mod": 1.8,
+      "level": 50,
+      "material": "Metal",
+      "name": "Titanium"
+    },
+    {
+      "color": "GEM_TOPAZ",
+      "weight": 64.0,
+      "mod": 1.0,
+      "level": 8,
+      "material": "Gem",
+      "name": "Topaz"
+    },
+    {
+      "color": "METAL_TUNGSTEN",
+      "weight": 2.0,
+      "mod": 1.4,
+      "level": 40,
+      "material": "Metal",
+      "name": "Tungsten"
+    },
+    {
+      "color": "WOOD_WALNUT",
+      "weight": 3.0,
+      "mod": 1.0,
+      "level": 54,
+      "material": "Wood",
+      "name": "Walnut"
+    },
+    {
+      "color": "WOOD_YEW",
+      "weight": 2.0,
+      "mod": 1.0,
+      "level": 57,
+      "material": "Wood",
+      "name": "Yew"
+    },
+    {
+      "color": "WOOD_ZEBRAWOOD",
+      "weight": 1.0,
+      "mod": 1.0,
+      "level": 60,
+      "material": "Wood",
+      "name": "Zebrawood"
+    }
+  ],
+  "materialModifiers": [
+    {
+      "color": "MOD_ANCIENT",
+      "weight": 1.0,
+      "level": 1.0,
+      "mod": 1.2,
+      "materials": [
+        "Metal",
+        "Wood"
+      ],
+      "name": "Ancient"
+    },
+    {
+      "color": "MOD_BLACK",
+      "weight": 1.0,
+      "level": 0.8,
+      "mod": 0.8,
+      "materials": [
+        "Metal",
+        "Wood"
+      ],
+      "name": "Black"
+    },
+    {
+      "color": "MOD_CREEPING",
+      "weight": 1.0,
+      "level": 1.5,
+      "mod": 1.5,
+      "materials": [
+        "Plant"
+      ],
+      "name": "Creeping"
+    },
+    {
+      "color": "MOD_DARK",
+      "weight": 1.0,
+      "level": 1.25,
+      "mod": 1.2,
+      "materials": [
+        "Metal",
+        "Wood",
+        "Gem"
+      ],
+      "name": "Dark"
+    },
+    {
+      "color": "MOD_DULL",
+      "weight": 1.0,
+      "level": 0.8,
+      "mod": 0.8,
+      "materials": [
+        "Gem"
+      ],
+      "name": "Dull"
+    },
+    {
+      "color": "MOD_EXTINCT",
+      "weight": 1.0,
+      "level": 1.8,
+      "mod": 2.0,
+      "materials": [
+        "Plant"
+      ],
+      "name": "Extinct"
+    },
+    {
+      "color": "MOD_FADED",
+      "weight": 1.0,
+      "level": 0.5,
+      "mod": 1.2,
+      "materials": [
+        "Gem"
+      ],
+      "name": "Faded"
+    },
+    {
+      "color": "MOD_GHOST",
+      "weight": 1.0,
+      "level": 1.5,
+      "mod": 2.0,
+      "materials": [
+        "Metal"
+      ],
+      "name": "Ghost"
+    },
+    {
+      "color": "MOD_HARDY",
+      "weight": 1.0,
+      "level": 1.25,
+      "mod": 0.8,
+      "materials": [
+        "Wood",
+        "Plant"
+      ],
+      "name": "Hardy"
+    },
+    {
+      "color": "MOD_JUVENILE",
+      "weight": 1.0,
+      "level": 0.5,
+      "mod": 0.8,
+      "materials": [
+        "Plant"
+      ],
+      "name": "Juvenile"
+    },
+    {
+      "color": "MOD_LEAFY",
+      "weight": 1.0,
+      "level": 1.8,
+      "mod": 2.0,
+      "materials": [
+        "Plant"
+      ],
+      "name": "Leafy"
+    },
+    {
+      "color": "MOD_LIGHT",
+      "weight": 1.0,
+      "level": 1.0,
+      "mod": 1.2,
+      "materials": [
+        "Wood"
+      ],
+      "name": "Light"
+    },
+    {
+      "color": "MOD_LUNAR",
+      "weight": 1.0,
+      "level": 0.5,
+      "mod": 1.2,
+      "materials": [
+        "Metal"
+      ],
+      "name": "Lunar"
+    },
+    {
+      "color": "MOD_MATURE",
+      "weight": 1.0,
+      "level": 0.8,
+      "mod": 1.2,
+      "materials": [
+        "Plant"
+      ],
+      "name": "Mature"
+    },
+    {
+      "color": "MOD_POLAR",
+      "weight": 1.0,
+      "level": 1.5,
+      "mod": 2.0,
+      "materials": [
+        "Wood"
+      ],
+      "name": "Polar"
+    },
+    {
+      "color": "MOD_RED",
+      "weight": 1.0,
+      "level": 0.8,
+      "mod": 1.2,
+      "materials": [
+        "Wood"
+      ],
+      "name": "Red"
+    },
+    {
+      "color": "MOD_ROUGH",
+      "weight": 1.0,
+      "level": 0.8,
+      "mod": 1.2,
+      "materials": [
+        "Gem"
+      ],
+      "name": "Rough"
+    },
+    {
+      "color": "MOD_SHADOW",
+      "weight": 1.0,
+      "level": 1.0,
+      "mod": 0.8,
+      "materials": [
+        "Metal"
+      ],
+      "name": "Shadow"
+    },
+    {
+      "color": "MOD_SOLAR",
+      "weight": 1.0,
+      "level": 0.5,
+      "mod": 0.8,
+      "materials": [
+        "Metal"
+      ],
+      "name": "Solar"
+    },
+    {
+      "color": "MOD_TWILIGHT",
+      "weight": 1.0,
+      "level": 1.25,
+      "mod": 0.8,
+      "materials": [
+        "Metal"
+      ],
+      "name": "Twilight"
+    },
+    {
+      "color": "MOD_VIBRANT",
+      "weight": 1.0,
+      "level": 1.5,
+      "mod": 2.0,
+      "materials": [
+        "Gem"
+      ],
+      "name": "Vibrant"
+    },
+    {
+      "color": "MOD_WHITE",
+      "weight": 1.0,
+      "level": 0.8,
+      "mod": 1.2,
+      "materials": [
+        "Metal",
+        "Wood"
+      ],
+      "name": "White"
+    },
+    {
+      "color": "MOD_WILD",
+      "weight": 1.0,
+      "level": 1.5,
+      "mod": 1.0,
+      "materials": [
+        "Plant"
+      ],
+      "name": "Wild"
+    },
+    {
+      "color": "MOD_WITHERED",
+      "weight": 1.0,
+      "level": 0.5,
+      "mod": 0.3,
+      "materials": [
+        "Plant"
+      ],
+      "name": "Withered"
+    },
+    {
+      "color": "MOD_POLAR",
+      "weight": 1.0,
+      "level": 0.5,
+      "mod": 0.8,
+      "materials": [
+        "Plant"
+      ],
+      "name": "Young"
+    }
+  ],
+  "materialTypes": [
+    {
+      "script": "gems",
+      "name": "Gem"
+    },
+    {
+      "script": "metals",
+      "name": "Metal"
+    },
+    {
+      "script": "plants",
+      "name": "Plant"
+    },
+    {
+      "script": "woods",
+      "name": "Wood"
+    }
+  ],
+  "partTypes": [
+    {
+      "icon": "flights",
+      "name": "Arrow Fletchings"
+    },
+    {
+      "icon": "shaft",
+      "name": "Arrow Shaft"
+    },
+    {
+      "icon": "tip",
+      "name": "Arrow Tip"
+    },
+    {
+      "icon": "handle",
+      "name": "Axe Handle"
+    },
+    {
+      "icon": "axe",
+      "name": "Axe Head"
+    },
+    {
+      "icon": "flights",
+      "name": "Bolt Fletchings"
+    },
+    {
+      "icon": "shaft",
+      "name": "Bolt Shaft"
+    },
+    {
+      "icon": "tip",
+      "name": "Bolt Tip"
+    },
+    {
+      "icon": "bowgrip",
+      "name": "Bow Grip"
+    },
+    {
+      "icon": "bowlimbs",
+      "name": "Bow Limbs"
+    },
+    {
+      "icon": "bowstring",
+      "name": "Bow String"
+    },
+    {
+      "icon": "limbs",
+      "name": "Crossbow Limbs"
+    },
+    {
+      "icon": "stock",
+      "name": "Crossbow Stock"
+    },
+    {
+      "icon": "string",
+      "name": "Crossbow String"
+    },
+    {
+      "icon": "handle",
+      "name": "Hammer Handle"
+    },
+    {
+      "icon": "hammer",
+      "name": "Hammer Head"
+    },
+    {
+      "icon": "handle",
+      "name": "Staff Handle"
+    },
+    {
+      "icon": "head",
+      "name": "Staff Head"
+    },
+    {
+      "icon": "blade",
+      "name": "Sword Blade"
+    },
+    {
+      "icon": "grip",
+      "name": "Sword Grip"
+    },
+    {
+      "icon": "hilt",
+      "name": "Sword Hilt"
+    }
+  ],
+  "scripts": [
+    {
+      "type": "material types",
+      "script": "importPackage(java.util);\r\n\r\nvar first  \u003d [\"Blood\", \"Dragon\", \"Shadow\", \"Sky\", \"Thunder\"];\r\nvar second \u003d [\"stone\", \"rock\", \"gem\", \"spar\", \"quartz\", \"glass\", \"jewel\"];\r\n\r\nvar exoticNames \u003d getNames();\r\n\r\nfunction getNames() {\r\n    var list \u003d new ArrayList();\r\n    for(var s1 in first) {\r\n        for(var s2 in second) {\r\n            list.add(first[s1] + second[s2]);\r\n        }\r\n    }\r\n    return list;\r\n}",
+      "name": "gems"
+    },
+    {
+      "type": "material types",
+      "script": "importPackage(java.util);\r\n\r\nvar first  \u003d [\"Meg\", \"Ex\", \"Ant\", \"Mas\", \"Ox\", \"Ax\", \"Bis\"];\r\nvar second \u003d [\"or\", \"an\", \"net\", \"et\", \"en\"];\r\nvar third  \u003d [\"ite\", \"ium\"];\r\n\r\nvar exoticNames \u003d getNames();\r\n\r\nfunction getNames() {\r\n    var list \u003d new ArrayList();\r\n    for(var s1 in first) {\r\n        for(var s2 in second) {\r\n            for(var s3 in third) {\r\n                list.add(first[s1] + second[s2] + third[s3]);\r\n            }\r\n        }\r\n    }\r\n    return list;\r\n}",
+      "name": "metals"
+    },
+    {
+      "type": "material types",
+      "script": "importPackage(java.util);\r\n\r\nvar first  \u003d [\"Snake\", \"Blood\", \"Gleam\", \"String\", \"Witch\u0027s \"];\r\nvar second \u003d [\"thorn\", \"root\", \"leaf\", \"stem\", \"blade\", \"grass\", \"bell\", \"flower\", \"bloom\", \"blossom\"];\r\n\r\nvar exoticNames \u003d getNames();\r\n\r\nfunction getNames() {\r\n    var list \u003d new ArrayList();\r\n    for(var s1 in first) {\r\n        for(var s2 in second) {\r\n            list.add(first[s1] + second[s2]);\r\n        }\r\n    }\r\n    return list;\r\n}",
+      "name": "plants"
+    },
+    {
+      "type": "stats",
+      "script": "var MULT_CAP \u003d 2000;\r\nvar CAP_LEVEL \u003d 100;\r\nvar HALF_LEVEL \u003d CAP_LEVEL / 2;\r\n\r\nvar BASE \u003d Math.pow(MULT_CAP / 2, 1 / (HALF_LEVEL - 1));\r\n\r\nfunction scale(i, original) {\r\n    if(i \u003c\u003d HALF_LEVEL) return original * Math.pow(BASE, i - 1);\r\n    if(i \u003e HALF_LEVEL) return original * (MULT_CAP - Math.pow(BASE, CAP_LEVEL - 1 - i));\r\n}",
+      "name": "scaled"
+    },
+    {
+      "type": "material types",
+      "script": "importPackage(java.util);\r\n\r\nvar first  \u003d [\"Ac\", \"Za\", \"Mat\", \"Ni\"];\r\nvar second \u003d [\"tan\", \"rop\", \"cat\", \"mat\"];\r\nvar third  \u003d [\"ta\", \"in\", \"or\", \"za\"];\r\n\r\nvar exoticNames \u003d getNames();\r\n\r\nfunction getNames() {\r\n    var list \u003d new ArrayList();\r\n    for(var s1 in first) {\r\n        for(var s2 in second) {\r\n            for(var s3 in third) {\r\n                list.add(first[s1] + second[s2] + third[s3]);\r\n            }\r\n        }\r\n    }\r\n    return list;\r\n}",
+      "name": "woods"
+    }
+  ],
+  "stats": [
+    {
+      "defaultValue": 0.0,
+      "script": "",
+      "name": "Attack Time"
+    },
+    {
+      "defaultValue": 0.0,
+      "script": "scaled",
+      "name": "Blunt Damage"
+    },
+    {
+      "defaultValue": 0.0,
+      "script": "",
+      "name": "Draw Time"
+    },
+    {
+      "defaultValue": 0.0,
+      "script": "scaled",
+      "name": "Pierce Damage"
+    },
+    {
+      "defaultValue": 0.0,
+      "script": "",
+      "name": "Range"
+    },
+    {
+      "defaultValue": 0.0,
+      "script": "scaled",
+      "name": "Slash Damage"
+    }
+  ],
+  "statSets": [
+    {
+      "stats": {
+        "Draw Time": 2.0,
+        "Attack Time": 1.0,
+        "Range": 50.0,
+        "Blunt Damage": 10.0
+      },
+      "name": "Accurate Crossbow Stock"
+    },
+    {
+      "stats": {
+        "Draw Time": 1.0,
+        "Attack Time": 0.5,
+        "Range": 30.0,
+        "Blunt Damage": 5.0
+      },
+      "name": "Balanced Bow Grip"
+    },
+    {
+      "stats": {
+        "Draw Time": 1.5,
+        "Attack Time": 0.5,
+        "Range": 35.0,
+        "Blunt Damage": 10.0
+      },
+      "name": "Balanced Crossbow Stock"
+    },
+    {
+      "stats": {
+        "Pierce Damage": 0.0,
+        "Slash Damage": 0.0,
+        "Blunt Damage": 0.0
+      },
+      "name": "Base Arrow"
+    },
+    {
+      "stats": {
+        "Pierce Damage": 0.0,
+        "Attack Time": 0.0,
+        "Slash Damage": 50.0,
+        "Blunt Damage": 30.0
+      },
+      "name": "Base Axe"
+    },
+    {
+      "stats": {
+        "Pierce Damage": 0.0,
+        "Slash Damage": 0.0,
+        "Blunt Damage": 0.0
+      },
+      "name": "Base Bolt"
+    },
+    {
+      "stats": {
+        "Attack Time": 0.0,
+        "Draw Time": 0.0,
+        "Range": 50.0,
+        "Blunt Damage": 10.0
+      },
+      "name": "Base Bow"
+    },
+    {
+      "stats": {
+        "Attack Time": 0.0,
+        "Draw Time": 0.0,
+        "Range": 50.0,
+        "Blunt Damage": 10.0
+      },
+      "name": "Base Crossbow"
+    },
+    {
+      "stats": {
+        "Pierce Damage": 0.0,
+        "Attack Time": 0.0,
+        "Blunt Damage": 80.0
+      },
+      "name": "Base Hammer"
+    },
+    {
+      "stats": {
+        "Attack Time": 0.0,
+        "Blunt Damage": 10.0
+      },
+      "name": "Base Staff"
+    },
+    {
+      "stats": {
+        "Pierce Damage": 10.0,
+        "Attack Time": 0.0,
+        "Slash Damage": 50.0,
+        "Blunt Damage": 0.0
+      },
+      "name": "Base Sword"
+    },
+    {
+      "stats": {
+        "Attack Time": 2.0,
+        "Slash Damage": 20.0,
+        "Blunt Damage": 20.0
+      },
+      "name": "Battleaxe Handle"
+    },
+    {
+      "stats": {
+        "Attack Time": 2.0,
+        "Blunt Damage": 20.0
+      },
+      "name": "Battlehammer Handle"
+    },
+    {
+      "stats": {
+        "Pierce Damage": 15.0,
+        "Slash Damage": 15.0,
+        "Blunt Damage": 0.0
+      },
+      "name": "Blade Broad"
+    },
+    {
+      "stats": {
+        "Pierce Damage": 10.0,
+        "Slash Damage": 20.0,
+        "Blunt Damage": 0.0
+      },
+      "name": "Blade Long"
+    },
+    {
+      "stats": {
+        "Pierce Damage": 5.0,
+        "Slash Damage": 10.0,
+        "Blunt Damage": 0.0
+      },
+      "name": "Blade Short"
+    },
+    {
+      "stats": {
+        "Attack Time": 1.5,
+        "Slash Damage": 10.0,
+        "Blunt Damage": 5.0
+      },
+      "name": "Broad Axehead"
+    },
+    {
+      "stats": {
+        "Attack Time": 2.0,
+        "Slash Damage": 10.0,
+        "Blunt Damage": 10.0
+      },
+      "name": "Double Axehead"
+    },
+    {
+      "stats": {
+        "Attack Time": 2.0,
+        "Blunt Damage": 20.0
+      },
+      "name": "Double Hammerhead"
+    },
+    {
+      "stats": {
+        "Pierce Damage": 2.0,
+        "Slash Damage": 5.0,
+        "Blunt Damage": 0.0
+      },
+      "name": "Grip Basic"
+    },
+    {
+      "stats": {
+        "Pierce Damage": 4.0,
+        "Slash Damage": 10.0,
+        "Blunt Damage": 1.0
+      },
+      "name": "Grip Heavy"
+    },
+    {
+      "stats": {
+        "Pierce Damage": 0.0,
+        "Slash Damage": 0.0,
+        "Blunt Damage": 0.0
+      },
+      "name": "Grip Light"
+    },
+    {
+      "stats": {
+        "Draw Time": 2.0,
+        "Range": 50.0
+      },
+      "name": "Heavy Bowstring"
+    },
+    {
+      "stats": {
+        "Draw Time": 2.0,
+        "Attack Time": 1.0,
+        "Range": 40.0,
+        "Blunt Damage": 20.0
+      },
+      "name": "Heavy Crossbow Limbs"
+    },
+    {
+      "stats": {
+        "Draw Time": 2.5,
+        "Range": 70.0
+      },
+      "name": "Heavy Crossbow String"
+    },
+    {
+      "stats": {
+        "Attack Time": 1.5,
+        "Blunt Damage": 15.0
+      },
+      "name": "Heavy Hammerhead"
+    },
+    {
+      "stats": {
+        "Pierce Damage": 6.0,
+        "Slash Damage": 16.0,
+        "Blunt Damage": 2.0
+      },
+      "name": "Hilt Heavy"
+    },
+    {
+      "stats": {
+        "Pierce Damage": 0.0,
+        "Slash Damage": 0.0,
+        "Blunt Damage": 0.0
+      },
+      "name": "Hilt Light"
+    },
+    {
+      "stats": {
+        "Pierce Damage": 3.0,
+        "Slash Damage": 8.0,
+        "Blunt Damage": 1.0
+      },
+      "name": "Hilt Medium"
+    },
+    {
+      "stats": {
+        "Draw Time": 1.0,
+        "Range": 25.0
+      },
+      "name": "Light Bowstring"
+    },
+    {
+      "stats": {
+        "Draw Time": 1.0,
+        "Attack Time": 0.5,
+        "Range": 20.0,
+        "Blunt Damage": 10.0
+      },
+      "name": "Light Crossbow Limbs"
+    },
+    {
+      "stats": {
+        "Draw Time": 1.5,
+        "Range": 35.0
+      },
+      "name": "Light Crossbow String"
+    },
+    {
+      "stats": {
+        "Attack Time": 1.5,
+        "Slash Damage": 15.0,
+        "Blunt Damage": 15.0
+      },
+      "name": "Longaxe Handle"
+    },
+    {
+      "stats": {
+        "Draw Time": 1.5,
+        "Attack Time": 2.0,
+        "Range": 30.0,
+        "Blunt Damage": 20.0
+      },
+      "name": "Longbow Limbs"
+    },
+    {
+      "stats": {
+        "Attack Time": 3.0,
+        "Blunt Damage": 30.0
+      },
+      "name": "Maul Handle"
+    },
+    {
+      "stats": {
+        "Draw Time": 0.5,
+        "Attack Time": 0.5,
+        "Range": 20.0,
+        "Blunt Damage": 5.0
+      },
+      "name": "Quick Bow Grip"
+    },
+    {
+      "stats": {
+        "Draw Time": 1.0,
+        "Attack Time": 0.5,
+        "Range": 20.0,
+        "Blunt Damage": 10.0
+      },
+      "name": "Rapid Crossbow Stock"
+    },
+    {
+      "stats": {
+        "Draw Time": 1.0,
+        "Attack Time": 1.5,
+        "Range": 20.0,
+        "Blunt Damage": 15.0
+      },
+      "name": "Recurve Limbs"
+    },
+    {
+      "stats": {
+        "Attack Time": 1.0,
+        "Blunt Damage": 20.0
+      },
+      "name": "Round Axehead"
+    },
+    {
+      "stats": {
+        "Attack Time": 1.0,
+        "Slash Damage": 20.0
+      },
+      "name": "Scythe Axehead"
+    },
+    {
+      "stats": {
+        "Draw Time": 0.5,
+        "Attack Time": 1.0,
+        "Range": 10.0,
+        "Blunt Damage": 10.0
+      },
+      "name": "Shortbow Limbs"
+    },
+    {
+      "stats": {
+        "Attack Time": 1.0,
+        "Slash Damage": 5.0,
+        "Blunt Damage": 5.0
+      },
+      "name": "Single Axehead"
+    },
+    {
+      "stats": {
+        "Attack Time": 1.0,
+        "Blunt Damage": 10.0
+      },
+      "name": "Single Hammerhead"
+    },
+    {
+      "stats": {
+        "Pierce Damage": 20.0,
+        "Attack Time": 1.0
+      },
+      "name": "Spiked Axehead"
+    },
+    {
+      "stats": {
+        "Pierce Damage": 20.0,
+        "Attack Time": 0.5
+      },
+      "name": "Spiked Hammerhead"
+    },
+    {
+      "stats": {
+        "Draw Time": 2.0,
+        "Attack Time": 1.0,
+        "Range": 50.0,
+        "Blunt Damage": 5.0
+      },
+      "name": "Steady Bow Grip"
+    },
+    {
+      "stats": {
+        "Attack Time": 1.0,
+        "Slash Damage": 10.0,
+        "Blunt Damage": 10.0
+      },
+      "name": "Waraxe Handle"
+    },
+    {
+      "stats": {
+        "Attack Time": 1.0,
+        "Blunt Damage": 10.0
+      },
+      "name": "Warhammer Handle"
+    }
+  ],
+  "weaponParts": [
+    {
+      "nameMod": "Accurate",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Crossbow Stock",
+      "stats": "Accurate Crossbow Stock",
+      "icon": "",
+      "materials": [
+        "Wood"
+      ],
+      "name": "Accurate Stock"
+    },
+    {
+      "nameMod": "Balanced",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Bow Grip",
+      "stats": "Balanced Bow Grip",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Balanced Grip"
+    },
+    {
+      "nameMod": "Balanced",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Crossbow Stock",
+      "stats": "Balanced Crossbow Stock",
+      "icon": "",
+      "materials": [
+        "Wood"
+      ],
+      "name": "Balanced Stock"
+    },
+    {
+      "nameMod": "Single",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Sword Grip",
+      "stats": "Grip Basic",
+      "icon": "grip_basic",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Basic Grip"
+    },
+    {
+      "nameMod": "Battle Axe",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Axe Handle",
+      "stats": "Battleaxe Handle",
+      "icon": "",
+      "materials": [
+        "Wood"
+      ],
+      "name": "Battle Handle"
+    },
+    {
+      "nameMod": "Battlehammer",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Hammer Handle",
+      "stats": "Battlehammer Handle",
+      "icon": "",
+      "materials": [
+        "Wood"
+      ],
+      "name": "Battlehammer Handle"
+    },
+    {
+      "nameMod": "Blasting",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Staff Head",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Gem"
+      ],
+      "name": "Blasting Crystal"
+    },
+    {
+      "nameMod": "Blunt",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Arrow Tip",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Blunt Arrow Tip"
+    },
+    {
+      "nameMod": "Blunt",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Bolt Tip",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Blunt Bolt Tip"
+    },
+    {
+      "nameMod": "Breaker",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Breaker Blade"
+    },
+    {
+      "nameMod": "Bringer",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Bringer Blade"
+    },
+    {
+      "nameMod": "Broad-Headed",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Axe Head",
+      "stats": "Broad Axehead",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Broad Axehead"
+    },
+    {
+      "nameMod": "Broadsword",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Sword Blade",
+      "stats": "Blade Broad",
+      "icon": "blade_broad",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Broad Blade"
+    },
+    {
+      "nameMod": "Charging",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Staff Head",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Gem"
+      ],
+      "name": "Charging Crystal"
+    },
+    {
+      "nameMod": "Chiller",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Chiller Blade"
+    },
+    {
+      "nameMod": "Crawler",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Crawler Blade"
+    },
+    {
+      "nameMod": "Dancer",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Dancer Blade"
+    },
+    {
+      "nameMod": "Delver",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Delver Blade"
+    },
+    {
+      "nameMod": "Dire",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Dire Hilt"
+    },
+    {
+      "nameMod": "Double-Headed",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Axe Head",
+      "stats": "Double Axehead",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Double Axehead"
+    },
+    {
+      "nameMod": "Double-Headed",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Hammer Head",
+      "stats": "Double Hammerhead",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Double Hammerhead"
+    },
+    {
+      "nameMod": "Drainer",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Drainer Blade"
+    },
+    {
+      "nameMod": "Eater",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Eater Blade"
+    },
+    {
+      "nameMod": "Swift",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Arrow Fletchings",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Plant"
+      ],
+      "name": "Fast Arrow Fletchings"
+    },
+    {
+      "nameMod": "Rapid",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Bolt Fletchings",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Plant"
+      ],
+      "name": "Fast Bolt Fletchings"
+    },
+    {
+      "nameMod": "Focusing",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Staff Head",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Gem"
+      ],
+      "name": "Focusing Crystal"
+    },
+    {
+      "nameMod": "Dark",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Grip",
+      "stats": "",
+      "icon": "grip_legendary",
+      "name": "Grip of Darkness"
+    },
+    {
+      "nameMod": "Day",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Grip",
+      "stats": "",
+      "icon": "grip_legendary",
+      "name": "Grip of Daylight"
+    },
+    {
+      "nameMod": "Death",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Grip",
+      "stats": "",
+      "icon": "grip_legendary",
+      "name": "Grip of Death"
+    },
+    {
+      "nameMod": "Dream",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Grip",
+      "stats": "",
+      "icon": "grip_legendary",
+      "name": "Grip of Dreams"
+    },
+    {
+      "nameMod": "Fate",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Grip",
+      "stats": "",
+      "icon": "grip_legendary",
+      "name": "Grip of Fate"
+    },
+    {
+      "nameMod": "Ghost",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Grip",
+      "stats": "",
+      "icon": "grip_legendary",
+      "name": "Grip of Ghosts"
+    },
+    {
+      "nameMod": "Life",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Grip",
+      "stats": "",
+      "icon": "grip_legendary",
+      "name": "Grip of Life"
+    },
+    {
+      "nameMod": "Night",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Grip",
+      "stats": "",
+      "icon": "grip_legendary",
+      "name": "Grip of Night"
+    },
+    {
+      "nameMod": "Soul",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Grip",
+      "stats": "",
+      "icon": "grip_legendary",
+      "name": "Grip of Souls"
+    },
+    {
+      "nameMod": "Spirit",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Grip",
+      "stats": "",
+      "icon": "grip_legendary",
+      "name": "Grip of Spirits"
+    },
+    {
+      "nameMod": "Will",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Grip",
+      "stats": "",
+      "icon": "grip_legendary",
+      "name": "Grip of Will"
+    },
+    {
+      "nameMod": "Grave",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Grip",
+      "stats": "",
+      "icon": "grip_legendary",
+      "name": "Grip of the Grave"
+    },
+    {
+      "nameMod": "Moon",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Grip",
+      "stats": "",
+      "icon": "grip_legendary",
+      "name": "Grip of the Moon"
+    },
+    {
+      "nameMod": "Sun",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Grip",
+      "stats": "",
+      "icon": "grip_legendary",
+      "name": "Grip of the Sun"
+    },
+    {
+      "nameMod": "Hater",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Hater Blade"
+    },
+    {
+      "nameMod": "Heavy",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Bow String",
+      "stats": "Heavy Bowstring",
+      "icon": "",
+      "materials": [
+        "Plant"
+      ],
+      "name": "Heavy Bowstring"
+    },
+    {
+      "nameMod": "High-Draw",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Crossbow String",
+      "stats": "Heavy Crossbow String",
+      "icon": "",
+      "materials": [
+        "Plant"
+      ],
+      "name": "Heavy Crossbow String"
+    },
+    {
+      "nameMod": "Double",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Sword Grip",
+      "stats": "Grip Heavy",
+      "icon": "grip_heavy",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Heavy Grip"
+    },
+    {
+      "nameMod": "Heavy",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Hammer Head",
+      "stats": "Heavy Hammerhead",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Heavy Hammerhead"
+    },
+    {
+      "nameMod": "Heavy",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Sword Hilt",
+      "stats": "Hilt Heavy",
+      "icon": "hilt_heavy",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Heavy Hilt"
+    },
+    {
+      "nameMod": "Ascendant",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Hilt of Ascension"
+    },
+    {
+      "nameMod": "Defiant",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Hilt of Defiance"
+    },
+    {
+      "nameMod": "Draconic",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Hilt of Dragons"
+    },
+    {
+      "nameMod": "Ethereal",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Hilt of Ghosts"
+    },
+    {
+      "nameMod": "Incandescent",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Hilt of Incandescence"
+    },
+    {
+      "nameMod": "Judicious",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Hilt of Judgement"
+    },
+    {
+      "nameMod": "Grotesque",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Hilt of Monsters"
+    },
+    {
+      "nameMod": "Radiant",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Hilt of Radiance"
+    },
+    {
+      "nameMod": "Penitent",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Hilt of Remorse"
+    },
+    {
+      "nameMod": "Unyielding",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Hilt of Strength"
+    },
+    {
+      "nameMod": "Voracious",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Hilt of Voracity"
+    },
+    {
+      "nameMod": "Omniscient",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Hilt of the All-seeing"
+    },
+    {
+      "nameMod": "Chosen",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Hilt of the Chosen"
+    },
+    {
+      "nameMod": "Cynical",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Hilt of the Cynics"
+    },
+    {
+      "nameMod": "Ubiquitous",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Hilt of the Ever-present"
+    },
+    {
+      "nameMod": "Hallowed",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Hilt of the Reverent"
+    },
+    {
+      "nameMod": "Obsequious",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Hilt of the Slaves"
+    },
+    {
+      "nameMod": "Zealous",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Hilt",
+      "stats": "",
+      "icon": "hilt_legendary",
+      "name": "Hilt of the Zealots"
+    },
+    {
+      "nameMod": "Light",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Bow String",
+      "stats": "Light Bowstring",
+      "icon": "",
+      "materials": [
+        "Plant"
+      ],
+      "name": "Light Bowstring"
+    },
+    {
+      "nameMod": "Low-Draw",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Crossbow String",
+      "stats": "Light Crossbow String",
+      "icon": "",
+      "materials": [
+        "Plant"
+      ],
+      "name": "Light Crossbow String"
+    },
+    {
+      "nameMod": "Half",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Sword Grip",
+      "stats": "Grip Light",
+      "icon": "grip_light",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Light Grip"
+    },
+    {
+      "nameMod": "Agile",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Sword Hilt",
+      "stats": "Hilt Light",
+      "icon": "hilt_light",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Light Hilt"
+    },
+    {
+      "nameMod": "Long Arrow",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Arrow Shaft",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Wood"
+      ],
+      "name": "Long Arrow Shaft"
+    },
+    {
+      "nameMod": "Longsword",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Sword Blade",
+      "stats": "Blade Long",
+      "icon": "blade_long",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Long Blade"
+    },
+    {
+      "nameMod": "Long Bolt",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Bolt Shaft",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Wood"
+      ],
+      "name": "Long Bolt Shaft"
+    },
+    {
+      "nameMod": "Heavy Crossbow",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Crossbow Limbs",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Wood",
+        "Metal"
+      ],
+      "name": "Long Crossbow Limbs"
+    },
+    {
+      "nameMod": "Long Staff",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Staff Handle",
+      "stats": "Longaxe Handle",
+      "icon": "",
+      "materials": [
+        "Wood"
+      ],
+      "name": "Long Handle"
+    },
+    {
+      "nameMod": "Long Bow",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Bow Limbs",
+      "stats": "Longbow Limbs",
+      "icon": "",
+      "materials": [
+        "Wood"
+      ],
+      "name": "Longbow Limbs"
+    },
+    {
+      "nameMod": "Marcher",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Marcher Blade"
+    },
+    {
+      "nameMod": "Maul",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Hammer Handle",
+      "stats": "Maul Handle",
+      "icon": "",
+      "materials": [
+        "Wood"
+      ],
+      "name": "Maul Handle"
+    },
+    {
+      "nameMod": "Balanced",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Sword Hilt",
+      "stats": "Hilt Medium",
+      "icon": "hilt_balanced",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Medium Hilt"
+    },
+    {
+      "nameMod": "Piercing",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Arrow Tip",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Pointed Arrow Tip"
+    },
+    {
+      "nameMod": "Piercing",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Bolt Tip",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Pointed Bolt Tip"
+    },
+    {
+      "nameMod": "Quarter Staff",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Staff Handle",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Wood"
+      ],
+      "name": "Quarter Handle"
+    },
+    {
+      "nameMod": "Rapid",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Bow Grip",
+      "stats": "Quick Bow Grip",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Quick Grip"
+    },
+    {
+      "nameMod": "Rapid",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Crossbow Stock",
+      "stats": "Rapid Crossbow Stock",
+      "icon": "",
+      "materials": [
+        "Wood"
+      ],
+      "name": "Rapid Stock"
+    },
+    {
+      "nameMod": "Sharp",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Arrow Tip",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Razor Arrow Tip"
+    },
+    {
+      "nameMod": "Sharp",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Bolt Tip",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Razor Bolt Tip"
+    },
+    {
+      "nameMod": "Reaper",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Reaper Blade"
+    },
+    {
+      "nameMod": "Recurve Bow",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Bow Limbs",
+      "stats": "Recurve Limbs",
+      "icon": "",
+      "materials": [
+        "Wood"
+      ],
+      "name": "Recurve Limbs"
+    },
+    {
+      "nameMod": "Ripper",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Ripper Blade"
+    },
+    {
+      "nameMod": "Round-Headed",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Axe Head",
+      "stats": "Round Axehead",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Round Axehead"
+    },
+    {
+      "nameMod": "Runner",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Runner Blade"
+    },
+    {
+      "nameMod": "Screamer",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Screamer Blade"
+    },
+    {
+      "nameMod": "Scythe-Headed",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Axe Head",
+      "stats": "Scythe Axehead",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Scythe Axehead"
+    },
+    {
+      "nameMod": "Seeker",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Seeker Blade"
+    },
+    {
+      "nameMod": "Precision",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Arrow Fletchings",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Plant"
+      ],
+      "name": "Sharp Arrow Fletchings"
+    },
+    {
+      "nameMod": "Accurate",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Bolt Fletchings",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Plant"
+      ],
+      "name": "Sharp Bolt Fletchings"
+    },
+    {
+      "nameMod": "Shocker",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Shocker Blade"
+    },
+    {
+      "nameMod": "Short Arrow",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Arrow Shaft",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Wood"
+      ],
+      "name": "Short Arrow Shaft"
+    },
+    {
+      "nameMod": "Shortsword",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Sword Blade",
+      "stats": "Blade Short",
+      "icon": "blade_short",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Short Blade"
+    },
+    {
+      "nameMod": "Short Bolt",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Bolt Shaft",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Wood"
+      ],
+      "name": "Short Bolt Shaft"
+    },
+    {
+      "nameMod": "Light Crossbow",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Crossbow Limbs",
+      "stats": "Light Crossbow Limbs",
+      "icon": "",
+      "materials": [
+        "Metal",
+        "Wood"
+      ],
+      "name": "Short Crossbow Limbs"
+    },
+    {
+      "nameMod": "Short Staff",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Staff Handle",
+      "stats": "",
+      "icon": "",
+      "materials": [
+        "Wood"
+      ],
+      "name": "Short Handle"
+    },
+    {
+      "nameMod": "Short Bow",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Bow Limbs",
+      "stats": "Shortbow Limbs",
+      "icon": "",
+      "materials": [
+        "Wood"
+      ],
+      "name": "Shortbow Limbs"
+    },
+    {
+      "nameMod": "Shredder",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Shredder Blade"
+    },
+    {
+      "nameMod": "Singer",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Singer Blade"
+    },
+    {
+      "nameMod": "Single-Headed",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Axe Head",
+      "stats": "Single Axehead",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Single Axehead"
+    },
+    {
+      "nameMod": "Single-Headed",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Hammer Head",
+      "stats": "Single Hammerhead",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Single Hammerhead"
+    },
+    {
+      "nameMod": "Spike-Headed",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Axe Head",
+      "stats": "Spiked Axehead",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Spiked Axehead"
+    },
+    {
+      "nameMod": "Spike-Headed",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Hammer Head",
+      "stats": "Spiked Hammerhead",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Spiked Hammerhead"
+    },
+    {
+      "nameMod": "Accurate",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Bow Grip",
+      "stats": "Steady Bow Grip",
+      "icon": "",
+      "materials": [
+        "Metal"
+      ],
+      "name": "Steady Grip"
+    },
+    {
+      "nameMod": "Strider",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Strider Blade"
+    },
+    {
+      "nameMod": "Waker",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Waker Blade"
+    },
+    {
+      "nameMod": "Walker",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Walker Blade"
+    },
+    {
+      "nameMod": "War Axe",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Axe Handle",
+      "stats": "Waraxe Handle",
+      "icon": "",
+      "materials": [
+        "Wood"
+      ],
+      "name": "War Handle"
+    },
+    {
+      "nameMod": "Warhammer",
+      "partInfo": "",
+      "weight": 1.0,
+      "partType": "Hammer Handle",
+      "stats": "Waraxe Handle",
+      "icon": "",
+      "materials": [
+        "Wood"
+      ],
+      "name": "Warhammer Handle"
+    },
+    {
+      "nameMod": "Waster",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Waster Blade"
+    },
+    {
+      "nameMod": "Watcher",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Watcher Blade"
+    },
+    {
+      "nameMod": "Wringer",
+      "partInfo": "A legendary weapon part",
+      "weight": 100.0,
+      "partType": "Sword Blade",
+      "stats": "",
+      "icon": "blade_legendary",
+      "name": "Wringer Blade"
+    }
+  ],
+  "weaponTypes": [
+    {
+      "stats": "Base Arrow",
+      "weight": 1.0,
+      "parts": [
+        "Arrow Tip",
+        "Arrow Fletchings",
+        "Arrow Shaft"
+      ],
+      "primary": "Arrow Tip",
+      "script": "",
+      "name": "Arrow"
+    },
+    {
+      "stats": "Base Axe",
+      "weight": 1.0,
+      "parts": [
+        "Axe Head",
+        "Axe Handle"
+      ],
+      "primary": "Axe Head",
+      "script": "",
+      "name": "Axe"
+    },
+    {
+      "stats": "Base Bolt",
+      "weight": 1.0,
+      "parts": [
+        "Bolt Tip",
+        "Bolt Fletchings",
+        "Bolt Shaft"
+      ],
+      "primary": "Bolt Tip",
+      "script": "",
+      "name": "Bolt"
+    },
+    {
+      "stats": "Base Bow",
+      "weight": 1.0,
+      "parts": [
+        "Bow Grip",
+        "Bow String",
+        "Bow Limbs"
+      ],
+      "primary": "Bow Limbs",
+      "script": "",
+      "name": "Bow"
+    },
+    {
+      "stats": "Base Crossbow",
+      "weight": 1.0,
+      "parts": [
+        "Crossbow Stock",
+        "Crossbow String",
+        "Crossbow Limbs"
+      ],
+      "primary": "Crossbow Limbs",
+      "script": "",
+      "name": "Crossbow"
+    },
+    {
+      "stats": "Base Hammer",
+      "weight": 1.0,
+      "parts": [
+        "Hammer Head",
+        "Hammer Handle"
+      ],
+      "primary": "Hammer Head",
+      "script": "",
+      "name": "Hammer"
+    },
+    {
+      "stats": "Base Staff",
+      "weight": 1.0,
+      "parts": [
+        "Staff Head",
+        "Staff Handle"
+      ],
+      "primary": "Staff Head",
+      "script": "",
+      "name": "Staff"
+    },
+    {
+      "stats": "Base Sword",
+      "weight": 25.0,
+      "parts": [
+        "Sword Hilt",
+        "Sword Grip",
+        "Sword Blade"
+      ],
+      "primary": "Sword Blade",
+      "script": "",
+      "name": "Sword"
+    }
+  ]
+}
